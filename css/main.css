@@ -109,7 +109,7 @@
     width: 140px;
 }
 #home-card #card-div .avatar img {
-    border-radius: 50%;
+    border-radius: 100%;
     height: 100%;
     width: 100%;
 }
@@ -165,7 +165,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 50vh;
+    height: 120vh;
     left: 0;
     position: absolute;
     top: 0;
