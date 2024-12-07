@@ -367,14 +367,14 @@
     margin-right: calc(100% - 100vw);
 }
 #menu {
-    background: #92cafa;
-    box-shadow: 0 0px 10px 0 #9e9e9e4d;
+    background: gray;
+    box-shadow: 50px #9e9e9e4d;
     font-weight: bold;
-    line-height: 50px;
-    position: fixed;
+    line-height: 45px;
     left: 0;
+    position: fixed;
     transition: background 0.25s ease-out, top 0.25s ease-out;
-    width: 100vw;
+    width: 50px;
     z-index: 1004;
 }
 #menu #desktop-menu {
@@ -432,7 +432,7 @@
 #menu.menu-color #desktop-menu a,
 #menu.menu-color #mobile-menu a,
 #menu.menu-color #mobile-menu .title {
-    color: #fff;
+    color: aqua;
 }
 #preview {
     align-items: center;
