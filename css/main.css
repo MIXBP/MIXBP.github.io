@@ -165,7 +165,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 150vh;
+    height: 235vh;
     left: 0;
     position: absolute;
     top: 0;
@@ -432,7 +432,7 @@
 #menu.menu-color #desktop-menu a,
 #menu.menu-color #mobile-menu a,
 #menu.menu-color #mobile-menu .title {
-    color: aqua;
+    color: palevioletred;
 }
 #preview {
     align-items: center;
