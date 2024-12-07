@@ -367,14 +367,14 @@
     margin-right: calc(100% - 100vw);
 }
 #menu {
-    background: #92cafa;
-    box-shadow: 0 -1px 10px 0 #9e9e9e4d;
+    background: black;
+    box-shadow: 10px 0 10px -1px green;
     font-weight: bold;
     line-height: 50px;
     position: fixed;
-    top: 0;
+    left: 0px;
     transition: background 0.25s ease-out, top 0.25s ease-out;
-    width: 100vw;
+    width: 80px;
     z-index: 1004;
 }
 #menu #desktop-menu {
