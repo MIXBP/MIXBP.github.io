@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>MIXBP</title>
+    <title>本周学习汇总 | MIXBP</title>
     <meta name="author" content="MIXBP" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -42,7 +42,9 @@
 
 
 
-<script src="/js/lib/home.js"></script>
+
+
+
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -152,40 +154,11 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/images/bjtp.jpg"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>MIXBP</h1>
-                <h3></h3>
-                <h5></h5>
-            </div>
-        </span>
+            <div class="article">
+    <div>
+        <h1>本周学习汇总</h1>
     </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/2024/12/15/%E6%9C%AC%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/">
-        <h2 class="post-title">本周学习汇总</h2>
-    </a>
-    <div class="category-and-date">
-        
+    <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -195,10 +168,9 @@
         
         
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="一、Python"><a href="#一、Python" class="headerlink" title="一、Python"></a>一、Python</h1><ul>
+    
+    <div class="content" v-pre>
+        <h1 id="一、Python"><a href="#一、Python" class="headerlink" title="一、Python"></a>一、Python</h1><ul>
 <li>python面向对象之魔术方法</li>
 <li></li>
 </ul>
@@ -222,126 +194,17 @@
 <h3 id="后端部分代码"><a href="#后端部分代码" class="headerlink" title="后端部分代码"></a>后端部分代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;小站&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">        $uname = $_GET[&#x27;username&#x27;];</span><br><span class="line">        $pwd = $_GET[&#x27;password&#x27;];</span><br><span class="line">        if($uname == &#x27;mixbp&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            echo &#x27;&lt;h1欢迎 $uname 回来&lt;/h1&gt;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            echo &#x27;&lt;h1 style = &quot;color:red&quot;&gt;sorry,用户名或密码不正确!&lt;/h1&gt;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="PHP的基本语法笔记"><a href="#PHP的基本语法笔记" class="headerlink" title="PHP的基本语法笔记"></a>PHP的基本语法笔记</h2><p><img src="/../image/12.15.1.png" alt="无法显示"></p>
 
-            
-        </div>
     </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/12/15/%E6%9C%AC%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/12/08/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">
-        <h2 class="post-title">12.8周报笔记</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/8
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="HTML常用标签"><a href="#HTML常用标签" class="headerlink" title="HTML常用标签"></a>HTML常用标签</h1><p><img src="/../image/1.png" alt="image-20241208200338917"></p>
-<h1 id="CSS选择器以及语法"><a href="#CSS选择器以及语法" class="headerlink" title="CSS选择器以及语法"></a>CSS选择器以及语法</h1><p><img src="/../image/2.png" alt="image-20241208200452036"></p>
-<h1 id="JS基本语法"><a href="#JS基本语法" class="headerlink" title="JS基本语法"></a>JS基本语法</h1><p><img src="/../image/3.png" alt="image-20241208200545616"></p>
-<p>准备学习web方向</p>
-<p>了解了html的各种常见文本标签，html表单,html区块,html属性</p>
-<p>了解了CSS的导入方式，CSS定位，CSS浮动，CSS选择器方面的语法和内容</p>
-<p>JS的导入方式，JS函数,JS基本语法,JS事件,JSDOM节点</p>
-<p>搭建好了博客的框架，并部署到了github,进行了一定的美化，发了第一篇文章,搭建好了评论系统</p>
-<p>开始学习python语言</p>
-<p><a href="https://mixbp.github.io/2024/12/08/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">https://mixbp.github.io/2024/12/08/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/</a></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/12/08/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2024/12/06/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
-        <h2 class="post-title">懒得管博客</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>裕宝欢迎来我博客，爱你哦</p>
-<p><img src="/../image/124849742_p0_master1200.jpg" alt="alt"></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-        
-    </div>
-    <a href="/2024/12/06/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
-    
-    <span class="current">1</span>
     
     
     
     
-</div>
-
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
     </div>
     
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/images/tx.jpg" alt="avatar" />
-        </div>
-        <div class="name">MIXBP</div>
-        <div class="description">
-            <p>MIXBP<br>…</p>
-
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a href="https://MIXBP.github.io">website</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
-
-    </div>
+    
+    
     
 </div>
 
@@ -373,6 +236,29 @@
         
     </div>
     <script src="/js/main.js"></script>
+    
+    
+<script
+    src="https://giscus.app/client.js"
+    data-repo="MIXBP/MIXBP.github.io"
+    data-repo-id="R_kgDONYaZsg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDONYaZss4ClAnT"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="noborder_dark"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
     
 </body>
 </html>
