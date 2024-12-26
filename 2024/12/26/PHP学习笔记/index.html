@@ -14,10 +14,10 @@
 <meta property="og:description" content="PHP简介 PHP（全称：PHP：Hypertext Preprocessor，即”PHP：超文本预处理器”）是一种通用开源脚本语言。 PHP 脚本在服务器上执行。 PHP 可免费下载使用。 PHP 文件的默认文件扩展名是 .php。 PHP 文件通常包含 HTML 标签和一些 PHP 脚本代码。  PHP的学习基础结构和语法基本语法1234567891011121314151617&lt;?ph">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://mixbp.github.io/image/%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F.png">
-<meta property="og:image" content="https://mixbp.github.io/master/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image/print_r.png">
+<meta property="og:image" content="https://mixbp.github.io/image/print_r.png">
 <meta property="og:image" content="https://mixbp.github.io/image/var_dump.png">
 <meta property="article:published_time" content="2024-12-26T15:50:15.000Z">
-<meta property="article:modified_time" content="2024-12-26T17:25:59.541Z">
+<meta property="article:modified_time" content="2024-12-26T17:29:04.966Z">
 <meta property="article:author" content="MIXBP">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mixbp.github.io/image/%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F.png">
@@ -268,7 +268,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-12-27 01:25:59'>2024-12-26 23:50</time>
+            Created At : <time class="date" title='Updated At: 2024-12-27 01:29:04'>2024-12-26 23:50</time>
         
     </div>
     <div class="article-meta">
@@ -356,15 +356,14 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>);<br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$a</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<img src="/master/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image/print_r.png" align="left">
-
+<p><img src="/../image/print_r.png"></p>
 <p>var_dump()函数</p>
 <p><strong>var_dump()</strong> 函数用于输出变量的相关信息。</p>
 <p><strong>var_dump()</strong> 函数显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。</p>
 <p>例如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>));<br><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>效果</p>
+<p>结果：</p>
 <p><img src="/../image/var_dump.png"></p>
 
       
