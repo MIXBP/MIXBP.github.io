@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>Mysql学习</title>
+      <link href="/2024/12/29/Mysql%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2024/12/29/Mysql%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p>数据库的相关概念：</p><p><img src="/../image/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E5%BF%B5.png"></p><p>客户端的连接：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">mysql -u root -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure><p>数据模型：</p><p>数据库中的数据是存储在表结构中的</p><p><img src="/../image/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python笔记</title>
+      <link href="/2024/12/29/python%E7%AC%94%E8%AE%B0/"/>
+      <url>/2024/12/29/python%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>正则表达式笔记</title>
       <link href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"/>
       <url>/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
