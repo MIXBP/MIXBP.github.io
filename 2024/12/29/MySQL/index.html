@@ -32,8 +32,10 @@
 <meta property="og:image" content="https://mixbp.github.io/image/DML%E4%BF%AE%E6%94%B92.png">
 <meta property="og:image" content="https://mixbp.github.io/image/DML%E5%88%A0%E9%99%A4.png">
 <meta property="og:image" content="https://mixbp.github.io/image/%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2-%E6%9D%A1%E4%BB%B6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E5%B8%B8%E8%A7%81%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="https://mixbp.github.io/image/DQL%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.png">
 <meta property="article:published_time" content="2024-12-29T11:30:51.000Z">
-<meta property="article:modified_time" content="2024-12-29T14:13:25.982Z">
+<meta property="article:modified_time" content="2024-12-31T14:52:54.623Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -172,7 +174,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="6">
-<input type="hidden" id="yelog_site_word_count" value="10.8k">
+<input type="hidden" id="yelog_site_word_count" value="11.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -323,12 +325,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-12-29 22:13:25'>2024-12-29 19:30</time>
+            Created At : <time class="date" title='Updated At: 2024-12-31 22:52:54'>2024-12-29 19:30</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:1.6k</span>
+        <span>Count:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -358,7 +360,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="toc-text">SQL通用语法及分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL通用语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E5%88%86%E7%B1%BB"><span class="toc-text">SQL分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDL"><span class="toc-text">DDL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">DDL-数据库操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E6%9F%A5%E8%AF%A2"><span class="toc-text">DDL-表操作-查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E5%88%9B%E5%BB%BA"><span class="toc-text">DDL-表操作-创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">DDL-表操作-数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">数值类型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">字符串类型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">日期类型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E4%BF%AE%E6%94%B9"><span class="toc-text">DDL-表操作-修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E5%88%A0%E9%99%A4"><span class="toc-text">DDL-表操作-删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DML"><span class="toc-text">DML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DML-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DML-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DML-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-删除数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DQL"><span class="toc-text">DQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E8%AF%AD%E6%B3%95"><span class="toc-text">DQL-语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="toc-text">DQL-基本查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-text">DQL-条件查询</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="toc-text">SQL通用语法及分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL通用语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E5%88%86%E7%B1%BB"><span class="toc-text">SQL分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DDL"><span class="toc-text">DDL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">DDL-数据库操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E6%9F%A5%E8%AF%A2"><span class="toc-text">DDL-表操作-查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E5%88%9B%E5%BB%BA"><span class="toc-text">DDL-表操作-创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">DDL-表操作-数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">数值类型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">字符串类型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">日期类型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E4%BF%AE%E6%94%B9"><span class="toc-text">DDL-表操作-修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDL-%E8%A1%A8%E6%93%8D%E4%BD%9C-%E5%88%A0%E9%99%A4"><span class="toc-text">DDL-表操作-删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DML"><span class="toc-text">DML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DML-%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DML-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DML-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">DML-删除数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DQL"><span class="toc-text">DQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E8%AF%AD%E6%B3%95"><span class="toc-text">DQL-语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="toc-text">DQL-基本查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2-WHERE"><span class="toc-text">DQL-条件查询(WHERE)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="toc-text">DQL-聚合函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2-GROUP-BY"><span class="toc-text">DQL-分组查询(GROUP BY)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2-ORDER-BY"><span class="toc-text">DQL-排序查询(ORDER BY)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2-LIMIT"><span class="toc-text">DQL-分页查询(LIMIT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DQL-%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">DQL-执行顺序</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -486,7 +488,7 @@
 <p>4.查询公司员工的上班地址(不要重复)</p>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">关键词：<span class="hljs-keyword">distinct</span><br><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> workaddress <span class="hljs-string">&#x27;工作地址&#x27;</span> <span class="hljs-keyword">from</span> emp<span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="DQL-条件查询"><a href="#DQL-条件查询" class="headerlink" title="DQL-条件查询"></a>DQL-条件查询</h3><p>1.语法：</p>
+<h3 id="DQL-条件查询-WHERE"><a href="#DQL-条件查询-WHERE" class="headerlink" title="DQL-条件查询(WHERE)"></a>DQL-条件查询(WHERE)</h3><p>1.语法：</p>
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件列表;<br></code></pre></td></tr></table></figure>
 
 <p>2.条件：</p>
@@ -495,8 +497,63 @@
 <p>1.如果要查的值是null不能用 where 字段列表 &#x3D; null 而是 where 字段列表 is null</p>
 <p>如果要查不是null的值,要用where 字段列表 is not null</p>
 <p>2.如果用了between..and…语句 注意范围</p>
-<p>3.注意IN()和LIKE的用法</p>
+<p>3.注意IN()和LIKE的用法：</p>
 <p>LIKE的占位符：_表示匹配单个字符,%表示匹配任意个字符</p>
+<p>例如查找姓名为两个字符的员工：select * from emp where name like ‘–’;</p>
+<h3 id="DQL-聚合函数"><a href="#DQL-聚合函数" class="headerlink" title="DQL-聚合函数"></a>DQL-聚合函数</h3><p>介绍：将<strong>一列数据</strong>作为一个整体，进行纵向计算</p>
+<p>常见聚合函数：</p>
+<p><img src="/../image/%E5%B8%B8%E8%A7%81%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0.png"></p>
+<p>语法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">SELECT</span> 聚合函数(字段列表) <span class="hljs-selector-tag">FROM</span> 表名;<br></code></pre></td></tr></table></figure>
+
+<p>例如：统计西安地区员工的年龄之和</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> <span class="hljs-keyword">sum</span>(age) <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> workaddress = <span class="hljs-string">&#x27;西安&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：null值不参与所有聚合函数运算</strong></p>
+<h3 id="DQL-分组查询-GROUP-BY"><a href="#DQL-分组查询-GROUP-BY" class="headerlink" title="DQL-分组查询(GROUP BY)"></a>DQL-分组查询(GROUP BY)</h3><p>语法：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 [<span class="hljs-keyword">WHERE</span> 条件] <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 分组字段名 [<span class="hljs-keyword">HAVING</span> 分组后过滤条件];<br></code></pre></td></tr></table></figure>
+
+<p>where与having的区别：</p>
+<ul>
+<li>执行时机不同：where是分组之前进行过滤，不满足where条件，不参与分组；而having是分组之后对结果进行过滤</li>
+<li>判断条件不同：where不能对聚合函数进行判断，而having可以。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">根据性别分组，统计男性员工 和 女性员工的数量<br><span class="hljs-keyword">select</span> gender,<span class="hljs-built_in">count</span>(*) <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> gender;<br>根据性别分组，统计男性员工 和 女性员工的平均年龄<br><span class="hljs-keyword">select</span> gender,<span class="hljs-built_in">avg</span>(age) <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> gender;<br>查询年龄小于45的员工，并根据工作地址分组，获取员工数量大于等于3的工作地址<br><span class="hljs-keyword">select</span> workaddress,<span class="hljs-built_in">count</span>(*) <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> age &lt; <span class="hljs-number">45</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> workaddress <span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(*) &gt;= <span class="hljs-number">3</span>;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>执行顺序：where &gt; 聚合函数 &gt; having。</li>
+<li>分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段无任何意义</li>
+</ul>
+<h3 id="DQL-排序查询-ORDER-BY"><a href="#DQL-排序查询-ORDER-BY" class="headerlink" title="DQL-排序查询(ORDER BY)"></a>DQL-排序查询(ORDER BY)</h3><p>语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">SELECT</span> 字段列表 FROM 表名 ORDER BY 字段<span class="hljs-number">1</span> 排序方式<span class="hljs-number">1</span>,字段<span class="hljs-number">2</span> 排序方式<span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>排序方式：</strong></p>
+<ul>
+<li>ASC：升序（默认值）</li>
+<li>DESC：降序</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序</li>
+<li>ASC可省略</li>
+</ul>
+<p> 例如：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs axapta">根据年龄对公司的员工进行升序排序，如果年龄相同，再按照入职时间进行降序排序<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> age <span class="hljs-keyword">asc</span>,entrydate <span class="hljs-keyword">desc</span>;	<br></code></pre></td></tr></table></figure>
+
+<h3 id="DQL-分页查询-LIMIT"><a href="#DQL-分页查询-LIMIT" class="headerlink" title="DQL-分页查询(LIMIT)"></a>DQL-分页查询(LIMIT)</h3><p>语法：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">LIMIT</span> 起始索引,查询记录数;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>起始索引从0开始，起始索引&#x3D;（查询页码-1）* 每页显示记录数</li>
+<li>分页查询是数据库的方言，不同的数据库有不同的实现，MySQL中是LIMIT</li>
+<li>如果查询的是第一页数据，起始索引可以省略，直接简写为 limit 10</li>
+</ul>
+<h3 id="DQL-执行顺序"><a href="#DQL-执行顺序" class="headerlink" title="DQL-执行顺序"></a>DQL-执行顺序</h3><p>执行顺序：</p>
+<p><img src="/../image/DQL%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.png"></p>
+<p>序号为执行顺序，语法为编写顺序</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
