@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>welcome | MIXBP</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="welcome | MIXBP">
+  <title>sql注入 | MIXBP</title>
+  <meta name="keywords" content=" 笔记 ">
+  <meta name="description" content="sql注入 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="首先查看源码  发现此处有被注释掉的代码 1234567&lt;!--        $cat&#x3D;$_GET[&#x27;cat&#x27;];        echo $cat;        if($cat&#x3D;&#x3D;&#x27;dog&#x27;)&#123;            echo &#x27;Syc&#123;cat_cat_cat_cat&#125;&#x27;;        &amp;#12">
 <meta property="og:type" content="article">
@@ -319,24 +319,31 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-welcome" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-sql注入" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">welcome</h1>
+        <h1 class="article-title">sql注入</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">笔记</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-12-26 14:35:45'>2024-12-25 20:38</time>
+            Created At : <time class="date" title='Updated At: 2025-01-03 21:48:06'>2025-01-03 21:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:7</span>
+        <span>Count:186</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -366,7 +373,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="toc-text">SQL注入基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E5%85%A5"><span class="toc-text">什么是注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="toc-text">注入分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="toc-text">注入点</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -382,8 +389,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎来我的博客</p>
-<p><img src="/../image/01.jpg"></p>
+        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><h2 id="SQL注入基础"><a href="#SQL注入基础" class="headerlink" title="SQL注入基础"></a>SQL注入基础</h2><h3 id="什么是注入"><a href="#什么是注入" class="headerlink" title="什么是注入"></a>什么是注入</h3><p>概念：所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。</p>
+<h3 id="注入分类"><a href="#注入分类" class="headerlink" title="注入分类"></a>注入分类</h3><p>按照查询字段：</p>
+<p>字符型：当输入的参数为字符串时，称为字符型</p>
+<p>数字型：当输入的参数为整形时，可以认为是数字型注入</p>
+<p>按照注入方法：<br>Union注入，报错注入，布尔注入，时间注入</p>
+<h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p>概念：注入点就是可以实行注入的地方，通常是一个访问数据库的连接。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>

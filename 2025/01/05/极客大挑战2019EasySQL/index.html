@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>welcome | MIXBP</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="welcome | MIXBP">
+  <title>极客大挑战2019EasySQL | MIXBP</title>
+  <meta name="keywords" content=" 做题笔记 ">
+  <meta name="description" content="极客大挑战2019EasySQL | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="首先查看源码  发现此处有被注释掉的代码 1234567&lt;!--        $cat&#x3D;$_GET[&#x27;cat&#x27;];        echo $cat;        if($cat&#x3D;&#x3D;&#x27;dog&#x27;)&#123;            echo &#x27;Syc&#123;cat_cat_cat_cat&#125;&#x27;;        &amp;#12">
 <meta property="og:type" content="article">
@@ -319,24 +319,31 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-welcome" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-极客大挑战2019EasySQL" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">welcome</h1>
+        <h1 class="article-title">极客大挑战2019EasySQL</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">做题笔记</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-12-26 14:35:45'>2024-12-25 20:38</time>
+            Created At : <time class="date" title='Updated At: 2025-01-05 19:33:04'>2025-01-05 19:10</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:7</span>
+        <span>Count:159</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -382,8 +389,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎来我的博客</p>
-<p><img src="/../image/01.jpg"></p>
+        <p>首先进入题目网站，发现输入框，根据题目可以得知应该要SQL注入</p>
+<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL1.png"></p>
+<p>测试后发现单引号会报错，而双引号，括号和不闭合都不会报错，只会显示名称密码错误，可以得知闭合方式为单引号，字符注入</p>
+<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL2.png"></p>
+<p>接下来只需要简单的SQL注入语句 admin’ or 1&#x3D;1就可以得到flag</p>
+<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL3.png"></p>
+<p>这样这题就解开了。</p>
+<p>原理：在数据库中形成的 sql 语句是 <code>SELECT * FROM table_name WHERE username=&#39;admin&#39; and password=&#39;123456&#39;;</code>使用万能密码并且用#将后面的语句注释掉就行了。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
