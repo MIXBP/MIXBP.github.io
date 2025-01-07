@@ -346,7 +346,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-01-07 22:30:26'>2025-01-03 21:14</time>
+            Created At : <time class="date" title='Updated At: 2025-01-07 22:40:05'>2025-01-03 21:14</time>
         
     </div>
     <div class="article-meta">
@@ -464,14 +464,14 @@
 <p><img src="/../image/extractvalue3.png"></p>
 <p>使用函数substring解决只能返回32个字符串问题</p>
 <p><img src="/../image/extractvalue4.png"></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">substring</span><span class="hljs-params">()</span></span>	第一个参数为目标字符串，第二个参数为从哪个位置开始，第三个参数为显示字符数<br></code></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">substring</span><span class="hljs-params">()</span></span>	第一个参数为目标字符串，第二个参数为从哪个位置开始，第三个参数为显示字符数<br>同substr<br></code></pre></td></tr></table></figure>
 
 <h4 id="updatexml报错注入"><a href="#updatexml报错注入" class="headerlink" title="updatexml报错注入"></a>updatexml报错注入</h4><p>updatexml函数</p>
 <p><img src="/../image/updatexml.png"></p>
 <p>例子：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&quot; <span class="hljs-keyword">and</span> <span class="hljs-attribute">1</span>=updatexml(1,concat(&#x27;~&#x27;,(select database())),3) --+<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&quot; <span class="hljs-keyword">and</span> <span class="hljs-attribute">1</span>=updatexml(1,concat(&#x27;~&#x27;,(select database())),3) --+<br><br>查表名、列名、内容与union注入相似<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/updatexml.png"></p>
+<p><img src="/../image/updatexml2.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
