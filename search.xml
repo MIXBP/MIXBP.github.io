@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>极客大挑战2019Http</title>
+      <link href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"/>
+      <url>/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/</url>
+      
+        <content type="html"><![CDATA[<p>首先打开靶机，发现一个链接</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http1.png"></p><p>进入发现是一个招新页面</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http2.png"></p><p>查看源代码发现一个隐藏的超链接指向secret.php</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http3.png"></p><p>点开发现显示我们不是从<a href="https://sycsecret.buuoj.cn跳转过来的/">https://Sycsecret.buuoj.cn跳转过来的</a></p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http4.png"></p><p>这时候就想到referer头的作用</p><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">Referer</span>头在HTTP请求中主要用于指示当前请求的来源页面，帮助服务器了解用户是从哪个页面跳转而来的‌<br></code></pre></td></tr></table></figure><p>使用hackbar修改Referer头,用burpsuite也可</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http5.png"></p><p>修改完成后又显示请使用”Syclover” 浏览器</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http6.png"></p><p>这时就想到user-agent的作用</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">User</span>-Agent（用户代理）在HTTP请求中起着重要作用，主要用于标识发送请求的客户端信息，包括网络、浏览器类型、版本号等‌。具体来说，<span class="hljs-keyword">User</span>-Agent的作用包括以下几个方面：‌<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure><p>使用hackbar修改user-agent</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http7.png"></p><p>重新打开网页又显示只能在本地阅读</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http8.png"></p><p>这时就想到x-forwarded-for</p><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">X-Forwarded-For（XFF）的作用主要是帮助服务器获取通过HTTP代理或负载均衡方式连接到Web服务器的客户端的原始<span class="hljs-built_in">IP</span>地址<br></code></pre></td></tr></table></figure><p>使用hackbar修改X-Forwarded-For为127.0.0.1或者localhost</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http9.png"></p><p>得到flag</p><p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http10.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 做题笔记 </tag>
+            
+            <tag> http协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>极客大挑战2019SecretFile</title>
       <link href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"/>
       <url>/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/</url>
