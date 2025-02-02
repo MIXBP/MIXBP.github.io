@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HTML学习笔记 | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , HTML ">
+  <meta name="description" content="HTML学习笔记 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP特性">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/01/29/PHP%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-29T15:55:03.000Z">
+<meta property="article:modified_time" content="2025-02-01T10:29:07.745Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="PHP特性">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(20)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_word_count" value="33.2k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/PHP%E7%89%B9%E6%80%A7/"
+           data-tag="学习笔记,PHP特性"
+           data-author="" >
+            <span class="post-title" title="PHP特性">PHP特性</span>
+            <span class="post-date" title="2025-01-29 23:55:03">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="做题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="做题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="做题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="做题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-HTML学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">HTML学习笔记</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color5">HTML</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-01-29 22:53:26'>2024-12-25 23:54</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:3.1k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML%E7%AE%80%E4%BB%8B"><span class="toc-text">HTML简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-text">HTML的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%92%8C%E8%AF%AD%E6%B3%95"><span class="toc-text">基础结构和语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E4%BE%8B%E5%AD%90"><span class="toc-text">基础结构例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOCTYPE"><span class="toc-text">DOCTYPE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE"><span class="toc-text">标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">整体结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%86%99html%E4%BB%A3%E7%A0%81%E8%AE%B0%E5%BD%95"><span class="toc-text">自写html代码记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84HTML%E6%A0%87%E7%AD%BE"><span class="toc-text">常用的HTML标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E9%A2%98%E6%A0%87%E7%AD%BE"><span class="toc-text">标题标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD%E3%80%81%E6%8D%A2%E8%A1%8C%E3%80%81%E6%B0%B4%E5%B9%B3%E7%BA%BF%E6%A0%87%E7%AD%BE"><span class="toc-text">段落、换行、水平线标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE"><span class="toc-text">文本标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#div%E5%92%8Cspan%E6%A0%87%E7%AD%BE"><span class="toc-text">div和span标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#img%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE"><span class="toc-text">img图片标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a%E8%B6%85%E9%93%BE%E6%8E%A5%E6%A0%87%E7%AD%BE"><span class="toc-text">a超链接标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-text">表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#form%E8%A1%A8%E5%8D%95%E6%A0%87%E7%AD%BE"><span class="toc-text">form表单标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input%E6%A0%87%E7%AD%BE"><span class="toc-text">input标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#textarea%E6%96%87%E6%9C%AC%E6%A1%86%E6%A0%87%E7%AD%BE"><span class="toc-text">textarea文本框标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lable%E6%A0%87%E7%AD%BE"><span class="toc-text">lable标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E6%8B%89%E6%A1%86%E6%A0%87%E7%AD%BE"><span class="toc-text">下拉框标签</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HTML简介"><a href="#HTML简介" class="headerlink" title="HTML简介"></a>HTML简介</h1><p>   HTML 是用来描述网页的一种语言。</p>
+<ul>
+<li><p>HTML 指的是超文本标记语言: <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage</p>
+</li>
+<li><p>HTML 不是一种编程语言，而是一种<strong>标记</strong>语言</p>
+</li>
+<li><p>标记语言是一套<strong>标记标签</strong> (markup tag)</p>
+</li>
+<li><p>HTML 使用标记标签来<strong>描述</strong>网页</p>
+</li>
+<li><p>HTML 文档包含了HTML <strong>标签</strong>及<strong>文本</strong>内容</p>
+</li>
+<li><p>HTML文档也叫做 <strong>web 页面</strong></p>
+<h1 id="HTML的学习"><a href="#HTML的学习" class="headerlink" title="HTML的学习"></a>HTML的学习</h1><h2 id="基础结构和语法"><a href="#基础结构和语法" class="headerlink" title="基础结构和语法"></a>基础结构和语法</h2><h3 id="基础结构例子"><a href="#基础结构例子" class="headerlink" title="基础结构例子"></a>基础结构例子</h3><p><img src="/../image/HTML%E4%BE%8B%E5%AD%90.png"></p>
+</li>
+</ul>
+<h3 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span> //声明为 HTML5 文档 需要写在首行<br></code></pre></td></tr></table></figure>
+
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">无属性标签 <span class="hljs-tag">&lt;<span class="hljs-name">标签名</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">标签名</span>&gt;</span><br><br>有属性标签 <span class="hljs-tag">&lt;<span class="hljs-name">标签名</span> <span class="hljs-attr">属性名</span>=<span class="hljs-string">&quot;属性值&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">标签名</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span> 表示是一个html网页<br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span> 头部信息，如果需要使用css样式要写在里面<br> <br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span> 身体部分，主要html代码要写在里面<br></code></pre></td></tr></table></figure>
+
+<h3 id="自写html代码记录"><a href="#自写html代码记录" class="headerlink" title="自写html代码记录"></a>自写html代码记录</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 定义标题用&lt;h1&gt;标签，定义图片用&lt;img&gt;标签 --&gt;</span><br><span class="hljs-comment">&lt;!-- 定义样式在标签上使用style属性 --&gt;</span><br><span class="hljs-comment">&lt;!-- 文档申明，表示html5 --&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 当前语言是英文 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 告诉浏览器采用utf-8 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 解决IE浏览器兼容性问题 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 网页标题，显示在浏览器的标签页中 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello HTML<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color: red&quot;</span>&gt;</span>HTML入门<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- src属性：定义要展示的图片路径.alt属性：如果图片展示不出来要显示的文件内容 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;图片资源\nailong.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;奶龙&quot;</span><span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;300&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="常用的HTML标签"><a href="#常用的HTML标签" class="headerlink" title="常用的HTML标签"></a>常用的HTML标签</h2><h3 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h3><p>标题标签：通过h1~h6来定义的。	</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>~<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span> <br></code></pre></td></tr></table></figure>
+
+<h3 id="段落、换行、水平线标签"><a href="#段落、换行、水平线标签" class="headerlink" title="段落、换行、水平线标签"></a>段落、换行、水平线标签</h3><p>段落标签：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 一对<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>标签就是一个自然段，两对就是两个自然段会自动换行<br>常用属性：<br>	align 对齐方式：<br>			left 左对齐<br>			right 右对齐<br>			center 居中对齐<br>			justify 两端对齐<br>例如：<br><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <br>左对齐段落<br></code></pre></td></tr></table></figure>
+
+<p>换行标签：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span> 一个换行标签换一行<br></code></pre></td></tr></table></figure>
+
+<p>水平线标签：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hr</span>&gt;</span> 效果为在页面中添加一条水平线<br>常用属性：<br>	color：设置水平线颜色；<br>    width：设置水平线长度；<br>    size：设置水平线高度；<br>    align：设置水平线对齐方式(默认居中)，可取值 left 或 right。<br>例如：<br><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;red&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">hr</span>&gt;</span><br>红色水平线<br></code></pre></td></tr></table></figure>
+
+<h3 id="文本标签"><a href="#文本标签" class="headerlink" title="文本标签"></a>文本标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>	字体加粗 <br><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>	定义加重语气 和加粗没区别<br><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>	斜体  <br><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>	定义着重字体 和斜体没区别<br><span class="hljs-tag">&lt;<span class="hljs-name">u</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">u</span>&gt;</span>	下划线<br><span class="hljs-tag">&lt;<span class="hljs-name">s</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">s</span>&gt;</span>	删除线 <br><span class="hljs-tag">&lt;<span class="hljs-name">del</span>&gt;</span>...&lt;\del&gt;	删除线  和删除线无区别<br><span class="hljs-tag">&lt;<span class="hljs-name">sub</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">sub</span>&gt;</span>	下标	例如：x<span class="hljs-tag">&lt;<span class="hljs-name">sub</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">sub</span>&gt;</span>得到x₂<br><span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span>	上标	例如：x<span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span>得到x²<br><br><span class="hljs-tag">&lt;<span class="hljs-name">font</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">font</span>&gt;</span>	字体标签<br>	常用属性： <br>	color	颜色<br>	face	字体<br>	size	字号<br>例如：<span class="hljs-tag">&lt;<span class="hljs-name">font</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;red&quot;</span> <span class="hljs-attr">face</span>=<span class="hljs-string">&quot;黑体&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;7&quot;</span>&gt;</span>字体标签<span class="hljs-tag">&lt;/<span class="hljs-name">font</span>&gt;</span><br>网页上显示字体标签，并修改字体为宋体，颜色为红色，字号为7<br></code></pre></td></tr></table></figure>
+
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xquery">无序列表标签:<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>无序列表元素1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>无序列表元素2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>无序列表元素3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br>常用属性：<br>	type=<span class="hljs-string">&quot;属性值&quot;</span> 列表的序号<br>	属性值：<br>	disc	实心原点(默认)<br>	square	实心方点<br>	circle	空心圆<br>	<br>列表之间是可以嵌套的<br>li里面什么都能放，甚至可以再放一个ul<br>例如：<br> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">            </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br>  <br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;circle&quot;</span>&gt;</span></span><br><span class="language-xml">  	</span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">  	</span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br>  元素前有空心圆图标<br></code></pre></td></tr></table></figure>
+
+<p>有序列表：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xquery">有序列表标签：<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>有序列表元素1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>有序列表元素2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>有序列表元素3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span></span><br>常用属性：<br>	type=<span class="hljs-string">&quot;属性值&quot;</span>	列表的序号<br>	属性值：<br>	<span class="hljs-number">1</span>	阿拉伯数字(默认)<br>	a	小写字母<br>    A	大写字母<br>    i	小写罗马字母<br>    I	大写罗马字母 <br>例如：<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;a&quot;</span>&#x27;&gt;</span></span><br><span class="language-xml">	</span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">	</span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span></span><br>有序列表从a开始编号<br></code></pre></td></tr></table></figure>
+
+<h3 id="div和span标签"><a href="#div和span标签" class="headerlink" title="div和span标签"></a>div和span标签</h3><p>div标签：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span>&gt;...&lt;/<span class="hljs-keyword">div</span>&gt;<br>	&lt;<span class="hljs-keyword">div</span>&gt; 是一个块元素<br>	&lt;<span class="hljs-keyword">div</span>&gt; 元素在语义上不表示任何特定类型的内容<br>	<span class="hljs-keyword">div</span> 可以将内容分组，从而可以使用 <span class="hljs-built_in">class</span> 或是 <span class="hljs-built_in">id</span> 属性方便的定义内容的格式，<br>	也可以在一段文档中划分标记出使用另一种语言书写的内容（使用 lang 属性）<br></code></pre></td></tr></table></figure>
+
+<p>span标签：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span> 则是行内元素<br>	可以用来编组元素以达到某种样式意图（通过使用类或者 id 属性）<br></code></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ul>
+<li>div 标签，是用来布局的，但是现在<strong>一行只能放一个 div</strong>；</li>
+<li>div 的开始标签和结束标签都不能省略；</li>
+<li>span 标签，也是用来布局的，一行上可以放好多个 span；</li>
+<li>span 的开始标签和结束标签都不能省略；</li>
+</ul>
+<h3 id="img图片标签"><a href="#img图片标签" class="headerlink" title="img图片标签"></a>img图片标签</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs maxima">&lt;img&gt;<br>	常用属性：<br>	src	设置图片路径<br>	<span class="hljs-built_in">title</span>	当鼠标停在图片上的文字<br>	<span class="hljs-built_in">width</span>	设置图片宽度<br>	<span class="hljs-built_in">height</span>	设置图片高度<br>	<span class="hljs-built_in">border</span>	设置图片边框大小<br>	alt	设置当前指定路径找不到图片时，用来代替显示的文本内容<br>	align	对齐方式<br>例如：<br>&lt;img src=<span class="hljs-string">&quot;./奶龙.png&quot;</span> <span class="hljs-built_in">width</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-built_in">height</span>=<span class="hljs-string">&quot;150&quot;</span> alt=<span class="hljs-string">&quot;找不到图片&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="a超链接标签"><a href="#a超链接标签" class="headerlink" title="a超链接标签"></a>a超链接标签</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">&lt;<span class="hljs-keyword">a</span>&gt;&lt;/<span class="hljs-keyword">a</span>&gt;	用于从一个页面链接到另外一个页面<br>	常用属性：<br>	href	页面或者文件地址，如果设置为<span class="hljs-comment">#则不会跳转到其他页面</span><br>	target	规定在何处打开链接文档<br>	值        	描述<br>	<span class="hljs-title">_blank</span>	在新窗口打开被链接的页面<br>	<span class="hljs-title">_self</span>	默认设置，在当前的页面/框架打开被链接的页面<br>	<span class="hljs-title">_parent</span>	在父框架集中打开被链接的页面<br>	<span class="hljs-title">_top</span>	在整个窗口中打开被链接的页面<br>	framename	在指定框架中打开被链接的页面<br>例如：<br>&lt;<span class="hljs-keyword">a</span> href=<span class="hljs-string">&quot;./pages/introduction.html&quot;</span> target=<span class="hljs-string">&quot;_blank&quot;</span>&gt;introduction&lt;/<span class="hljs-keyword">a</span>&gt;<br>表示新开页面打开网站<br></code></pre></td></tr></table></figure>
+
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs css">表格标签：<br>	&lt;<span class="hljs-selector-tag">table</span>&gt;&lt;/<span class="hljs-selector-tag">table</span>&gt;<br>	<span class="hljs-selector-tag">tr</span>	表示表格中的行（每一行可以包含多个<span class="hljs-selector-tag">th</span>和<span class="hljs-selector-tag">tr</span>）<br>	<span class="hljs-selector-tag">td</span>	表示表格中的标准单元格<br>	<span class="hljs-selector-tag">th</span>	表示表格中的表头单元格（具有标题的效果，字体加粗，居中显示）<br>	<br>	<span class="hljs-selector-tag">table</span>常用属性：<br>	<span class="hljs-attribute">border</span>	设置边框，属性值为像素值<br>	cellspacing	设置单元格边框之间的间距<br>	cellpadding	设置单元格与单元内容之间的间距<br>	<span class="hljs-attribute">width</span>	设置表格宽度<br>	<span class="hljs-attribute">height</span>	设置表格高度<br>	align	设置表格在网页中的水平对齐方式：<br>	<span class="hljs-attribute">left</span>	居左<br>	center	居中<br>	<span class="hljs-attribute">right</span>	居右<br>	<br>	 <span class="hljs-selector-tag">tr</span>和<span class="hljs-selector-tag">th</span> 常用属性 <br>       align 每行中文本内容的水平方向对齐方式<br>       valign 每行中文本内容的垂直方向对齐方式（<span class="hljs-attribute">top</span> <span class="hljs-attribute">bottom</span> middle）<br>       bgcolor 设置行的背景颜色<br>       <br>       <br>    合并单元格：<br>    &lt;<span class="hljs-selector-tag">td</span>&gt;的colspan和rowspan分别规定单元格横跨的列数和行数<br>    纵向合并 rowspan<br>    横向合并 colspan<br></code></pre></td></tr></table></figure>
+
+<p>自写表格：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>列标题1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>列标题2<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>列标题3<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 21<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 22<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 23<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 31<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 32<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>元素 33<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>       <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>效果图：</p>
+<p><img src="/../image/%E8%A1%A8%E6%A0%BC%E4%BE%8B%E5%AD%90.png"></p>
+<h3 id="form表单标签"><a href="#form表单标签" class="headerlink" title="form表单标签"></a>form表单标签</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">&lt;form&gt;&lt;/form&gt;<br>	所有标签都有的属性：<br>	       id属性   用来标识元素的唯一性<br>	       name属性 提交数据时的参数名<br>	       style属性 设置元素的行内样式<br>	       class属性 设置元素的样式名<br>	       <br>	必有属性：<br>	action	指定表单提交的地址，一般为服务器接口地址<br>	method	指定表单提交的方式，一般为<span class="hljs-built_in">get</span>或<span class="hljs-built_in">post</span><br>		<span class="hljs-built_in">get</span>提交 GET<br>        <span class="hljs-built_in">post</span>提交 POST<br>    target 提交数据时打开窗口的方式<br>    	<span class="hljs-title">_self</span> 当前窗口<br>        <span class="hljs-title">_blank</span> 空白窗口<br>        <br>    <span class="hljs-built_in">get</span>请求和<span class="hljs-built_in">post</span>请求的区别：<br>    	<span class="hljs-number">1.</span><span class="hljs-built_in">get</span>请求时参数会跟在浏览器地址后面，而<span class="hljs-built_in">post</span>请求不会<br>        <span class="hljs-number">2.</span><span class="hljs-built_in">get</span>请求相当于<span class="hljs-built_in">post</span>而言，不那么安全<br>        <span class="hljs-number">3.</span><span class="hljs-built_in">get</span>请求传递的数据长度是有限的，而<span class="hljs-built_in">post</span>请求基本没有（长度与服务器有关）<br>        <span class="hljs-number">4.</span><span class="hljs-built_in">get</span>请求比<span class="hljs-built_in">post</span>快（<span class="hljs-number">2</span>倍）<br>        <span class="hljs-number">5.</span><span class="hljs-built_in">get</span>请求有缓存，而<span class="hljs-built_in">post</span>无<br>        <br>        form是块级元素<br>        表单提交时，必须设置表单元素的name属性值，否则无法获取数据<br>        表单需要结合表单元素一起使用<br></code></pre></td></tr></table></figure>
+
+<h3 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;&quot;&gt;<br>	<span class="hljs-keyword">type</span>属性：<br>    <span class="hljs-type">text</span>	文本输入框<br>	<span class="hljs-keyword">password</span>	密码输入框<br>	checkbox	复选框<br>	radio	单选框，如果需要单选，要设置<span class="hljs-type">name</span>属性<br>	submit	提交按钮，默认有一个“提交”的按钮<br>	<span class="hljs-keyword">reset</span>	重置按钮，默认有一个“重置”的按钮<br>	button	按钮，默认只有一个方格，需要设置<span class="hljs-keyword">value</span>显示按钮的值<br>	color	颜色选择框<br>	file	上传文件按钮，如果需要上传多个文件，需要设置multiple<br>	number	数字输入框，只能输入数字<br>	<span class="hljs-type">date</span>	日期选择框<br>	<span class="hljs-type">time</span>	时间选择框<br>	<br>	常用属性：<br>	<span class="hljs-keyword">value</span>    元素的值<br>	readonly  只读状态<br>	maxlength  最多输入的长度<br>	disabled   禁用标签<br>	checked	单选框、复选框中表示默认选中<br>	disabled	表示禁用，不会被选择。代码如下：<br><br>如果要提交数据必须设置<span class="hljs-type">name</span>属性<br></code></pre></td></tr></table></figure>
+
+<h3 id="textarea文本框标签"><a href="#textarea文本框标签" class="headerlink" title="textarea文本框标签"></a>textarea文本框标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span><br>	常用属性：<br>	cols	规定文本区域内可见的列数<br>	rows	规定文本区域内可见的行数<br>	value	定义文本区域的内容<br>	disabled	设置为disabled将禁用文本区域<br>	maxlength	限制用户输入的最大字符数<br>	placeholder	规定一个简短的提示，描述文本区域期望的输入值<br>	required	设置为required会在提交表单时验证字段是否已填写‌<br></code></pre></td></tr></table></figure>
+
+<h3 id="lable标签"><a href="#lable标签" class="headerlink" title="lable标签"></a>lable标签</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">lable</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">lable</span>&gt;</span></span>	标签可以 直接包含 表单 和 相关文字信息 , 点击 label 标签的范围 , 就可以触发表单的操作<br>	常用属性：<br>	<span class="hljs-keyword">for</span>	该属性值应该与相关控件<span class="hljs-built_in">的id</span>属性值相同<br>当用户点击<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>内的任何部分时，浏览器会自动将焦点转移到与之相关的表单控件上</span><br><span class="language-xml">例如：   </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>用户名：<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">        </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span> </span><br><span class="language-xml">当点击用户名时会自动转移到输入文本框中</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="下拉框标签"><a href="#下拉框标签" class="headerlink" title="下拉框标签"></a>下拉框标签</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></span><br>	常用属性：<br>     multiple  设置下拉框多选<br>     size      设置下拉框可见选项数<br>     disabled  禁用元素<br>     <br><span class="hljs-keyword">option</span>：下拉框的选项标签<br>      selected  默认选中值<br>      disabled  禁用某个选项<br>      <span class="hljs-keyword">value</span>     提交给服务器的选项值<br>例如：<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">multiple</span>=<span class="hljs-string">&quot;multiple&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;q[]&quot;</span>&gt;</span></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>选择一个站点<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;RUNOOB&quot;</span>&gt;</span>Runoob<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;GOOGLE&quot;</span>&gt;</span>Google<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;TAOBAO&quot;</span>&gt;</span>Taobao<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;提交&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>效果图：</p>
+<p><img src="/../image/%E4%B8%8B%E6%8B%89%E6%A1%86.png"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>

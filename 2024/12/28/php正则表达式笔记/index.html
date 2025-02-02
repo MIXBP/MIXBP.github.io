@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>正则表达式笔记 | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , 正则表达式 ">
+  <meta name="description" content="正则表达式笔记 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP特性">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/01/29/PHP%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-29T15:55:03.000Z">
+<meta property="article:modified_time" content="2025-02-01T10:29:07.745Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="PHP特性">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(20)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_word_count" value="33.2k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/PHP%E7%89%B9%E6%80%A7/"
+           data-tag="学习笔记,PHP特性"
+           data-author="" >
+            <span class="post-title" title="PHP特性">PHP特性</span>
+            <span class="post-date" title="2025-01-29 23:55:03">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="做题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="做题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="做题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="做题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-php正则表达式笔记" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">正则表达式笔记</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color1">正则表达式</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-01-29 22:53:37'>2024-12-28 20:46</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E4%BB%8B"><span class="toc-text">正则表达式简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%94%A8%E9%80%94"><span class="toc-text">主要用途</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-text">正则表达式的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-text">元字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%97%E7%AC%A6%E7%B0%87"><span class="toc-text">常用的字符簇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BE%B9%E7%95%8C"><span class="toc-text">字符边界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-text">限定符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6"><span class="toc-text">匹配多个字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%96%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">或运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%92%8C%E8%A1%A5%E9%9B%86"><span class="toc-text">集合和补集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E4%B8%AD%E5%85%B3%E4%BA%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text">PHP中关于正则表达式的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9D%9E%E8%B4%AA%E5%A9%AA%E6%A8%A1%E5%BC%8F"><span class="toc-text">贪婪模式和非贪婪模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%90%91%E5%BC%95%E7%94%A8"><span class="toc-text">后向引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E8%A8%80"><span class="toc-text">断言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E5%85%88%E8%A1%8C%E6%96%AD%E8%A8%80"><span class="toc-text">正向先行断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E5%90%91%E5%85%88%E8%A1%8C%E6%96%AD%E8%A8%80"><span class="toc-text">负向先行断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80"><span class="toc-text">正向后行断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E5%90%91%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80"><span class="toc-text">负向后行断言</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="正则表达式简介"><a href="#正则表达式简介" class="headerlink" title="正则表达式简介"></a>正则表达式简介</h1><p><strong>正则表达式</strong>（Regular Expression，简称regex或regexp）是一种用于描述和匹配字符串模式的工具，广泛应用于文本处理中，包括搜索、替换和验证字符串。</p>
+<h3 id="主要用途"><a href="#主要用途" class="headerlink" title="主要用途"></a>主要用途</h3><p>正则表达式的主要用途包括：</p>
+<ol>
+<li>‌<strong>文本搜索</strong>‌：在大文本中查找特定的子字符串。</li>
+<li>‌<strong>文本替换</strong>‌：将匹配的子字符串替换为其他字符串。</li>
+<li>‌<strong>字符串验证</strong>‌：验证输入是否符合特定格式（如邮箱地址、电话号码、邮政编码等）。</li>
+<li>‌<strong>数据提取</strong>‌：从文本中提取符合特定模式的数据‌</li>
+</ol>
+<h1 id="正则表达式的学习"><a href="#正则表达式的学习" class="headerlink" title="正则表达式的学习"></a>正则表达式的学习</h1><h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>标记也称为修饰符，正则表达式的标记用于指定额外的匹配策略。</p>
+<p>标记不写在正则表达式里，标记位于表达式之外</p>
+<p>常用的修饰符：</p>
+<p><img src="/../image/%E4%BF%AE%E9%A5%B0%E7%AC%A6.png"></p>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><h3 id="常用的字符簇"><a href="#常用的字符簇" class="headerlink" title="常用的字符簇"></a>常用的字符簇</h3><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livescript">																	<br>匹配范围<br>具体字符<span class="hljs-function"><span class="hljs-params">(字面值)</span>--&gt;</span> 比如说找a,b,hi<br>字符边界<span class="hljs-function"><span class="hljs-params">(下面加粗)</span>--&gt;</span> 从哪开始到哪结束<br>字符集合[ace],[<span class="hljs-number">0123456789</span>]--&gt; 里面任意条件符合的找出来<br>字符补集[^qxz]--&gt; 里面任意条件符合的不要<br>字符范围[a-z0-<span class="hljs-number">9</span>]--&gt; 注意:必须是连续的，不能写a-Z<br>字符簇(系统定义好的常用集合)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E7%B0%87.png"></p>
+<h3 id="字符边界"><a href="#字符边界" class="headerlink" title="字符边界"></a>字符边界</h3><p><img src="/../image/%E5%AD%97%E7%AC%A6%E8%BE%B9%E7%95%8C.png"></p>
+<p>比如^a会去匹配行首的a</p>
+<p>a$会去匹配行尾的a</p>
+<h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>用来限定匹配几个</p>
+<p><img src="/../image/%E6%89%BE%E5%87%A0%E4%B8%AA.png"></p>
+<h3 id="匹配多个字符"><a href="#匹配多个字符" class="headerlink" title="匹配多个字符"></a>匹配多个字符</h3><p>()</p>
+<p>例如(ab)+,表示匹配ab出现1次或者多次</p>
+<h3 id="或运算符"><a href="#或运算符" class="headerlink" title="或运算符"></a>或运算符</h3><p>|</p>
+<p>比如：(cat|dog)b，表示匹配catb或者dogb</p>
+<p>如果是：cat|dogb，表示匹配cat或者dogb</p>
+<h3 id="集合和补集"><a href="#集合和补集" class="headerlink" title="集合和补集"></a>集合和补集</h3><p>集合：[]</p>
+<p>比如[abcd]表示能匹配的字符是a,b,c,d</p>
+<p>补集[^abcd]表示能匹配的字符是除了a,b,c,d的其他所有字符</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../image/%E6%9C%80%E7%BB%88%E6%80%BB%E7%BB%93.png"></p>
+<h2 id="PHP中关于正则表达式的函数"><a href="#PHP中关于正则表达式的函数" class="headerlink" title="PHP中关于正则表达式的函数"></a>PHP中关于正则表达式的函数</h2><p>preg_match_all()	通过一个正则表达式匹配字符串</p>
+<p>例如：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs maxima">																	<br>$str = &#x27;hello o2o <span class="hljs-number">2b9</span> <span class="hljs-number">250</span>&#x27;;<br>$patt = &#x27;/\b[a-zA-Z]+\b|\b[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]+\b/&#x27;; // 或者的用法<br>preg_match_all($patt,$str,$res);<br></code></pre></td></tr></table></figure>
+
+<p>preg_replace()	执行一个正则表达式的搜索和替换</p>
+<p>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php">																	<br><span class="hljs-comment">//把所有空格替换成一个空格</span><br><span class="hljs-variable">$str</span> = <span class="hljs-string">&quot;tommorw         is           another         day&quot;</span>;<br><span class="hljs-variable">$patt</span> = <span class="hljs-string">&quot;/\s&#123;1,&#125;/&quot;</span>; 表示至少匹配一个空格<br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-variable">$patt</span>,<span class="hljs-string">&#x27; &#x27;</span>,<span class="hljs-variable">$str</span>);<br></code></pre></td></tr></table></figure>
+
+<p>preg_split()	通过一个正则表达式分割字符串</p>
+<p>例如：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs autoit">																	<br>$str = <span class="hljs-string">&#x27;tommorw is another day,o2o ,you dont bird me idont bird you&#x27;</span><span class="hljs-comment">;</span><br>$patt = <span class="hljs-string">&#x27;/\W&#123;1,&#125;/&#x27;</span><span class="hljs-comment">;</span><br>print_r(preg_split($patt,$str))<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="贪婪模式和非贪婪模式"><a href="#贪婪模式和非贪婪模式" class="headerlink" title="贪婪模式和非贪婪模式"></a>贪婪模式和非贪婪模式</h2><p>贪婪模式：表示尽量往后匹配</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php">																	<br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">// 贪婪模式 尽量往后匹配</span><br><span class="hljs-variable">$str</span> = <span class="hljs-string">&#x27;ksda good goooood good kl s ja dfs dk &#x27;</span>;<br><span class="hljs-variable">$patt</span> = <span class="hljs-string">&#x27;/g.+d/&#x27;</span>; <span class="hljs-comment">// god  .点  任意字符，不含换行</span><br><span class="hljs-title function_ invoke__">preg_match_all</span>(<span class="hljs-variable">$patt</span>, <span class="hljs-variable">$str</span>, <span class="hljs-variable">$res</span>);<br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$res</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs livescript">																	<br><span class="hljs-built_in">Array</span><br>(<br>    [<span class="hljs-number">0</span>] =&gt; <span class="hljs-built_in">Array</span><br>        (<br>            [<span class="hljs-number">0</span>] =&gt; good goooood good kl s ja dfs d<br>        )<br><br>)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>非贪婪模式：在数量限定词后面加?</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">																	<br><span class="hljs-variable">$str</span> = <span class="hljs-string">&#x27;ksda good goooood good kl s ja dfs dk &#x27;</span>;<br><span class="hljs-variable">$patt</span> = <span class="hljs-string">&#x27;/g.+?d/&#x27;</span>; <span class="hljs-regexp">//</span> god  .点  任意字符，不含换行<br>preg_match_all(<span class="hljs-variable">$patt</span>, <span class="hljs-variable">$str</span>, <span class="hljs-variable">$res</span>);<br>print_r(<span class="hljs-variable">$res</span>);<br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs livescript">																	<br><span class="hljs-built_in">Array</span><br>(<br>    [<span class="hljs-number">0</span>] =&gt; <span class="hljs-built_in">Array</span><br>        (<br>            [<span class="hljs-number">0</span>] =&gt; good<br>            [<span class="hljs-number">1</span>] =&gt; goooood<br>            [<span class="hljs-number">2</span>] =&gt; good<br>        )<br><br>)<br></code></pre></td></tr></table></figure>
+
+<p>区别：可以发现贪婪模式会尽量往后匹配整段字符串，而非贪婪模式会匹配单段满足条件的字符串</p>
+<h2 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h2><p>在后面表达式中引用前面括号内的结果，第一个括号为\1 第二个为\2</p>
+<p>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php">																	<br><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-variable">$str</span> = <span class="hljs-string">&quot;txt hello,high,bom,mum,afewaa,bafsdab,ceagiac&quot;</span>;<br><span class="hljs-comment">// $patt = &#x27;/\bt\w+t\b/&#x27;;</span><br><br><span class="hljs-comment">// 后向引用</span><br><span class="hljs-variable">$patt</span> = <span class="hljs-string">&#x27;/\b([a-z])\w+\1\b/&#x27;</span>;  <span class="hljs-comment">// 引用前面括号里的结果 第一个括号为\1 第二个为\2</span><br><span class="hljs-title function_ invoke__">preg_match_all</span>(<span class="hljs-variable">$patt</span>, <span class="hljs-variable">$str</span>, <span class="hljs-variable">$res</span>);<br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$res</span>);<br><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>后行断言和先行断言有时候被称为断言，它们是特殊类型的 <strong>非捕获组</strong>（用于匹配模式，但不包括在匹配列表中）。当我们在一种特定模式之前或者之后有这种模式时，会优先使用断言。 例如我们想获取输入字符串 $4.44 and $10.88 中带有前缀 $ 的所有数字。我们可以使用这个正则表达式 (?&lt;&#x3D;$)[0-9.]*，表示：获取包含 . 字符且前缀为 $ 的所有数字。 以下是正则表达式中使用的断言：</p>
+<table>
+<thead>
+<tr>
+<th><em><strong>*符号*</strong></em></th>
+<th><em><strong>*描述*</strong></em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?&#x3D;</td>
+<td>正向先行断言</td>
+</tr>
+<tr>
+<td>?!</td>
+<td>负向先行断言</td>
+</tr>
+<tr>
+<td>?&lt;&#x3D;</td>
+<td>正向后行断言</td>
+</tr>
+<tr>
+<td>?&lt;!</td>
+<td>负向后行断言</td>
+</tr>
+</tbody></table>
+<h3 id="正向先行断言"><a href="#正向先行断言" class="headerlink" title="正向先行断言"></a>正向先行断言</h3><p>正向先行断言认为第一部分的表达式的后面必须是先行断言表达式。返回的匹配结果仅包含与第一部分表达式匹配的文本。 要在一个括号内定义一个正向先行断言，在括号中问号和等号是这样使用的 (?&#x3D;…)。先行断言表达式写在括号中的等号后面。 例如正则表达式 (T|t)he(?&#x3D;\sfat)，表示：匹配大写字母 T 或小写字母 t，后面跟字母 h，后跟字母 e。 在括号中，我们定义了正向先行断言，它会引导正则表达式引擎匹配后面跟着 fat 的 The 或 the。</p>
+<p>“(T|t)he(?&#x3D;\sfat)” &#x3D;&gt; <a href="#learn-regex">The</a> fat cat sat on the mat.</p>
+<h3 id="负向先行断言"><a href="#负向先行断言" class="headerlink" title="负向先行断言"></a>负向先行断言</h3><p>当我们需要指定第一部分表达式的后面不跟随某一内容时，使用负向先行断言。负向先行断言的定义跟我们定义的正向先行断言一样， 唯一的区别在于我们使用否定符号 ! 而不是等号 &#x3D;，例如 (?!…)。 我们来看看下面的正则表达式 (T|t)he(?!\sfat)，表示：从输入字符串中获取全部 The 或者 the 且不匹配 fat 前面加上一个空格字符。</p>
+<p>“(T|t)he(?!\sfat)” &#x3D;&gt; The fat cat sat on <a href="#learn-regex">the</a> mat.</p>
+<h3 id="正向后行断言"><a href="#正向后行断言" class="headerlink" title="正向后行断言"></a>正向后行断言</h3><p>正向后行断言用于获取跟随在特定模式之后的所有匹配内容。正向后行断言表示为 (?&lt;&#x3D;…)。例如正则表达式 (?&lt;&#x3D;(T|t)he\s)(fat|mat)，表示：从输入字符串中获取在单词 The 或 the 之后的所有 fat 和 mat 单词。</p>
+<p>“(?&lt;&#x3D;(T|t)he\s)(fat|mat)” &#x3D;&gt; The <a href="#learn-regex">fat</a> cat sat on the <a href="#learn-regex">mat</a>.</p>
+<h3 id="负向后行断言"><a href="#负向后行断言" class="headerlink" title="负向后行断言"></a>负向后行断言</h3><p>负向后行断言是用于获取不跟随在特定模式之后的所有匹配的内容。负向后行断言表示为 (?&lt;!…)。例如正则表达式 (?&lt;!(T|t)he\s)(cat)，表示：在输入字符中获取所有不在 The 或 the 之后的所有单词 cat。</p>
+<p>“(?&lt;!(T|t)he\s)(cat)” &#x3D;&gt; The cat sat on <a href="#learn-regex">cat</a>.</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>
