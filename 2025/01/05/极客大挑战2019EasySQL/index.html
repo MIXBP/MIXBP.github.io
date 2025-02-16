@@ -6,21 +6,29 @@
   <meta name="keywords" content=" 做题笔记 , sql注入 ">
   <meta name="description" content="极客大挑战2019EasySQL | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="XSS靶场通关less-1（无防范）没有任何防范，我们get请求发送的内容直接显示，get传参payload即可 1&lt;script&gt;alert(1);&lt;&#x2F;script&gt;  less-2（闭合）可以看到在&lt;h2&gt;标签这里他将&lt;和&gt;进行了编码（即使用了htmlspecialchars()函数进行了过滤），而在输入&lt;input&gt;这个标签中，他是">
+<meta name="description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xss-labs">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/02/11/xss-labs/index.html">
+<meta property="og:title" content="ctfshow-命令执行">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="XSS靶场通关less-1（无防范）没有任何防范，我们get请求发送的内容直接显示，get传参payload即可 1&lt;script&gt;alert(1);&lt;&#x2F;script&gt;  less-2（闭合）可以看到在&lt;h2&gt;标签这里他将&lt;和&gt;进行了编码（即使用了htmlspecialchars()函数进行了过滤），而在输入&lt;input&gt;这个标签中，他是">
+<meta property="og:description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/xss-labs-1.png">
-<meta property="article:published_time" content="2025-02-11T15:43:19.000Z">
-<meta property="article:modified_time" content="2025-02-11T19:28:46.282Z">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/">
+<meta property="article:published_time" content="2025-02-16T16:00:48.000Z">
+<meta property="article:modified_time" content="2025-02-16T17:36:17.296Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="xss漏洞">
+<meta property="article:tag" content="做题笔记">
+<meta property="article:tag" content="命令执行">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/xss-labs-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -119,7 +127,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(22)</small>
+                <small>(23)</small>
             
         </div>
     </li>
@@ -154,8 +162,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="22">
-<input type="hidden" id="yelog_site_word_count" value="48.7k">
+<input type="hidden" id="yelog_site_posts_number" value="23">
+<input type="hidden" id="yelog_site_word_count" value="49.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -282,6 +290,15 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="做题笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
+            <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
+        </a>
         
         
         <a  class="All "
