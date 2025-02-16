@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PHP反序列化 | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , PHP反序列化漏洞 ">
+  <meta name="description" content="PHP反序列化 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="类与对象类是对象的抽象，而对象是类的具体实例。 类是想法，把类实例化（new），调用具体值就变成了对象。 类的结构类：定义类名、定义成员变量（属性）、定义成员函数（方法） 1234class Class_Name&#123;	&#x2F;&#x2F;成员变量声明	&#x2F;&#x2F;成员函数声明&#125;  类的内容创建一个类： 12345678910class hero&#123;		&#x2F;&#x2F;定义类（类名）										var">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP反序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="类与对象类是对象的抽象，而对象是类的具体实例。 类是想法，把类实例化（new），调用具体值就变成了对象。 类的结构类：定义类名、定义成员变量（属性）、定义成员函数（方法） 1234class Class_Name&#123;	&#x2F;&#x2F;成员变量声明	&#x2F;&#x2F;成员函数声明&#125;  类的内容创建一个类： 12345678910class hero&#123;		&#x2F;&#x2F;定义类（类名）										var">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/master/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-29.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-30.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-31.png">
+<meta property="article:published_time" content="2025-02-13T16:51:53.000Z">
+<meta property="article:modified_time" content="2025-02-15T17:54:44.149Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="PHP反序列化漏洞">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(22)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="22">
+<input type="hidden" id="yelog_site_word_count" value="48.7k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="做题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="做题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="做题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="做题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-PHP反序列化" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">PHP反序列化</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color5">PHP反序列化漏洞</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-02-16 01:54:44'>2025-02-14 00:51</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:2.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-text">类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">类的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">类的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-text">实例化和赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">类的修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">类的成员方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">数组序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">对象序列化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">反序列化的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">反序列化漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#construct%E5%92%8C-destruct"><span class="toc-text">__construct和__destruct()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-%E5%92%8C-wakeup"><span class="toc-text">__sleep()和__wakeup()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-%E5%92%8C-invoke"><span class="toc-text">__toString()和__invoke()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%B0%83%E7%94%A8%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">错误调用相关魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-text">__call()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callStatic"><span class="toc-text">__callStatic()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-text">__get()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">__set()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-text">__isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-text">__unset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">魔术方法总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pop%E9%93%BE"><span class="toc-text">pop链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POC%E7%BC%96%E5%86%99"><span class="toc-text">POC编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E5%9F%BA%E7%A1%80"><span class="toc-text">字符串逃逸基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8"><span class="toc-text">字符串减少逃逸</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h1><p>类是对象的抽象，而对象是类的具体实例。</p>
+<p>类是想法，把类实例化（new），调用具体值就变成了对象。</p>
+<h2 id="类的结构"><a href="#类的结构" class="headerlink" title="类的结构"></a>类的结构</h2><p>类：定义类名、定义成员变量（属性）、定义成员函数（方法）</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Class_Name</span></span>&#123;<br>	//成员变量声明<br>	//成员函数声明<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="类的内容"><a href="#类的内容" class="headerlink" title="类的内容"></a>类的内容</h2><p>创建一个类：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hero</span></span>&#123;		//定义类（类名）									<br>	var <span class="hljs-variable">$name</span>;		<span class="hljs-regexp">//</span>声明成员变量<br>	var <span class="hljs-variable">$sex</span>;		<span class="hljs-regexp">//</span>var为一种修饰符<br>	function jineng(<span class="hljs-variable">$var1</span>)&#123;		<span class="hljs-regexp">//</span>声明成员函数（方法）<br>	echo <span class="hljs-variable">$this</span>-&gt;name;		<span class="hljs-regexp">//</span>使用预定义<span class="hljs-variable">$this</span>调用成员变量<br>	echo <span class="hljs-variable">$var1</span>;				<span class="hljs-regexp">//</span>成员函数传参<span class="hljs-variable">$var1</span>可直接调用<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="实例化和赋值"><a href="#实例化和赋值" class="headerlink" title="实例化和赋值"></a>实例化和赋值</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">hero</span></span>&#123;<br>	<span class="hljs-keyword">var</span> <span class="hljs-variable">$name</span>;<br>	<span class="hljs-keyword">var</span> <span class="hljs-variable">$sex</span>;<br>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jineng</span>(<span class="hljs-params"><span class="hljs-variable">$var1</span></span>)</span>&#123;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-variable language_">$this</span>-&gt;name;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-variable">$var1</span>;<br>	&#125;<br>&#125;	<br><span class="hljs-variable">$cyj</span>= <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">hero</span>()			<span class="hljs-comment">//实例化类hero()为对象cyj</span><br><span class="hljs-variable">$cyj</span>-&gt;name=<span class="hljs-string">&#x27;chengyaojin&#x27;</span>;   <span class="hljs-comment">//参数赋值</span><br><span class="hljs-variable">$cyj</span>-&gt;sex=<span class="hljs-string">&#x27;man&#x27;</span>;            <br><span class="hljs-variable">$cyj</span>-&gt;<span class="hljs-title function_ invoke__">jineng</span>(<span class="hljs-string">&#x27;zuofan&#x27;</span>);     <span class="hljs-comment">//调用函数 </span><br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$cyj</span>);              <span class="hljs-comment">//打印对象cyj</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="类的修饰符"><a href="#类的修饰符" class="headerlink" title="类的修饰符"></a>类的修饰符</h2><p>在类中直接声明的变量称为成员属性（也可以成为成员变量）。</p>
+<p>可以在类中声明多个变量，即”对象”中可以有多个成员属性，每个变量都存储”对象”不同的属性信息</p>
+<p><strong>访问权限修饰符：对属性的定义</strong></p>
+<p><strong>常用的访问权限修饰符：</strong></p>
+<ul>
+<li><code>pubilc</code>：公共的，在类的内容、子类中或者类的外部都可以使用，不受限制;</li>
+<li><code>protected</code>：受保护的，在类的内部、子类中可以使用，但不能再类的外部使用;</li>
+<li><code>private</code>：私有的，只能在类的内部使用，在类的外部或者子类中都无法使用</li>
+</ul>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png"></p>
+<h2 id="类的成员方法"><a href="#类的成员方法" class="headerlink" title="类的成员方法"></a>类的成员方法</h2><p>在类中定义的函数被称为成员方法</p>
+<p>函数实现的是某个独立的功能;</p>
+<p>成员方法实现的是类中的一个行为，是类的一部分</p>
+<p>可以在类中声明多个成员方法，成员方法的声明和函数声明完全一样，只不过在声明成员方法时可以在function关键字前加一些访问权限修饰符，如public、protected、private（可以省略，默认为public）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Students</span></span>&#123;<br>	<span class="hljs-keyword">var</span> <span class="hljs-variable">$name</span>;<br>	<span class="hljs-keyword">public</span> <span class="hljs-variable">$age</span>;<br>	<span class="hljs-keyword">private</span> <span class="hljs-variable">$sex</span><br>	<span class="hljs-keyword">protected</span> <span class="hljs-variable">$school</span>;<br>	<span class="hljs-keyword">protected</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Read</span>(<span class="hljs-params"></span>)</span>&#123;<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Listen</span>(<span class="hljs-params"></span>)</span>&#123;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><p>序列化是将对象的状态信息（属性）转换为可以存储或传输的形式的过程。</p>
+<img src="/master/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image/PHP反序列化-2.png" style="zoom: 50%;">
+
+<p>将对象或者数组转化为可储存&#x2F;传输的字符串。</p>
+<p>在php中使用函数serialize()来将对象或者数组进行序列化，并返回一个包含字节流的字符串来表示</p>
+<p>表达方式：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$a</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$a</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>所有格式第一位都是数据类型的英文字母简写。</p>
+<p><strong>注意：后面一定要加<code>;</code>这才是序列化完整的表达方式</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png"></p>
+<h2 id="数组序列化"><a href="#数组序列化" class="headerlink" title="数组序列化"></a>数组序列化</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png"></p>
+<p>a对应array即数组，3对应数组内参数的数量</p>
+<p>i:0对应编号第0位即”benben”，s对应string字符串，6对应有6个字符，”benben”即内容</p>
+<h2 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png"></p>
+<p>序列化后的内容：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;pub&quot;</span>;s:<span class="hljs-number">6</span>:<span class="hljs-string">&quot;benben&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>不能序列化类，可以序列化对象</li>
+<li>只序列化成员变量，不序列化成员函数</li>
+</ul>
+<hr>
+<p><strong>private私有属性序列化时，在变量名前加”%00类名%00”</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png"></p>
+<p><strong>%00是url编码，ascii编码为空，二进制的00</strong></p>
+<p><strong>一般在输出序列化格式时要先转换成url编码</strong></p>
+<p>echo urlencode(serialize($a));</p>
+<p>序列化后的内容：</p>
+<p>00隔开，’pub’时’test’的私有属性</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">9</span>:<span class="hljs-string">&quot;0testpub0&quot;</span>;s:<span class="hljs-number">6</span>:<span class="hljs-string">&quot;benben&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><em><em>protected受保护属性序列化时，在变量名前加%00</em>%00</em>*</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png"></p>
+<hr>
+<p><strong>对象调用另一个对象的序列化</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png"></p>
+<p><strong>test2类在实例化时，将其中成员属性$ben又被赋值成了test实例化后的对象</strong></p>
+<p><strong>序列化的对象中包含一个序列化的对象</strong></p>
+<p>下面的操作和上面序列化后输出的结果相同</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-9.png"></p>
+<h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><ol>
+<li><strong>反序列化之后的内容为一个对象</strong></li>
+<li><strong>反序列化生成的对象里的值，由反序列化里的值提供；与原有类预定义的值无关</strong></li>
+<li><strong>反序列化不触发类的成员方法；需要调用方法才能触发</strong></li>
+</ol>
+<h2 id="反序列化的作用"><a href="#反序列化的作用" class="headerlink" title="反序列化的作用"></a>反序列化的作用</h2><p>将序列化后的参数还原成实例化的对象</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-10.png"></p>
+<p><strong>注意：反序列化后的对象是不存在成员方法的，需要调用类的方法才能触发</strong></p>
+<h2 id="反序列化漏洞利用"><a href="#反序列化漏洞利用" class="headerlink" title="反序列化漏洞利用"></a>反序列化漏洞利用</h2><p><strong>反序列化漏洞的成因：反序列化过程中，unserialize（）接收的值（字符串）可控的，通过更改这个值（字符串），得到所需要的代码，即生成的对象的属性值。</strong></p>
+<p><strong>通过调用方法，触发代码执行</strong></p>
+<p>实例：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-11.png"></p>
+<p><strong>手动构造序列化字符串：</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;a&quot;</span>;s:<span class="hljs-number">13</span>:<span class="hljs-string">&quot;system(&quot;</span>id<span class="hljs-string">&quot;);&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h1><p><strong>魔术方法：</strong></p>
+<p><strong>一个预定义好的，在特定情况下自动触发的行为方法。</strong></p>
+<p><strong>作用：</strong></p>
+<p><strong>魔术方法在特定条件下自动调用相关方法，最终导致触发代码</strong></p>
+<p><strong>魔术方法相关机制（即魔术方法学习的重要四点）</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-12.png"></p>
+<p><strong>需要掌握的一些魔术方法：</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-13.png"></p>
+<h2 id="construct和-destruct"><a href="#construct和-destruct" class="headerlink" title="__construct和__destruct()"></a>__construct和__destruct()</h2><p><strong>__construct()</strong></p>
+<p>构造函数，在实例化一个对象时，首先回去自动执行的一个方法</p>
+<p><strong>触发时机：在实例化对象时</strong></p>
+<p><strong>功能：提前清理不必要的内容</strong></p>
+<hr>
+<p><strong>__destruct()</strong></p>
+<p>析构函数，在对象的所有引用被删除或者当对象被显式销毁时执行的魔术方法，在方法调用时会触发一次，在反序列化时会触发一次</p>
+<p><strong>触发时机:对象引用完成或对象被销毁</strong></p>
+<p><strong>注意：</strong></p>
+<ol>
+<li><strong>实例化对象结束后，代码运行完会销毁，触发析构函数</strong></li>
+<li><strong>在序列化过程中不会触发</strong></li>
+<li><strong>在反序列化过程中会触发；反序列化得到的是对象，用完后会销毁，触发析构函数__destruct()</strong></li>
+</ol>
+<h2 id="sleep-和-wakeup"><a href="#sleep-和-wakeup" class="headerlink" title="__sleep()和__wakeup()"></a>__sleep()和__wakeup()</h2><p><strong>__sleep()</strong></p>
+<p>序列化serialize()函数会检查类中是否存在一个魔术方法**__sleep()。**</p>
+<p><strong>如果存在，该方法会先被调用，然后才执行序列化操作。</strong></p>
+<p>此功能可以用于清理对象，并返回一个包含对象中所有应被序列化的变量名称的数组。</p>
+<p>如果该方法未返回任何内容，则NULL被序列化，并产生一个E_NOTICE级别的错误</p>
+<p><strong>触发时机：序列化serialize()之前</strong></p>
+<p><strong>功能：对象被序列化之前触发，返回需要被序列化存储的成员属性，删除不必要的属性</strong></p>
+<p><strong>参数：成员属性</strong></p>
+<p><strong>返回值：需要被序列化存储的成员属性</strong></p>
+<p>实例：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-14.png"></p>
+<hr>
+<p><strong>__wakeup</strong></p>
+<p>unserialize()会检查是否存在一个__wakeup()方法。</p>
+<p>如果存在，则会先调用__wakeup()方法，预先准备对象需要的资源。</p>
+<p>预先准备对象资源，返回void，常用与反序列化操作中重新建立数据库连接或执行其他初始化操作。</p>
+<p><strong>触发时机：反序列化unserialize()之前</strong></p>
+<p>对比：</p>
+<p>__wakeup()在反序列化unserialize()之前</p>
+<p>__destruct()在反序列化之后</p>
+<p>实例：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-15.png"></p>
+<h2 id="toString-和-invoke"><a href="#toString-和-invoke" class="headerlink" title="__toString()和__invoke()"></a>__toString()和__invoke()</h2><p>__toString()</p>
+<p>表达方式错误导致魔术方法触发</p>
+<p><strong>触发时机：把对象当成字符串调用</strong></p>
+<p>常用与构造POP链</p>
+<p>实例：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-16.png"></p>
+<p>把类User实体化并赋值给$test,此时$test是个对象，调用对象可以使用print_r或者var_dump。</p>
+<p>如果使用ehco或者print只能调用字符串的方式去调用对象，即把对象当成字符串使用，此时自动触发toString()</p>
+<hr>
+<p>__invoke()</p>
+<p>格式表达错误导致魔术方法触发</p>
+<p><strong>触发时机：把对象当成函数调用</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-17.png"></p>
+<h2 id="错误调用相关魔术方法"><a href="#错误调用相关魔术方法" class="headerlink" title="错误调用相关魔术方法"></a>错误调用相关魔术方法</h2><h3 id="call"><a href="#call" class="headerlink" title="__call()"></a>__call()</h3><p><strong>触发时机：调用一个不存在的方法</strong></p>
+<p>参数：2个参数传参$arg1，$arg2</p>
+<p>返回值：调用的不存在的方法的名称和参数</p>
+<p>实例：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-18.png"></p>
+<p>$arg2是数组类型的变量，我们调用的传参即为$arg2[0]</p>
+<hr>
+<h3 id="callStatic"><a href="#callStatic" class="headerlink" title="__callStatic()"></a>__callStatic()</h3><p><strong>触发时机：静态调用或调用成员变量时使用的方法不存在</strong></p>
+<p>参数：2个参数传参$arg1,$arg2</p>
+<p>返回值：调用的不存在的方法的名称和参数</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-19.png"></p>
+<p>静态调用：其实就是把-&gt;换成::</p>
+<hr>
+<h3 id="get"><a href="#get" class="headerlink" title="__get()"></a>__get()</h3><p><strong>触发时机：调用的成员属性不存在</strong></p>
+<p>参数：传参$arg1</p>
+<p>返回值：不存在的成员属性的名称</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-20.png"></p>
+<hr>
+<h3 id="set"><a href="#set" class="headerlink" title="__set()"></a>__set()</h3><p><strong>触发时机：给不存在的成员属性赋值</strong></p>
+<p>参数：传参$arg1,$arg2</p>
+<p>返回值：不存在的成员属性的名称和赋的值</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-22.png"></p>
+<hr>
+<h3 id="isset"><a href="#isset" class="headerlink" title="__isset()"></a>__isset()</h3><p><strong>触发时机：对不可访问或不存在的属性使用isset()或empty()时，__isset()会被调用</strong></p>
+<p>参数：传参$arg1</p>
+<p>返回值：不存在或不可访问的成员属性的名称</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-23.png"></p>
+<hr>
+<h3 id="unset"><a href="#unset" class="headerlink" title="__unset()"></a>__unset()</h3><p><strong>触发时机：对不可访问属性使用unset()时</strong></p>
+<p>参数：传参$arg1</p>
+<p>返回值：不存在的成员属性的名称</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-24.png"></p>
+<hr>
+<h3 id="clone"><a href="#clone" class="headerlink" title="__clone()"></a>__clone()</h3><p>触发时机：当使用clone关键字拷贝完成一个对象后，新对象会自动调用定义的魔术方法__clone()</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-25.png"></p>
+<h2 id="魔术方法总结"><a href="#魔术方法总结" class="headerlink" title="魔术方法总结"></a>魔术方法总结</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-26.png"></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-27.png"></p>
+<h1 id="pop链"><a href="#pop链" class="headerlink" title="pop链"></a>pop链</h1><p>在反序列化中，我们能控制的数据就是对象中的属性值（成员变量），所以在PHP反序列化中有一种漏洞利用方法叫“面向属性编程”，即POP</p>
+<p><strong>pop链就是利用魔术方法在里面进行多次跳转然后获取敏感数据的一种payload</strong></p>
+<h2 id="POC编写"><a href="#POC编写" class="headerlink" title="POC编写"></a>POC编写</h2><p>POC (全称: Proof of concept) 中文译作概念验证在安全界可以理解成漏洞验证程序。Poc 是一段不完整的程序，仅仅是为了证明提出者的观点的一段代码</p>
+<p>编写一段不完整的程序，获取所需要的序列化字符串</p>
+<p>反推法：从得到flag开始反推过程，推完后再正推构造pop链</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-28.png"></p>
+<h1 id="字符串逃逸基础"><a href="#字符串逃逸基础" class="headerlink" title="字符串逃逸基础"></a>字符串逃逸基础</h1><p><strong>反序列化分隔符</strong></p>
+<p>在前面的字符串没有问题的情况下，;}是反序列化结束符，后面的字符串不影响正常的反序列化</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-29.png"></p>
+<p><strong>特性：</strong></p>
+<ol>
+<li>成员属性数量一致</li>
+<li>成员名称长度一致</li>
+<li>内容长度一致</li>
+<li>类中如果有我们构造的序列化字符串中没有的成员属性，会根据类自动补全</li>
+</ol>
+<p><strong>属性逃逸</strong></p>
+<p>一般在数据先经过一次serialize再经过unserialize，在这个中阿金反序列化的字符串变多或者变少的时候才有可能存在反序列化属性逃逸。</p>
+<h2 id="字符串减少逃逸"><a href="#字符串减少逃逸" class="headerlink" title="字符串减少逃逸"></a>字符串减少逃逸</h2><p>反序列化字符串减少逃逸：多逃逸出一个成员属性</p>
+<p>第一个字符串减少，吃掉有效代码，在第二个字符串构造代码</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-30.png"></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-31.png"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>

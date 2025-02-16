@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>xss-labs | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , xss漏洞 ">
+  <meta name="description" content="xss-labs | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="类与对象类是对象的抽象，而对象是类的具体实例。 类是想法，把类实例化（new），调用具体值就变成了对象。 类的结构类：定义类名、定义成员变量（属性）、定义成员函数（方法） 1234class Class_Name&#123;	&#x2F;&#x2F;成员变量声明	&#x2F;&#x2F;成员函数声明&#125;  类的内容创建一个类： 12345678910class hero&#123;		&#x2F;&#x2F;定义类（类名）										var">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP反序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="类与对象类是对象的抽象，而对象是类的具体实例。 类是想法，把类实例化（new），调用具体值就变成了对象。 类的结构类：定义类名、定义成员变量（属性）、定义成员函数（方法） 1234class Class_Name&#123;	&#x2F;&#x2F;成员变量声明	&#x2F;&#x2F;成员函数声明&#125;  类的内容创建一个类： 12345678910class hero&#123;		&#x2F;&#x2F;定义类（类名）										var">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/master/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-29.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-30.png">
+<meta property="og:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-31.png">
+<meta property="article:published_time" content="2025-02-13T16:51:53.000Z">
+<meta property="article:modified_time" content="2025-02-15T17:54:44.149Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="PHP反序列化漏洞">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(22)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="22">
+<input type="hidden" id="yelog_site_word_count" value="48.7k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="做题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="做题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="做题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="做题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-xss-labs" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">xss-labs</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color1">xss漏洞</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-02-12 03:28:46'>2025-02-11 23:43</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:2k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS%E9%9D%B6%E5%9C%BA%E9%80%9A%E5%85%B3"><span class="toc-text">XSS靶场通关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#less-1%EF%BC%88%E6%97%A0%E9%98%B2%E8%8C%83%EF%BC%89"><span class="toc-text">less-1（无防范）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-2%EF%BC%88%E9%97%AD%E5%90%88%EF%BC%89"><span class="toc-text">less-2（闭合）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-3%EF%BC%88onclick-onfocus%E4%BA%8B%E4%BB%B6%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">less-3（onclick onfocus事件绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-4%EF%BC%88onclick-onfocus%E4%BA%8B%E4%BB%B6%E7%BB%95%E8%BF%87%E9%97%AD%E5%90%88%EF%BC%89"><span class="toc-text">less-4（onclick onfocus事件绕过闭合）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-5%EF%BC%88a-href-%E6%A0%87%E7%AD%BEjavascript%E4%BC%AA%E5%8D%8F%E8%AE%AE%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">less-5（a href 标签javascript伪协议绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-6%EF%BC%88%E5%A4%A7%E5%B0%8F%E5%86%99%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">less-6（大小写绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-7%EF%BC%88%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">less-7（双写绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-8%EF%BC%88unicode%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">less-8（unicode编码绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-9%EF%BC%88%E6%B3%A8%E9%87%8Ahttp-%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">less-9（注释http:&#x2F;&#x2F;绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-10%EF%BC%88%E9%9A%90%E8%97%8F%E7%9A%84%E4%BC%A0%E5%8F%82%EF%BC%89"><span class="toc-text">less-10（隐藏的传参）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-11%EF%BC%88Referer%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">less-11（Referer注入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-12%EF%BC%88User-Agent%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">less-12（User Agent注入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-13%EF%BC%88cookie%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">less-13（cookie注入）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-14%EF%BC%88%E9%A2%98%E6%9C%89%E9%97%AE%E9%A2%98%E7%9B%B4%E6%8E%A5%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="toc-text">less-14（题有问题直接跳过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-15%EF%BC%88ng-include%E6%96%87%E4%BB%B6%E5%8C%85%E6%B6%B5%EF%BC%89"><span class="toc-text">less-15（ng-include文件包涵）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-16%EF%BC%88url%E7%BC%96%E7%A0%81%EF%BC%89"><span class="toc-text">less-16（url编码）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-17%EF%BC%88embed%E6%A0%87%E7%AD%BE%EF%BC%89"><span class="toc-text">less-17（embed标签）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-18%EF%BC%88embed%E6%A0%87%E7%AD%BE%EF%BC%89"><span class="toc-text">less-18（embed标签）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-19-and-20%EF%BC%88flash%E5%B7%B2%E7%BB%8F%E5%85%A8%E9%9D%A2%E5%81%9C%E6%AD%A2%E4%BD%BF%E7%94%A8%E4%BA%86%EF%BC%8C%E7%9B%B4%E6%8E%A5%E4%B8%8D%E5%81%9A%E4%BA%86%EF%BC%89"><span class="toc-text">less-19 and 20（flash已经全面停止使用了，直接不做了）</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="XSS靶场通关"><a href="#XSS靶场通关" class="headerlink" title="XSS靶场通关"></a>XSS靶场通关</h1><h2 id="less-1（无防范）"><a href="#less-1（无防范）" class="headerlink" title="less-1（无防范）"></a>less-1（无防范）</h2><p>没有任何防范，我们get请求发送的内容直接显示，get传参payload即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1);<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-2（闭合）"><a href="#less-2（闭合）" class="headerlink" title="less-2（闭合）"></a>less-2（闭合）</h2><p>可以看到在<code>&lt;h2&gt;</code>标签这里他将<code>&lt;</code>和<code>&gt;</code>进行了编码（即使用了htmlspecialchars()函数进行了过滤），而在输入<code>&lt;input&gt;</code>这个标签中，他是没有被编码的，但是可以看到我们的注入语句被放到了value值当中，这样浏览器是不会执行我们的注入语句的，所以我们要构造闭合</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">&#x27;&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1);<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-3（onclick-onfocus事件绕过）"><a href="#less-3（onclick-onfocus事件绕过）" class="headerlink" title="less-3（onclick onfocus事件绕过）"></a>less-3（onclick onfocus事件绕过）</h2><p>这一关可以看到input标签中输出了，但是检查发现input标签中的value属性也被htmlspecialchars()处理了，但是查看源码发现htmlspecialchars()函数是默认设置，所以单引号不会被处理。那么可以尝试闭合input标签的value属性，加上onfocus事件或者onblur事件、onclick事件来进行xss攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs )">我们使用一个onclick事件属性进行一个绕过构造payload<br>&#x27; οnclick=&#x27;alert(1)&#x27;<br><br>也可以使用onfocus事件进行绕过，构造payload<br>&#x27; οnfοcus=&#x27;alert(1)&#x27;<br><br>onblur事件（失去焦点时执行）<br>&#x27; onblur=&#x27;alert(1)&#x27;<br><br>或者这种写法<br>&#x27; onblur=&#x27;javascript:alert(1)&#x27;<br></code></pre></td></tr></table></figure>
+
+<h2 id="less-4（onclick-onfocus事件绕过闭合）"><a href="#less-4（onclick-onfocus事件绕过闭合）" class="headerlink" title="less-4（onclick onfocus事件绕过闭合）"></a>less-4（onclick onfocus事件绕过闭合）</h2><p>发现单引号不能闭合input标签的value属性对应值的引号，所以再加一个双引号来闭合</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-string">&#x27;&quot; onclick=&#x27;</span>alert(<span class="hljs-number">1</span>)&#x27;<br><span class="hljs-string">&#x27;&quot; onblur=&#x27;</span>alert(<span class="hljs-number">1</span>)&#x27;<br><br>或者这种写法<br><span class="hljs-string">&#x27;&quot; onblur=&#x27;</span>javascript:alert(<span class="hljs-number">1</span>)&#x27;<br></code></pre></td></tr></table></figure>
+
+<h2 id="less-5（a-href-标签javascript伪协议绕过）"><a href="#less-5（a-href-标签javascript伪协议绕过）" class="headerlink" title="less-5（a href 标签javascript伪协议绕过）"></a>less-5（a href 标签javascript伪协议绕过）</h2><p>这一关将script和onblur等都进行了替换，中间加了个_导致失效，且由于有strtolowers（），所有的大写字母都会被转成小写无法使用大小写绕过，那么我们可以考虑直接去闭合整个input标签，自己再添加上a标签，a标签中使用javascript伪协议指定js代码执行</p>
+<p>构造payload</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">&#x27;&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#x27;javascript:alert(1)&#x27;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-6（大小写绕过）"><a href="#less-6（大小写绕过）" class="headerlink" title="less-6（大小写绕过）"></a>less-6（大小写绕过）</h2><p>尝试上一关的payload，发现href被处理了，中间加了_，使用大小写混合绕过</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml">&#x27;&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">HREF</span>=<span class="hljs-string">&#x27;javascript:alert(1)&#x27;</span>&gt;</span><br><br>或者<br>&#x27;&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">HREF</span>=<span class="hljs-string">&#x27;javascript:alert(1)&#x27;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-7（双写绕过）"><a href="#less-7（双写绕过）" class="headerlink" title="less-7（双写绕过）"></a>less-7（双写绕过）</h2><p>尝试上一关的payload发现script、href等被替换为空了，使用双写绕过</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">&#x27;&quot;&gt;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">HRhrefEF</span>=<span class="hljs-string">&#x27;javascscriptript:alert(1)&#x27;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-8（unicode编码绕过）"><a href="#less-8（unicode编码绕过）" class="headerlink" title="less-8（unicode编码绕过）"></a>less-8（unicode编码绕过）</h2><p>编码网站<br><a target="_blank" rel="noopener" href="http://tools.gree020.cn/unicode/">http://tools.gree020.cn/unicode/</a></p>
+<p><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/unicode.aspx">https://tool.chinaz.com/tools/unicode.aspx</a></p>
+<p>尝试第5关的payload发现很多关键词都被加了_，比如href、script，尝试大小写绕过也不行，但是这里发现我们输入的payload被放在了其中的一个a标签的href属性中，直接尝试javascript伪协议，发现被转化成饿了html实体编码，这里使用unicode编码绕过，将<code>javascript:alert(1)</code>unicode转ascii（十进制ascii码）转成十六进制unicode编码也行</p>
+<p>注意：只有作为属性值的时候才能进行编码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-symbol">&amp;#106;</span><span class="hljs-symbol">&amp;#97;</span><span class="hljs-symbol">&amp;#118;</span><span class="hljs-symbol">&amp;#97;</span><span class="hljs-symbol">&amp;#115;</span><span class="hljs-symbol">&amp;#99;</span><span class="hljs-symbol">&amp;#114;</span><span class="hljs-symbol">&amp;#105;</span><span class="hljs-symbol">&amp;#112;</span><span class="hljs-symbol">&amp;#116;</span><span class="hljs-symbol">&amp;#58;</span><span class="hljs-symbol">&amp;#97;</span><span class="hljs-symbol">&amp;#108;</span><span class="hljs-symbol">&amp;#101;</span><span class="hljs-symbol">&amp;#114;</span><span class="hljs-symbol">&amp;#116;</span><span class="hljs-symbol">&amp;#40;</span><span class="hljs-symbol">&amp;#49;</span><span class="hljs-symbol">&amp;#41;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-9（注释http-绕过）"><a href="#less-9（注释http-绕过）" class="headerlink" title="less-9（注释http:&#x2F;&#x2F;绕过）"></a>less-9（注释http:&#x2F;&#x2F;绕过）</h2><p>查看源码发现使用了strpos函数去查找我们的payload中含不含http:&#x2F;&#x2F;，如果不含的话不会输出我们的payload，所以我们在之前的语句后加一个**&#x2F;&#x2F;http:&#x2F;&#x2F;**注释掉http:&#x2F;&#x2F;，并且这里需要将原payload：<code>javascript:alert(1)</code>进行unicode编码，不然会被加_</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clean">&amp;#<span class="hljs-number">106</span>;&amp;#<span class="hljs-number">97</span>;&amp;#<span class="hljs-number">118</span>;&amp;#<span class="hljs-number">97</span>;&amp;#<span class="hljs-number">115</span>;&amp;#<span class="hljs-number">99</span>;&amp;#<span class="hljs-number">114</span>;&amp;#<span class="hljs-number">105</span>;&amp;#<span class="hljs-number">112</span>;&amp;#<span class="hljs-number">116</span>;&amp;#<span class="hljs-number">58</span>;&amp;#<span class="hljs-number">97</span>;&amp;#<span class="hljs-number">108</span>;&amp;#<span class="hljs-number">101</span>;&amp;#<span class="hljs-number">114</span>;&amp;#<span class="hljs-number">116</span>;&amp;#<span class="hljs-number">40</span>;&amp;#<span class="hljs-number">49</span>;&amp;#<span class="hljs-number">41</span>;<span class="hljs-comment">//http://</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-10（隐藏的传参）"><a href="#less-10（隐藏的传参）" class="headerlink" title="less-10（隐藏的传参）"></a>less-10（隐藏的传参）</h2><p>发现上面的测试手段不太行了，但是查看页面源码发现了三个隐藏的input name分别为（t_link t_history t_sort），那么根据他们的name构造传参，谁出来了谁就能利用<code>http://192.168.32.1/xss-labs/level10.php?keyword=well%20done!&amp;t_link=aa&amp;t_history=bb&amp;t_sort=cc</code>可以看到cc输出到了某个input标签的value属性对应的值的位置，那么我们构造如下payload，让他们的type从hidden变为text，不再隐藏，并执行js代码</p>
+<p><strong>注意：这里的type属性谁在前面，浏览器就会用谁</strong></p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scilab"><span class="hljs-string">&#x27;&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> onclick=<span class="hljs-string">&#x27;alert(1)&#x27;</span><br><br>或者<br><span class="hljs-string">&#x27;&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> onclick=<span class="hljs-string">&#x27;javascript:alert(1)&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-11（Referer注入）"><a href="#less-11（Referer注入）" class="headerlink" title="less-11（Referer注入）"></a>less-11（Referer注入）</h2><p>这一关和第十关有点像，也是发现几个隐藏的输入框，而且t_sort也能输出到了某个input标签的value属性对应的值的位置但是这里无法闭合，推测是被htmlspecialchars了，但是发现t_ref那个输入框的value值为referer请求头的值（且查看源码发现没有过滤），那么这里可以尝试给referer值加上xss的payload来进行测试</p>
+<p>通过buro抓包来修改，payload用的还是第十关的payload。当第十关完成的时候，点击确定，然后抓包，可以抓到第十一关的数据包，然后将referer改为上面的payload</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scilab"><span class="hljs-string">&#x27;&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> onclick=<span class="hljs-string">&#x27;alert(1)&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-12（User-Agent注入）"><a href="#less-12（User-Agent注入）" class="headerlink" title="less-12（User Agent注入）"></a>less-12（User Agent注入）</h2><p>检查发现有个input标签name为t_ua，值为user agent的值，和上一题差不多抓包构造User Agent的payload</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scilab"><span class="hljs-string">&#x27;&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> onclick=<span class="hljs-string">&#x27;alert(1)&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-13（cookie注入）"><a href="#less-13（cookie注入）" class="headerlink" title="less-13（cookie注入）"></a>less-13（cookie注入）</h2><p>检查发现有个input标签name为t_cook，值为cookie的值，和前两题差不多抓包构造Cookie的payload</p>
+<p>user&#x3D;<code>&#39;&quot; type=&#39;text&#39; onclick=&#39;alert(1)&#39;</code></p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scilab"><span class="hljs-string">&#x27;&quot;</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> onclick=<span class="hljs-string">&#x27;alert(1)&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-14（题有问题直接跳过）"><a href="#less-14（题有问题直接跳过）" class="headerlink" title="less-14（题有问题直接跳过）"></a>less-14（题有问题直接跳过）</h2><h2 id="less-15（ng-include文件包涵）"><a href="#less-15（ng-include文件包涵）" class="headerlink" title="less-15（ng-include文件包涵）"></a>less-15（ng-include文件包涵）</h2><p>先使用src传参试试，发现有输出，有个nginclude。</p>
+<p><img src="/../image/xss-labs-1.png"></p>
+<p>他是可以引入某个html页面那我们就把第一关的页面引入尝试一下</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?s</span>rc=<span class="hljs-string">&#x27;http://192.168.32.1/xss-labs/level1.php?name=test&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里成功引入我们第一关的html文件</p>
+<p>使用第一关的漏洞<code>src=&#39;http://192.168.32.1/xss-labs/level1.php?name=test?name&lt;script&gt;alert(1);&lt;/script&gt;&#39;</code>让第一关弹窗，尝试后发现不行，应该是有过滤把<code>&lt;script&gt;</code>过滤掉了（注意，这里不能包涵那些直接弹窗的东西如<code>&lt;script&gt;</code>，但是可以包涵那些标签的东西比如<code>&lt;a&gt;、&lt;input&gt;、&lt;img&gt;、&lt;p&gt;</code>标签等等，这些标签是能需要我们手动点击弹窗的），这里我们使用img标签</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;img <span class="hljs-attribute">src</span>=1 οnerrο<span class="hljs-attribute">r</span>=alert(1)&gt;&#x27;<br><br>也可以用a标签<br>&lt;a <span class="hljs-attribute">href</span>=javascript:alert(1)&gt;&#x27;<br></code></pre></td></tr></table></figure>
+
+<h2 id="less-16（url编码）"><a href="#less-16（url编码）" class="headerlink" title="less-16（url编码）"></a>less-16（url编码）</h2><p>使用上一关的img标签payload发现有输出但是进行了html实体编码，空格被变成了html实体编码<code>&amp;nbsp;</code>，我们将空格的编码替换成回车的编码进行尝试</p>
+<p><a target="_blank" rel="noopener" href="https://www.qianbo.com.cn/Tool/Url-Encode.html">UrlEncode - 在线URL网址编码、解码</a></p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;img%<span class="hljs-number">0</span>Asrc<span class="hljs-operator">=</span><span class="hljs-number">1</span>%<span class="hljs-number">0</span>Aοnerrοr<span class="hljs-operator">=</span>alert(<span class="hljs-number">1</span>)&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="less-17（embed标签）"><a href="#less-17（embed标签）" class="headerlink" title="less-17（embed标签）"></a>less-17（embed标签）</h2><p>embed标签可以理解为定义了一个区域，可以放图片、视频、音频等内容，但是相对于他们，embed标签打开不了文件的时候就会有块错误的取余。也可以绑定各种事件，比如尝试绑定一个onmouseover事件（鼠标移动到上面就会触发的事件）。后台看代码用了htmlspecialchars，所以直接写标签是不行的。</p>
+<p>我们传参的内容被输出到embed标签属性上了，直接闭合然后绑定事件即可</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-string">&#x27; onmouseover=&#x27;</span><span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-number">1</span>)<span class="hljs-string">&#x27;</span></span><br><span class="hljs-string"><span class="hljs-function"></span></span><br><span class="hljs-string"><span class="hljs-function">&#x27;</span> ο<span class="hljs-variable">nclick</span>=<span class="hljs-string">&#x27;alert()&#x27;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="less-18（embed标签）"><a href="#less-18（embed标签）" class="headerlink" title="less-18（embed标签）"></a>less-18（embed标签）</h2><p>一样</p>
+<h2 id="less-19-and-20（flash已经全面停止使用了，直接不做了）"><a href="#less-19-and-20（flash已经全面停止使用了，直接不做了）" class="headerlink" title="less-19 and 20（flash已经全面停止使用了，直接不做了）"></a>less-19 and 20（flash已经全面停止使用了，直接不做了）</h2><p>这两关涉及到flash触发的xss漏洞，现在flash技术全面停止使用了，所以不做了</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>
