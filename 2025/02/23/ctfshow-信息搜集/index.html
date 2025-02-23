@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ctfshow-信息搜集 | MIXBP</title>
+  <meta name="keywords" content=" 做题笔记 , 信息搜集 ">
+  <meta name="description" content="ctfshow-信息搜集 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctfshow-信息搜集">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-21.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-29.png">
+<meta property="article:published_time" content="2025-02-23T07:24:36.000Z">
+<meta property="article:modified_time" content="2025-02-23T09:06:22.361Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="做题笔记">
+<meta property="article:tag" content="信息搜集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(24)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="24">
+<input type="hidden" id="yelog_site_word_count" value="54k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="做题笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="做题笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
+            <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="做题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="做题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="做题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="做题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="做题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ctfshow-信息搜集" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ctfshow-信息搜集</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">做题笔记</a>
+            
+            <a class="color5">信息搜集</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-02-23 17:06:22'>2025-02-23 15:24</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-text">web-信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-1"><span class="toc-text">web-1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-2"><span class="toc-text">web-2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-3"><span class="toc-text">web-3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-4"><span class="toc-text">web-4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-5"><span class="toc-text">web-5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-6"><span class="toc-text">web-6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-7"><span class="toc-text">web-7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-8"><span class="toc-text">web-8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-9"><span class="toc-text">web-9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-10"><span class="toc-text">web-10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-11"><span class="toc-text">web-11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-12"><span class="toc-text">web-12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-13"><span class="toc-text">web-13</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-14"><span class="toc-text">web-14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-15"><span class="toc-text">web-15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-16"><span class="toc-text">web-16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-17"><span class="toc-text">web-17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-18"><span class="toc-text">web-18</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-19"><span class="toc-text">web-19</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-20"><span class="toc-text">web-20</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="web-信息搜集"><a href="#web-信息搜集" class="headerlink" title="web-信息搜集"></a>web-信息搜集</h1><h2 id="web-1"><a href="#web-1" class="headerlink" title="web-1"></a>web-1</h2><p>打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png"></p>
+<hr>
+<h2 id="web-2"><a href="#web-2" class="headerlink" title="web-2"></a>web-2</h2><p>打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-2.png"></p>
+<hr>
+<h2 id="web-3"><a href="#web-3" class="headerlink" title="web-3"></a>web-3</h2><p>页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看</p>
+<p>把请求包放在重放器里然后发送，发现flag在响应中</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-3.png"></p>
+<hr>
+<h2 id="web-4"><a href="#web-4" class="headerlink" title="web-4"></a>web-4</h2><p>题目简介写了robots.txt可能泄露信息，所以直接访问robots.txt，显示flagishere.txt</p>
+<p>再次访问这个文件即可拿到flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-4.png"></p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-5.png"></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51683653/article/details/127252676?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_utm_term~default-5-127252676-blog-7918528.235%5Ev43%5Epc_blog_bottom_relevance_base7&spm=1001.2101.3001.4242.4&utm_relevant_index=8">【每天学习一点新知识】robots.txt详解-CSDN博客</a></p>
+<p><strong>什么是robots.txt?</strong></p>
+<p> <strong>robots.txt是一个协议,我们可以把它理解为一个网站的”管家”,它会告诉搜索引擎哪些页面可以访问,哪些页面不能访问。也可以规定哪些搜索引擎可以访问我们的网站而哪些搜索引擎不能爬取我们网站的信息等等,是网站管理者指定的”君子协议”。</strong></p>
+<p><strong>当一个搜索机器人（有的叫搜索蜘蛛）访问一个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果存在，搜索机器人就会按照该文件中的内容来确定访问的范围；如果该文件不存在，那么搜索机器人就沿着链接抓取。</strong></p>
+<p><strong>另外，robots.txt必须放置在一个站点的根目录下，而且文件名必须全部小写。</strong></p>
+<hr>
+<h2 id="web-5"><a href="#web-5" class="headerlink" title="web-5"></a>web-5</h2><p>题目简介提示phps源码泄露，所以直接访问index.phps，然后会弹出下载框，将index.phps下载下来用记事本打开发现flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-6.png"></p>
+<hr>
+<h2 id="web-6"><a href="#web-6" class="headerlink" title="web-6"></a>web-6</h2><p>用dirsearch扫一下目录发现一个<a target="_blank" rel="noopener" href="http://www.zip文件,结合题目提示的压缩文件泄露,所以直接访问这个文件,然后会自动下载下来/">www.zip文件，结合题目提示的压缩文件泄露，所以直接访问这个文件，然后会自动下载下来</a></p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-7.png"></p>
+<p>解压发现两个文件，打开fl00g.txt找到flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-8.png"></p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-9.png"></p>
+<hr>
+<h2 id="web-7"><a href="#web-7" class="headerlink" title="web-7"></a>web-7</h2><p>考察git代码泄露，直接访问url&#x2F;.git&#x2F;index.php</p>
+<p>和上一关方法相同，使用dirsearch扫一下目录</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-10.png"></p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-11.png"></p>
+<hr>
+<h2 id="web-8"><a href="#web-8" class="headerlink" title="web-8"></a>web-8</h2><p>考察信息svn泄露,直接访问url&#x2F;.svn&#x2F;，一样用dirsearch扫一下，发现一个.svn文件，访问之后就是flag</p>
+<hr>
+<h2 id="web-9"><a href="#web-9" class="headerlink" title="web-9"></a>web-9</h2><p>考察vim缓存信息泄露，直接访问url&#x2F;index.php.swp 注：上面的信息泄露可以参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/a597934448/article/details/105431367">https://blog.csdn.net/a597934448/article/details/105431367</a></p>
+<p>在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容</p>
+<p>以 index.php 为例：</p>
+<p>第一次产生的交换文件名为 .index.php.swp</p>
+<p>再次意外退出后，将会产生名为 .index.php.swo 的交换文件</p>
+<p>第三次产生的交换文件则为 .index.php.swn</p>
+<p>所以根据提示直接访问index.php.swp即可拿到flag</p>
+<hr>
+<h2 id="web-10"><a href="#web-10" class="headerlink" title="web-10"></a>web-10</h2><p>根据提示猜测flag在cookie里，直接F12查看cookie即可拿到flag，但是需要解码，或者使用burpsuite抓包，在请求头的cookie中也可拿到flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-12.png"></p>
+<hr>
+<h2 id="web-11"><a href="#web-11" class="headerlink" title="web-11"></a>web-11</h2><p>题目提示域名也可以隐藏信息。</p>
+<p><strong>查询域名解析地址 基本格式：nslookup host [server]</strong></p>
+<p><strong>查询域名的指定解析类型的解析记录 基本格式：nslookup -type&#x3D;type host [server]</strong></p>
+<p><strong>查询全部 基本格式：nslookup -query&#x3D;any host [server]</strong></p>
+<p><strong>编辑nslookup -query&#x3D;any flag.ctfshow.com</strong></p>
+<p><strong>C:\Users\16032&gt;nslookup -query&#x3D;any flag.ctfshow.com 服务器: public-dns-a.baidu.com Address: 180.76.76.76 非权威应答: flag.ctfshow.com text &#x3D; “flag{just_seesee}”</strong></p>
+<p>所以直接使用命令： nslookup -qt&#x3D;txt flag.ctfshow.com即可</p>
+<p>也可直接使用域名解析网站直接解析ctfshow.com</p>
+<hr>
+<h2 id="web-12"><a href="#web-12" class="headerlink" title="web-12"></a>web-12</h2><p>打开发现是个网站，先查看robots.txt文件，就能得到用户名admin。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-13.png"></p>
+<p>用dirsearch扫出&#x2F;admin，访问发现是管理员登录页面。但是我们只有用户名，无法登录</p>
+<p>在网页里看看，发现最下面有一行数字，猜测就是密码</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-14.png"></p>
+<p>直接登录就能拿到flag了</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-15.png"></p>
+<p>这里的意思是管理员密码有时也会在页面中吗？</p>
+<hr>
+<h2 id="web-13"><a href="#web-13" class="headerlink" title="web-13"></a>web-13</h2><p>打开又是一个网页，这里发现最下面有个document可以点击，点进去是一个pdf文件</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-16.png"></p>
+<p>pdf内写了默认后台地址、默认用户名、默认密码</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-17.png"></p>
+<p>我们将默认后台地址中的your-domain改成题目的地址，然后使用用户名和密码登录即可拿到flag</p>
+<hr>
+<h2 id="web-14"><a href="#web-14" class="headerlink" title="web-14"></a>web-14</h2><p>根据题目提示访问editor，这里用diresearch扫一遍也行。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-18.png"></p>
+<p>点击插入文件，里面有个文件空间，发现 居然是服务器中的文件（非本地），于是浏览一下目录 在var&#x2F;www&#x2F;html目录 中，存在 一个nothinghere有一个文件 fl000g.txt 直接访问这个fl000g.txt 即可获得flag!</p>
+<p><strong>url访问&#x2F;nothinghere&#x2F;fl000g.txt即可获取flag</strong></p>
+<h2 id="web-15"><a href="#web-15" class="headerlink" title="web-15"></a>web-15</h2><p>打开页面发现最下面有个邮箱号<code>1156631961@qq.com</code>，记下来，然后访问&#x2F;admin，发现是一个后台登录页面。猜测用户名是admin，但是不知道密码。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-19.png"></p>
+<p>点开忘记密码发现有个密保，问我们所在地是哪个城市，直接qq查找上面的邮箱中的qq号，可以查到个人简介所在地是西安。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-20.png"></p>
+<p>重置密码成功。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-21.png"></p>
+<p>登录后台即可拿到flag</p>
+<hr>
+<h2 id="web-16"><a href="#web-16" class="headerlink" title="web-16"></a>web-16</h2><p>题目提示探针，所以访问tz.php。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-22.png"></p>
+<p>然后点开phpinfo，ctrl+f查找flag，即可拿到flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-23.png"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43790779/article/details/108834213?ops_request_misc=%7B%22request_id%22:%22171310161416800185843688%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=171310161416800185843688&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-108834213-null-null.142%5Ev100%5Econtrol&utm_term=PHP%E6%8E%A2%E9%92%88&spm=1018.2226.3001.4187"><strong>php</strong>探针</a></p>
+<hr>
+<h2 id="web-17"><a href="#web-17" class="headerlink" title="web-17"></a>web-17</h2><p>题目提示sql文件备份，dirsearch扫一遍发现&#x2F;backup.sql直接访问自动下载下来</p>
+<p>打开之后拿到flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-24.png"></p>
+<hr>
+<h2 id="web-18"><a href="#web-18" class="headerlink" title="web-18"></a>web-18</h2><p>打开之后发现是个小游戏，然后提示要玩到101分才给flag，发现难度不是给人玩的。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-25.png"></p>
+<p>查看源码发现一个js文件，点开，然后分析js代码。当score&gt;120时，且game_over这个参数为false时，即可赢，于是打开开发者模式中的console，直接赋值score&#x3D;130 game_over&#x3D;false 然后，执行游戏 的run() 即可得到 “你赢了</p>
+<p>直接控制台改分数即可</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">score = <span class="hljs-number">101</span><br><span class="hljs-function"><span class="hljs-title">run</span><span class="hljs-params">()</span></span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-26.png"></p>
+<p>显示“你赢了，去幺幺零点皮爱吃皮看看”，一看就是拼音</p>
+<p>访问110.php即可拿到flag</p>
+<hr>
+<h2 id="web-19"><a href="#web-19" class="headerlink" title="web-19"></a>web-19</h2><p>打开后发现是个登录界面，题目提示密钥不要放在前端，所以我们查看下源代码，然后发现密钥真的在前端。</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-27.png"></p>
+<p>分析前端代码，发现只要post传参值判定正确即可输出flag</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-28.png"></p>
+<hr>
+<h2 id="web-20"><a href="#web-20" class="headerlink" title="web-20"></a>web-20</h2><p>mdb文件是早期asp+access构架的数据库文件 直接查看url路径添加&#x2F;db&#x2F;db.mdb 下载文件通过txt打开或者通过EasyAccess.exe打开搜索flag flag{ctfshow_old_database}</p>
+<p>然后会自动给我们下载下来，记事本打开crtl+f查找flag即可</p>
+<p><img src="/../image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-29.png"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>

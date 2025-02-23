@@ -6,29 +6,49 @@
   <meta name="keywords" content=" 做题笔记 , 文件上传 ">
   <meta name="description" content="buuctf极客大挑战upload | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
+<meta name="description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-命令执行">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:title" content="ctfshow-信息搜集">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
+<meta property="og:description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/">
-<meta property="article:published_time" content="2025-02-16T16:00:48.000Z">
-<meta property="article:modified_time" content="2025-02-16T17:36:17.296Z">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-21.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-29.png">
+<meta property="article:published_time" content="2025-02-23T07:24:36.000Z">
+<meta property="article:modified_time" content="2025-02-23T09:06:22.361Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="做题笔记">
-<meta property="article:tag" content="命令执行">
+<meta property="article:tag" content="信息搜集">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -127,7 +147,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(23)</small>
+                <small>(24)</small>
             
         </div>
     </li>
@@ -162,8 +182,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="23">
-<input type="hidden" id="yelog_site_word_count" value="49.6k">
+<input type="hidden" id="yelog_site_posts_number" value="24">
+<input type="hidden" id="yelog_site_word_count" value="54k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -222,6 +242,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -290,6 +314,15 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="做题笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
         
         
         <a  class="All "

