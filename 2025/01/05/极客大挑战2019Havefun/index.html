@@ -6,19 +6,31 @@
   <meta name="keywords" content=" 做题笔记 , payload构造 ">
   <meta name="description" content="极客大挑战2019Havefun | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="preg_match()preg_match函数用法，正则表达式语法。 preg_match()：执行正则表达式，进行字符串过滤。。[0-9]匹配0-9之间的所有字符。&#x2F;相当于一个分隔符，&#x2F;..&#x2F;之间的内容就是正则的语法。绕过方法：变量num为人工分配 ID 键的数值型数组，preg_match()就会失效。如num[]&#x3D;1,num[0]&#x3D;1  intval()intval函数用法 intval(">
+<meta name="description" content="web-xss反射型xssweb-316（无过滤）打开页面发现有个输入框，并从题目可以看到这关为反射性xss  尝试写入&lt;script&gt;alert(1);&lt;&#x2F;script&gt;可以弹框  这关的flag藏在admin管理员的cookie中 所以我们在我们自己的云服务器中写一个用来接收cookie的php文件，名为cookie.php 1234567891011121314151">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php特性">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/02/php%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:title" content="ctfshow-xss">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/02/23/ctfshow-xss/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="preg_match()preg_match函数用法，正则表达式语法。 preg_match()：执行正则表达式，进行字符串过滤。。[0-9]匹配0-9之间的所有字符。&#x2F;相当于一个分隔符，&#x2F;..&#x2F;之间的内容就是正则的语法。绕过方法：变量num为人工分配 ID 键的数值型数组，preg_match()就会失效。如num[]&#x3D;1,num[0]&#x3D;1  intval()intval函数用法 intval(">
+<meta property="og:description" content="web-xss反射型xssweb-316（无过滤）打开页面发现有个输入框，并从题目可以看到这关为反射性xss  尝试写入&lt;script&gt;alert(1);&lt;&#x2F;script&gt;可以弹框  这关的flag藏在admin管理员的cookie中 所以我们在我们自己的云服务器中写一个用来接收cookie的php文件，名为cookie.php 1234567891011121314151">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-02T12:14:41.000Z">
-<meta property="article:modified_time" content="2025-03-02T13:13:18.353Z">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/web-xss-11.png">
+<meta property="article:published_time" content="2025-02-23T09:12:49.000Z">
+<meta property="article:modified_time" content="2025-02-23T14:06:08.497Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="php特性">
+<meta property="article:tag" content="做题笔记">
+<meta property="article:tag" content="xss">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/web-xss-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -153,7 +165,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="26">
-<input type="hidden" id="yelog_site_word_count" value="61.4k">
+<input type="hidden" id="yelog_site_word_count" value="61.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
