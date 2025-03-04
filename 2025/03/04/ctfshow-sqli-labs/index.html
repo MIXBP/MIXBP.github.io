@@ -2,35 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MIXBP</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MIXBP">
+  <title>ctfshow-sqli-labs | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , sql注入 ">
+  <meta name="description" content="ctfshow-sqli-labs | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="web-xss反射型xssweb-316（无过滤）打开页面发现有个输入框，并从题目可以看到这关为反射性xss  尝试写入&lt;script&gt;alert(1);&lt;&#x2F;script&gt;可以弹框  这关的flag藏在admin管理员的cookie中 所以我们在我们自己的云服务器中写一个用来接收cookie的php文件，名为cookie.php 1234567891011121314151">
+<meta name="description" content="sqli-labsweb-517字符型注入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-xss">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/02/23/ctfshow-xss/index.html">
+<meta property="og:title" content="ctfshow-sqli-labs">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/04/ctfshow-sqli-labs/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="web-xss反射型xssweb-316（无过滤）打开页面发现有个输入框，并从题目可以看到这关为反射性xss  尝试写入&lt;script&gt;alert(1);&lt;&#x2F;script&gt;可以弹框  这关的flag藏在admin管理员的cookie中 所以我们在我们自己的云服务器中写一个用来接收cookie的php文件，名为cookie.php 1234567891011121314151">
+<meta property="og:description" content="sqli-labsweb-517字符型注入">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/web-xss-11.png">
-<meta property="article:published_time" content="2025-02-23T09:12:49.000Z">
-<meta property="article:modified_time" content="2025-02-23T14:06:08.497Z">
+<meta property="article:published_time" content="2025-03-04T08:12:55.000Z">
+<meta property="article:modified_time" content="2025-03-04T08:16:38.798Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="做题笔记">
-<meta property="article:tag" content="xss">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="sql注入">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/web-xss-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -68,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -129,7 +117,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(26)</small>
+                <small>(27)</small>
             
         </div>
     </li>
@@ -164,8 +152,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="26">
-<input type="hidden" id="yelog_site_word_count" value="61.5k">
+<input type="hidden" id="yelog_site_posts_number" value="27">
+<input type="hidden" id="yelog_site_word_count" value="62.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -307,6 +295,15 @@
         
         
         <a  class="All "
+           href="/2025/03/04/ctfshow-sqli-labs/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
+            <span class="post-date" title="2025-03-04 16:12:55">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
            data-tag="学习笔记,php特性"
            data-author="" >
@@ -317,7 +314,7 @@
         
         <a  class="All "
            href="/2025/02/23/ctfshow-xss/"
-           data-tag="做题笔记,xss"
+           data-tag="学习笔记,xss"
            data-author="" >
             <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
             <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
@@ -326,7 +323,7 @@
         
         <a  class="All "
            href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
-           data-tag="做题笔记,信息搜集"
+           data-tag="学习笔记,信息搜集"
            data-author="" >
             <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
             <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
@@ -335,7 +332,7 @@
         
         <a  class="All "
            href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
-           data-tag="做题笔记,命令执行"
+           data-tag="学习笔记,命令执行"
            data-author="" >
             <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
             <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
@@ -549,18 +546,71 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-ctfshow-sqli-labs" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li></ol>
+        <h1 class="article-title">ctfshow-sqli-labs</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color1">sql注入</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-03-04 16:16:38'>2025-03-04 16:12</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:8</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sqli-labs"><span class="toc-text">sqli-labs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-517%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">web-517字符型注入</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -573,11 +623,19 @@
     }
 </style>
 </div>
-            <h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p><strong>欢迎来到我博客，啥也没有随便看看吧</strong></p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h1><h2 id="web-517字符型注入"><a href="#web-517字符型注入" class="headerlink" title="web-517字符型注入"></a>web-517字符型注入</h2>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
 
-        </article>
-        
-        
+
+
+
+
     <div id="comments">
     <script>
         {
@@ -603,6 +661,13 @@
     </script>
 </div>
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -611,11 +676,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
