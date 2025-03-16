@@ -6,17 +6,28 @@
   <meta name="keywords" content=" 学习笔记 , MySQL ">
   <meta name="description" content="MySQL | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-sqli-labs">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/08/ctfshow-sqli-labs/index.html">
+<meta property="og:title" content="ctfshow-php序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-08T09:51:18.000Z">
-<meta property="article:modified_time" content="2025-03-08T09:51:47.470Z">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="article:published_time" content="2025-03-14T14:11:16.000Z">
+<meta property="article:modified_time" content="2025-03-16T09:12:50.376Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="php反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -115,7 +126,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(35)</small>
             
         </div>
     </li>
@@ -150,8 +161,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="68.7k">
+<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_word_count" value="86.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -197,11 +208,23 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -257,6 +280,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
             </li>
         
@@ -270,6 +297,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -293,8 +324,71 @@
         
         
         <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -303,7 +397,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -393,7 +487,7 @@
         
         <a  class="All "
            href="/2025/01/29/ctfshow-web82/"
-           data-tag="做题笔记,文件包含"
+           data-tag="文件包含,做题笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
             <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
@@ -447,7 +541,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
-           data-tag="做题笔记,http协议"
+           data-tag="刷题笔记,http协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
             <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
@@ -456,7 +550,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
-           data-tag="做题笔记,filter伪协议"
+           data-tag="刷题笔记,filter伪协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
             <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
@@ -465,7 +559,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
             <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
@@ -474,7 +568,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
-           data-tag="做题笔记,payload构造"
+           data-tag="刷题笔记,payload构造"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
             <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
@@ -483,7 +577,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
             <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
@@ -492,7 +586,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>

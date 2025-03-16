@@ -6,17 +6,28 @@
   <meta name="keywords" content=" 学习笔记 , 命令执行 ">
   <meta name="description" content="ctfshow-命令执行 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-sqli-labs">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/08/ctfshow-sqli-labs/index.html">
+<meta property="og:title" content="ctfshow-php序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-08T09:51:18.000Z">
-<meta property="article:modified_time" content="2025-03-08T09:51:47.470Z">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="article:published_time" content="2025-03-14T14:11:16.000Z">
+<meta property="article:modified_time" content="2025-03-16T09:12:50.376Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="php反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -115,7 +126,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(35)</small>
             
         </div>
     </li>
@@ -150,8 +161,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="68.7k">
+<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_word_count" value="86.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -197,11 +208,23 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -257,6 +280,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
             </li>
         
@@ -270,6 +297,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -293,8 +324,71 @@
         
         
         <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -303,7 +397,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -393,7 +487,7 @@
         
         <a  class="All "
            href="/2025/01/29/ctfshow-web82/"
-           data-tag="做题笔记,文件包含"
+           data-tag="文件包含,做题笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
             <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
@@ -447,7 +541,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
-           data-tag="做题笔记,http协议"
+           data-tag="刷题笔记,http协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
             <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
@@ -456,7 +550,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
-           data-tag="做题笔记,filter伪协议"
+           data-tag="刷题笔记,filter伪协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
             <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
@@ -465,7 +559,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
             <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
@@ -474,7 +568,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
-           data-tag="做题笔记,payload构造"
+           data-tag="刷题笔记,payload构造"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
             <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
@@ -483,7 +577,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
             <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
@@ -492,7 +586,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
@@ -582,7 +676,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-08 17:04:56'>2025-02-17 00:00</time>
+            Created At : <time class="date" title='Updated At: 2025-03-09 21:20:21'>2025-02-17 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -617,7 +711,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web-命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-29%EF%BC%88-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-text">web-29（*模糊匹配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-30%EF%BC%88passthru%E3%80%81-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-text">web-30（passthru、*模糊匹配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-31%EF%BC%88tac%E3%80%81-09%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E3%80%81%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87%E5%8D%95%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-31（tac、%09绕过空格过滤、双引号绕过单引号过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-32%EF%BC%88%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81filter%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%EF%BC%89"><span class="toc-text">web-32（文件包含、filter伪协议、变量覆盖）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-33%EF%BC%88%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81data-%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-33（文件包含、data:&#x2F;&#x2F;伪协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-34%EF%BC%88%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81input%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-34（文件包含、input伪协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-35%EF%BC%88%E5%90%8C%E5%89%8D%E5%87%A0%E9%A2%98%EF%BC%89"><span class="toc-text">web-35（同前几题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-36%EF%BC%88%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB%EF%BC%89"><span class="toc-text">web-36（日志包含）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-37%EF%BC%88data-%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81base64%E5%8A%A0%E5%AF%86%EF%BC%89"><span class="toc-text">web-37（data:&#x2F;&#x2F;伪协议、base64加密）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-38%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-38（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-39%EF%BC%88data-%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-39（data:&#x2F;&#x2F;伪协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-40%EF%BC%88%E6%97%A0%E5%8F%82%E6%95%B0RCE%E7%BB%95%E8%BF%87%E3%80%81scandir%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%EF%BC%89"><span class="toc-text">web-40（无参数RCE绕过、scandir文件读取）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-41%EF%BC%88%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E6%88%96%E8%BF%90%E7%AE%97%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-41（无字母数字或运算绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-42%EF%BC%88-%E7%BB%95%E8%BF%87-dev-null-2-1%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-text">web-42（||绕过 &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1命令）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-43%EF%BC%88tac%EF%BC%89"><span class="toc-text">web-43（tac）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-44%EF%BC%88-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-text">web-44（*模糊匹配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-45%EF%BC%88-09%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E3%80%81-IFS-%EF%BC%89"><span class="toc-text">web-45（%09绕过空格过滤、${IFS}）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-46%EF%BC%88-%E8%BD%AC%E4%B9%89%E3%80%81-%E8%BD%AC%E4%B9%89%E7%BB%95%E8%BF%87-%E5%8F%B7%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-46（?转义、\转义绕过*号过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-47%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-47（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-48%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-48（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-49%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-49（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-50%EF%BC%88"><span class="toc-text">web-50（&lt;重定向符绕过空格过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-51%EF%BC%88nl%E3%80%81"><span class="toc-text">web-51（nl、&lt;重定向符）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-52%EF%BC%88-IFS-%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-52（${IFS}绕过空格过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-53%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-53（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-54%EF%BC%88%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%B7%AF%E5%BE%84%E4%BD%BF%E7%94%A8cat%E5%91%BD%E4%BB%A4%E3%80%81rev%EF%BC%89"><span class="toc-text">web-54（通过命令路径使用cat命令、rev）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-55%EF%BC%88%E6%97%A0%E5%AD%97%E6%AF%8Dbase64-%E9%80%9A%E9%85%8D%E7%AC%A6%E3%80%81-usr-bin-bzip2%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%E3%80%81bash-shell%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%EF%BC%89"><span class="toc-text">web-55（无字母base64+通配符、&#x2F;usr&#x2F;bin&#x2F;bzip2压缩命令、bash shell转义字符）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-56%EF%BC%88%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE%EF%BC%89"><span class="toc-text">web-56（无字母数字RCE）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-57%EF%BC%88%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8DRCE%E6%9E%84%E9%80%A0%E6%95%B0%E5%AD%97%EF%BC%89"><span class="toc-text">web-57（无数字字母RCE构造数字）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-58%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81include%E5%8A%A0%E4%BC%AA%E5%8D%8F%E8%AE%AE%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E3%80%81highlight-file-%E3%80%81show-source-%EF%BC%89"><span class="toc-text">web-58（命令执行突破禁用函数、include加伪协议读取文件、highlight_file()、show_source()）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-59%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">web-59（命令执行突破禁用函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-60%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81%E6%89%AB%E6%8F%8F%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">web-60（命令执行突破禁用函数、扫描当前目录）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-61-64%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-61-64（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-65%EF%BC%88%E6%97%A0%E5%8F%82%E6%95%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E3%80%81include%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E9%85%8D%E5%90%88echo%E8%BE%93%E5%87%BAflag%EF%BC%89"><span class="toc-text">web-65（无参数文件读取、include文件包含配合echo输出flag）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-66%EF%BC%88%E6%A0%B9%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%E3%80%81php%E5%8E%9F%E7%94%9F%E7%B1%BB%EF%BC%89"><span class="toc-text">web-66（根目录扫描、php原生类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-67%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">web-67（命令执行突破禁用函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-68%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81readgzfile%E3%80%81splFileobject-fpassthru%EF%BC%89"><span class="toc-text">web-68（命令执行突破禁用函数、readgzfile、splFileobject-&gt;fpassthru）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-69%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81implode%E3%80%81var-export%E3%80%81json-encode%EF%BC%89"><span class="toc-text">web-69（命令执行突破禁用函数、implode、var_export、json_encode）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-70%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-70（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-71%EF%BC%88%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2%E7%BB%95%E8%BF%87%E3%80%81%E6%8F%90%E5%89%8D%E9%80%81%E5%87%BA%E7%BC%93%E5%86%B2%E5%8C%BA%E6%88%96%E7%BB%88%E6%AD%A2%E7%A8%8B%E5%BA%8F%E3%80%81ob-flush-%E3%80%81ob-end-flush%E3%80%81exit%E3%80%81die%EF%BC%89"><span class="toc-text">web-71（正则替换绕过、提前送出缓冲区或终止程序、ob_flush()、ob_end_flush、exit、die）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-72%EF%BC%88%E6%9A%82%E6%97%B6%E8%BF%98%E7%9C%8B%E4%B8%8D%E6%87%82%E3%80%81open-basedir%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87%E3%80%81%E8%84%9A%E6%9C%ACuaf%EF%BC%89"><span class="toc-text">web-72（暂时还看不懂、open_basedir限制绕过、脚本uaf）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-73%EF%BC%88reqadgzfile%E3%80%81var-export%EF%BC%89"><span class="toc-text">web-73（reqadgzfile、var_export）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-74%EF%BC%88glob%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81var-export%EF%BC%89"><span class="toc-text">web-74（glob伪协议、var_export）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-75%EF%BC%88glob%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81php%E5%8E%9F%E7%94%9F%E7%B1%BBDirectoryIterator%E3%80%81-toString%E3%80%81mysqli%EF%BC%89"><span class="toc-text">web-75（glob伪协议、php原生类DirectoryIterator、__toString、mysqli）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-76%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-76（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-77%EF%BC%88FFI%E3%80%81glob%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-77（FFI、glob伪协议）</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web-命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-29%EF%BC%88-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-text">web-29（*模糊匹配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-30%EF%BC%88passthru%E3%80%81-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-text">web-30（passthru、*模糊匹配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-31%EF%BC%88tac%E3%80%81-09%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E3%80%81%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87%E5%8D%95%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-31（tac、%09绕过空格过滤、双引号绕过单引号过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-32%EF%BC%88%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81filter%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%EF%BC%89"><span class="toc-text">web-32（文件包含、filter伪协议、变量覆盖）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-33%EF%BC%88%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81data-%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-33（文件包含、data:&#x2F;&#x2F;伪协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-34%EF%BC%88%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81input%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-34（文件包含、input伪协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-35%EF%BC%88%E5%90%8C%E5%89%8D%E5%87%A0%E9%A2%98%EF%BC%89"><span class="toc-text">web-35（同前几题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-36%EF%BC%88%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB%EF%BC%89"><span class="toc-text">web-36（日志包含）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-37%EF%BC%88data-%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81base64%E5%8A%A0%E5%AF%86%EF%BC%89"><span class="toc-text">web-37（data:&#x2F;&#x2F;伪协议、base64加密）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-38%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-38（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-39%EF%BC%88data-%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-39（data:&#x2F;&#x2F;伪协议）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-40%EF%BC%88%E6%97%A0%E5%8F%82%E6%95%B0RCE%E7%BB%95%E8%BF%87%E3%80%81scandir%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%EF%BC%89"><span class="toc-text">web-40（无参数RCE绕过、scandir文件读取）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-41%EF%BC%88%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E6%88%96%E8%BF%90%E7%AE%97%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-41（无字母数字或运算绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-42%EF%BC%88-%E7%BB%95%E8%BF%87-dev-null-2-1%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-text">web-42（||绕过 &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1命令）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-43%EF%BC%88tac%EF%BC%89"><span class="toc-text">web-43（tac）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-44%EF%BC%88-%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-text">web-44（*模糊匹配）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-45%EF%BC%88-09%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E3%80%81-IFS-%EF%BC%89"><span class="toc-text">web-45（%09绕过空格过滤、${IFS}）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-46%EF%BC%88-%E8%BD%AC%E4%B9%89%E3%80%81-%E8%BD%AC%E4%B9%89%E7%BB%95%E8%BF%87-%E5%8F%B7%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-46（?转义、\转义绕过*号过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-47%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-47（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-48%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-48（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-49%EF%BC%88%E5%90%8C%E4%B8%8A%E9%A2%98%EF%BC%89"><span class="toc-text">web-49（同上题）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-50%EF%BC%88"><span class="toc-text">web-50（&lt;重定向符绕过空格过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-51%EF%BC%88nl%E3%80%81"><span class="toc-text">web-51（nl、&lt;重定向符）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-52%EF%BC%88-IFS-%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-52（${IFS}绕过空格过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-53%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-53（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-54%EF%BC%88%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%B7%AF%E5%BE%84%E4%BD%BF%E7%94%A8cat%E5%91%BD%E4%BB%A4%E3%80%81rev%EF%BC%89"><span class="toc-text">web-54（通过命令路径使用cat命令、rev）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-55%EF%BC%88%E6%97%A0%E5%AD%97%E6%AF%8Dbase64-%E9%80%9A%E9%85%8D%E7%AC%A6%E3%80%81-usr-bin-bzip2%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4%E3%80%81bash-shell%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%EF%BC%89"><span class="toc-text">web-55（无字母base64+通配符、&#x2F;usr&#x2F;bin&#x2F;bzip2压缩命令、bash shell转义字符）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-56%EF%BC%88%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE%EF%BC%89"><span class="toc-text">web-56（无字母数字RCE）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-57%EF%BC%88%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8DRCE%E6%9E%84%E9%80%A0%E6%95%B0%E5%AD%97%EF%BC%89"><span class="toc-text">web-57（无数字字母RCE构造数字）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-58%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81include%E5%8A%A0%E4%BC%AA%E5%8D%8F%E8%AE%AE%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E3%80%81highlight-file-%E3%80%81show-source-%EF%BC%89"><span class="toc-text">web-58（命令执行突破禁用函数、include加伪协议读取文件、highlight_file()、show_source()）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-59%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">web-59（命令执行突破禁用函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-60%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81%E6%89%AB%E6%8F%8F%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">web-60（命令执行突破禁用函数、扫描当前目录）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-61-64%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-61-64（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-65%EF%BC%88%E6%97%A0%E5%8F%82%E6%95%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E3%80%81include%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E9%85%8D%E5%90%88echo%E8%BE%93%E5%87%BAflag%EF%BC%89"><span class="toc-text">web-65（无参数文件读取、include文件包含配合echo输出flag）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-66%EF%BC%88%E6%A0%B9%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%E3%80%81php%E5%8E%9F%E7%94%9F%E7%B1%BB%EF%BC%89"><span class="toc-text">web-66（根目录扫描、php原生类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-67%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">web-67（命令执行突破禁用函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-68%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81readgzfile%E3%80%81splFileobject-fpassthru%EF%BC%89"><span class="toc-text">web-68（命令执行突破禁用函数、readgzfile、splFileobject-&gt;fpassthru）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-69%EF%BC%88%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81implode%E3%80%81var-export%E3%80%81json-encode%EF%BC%89"><span class="toc-text">web-69（命令执行突破禁用函数、implode、var_export、json_encode）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-70%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-70（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-71%EF%BC%88%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2%E7%BB%95%E8%BF%87%E3%80%81%E6%8F%90%E5%89%8D%E9%80%81%E5%87%BA%E7%BC%93%E5%86%B2%E5%8C%BA%E6%88%96%E7%BB%88%E6%AD%A2%E7%A8%8B%E5%BA%8F%E3%80%81ob-flush-%E3%80%81ob-end-flush%E3%80%81exit%E3%80%81die%EF%BC%89"><span class="toc-text">web-71（正则替换绕过、提前送出缓冲区或终止程序、ob_flush()、ob_end_flush、exit、die）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-72%EF%BC%88%E6%9A%82%E6%97%B6%E8%BF%98%E7%9C%8B%E4%B8%8D%E6%87%82%E3%80%81open-basedir%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87%E3%80%81%E8%84%9A%E6%9C%ACuaf%EF%BC%89"><span class="toc-text">web-72（暂时还看不懂、open_basedir限制绕过、脚本uaf）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-73%EF%BC%88readgzfile%E3%80%81var-export%EF%BC%89"><span class="toc-text">web-73（readgzfile、var_export）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-74%EF%BC%88glob%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81var-export%EF%BC%89"><span class="toc-text">web-74（glob伪协议、var_export）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-75%EF%BC%88glob%E4%BC%AA%E5%8D%8F%E8%AE%AE%E3%80%81php%E5%8E%9F%E7%94%9F%E7%B1%BBDirectoryIterator%E3%80%81-toString%E3%80%81mysqli%EF%BC%89"><span class="toc-text">web-75（glob伪协议、php原生类DirectoryIterator、__toString、mysqli）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-76%EF%BC%88%E5%90%8C%E4%B8%8A%EF%BC%89"><span class="toc-text">web-76（同上）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-77%EF%BC%88FFI%E3%80%81glob%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-text">web-77（FFI、glob伪协议）</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -870,7 +964,7 @@
 
 <p>}</p>
 <hr>
-<h2 id="web-73（reqadgzfile、var-export）"><a href="#web-73（reqadgzfile、var-export）" class="headerlink" title="web-73（reqadgzfile、var_export）"></a>web-73（reqadgzfile、var_export）</h2><p>payload如下： var_export(scandir(‘&#x2F;‘));<strong>本题没有open_basedir限制</strong>（也可以用上一题的UAF，但需改写相关关键字） 发现有flagc.txt 或者 echo(implode(‘ ‘,scandir(‘&#x2F;‘)));数组拼接为字符串 include,require包含失败 可用readgzfile(‘&#x2F;flagc.txt’); 拿到Flag</p>
+<h2 id="web-73（readgzfile、var-export）"><a href="#web-73（readgzfile、var-export）" class="headerlink" title="web-73（readgzfile、var_export）"></a>web-73（readgzfile、var_export）</h2><p>payload如下： var_export(scandir(‘&#x2F;‘));<strong>本题没有open_basedir限制</strong>（也可以用上一题的UAF，但需改写相关关键字） 发现有flagc.txt 或者 echo(implode(‘ ‘,scandir(‘&#x2F;‘)));数组拼接为字符串 include,require包含失败 可用readgzfile(‘&#x2F;flagc.txt’); 拿到Flag</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">查看根目录文件<br>c=var_export(scandir(<span class="hljs-string">&#x27;/&#x27;</span>));<span class="hljs-keyword">exit</span>();<br><br>查看文件内容<br>c=readgzfile(<span class="hljs-string">&#x27;/flagc.txt&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
 <hr>

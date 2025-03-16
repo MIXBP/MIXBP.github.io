@@ -3,20 +3,31 @@
 <head>
   <meta charset="utf-8">
   <title>sql注入 | MIXBP</title>
-  <meta name="keywords" content=" 学习笔记 , sql注入 ">
+  <meta name="keywords" content=" sql注入 , 学习笔记 ">
   <meta name="description" content="sql注入 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctfshow-sqli-labs">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/08/ctfshow-sqli-labs/index.html">
+<meta property="og:title" content="ctfshow-php序列化">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="ctfshow-php反序列化web-254先看题目： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354&lt;?php&#x2F;*# -*- coding: utf-8 -*-# @Author: h1xa# @Date:   2020-12-02 17:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-08T09:51:18.000Z">
-<meta property="article:modified_time" content="2025-03-08T09:51:47.470Z">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-8.png">
+<meta property="article:published_time" content="2025-03-14T14:11:16.000Z">
+<meta property="article:modified_time" content="2025-03-16T09:12:50.376Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="php反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/ctfshow-php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -115,7 +126,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(28)</small>
+                <small>(35)</small>
             
         </div>
     </li>
@@ -150,8 +161,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="28">
-<input type="hidden" id="yelog_site_word_count" value="68.7k">
+<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_word_count" value="86.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -197,11 +208,23 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -257,6 +280,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
             </li>
         
@@ -270,6 +297,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -293,8 +324,71 @@
         
         
         <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -303,7 +397,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -393,7 +487,7 @@
         
         <a  class="All "
            href="/2025/01/29/ctfshow-web82/"
-           data-tag="做题笔记,文件包含"
+           data-tag="文件包含,做题笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
             <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
@@ -447,7 +541,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
-           data-tag="做题笔记,http协议"
+           data-tag="刷题笔记,http协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
             <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
@@ -456,7 +550,7 @@
         
         <a  class="All "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
-           data-tag="做题笔记,filter伪协议"
+           data-tag="刷题笔记,filter伪协议"
            data-author="" >
             <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
             <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
@@ -465,7 +559,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
             <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
@@ -474,7 +568,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
-           data-tag="做题笔记,payload构造"
+           data-tag="刷题笔记,payload构造"
            data-author="" >
             <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
             <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
@@ -483,7 +577,7 @@
         
         <a  class="All "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
-           data-tag="做题笔记,sql注入"
+           data-tag="刷题笔记,sql注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
             <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
@@ -492,7 +586,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
@@ -573,21 +667,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">学习笔记</a>
-            
             <a class="color1">sql注入</a>
+            
+            <a class="color5">学习笔记</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-04 16:27:04'>2025-01-03 21:14</time>
+            Created At : <time class="date" title='Updated At: 2025-03-15 22:03:08'>2025-01-03 21:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:6k</span>
+        <span>Count:6.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -617,7 +711,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="toc-text">SQL注入基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E5%85%A5"><span class="toc-text">什么是注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="toc-text">注入分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="toc-text">注入点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNION%E6%B3%A8%E5%85%A5"><span class="toc-text">UNION注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#group-concat-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">group_concat()的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">搜索型注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XX%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">XX型注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8"><span class="toc-text">盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extractValue-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">extractValue()报错注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#updatexml%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">updatexml报错注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#floor%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">floor报错注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-text">时间盲注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sql%E6%B3%A8%E5%85%A5%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">Sql注入文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%B3%A8%E5%85%A5"><span class="toc-text">增删改查注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E8%AF%B7%E6%B1%82%E5%A4%B4%E6%B3%A8%E5%85%A5"><span class="toc-text">http请求头注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNSlog%E6%B3%A8%E5%85%A5"><span class="toc-text">DNSlog注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">宽字节注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%8F%E7%A7%BB%E9%87%8F%E6%B3%A8%E5%85%A5"><span class="toc-text">偏移量注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E6%B3%A8%E5%85%A5"><span class="toc-text">加密注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5"><span class="toc-text">二次注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%BD%AC%E6%B3%A8%E5%85%A5"><span class="toc-text">中转注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E9%9D%99%E6%80%81%E6%B3%A8%E5%85%A5"><span class="toc-text">伪静态注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">注释符过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and-%E5%92%8Cor%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">and 和or过滤绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">空格过滤绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%97%E5%8F%B7%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">逗号过滤绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%95%E8%BF%87union%E5%92%8Cselect%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过union和select过滤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlmap%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">sqlmap工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E6%A3%80%E6%9F%A5%E6%B3%A8%E5%85%A5%E7%82%B9%EF%BC%9A"><span class="toc-text">①检查注入点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%88%86%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-text">②爆所有数据库信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E7%88%86%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-text">③爆当前数据库信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A3%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E8%A1%A8"><span class="toc-text">④指定库名列出所有表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A4%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E8%A1%A8%E5%90%8D%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5"><span class="toc-text">⑤指定库名表名列出所有字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A5%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E8%A1%A8%E5%90%8D%E5%AD%97%E6%AE%B5dump%E5%87%BA%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5"><span class="toc-text">⑥指定库名表名字段dump出指定字段</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="toc-text">SQL注入基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E5%85%A5"><span class="toc-text">什么是注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="toc-text">注入分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="toc-text">注入点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UNION%E6%B3%A8%E5%85%A5"><span class="toc-text">UNION注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#group-concat-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">group_concat()的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">搜索型注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XX%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-text">XX型注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8"><span class="toc-text">盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extractValue-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">extractValue()报错注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#updatexml%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">updatexml报错注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#floor%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">floor报错注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-text">时间盲注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sql%E6%B3%A8%E5%85%A5%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">Sql注入文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%B3%A8%E5%85%A5"><span class="toc-text">增删改查注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E8%AF%B7%E6%B1%82%E5%A4%B4%E6%B3%A8%E5%85%A5"><span class="toc-text">http请求头注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNSlog%E6%B3%A8%E5%85%A5"><span class="toc-text">DNSlog注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">宽字节注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%8F%E7%A7%BB%E9%87%8F%E6%B3%A8%E5%85%A5"><span class="toc-text">偏移量注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E6%B3%A8%E5%85%A5"><span class="toc-text">加密注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5"><span class="toc-text">二次注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%BD%AC%E6%B3%A8%E5%85%A5"><span class="toc-text">中转注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E9%9D%99%E6%80%81%E6%B3%A8%E5%85%A5"><span class="toc-text">伪静态注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">注释符过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and-%E5%92%8Cor%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">and 和or过滤绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">空格过滤绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%97%E5%8F%B7%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">逗号过滤绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%95%E8%BF%87union%E5%92%8Cselect%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过union和select过滤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">sqlmap工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E6%A3%80%E6%9F%A5%E6%B3%A8%E5%85%A5%E7%82%B9%EF%BC%9A"><span class="toc-text">①检查注入点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%88%86%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-text">②爆所有数据库信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E7%88%86%E5%BD%93%E5%89%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-text">③爆当前数据库信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A3%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E8%A1%A8"><span class="toc-text">④指定库名列出所有表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A4%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E8%A1%A8%E5%90%8D%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%97%E6%AE%B5"><span class="toc-text">⑤指定库名表名列出所有字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A5%E6%8C%87%E5%AE%9A%E5%BA%93%E5%90%8D%E8%A1%A8%E5%90%8D%E5%AD%97%E6%AE%B5dump%E5%87%BA%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5"><span class="toc-text">⑥指定库名表名字段dump出指定字段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">sql预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E4%BC%A0%E7%BB%9F%E5%A4%84%E7%90%86%EF%BC%9A"><span class="toc-text">MySQL传统处理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="toc-text">预处理基本策略：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">不带参数的预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">带参数的预处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#handler%E5%91%BD%E4%BB%A4%E4%B8%8E%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-text">handler命令与实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%88%97%E5%90%8D%E6%B3%A8%E5%85%A5"><span class="toc-text">无列名注入</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -707,7 +801,7 @@
 <h4 id="updatexml报错注入"><a href="#updatexml报错注入" class="headerlink" title="updatexml报错注入"></a>updatexml报错注入</h4><p>updatexml函数</p>
 <p><img src="/../image/updatexml.png"></p>
 <p>例子：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&quot; <span class="hljs-keyword">and</span> <span class="hljs-attribute">1</span>=updatexml(1,concat(&#x27;~&#x27;,(select database())),3) --+<br><br>查表名、列名、内容与union注入相似<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">id</span>=1&quot; <span class="hljs-keyword">and</span> <span class="hljs-attribute">1</span>=updatexml(1,concat(&#x27;~&#x27;,(select database())),3) --+<br><br>1<span class="hljs-string">&#x27;or(updatexml(1,concat(0x7e,database(),0x7e),1))#</span><br><span class="hljs-string">查表名、列名、内容与union注入相似</span><br></code></pre></td></tr></table></figure>
 
 <p><img src="/../image/updatexml2.png"></p>
 <h4 id="floor报错注入"><a href="#floor报错注入" class="headerlink" title="floor报错注入"></a>floor报错注入</h4><p>涉及到的函数</p>
@@ -945,13 +1039,51 @@
 
 <p>还可以尝试url编码绕过</p>
 <p><img src="/../image/union%E5%92%8Cselect%E7%BB%95%E8%BF%872.png"></p>
-<h3 id="sqlmap工具的使用"><a href="#sqlmap工具的使用" class="headerlink" title="sqlmap工具的使用"></a>sqlmap工具的使用</h3><h4 id="①检查注入点："><a href="#①检查注入点：" class="headerlink" title="①检查注入点："></a>①检查注入点：</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11</p>
+<h2 id="sqlmap工具的使用"><a href="#sqlmap工具的使用" class="headerlink" title="sqlmap工具的使用"></a>sqlmap工具的使用</h2><h4 id="①检查注入点："><a href="#①检查注入点：" class="headerlink" title="①检查注入点："></a>①检查注入点：</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11</p>
 <h4 id="②爆所有数据库信息："><a href="#②爆所有数据库信息：" class="headerlink" title="②爆所有数据库信息："></a>②爆所有数据库信息：</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11 –dbs</p>
 <h4 id="③爆当前数据库信息："><a href="#③爆当前数据库信息：" class="headerlink" title="③爆当前数据库信息："></a>③爆当前数据库信息：</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11 –current-db</p>
 <h4 id="④指定库名列出所有表"><a href="#④指定库名列出所有表" class="headerlink" title="④指定库名列出所有表"></a>④指定库名列出所有表</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11 -D vhost48330 –tables</p>
 <p>‘vhost48330’ 为指定数据库名称</p>
 <h4 id="⑤指定库名表名列出所有字段"><a href="#⑤指定库名表名列出所有字段" class="headerlink" title="⑤指定库名表名列出所有字段"></a>⑤指定库名表名列出所有字段</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11 -D vhost48330 -T admin –columns<br> ‘admin’ 为指定表名称</p>
 <h4 id="⑥指定库名表名字段dump出指定字段"><a href="#⑥指定库名表名字段dump出指定字段" class="headerlink" title="⑥指定库名表名字段dump出指定字段"></a>⑥指定库名表名字段dump出指定字段</h4><p>sqlmap -u <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://aa.com/star_photo.php?artist_id">http://aa.com/star_photo.php?artist_id</a>＝11 -D vhost48330 -T admin -C ac，id，password –dump<br> ‘ac,id,password’ 为指定字段名称</p>
+<hr>
+<h2 id="sql预处理"><a href="#sql预处理" class="headerlink" title="sql预处理"></a>sql预处理</h2><h3 id="MySQL传统处理："><a href="#MySQL传统处理：" class="headerlink" title="MySQL传统处理："></a>MySQL传统处理：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">客户端准备<span class="hljs-keyword">sql</span>语句<br><br>发送<span class="hljs-keyword">sql</span>语句到MySQL服务器<br><br>MySQL服务器执行<span class="hljs-keyword">sql</span>语句<br><br>服务器执行结果返回客户端<br>复制代码<span class="hljs-number">1234567</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="预处理基本策略："><a href="#预处理基本策略：" class="headerlink" title="预处理基本策略："></a>预处理基本策略：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">将<span class="hljs-keyword">sql</span>语句强制一分为二：<br>第一部分为前面相同命令和结构部分<br>第二部分为后面可变数据部分<br>首先将前面的<span class="hljs-keyword">sql</span>语句发送给MySQL服务器，让其先执行溢出预处理（并没有真正的执行）第一次发送<span class="hljs-keyword">sql</span>语句的时候将其中可变的数据部<br>复制代码<span class="hljs-number">1234</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="不带参数的预处理"><a href="#不带参数的预处理" class="headerlink" title="不带参数的预处理"></a>不带参数的预处理</h3><p><strong>准备预处理语句</strong></p>
+<p>prepare 语句名称 from “预处理的sql语句”;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">prepare st <span class="hljs-selector-tag">from</span> &quot;<span class="hljs-selector-tag">select</span> * <span class="hljs-selector-tag">from</span> pdo&quot;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>执行预处理语句</strong></p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">execute st<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>删除预处理语句</strong></p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">prepare</span> st;<br></code></pre></td></tr></table></figure>
+
+<h3 id="带参数的预处理"><a href="#带参数的预处理" class="headerlink" title="带参数的预处理"></a>带参数的预处理</h3><p><strong>准备预处理语句</strong></p>
+<figure class="highlight mizar"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mizar">prepare <span class="hljs-keyword">st</span> <span class="hljs-keyword">from</span> &quot;select * <span class="hljs-keyword">from</span> pdo where id = ?&quot;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>定义参数变量</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">set</span> @<span class="hljs-attribute">id</span>=2;<br></code></pre></td></tr></table></figure>
+
+<p><strong>传参，执行预处理</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">execute</span> st <span class="hljs-keyword">using</span> <span class="hljs-variable">@id</span>; <br></code></pre></td></tr></table></figure>
+
+<p><strong>删除</strong></p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">prepare</span> st;<br></code></pre></td></tr></table></figure>
+
+<h2 id="handler命令与实现方法"><a href="#handler命令与实现方法" class="headerlink" title="handler命令与实现方法"></a>handler命令与实现方法</h2><p>[HANDLER语法_MySQL 中文文档 (mysqlzh.com)](<a target="_blank" rel="noopener" href="https://www.mysqlzh.com/doc/126/253.html#:~:text=HANDLER">https://www.mysqlzh.com/doc/126/253.html#:~:text=HANDLER</a> 语句提供通往表存储引擎接口的直接通道。 HANDLER 可以用于 MyISAM 和 InnoDB,表。 HANDLER…OPEN 语句用于打开一个表，通过后续的 HANDLER…READ 语句建立读取表的通道。 本表目标不会被其它线程共享，也不会关闭，直到线程调用 HANDLER…CLOSE 或线程中止时为止。)</p>
+<p><strong>说明</strong>：在SQL中，HANDLER 是用于直接访问表的一种方式。HANDLER 语句用于打开表，并为后续操作提供对表的直接访问。</p>
+<p>(1)handler table_name open as hd; 指定数据表进行载入并返回句柄</p>
+<p>(2)handler hd read first; 读取指定表&#x2F;句柄的首航数据</p>
+<p>(3)handler hd read next; 读取指定表&#x2F;句柄的下一行数据</p>
+<p>(4)handler hd close; 关闭句柄</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">HANDLER tbl_name <span class="hljs-keyword">OPEN</span> [ [<span class="hljs-keyword">AS</span>] alias]<br>HANDLER tbl_name READ index_name &#123; <span class="hljs-operator">=</span> <span class="hljs-operator">|</span> <span class="hljs-operator">&lt;=</span> <span class="hljs-operator">|</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-operator">|</span> <span class="hljs-operator">&lt;</span> <span class="hljs-operator">|</span> <span class="hljs-operator">&gt;</span> &#125; (value1,value2,…) [ <span class="hljs-keyword">WHERE</span> where_condition ] [LIMIT … ]<br>HANDLER tbl_name READ index_name &#123; <span class="hljs-keyword">FIRST</span> <span class="hljs-operator">|</span> NEXT <span class="hljs-operator">|</span> PREV <span class="hljs-operator">|</span> <span class="hljs-keyword">LAST</span> &#125; [ <span class="hljs-keyword">WHERE</span> where_condition ] [LIMIT … ]<br>HANDLER tbl_name READ &#123; <span class="hljs-keyword">FIRST</span> <span class="hljs-operator">|</span> NEXT &#125; [ <span class="hljs-keyword">WHERE</span> where_condition ] [LIMIT … ]      <span class="hljs-operator">/</span><span class="hljs-operator">/</span>主健,无索引指定<br>HANDLER tbl_name <span class="hljs-keyword">CLOSE</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="无列名注入"><a href="#无列名注入" class="headerlink" title="无列名注入"></a>无列名注入</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_66013948/article/details/136424994">SQL注入之 无列名注入 原理详解</a></p>
+<p><strong>union无列名注入</strong></p>
+<p><strong>join无列名注入</strong></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
