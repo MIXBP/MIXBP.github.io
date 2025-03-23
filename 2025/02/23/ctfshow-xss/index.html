@@ -6,22 +6,19 @@
   <meta name="keywords" content=" 学习笔记 , xss ">
   <meta name="description" content="ctfshow-xss | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
+<meta name="description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BUUCTF2018-OnlineTool1">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/21/BUUCTF2018-OnlineTool1/index.html">
+<meta property="og:title" content="Flask库学习">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
+<meta property="og:description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
-<meta property="article:published_time" content="2025-03-21T11:50:32.000Z">
-<meta property="article:modified_time" content="2025-03-21T12:11:22.526Z">
+<meta property="article:published_time" content="2025-03-23T08:10:30.000Z">
+<meta property="article:modified_time" content="2025-03-23T08:16:35.256Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="刷题笔记">
-<meta property="article:tag" content="escapeshellarg()和escapeshellcmd()、单引号逃逸">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="Flask">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -120,7 +117,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(44)</small>
+                <small>(46)</small>
             
         </div>
     </li>
@@ -155,8 +152,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="44">
-<input type="hidden" id="yelog_site_word_count" value="119.9k">
+<input type="hidden" id="yelog_site_posts_number" value="46">
+<input type="hidden" id="yelog_site_word_count" value="125k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -254,6 +251,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flask</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>HTML</a>
             </li>
         
@@ -306,6 +307,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
@@ -331,6 +336,24 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
+           data-tag="学习笔记,Flask"
+           data-author="" >
+            <span class="post-title" title="Flask库学习">Flask库学习</span>
+            <span class="post-date" title="2025-03-23 16:10:30">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti模版注入">ssti模版注入</span>
+            <span class="post-date" title="2025-03-21 21:17:45">2025/03/21</span>
+        </a>
         
         
         <a  class="All "
@@ -470,7 +493,7 @@
         
         <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="sql注入,学习笔记"
+           data-tag="学习笔记,sql注入"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -479,7 +502,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="sql注入,学习笔记"
+           data-tag="学习笔记,sql注入"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -677,7 +700,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="sql注入,学习笔记"
+           data-tag="学习笔记,sql注入"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
