@@ -6,26 +6,29 @@
   <meta name="keywords" content=" 刷题笔记 , nmap , escapeshellarg和escapeshellcmd函数的绕过 ">
   <meta name="description" content="网鼎杯2020朱雀组-Nmap | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
+<meta name="description" content="BJDCTF2020-EasySearch1一进来发现是这样一个页面。  尝试sql注入，发现没反应，用dirsearch扫一下目录发现是swp泄露 访问url&#x2F;index.php.swp 发现源码，开始代码审计 123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;?ph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="极客大挑战2019-FinalSQL">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/index.html">
+<meta property="og:title" content="BJDCTF2020-EasySearch1">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/03/30/BJDCTF2020-EasySearch1/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="极客大挑战2019-FinalSQL一打开是一个登录界面  上面有几个按钮1到5全部按一遍，发现都没什么信息，除了最后一个  这里提示我们进入第六个按钮，但是没有，但是发现url里的传参id&#x3D;5 改成 1http:&#x2F;&#x2F;a394f536-8135-4a4b-9720-535d541c8f4a.node5.buuoj.cn:81&#x2F;search.php?id&#x3D;6  还是没有 在首页的登录框试了">
+<meta property="og:description" content="BJDCTF2020-EasySearch1一进来发现是这样一个页面。  尝试sql注入，发现没反应，用dirsearch扫一下目录发现是swp泄露 访问url&#x2F;index.php.swp 发现源码，开始代码审计 123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;?ph">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-5.png">
-<meta property="article:published_time" content="2025-03-29T10:32:48.000Z">
-<meta property="article:modified_time" content="2025-03-29T12:07:02.019Z">
+<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-6.png">
+<meta property="article:published_time" content="2025-03-30T06:24:01.000Z">
+<meta property="article:modified_time" content="2025-03-30T08:18:33.246Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="sql注入">
-<meta property="article:tag" content="sql盲注">
-<meta property="article:tag" content="异或盲注">
+<meta property="article:tag" content="刷题笔记">
+<meta property="article:tag" content="swp泄露">
+<meta property="article:tag" content="md5碰撞">
+<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="Apache SSI 远程命令执行漏洞">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -306,6 +309,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
             </li>
         
@@ -467,7 +474,7 @@
         
         <a  class="All "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -476,7 +483,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
-           data-tag="sql注入,sql盲注,异或盲注"
+           data-tag="刷题笔记,sql注入,sql盲注,异或盲注"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
             <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
@@ -485,7 +492,7 @@
         
         <a  class="All "
            href="/2025/03/29/ASIS2019-Unicorn-shop/"
-           data-tag="unicode"
+           data-tag="刷题笔记,unicode"
            data-author="" >
             <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
             <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
@@ -494,7 +501,7 @@
         
         <a  class="All "
            href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
-           data-tag="php特性,assert和eval,动态调用方法"
+           data-tag="刷题笔记,php特性,assert和eval,动态调用方法"
            data-author="" >
             <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
             <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
@@ -503,7 +510,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
-           data-tag="无字母数字RCE,异或绕过,取反绕过"
+           data-tag="刷题笔记,无字母数字RCE,异或绕过,取反绕过"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
             <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
@@ -512,7 +519,7 @@
         
         <a  class="All "
            href="/2025/03/29/SWPU2019-Web1/"
-           data-tag="sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-tag="刷题笔记,sql注入,二次注入,无列名注入,MariaDB数据库"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
             <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
@@ -566,7 +573,7 @@
         
         <a  class="All "
            href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
-           data-tag="PHP原生类"
+           data-tag="刷题笔记,PHP原生类"
            data-author="" >
             <span class="post-title" title="PHP原生类">PHP原生类</span>
             <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
@@ -584,7 +591,7 @@
         
         <a  class="All "
            href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
-           data-tag="ssti"
+           data-tag="刷题笔记,ssti,chr函数构造命令"
            data-author="" >
             <span class="post-title" title="复读机">复读机</span>
             <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
@@ -593,7 +600,7 @@
         
         <a  class="All "
            href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
-           data-tag="php特性,md5"
+           data-tag="刷题笔记,php特性,md5"
            data-author="" >
             <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
             <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
@@ -602,7 +609,7 @@
         
         <a  class="All "
            href="/2025/03/26/ez-php-jail/"
-           data-tag="命令执行,glob函数"
+           data-tag="刷题笔记,命令执行,glob函数"
            data-author="" >
             <span class="post-title" title="ez_php_jail">ez_php_jail</span>
             <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
@@ -611,7 +618,7 @@
         
         <a  class="All "
            href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
-           data-tag="php特性,命令执行,md5,intval"
+           data-tag="刷题笔记,php特性,命令执行,md5,intval"
            data-author="" >
             <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
             <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
