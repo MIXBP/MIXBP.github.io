@@ -6,29 +6,28 @@
   <meta name="keywords" content=" 刷题笔记 , sql注入 ">
   <meta name="description" content="极客大挑战2019EasySQL | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="BJDCTF2020-EasySearch1一进来发现是这样一个页面。  尝试sql注入，发现没反应，用dirsearch扫一下目录发现是swp泄露 访问url&#x2F;index.php.swp 发现源码，开始代码审计 123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;?ph">
+<meta name="description" content="NPUCTF2020-ezinclude首先启动靶机并访问页面。 - 查看网页源码发现提示 1&lt;!--md5($secret.$name)&#x3D;&#x3D;&#x3D;$pass --&gt;  抓包看看 - 推测这里的hash&#x3D;fa25e54758d5d5c1927781a6ede89f8a即为md5($secret,$name) 我们不传入name或者传入空值，使hash&#x3D;md5($secr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BJDCTF2020-EasySearch1">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/03/30/BJDCTF2020-EasySearch1/index.html">
+<meta property="og:title" content="NPUCTF2020-ezinclude">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/06/NPUCTF2020-ezinclude/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="BJDCTF2020-EasySearch1一进来发现是这样一个页面。  尝试sql注入，发现没反应，用dirsearch扫一下目录发现是swp泄露 访问url&#x2F;index.php.swp 发现源码，开始代码审计 123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;?ph">
+<meta property="og:description" content="NPUCTF2020-ezinclude首先启动靶机并访问页面。 - 查看网页源码发现提示 1&lt;!--md5($secret.$name)&#x3D;&#x3D;&#x3D;$pass --&gt;  抓包看看 - 推测这里的hash&#x3D;fa25e54758d5d5c1927781a6ede89f8a即为md5($secret,$name) 我们不传入name或者传入空值，使hash&#x3D;md5($secr">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-6.png">
-<meta property="article:published_time" content="2025-03-30T06:24:01.000Z">
-<meta property="article:modified_time" content="2025-03-30T08:18:33.246Z">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-7.png">
+<meta property="article:published_time" content="2025-04-06T12:47:19.000Z">
+<meta property="article:modified_time" content="2025-04-06T16:06:58.349Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="刷题笔记">
-<meta property="article:tag" content="swp泄露">
-<meta property="article:tag" content="md5碰撞">
-<meta property="article:tag" content="代码审计">
-<meta property="article:tag" content="Apache SSI 远程命令执行漏洞">
+<meta property="article:tag" content="文件包含">
+<meta property="article:tag" content="md5">
+<meta property="article:tag" content="php7 segment fault 特性">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/BJDCTF2020-EasySearch1-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -127,7 +126,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(64)</small>
+                <small>(77)</small>
             
         </div>
     </li>
@@ -162,8 +161,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="64">
-<input type="hidden" id="yelog_site_word_count" value="146.5k">
+<input type="hidden" id="yelog_site_posts_number" value="77">
+<input type="hidden" id="yelog_site_word_count" value="157.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -209,6 +208,10 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>$_SERVER[‘PHP_SELF’]</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
             </li>
         
@@ -217,11 +220,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>布尔盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>代码审计</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>动态调用方法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>短标签绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -234,6 +245,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反引号执行命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>空格过滤绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -261,7 +280,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件读取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -293,6 +320,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则匹配查询</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
             </li>
         
@@ -309,7 +340,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>basename()函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>data伪协议</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -329,11 +368,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>file伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>filter伪协议</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Flask</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fuzz测试</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -357,7 +404,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>idna编码特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>intval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt密钥爆破</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt身份伪造</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -366,6 +425,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>linux find -name模糊查询文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux特殊文件</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -381,7 +444,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mt_srand伪随机数漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -393,7 +464,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>perl语言漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php_mt_seed工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php7 segment fault 特性</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -413,7 +496,27 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pickle</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python-Flask框架审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python反弹shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python反序列化</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -421,7 +524,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reverse</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell写入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql语句闭合</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -437,7 +552,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>str_replace</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys数据库</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -473,6 +596,123 @@
         
         
         <a  class="All "
+           href="/2025/04/06/NPUCTF2020-ezinclude/"
+           data-tag="文件包含,md5,php7 segment fault 特性"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ezinclude">NPUCTF2020-ezinclude</span>
+            <span class="post-date" title="2025-04-06 20:47:19">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/CISCN2019%E6%80%BB%E5%86%B3%E8%B5%9BDay2Web1-Easyweb/"
+           data-tag="sql盲注,sql语句闭合,str_replace,文件上传,短标签绕过"
+           data-author="" >
+            <span class="post-title" title="CISCN2019总决赛Day2Web1-Easyweb">CISCN2019总决赛Day2Web1-Easyweb</span>
+            <span class="post-date" title="2025-04-06 17:33:52">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/GYCTF2020-Ezsqli/"
+           data-tag="fuzz测试,布尔盲注,sys数据库,无列名注入,无列名盲注"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-Ezsqli">GYCTF2020-Ezsqli</span>
+            <span class="post-date" title="2025-04-06 16:32:21">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/HFCTF2020-EasyLogin/"
+           data-tag="jwt身份伪造"
+           data-author="" >
+            <span class="post-title" title="HFCTF2020-EasyLogin">HFCTF2020-EasyLogin</span>
+            <span class="post-date" title="2025-04-06 14:25:50">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%99%BD%E8%99%8E%E7%BB%84-PicDown/"
+           data-tag="文件读取,Python-Flask框架审计,Linux特殊文件,python反弹shell"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020白虎组-PicDown">网鼎杯2020白虎组-PicDown</span>
+            <span class="post-date" title="2025-04-02 21:38:54">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/HITCON2017-SSRFme/"
+           data-tag="代码审计,ssrf,data伪协议,file伪协议,perl语言漏洞"
+           data-author="" >
+            <span class="post-title" title="HITCON2017-SSRFme">HITCON2017-SSRFme</span>
+            <span class="post-date" title="2025-04-02 20:57:08">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/RCTF2015-EasySQL/"
+           data-tag="刷题笔记,二次注入,报错注入,正则匹配查询,reverse"
+           data-author="" >
+            <span class="post-title" title="RCTF2015-EasySQL">RCTF2015-EasySQL</span>
+            <span class="post-date" title="2025-04-02 17:21:06">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/CISCN2019%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BADayWeb2-ikun/"
+           data-tag="刷题笔记,python反序列化,jwt密钥爆破,pickle"
+           data-author="" >
+            <span class="post-title" title="CISCN2019华北赛区DayWeb2-ikun">CISCN2019华北赛区DayWeb2-ikun</span>
+            <span class="post-date" title="2025-04-02 17:20:50">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/GWCTF2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"
+           data-tag="刷题笔记,mt_srand伪随机数漏洞,php_mt_seed工具"
+           data-author="" >
+            <span class="post-title" title="GWCTF2019-枯燥的抽奖">GWCTF2019-枯燥的抽奖</span>
+            <span class="post-date" title="2025-04-02 17:20:11">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/01/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF2021-write-shell/"
+           data-tag="刷题笔记,短标签绕过,shell写入,空格过滤绕过,反引号执行命令"
+           data-author="" >
+            <span class="post-title" title="红明谷CTF2021-write_shell">红明谷CTF2021-write_shell</span>
+            <span class="post-date" title="2025-04-01 15:39:04">2025/04/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/31/Zer0pts2020-Can-you-guess-it/"
+           data-tag="刷题笔记,代码审计,$_SERVER[‘PHP_SELF’],basename()函数"
+           data-author="" >
+            <span class="post-title" title="Zer0pts2020-Can+you+guess+it">Zer0pts2020-Can+you+guess+it</span>
+            <span class="post-date" title="2025-03-31 15:51:54">2025/03/31</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/30/SUCTF2019-Pythonginx/"
+           data-tag="idna编码特性,python代码审计,nginx"
+           data-author="" >
+            <span class="post-title" title="SUCTF2019-Pythonginx">SUCTF2019-Pythonginx</span>
+            <span class="post-date" title="2025-03-30 20:21:20">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/30/CISCN2019%E5%88%9D%E8%B5%9B-LoveMath/"
+           data-tag="刷题笔记"
+           data-author="" >
+            <span class="post-title" title="CISCN2019初赛-LoveMath">CISCN2019初赛-LoveMath</span>
+            <span class="post-date" title="2025-03-30 16:21:31">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
            data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
            data-author="" >
@@ -483,7 +723,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
-           data-tag="刷题笔记,sql注入,sql盲注,异或盲注"
+           data-tag="刷题笔记,sql盲注,sql注入,异或盲注"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
             <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
@@ -519,7 +759,7 @@
         
         <a  class="All "
            href="/2025/03/29/SWPU2019-Web1/"
-           data-tag="刷题笔记,sql注入,二次注入,无列名注入,MariaDB数据库"
+           data-tag="刷题笔记,sql注入,无列名注入,二次注入,MariaDB数据库"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
             <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
@@ -582,7 +822,7 @@
         
         <a  class="All "
            href="/2025/03/27/only-one-sql/"
-           data-tag="刷题笔记,sql注入,sql盲注"
+           data-tag="刷题笔记,sql盲注,sql注入"
            data-author="" >
             <span class="post-title" title="only-one-sql">only-one-sql</span>
             <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
@@ -618,7 +858,7 @@
         
         <a  class="All "
            href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
-           data-tag="刷题笔记,php特性,命令执行,md5,intval"
+           data-tag="刷题笔记,php特性,md5,命令执行,intval"
            data-author="" >
             <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
             <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
@@ -690,7 +930,7 @@
         
         <a  class="All "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-tag="刷题笔记,sql注入,ssrf,php反序列化"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
@@ -915,7 +1155,7 @@
         
         <a  class="All "
            href="/2025/01/26/ctfshow-web160/"
-           data-tag="做题笔记,文件上传,日志包含"
+           data-tag="文件上传,做题笔记,日志包含"
            data-author="" >
             <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
             <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
@@ -924,7 +1164,7 @@
         
         <a  class="All "
            href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
-           data-tag="做题笔记,文件上传"
+           data-tag="文件上传,做题笔记"
            data-author="" >
             <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
             <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
@@ -933,7 +1173,7 @@
         
         <a  class="All "
            href="/2025/01/22/upload/"
-           data-tag="学习笔记,文件上传"
+           data-tag="文件上传,学习笔记"
            data-author="" >
             <span class="post-title" title="upload">upload</span>
             <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
