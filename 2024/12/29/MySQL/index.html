@@ -6,28 +6,20 @@
   <meta name="keywords" content=" 学习笔记 , MySQL ">
   <meta name="description" content="MySQL | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="NPUCTF2020-ezinclude首先启动靶机并访问页面。 - 查看网页源码发现提示 1&lt;!--md5($secret.$name)&#x3D;&#x3D;&#x3D;$pass --&gt;  抓包看看 - 推测这里的hash&#x3D;fa25e54758d5d5c1927781a6ede89f8a即为md5($secret,$name) 我们不传入name或者传入空值，使hash&#x3D;md5($secr">
+<meta name="description" content="Signin参考wp 源码 12345678910111213141516171819202122232425262728293031323334353637383940# -*- encoding: utf-8 -*-&#x27;&#x27;&#x27;@File    :   main.py@Time    :   2025&#x2F;03&#x2F;28 22:20:49@Author  :   LamentX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NPUCTF2020-ezinclude">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/06/NPUCTF2020-ezinclude/index.html">
+<meta property="og:title" content="Signin">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/08/Signin/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="NPUCTF2020-ezinclude首先启动靶机并访问页面。 - 查看网页源码发现提示 1&lt;!--md5($secret.$name)&#x3D;&#x3D;&#x3D;$pass --&gt;  抓包看看 - 推测这里的hash&#x3D;fa25e54758d5d5c1927781a6ede89f8a即为md5($secret,$name) 我们不传入name或者传入空值，使hash&#x3D;md5($secr">
+<meta property="og:description" content="Signin参考wp 源码 12345678910111213141516171819202122232425262728293031323334353637383940# -*- encoding: utf-8 -*-&#x27;&#x27;&#x27;@File    :   main.py@Time    :   2025&#x2F;03&#x2F;28 22:20:49@Author  :   LamentX">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-7.png">
-<meta property="article:published_time" content="2025-04-06T12:47:19.000Z">
-<meta property="article:modified_time" content="2025-04-06T16:06:58.349Z">
+<meta property="article:published_time" content="2025-04-08T13:24:15.000Z">
+<meta property="article:modified_time" content="2025-04-08T13:46:36.085Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="文件包含">
-<meta property="article:tag" content="md5">
-<meta property="article:tag" content="php7 segment fault 特性">
+<meta property="article:tag" content="路径穿越">
+<meta property="article:tag" content="bottle">
+<meta property="article:tag" content="pickle反序列化漏洞">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/NPUCTF2020-ezinclude-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -126,7 +118,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(77)</small>
+                <small>(81)</small>
             
         </div>
     </li>
@@ -161,8 +153,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="77">
-<input type="hidden" id="yelog_site_word_count" value="157.6k">
+<input type="hidden" id="yelog_site_posts_number" value="81">
+<input type="hidden" id="yelog_site_word_count" value="162k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -206,6 +198,14 @@
     <div class="tags-list">
     <input id="tag-search" />
     <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>;%00截断代替#和-</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>\转义单引号</a>
+            </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>$_SERVER[‘PHP_SELF’]</a>
@@ -253,6 +253,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>空格过滤绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>路径穿越</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -344,6 +348,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bottle</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>burpsuite爆破密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
             </li>
         
@@ -388,6 +400,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git文件泄露与复原</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>githacker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>glob函数</a>
             </li>
         
@@ -409,6 +429,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>intval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -492,11 +516,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP原生类</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pickle</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pickle反序列化漏洞</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -524,7 +556,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>regexp注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>reverse</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select load_file读取文件</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -593,6 +633,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/04/08/HarekazeCTF2019-encode-and-encode/"
+           data-tag="代码审计,php伪协议,json绕过"
+           data-author="" >
+            <span class="post-title" title="HarekazeCTF2019-encode_and_encode">HarekazeCTF2019-encode_and_encode</span>
+            <span class="post-date" title="2025-04-08 22:03:57">2025/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/08/Signin/"
+           data-tag="路径穿越,bottle,pickle反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="Signin">Signin</span>
+            <span class="post-date" title="2025-04-08 21:24:15">2025/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/08/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment/"
+           data-tag="代码审计,二次注入,burpsuite爆破密码,git文件泄露与复原,githacker,select load_file读取文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018-Comment">网鼎杯2018-Comment</span>
+            <span class="post-date" title="2025-04-08 14:08:27">2025/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/07/NCTF2019-SQLi1/"
+           data-tag="布尔盲注,;%00截断代替#和-,regexp注入,\转义单引号"
+           data-author="" >
+            <span class="post-title" title="NCTF2019-SQLi1">NCTF2019-SQLi1</span>
+            <span class="post-date" title="2025-04-07 20:53:16">2025/04/07</span>
+        </a>
         
         
         <a  class="All "
