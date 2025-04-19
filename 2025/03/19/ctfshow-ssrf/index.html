@@ -6,30 +6,21 @@
   <meta name="keywords" content=" 学习笔记 , ssrf ">
   <meta name="description" content="ctfshow-ssrf | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
+<meta name="description" content="MakePHPGreatAgain打开靶机，直接给源码 123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;  这里很明显是文件包含漏">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GKCTF2021-easycms">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/17/GKCTF2021-easycms/index.html">
+<meta property="og:title" content="MakePHPGreatAgain">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/19/MakePHPGreatAgain/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="GKCTF2021-easycms题目提示后台密码5位弱口令，然后扫描后台扫出admin.php登录页面，然后直接弱口令登录 12admin12345  然后成功登录后台管理页面。 然后这题有两种解法 解法1 getshell进入 设计-&gt;高级，可以找到这里有一个控制主页面的可执行代码，如果我们改成木马就可以拿到shell了 显示请在服务器创建&#x2F;var&#x2F;www&#x2F;">
+<meta property="og:description" content="MakePHPGreatAgain打开靶机，直接给源码 123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;  这里很明显是文件包含漏">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-8.png">
-<meta property="article:published_time" content="2025-04-17T07:41:55.000Z">
-<meta property="article:modified_time" content="2025-04-17T08:22:53.025Z">
+<meta property="article:published_time" content="2025-04-19T12:29:51.000Z">
+<meta property="article:modified_time" content="2025-04-19T12:59:01.468Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="弱口令密码">
-<meta property="article:tag" content="getshell">
-<meta property="article:tag" content="任意文件下载">
-<meta property="article:tag" content="cms">
+<meta property="article:tag" content="require_once">
+<meta property="article:tag" content="session文件包含">
+<meta property="article:tag" content="PHP_SESSION_UPLOAD_PROGRESS">
+<meta property="article:tag" content="条件竞争">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/GKCTF2021-easycms-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -128,7 +119,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(94)</small>
+                <small>(98)</small>
             
         </div>
     </li>
@@ -163,8 +154,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="94">
-<input type="hidden" id="yelog_site_word_count" value="181.4k">
+<input type="hidden" id="yelog_site_posts_number" value="98">
+<input type="hidden" id="yelog_site_word_count" value="184.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -270,6 +261,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>经典盲文</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>空格过滤绕过</a>
             </li>
         
@@ -278,7 +273,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>明文攻击</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>命令执行</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>摩斯密码</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -310,11 +313,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>时间帧隐写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>刷题笔记</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>条件竞争</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -351,6 +362,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>学习笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>压缩文件修复</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -431,6 +446,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>delimiter更改sql语句结束符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>docker</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -538,6 +557,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>misc</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>mt_srand伪随机数漏洞</a>
             </li>
         
@@ -567,6 +590,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>php_mt_seed工具</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PHP_SESSION_UPLOAD_PROGRESS</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -642,11 +669,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>require_once</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>reverse</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>select load_file读取文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>session文件包含</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -675,6 +710,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ssti</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>steghide隐写</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -722,6 +761,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>zip伪加密</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>ziperello工具暴力破解</a>
             </li>
         
@@ -735,6 +778,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/04/19/%E4%B9%9D%E8%BF%9E%E7%8E%AF/"
+           data-tag="zip伪加密,steghide隐写"
+           data-author="" >
+            <span class="post-title" title="c">c</span>
+            <span class="post-date" title="2025-04-19 22:29:49">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/19/MakePHPGreatAgain/"
+           data-tag="require_once,session文件包含,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
+           data-author="" >
+            <span class="post-title" title="MakePHPGreatAgain">MakePHPGreatAgain</span>
+            <span class="post-date" title="2025-04-19 20:29:51">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/19/%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E/"
+           data-tag="经典盲文,摩斯密码"
+           data-author="" >
+            <span class="post-title" title="假如给我三天光明">假如给我三天光明</span>
+            <span class="post-date" title="2025-04-19 18:50:54">2025/04/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/17/misc%E5%AD%A6%E4%B9%A0/"
+           data-tag="misc"
+           data-author="" >
+            <span class="post-title" title="misc学习">misc学习</span>
+            <span class="post-date" title="2025-04-17 21:54:24">2025/04/17</span>
+        </a>
         
         
         <a  class="All "
@@ -793,7 +872,7 @@
         
         <a  class="All "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注"
+           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
