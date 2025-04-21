@@ -6,21 +6,26 @@
   <meta name="keywords" content=" php特性 , 学习笔记 ">
   <meta name="description" content="ctfshow-php特性 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="MakePHPGreatAgain打开靶机，直接给源码 123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;  这里很明显是文件包含漏">
+<meta name="description" content="CSAWQual2019-Web_Unagi在初始界面发现有个upload页面，点击之后发现很明显的文件上传。  发现You can check out the format example [here]提示，点击here  很明显提示我们这里要我们上传xml文档。 我们试试传入一个xml文档，看看是否会回显到页面 1.xml 12345678910111213141516&lt;users&amp;gt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MakePHPGreatAgain">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/19/MakePHPGreatAgain/index.html">
+<meta property="og:title" content="CSAWQual2019-Web_Unagi">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/21/CSAWQual2019-Web-Unagi/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="MakePHPGreatAgain打开靶机，直接给源码 123456&lt;?phphighlight_file(__FILE__);require_once &#x27;flag.php&#x27;;if(isset($_GET[&#x27;file&#x27;])) &#123;  require_once $_GET[&#x27;file&#x27;];&#125;  这里很明显是文件包含漏">
+<meta property="og:description" content="CSAWQual2019-Web_Unagi在初始界面发现有个upload页面，点击之后发现很明显的文件上传。  发现You can check out the format example [here]提示，点击here  很明显提示我们这里要我们上传xml文档。 我们试试传入一个xml文档，看看是否会回显到页面 1.xml 12345678910111213141516&lt;users&amp;gt">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-04-19T12:29:51.000Z">
-<meta property="article:modified_time" content="2025-04-19T12:59:01.468Z">
+<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-4.png">
+<meta property="article:published_time" content="2025-04-21T09:27:53.000Z">
+<meta property="article:modified_time" content="2025-04-21T09:47:49.107Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="require_once">
-<meta property="article:tag" content="session文件包含">
-<meta property="article:tag" content="PHP_SESSION_UPLOAD_PROGRESS">
-<meta property="article:tag" content="条件竞争">
+<meta property="article:tag" content="upload">
+<meta property="article:tag" content="xxe">
+<meta property="article:tag" content="xxe漏洞waf绕过">
+<meta property="article:tag" content="xxe编码绕过">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -119,7 +124,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(98)</small>
+                <small>(103)</small>
             
         </div>
     </li>
@@ -154,8 +159,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="98">
-<input type="hidden" id="yelog_site_word_count" value="184.2k">
+<input type="hidden" id="yelog_site_posts_number" value="103">
+<input type="hidden" id="yelog_site_word_count" value="188.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -217,6 +222,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>$_SERVER['QUERY_STRING']</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
             </li>
         
@@ -226,6 +235,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>比赛复现</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>闭合</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -297,6 +310,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>取反绕过单双引号过滤</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>任意文件下载</a>
             </li>
         
@@ -350,6 +367,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>无列名注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字汉字取反构造webshell</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -453,11 +474,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Error/Exception</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>escapeshellarg()和escapeshellcmd()、单引号逃逸</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>escapeshellarg和escapeshellcmd函数的绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>extract</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -478,6 +507,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>fuzz测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>fuzz字典</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -601,6 +634,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php标签</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>php反序列化</a>
             </li>
         
@@ -626,6 +667,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pickle反序列化漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>preg_match</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -661,6 +706,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rce</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>RCE</a>
             </li>
         
@@ -682,6 +731,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>session文件包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sha1绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -741,6 +794,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vm沙箱逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>waf绕过</a>
             </li>
         
@@ -758,6 +815,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>xxe</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe编码绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xxe漏洞waf绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -781,10 +846,55 @@
         
         
         <a  class="All "
+           href="/2025/04/21/CSAWQual2019-Web-Unagi/"
+           data-tag="upload,xxe,xxe漏洞waf绕过,xxe编码绕过"
+           data-author="" >
+            <span class="post-title" title="CSAWQual2019-Web_Unagi">CSAWQual2019-Web_Unagi</span>
+            <span class="post-date" title="2025-04-21 17:27:53">2025/04/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/21/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982020-Greatphp/"
+           data-tag="PHP原生类,取反绕过,php标签,Error/Exception"
+           data-author="" >
+            <span class="post-title" title="极客大挑战2020-Greatphp">极客大挑战2020-Greatphp</span>
+            <span class="post-date" title="2025-04-21 16:19:05">2025/04/21</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/20/EasyBypass/"
+           data-tag="php代码审计,rce,闭合"
+           data-author="" >
+            <span class="post-title" title="EasyBypass">EasyBypass</span>
+            <span class="post-date" title="2025-04-20 21:47:46">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/20/HFCTF2020-JustEscape/"
+           data-tag="vm沙箱逃逸"
+           data-author="" >
+            <span class="post-title" title="HFCTF2020-JustEscape">HFCTF2020-JustEscape</span>
+            <span class="post-date" title="2025-04-20 20:45:41">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/20/SUCTF2018-GetShell/"
+           data-tag="upload,webshell,无字母数字汉字取反构造webshell,fuzz字典"
+           data-author="" >
+            <span class="post-title" title="SUCTF2018-GetShell">SUCTF2018-GetShell</span>
+            <span class="post-date" title="2025-04-20 14:33:47">2025/04/20</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/04/19/%E4%B9%9D%E8%BF%9E%E7%8E%AF/"
            data-tag="zip伪加密,steghide隐写"
            data-author="" >
-            <span class="post-title" title="c">c</span>
+            <span class="post-title" title="九连环">九连环</span>
             <span class="post-date" title="2025-04-19 22:29:49">2025/04/19</span>
         </a>
         
@@ -854,7 +964,7 @@
         
         <a  class="All "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="刷题笔记,代码审计,php特性,create_function()"
+           data-tag="刷题笔记,php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -872,7 +982,7 @@
         
         <a  class="All "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,比赛复现,upload,RCE,CVE,目录穿越,内存马,时间盲注,明文攻击,压缩文件修复,时间帧隐写,docker"
+           data-tag="upload,sql注入,比赛复现,RCE,CVE,目录穿越,内存马,时间盲注,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
