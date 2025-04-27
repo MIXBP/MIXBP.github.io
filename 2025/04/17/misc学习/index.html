@@ -6,26 +6,23 @@
   <meta name="keywords" content=" misc ">
   <meta name="description" content="misc学习 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="CSAWQual2019-Web_Unagi在初始界面发现有个upload页面，点击之后发现很明显的文件上传。  发现You can check out the format example [here]提示，点击here  很明显提示我们这里要我们上传xml文档。 我们试试传入一个xml文档，看看是否会回显到页面 1.xml 12345678910111213141516&lt;users&amp;gt">
+<meta name="description" content="GYCTF2020-Easyphp参考借鉴wp 启动靶机并访问，一进去是一个登录页面  先尝试了一下弱口令登录，不行，然后又猜测存在register注册页面，也没有，然后访问了下www.zip发现可以下载网页源码 login.php 1234567891011121314151617181920212223242526272829303132&lt;?phprequire_once(&#x27;l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAWQual2019-Web_Unagi">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/21/CSAWQual2019-Web-Unagi/index.html">
+<meta property="og:title" content="GYCTF2020-Easyphp">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/27/GYCTF2020-Easyphp/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="CSAWQual2019-Web_Unagi在初始界面发现有个upload页面，点击之后发现很明显的文件上传。  发现You can check out the format example [here]提示，点击here  很明显提示我们这里要我们上传xml文档。 我们试试传入一个xml文档，看看是否会回显到页面 1.xml 12345678910111213141516&lt;users&amp;gt">
+<meta property="og:description" content="GYCTF2020-Easyphp参考借鉴wp 启动靶机并访问，一进去是一个登录页面  先尝试了一下弱口令登录，不行，然后又猜测存在register注册页面，也没有，然后访问了下www.zip发现可以下载网页源码 login.php 1234567891011121314151617181920212223242526272829303132&lt;?phprequire_once(&#x27;l">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-4.png">
-<meta property="article:published_time" content="2025-04-21T09:27:53.000Z">
-<meta property="article:modified_time" content="2025-04-21T09:47:49.107Z">
+<meta property="og:image" content="https://mixbp.github.io/image/GYCTF2020-Easyphp-1.png">
+<meta property="article:published_time" content="2025-04-26T16:31:03.000Z">
+<meta property="article:modified_time" content="2025-04-27T07:50:07.440Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="upload">
-<meta property="article:tag" content="xxe">
-<meta property="article:tag" content="xxe漏洞waf绕过">
-<meta property="article:tag" content="xxe编码绕过">
+<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="反序列化">
+<meta property="article:tag" content="字符串增加逃逸">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/CSAWQual2019-Web_Unagi-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/GYCTF2020-Easyphp-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -124,7 +121,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(103)</small>
+                <small>(112)</small>
             
         </div>
     </li>
@@ -159,8 +156,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="103">
-<input type="hidden" id="yelog_site_word_count" value="188.2k">
+<input type="hidden" id="yelog_site_posts_number" value="112">
+<input type="hidden" id="yelog_site_word_count" value="201.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -214,6 +211,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>.htaccess新知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>\转义单引号</a>
             </li>
         
@@ -263,6 +264,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反序列化</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -374,7 +379,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无字母数字rce</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>无字母数字RCE</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>限制字符种类绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -398,6 +411,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或绕过进阶</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>原型链污染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>长度过滤绕过</a>
             </li>
         
@@ -411,6 +432,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>字符串逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>字符串增加逃逸</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -443,6 +468,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>burpsuite爆破密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>char绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -502,6 +531,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>finfo_file</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Flask</a>
             </li>
         
@@ -515,6 +548,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>gc回收</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>getimagesize</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -554,6 +591,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>js代码审计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>json绕过</a>
             </li>
         
@@ -563,6 +604,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>jwt身份伪造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jwt伪造</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -607,6 +652,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>nmap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>parse_str绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>parse_url绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -726,7 +779,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ruby模块注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ruby预定义字符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>select load_file读取文件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>selet into outfile</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -754,6 +819,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql预处理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>sql注入</a>
             </li>
         
@@ -771,6 +840,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>str_replace</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>svg</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -846,8 +919,89 @@
         
         
         <a  class="All "
+           href="/2025/04/27/SUCTF2018-MultiSQL/"
+           data-tag="刷题笔记,getshell,布尔盲注,堆叠注入,sql预处理,selet into outfile,char绕过"
+           data-author="" >
+            <span class="post-title" title="SUCTF2018-MultiSQL">SUCTF2018-MultiSQL</span>
+            <span class="post-date" title="2025-04-27 16:25:20">2025/04/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/27/GYCTF2020-Ez-Express/"
+           data-tag="js代码审计,原型链污染"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-Ez_Express">GYCTF2020-Ez_Express</span>
+            <span class="post-date" title="2025-04-27 15:41:22">2025/04/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/27/GYCTF2020-Easyphp/"
+           data-tag="代码审计,sql注入,反序列化,字符串增加逃逸"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-Easyphp">GYCTF2020-Easyphp</span>
+            <span class="post-date" title="2025-04-27 00:31:03">2025/04/27</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/25/N1CTF2018-eating-cms/"
+           data-tag="代码审计,文件包含,信息搜集,文件上传,rce,parse_url绕过,parse_str绕过"
+           data-author="" >
+            <span class="post-title" title="N1CTF2018-eating_cms">N1CTF2018-eating_cms</span>
+            <span class="post-date" title="2025-04-25 20:43:52">2025/04/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/24/SCTF2019-FlagShop/"
+           data-tag="刷题笔记,ruby模块注入,jwt伪造,ruby预定义字符"
+           data-author="" >
+            <span class="post-title" title="SCTF2019-FlagShop">SCTF2019-FlagShop</span>
+            <span class="post-date" title="2025-04-24 23:14:49">2025/04/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/24/HarekazeCTF2019-AvatarUploader/"
+           data-tag="代码审计,upload,getimagesize,finfo_file"
+           data-author="" >
+            <span class="post-title" title="HarekazeCTF2019-AvatarUploader">HarekazeCTF2019-AvatarUploader</span>
+            <span class="post-date" title="2025-04-24 14:37:07">2025/04/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/24/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-easyphp/"
+           data-tag="代码审计,.htaccess新知识"
+           data-author="" >
+            <span class="post-title" title="羊城杯2020-easyphp">羊城杯2020-easyphp</span>
+            <span class="post-date" title="2025-04-24 00:06:00">2025/04/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/22/ISITDTU2019-EasyPHP/"
+           data-tag="刷题笔记,异或绕过进阶,无字母数字rce,限制字符种类绕过"
+           data-author="" >
+            <span class="post-title" title="ISITDTU2019-EasyPHP">ISITDTU2019-EasyPHP</span>
+            <span class="post-date" title="2025-04-22 12:19:26">2025/04/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/04/22/BSidesCF2019-SVGMagic/"
+           data-tag="xxe,svg"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2019-SVGMagic">BSidesCF2019-SVGMagic</span>
+            <span class="post-date" title="2025-04-22 00:29:11">2025/04/22</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2025/04/21/CSAWQual2019-Web-Unagi/"
-           data-tag="upload,xxe,xxe漏洞waf绕过,xxe编码绕过"
+           data-tag="xxe,upload,xxe漏洞waf绕过,xxe编码绕过"
            data-author="" >
             <span class="post-title" title="CSAWQual2019-Web_Unagi">CSAWQual2019-Web_Unagi</span>
             <span class="post-date" title="2025-04-21 17:27:53">2025/04/21</span>
@@ -964,7 +1118,7 @@
         
         <a  class="All "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="刷题笔记,php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="刷题笔记,代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -1432,7 +1586,7 @@
         
         <a  class="All "
            href="/2025/03/19/ctfshow-xxe/"
-           data-tag="学习笔记,xxe"
+           data-tag="xxe,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
             <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
@@ -1808,12 +1962,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-04-20 23:54:11'>2025-04-17 21:54</time>
+            Created At : <time class="date" title='Updated At: 2025-04-24 14:35:47'>2025-04-17 21:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:672</span>
+        <span>Count:1.8k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1843,7 +1997,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E6%A0%87%E8%AF%86"><span class="toc-text">常见文件标识</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1879,6 +2033,7 @@
 <p>真加密需数据区和目录区标志位均为奇数。</p>
 </li>
 </ul>
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-1.png"></p>
 <p>使用工具：010editor、winhex</p>
 <figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tap">1.无加密： 压缩源文件数据区的全局方式位标记应当为00<span class="hljs-number"> 00 </span>（50 4B<span class="hljs-number"> 03 </span>04<span class="hljs-number"> 14 </span>00 后） 且压缩源文件目录区的全局方式位标记应当为00<span class="hljs-number"> 00 </span>（50 4B<span class="hljs-number"> 01 </span>02<span class="hljs-number"> 14 </span>00 后）<br><br>2.伪加密：<br>压缩源文件数据区的全局方式位标记应当为<span class="hljs-number"> 00 </span>00 （50 4B<span class="hljs-number"> 03 </span>04<span class="hljs-number"> 14 </span>00 后） 且压缩源文件目录区的全局方式位标记应当为<span class="hljs-number"> 09 </span>00 （50 4B<span class="hljs-number"> 01 </span>02<span class="hljs-number"> 14 </span>00 后）<br><br>3.真加密：<br>压缩源文件数据区的全局方式位标记应当为09<span class="hljs-number"> 00 </span>（50 4B<span class="hljs-number"> 03 </span>04<span class="hljs-number"> 14 </span>00 后）<br>且压缩源文件目录区的全局方式位标记应当为09<span class="hljs-number"> 00 </span>（50 4B<span class="hljs-number"> 01 </span>02<span class="hljs-number"> 14 </span>00 后）<br><br>4.修改方法：确定是伪加密后就需要将其修改为无加密，方法很简单，就是将压缩源文件目录区的全局方式位标记从09 00改为00 00。<br></code></pre></td></tr></table></figure>
 
@@ -1888,7 +2043,63 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">1</span><span class="hljs-selector-class">.png</span>	原图<br><span class="hljs-number">2</span><span class="hljs-selector-class">.png</span> 	藏有盲水印的图片<br><span class="hljs-number">3</span><span class="hljs-selector-class">.png</span>	盲水印图片<br><br><br>python bwmforpy3<span class="hljs-selector-class">.py</span> decode <span class="hljs-number">1</span><span class="hljs-selector-class">.png</span> <span class="hljs-number">2</span><span class="hljs-selector-class">.png</span> <span class="hljs-number">3</span>.png<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="常见文件标识"><a href="#常见文件标识" class="headerlink" title="常见文件标识"></a>常见文件标识</h2>
+<h2 id="常见文件头、文件尾"><a href="#常见文件头、文件尾" class="headerlink" title="常见文件头、文件尾"></a>常见文件头、文件尾</h2><ul>
+<li><p>JPEG (jpg)文件头：FF D8 FF；文件尾：FF D9</p>
+</li>
+<li><p>PNG (png)文件头：为89 50 4E 47 0D 0A 1A 0A，文件尾格式为49 45 4E 44 AE 42 60 82</p>
+</li>
+<li><p>GIF (gif) 文件头：47 49 46 38 39 61；文件尾：00 3B</p>
+</li>
+<li><p>TIFF (tif)文件头：49 49 2A 00</p>
+</li>
+<li><p>XML (xml)文件头：3C 3F 78 6D 6C</p>
+</li>
+<li><p>HTML (html)文件头：68 74 6D 6C 3E</p>
+</li>
+<li><p>Adobe Acrobat (pdf)文件头：25 50 44 46 2D 31 2E</p>
+</li>
+<li><p>ZIP Archive (zip)文件头：50 4B 03 04；文件尾：50 4B</p>
+</li>
+<li><p>TAR （tar.gz）文件头：1F 8B 08 00</p>
+</li>
+<li><p>RAR Archive (rar)文件头：526172211A0700 C43D7B00400700</p>
+</li>
+<li><p>Wave (wav)文件头：57415645</p>
+</li>
+<li><p>AVI (avi)，文件头：41564920</p>
+</li>
+<li><p>MS Word&#x2F;Excel (xls.or.doc)文件头：D0CF11E0</p>
+</li>
+<li><p>Adobe Photoshop (psd)文件头：38425053 Windows Bitmap (bmp) 文件头：424D</p>
+</li>
+</ul>
+<hr>
+<h2 id="base64隐写"><a href="#base64隐写" class="headerlink" title="base64隐写"></a>base64隐写</h2><p>原理：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tolele/p/16271548.html">大佬博客</a></p>
+<p>大概就是解码时会将多余的比特位去掉（因为凑不到8位），所以这部分多余的比特位即使我们随意的改变值也不会影响解码后的结果，因为它会被丢弃掉，所以就能在这些多余的比特位中实现隐写。</p>
+<p>base64隐写提取脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> base64<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Base64Stego_Decrypt</span>(<span class="hljs-params">LineList</span>):<br>    Base64Char = <span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>     <span class="hljs-comment">#Base64字符集 已按照规范排列</span><br>    BinaryText = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> LineList:<br>        <span class="hljs-keyword">if</span> line.find(<span class="hljs-string">&quot;==&quot;</span>) &gt; <span class="hljs-number">0</span>:     <span class="hljs-comment">#如果文本中有2个=符号</span><br>            temp = <span class="hljs-built_in">bin</span>(Base64Char.find(line[-<span class="hljs-number">3</span>]) &amp; <span class="hljs-number">15</span>)[<span class="hljs-number">2</span>:]      <span class="hljs-comment">#通过按位与&amp;15运算取出二进制数后4位 [2:]的作用是将0b过滤掉</span><br>            BinaryText = BinaryText+<span class="hljs-string">&quot;0&quot;</span>*(<span class="hljs-number">4</span>-<span class="hljs-built_in">len</span>(temp))+temp      <span class="hljs-comment">#高位补0</span><br>        <span class="hljs-keyword">elif</span> line.find(<span class="hljs-string">&quot;=&quot;</span>) &gt; <span class="hljs-number">0</span>:        <span class="hljs-comment">#如果文本中有1个=符号</span><br>            temp = <span class="hljs-built_in">bin</span>(Base64Char.find(line[-<span class="hljs-number">2</span>]) &amp; <span class="hljs-number">3</span>)[<span class="hljs-number">2</span>:]       <span class="hljs-comment">#通过按位与&amp;3运算取出二进制数后2位</span><br>            BinaryText = BinaryText+<span class="hljs-string">&quot;0&quot;</span>*(<span class="hljs-number">2</span>-<span class="hljs-built_in">len</span>(temp))+temp      <span class="hljs-comment">#高位补0</span><br>    Text = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(BinaryText) % <span class="hljs-number">8</span> != <span class="hljs-number">0</span>):       <span class="hljs-comment">#最终得到的隐写数据二进制位数不一定都是8的倍数，为了避免数组越界，加上一个判断</span><br>        <span class="hljs-comment">#print(&quot;警告:二进制文本位数有误，将进行不完整解析。&quot;)</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(BinaryText), <span class="hljs-number">8</span>):<br>            <span class="hljs-keyword">if</span>(i+<span class="hljs-number">8</span> &gt; <span class="hljs-built_in">len</span>(BinaryText)):<br>                Text = Text+<span class="hljs-string">&quot;-&quot;</span>+BinaryText[i:]<br>                <span class="hljs-keyword">return</span> Text<br>            <span class="hljs-keyword">else</span>:<br>                Text = Text+<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(BinaryText[i:i+<span class="hljs-number">8</span>], <span class="hljs-number">2</span>))<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(BinaryText), <span class="hljs-number">8</span>):<br>            Text = Text+<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(BinaryText[i:i+<span class="hljs-number">8</span>], <span class="hljs-number">2</span>))      <span class="hljs-comment">#将得到的二进制数每8位一组对照ASCII码转化字符</span><br>        <span class="hljs-keyword">return</span> Text<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Base64_ForString_Decrypt</span>(<span class="hljs-params">Text</span>):     <span class="hljs-comment">#Base64解密</span><br>    <span class="hljs-keyword">try</span>:<br>        DecryptedText = <span class="hljs-built_in">str</span>(Text).encode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>        DecryptedText = base64.b64decode(DecryptedText)<br>        DecryptedText = DecryptedText.decode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-keyword">return</span> DecryptedText<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    Course = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;filename:&quot;</span>)<br>    File = <span class="hljs-built_in">open</span>(Course, <span class="hljs-string">&quot;r&quot;</span>)<br>    LineList = File.read().splitlines()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The explicit content is:&quot;</span>)<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> LineList:<br>        <span class="hljs-built_in">print</span>(Base64_ForString_Decrypt(line),end=<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Steganography is:&quot;</span>)<br>    <span class="hljs-built_in">print</span>(Base64Stego_Decrypt(LineList))<br><br></code></pre></td></tr></table></figure>
+
+<p>感觉不如随波逐流，太麻烦了。</p>
+<hr>
+<h2 id="NTFS交换数据流实现隐写"><a href="#NTFS交换数据流实现隐写" class="headerlink" title="NTFS交换数据流实现隐写"></a>NTFS交换数据流实现隐写</h2><p>原理：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/654643812">NTFS 交换数据流 实现隐藏文件</a></p>
+<p>提取隐写。</p>
+<p>方法一：</p>
+<p>在1.txt文件所在的文件夹，右键选择“在终端中打开”，打开命令行输入以下命令，回车打开flag.txt文件。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">notepad</span> <span class="hljs-number">1</span>.txt:flag.txt<br></code></pre></td></tr></table></figure>
+
+<p>方法二：<br>使用NtfsStreamsEditor工具</p>
+<hr>
+<h2 id="outguess隐写"><a href="#outguess隐写" class="headerlink" title="outguess隐写"></a>outguess隐写</h2><p>OutGuess 是一款通用的隐写工具，允许用户将隐藏信息插入到数据源的冗余位中。无论是PPM（便携式像素图）、PNM（便携式任意图）还是JPEG图像格式，OutGuess都能轻松处理。更令人兴奋的是，OutGuess的核心设计并不依赖于数据源的性质，只要提供相应的数据处理程序，它可以应用于任何类型的数据。<br>对于JPEG图像，OutGuess通过保留基于频率计数的统计数据，确保了隐写内容的不可检测性。在嵌入数据之前，OutGuess系统可以确定在保持频率计数统计数据的前提下，可以隐藏的最大消息大小。</p>
+<p>使用outguess工具提取隐写文件。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">outguess</span> -k <span class="hljs-string">&#x27;key&#x27;</span> -r textfile outputfile<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="字频隐写"><a href="#字频隐写" class="headerlink" title="字频隐写"></a>字频隐写</h2><p>一般都是杂乱无章的文本，然后通过统计字频后按照一定顺序排列即可看到隐写的信息</p>
+<p>简单的字频分析python脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding:utf-8 -*-</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;Autopy/misc/word_frequency_statistics/in.txt&#x27;</span>,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf8&#x27;</span>) <span class="hljs-keyword">as</span> infile:<br>    content = infile.read()<br>table = <span class="hljs-built_in">dict</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> c:(<span class="hljs-built_in">chr</span>(c),<span class="hljs-number">0</span>),[x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">127</span>)]))<br><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> content:<br>    <span class="hljs-keyword">try</span>:<br>        table[c] += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">pass</span><br>order = <span class="hljs-built_in">sorted</span>(table.items(),key = <span class="hljs-keyword">lambda</span> k:k[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)<br><span class="hljs-built_in">print</span>(order)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;</span>.join([x[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> order]))<br></code></pre></td></tr></table></figure>
+
+<p>也可以使用随波逐流自带的字频分析功能</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>
