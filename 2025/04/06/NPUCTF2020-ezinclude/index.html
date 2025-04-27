@@ -6,23 +6,22 @@
   <meta name="keywords" content=" 文件包含 , md5 , php7 segment fault 特性 ">
   <meta name="description" content="NPUCTF2020-ezinclude | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="GYCTF2020-Easyphp参考借鉴wp 启动靶机并访问，一进去是一个登录页面  先尝试了一下弱口令登录，不行，然后又猜测存在register注册页面，也没有，然后访问了下www.zip发现可以下载网页源码 login.php 1234567891011121314151617181920212223242526272829303132&lt;?phprequire_once(&#x27;l">
+<meta name="description" content="GYCTF2020-Ez_Express原文链接：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_45691294&#x2F;article&#x2F;details&#x2F;109320437 打开题目，看到一个登录注册表单，然后右边提示  先随便注册一个号，然后登录进去。发现是个空白页面，查看下网页源代码，提示我们下载www.zip得到源码 然后发现是js代码审计，只能看大佬的wp了。 关键源码在app.js和inde">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GYCTF2020-Easyphp">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/04/27/GYCTF2020-Easyphp/index.html">
+<meta property="og:title" content="GYCTF2020-Ez_Express">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/04/27/GYCTF2020-Ez-Express/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="GYCTF2020-Easyphp参考借鉴wp 启动靶机并访问，一进去是一个登录页面  先尝试了一下弱口令登录，不行，然后又猜测存在register注册页面，也没有，然后访问了下www.zip发现可以下载网页源码 login.php 1234567891011121314151617181920212223242526272829303132&lt;?phprequire_once(&#x27;l">
+<meta property="og:description" content="GYCTF2020-Ez_Express原文链接：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_45691294&#x2F;article&#x2F;details&#x2F;109320437 打开题目，看到一个登录注册表单，然后右边提示  先随便注册一个号，然后登录进去。发现是个空白页面，查看下网页源代码，提示我们下载www.zip得到源码 然后发现是js代码审计，只能看大佬的wp了。 关键源码在app.js和inde">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/GYCTF2020-Easyphp-1.png">
-<meta property="article:published_time" content="2025-04-26T16:31:03.000Z">
-<meta property="article:modified_time" content="2025-04-27T07:50:07.440Z">
+<meta property="og:image" content="https://mixbp.github.io/image/GYCTF2020-Ez_Express-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GYCTF2020-Ez_Express-2.png">
+<meta property="article:published_time" content="2025-04-27T07:41:22.000Z">
+<meta property="article:modified_time" content="2025-04-27T08:12:13.690Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="代码审计">
-<meta property="article:tag" content="sql注入">
-<meta property="article:tag" content="反序列化">
-<meta property="article:tag" content="字符串增加逃逸">
+<meta property="article:tag" content="js代码审计">
+<meta property="article:tag" content="原型链污染">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/GYCTF2020-Easyphp-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/GYCTF2020-Ez_Express-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -938,7 +937,7 @@
         
         <a  class="All "
            href="/2025/04/27/GYCTF2020-Easyphp/"
-           data-tag="代码审计,sql注入,反序列化,字符串增加逃逸"
+           data-tag="代码审计,反序列化,字符串增加逃逸,sql注入"
            data-author="" >
             <span class="post-title" title="GYCTF2020-Easyphp">GYCTF2020-Easyphp</span>
             <span class="post-date" title="2025-04-27 00:31:03">2025/04/27</span>
@@ -947,7 +946,7 @@
         
         <a  class="All "
            href="/2025/04/25/N1CTF2018-eating-cms/"
-           data-tag="代码审计,文件包含,信息搜集,文件上传,rce,parse_url绕过,parse_str绕过"
+           data-tag="代码审计,信息搜集,文件包含,文件上传,rce,parse_url绕过,parse_str绕过"
            data-author="" >
             <span class="post-title" title="N1CTF2018-eating_cms">N1CTF2018-eating_cms</span>
             <span class="post-date" title="2025-04-25 20:43:52">2025/04/25</span>
@@ -1397,7 +1396,7 @@
         
         <a  class="All "
            href="/2025/03/29/SWPU2019-Web1/"
-           data-tag="刷题笔记,sql注入,无列名注入,二次注入,MariaDB数据库"
+           data-tag="刷题笔记,无列名注入,sql注入,二次注入,MariaDB数据库"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
             <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
