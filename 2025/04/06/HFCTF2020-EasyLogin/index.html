@@ -6,18 +6,27 @@
   <meta name="keywords" content=" jwt身份伪造 ">
   <meta name="description" content="HFCTF2020-EasyLogin | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="GXYCTF2019-BabysqliV3.0参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;2401_86760082&#x2F;article&#x2F;details&#x2F;145358326 首先打开网页是一个登录界面。  先尝试用万能密码登录，但是当输入带符号的用户名时会提示用户不存在。 尝试使用弱口令密码爆破： 用户名：admin 密码：password 成功登录之后发现是一个文件上传的页面。  尝试上传">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EIS2019-EzPOP">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/07/EIS2019-EzPOP/index.html">
+<meta property="og:title" content="GXYCTF2019-BabysqliV3.0">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/07/GXYCTF2019-BabysqliV3-0/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="GXYCTF2019-BabysqliV3.0参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;2401_86760082&#x2F;article&#x2F;details&#x2F;145358326 首先打开网页是一个登录界面。  先尝试用万能密码登录，但是当输入带符号的用户名时会提示用户不存在。 尝试使用弱口令密码爆破： 用户名：admin 密码：password 成功登录之后发现是一个文件上传的页面。  尝试上传">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-05-07T06:15:57.000Z">
-<meta property="article:modified_time" content="2025-05-07T06:21:48.007Z">
+<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-5.png">
+<meta property="article:published_time" content="2025-05-07T02:01:06.000Z">
+<meta property="article:modified_time" content="2025-05-07T06:20:54.170Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="base64+filter协议绕过死亡exit">
-<meta property="article:tag" content="php反序列化">
-<meta property="article:tag" content="getshell">
+<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="弱密码">
+<meta property="article:tag" content="伪协议">
+<meta property="article:tag" content="phar反序列化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -182,7 +191,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="123">
-<input type="hidden" id="yelog_site_word_count" value="217.2k">
+<input type="hidden" id="yelog_site_word_count" value="220.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
