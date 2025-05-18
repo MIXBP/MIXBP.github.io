@@ -6,27 +6,22 @@
   <meta name="keywords" content=" misc ">
   <meta name="description" content="misc学习 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="GXYCTF2019-BabysqliV3.0参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;2401_86760082&#x2F;article&#x2F;details&#x2F;145358326 首先打开网页是一个登录界面。  先尝试用万能密码登录，但是当输入带符号的用户名时会提示用户不存在。 尝试使用弱口令密码爆破： 用户名：admin 密码：password 成功登录之后发现是一个文件上传的页面。  尝试上传">
+<meta name="description" content="安洵杯2019-iamthinking参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;2301_80148821&#x2F;article&#x2F;details&#x2F;143898080 首先打开网页，发现403报错，然后看了下题目简介让我们访问&#x2F;pubilc，访问成功只有一张图片  根据题目来看应该是要审tp的框架，下载www.zip文件。 然后就是漫长的代码审计 代码审计先查看index.php 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GXYCTF2019-BabysqliV3.0">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/07/GXYCTF2019-BabysqliV3-0/index.html">
+<meta property="og:title" content="安洵杯2019-iamthinking">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/18/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-iamthinking/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="GXYCTF2019-BabysqliV3.0参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;2401_86760082&#x2F;article&#x2F;details&#x2F;145358326 首先打开网页是一个登录界面。  先尝试用万能密码登录，但是当输入带符号的用户名时会提示用户不存在。 尝试使用弱口令密码爆破： 用户名：admin 密码：password 成功登录之后发现是一个文件上传的页面。  尝试上传">
+<meta property="og:description" content="安洵杯2019-iamthinking参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;2301_80148821&#x2F;article&#x2F;details&#x2F;143898080 首先打开网页，发现403报错，然后看了下题目简介让我们访问&#x2F;pubilc，访问成功只有一张图片  根据题目来看应该是要审tp的框架，下载www.zip文件。 然后就是漫长的代码审计 代码审计先查看index.php 1">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-5.png">
-<meta property="article:published_time" content="2025-05-07T02:01:06.000Z">
-<meta property="article:modified_time" content="2025-05-07T06:20:54.170Z">
+<meta property="og:image" content="https://mixbp.github.io/image/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-iamthinking-1.png">
+<meta property="article:published_time" content="2025-05-18T12:02:09.000Z">
+<meta property="article:modified_time" content="2025-05-18T14:12:31.285Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="代码审计">
-<meta property="article:tag" content="弱密码">
-<meta property="article:tag" content="伪协议">
-<meta property="article:tag" content="phar反序列化">
+<meta property="article:tag" content="反序列化">
+<meta property="article:tag" content="parse_url绕过">
+<meta property="article:tag" content="tp6">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/GXYCTF2019-BabysqliV3.0-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-iamthinking-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -125,7 +120,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(123)</small>
+                <small>(128)</small>
             
         </div>
     </li>
@@ -137,7 +132,7 @@
         <div data-rel="学习笔记">
             
             学习笔记
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -152,7 +147,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(3)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -190,8 +185,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="123">
-<input type="hidden" id="yelog_site_word_count" value="220.5k">
+<input type="hidden" id="yelog_site_posts_number" value="128">
+<input type="hidden" id="yelog_site_word_count" value="230.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -274,6 +269,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>${phpinfo()}</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>16进制加SQL预处理绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -430,6 +429,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>图片隐写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>外带数据</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -597,6 +600,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>csrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>curl命令及其常用参数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>CVE</a>
             </li>
         
@@ -694,6 +705,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>HTML</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTTP请求头伪造</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -797,6 +812,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PDO</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>perl语言漏洞</a>
             </li>
         
@@ -806,6 +825,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>php</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php_binary引擎下的session伪造</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -902,6 +925,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>regexp注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>requestbin使用</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1009,6 +1036,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tp6</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>unicode</a>
             </li>
         
@@ -1073,6 +1104,51 @@
         
         
         <a  class="All 刷题笔记 "
+           href="/2025/05/18/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-iamthinking/"
+           data-tag="反序列化,parse_url绕过,tp6"
+           data-author="" >
+            <span class="post-title" title="安洵杯2019-iamthinking">安洵杯2019-iamthinking</span>
+            <span class="post-date" title="2025-05-18 20:02:09">2025/05/18</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/11/SWPU2019-Web4/"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
+            <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/08/HFCTF2020-BabyUpload/"
+           data-tag="代码审计,upload,php_binary引擎下的session伪造"
+           data-author="" >
+            <span class="post-title" title="HFCTF2020-BabyUpload">HFCTF2020-BabyUpload</span>
+            <span class="post-date" title="2025-05-08 21:57:51">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/08/GWCTF2019-mypassword/"
+           data-tag="xss,csrf,requestbin使用,外带数据"
+           data-author="" >
+            <span class="post-title" title="GWCTF2019-mypassword">GWCTF2019-mypassword</span>
+            <span class="post-date" title="2025-05-08 19:56:23">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/08/BSidesCF2020-Hurdles/"
+           data-tag="HTTP请求头伪造,curl命令及其常用参数"
+           data-author="" >
+            <span class="post-title" title="BSidesCF2020-Hurdles">BSidesCF2020-Hurdles</span>
+            <span class="post-date" title="2025-05-08 16:21:44">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
            href="/2025/05/07/EIS2019-EzPOP/"
            data-tag="base64+filter协议绕过死亡exit,php反序列化,getshell"
            data-author="" >
@@ -1108,7 +1184,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/30/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-Upload/"
            data-tag="代码审计,反序列化,tp5"
            data-author="" >
@@ -1117,7 +1193,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/29/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-%E4%B8%8D%E6%98%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"
            data-tag="文件上传,sql注入,反序列化,insert闭合,十六进制编码"
            data-author="" >
@@ -1126,7 +1202,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/29/RootersCTF2019-babyWeb/"
            data-tag="sql注入,报错注入,十六进制编码绕过"
            data-author="" >
@@ -1135,7 +1211,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/27/SUCTF2018-annonymous/"
            data-tag="creat_function,匿名函数"
            data-author="" >
@@ -1362,7 +1438,7 @@
         
         <a  class="All "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="upload,sql注入,比赛复现,RCE,CVE,目录穿越,内存马,时间盲注,明文攻击,压缩文件修复,时间帧隐写,docker"
+           data-tag="upload,sql注入,时间盲注,比赛复现,RCE,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -1936,9 +2012,9 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/02/php%E7%89%B9%E6%80%A7/"
-           data-tag="php特性,学习笔记"
+           data-tag="php特性"
            data-author="" >
             <span class="post-title" title="php特性">php特性</span>
             <span class="post-date" title="2025-03-02 20:14:41">2025/03/02</span>
@@ -1956,7 +2032,7 @@
         
         <a  class="All "
            href="/2025/02/23/ctfshow-xss/"
-           data-tag="学习笔记,xss"
+           data-tag="xss,学习笔记"
            data-author="" >
             <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
             <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
@@ -2223,12 +2299,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-07 23:21:51'>2025-04-17 21:54</time>
+            Created At : <time class="date" title='Updated At: 2025-05-11 21:50:12'>2025-04-17 21:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:4.6k</span>
+        <span>Count:6.2k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2258,7 +2334,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#png%E5%AE%BD%E9%AB%98CRC%E7%88%86%E7%A0%B4"><span class="toc-text">png宽高CRC爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB%E9%9A%90%E5%86%99-%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="toc-text">LSB隐写+数据提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyc%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">pyc反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%8A%A5%E7%A0%81"><span class="toc-text">电报码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E4%BA%94%E7%AC%94%E7%BC%96%E7%A0%81"><span class="toc-text">汉字五笔编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E5%BA%A6%E9%9A%90%E5%86%99"><span class="toc-text">零宽度隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-text">栅栏加密&#x2F;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-text">凯撒密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E7%A2%B0%E6%92%9E"><span class="toc-text">CRC碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTMF%E6%8B%A8%E5%8F%B7%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="toc-text">DTMF拨号音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81"><span class="toc-text">手机键盘密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exif%E4%BF%A1%E6%81%AF%E4%B8%8Eexiftool"><span class="toc-text">exif信息与exiftool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mimikatz%E4%B8%8Elsass"><span class="toc-text">mimikatz与lsass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F"><span class="toc-text">TLS流量</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#png%E5%AE%BD%E9%AB%98CRC%E7%88%86%E7%A0%B4"><span class="toc-text">png宽高CRC爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB%E9%9A%90%E5%86%99-%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="toc-text">LSB隐写+数据提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyc%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">pyc反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%8A%A5%E7%A0%81"><span class="toc-text">电报码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E4%BA%94%E7%AC%94%E7%BC%96%E7%A0%81"><span class="toc-text">汉字五笔编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E5%BA%A6%E9%9A%90%E5%86%99"><span class="toc-text">零宽度隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-text">栅栏加密&#x2F;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-text">凯撒密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E7%A2%B0%E6%92%9E"><span class="toc-text">CRC碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTMF%E6%8B%A8%E5%8F%B7%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="toc-text">DTMF拨号音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81"><span class="toc-text">手机键盘密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exif%E4%BF%A1%E6%81%AF%E4%B8%8Eexiftool"><span class="toc-text">exif信息与exiftool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mimikatz%E4%B8%8Elsass"><span class="toc-text">mimikatz与lsass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F"><span class="toc-text">TLS流量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsteg%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">zsteg工具的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86"><span class="toc-text">DES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAR"><span class="toc-text">RAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USB%E9%94%AE%E7%9B%98%E9%9A%90%E5%86%99%EF%BC%88Tshark%E4%B8%8EUsbKeyboardDataHacker-py%EF%BC%89"><span class="toc-text">USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Tshark-exe%E5%B7%A5%E5%85%B7%E6%8F%90%E5%8F%96usb%E9%94%AE%E7%9B%98%E6%95%B0%E6%8D%AE"><span class="toc-text">使用Tshark.exe工具提取usb键盘数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">使用脚本提取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-text">维吉尼亚密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logo%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">logo解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TTL%E9%9A%90%E5%86%99"><span class="toc-text">TTL隐写</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2463,7 +2539,90 @@
 <p>这里将私钥保存为private.key，wireshark允许添加TLS私钥查看加密传输数据</p>
 <p>步骤：</p>
 <p><strong>点击 编辑–&gt;首选项–&gt;Protocols–&gt;TLS</strong>	</p>
-<p>​	</p>
+<hr>
+<h2 id="zsteg工具的使用"><a href="#zsteg工具的使用" class="headerlink" title="zsteg工具的使用"></a>zsteg工具的使用</h2><p><code>‌zsteg</code>是一款用于检测<code>PNG</code>和<code>BMP</code>图片中隐藏数据的工具，可以快速提取隐藏信息。</p>
+<p><code>zsteg</code>支持检测多种隐写技术，包括<code>LSB</code>隐写、<code>zlib</code>压缩数据、<code>OpenStego、Camouflage</code>等。</p>
+<p><strong>zsteg的使用方法：</strong></p>
+<p>常用参数：	</p>
+<ul>
+<li><code>-E</code> 导出内容一般导出隐写内容</li>
+<li><code>-v</code> 命令可以显示图片的详细信息</li>
+<li><code>-a</code> 命令尝试所有已知的隐写组合</li>
+</ul>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nsis">查看LSB信息<br>zsteg xxx	<span class="hljs-comment">##文件名</span><br><br>提取LSB数据<br>zsteg -E <span class="hljs-string">&quot;b1,bgr,lsb,xy&quot;</span> xxx.png &gt; <span class="hljs-number">1</span>.txt<br><br>检测<span class="hljs-literal">zlib</span>压缩数据<br>zsteg <span class="hljs-literal">zlib</span>.bmp -b <span class="hljs-number">1</span> -o xy -v<br>命令可以检测BMP图片中的<span class="hljs-literal">zlib</span>压缩数据，其中-b参数指定了要检查的位数，从<span class="hljs-number">1</span>开始<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="DES加密"><a href="#DES加密" class="headerlink" title="DES加密"></a>DES加密</h2><p>DES是一种对称密钥加密块密码算法，1976年被美国联邦政府的国家标准局确定为联邦资料处理标准（FIPS），随后在国际上广泛流传开来。它基于使用56位密钥的对称算法</p>
+<p>在线解码网站：<a target="_blank" rel="noopener" href="https://www.sojson.com/encrypt_des.html">https://www.sojson.com/encrypt_des.html</a></p>
+<p>例如：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs smali">秘钥：6XaMMbM7<br>U2FsdGVkX18IBEATgMBe8NqjIqp65CxRjjMxXIIUxIjBnAODJQRkSLQ/+lHBsjpv1BwwEawMo1c=<br>--&gt;ctf&#123;67a166801342415a6da8f0dbac591974&#125;<br></code></pre></td></tr></table></figure>
+
+<p>特点：</p>
+<p>很像base64，并且base64解码后前面有Salted</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gcode">例如：U<span class="hljs-number">2</span>FsdGVkX<span class="hljs-number">1</span>+zHjSBeYPtWQ<span class="hljs-attr">VSwXzcVFZLu6</span>Q<span class="hljs-name">m0</span>To/KeuH<span class="hljs-name">g8</span>vKAxFrVQ==<br>base<span class="hljs-number">64</span>解码后<br>Salted__<span class="hljs-number">4</span>y홅R|ܔVK&amp;Ѻ?)뇃ˊkU<br></code></pre></td></tr></table></figure>
+
+<h2 id="RAR"><a href="#RAR" class="headerlink" title="RAR"></a>RAR</h2><p>RAR是有四个文件块组成的，分别是分别是标记块、归档头部块、文件块、结束块，这些块之间没有固定地先后顺序，但要求第一个块必须是标志块并且其后紧跟一个归档头部块。每个块都包含以下内容：</p>
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-7.png"></p>
+<p>归档头部块和文件块的内容较多，仅列出每个块头部内容：</p>
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-8.png"></p>
+<p>RAR的标记块和结束块都是固定的7字节序列，分别为0x52 61 72 21 1A 07 00和0xC4 3D 7B 00 40 07 00。文件块这边要注意一下HEAD_FLAGS这个头部，其中HEAD_FLAGS的低三位代表加密标志，此位若被置为1，则文件使用了基于密钥的加密。</p>
+<p><strong>块类型为0x74，有时题目会将块类型修改，形成隐写，只要将其改回0x74即可在解压是看到隐写的文件</strong></p>
+<hr>
+<h2 id="USB键盘隐写（Tshark与UsbKeyboardDataHacker-py）"><a href="#USB键盘隐写（Tshark与UsbKeyboardDataHacker-py）" class="headerlink" title="USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）"></a>USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）</h2><p>SB隐写——键盘隐写：键盘数据包的数据长度为 8 个字节<br>第1个字节的作用主要是判断是否按下Shift，Alt，Control等键<br>第2个字节是保留位<br>第3~8个字节是普通按键，但击键信息集中在第 3 个字节。（如果遇到多个按键一起按的情况，这个时候3～8字节可能会被利用起来。）<br>根据 data 值与具体键位的对应关系，可从数据包恢复出键盘的按键信息</p>
+<p>可使用Tshark.exe工具提取键盘数据：</p>
+<p>在kali里Tshark是内置的工具</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">tshark -<span class="hljs-attribute">r</span> key<span class="hljs-selector-class">.pcap</span> -T fields -e usb<span class="hljs-selector-class">.capdata</span> &gt; usbdata<span class="hljs-selector-class">.txt</span><br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<p>一个key.pcap文件，用Wireshark打开全是usb</p>
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-9.png"></p>
+<h3 id="使用Tshark-exe工具提取usb键盘数据"><a href="#使用Tshark-exe工具提取usb键盘数据" class="headerlink" title="使用Tshark.exe工具提取usb键盘数据"></a>使用Tshark.exe工具提取usb键盘数据</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">tshark -<span class="hljs-attribute">r</span> key<span class="hljs-selector-class">.pcap</span> -T fields -e usb<span class="hljs-selector-class">.capdata</span> &gt; usbdata<span class="hljs-selector-class">.txt</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-10.png"></p>
+<h3 id="使用脚本提取数据"><a href="#使用脚本提取数据" class="headerlink" title="使用脚本提取数据"></a><strong>使用脚本提取数据</strong></h3><p>UsbKeyboardDataHacker.py</p>
+<p>使用脚本提取数据：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python3</span> UsbKeyboardDataHacker.<span class="hljs-keyword">py</span> key.pcap<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-11.png"></p>
+<p>得到密钥xinan</p>
+<hr>
+<h2 id="维吉尼亚密码"><a href="#维吉尼亚密码" class="headerlink" title="维吉尼亚密码"></a>维吉尼亚密码</h2><p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81&spm=1001.2101.3001.7020">维吉尼亚密码</a>（Vigenère cipher）是一种使用一系列凯撒密码组成密码字母表的加密算法，它属于多表密码的一种简单形式。</p>
+<p>简单来说就是凯撒密码的加强版，引入了密钥</p>
+<p>解密网站<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/vigenere?code=ci%7Bv3erf_0tygidv2_fc0%7D">维吉尼亚加密&#x2F;解密 - Bugku CTF</a></p>
+<p>示例：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">ci&#123;v3erf_0tygidv2_fc0&#125;<br></code></pre></td></tr></table></figure>
+
+<p>特点：有字母密钥，如果满足凯撒密码的格式但是解不出来那就是维吉尼亚了</p>
+<p>PPS：秘钥一般需要自己解出来。</p>
+<p>密钥：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">xinan</span><br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">fa</span><span class="hljs-template-variable">&#123;i3eei_0llgvgn2_sc0&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里解出来的结果一看就知道还要栅栏密码解密，就不说了。</p>
+<hr>
+<h2 id="logo解释器"><a href="#logo解释器" class="headerlink" title="logo解释器"></a>logo解释器</h2><p>在线网站：<a target="_blank" rel="noopener" href="https://www.calormen.com/jslogo/">https://www.calormen.com/jslogo/</a></p>
+<p>例如：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tap">cs pu lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 500 </span>rt<span class="hljs-number"> 90 </span>pd fd<span class="hljs-number"> 100 </span>rt<span class="hljs-number"> 90 </span>repeat 18[fd<span class="hljs-number"> 5 </span>rt 10] lt<span class="hljs-number"> 135 </span>fd<span class="hljs-number"> 50 </span>lt<span class="hljs-number"> 135 </span>pu bk<span class="hljs-number"> 100 </span>pd setcolor pick [ red orange yellow green blue violet ] repeat 18[fd<span class="hljs-number"> 5 </span>rt 10] rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 60 </span>rt<span class="hljs-number"> 90 </span>bk<span class="hljs-number"> 30 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 60 </span>pu lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 100 </span>pd rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 50 </span>bk<span class="hljs-number"> 50 </span>setcolor pick [ red orange yellow green blue violet ] lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 50 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 50 </span>pu fd<span class="hljs-number"> 50 </span>pd fd<span class="hljs-number"> 25 </span>bk<span class="hljs-number"> 50 </span>fd<span class="hljs-number"> 25 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 50 </span>pu setcolor pick [ red orange yellow green blue violet ] fd<span class="hljs-number"> 100 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 30 </span>rt<span class="hljs-number"> 45 </span>pd fd<span class="hljs-number"> 50 </span>bk<span class="hljs-number"> 50 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 50 </span>bk<span class="hljs-number"> 100 </span>fd<span class="hljs-number"> 50 </span>rt<span class="hljs-number"> 45 </span>pu fd<span class="hljs-number"> 50 </span>lt<span class="hljs-number"> 90 </span>pd fd<span class="hljs-number"> 50 </span>bk<span class="hljs-number"> 50 </span>rt<span class="hljs-number"> 90 </span>setcolor pick [ red orange yellow green blue violet ] fd<span class="hljs-number"> 50 </span>pu lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 100 </span>pd fd<span class="hljs-number"> 50 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 25 </span>bk<span class="hljs-number"> 25 </span>lt<span class="hljs-number"> 90 </span>bk<span class="hljs-number"> 25 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 25 </span>setcolor pick [ red orange yellow green blue violet ] pu fd<span class="hljs-number"> 25 </span>lt<span class="hljs-number"> 90 </span>bk<span class="hljs-number"> 30 </span>pd rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 25 </span>pu fd<span class="hljs-number"> 25 </span>lt<span class="hljs-number"> 90 </span>pd fd<span class="hljs-number"> 50 </span>bk<span class="hljs-number"> 25 </span>rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 25 </span>lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 25 </span>bk<span class="hljs-number"> 50 </span>pu bk<span class="hljs-number"> 100 </span>lt<span class="hljs-number"> 90 </span>setcolor pick [ red orange yellow green blue violet ] fd<span class="hljs-number"> 100 </span>pd rt<span class="hljs-number"> 90 </span>arc<span class="hljs-number"> 360 </span>20 pu rt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 50 </span>pd arc<span class="hljs-number"> 360 </span>15 pu fd<span class="hljs-number"> 15 </span>setcolor pick [ red orange yellow green blue violet ] lt<span class="hljs-number"> 90 </span>pd bk<span class="hljs-number"> 50 </span>lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 25 </span>pu home bk<span class="hljs-number"> 100 </span>lt<span class="hljs-number"> 90 </span>fd<span class="hljs-number"> 100 </span>pd arc<span class="hljs-number"> 360 </span>20 pu home<br></code></pre></td></tr></table></figure>
+
+<p>经过解释器后结果：</p>
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-12.png"></p>
+<hr>
+<h2 id="TTL隐写"><a href="#TTL隐写" class="headerlink" title="TTL隐写"></a>TTL隐写</h2><p>TTL是 Time To Live的缩写，该字段指定IP包被路由器丢弃之前允许通过的最大网段数量。TTL是IPv4报头的一个8bit字段。注意：TTL与DNS TTL有区别。二者都是生存时间，前者指ICMP包的转发次数（跳数），后者指域名解析信息在DNS中的存在时间。</p>
+<p>IP报文在路由间穿梭的时候每经过一个路由，TTL就会减1。<br>这个东西是用来防止数据过多的。计算机网络知识。</p>
+<p>大多数情况下通常只需要经过很小的跳数就能完成报文的转发，远远比上限255小得多，所以我们可以用TTL值的前两位来进行传输隐藏数据。<br>所以加密的方法就是把一个ASCII码分4截，分到4个TTL里面，有点像是最低位像素的隐写。</p>
+<p>TTL隐写解码脚本：</p>
+<p>解码步骤</p>
+<ol>
+<li>转成2进制，</li>
+<li>写个脚本。取出前两位。重新组合。再以8位一组。</li>
+<li>转换为16进制字符。再将16进制字符转换为字符</li>
+</ol>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs scss">import binascii<br>with <span class="hljs-built_in">open</span>(&#x27;attachment.txt&#x27;,&#x27;r&#x27;) as fp:<br>    a=fp.<span class="hljs-built_in">readlines</span>()<br>    p=[]<br>    for x in <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):<br>       p.<span class="hljs-built_in">append</span>(<span class="hljs-built_in">int</span>(a[x])) <br>    s=<span class="hljs-string">&#x27;&#x27;</span><br>    for i in p:<br>        <span class="hljs-built_in">if</span>(i==<span class="hljs-number">63</span>):<br>            b=<span class="hljs-string">&#x27;00&#x27;</span><br>        <span class="hljs-built_in">elif</span>(i==<span class="hljs-number">127</span>):<br>            b=<span class="hljs-string">&#x27;01&#x27;</span><br>        <span class="hljs-built_in">elif</span>(i==<span class="hljs-number">191</span>):<br>            b=<span class="hljs-string">&#x27;10&#x27;</span><br>        else:<br>            b=<span class="hljs-string">&#x27;11&#x27;</span><br>        s +=b<br># <span class="hljs-built_in">print</span>(s)<br>flag = <span class="hljs-string">&#x27;&#x27;</span><br>for i in <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(s),<span class="hljs-number">8</span>):<br>    flag += <span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(s[i:i+<span class="hljs-number">8</span>],<span class="hljs-number">2</span>))<br>flag = binascii.<span class="hljs-built_in">unhexlify</span>(flag)<br>wp = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;ans.zip&#x27;</span>,<span class="hljs-string">&#x27;wb&#x27;</span>)<br>wp.<span class="hljs-built_in">write</span>(flag)<br>wp.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
+
+
+
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
