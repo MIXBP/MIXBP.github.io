@@ -6,22 +6,18 @@
   <meta name="keywords" content=" misc ">
   <meta name="description" content="misc学习 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="NewStarCTF2023公开赛道-include0。0源码 12345678910&lt;?phphighlight_file(__FILE__);&#x2F;&#x2F; FLAG in the flag.php$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&#x27;&#x2F;base|rot&#x2F;i&#x27;,$file)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NewStarCTF2023公开赛道-include00">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/20/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00/index.html">
+<meta property="og:title" content="CISCN2024-WEB-easycms">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/25/CISCN2024-WEB-easycms/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="NewStarCTF2023公开赛道-include0。0源码 12345678910&lt;?phphighlight_file(__FILE__);&#x2F;&#x2F; FLAG in the flag.php$file &#x3D; $_GET[&#x27;file&#x27;];if(isset($file) &amp;&amp; !preg_match(&#x27;&#x2F;base|rot&#x2F;i&#x27;,$file)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mixbp.github.io/image/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00-1.png">
-<meta property="article:published_time" content="2025-05-20T10:37:34.000Z">
-<meta property="article:modified_time" content="2025-05-20T13:45:59.925Z">
+<meta property="article:published_time" content="2025-05-25T11:56:05.000Z">
+<meta property="article:modified_time" content="2025-05-25T11:57:40.600Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="php伪协议">
-<meta property="article:tag" content="filter伪协议变种">
-<meta property="article:tag" content="二次编码绕过">
+<meta property="article:tag" content="ssrf">
+<meta property="article:tag" content="302跳转">
+<meta property="article:tag" content="反弹shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/NewStarCTF2023%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-include00-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -120,7 +116,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(139)</small>
+                <small>(145)</small>
             
         </div>
     </li>
@@ -147,7 +143,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(22)</small>
+            <small>(27)</small>
         </div>
         
     </li>
@@ -162,7 +158,7 @@
         <div data-rel="比赛复现">
             
             比赛复现
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -200,8 +196,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="139">
-<input type="hidden" id="yelog_site_word_count" value="239.4k">
+<input type="hidden" id="yelog_site_posts_number" value="145">
+<input type="hidden" id="yelog_site_word_count" value="246.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -255,7 +251,11 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>.htaccess</a>
+                <i class="iconfont icon-tag"></i><a>.htaccess利用</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>.htaccess配置prce绕过正则匹配</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -292,6 +292,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>16进制加SQL预处理绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>302跳转</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -375,6 +379,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>环境变量</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>截断绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>经典盲文</a>
             </li>
         
@@ -427,6 +439,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>任意文件读取</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>任意文件下载</a>
             </li>
         
@@ -468,6 +484,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>双大括号过滤</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>双写绕过../过滤</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -583,6 +603,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>长度限制绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>正则表达式</a>
             </li>
         
@@ -695,6 +719,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>error_log结合log_errors自定义错误日志</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Error/Exception</a>
             </li>
         
@@ -772,6 +800,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>handler读表</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hash_hmac绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hex编码绕过</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -863,6 +899,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mysql</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MySQL</a>
             </li>
         
@@ -924,6 +964,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP_SESSION_UPLOAD_PROGRESS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>php-r</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1076,6 +1120,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>SoapClient类进行SSRF</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>sql</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1239,8 +1287,62 @@
         
         
         <a  class="All 刷题笔记 "
+           href="/2025/05/25/CISCN2024-WEB-easycms/"
+           data-tag="ssrf,302跳转,反弹shell"
+           data-author="" >
+            <span class="post-title" title="CISCN2024-WEB-easycms">CISCN2024-WEB-easycms</span>
+            <span class="post-date" title="2025-05-25 19:56:05">2025/05/25</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/23/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Blackcat/"
+           data-tag="代码审计,RCE,环境变量,hash_hmac绕过"
+           data-author="" >
+            <span class="post-title" title="羊城杯2020-Blackcat">羊城杯2020-Blackcat</span>
+            <span class="post-date" title="2025-05-23 20:50:09">2025/05/23</span>
+        </a>
+        
+        
+        <a  class="All 比赛复现 "
+           href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
+           data-tag="ssti,ssrf,RCE,sql"
+           data-author="" >
+            <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
+            <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/22/NESTCTF2019-LoveMath2/"
+           data-tag="RCE,长度限制绕过,异或绕过"
+           data-author="" >
+            <span class="post-title" title="NESTCTF2019-LoveMath2">NESTCTF2019-LoveMath2</span>
+            <span class="post-date" title="2025-05-22 20:28:03">2025/05/22</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/21/virink-2019-files-share/"
+           data-tag="任意文件读取,双写绕过../过滤"
+           data-author="" >
+            <span class="post-title" title="virink_2019_files_share">virink_2019_files_share</span>
+            <span class="post-date" title="2025-05-21 21:42:07">2025/05/21</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/21/CISCN2024-WEB-simple-php/"
+           data-tag="反弹shell,php-r,截断绕过,hex编码绕过,session文件包含,mysql"
+           data-author="" >
+            <span class="post-title" title="CISCN2024-WEB-simple_php">CISCN2024-WEB-simple_php</span>
+            <span class="post-date" title="2025-05-21 20:42:58">2025/05/21</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
            href="/2025/05/20/XNUCA2019Qualifier-EasyPHP/"
-           data-tag=".htaccess"
+           data-tag=".htaccess利用,error_log结合log_errors自定义错误日志,.htaccess配置prce绕过正则匹配"
            data-author="" >
             <span class="post-title" title="XNUCA2019Qualifier-EasyPHP">XNUCA2019Qualifier-EasyPHP</span>
             <span class="post-date" title="2025-05-20 21:42:14">2025/05/20</span>
@@ -1267,7 +1369,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Easyphp2/"
-           data-tag="文件包含,php代码审计,getshell,php伪协议,二次编码绕过,提权"
+           data-tag="文件包含,getshell,php代码审计,php伪协议,二次编码绕过,提权"
            data-author="" >
             <span class="post-title" title="羊城杯2020-Easyphp2">羊城杯2020-Easyphp2</span>
             <span class="post-date" title="2025-05-20 17:39:03">2025/05/20</span>
@@ -1276,7 +1378,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="python反序列化,外带数据,pickle反序列化,反弹shell"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -1492,7 +1594,7 @@
         
         <a  class="All "
            href="/2025/04/25/N1CTF2018-eating-cms/"
-           data-tag="代码审计,文件包含,信息搜集,文件上传,rce,parse_url绕过,parse_str绕过"
+           data-tag="代码审计,信息搜集,文件包含,文件上传,rce,parse_url绕过,parse_str绕过"
            data-author="" >
             <span class="post-title" title="N1CTF2018-eating_cms">N1CTF2018-eating_cms</span>
             <span class="post-date" title="2025-04-25 20:43:52">2025/04/25</span>
@@ -1600,7 +1702,7 @@
         
         <a  class="All "
            href="/2025/04/19/MakePHPGreatAgain/"
-           data-tag="require_once,session文件包含,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
+           data-tag="session文件包含,require_once,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
            data-author="" >
             <span class="post-title" title="MakePHPGreatAgain">MakePHPGreatAgain</span>
             <span class="post-date" title="2025-04-19 20:29:51">2025/04/19</span>
@@ -1663,7 +1765,7 @@
         
         <a  class="All "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="刷题笔记,php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="刷题笔记,代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -1681,7 +1783,7 @@
         
         <a  class="All 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,upload,时间盲注,RCE,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,时间盲注,CVE,目录穿越,内存马,明文攻击,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -1717,7 +1819,7 @@
         
         <a  class="All "
            href="/2025/04/14/SUCTF2019-EasyWeb/"
-           data-tag="文件上传,.haccess,无字母数字RCE,异或绕过"
+           data-tag="文件上传,异或绕过,.haccess,无字母数字RCE"
            data-author="" >
             <span class="post-title" title="SUCTF2019-EasyWeb">SUCTF2019-EasyWeb</span>
             <span class="post-date" title="2025-04-14 17:33:10">2025/04/14</span>
@@ -1924,7 +2026,7 @@
         
         <a  class="All "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="刷题笔记,代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
+           data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -1960,7 +2062,7 @@
         
         <a  class="All "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
-           data-tag="刷题笔记,无字母数字RCE,异或绕过,取反绕过"
+           data-tag="刷题笔记,异或绕过,无字母数字RCE,取反绕过"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
             <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
@@ -2140,7 +2242,7 @@
         
         <a  class="All "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="刷题笔记,sql注入,php反序列化,ssrf"
+           data-tag="刷题笔记,sql注入,ssrf,php反序列化"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
@@ -2533,12 +2635,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-11 21:50:12'>2025-04-17 21:54</time>
+            Created At : <time class="date" title='Updated At: 2025-05-24 14:54:24'>2025-04-17 21:54</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:6.2k</span>
+        <span>Count:6.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2568,7 +2670,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#png%E5%AE%BD%E9%AB%98CRC%E7%88%86%E7%A0%B4"><span class="toc-text">png宽高CRC爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB%E9%9A%90%E5%86%99-%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="toc-text">LSB隐写+数据提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyc%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">pyc反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%8A%A5%E7%A0%81"><span class="toc-text">电报码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E4%BA%94%E7%AC%94%E7%BC%96%E7%A0%81"><span class="toc-text">汉字五笔编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E5%BA%A6%E9%9A%90%E5%86%99"><span class="toc-text">零宽度隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-text">栅栏加密&#x2F;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-text">凯撒密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E7%A2%B0%E6%92%9E"><span class="toc-text">CRC碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTMF%E6%8B%A8%E5%8F%B7%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="toc-text">DTMF拨号音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81"><span class="toc-text">手机键盘密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exif%E4%BF%A1%E6%81%AF%E4%B8%8Eexiftool"><span class="toc-text">exif信息与exiftool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mimikatz%E4%B8%8Elsass"><span class="toc-text">mimikatz与lsass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F"><span class="toc-text">TLS流量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsteg%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">zsteg工具的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86"><span class="toc-text">DES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAR"><span class="toc-text">RAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USB%E9%94%AE%E7%9B%98%E9%9A%90%E5%86%99%EF%BC%88Tshark%E4%B8%8EUsbKeyboardDataHacker-py%EF%BC%89"><span class="toc-text">USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Tshark-exe%E5%B7%A5%E5%85%B7%E6%8F%90%E5%8F%96usb%E9%94%AE%E7%9B%98%E6%95%B0%E6%8D%AE"><span class="toc-text">使用Tshark.exe工具提取usb键盘数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">使用脚本提取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-text">维吉尼亚密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logo%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">logo解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TTL%E9%9A%90%E5%86%99"><span class="toc-text">TTL隐写</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#png%E5%AE%BD%E9%AB%98CRC%E7%88%86%E7%A0%B4"><span class="toc-text">png宽高CRC爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB%E9%9A%90%E5%86%99-%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="toc-text">LSB隐写+数据提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyc%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">pyc反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%8A%A5%E7%A0%81"><span class="toc-text">电报码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%96%87"><span class="toc-text">盲文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E4%BA%94%E7%AC%94%E7%BC%96%E7%A0%81"><span class="toc-text">汉字五笔编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E5%BA%A6%E9%9A%90%E5%86%99"><span class="toc-text">零宽度隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-text">栅栏加密&#x2F;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-text">凯撒密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E7%A2%B0%E6%92%9E"><span class="toc-text">CRC碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTMF%E6%8B%A8%E5%8F%B7%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="toc-text">DTMF拨号音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81"><span class="toc-text">手机键盘密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exif%E4%BF%A1%E6%81%AF%E4%B8%8Eexiftool"><span class="toc-text">exif信息与exiftool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mimikatz%E4%B8%8Elsass"><span class="toc-text">mimikatz与lsass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F"><span class="toc-text">TLS流量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsteg%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">zsteg工具的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86"><span class="toc-text">DES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E5%8A%A0%E5%AF%86"><span class="toc-text">AES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAR"><span class="toc-text">RAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USB%E9%94%AE%E7%9B%98%E9%9A%90%E5%86%99%EF%BC%88Tshark%E4%B8%8EUsbKeyboardDataHacker-py%EF%BC%89"><span class="toc-text">USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Tshark-exe%E5%B7%A5%E5%85%B7%E6%8F%90%E5%8F%96usb%E9%94%AE%E7%9B%98%E6%95%B0%E6%8D%AE"><span class="toc-text">使用Tshark.exe工具提取usb键盘数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">使用脚本提取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-text">维吉尼亚密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logo%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">logo解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TTL%E9%9A%90%E5%86%99"><span class="toc-text">TTL隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9F%A9%E9%98%B5%E6%8F%90%E5%8F%96"><span class="toc-text">数据矩阵提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E4%BF%A1%E7%A0%81"><span class="toc-text">汉信码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QRazyBox"><span class="toc-text">QRazyBox</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2694,6 +2796,9 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-number">0086 </span><span class="hljs-number">1562 </span><span class="hljs-number">2535 </span><span class="hljs-number">5174</span><br> <span class="hljs-string">人</span>    <span class="hljs-string">工</span>   <span class="hljs-string">智</span>   <span class="hljs-string">能</span><br></code></pre></td></tr></table></figure>
 
 <hr>
+<h2 id="盲文"><a href="#盲文" class="headerlink" title="盲文"></a>盲文</h2><p>盲文加解密在线网站：</p>
+<p><a target="_blank" rel="noopener" href="https://www.lddgo.net/common/braille">https://www.lddgo.net/common/braille</a></p>
+<hr>
 <h2 id="汉字五笔编码"><a href="#汉字五笔编码" class="headerlink" title="汉字五笔编码"></a><strong>汉字五笔编码</strong></h2><p>汉字五笔编码在线网站查询：<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/wubi.php">https://www.qqxiuzi.cn/bianma/wubi.php</a></p>
 <p>例如：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">bnhn </span>s wwy vffg vffg rrhy fhnv<br>也   要 从   娃    娃  抓    起<br></code></pre></td></tr></table></figure>
@@ -2795,6 +2900,18 @@
 <p>很像base64，并且base64解码后前面有Salted</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gcode">例如：U<span class="hljs-number">2</span>FsdGVkX<span class="hljs-number">1</span>+zHjSBeYPtWQ<span class="hljs-attr">VSwXzcVFZLu6</span>Q<span class="hljs-name">m0</span>To/KeuH<span class="hljs-name">g8</span>vKAxFrVQ==<br>base<span class="hljs-number">64</span>解码后<br>Salted__<span class="hljs-number">4</span>y홅R|ܔVK&amp;Ѻ?)뇃ˊkU<br></code></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="AES加密"><a href="#AES加密" class="headerlink" title="AES加密"></a>AES加密</h2><p>在线加解密网站：<a target="_blank" rel="noopener" href="https://www.jijie.ink/tool/aes">https://www.jijie.ink/tool/aes</a></p>
+<p>AES（Advanced Encryption Standard）即高级加密标准，是一种广泛使用的对称加密算法，由美国国家标准与技术研究院（NIST）于2001年发布，用于保护电子数据的机密性。AES算法是替代原先DES（数据加密标准）算法的，因为它提供了更高的安全性。AES加密过程是可逆的，意味着使用相同的密钥可以解密加密的数据。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">U2FsdGVkX1/nSQN+hoHL8OwV9iJB/mSdKk5dmusulz4=<br></code></pre></td></tr></table></figure>
+
+<p>并且得到密钥：<code>Tokyo</code></p>
+<p>解密得到：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">CCGandGulu</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-13.png"></p>
+<hr>
 <h2 id="RAR"><a href="#RAR" class="headerlink" title="RAR"></a>RAR</h2><p>RAR是有四个文件块组成的，分别是分别是标记块、归档头部块、文件块、结束块，这些块之间没有固定地先后顺序，但要求第一个块必须是标志块并且其后紧跟一个归档头部块。每个块都包含以下内容：</p>
 <p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-7.png"></p>
 <p>归档头部块和文件块的内容较多，仅列出每个块头部内容：</p>
@@ -2855,8 +2972,18 @@
 </ol>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs scss">import binascii<br>with <span class="hljs-built_in">open</span>(&#x27;attachment.txt&#x27;,&#x27;r&#x27;) as fp:<br>    a=fp.<span class="hljs-built_in">readlines</span>()<br>    p=[]<br>    for x in <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):<br>       p.<span class="hljs-built_in">append</span>(<span class="hljs-built_in">int</span>(a[x])) <br>    s=<span class="hljs-string">&#x27;&#x27;</span><br>    for i in p:<br>        <span class="hljs-built_in">if</span>(i==<span class="hljs-number">63</span>):<br>            b=<span class="hljs-string">&#x27;00&#x27;</span><br>        <span class="hljs-built_in">elif</span>(i==<span class="hljs-number">127</span>):<br>            b=<span class="hljs-string">&#x27;01&#x27;</span><br>        <span class="hljs-built_in">elif</span>(i==<span class="hljs-number">191</span>):<br>            b=<span class="hljs-string">&#x27;10&#x27;</span><br>        else:<br>            b=<span class="hljs-string">&#x27;11&#x27;</span><br>        s +=b<br># <span class="hljs-built_in">print</span>(s)<br>flag = <span class="hljs-string">&#x27;&#x27;</span><br>for i in <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(s),<span class="hljs-number">8</span>):<br>    flag += <span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(s[i:i+<span class="hljs-number">8</span>],<span class="hljs-number">2</span>))<br>flag = binascii.<span class="hljs-built_in">unhexlify</span>(flag)<br>wp = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;ans.zip&#x27;</span>,<span class="hljs-string">&#x27;wb&#x27;</span>)<br>wp.<span class="hljs-built_in">write</span>(flag)<br>wp.<span class="hljs-built_in">close</span>()<br></code></pre></td></tr></table></figure>
 
-
-
+<hr>
+<h2 id="数据矩阵提取"><a href="#数据矩阵提取" class="headerlink" title="数据矩阵提取"></a>数据矩阵提取</h2><p>在线数据提取网站：</p>
+<p><a target="_blank" rel="noopener" href="https://online-barcode-reader.inliteresearch.com/">https://online-barcode-reader.inliteresearch.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://zxing.org/w/decode">https://zxing.org/w/decode</a></p>
+<p>例如：</p>
+<p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-14.png"></p>
+<hr>
+<h2 id="汉信码"><a href="#汉信码" class="headerlink" title="汉信码"></a>汉信码</h2><p><img src="/../image/misc%E5%AD%A6%E4%B9%A0-15.png"></p>
+<p>使用中国编码app能扫出来</p>
+<hr>
+<h2 id="QRazyBox"><a href="#QRazyBox" class="headerlink" title="QRazyBox"></a>QRazyBox</h2><p>QRazyBox 是一个基于 Web 的应用程序（工具包），用于分析和恢复损坏的 QR 码。QRazyBox允许通过使用类似油漆的编辑器重新绘制和重建QR码来恢复QR码。它还提供了几个子工具，可更快、更高效地进行分析和恢复。</p>
+<p>网址：<a target="_blank" rel="noopener" href="https://merri.cx/qrazybox/">https://merri.cx/qrazybox/</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
