@@ -6,22 +6,26 @@
   <meta name="keywords" content=" misc ">
   <meta name="description" content="misc学习 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="HFCTF2021Final-easyflask首先很简单利用任意文件读取漏洞拿到源码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#!&#x2F;usr&#x2F;bin&#x2F;python3.6import osimport picklefrom ba">
+<meta name="description" content="HarekazeCTF2019-EasyNotes首先打开网页  发现有一个Get flag，点击以后显示You are not an admin :( 登录之后发现有几个功能点，可以添加节点，然后使用Export导出  我们查看源码：发现想要拿到flag的条件是$_SESSION[&#39;admin&#39;]&#x3D;true  如果我们能控制session文件，就可以拿到flag了。  并且我们可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HFCTF2021Final-easyflask">
-<meta property="og:url" content="https://mixbp.github.io/master/2025/05/26/HFCTF2021Final-easyflask/index.html">
+<meta property="og:title" content="HarekazeCTF2019-EasyNotes">
+<meta property="og:url" content="https://mixbp.github.io/master/2025/05/29/HarekazeCTF2019-EasyNotes/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="HFCTF2021Final-easyflask首先很简单利用任意文件读取漏洞拿到源码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#!&#x2F;usr&#x2F;bin&#x2F;python3.6import osimport picklefrom ba">
+<meta property="og:description" content="HarekazeCTF2019-EasyNotes首先打开网页  发现有一个Get flag，点击以后显示You are not an admin :( 登录之后发现有几个功能点，可以添加节点，然后使用Export导出  我们查看源码：发现想要拿到flag的条件是$_SESSION[&#39;admin&#39;]&#x3D;true  如果我们能控制session文件，就可以拿到flag了。  并且我们可">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-05-26T14:13:47.000Z">
-<meta property="article:modified_time" content="2025-05-26T15:01:09.254Z">
+<meta property="og:image" content="https://mixbp.github.io/image/HarekazeCTF2019-EasyNotes-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HarekazeCTF2019-EasyNotes-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HarekazeCTF2019-EasyNotes-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HarekazeCTF2019-EasyNotes-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/HarekazeCTF2019-EasyNotes-5.png">
+<meta property="article:published_time" content="2025-05-29T06:28:22.000Z">
+<meta property="article:modified_time" content="2025-05-29T06:42:34.762Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="反弹shell">
-<meta property="article:tag" content="外带数据">
-<meta property="article:tag" content="flask环境变量">
-<meta property="article:tag" content="pickle反序列化">
-<meta property="article:tag" content="session伪造">
+<meta property="article:tag" content="代码审计">
+<meta property="article:tag" content="session反序列化">
+<meta property="article:tag" content="session存储文件伪造">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/HarekazeCTF2019-EasyNotes-1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -120,7 +124,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(148)</small>
+                <small>(154)</small>
             
         </div>
     </li>
@@ -147,7 +151,7 @@
         <div data-rel="刷题笔记">
             
             刷题笔记
-            <small>(108)</small>
+            <small>(113)</small>
         </div>
         
     </li>
@@ -162,7 +166,7 @@
         <div data-rel="比赛复现">
             
             比赛复现
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -200,8 +204,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="148">
-<input type="hidden" id="yelog_site_word_count" value="252.6k">
+<input type="hidden" id="yelog_site_posts_number" value="154">
+<input type="hidden" id="yelog_site_word_count" value="258.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -267,6 +271,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>/cwd当前进程运行目录</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>\转义单引号</a>
             </li>
         
@@ -320,6 +328,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>布尔盲注</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>传入ARGV的文件，Perl会将传入的参数作为文件名读出来</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -460,6 +472,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>日志包含</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>软链接的压缩包的制作</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -691,6 +707,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>config获取密钥</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>creat_function</a>
             </li>
         
@@ -783,6 +803,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>flask伪造session</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Flask源码读取</a>
             </li>
         
@@ -863,6 +887,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>js原型链污染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>jsfuck编码</a>
             </li>
         
@@ -888,6 +916,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>jwt伪造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Laravel</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -971,6 +1003,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Perl后端文件上传</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>perl语言漏洞</a>
             </li>
         
@@ -1028,6 +1064,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>PHP原生类</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>phpstorm全局查找</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1120,6 +1160,14 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>selet into outfile</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>session存储文件伪造</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>session反序列化</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1239,6 +1287,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unzip()存在软链接攻击</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>upload</a>
             </li>
         
@@ -1312,6 +1364,60 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/29/SWPU2019-Web3/"
+           data-tag="flask伪造session,unzip()存在软链接攻击,软链接的压缩包的制作,/cwd当前进程运行目录"
+           data-author="" >
+            <span class="post-title" title="SWPU2019-Web3">SWPU2019-Web3</span>
+            <span class="post-date" title="2025-05-29 14:48:30">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/29/HarekazeCTF2019-EasyNotes/"
+           data-tag="代码审计,session反序列化,session存储文件伪造"
+           data-author="" >
+            <span class="post-title" title="HarekazeCTF2019-EasyNotes">HarekazeCTF2019-EasyNotes</span>
+            <span class="post-date" title="2025-05-29 14:28:22">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/29/CISCN2019%E6%80%BB%E5%86%B3%E8%B5%9BDay1Web4-Laravel1/"
+           data-tag="代码审计,Laravel,php反序列化,phpstorm全局查找"
+           data-author="" >
+            <span class="post-title" title="CISCN2019总决赛Day1Web4-Laravel1">CISCN2019总决赛Day1Web4-Laravel1</span>
+            <span class="post-date" title="2025-05-29 12:06:39">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="All 比赛复现 "
+           href="/2025/05/27/Litctf%E5%A4%8D%E7%8E%B0/"
+           data-tag="php反序列化,ssrf,js原型链污染,匿名函数"
+           data-author="" >
+            <span class="post-title" title="Litctf复现">Litctf复现</span>
+            <span class="post-date" title="2025-05-27 15:18:17">2025/05/27</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/27/CSAWQual2016-i-got-id/"
+           data-tag="Perl后端文件上传,传入ARGV的文件，Perl会将传入的参数作为文件名读出来"
+           data-author="" >
+            <span class="post-title" title="CSAWQual2016-i_got_id">CSAWQual2016-i_got_id</span>
+            <span class="post-date" title="2025-05-27 14:37:51">2025/05/27</span>
+        </a>
+        
+        
+        <a  class="All 刷题笔记 "
+           href="/2025/05/27/watevrCTF-2019-Supercalc/"
+           data-tag="ssti,session伪造,python命令执行,config获取密钥"
+           data-author="" >
+            <span class="post-title" title="watevrCTF-2019-Supercalc">watevrCTF-2019-Supercalc</span>
+            <span class="post-date" title="2025-05-27 13:53:17">2025/05/27</span>
+        </a>
         
         
         <a  class="All 刷题笔记 "
@@ -1550,7 +1656,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/05/07/EIS2019-EzPOP/"
-           data-tag="base64+filter协议绕过死亡exit,php反序列化,getshell"
+           data-tag="php反序列化,base64+filter协议绕过死亡exit,getshell"
            data-author="" >
             <span class="post-title" title="EIS2019-EzPOP">EIS2019-EzPOP</span>
             <span class="post-date" title="2025-05-07 14:15:57">2025/05/07</span>
@@ -1613,7 +1719,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/04/27/SUCTF2018-annonymous/"
-           data-tag="creat_function,匿名函数"
+           data-tag="匿名函数,creat_function"
            data-author="" >
             <span class="post-title" title="SUCTF2018-annonymous">SUCTF2018-annonymous</span>
             <span class="post-date" title="2025-04-27 19:37:57">2025/04/27</span>
@@ -1892,7 +1998,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/04/13/TGCTF-2025wp/"
-           data-tag="ssti,rce,upload"
+           data-tag="ssti,upload,rce"
            data-author="" >
             <span class="post-title" title="TGCTF-2025">TGCTF-2025</span>
             <span class="post-date" title="2025-04-13 15:53:03">2025/04/13</span>
@@ -2000,7 +2106,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/04/02/RCTF2015-EasySQL/"
-           data-tag="二次注入,报错注入,正则匹配查询,reverse"
+           data-tag="报错注入,二次注入,正则匹配查询,reverse"
            data-author="" >
             <span class="post-title" title="RCTF2015-EasySQL">RCTF2015-EasySQL</span>
             <span class="post-date" title="2025-04-02 17:21:06">2025/04/02</span>
@@ -2081,7 +2187,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
+           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -2297,7 +2403,7 @@
         
         <a  class="All 刷题笔记 "
            href="/2025/03/20/%E7%BD%91%E9%BC%8E%E6%9D%AF2018Fakebook1/"
-           data-tag="sql注入,ssrf,php反序列化"
+           data-tag="sql注入,php反序列化,ssrf"
            data-author="" >
             <span class="post-title" title="网鼎杯2018Fakebook1">网鼎杯2018Fakebook1</span>
             <span class="post-date" title="2025-03-20 23:53:35">2025/03/20</span>
@@ -2690,7 +2796,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2025-05-24 14:54:24'>2025-04-17 21:54</time>
+            Created At : <time class="date" title='Updated At: 2025-05-27 15:16:42'>2025-04-17 21:54</time>
         
     </div>
     <div class="article-meta">
@@ -2725,7 +2831,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#png%E5%AE%BD%E9%AB%98CRC%E7%88%86%E7%A0%B4"><span class="toc-text">png宽高CRC爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB%E9%9A%90%E5%86%99-%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="toc-text">LSB隐写+数据提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyc%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">pyc反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%8A%A5%E7%A0%81"><span class="toc-text">电报码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%96%87"><span class="toc-text">盲文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E4%BA%94%E7%AC%94%E7%BC%96%E7%A0%81"><span class="toc-text">汉字五笔编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E5%BA%A6%E9%9A%90%E5%86%99"><span class="toc-text">零宽度隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-text">栅栏加密&#x2F;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-text">凯撒密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E7%A2%B0%E6%92%9E"><span class="toc-text">CRC碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTMF%E6%8B%A8%E5%8F%B7%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="toc-text">DTMF拨号音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81"><span class="toc-text">手机键盘密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exif%E4%BF%A1%E6%81%AF%E4%B8%8Eexiftool"><span class="toc-text">exif信息与exiftool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mimikatz%E4%B8%8Elsass"><span class="toc-text">mimikatz与lsass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F"><span class="toc-text">TLS流量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsteg%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">zsteg工具的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86"><span class="toc-text">DES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E5%8A%A0%E5%AF%86"><span class="toc-text">AES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAR"><span class="toc-text">RAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USB%E9%94%AE%E7%9B%98%E9%9A%90%E5%86%99%EF%BC%88Tshark%E4%B8%8EUsbKeyboardDataHacker-py%EF%BC%89"><span class="toc-text">USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Tshark-exe%E5%B7%A5%E5%85%B7%E6%8F%90%E5%8F%96usb%E9%94%AE%E7%9B%98%E6%95%B0%E6%8D%AE"><span class="toc-text">使用Tshark.exe工具提取usb键盘数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">使用脚本提取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-text">维吉尼亚密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logo%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">logo解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TTL%E9%9A%90%E5%86%99"><span class="toc-text">TTL隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9F%A9%E9%98%B5%E6%8F%90%E5%8F%96"><span class="toc-text">数据矩阵提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E4%BF%A1%E7%A0%81"><span class="toc-text">汉信码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QRazyBox"><span class="toc-text">QRazyBox</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="toc-text">zip伪加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%B0%B4%E5%8D%B0"><span class="toc-text">盲水印</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E3%80%81%E6%96%87%E4%BB%B6%E5%B0%BE"><span class="toc-text">常见文件头、文件尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base64%E9%9A%90%E5%86%99"><span class="toc-text">base64隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS%E4%BA%A4%E6%8D%A2%E6%95%B0%E6%8D%AE%E6%B5%81%E5%AE%9E%E7%8E%B0%E9%9A%90%E5%86%99"><span class="toc-text">NTFS交换数据流实现隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outguess%E9%9A%90%E5%86%99"><span class="toc-text">outguess隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-text">字频隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#png%E5%AE%BD%E9%AB%98CRC%E7%88%86%E7%A0%B4"><span class="toc-text">png宽高CRC爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB%E9%9A%90%E5%86%99-%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96"><span class="toc-text">LSB隐写+数据提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyc%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">pyc反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E6%8A%A5%E7%A0%81"><span class="toc-text">电报码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B2%E6%96%87"><span class="toc-text">盲文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E5%AD%97%E4%BA%94%E7%AC%94%E7%BC%96%E7%A0%81"><span class="toc-text">汉字五笔编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%B6%E5%AE%BD%E5%BA%A6%E9%9A%90%E5%86%99"><span class="toc-text">零宽度隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%8F%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86"><span class="toc-text">栅栏加密&#x2F;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-text">凯撒密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E7%A2%B0%E6%92%9E"><span class="toc-text">CRC碰撞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTMF%E6%8B%A8%E5%8F%B7%E9%9F%B3%E8%AF%86%E5%88%AB"><span class="toc-text">DTMF拨号音识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81"><span class="toc-text">手机键盘密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exif%E4%BF%A1%E6%81%AF%E4%B8%8Eexiftool"><span class="toc-text">exif信息与exiftool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mimikatz%E4%B8%8Elsass"><span class="toc-text">mimikatz与lsass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F"><span class="toc-text">TLS流量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsteg%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">zsteg工具的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86"><span class="toc-text">DES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E5%8A%A0%E5%AF%86"><span class="toc-text">AES加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAR"><span class="toc-text">RAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#USB%E9%94%AE%E7%9B%98%E9%9A%90%E5%86%99%EF%BC%88Tshark%E4%B8%8EUsbKeyboardDataHacker-py%EF%BC%89"><span class="toc-text">USB键盘隐写（Tshark与UsbKeyboardDataHacker.py）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Tshark-exe%E5%B7%A5%E5%85%B7%E6%8F%90%E5%8F%96usb%E9%94%AE%E7%9B%98%E6%95%B0%E6%8D%AE"><span class="toc-text">使用Tshark.exe工具提取usb键盘数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">使用脚本提取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81"><span class="toc-text">维吉尼亚密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logo%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">logo解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TTL%E9%9A%90%E5%86%99"><span class="toc-text">TTL隐写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9F%A9%E9%98%B5%E6%8F%90%E5%8F%96"><span class="toc-text">数据矩阵提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%89%E4%BF%A1%E7%A0%81"><span class="toc-text">汉信码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#QRazyBox"><span class="toc-text">QRazyBox</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hidden-word%E9%9A%90%E5%86%99"><span class="toc-text">hidden-word隐写</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -3039,6 +3145,9 @@
 <hr>
 <h2 id="QRazyBox"><a href="#QRazyBox" class="headerlink" title="QRazyBox"></a>QRazyBox</h2><p>QRazyBox 是一个基于 Web 的应用程序（工具包），用于分析和恢复损坏的 QR 码。QRazyBox允许通过使用类似油漆的编辑器重新绘制和重建QR码来恢复QR码。它还提供了几个子工具，可更快、更高效地进行分析和恢复。</p>
 <p>网址：<a target="_blank" rel="noopener" href="https://merri.cx/qrazybox/">https://merri.cx/qrazybox/</a></p>
+<hr>
+<h1 id="hidden-word隐写"><a href="#hidden-word隐写" class="headerlink" title="hidden-word隐写"></a>hidden-word隐写</h1><p>在线加解密网站：<a target="_blank" rel="noopener" href="https://hidden-word.top/">https://hidden-word.top/</a></p>
+<hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
