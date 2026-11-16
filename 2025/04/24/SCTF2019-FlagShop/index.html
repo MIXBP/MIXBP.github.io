@@ -6,34 +6,17 @@
   <meta name="keywords" content=" 刷题笔记 , ruby模块注入 , jwt伪造 , ruby预定义字符 ">
   <meta name="description" content="SCTF2019-FlagShop | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3997,6 +3981,7 @@
     <div class="article-meta">
         
         <span>字数:1.1k</span>
+        <span>预计阅读 5 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4043,11 +4028,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="SCTF2019-FlagShop"><a href="#SCTF2019-FlagShop" class="headerlink" title="SCTF2019-FlagShop"></a>SCTF2019-FlagShop</h1><p>一进来是这样的页面</p>
-<p><img src="/../image/SCTF2019-FlagShop-1.png"></p>
+<p><img loading="lazy" src="/../image/SCTF2019-FlagShop-1.png"></p>
 <p>点reset会重置，按work我们的JinKela就会随机增加，先抓个包看看</p>
-<p><img src="/../image/SCTF2019-FlagShop-2.png"></p>
+<p><img loading="lazy" src="/../image/SCTF2019-FlagShop-2.png"></p>
 <p>可以看到Cookie是标准的三段式，可以猜测是JWT，在<a target="_blank" rel="noopener" href="https://jwt.io/">jwt网站</a>进行一个解密</p>
-<p><img src="/../image/SCTF2019-FlagShop-3.png"></p>
+<p><img loading="lazy" src="/../image/SCTF2019-FlagShop-3.png"></p>
 <p>这里猜测我们只需要将jkl的值改写的超过买flag的值即可，所以我们现在需要寻找密钥才能修改。</p>
 <p>查看robots.txt，提示我们访问&#x2F;filebak，找到源码</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;sinatra&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;sinatra/cookies&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;sinatra/json&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;jwt&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;securerandom&#x27;</span><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;erb&#x27;</span><br> <br>set <span class="hljs-symbol">:public_folder</span>, <span class="hljs-title class_">File</span>.dirname(<span class="hljs-variable constant_">__FILE__</span>) + <span class="hljs-string">&#x27;/static&#x27;</span><br> <br><span class="hljs-variable constant_">FLAGPRICE</span> = <span class="hljs-number">1000000000000000000000000000</span><br><span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] = <span class="hljs-title class_">SecureRandom</span>.hex(<span class="hljs-number">64</span>)<br> <br>configure <span class="hljs-keyword">do</span><br>  enable <span class="hljs-symbol">:logging</span><br>  file = <span class="hljs-title class_">File</span>.new(<span class="hljs-title class_">File</span>.dirname(<span class="hljs-variable constant_">__FILE__</span>) + <span class="hljs-string">&#x27;/../log/http.log&#x27;</span>,<span class="hljs-string">&quot;a+&quot;</span>)<br>  file.sync = <span class="hljs-literal">true</span><br>  use <span class="hljs-title class_">Rack</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:CommonLogger</span>, file<br><span class="hljs-keyword">end</span><br> <br>get <span class="hljs-string">&quot;/&quot;</span> <span class="hljs-keyword">do</span><br>  redirect <span class="hljs-string">&#x27;/shop&#x27;</span>, <span class="hljs-number">302</span><br><span class="hljs-keyword">end</span><br> <br>get <span class="hljs-string">&quot;/filebak&quot;</span> <span class="hljs-keyword">do</span><br>  content_type <span class="hljs-symbol">:text</span><br>  erb <span class="hljs-variable constant_">IO</span>.binread <span class="hljs-variable constant_">__FILE__</span><br><span class="hljs-keyword">end</span><br> <br>get <span class="hljs-string">&quot;/api/auth&quot;</span> <span class="hljs-keyword">do</span><br>  payload = &#123; <span class="hljs-symbol">uid:</span> <span class="hljs-title class_">SecureRandom</span>.uuid , <span class="hljs-symbol">jkl:</span> <span class="hljs-number">20</span>&#125;<br>  auth = <span class="hljs-variable constant_">JWT</span>.encode payload,<span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] , <span class="hljs-string">&#x27;HS256&#x27;</span><br>  cookies[<span class="hljs-symbol">:auth</span>] = auth<br><span class="hljs-keyword">end</span><br> <br>get <span class="hljs-string">&quot;/api/info&quot;</span> <span class="hljs-keyword">do</span> <span class="hljs-comment">##验证JWT，返回其中的UID和jkl字段</span><br>  islogin<br>  auth = <span class="hljs-variable constant_">JWT</span>.decode cookies[<span class="hljs-symbol">:auth</span>],<span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] , <span class="hljs-literal">true</span>, &#123; <span class="hljs-symbol">algorithm:</span> <span class="hljs-string">&#x27;HS256&#x27;</span> &#125;<br>  json(&#123;<span class="hljs-symbol">uid:</span> auth[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;uid&quot;</span>],<span class="hljs-symbol">jkl:</span> auth[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;jkl&quot;</span>]&#125;)<br><span class="hljs-keyword">end</span><br> <br>get <span class="hljs-string">&quot;/shop&quot;</span> <span class="hljs-keyword">do</span><br>  erb <span class="hljs-symbol">:shop</span><br><span class="hljs-keyword">end</span><br> <br>get <span class="hljs-string">&quot;/work&quot;</span> <span class="hljs-keyword">do</span> <span class="hljs-comment">##处理一个名为do的参数，根据条件修改JWT中的jkl字段</span><br>  islogin<br>  auth = <span class="hljs-variable constant_">JWT</span>.decode cookies[<span class="hljs-symbol">:auth</span>],<span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] , <span class="hljs-literal">true</span>, &#123; <span class="hljs-symbol">algorithm:</span> <span class="hljs-string">&#x27;HS256&#x27;</span> &#125;<br>  auth = auth[<span class="hljs-number">0</span>]<br>  <span class="hljs-keyword">unless</span> params[<span class="hljs-symbol">:SECRET</span>].<span class="hljs-literal">nil</span>?<br>    <span class="hljs-keyword">if</span> <span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>].match(<span class="hljs-string">&quot;<span class="hljs-subst">#&#123;params[<span class="hljs-symbol">:SECRET</span>].match(<span class="hljs-regexp">/[0-9a-z]+/</span>)&#125;</span>&quot;</span>)<br>      puts <span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;FLAG&quot;</span>]<br>    <span class="hljs-keyword">end</span><br>  <span class="hljs-keyword">end</span><br> <br>  <span class="hljs-keyword">if</span> params[<span class="hljs-symbol">:do</span>] == <span class="hljs-string">&quot;<span class="hljs-subst">#&#123;params[<span class="hljs-symbol">:name</span>][<span class="hljs-number">0</span>,<span class="hljs-number">7</span>]&#125;</span> is working&quot;</span> <span class="hljs-keyword">then</span><br> <br>    auth[<span class="hljs-string">&quot;jkl&quot;</span>] = auth[<span class="hljs-string">&quot;jkl&quot;</span>].to_i + <span class="hljs-title class_">SecureRandom</span>.random_number(<span class="hljs-number">10</span>)<br>    auth = <span class="hljs-variable constant_">JWT</span>.encode auth,<span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] , <span class="hljs-string">&#x27;HS256&#x27;</span><br>    cookies[<span class="hljs-symbol">:auth</span>] = auth<br>    <span class="hljs-variable constant_">ERB</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:new</span>(<span class="hljs-string">&quot;&lt;script&gt;alert(&#x27;<span class="hljs-subst">#&#123;params[<span class="hljs-symbol">:name</span>][<span class="hljs-number">0</span>,<span class="hljs-number">7</span>]&#125;</span> working successfully!&#x27;)&lt;/script&gt;&quot;</span>).result<br> <br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br> <br>post <span class="hljs-string">&quot;/shop&quot;</span> <span class="hljs-keyword">do</span>  <span class="hljs-comment">##检查jkl是否足够高，如果足够则向JWT中添加flag字段。</span><br>  islogin<br>  auth = <span class="hljs-variable constant_">JWT</span>.decode cookies[<span class="hljs-symbol">:auth</span>],<span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] , <span class="hljs-literal">true</span>, &#123; <span class="hljs-symbol">algorithm:</span> <span class="hljs-string">&#x27;HS256&#x27;</span> &#125;<br> <br>  <span class="hljs-keyword">if</span> auth[<span class="hljs-number">0</span>][<span class="hljs-string">&quot;jkl&quot;</span>] &lt; <span class="hljs-variable constant_">FLAGPRICE</span> <span class="hljs-keyword">then</span><br> <br>    json(&#123;<span class="hljs-symbol">title:</span> <span class="hljs-string">&quot;error&quot;</span>,<span class="hljs-symbol">message:</span> <span class="hljs-string">&quot;no enough jkl&quot;</span>&#125;)<br>  <span class="hljs-keyword">else</span><br> <br>    auth &lt;&lt; &#123;<span class="hljs-symbol">flag:</span> <span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;FLAG&quot;</span>]&#125;<br>    auth = <span class="hljs-variable constant_">JWT</span>.encode auth,<span class="hljs-variable constant_">ENV</span>[<span class="hljs-string">&quot;SECRET&quot;</span>] , <span class="hljs-string">&#x27;HS256&#x27;</span><br>    cookies[<span class="hljs-symbol">:auth</span>] = auth<br>    json(&#123;<span class="hljs-symbol">title:</span> <span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-symbol">message:</span> <span class="hljs-string">&quot;jkl is good thing&quot;</span>&#125;)<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br> <br> <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">islogin</span><br>  <span class="hljs-keyword">if</span> cookies[<span class="hljs-symbol">:auth</span>].<span class="hljs-literal">nil</span>? <span class="hljs-keyword">then</span><br>    redirect to(<span class="hljs-string">&#x27;/shop&#x27;</span>)<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
@@ -4070,16 +4055,16 @@
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">?SECRET=&amp;name=%3C%25%3D%24%27%25%3E&amp;<span class="hljs-keyword">do</span>=%3C%25%3D%24%27%25%3E%20is%20working<br></code></pre></td></tr></table></figure>
 
 <p>抓work的包然后修改。发送查看响应包发现成功拿到密钥。</p>
-<p><img src="/../image/SCTF2019-FlagShop-4.png"></p>
+<p><img loading="lazy" src="/../image/SCTF2019-FlagShop-4.png"></p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-number">4</span>eb<span class="hljs-number">7215558</span>d<span class="hljs-number">02</span>d<span class="hljs-number">53</span>f<span class="hljs-number">8</span>f<span class="hljs-number">5530</span>a<span class="hljs-number">6173</span><span class="hljs-keyword">c</span><span class="hljs-number">91905448</span>d<span class="hljs-number">8</span>a<span class="hljs-number">4</span>d<span class="hljs-number">70566080</span>f<span class="hljs-number">68</span>db<span class="hljs-number">14025</span>f<span class="hljs-number">8</span>f<span class="hljs-number">00</span>ba<span class="hljs-number">79</span>ca<span class="hljs-number">763</span>bf<span class="hljs-number">909</span>fad<span class="hljs-number">17108621250</span>ff<span class="hljs-number">2150</span>f<span class="hljs-number">04503e9</span>b<span class="hljs-number">447061149076</span>a<span class="hljs-number">55</span>a<span class="hljs-number">6</span>fe<span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
 
 <p>密钥拿到了，然后直接进行jkl的修改使其达到能购买flag。</p>
-<p><img src="/../image/SCTF2019-FlagShop-5.png"></p>
+<p><img loading="lazy" src="/../image/SCTF2019-FlagShop-5.png"></p>
 <p>得到jwt即payload：</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">eyJhbGciOiJIUzI<span class="hljs-number">1</span><span class="hljs-symbol">NiJ9</span>.eyJ<span class="hljs-number">1</span>aWQiOiI<span class="hljs-number">1</span>MjEyMjc<span class="hljs-number">0</span>My<span class="hljs-number">00</span>MWE<span class="hljs-number">4</span>LTRm<span class="hljs-symbol">NjgtYWVlMy0</span>wZDA<span class="hljs-number">4</span><span class="hljs-symbol">NjkyOTljNjYiLCJqa2</span>wiOjFlKzI<span class="hljs-number">3</span>fQ.p<span class="hljs-number">2</span>mR_l<span class="hljs-number">3</span>eFdiUakt<span class="hljs-number">8</span>Z<span class="hljs-number">0</span>vFemkYsUsTLd<span class="hljs-number">1</span>DqcK<span class="hljs-name">G8</span>gQaukM<br></code></pre></td></tr></table></figure>
 
 <p>回到&#x2F;shop点击buy flag然后抓包修改jwt，然后会返回一个新的Cookie，也是jwt格式，base64解码就是flag，这里只要解压前两段即可</p>
-<p><img src="/../image/SCTF2019-FlagShop-6.png"></p>
+<p><img loading="lazy" src="/../image/SCTF2019-FlagShop-6.png"></p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">eyJhbGciOiJIUzI<span class="hljs-number">1</span><span class="hljs-symbol">NiJ9</span>.W<span class="hljs-number">3</span>sidWlkIjoi<span class="hljs-symbol">NTIxMjI3</span><span class="hljs-symbol">NDMtNDFhOC00</span>ZjY<span class="hljs-number">4</span>LWFlZTMtMGQwODY<span class="hljs-number">5</span>Mjk<span class="hljs-number">5</span>YzY<span class="hljs-number">2</span>IiwiamtsIjoxLjBlKzI<span class="hljs-number">3</span>fSx<span class="hljs-number">7</span>ImFsZyI<span class="hljs-number">6</span>IkhTMjU<span class="hljs-number">2</span>I<span class="hljs-symbol">n0</span>seyJmbGF<span class="hljs-symbol">nIjoiZmxhZ3</span>sxYjU<span class="hljs-number">0</span><span class="hljs-symbol">NjlhYy0</span>xZGFmLTQ<span class="hljs-number">4</span><span class="hljs-symbol">N2</span>EtOGIxYi<span class="hljs-number">0</span>xZjZjMzdi<span class="hljs-symbol">N2</span>FhMDF<span class="hljs-number">9</span>I<span class="hljs-symbol">n1</span>d<br></code></pre></td></tr></table></figure>
 
 <p>base64解码</p>

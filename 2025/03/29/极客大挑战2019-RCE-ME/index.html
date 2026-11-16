@@ -6,34 +6,17 @@
   <meta name="keywords" content=" 异或绕过 , 无字母数字RCE , 取反绕过 ">
   <meta name="description" content="极客大挑战2019-RCE-ME | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3995,6 +3979,7 @@
     <div class="article-meta">
         
         <span>字数:1.1k</span>
+        <span>预计阅读 5 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4058,13 +4043,13 @@
 <p>这个时候访问下phpinfo()查看下配置就会发现，在disable_function内禁用了很大部分函数，在终端也因此执行不了操作。</p>
 <hr>
 <p>这时我们可以使用蚁剑提供了可以用来绕过的插件(XD)disable_function</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME-1.png"></p>
+<p><img loading="lazy" src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME-1.png"></p>
 <p>模式选择php7_GC_UAF</p>
 <p>然后在shell里执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/readflag<br></code></pre></td></tr></table></figure>
 
 <p>得到flag</p>
-<p><img src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME-2.png"></p>
+<p><img loading="lazy" src="/../image/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982019-RCE-ME-2.png"></p>
 <hr>
 <h2 id="异或取反脚本"><a href="#异或取反脚本" class="headerlink" title="异或取反脚本"></a>异或取反脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#blacklist列表中的字符在生成的拼接字符串中不会被使用,除了部分是被过滤掉的字符，其余的如&#x27;,&quot;等字符考虑可能会导致闭合等问题暂列入</span><br><span class="hljs-comment">#如果有其他的要求可以对blacklist列表进行删改</span><br>blacklist=[<span class="hljs-string">&quot;`&quot;</span>,<span class="hljs-string">&quot;&#x27;&quot;</span>,<span class="hljs-string">&#x27;&quot;&#x27;</span>,<span class="hljs-string">&quot;\\&quot;</span><span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;2&quot;</span>,<span class="hljs-string">&quot;3&quot;</span>,<span class="hljs-string">&quot;4&quot;</span>,<span class="hljs-string">&quot;5&quot;</span>,<span class="hljs-string">&quot;6&quot;</span>,<span class="hljs-string">&quot;7&quot;</span>,<span class="hljs-string">&quot;8&quot;</span>,<span class="hljs-string">&quot;9&quot;</span>,<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>,<span class="hljs-string">&quot;e&quot;</span>,<span class="hljs-string">&quot;f&quot;</span>,<span class="hljs-string">&quot;g&quot;</span>,<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;i&quot;</span>,<span class="hljs-string">&quot;j&quot;</span>,<span class="hljs-string">&quot;k&quot;</span>,<span class="hljs-string">&quot;l&quot;</span>,<span class="hljs-string">&quot;m&quot;</span>,<span class="hljs-string">&quot;n&quot;</span>,<span class="hljs-string">&quot;o&quot;</span>,<span class="hljs-string">&quot;p&quot;</span>,<span class="hljs-string">&quot;q&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,<span class="hljs-string">&quot;s&quot;</span>,<span class="hljs-string">&quot;t&quot;</span>,<span class="hljs-string">&quot;u&quot;</span>,<span class="hljs-string">&quot;v&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,<span class="hljs-string">&quot;x&quot;</span>,<span class="hljs-string">&quot;y&quot;</span>,<span class="hljs-string">&quot;z&quot;</span>,<span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-string">&quot;B&quot;</span>,<span class="hljs-string">&quot;C&quot;</span>,<span class="hljs-string">&quot;D&quot;</span>,<span class="hljs-string">&quot;E&quot;</span>,<span class="hljs-string">&quot;F&quot;</span>,<span class="hljs-string">&quot;G&quot;</span>,<span class="hljs-string">&quot;H&quot;</span>,<span class="hljs-string">&quot;I&quot;</span>,<span class="hljs-string">&quot;J&quot;</span>,<span class="hljs-string">&quot;K&quot;</span>,<span class="hljs-string">&quot;L&quot;</span>,<span class="hljs-string">&quot;M&quot;</span>,<span class="hljs-string">&quot;N&quot;</span>,<span class="hljs-string">&quot;O&quot;</span>,<span class="hljs-string">&quot;P&quot;</span>,<span class="hljs-string">&quot;Q&quot;</span>,<span class="hljs-string">&quot;R&quot;</span>,<span class="hljs-string">&quot;S&quot;</span>,<span class="hljs-string">&quot;T&quot;</span>,<span class="hljs-string">&quot;U&quot;</span>,<span class="hljs-string">&quot;V&quot;</span>,<span class="hljs-string">&quot;W&quot;</span>,<span class="hljs-string">&quot;X&quot;</span>,<span class="hljs-string">&quot;Y&quot;</span>,<span class="hljs-string">&quot;Z&quot;</span>]<br><span class="hljs-comment">#不同于取反,一个目标字符串使用异或的方式可以获大量的可用拼接字符串,这里只取了1种组合的拼接字符串</span><br><span class="hljs-comment">#如果需要获得更多拼接字符串查看该函数中的result列表</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">yiHuo</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">global</span> operationEffient<br>    <span class="hljs-keyword">global</span> blacklist<br>    operationEffient=<span class="hljs-literal">False</span><br>    result=[]<br>    finalstr=<span class="hljs-string">&#x27;&quot;&quot;^&quot;&quot;&#x27;</span><br>    rawstr=string<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(rawstr)):<br>        result.extend([[]])<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(rawstr)):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">255</span>):<br>           <span class="hljs-keyword">if</span>(<span class="hljs-built_in">chr</span>(i) <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> blacklist):<br>                <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">255</span>):<br>                    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">chr</span>(j) <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> blacklist):<br>                        <span class="hljs-keyword">if</span>(i^j==<span class="hljs-built_in">ord</span>(rawstr[k])):<br>                            result[k].extend([[<span class="hljs-built_in">hex</span>(i).replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&quot;%&quot;</span>),<span class="hljs-built_in">hex</span>(j).replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&quot;%&quot;</span>)]])<br>    <span class="hljs-comment">#在这里往下的函数部分,result列表均是可用的(已填充了获得的拼接字符串)</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(result)):<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(result[i])==<span class="hljs-number">0</span>):<br>            <span class="hljs-keyword">return</span>(<span class="hljs-string">&quot;该字符在现有黑名单下无法拼接出-&gt;%s&quot;</span>%(rawstr[i]))<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(rawstr)):<br>        finalstr=finalstr[:finalstr.find(<span class="hljs-string">&quot;^&quot;</span>,<span class="hljs-number">0</span>)-<span class="hljs-number">1</span>]+result[i][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]+<span class="hljs-string">&#x27;&quot;&#x27;</span>+finalstr[finalstr.find(<span class="hljs-string">&quot;^&quot;</span>,<span class="hljs-number">0</span>):]<br>        finalstr=finalstr[:finalstr.rfind(<span class="hljs-string">&quot;&#x27;&quot;</span>,<span class="hljs-number">0</span>)]+result[i][<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]+finalstr[finalstr.rfind(<span class="hljs-string">&#x27;&quot;&#x27;</span>,<span class="hljs-number">0</span>):]   <br>    <span class="hljs-keyword">return</span>(finalstr)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">quFan</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">global</span> operationEffient<br>    <span class="hljs-keyword">global</span> blacklist<br>    operationEffient=<span class="hljs-literal">False</span><br>    result=[]<br>    finalstr=<span class="hljs-string">&#x27;~&quot;&quot;&#x27;</span><br>    rawstr=string<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(rawstr)):<br>        result.extend([[]])<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(rawstr)):<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">255</span>):<br>           <span class="hljs-keyword">if</span>(<span class="hljs-built_in">chr</span>(i) <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> blacklist <span class="hljs-keyword">and</span> <span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">bin</span>(~i &amp; <span class="hljs-number">0xFF</span>)[<span class="hljs-number">2</span>:],<span class="hljs-number">2</span>))==rawstr[k]):<br>               result[k].extend([<span class="hljs-built_in">hex</span>(i).replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&quot;%&quot;</span>)])<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(result)):<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">len</span>(result[i])==<span class="hljs-number">0</span>):<br>            <span class="hljs-keyword">return</span>(<span class="hljs-string">&quot;该字符在现有黑名单下无法拼接出-&gt;%s&quot;</span>%(rawstr[i]))<br>    <span class="hljs-built_in">print</span>(result)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(rawstr)):<br>        finalstr=finalstr[:finalstr.rfind(<span class="hljs-string">&#x27;&quot;&#x27;</span>,<span class="hljs-number">0</span>)]+result[i][<span class="hljs-number">0</span>]+finalstr[finalstr.rfind(<span class="hljs-string">&#x27;&quot;&#x27;</span>,<span class="hljs-number">0</span>):]<br>    <span class="hljs-keyword">return</span>(finalstr)<br><span class="hljs-keyword">while</span>(<span class="hljs-literal">True</span>):<br>    operationEffient=<span class="hljs-literal">True</span><br>    target=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入待转换字符\n&quot;</span>)<br>    <span class="hljs-keyword">while</span>(operationEffient):<br>        operation=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请选择操作\n1-&gt;使用异或拼接\n2-&gt;使用取反获得\n&quot;</span>)<br>        <span class="hljs-keyword">if</span>(operation==<span class="hljs-string">&quot;1&quot;</span>):<br>            result=yiHuo(target)<br>            <span class="hljs-keyword">pass</span><br>        <span class="hljs-keyword">elif</span>(operation==<span class="hljs-string">&quot;2&quot;</span>):<br>            result=quFan(target)<br>            <span class="hljs-keyword">pass</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;选择的操作无效&quot;</span>)<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-built_in">print</span>(result)<br></code></pre></td></tr></table></figure>
 

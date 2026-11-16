@@ -6,34 +6,17 @@
   <meta name="keywords" content=" docker ">
   <meta name="description" content="docker学习 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3991,6 +3975,7 @@
     <div class="article-meta">
         
         <span>字数:3.3k</span>
+        <span>预计阅读 13 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4039,7 +4024,7 @@
         <h1 id="docker学习"><a href="#docker学习" class="headerlink" title="docker学习"></a>docker学习</h1><h1 id="初识docker"><a href="#初识docker" class="headerlink" title="初识docker"></a>初识docker</h1><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># yum包更新</span><br>yum update<br><span class="hljs-comment"># 安装所需要的软件包</span><br>yum install -y yum-utils device-mapper-persistent-<span class="hljs-built_in">date</span> lvm2<br><span class="hljs-comment"># 设置yum源</span><br>yum-config-manager <span class="hljs-comment">--add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="hljs-comment"># 安装docker，出现输入的界面都按y</span><br>yum install -y docker-ce<br><span class="hljs-comment"># 查看docker版本，验证是否验证成功</span><br>docker -v<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="docker架构"><a href="#docker架构" class="headerlink" title="docker架构"></a>docker架构</h2><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-1.png"></p>
+<h2 id="docker架构"><a href="#docker架构" class="headerlink" title="docker架构"></a>docker架构</h2><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-1.png"></p>
 <hr>
 <h2 id="配置镜像加速器"><a href="#配置镜像加速器" class="headerlink" title="配置镜像加速器"></a>配置镜像加速器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> -p /etc/docker<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="hljs-string">&#x27;EOF&#x27;</span><br>&#123;<br>  <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://zktok1yl.mirror.aliyuncs.com&quot;</span>]<br>&#125;<br>EOF<br><span class="hljs-built_in">sudo</span> systemctl daemon-reload<br><span class="hljs-built_in">sudo</span> systemctl restart docker<br></code></pre></td></tr></table></figure>
 
@@ -4137,7 +4122,7 @@
 <li>当容器中的网络服务需要被外部机器访问时，可以将容器中提供服务的端口映射到宿主机的端口上。外部机器访问宿主机的该端口，从而间接访问容器的服务。</li>
 <li>这种操作称为：<strong>端口映射</strong></li>
 </ul>
-<p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-2.png"></p>
+<p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-2.png"></p>
 <hr>
 <p>1、搜索mysql镜像</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker search mysql</span><br></code></pre></td></tr></table></figure>
@@ -4162,7 +4147,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it c_mysql /bin/bash<br></code></pre></td></tr></table></figure>
 
 <p>然后通过外部机器连接</p>
-<p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-3.png"></p>
+<p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-3.png"></p>
 <hr>
 <h2 id="Tomcat部署"><a href="#Tomcat部署" class="headerlink" title="Tomcat部署"></a>Tomcat部署</h2><p>1、搜索tomcat镜像</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker search tomcat</span><br></code></pre></td></tr></table></figure>
@@ -4220,8 +4205,8 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">./redis-cli<span class="hljs-selector-class">.exe</span> -h <span class="hljs-number">192.168</span>.<span class="hljs-number">149.135</span> -<span class="hljs-selector-tag">p</span> <span class="hljs-number">6379</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h1><h2 id="docker镜像原理"><a href="#docker镜像原理" class="headerlink" title="docker镜像原理"></a>docker镜像原理</h2><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-5.png"></p>
-<p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-4.png"></p>
+<h1 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h1><h2 id="docker镜像原理"><a href="#docker镜像原理" class="headerlink" title="docker镜像原理"></a>docker镜像原理</h2><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-5.png"></p>
+<p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-4.png"></p>
 <hr>
 <h2 id="镜像制作"><a href="#镜像制作" class="headerlink" title="镜像制作"></a>镜像制作</h2><p>1、容器转为镜像</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">docker commit 容器<span class="hljs-built_in">id</span> 镜像名称:版本号<br></code></pre></td></tr></table></figure>
@@ -4230,8 +4215,8 @@
 
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">docker load -<span class="hljs-selector-tag">i</span> 压缩文件名称<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-6.png"></p>
-<h2 id="dockerfile概念"><a href="#dockerfile概念" class="headerlink" title="dockerfile概念"></a>dockerfile概念</h2><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-7.png"></p>
+<p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-6.png"></p>
+<h2 id="dockerfile概念"><a href="#dockerfile概念" class="headerlink" title="dockerfile概念"></a>dockerfile概念</h2><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-7.png"></p>
 <h2 id="dockerfile关键字"><a href="#dockerfile关键字" class="headerlink" title="dockerfile关键字"></a>dockerfile关键字</h2><table>
 <thead>
 <tr>
@@ -4332,7 +4317,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h2 id="dockerfile案例"><a href="#dockerfile案例" class="headerlink" title="dockerfile案例"></a>dockerfile案例</h2><h3 id="部署springboot项目"><a href="#部署springboot项目" class="headerlink" title="部署springboot项目"></a>部署springboot项目</h3><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-8.png"></p>
+<h2 id="dockerfile案例"><a href="#dockerfile案例" class="headerlink" title="dockerfile案例"></a>dockerfile案例</h2><h3 id="部署springboot项目"><a href="#部署springboot项目" class="headerlink" title="部署springboot项目"></a>部署springboot项目</h3><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-8.png"></p>
 <p>准备好springboot jar包并传至宿主机的根目录</p>
 <p>创建docker-files目录，并把jar包移动进去</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mkdir</span> docker-files<br><span class="hljs-attribute">mv</span> HelloDocker-<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>-SNAPSHOT.jar ./docker-files/<br></code></pre></td></tr></table></figure>
@@ -4348,7 +4333,7 @@
 
 <p>成功访问</p>
 <hr>
-<h3 id="自定义centos"><a href="#自定义centos" class="headerlink" title="自定义centos"></a>自定义centos</h3><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-9.png"></p>
+<h3 id="自定义centos"><a href="#自定义centos" class="headerlink" title="自定义centos"></a>自定义centos</h3><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-9.png"></p>
 <p>先创建docker-files目录</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-built_in">mkdir</span> docker-<span class="hljs-keyword">files</span><br><span class="hljs-keyword">cd</span> docker-<span class="hljs-keyword">files</span><br></code></pre></td></tr></table></figure>
 
@@ -4364,9 +4349,9 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">docker <span class="hljs-built_in">run</span> -it <span class="hljs-attribute">--name</span>=c5 itheima_centos:1<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="docker服务编排"><a href="#docker服务编排" class="headerlink" title="docker服务编排"></a>docker服务编排</h1><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-10.png"></p>
-<h2 id="服务编排"><a href="#服务编排" class="headerlink" title="服务编排"></a>服务编排</h2><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-11.png"></p>
-<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker compose"></a>docker compose</h2><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-12.png"></p>
+<h1 id="docker服务编排"><a href="#docker服务编排" class="headerlink" title="docker服务编排"></a>docker服务编排</h1><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-10.png"></p>
+<h2 id="服务编排"><a href="#服务编排" class="headerlink" title="服务编排"></a>服务编排</h2><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-11.png"></p>
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker compose"></a>docker compose</h2><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-12.png"></p>
 <hr>
 <h3 id="dsocker-Compose-安装使用"><a href="#dsocker-Compose-安装使用" class="headerlink" title="dsocker Compose 安装使用"></a>dsocker Compose 安装使用</h3><h4 id="一、安装Docker-Compose"><a href="#一、安装Docker-Compose" class="headerlink" title="一、安装Docker Compose"></a>一、安装Docker Compose</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># Compose目前已经完全支持Linux、Mac OS和Windows，在我们安装Compose之前，需要先安装Docker。下面我 们以编译好的二进制包方式安装在Linux系统中。 </span><br>curl -L https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/docker/</span>compose<span class="hljs-regexp">/releases/</span>download<span class="hljs-regexp">/1.22.0/</span>docker-compose-`uname -s`-`uname -m` -o <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>docker-compose<br><span class="hljs-comment"># 设置文件可执行权限 </span><br>chmod +x <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>docker-compose<br><span class="hljs-comment"># 查看版本信息 </span><br>docker-compose --version<br>或者<br>docker-compose -v<br></code></pre></td></tr></table></figure>
 
@@ -4395,7 +4380,7 @@
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">http:</span><span class="hljs-comment">//192.168.149.135/hello</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="docker私有仓库"><a href="#docker私有仓库" class="headerlink" title="docker私有仓库"></a>docker私有仓库</h1><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-13.png"></p>
+<h1 id="docker私有仓库"><a href="#docker私有仓库" class="headerlink" title="docker私有仓库"></a>docker私有仓库</h1><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-13.png"></p>
 <h2 id="私有仓库搭建"><a href="#私有仓库搭建" class="headerlink" title="私有仓库搭建"></a>私有仓库搭建</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 1、拉取私有仓库镜像 </span><br>docker pull registry<br><span class="hljs-comment"># 2、启动私有仓库容器 </span><br>docker <span class="hljs-built_in">run</span> -id <span class="hljs-attribute">--name</span>=registry -p 5000:5000 registry<br><span class="hljs-comment"># 3、打开浏览器 输入地址http://私有仓库服务器ip:5000/v2/_catalog，看到&#123;&quot;repositories&quot;:[]&#125; 表示私有仓库 搭建成功</span><br><span class="hljs-comment"># 4、修改daemon.json   </span><br>vim /etc/docker/daemon.json    <br><span class="hljs-comment"># 在上述文件中添加一个key，保存退出。此步用于让 docker 信任私有仓库地址；注意将私有仓库服务器ip修改为自己私有仓库服务器真实ip </span><br>&#123;<span class="hljs-string">&quot;insecure-registries&quot;</span>:[<span class="hljs-string">&quot;私有仓库服务器ip:5000&quot;</span>]&#125; <br><span class="hljs-comment"># 5、重启docker 服务 </span><br>systemctl restart docker<br>docker start registry<br></code></pre></td></tr></table></figure>
 
 <hr>
@@ -4405,8 +4390,8 @@
 <h2 id="从私有仓库拉取镜像"><a href="#从私有仓库拉取镜像" class="headerlink" title="从私有仓库拉取镜像"></a>从私有仓库拉取镜像</h2><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull 私有仓库服务器ip:<span class="hljs-number">5000</span>/centos:<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="Docker-相关观念"><a href="#Docker-相关观念" class="headerlink" title="Docker 相关观念"></a>Docker 相关观念</h1><h2 id="Docker容器化虚拟化与传统虚拟机比较"><a href="#Docker容器化虚拟化与传统虚拟机比较" class="headerlink" title="Docker容器化虚拟化与传统虚拟机比较"></a>Docker容器化虚拟化与传统虚拟机比较</h2><p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-14.png"></p>
-<p><img src="/../image/docker%E5%AD%A6%E4%B9%A0-15.png"></p>
+<h1 id="Docker-相关观念"><a href="#Docker-相关观念" class="headerlink" title="Docker 相关观念"></a>Docker 相关观念</h1><h2 id="Docker容器化虚拟化与传统虚拟机比较"><a href="#Docker容器化虚拟化与传统虚拟机比较" class="headerlink" title="Docker容器化虚拟化与传统虚拟机比较"></a>Docker容器化虚拟化与传统虚拟机比较</h2><p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-14.png"></p>
+<p><img loading="lazy" src="/../image/docker%E5%AD%A6%E4%B9%A0-15.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>

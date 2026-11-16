@@ -6,34 +6,17 @@
   <meta name="keywords" content=" HTTP请求头伪造 , curl命令及其常用参数 ">
   <meta name="description" content="BSidesCF2020-Hurdles | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3993,6 +3977,7 @@
     <div class="article-meta">
         
         <span>字数:1.6k</span>
+        <span>预计阅读 8 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4040,68 +4025,68 @@
       
         <h1 id="BSidesCF2020-Hurdles"><a href="#BSidesCF2020-Hurdles" class="headerlink" title="BSidesCF2020-Hurdles"></a>BSidesCF2020-Hurdles</h1><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44037296/article/details/112298411">https://blog.csdn.net/weixin_44037296/article/details/112298411</a></p>
 <p>首先打开页面</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-1.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-1.png"></p>
 <p>提示我们访问&#x2F;hurdles</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-2.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-2.png"></p>
 <h3 id="X参数-指定请求方式"><a href="#X参数-指定请求方式" class="headerlink" title="-X参数 指定请求方式"></a>-X参数 指定请求方式</h3><p>需要我们使用PUT方式请求，使用curl命令，完成。也可以用bp</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -X PUT http://node5.buuoj.cn:27219/hurdles<br></code></pre></td></tr></table></figure>
 
 <p>得到返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-3.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-3.png"></p>
 <p>这里提示我们要在路径末尾填入<code>!</code>。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -X PUT http:<span class="hljs-regexp">//</span>node5.buuoj.cn:<span class="hljs-number">27219</span><span class="hljs-regexp">/hurdles/</span>!<br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-4.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-4.png"></p>
 <p>告诉我们需要在查询字符串中存在<code>get=flag</code></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -X PUT http:<span class="hljs-regexp">//</span>node5.buuoj.cn:<span class="hljs-number">27219</span><span class="hljs-regexp">/hurdles/</span>!?get=flag<br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-5.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-5.png"></p>
 <p>需要一个传参名为<code>&amp;=&amp;=&amp;</code>，首先要先将其进行url编码，得到<code>%26%3D%26%3D%26</code>，构造传参</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=1&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>注意：这里的链接需要用双引号包裹</p>
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-6.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-6.png"></p>
 <p>需要<code>&amp;=&amp;=&amp;</code>传参的值为<code>%00（换行符）</code>，后面还跟了一个换行符，然后就是url编码：<code>%2500%0a</code></p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-7.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-7.png"></p>
 <h3 id="u参数-指定认证"><a href="#u参数-指定认证" class="headerlink" title="-u参数 指定认证"></a>-u参数 指定认证</h3><p>需要指定认证，知道了用户名为<code>player</code>，但不知道密码，先随便猜测一个密码，使用<code>-u</code>参数指定：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-8.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-8.png"></p>
 <p>构造：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:player&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-9.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-9.png"></p>
 <p>这里告诉我们密码为字符串<code>open sesame</code>的十六进制MD5值：<code>54ef36ec71201fdf9d1423fd26f97f6b</code>。</p>
 <p>构造：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-10.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-10.png"></p>
 <h3 id="A参数-修改user-agent"><a href="#A参数-修改user-agent" class="headerlink" title="-A参数 修改user-agent"></a>-A参数 修改user-agent</h3><p>又告诉我们需要使用1337 Brower浏览器，这里需要使用curl命令的<code>-A参数</code>，构造</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-11.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-11.png"></p>
 <p>需要浏览器版本为<code>v.9000</code>，构造</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser v.9000&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-12.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-12.png"></p>
 <h3 id="H参数-添加请求头"><a href="#H参数-添加请求头" class="headerlink" title="-H参数 添加请求头"></a>-H参数 添加请求头</h3><p>提示给出了<code>Forwarded-For</code>，猜测为修改<code>X-Forwared-For</code>为<code>127.0.0.1</code>，使用curl命令的<code>-H</code>参数添加HTTP请求头<code>X-Forwarded-For:127.0.0.1</code>：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser v.9000&quot;</span> -H <span class="hljs-string">&quot;X-Forwarded-For:127.0.0.1&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-13.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-13.png"></p>
 <h3 id="修改代理"><a href="#修改代理" class="headerlink" title="修改代理"></a>修改代理</h3><p>提示需要使用代理，需要额外的代理转发，尝试使用<code>1.1.1.1</code>，构造</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser v.9000&quot;</span> -H <span class="hljs-string">&quot;X-Forwarded-For:1.1.1.1,127.0.0.1&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>返回结果：</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-14.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-14.png"></p>
 <p>需要我们通过<code>13.37.13.37</code>这个地址的代理，把<code>1.1.1.1</code>替换：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser v.9000&quot;</span> -H <span class="hljs-string">&quot;X-Forwarded-For:13.37.13.37,127.0.0.1&quot;</span><br></code></pre></td></tr></table></figure>
 
@@ -4109,7 +4094,7 @@
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-built_in">I</span><span class="hljs-operator">&#x27;</span><span class="hljs-variable">m</span> <span class="hljs-variable">sorry</span><span class="hljs-operator">,</span> <span class="hljs-built_in">I</span> <span class="hljs-variable">was</span> <span class="hljs-variable">expecting</span> <span class="hljs-variable">a</span> <span class="hljs-variable">Fortune</span> <span class="hljs-variable">Cookie</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="b参数-Cookie"><a href="#b参数-Cookie" class="headerlink" title="-b参数 Cookie"></a>-b参数 Cookie</h3><p>需要Cookie ，猜测参数名为<code>Fortune</code>，使用curl命令的<code>-b</code>参数</p>
-<p><img src="/../image/BSidesCF2020-Hurdles-15.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-15.png"></p>
 <p>构造传参：</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser v.9000&quot;</span> -H <span class="hljs-string">&quot;X-Forwarded-For:13.37.13.37,127.0.0.1&quot;</span> -b <span class="hljs-string">&quot;Fortune=1&quot;</span><br></code></pre></td></tr></table></figure>
 
@@ -4117,7 +4102,7 @@
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">I&#x27;m sorry, I was expecting <span class="hljs-keyword">the</span> cookie <span class="hljs-keyword">to</span> <span class="hljs-keyword">contain</span> <span class="hljs-keyword">the</span> <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> HTTP Cookie (State Management Mechanism) RFC <span class="hljs-keyword">from</span> <span class="hljs-number">2011.</span><br></code></pre></td></tr></table></figure>
 
 <p>需要<strong>Cookie</strong>中包含<code>2011</code>年的<code>RFC编号</code>，通过查阅资料：<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/rfc6265/">Datatracker</a></p>
-<p><img src="/../image/BSidesCF2020-Hurdles-16.png"></p>
+<p><img loading="lazy" src="/../image/BSidesCF2020-Hurdles-16.png"></p>
 <p>了解到了2011版的RFC协议的值为<code>6265</code>，构造</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">curl -X PUT <span class="hljs-string">&quot;http://node5.buuoj.cn:27219/hurdles/!?get=flag&amp;<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%2</span>6%3D<span class="hljs-variable">%26</span>=<span class="hljs-variable">%250</span>0<span class="hljs-variable">%0a</span>&quot;</span> -u <span class="hljs-string">&quot;player:54ef36ec71201fdf9d1423fd26f97f6b&quot;</span> -A <span class="hljs-string">&quot;1337 Browser v.9000&quot;</span> -H <span class="hljs-string">&quot;X-Forwarded-For:13.37.13.37,127.0.0.1&quot;</span> -b <span class="hljs-string">&quot;Fortune=6265&quot;</span><br></code></pre></td></tr></table></figure>
 

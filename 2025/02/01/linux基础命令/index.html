@@ -6,34 +6,17 @@
   <meta name="keywords" content=" linux ">
   <meta name="description" content="linux基础命令 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3991,6 +3975,7 @@
     <div class="article-meta">
         
         <span>字数:4.6k</span>
+        <span>预计阅读 17 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4039,17 +4024,17 @@
         <h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><p>Linux的目录结构是一个树型结构</p>
 <p>windows系统可以拥有多个盘符，如C盘，D盘，E盘</p>
 <p>Linux没有盘符这个概念，只有一个根目录&#x2F;，所有文件都在它下面</p>
-<p><img src="C:\Users\Administrator\Desktop\linux基础命令-1.png"></p>
+<p><img loading="lazy" src="C:\Users\Administrator\Desktop\linux基础命令-1.png"></p>
 <h3 id="Linux路径的描述方式"><a href="#Linux路径的描述方式" class="headerlink" title="Linux路径的描述方式"></a>Linux路径的描述方式</h3><p>在Linux中，路径之间的层级关系，使用：&#x2F;来表示</p>
 <p>在windows系统中，路径之间的层级关系，使用：\来表示</p>
-<p><img src="C:\Users\Administrator\Desktop\linux基础命令-2.png"></p>
+<p><img loading="lazy" src="C:\Users\Administrator\Desktop\linux基础命令-2.png"></p>
 <h2 id="FinalShell"><a href="#FinalShell" class="headerlink" title="FinalShell"></a>FinalShell</h2><p>连接前先输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> service ssh start<br></code></pre></td></tr></table></figure>
 
 
 
 <h1 id="Linux命令入门"><a href="#Linux命令入门" class="headerlink" title="Linux命令入门"></a>Linux命令入门</h1><h2 id="Linux命令基础"><a href="#Linux命令基础" class="headerlink" title="Linux命令基础"></a>Linux命令基础</h2><p><strong>什么是命令、命令行</strong></p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-3.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-3.png"></p>
 <p><strong>Linux命令基础格式</strong></p>
 <p>无论是什么命令，用于什么用途，在Linux中，命令有其通用的格式：<br>command [-options] [parameter]</p>
 <ul>
@@ -4068,7 +4053,7 @@
 <p>Linux路径是此命令可选的参数</p>
 <p>当不适用选项和参数，直接使用ls命令本体，表示：以平铺形式，列出当前工作目录下的内容。</p>
 <p><strong>HOME目录和工作目录</strong></p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-4.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-4.png"></p>
 <h3 id="ls命令的参数和选项"><a href="#ls命令的参数和选项" class="headerlink" title="ls命令的参数和选项"></a>ls命令的参数和选项</h3><p><strong>ls命令的参数</strong></p>
 <p>当ls不适用参数，表示列出：当前工作目录的内容，即用户的HOME目录</p>
 <p>当使用参数，ls命令的参数表示：指定一个Linux路径，列出指定路径的内容</p>
@@ -4277,7 +4262,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">tail</span> test.txt<br><span class="hljs-built_in">tail</span> -5 test.txt<br><span class="hljs-built_in">tail</span> -20 test.txt<br></code></pre></td></tr></table></figure>
 
-<h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><h3 id="vi-vim编辑器介绍："><a href="#vi-vim编辑器介绍：" class="headerlink" title="vi\vim编辑器介绍："></a>vi\vim编辑器介绍：</h3><p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-5.png"></p>
+<h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><h3 id="vi-vim编辑器介绍："><a href="#vi-vim编辑器介绍：" class="headerlink" title="vi\vim编辑器介绍："></a>vi\vim编辑器介绍：</h3><p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-5.png"></p>
 <h3 id="vi-vim编辑器的三种工作模式"><a href="#vi-vim编辑器的三种工作模式" class="headerlink" title="vi\vim编辑器的三种工作模式"></a>vi\vim编辑器的三种工作模式</h3><p><strong>命令模式：</strong></p>
 <p>​		<strong>命令模式下，所敲的按键编辑器都理解为命令，以命令驱动执行不同的功能</strong></p>
 <p>​		<strong>此模式下，不能自由进行文本编辑</strong></p>
@@ -4286,13 +4271,13 @@
 <p>​		<strong>此模式下，可以对文件内容进行自由编辑</strong></p>
 <p><strong>底线命令模式</strong></p>
 <p>​		<strong>以：开始，通常用于文件的保存、退出</strong></p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-6.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-6.png"></p>
 <h3 id="命令模式快捷键"><a href="#命令模式快捷键" class="headerlink" title="命令模式快捷键"></a>命令模式快捷键</h3><p>命令模式下常见快捷键</p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-7.png"></p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-8.png"></p>
-<h3 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a>底线命令模式</h3><p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-9.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-7.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-8.png"></p>
+<h3 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a>底线命令模式</h3><p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-9.png"></p>
 <h1 id="Linux用户和权限"><a href="#Linux用户和权限" class="headerlink" title="Linux用户和权限"></a>Linux用户和权限</h1><h2 id="Linux的root用户"><a href="#Linux的root用户" class="headerlink" title="Linux的root用户"></a>Linux的root用户</h2><p><strong>root用户（超级管理员）</strong></p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-10.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-10.png"></p>
 <p>root用户拥有最大的系统操作权限，而普通用户在许多地方的权限是受限的。</p>
 <p>例如：使用普通用户无法在根目录下创建文件，root用户可以</p>
 <ul>
@@ -4315,8 +4300,8 @@
 <li>但是并不是所有的用户，都有权利使用sudo，我们需要为普通用户配置sudo认证</li>
 </ul>
 <p>配置sudo认证</p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-11.png"></p>
-<h2 id="用户、用户组管理"><a href="#用户、用户组管理" class="headerlink" title="用户、用户组管理"></a>用户、用户组管理</h2><h3 id="用户、用户组"><a href="#用户、用户组" class="headerlink" title="用户、用户组"></a>用户、用户组</h3><p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-12.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-11.png"></p>
+<h2 id="用户、用户组管理"><a href="#用户、用户组管理" class="headerlink" title="用户、用户组管理"></a>用户、用户组管理</h2><h3 id="用户、用户组"><a href="#用户、用户组" class="headerlink" title="用户、用户组"></a>用户、用户组</h3><p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-12.png"></p>
 <h3 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h3><p><strong>以下命令需root用户执行</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">创建用户组<br>groupadd 用户组名<br><br>删除用户组<br>groupdel 用户组名<br></code></pre></td></tr></table></figure>
 
@@ -4332,8 +4317,8 @@
 <p>包含3份信息：</p>
 <p>组名称：组认证（显示为x）：组ID</p>
 <h2 id="查看权限控制"><a href="#查看权限控制" class="headerlink" title="查看权限控制"></a>查看权限控制</h2><h3 id="认知权限信息"><a href="#认知权限信息" class="headerlink" title="认知权限信息"></a>认知权限信息</h3><p>通过ls -l可以以列表形式查看内容，并显示权限细节</p>
-<p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-13.png"></p>
-<p><strong>权限细节：</strong><br><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-14.png"></p>
+<p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-13.png"></p>
+<p><strong>权限细节：</strong><br><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-14.png"></p>
 <p><strong>rwx</strong></p>
 <ul>
 <li>r表示读权限</li>
@@ -4353,7 +4338,7 @@
 <p><strong>选项：-R，对文件夹内的全部内容应用同样的操作</strong></p>
 <figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">chmod u=rwx,g=rx,o=<span class="hljs-variable language_">x</span> hello.txt，将文件权限修改为：rwxr-<span class="hljs-variable language_">x</span>--<span class="hljs-variable language_">x</span><br>	其中：u表示user所属用户权限，g表示group组权限，o表示<span class="hljs-symbol">other</span>其他用户权限<br>	<br>chmod -R u=rwx,g=rx,o=<span class="hljs-variable language_">x</span> test，将文件夹test以及文件夹内全部内容权限设置为：rwxr-<span class="hljs-variable language_">x</span>--<span class="hljs-variable language_">x</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="权限的数字序号"><a href="#权限的数字序号" class="headerlink" title="权限的数字序号"></a>权限的数字序号</h3><p><img src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-15.png"></p>
+<h3 id="权限的数字序号"><a href="#权限的数字序号" class="headerlink" title="权限的数字序号"></a>权限的数字序号</h3><p><img loading="lazy" src="/../image/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-15.png"></p>
 <h2 id="修改权限控制-chown"><a href="#修改权限控制-chown" class="headerlink" title="修改权限控制 - chown"></a>修改权限控制 - chown</h2><h3 id="chown命令"><a href="#chown命令" class="headerlink" title="chown命令"></a>chown命令</h3><p>使用chown命令，可以修改文件、文件夹的所属用户和用户组</p>
 <p><strong>注意：普通用户无法修改所属为其它用户或组，所以此命令只适用于root用户执行</strong></p>
 <p><strong>语法：<code>chown [-R] [用户] [:] [用户组] 文件或文件夹</code></strong></p>

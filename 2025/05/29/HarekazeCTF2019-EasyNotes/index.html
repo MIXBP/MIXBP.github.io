@@ -6,34 +6,17 @@
   <meta name="keywords" content=" 代码审计 , session反序列化 , session存储文件伪造 ">
   <meta name="description" content="HarekazeCTF2019-EasyNotes | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3995,6 +3979,7 @@
     <div class="article-meta">
         
         <span>字数:568</span>
+        <span>预计阅读 2 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4041,14 +4026,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="HarekazeCTF2019-EasyNotes"><a href="#HarekazeCTF2019-EasyNotes" class="headerlink" title="HarekazeCTF2019-EasyNotes"></a>HarekazeCTF2019-EasyNotes</h1><p>首先打开网页</p>
-<p><img src="/../image/HarekazeCTF2019-EasyNotes-1.png"></p>
+<p><img loading="lazy" src="/../image/HarekazeCTF2019-EasyNotes-1.png"></p>
 <p>发现有一个Get flag，点击以后显示You are not an admin :(</p>
 <p>登录之后发现有几个功能点，可以添加节点，然后使用<code>Export</code>导出</p>
-<p><img src="/../image/HarekazeCTF2019-EasyNotes-2.png"></p>
+<p><img loading="lazy" src="/../image/HarekazeCTF2019-EasyNotes-2.png"></p>
 <p>我们查看源码：<br>发现想要拿到flag的条件是<code>$_SESSION[&#39;admin&#39;]=true</code></p>
-<p><img src="/../image/HarekazeCTF2019-EasyNotes-3.png"></p>
+<p><img loading="lazy" src="/../image/HarekazeCTF2019-EasyNotes-3.png"></p>
 <p>如果我们能控制session文件，就可以拿到flag了。</p>
-<p><img src="/../image/HarekazeCTF2019-EasyNotes-4.png"></p>
+<p><img loading="lazy" src="/../image/HarekazeCTF2019-EasyNotes-4.png"></p>
 <p>并且我们可以发现session存储的文件的路径为：<code>/var/www/tmp</code></p>
 <p>然后看export.php</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;init.php&#x27;</span>);<br><br><span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">is_logged_in</span>()) &#123;<br>  <span class="hljs-title function_ invoke__">redirect</span>(<span class="hljs-string">&#x27;/?page=home&#x27;</span>);<br>&#125;<br><br><span class="hljs-variable">$notes</span> = <span class="hljs-title function_ invoke__">get_notes</span>();<br><br><span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;type&#x27;</span>]) || <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;type&#x27;</span>])) &#123;<br>  <span class="hljs-variable">$type</span> = <span class="hljs-string">&#x27;zip&#x27;</span>;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-variable">$type</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;type&#x27;</span>];<br>&#125;<br><br><span class="hljs-variable">$filename</span> = <span class="hljs-title function_ invoke__">get_user</span>() . <span class="hljs-string">&#x27;-&#x27;</span> . <span class="hljs-title function_ invoke__">bin2hex</span>(<span class="hljs-title function_ invoke__">random_bytes</span>(<span class="hljs-number">8</span>)) . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable">$type</span>;<br><span class="hljs-variable">$filename</span> = <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;..&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$filename</span>); <span class="hljs-comment">// avoid path traversal</span><br><span class="hljs-variable">$path</span> = TEMP_DIR . <span class="hljs-string">&#x27;/&#x27;</span> . <span class="hljs-variable">$filename</span>;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$type</span> === <span class="hljs-string">&#x27;tar&#x27;</span>) &#123;<br>  <span class="hljs-variable">$archive</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PharData</span>(<span class="hljs-variable">$path</span>);<br>  <span class="hljs-variable">$archive</span>-&gt;<span class="hljs-title function_ invoke__">startBuffering</span>();<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-comment">// use zip as default</span><br>  <span class="hljs-variable">$archive</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ZipArchive</span>();<br>  <span class="hljs-variable">$archive</span>-&gt;<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-variable">$path</span>, ZIPARCHIVE::<span class="hljs-variable constant_">CREATE</span> | <span class="hljs-title class_">ZipArchive</span>::<span class="hljs-variable constant_">OVERWRITE</span>);<br>&#125;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-variable">$index</span> = <span class="hljs-number">0</span>; <span class="hljs-variable">$index</span> &lt; <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$notes</span>); <span class="hljs-variable">$index</span>++) &#123;<br>  <span class="hljs-variable">$note</span> = <span class="hljs-variable">$notes</span>[<span class="hljs-variable">$index</span>];<br>  <span class="hljs-variable">$title</span> = <span class="hljs-variable">$note</span>[<span class="hljs-string">&#x27;title&#x27;</span>];<br>  <span class="hljs-variable">$title</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&#x27;/[^!-~]/&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-variable">$title</span>);<br>  <span class="hljs-variable">$title</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&#x27;#[/\\?*.]#&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-variable">$title</span>); <span class="hljs-comment">// delete suspicious characters</span><br>  <span class="hljs-variable">$archive</span>-&gt;<span class="hljs-title function_ invoke__">addFromString</span>(<span class="hljs-string">&quot;<span class="hljs-subst">&#123;$index&#125;</span>_<span class="hljs-subst">&#123;$title&#125;</span>.json&quot;</span>, <span class="hljs-title function_ invoke__">json_encode</span>(<span class="hljs-variable">$note</span>));<br>&#125;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$type</span> === <span class="hljs-string">&#x27;tar&#x27;</span>) &#123;<br>  <span class="hljs-variable">$archive</span>-&gt;<span class="hljs-title function_ invoke__">stopBuffering</span>();<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-variable">$archive</span>-&gt;<span class="hljs-title function_ invoke__">close</span>();<br>&#125;<br><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Content-Disposition: attachment; filename=&quot;&#x27;</span> . <span class="hljs-variable">$filename</span> . <span class="hljs-string">&#x27;&quot;;&#x27;</span>);<br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Content-Length: &#x27;</span> . <span class="hljs-title function_ invoke__">filesize</span>(<span class="hljs-variable">$path</span>));<br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Content-Type: application/zip&#x27;</span>);<br><span class="hljs-title function_ invoke__">readfile</span>(<span class="hljs-variable">$path</span>);<br><br></code></pre></td></tr></table></figure>
@@ -4078,7 +4063,7 @@
 <p>但是由于我们导出的文件中有一些内容，防止被污染，我们需要这么写：</p>
 <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coq">|<span class="hljs-type">N</span>;admin|<span class="hljs-type">b</span>:<span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../image/HarekazeCTF2019-EasyNotes-5.png"></p>
+<p><img loading="lazy" src="/../image/HarekazeCTF2019-EasyNotes-5.png"></p>
 <p>添加之后导出：</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haskell">/<span class="hljs-keyword">export</span>.php?<span class="hljs-class"><span class="hljs-keyword">type</span>=.</span><br></code></pre></td></tr></table></figure>
 

@@ -6,34 +6,17 @@
   <meta name="keywords" content=" jwt身份伪造 ">
   <meta name="description" content="HFCTF2020-EasyLogin | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3991,6 +3975,7 @@
     <div class="article-meta">
         
         <span>字数:742</span>
+        <span>预计阅读 3 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4037,16 +4022,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="HFCTF2020-EasyLogin"><a href="#HFCTF2020-EasyLogin" class="headerlink" title="HFCTF2020-EasyLogin"></a>HFCTF2020-EasyLogin</h1><p>首先一打开是个登录界面</p>
-<p><img src="/../image/HFCTF2020-EasyLogin-1.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-1.png"></p>
 <p>注册个号登录进去。</p>
-<p><img src="/../image/HFCTF2020-EasyLogin-2.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-2.png"></p>
 <p>发现一个GET FLAG，点一下弹出信息permission denied，提示没有权限，我们在登录界面用bp抓个包</p>
-<p><img src="/../image/HFCTF2020-EasyLogin-3.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-3.png"></p>
 <p>发现一串base64组成的jwt码</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">eyJhbGciOiJIUzI<span class="hljs-number">1</span><span class="hljs-symbol">NiIsInR5</span>cCI<span class="hljs-number">6</span>IkpX<span class="hljs-attr">VCJ9</span>.eyJzZW<span class="hljs-symbol">NyZXRpZCI6</span>MSwidX<span class="hljs-symbol">Nlcm5</span>hbWUiOiJtaXhicCIsI<span class="hljs-symbol">nBhc3</span><span class="hljs-symbol">N3</span>b<span class="hljs-number">3</span>JkIjoiMTIzIiwiaWF<span class="hljs-number">0</span>Ijox<span class="hljs-symbol">NzQzOTE5</span>OTYzfQ.QsP<span class="hljs-number">3</span>tYzvKrrPc<span class="hljs-symbol">nbB3</span>QJ<span class="hljs-number">1</span>QDeW<span class="hljs-number">69</span>HpJYUb<span class="hljs-number">9</span><span class="hljs-symbol">nLF0</span>x<span class="hljs-number">81</span><span class="hljs-symbol">NRE</span><br></code></pre></td></tr></table></figure>
 
 <p>在<a target="_blank" rel="noopener" href="https://jwt.io/%E4%B8%AD%E6%89%93%E5%BC%80">https://jwt.io/中打开</a></p>
-<p><img src="/../image/HFCTF2020-EasyLogin-4.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-4.png"></p>
 <p>然后在controllers&#x2F;api.js访问主要逻辑代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">crypto</span> = <span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;crypto&#x27;</span>);<br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">fs</span> = <span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">jwt</span> = <span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;jsonwebtoken&#x27;</span>)<br><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">APIError</span> = <span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;../rest&#x27;</span>).APIError;<br><br>module.exports = &#123;<br>    <span class="hljs-string">&#x27;POST /api/register&#x27;</span>: <span class="hljs-title function_ invoke__">async</span> (ctx, next) =&gt; &#123;<br>        <span class="hljs-keyword">const</span> &#123;username, password&#125; = ctx.request.body;<br><br>        <span class="hljs-keyword">if</span>(!username || username === <span class="hljs-string">&#x27;admin&#x27;</span>)&#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">APIError</span>(<span class="hljs-string">&#x27;register error&#x27;</span>, <span class="hljs-string">&#x27;wrong username&#x27;</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">global</span>.secrets.length &gt; <span class="hljs-number">100000</span>) &#123;<br>            <span class="hljs-keyword">global</span>.secrets = [];<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">secret</span> = crypto.<span class="hljs-title function_ invoke__">randomBytes</span>(<span class="hljs-number">18</span>).<span class="hljs-title function_ invoke__">toString</span>(<span class="hljs-string">&#x27;hex&#x27;</span>);<br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">secretid</span> = <span class="hljs-keyword">global</span>.secrets.length;<br>        <span class="hljs-keyword">global</span>.secrets.<span class="hljs-title function_ invoke__">push</span>(secret)<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">token</span> = jwt.<span class="hljs-title function_ invoke__">sign</span>(&#123;secretid, username, password&#125;, secret, &#123;<span class="hljs-attr">algorithm</span>: <span class="hljs-string">&#x27;HS256&#x27;</span>&#125;);<br><br>        ctx.<span class="hljs-title function_ invoke__">rest</span>(&#123;<br>            <span class="hljs-attr">token</span>: token<br>        &#125;);<br><br>        await <span class="hljs-title function_ invoke__">next</span>();<br>    &#125;,<br><br>    <span class="hljs-string">&#x27;POST /api/login&#x27;</span>: <span class="hljs-title function_ invoke__">async</span> (ctx, next) =&gt; &#123;<br>        <span class="hljs-keyword">const</span> &#123;username, password&#125; = ctx.request.body;<br><br>        <span class="hljs-keyword">if</span>(!username || !password) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">APIError</span>(<span class="hljs-string">&#x27;login error&#x27;</span>, <span class="hljs-string">&#x27;username or password is necessary&#x27;</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">token</span> = ctx.header.authorization || ctx.request.body.authorization || ctx.request.query.authorization;<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">sid</span> = JSON.<span class="hljs-title function_ invoke__">parse</span>(Buffer.<span class="hljs-keyword">from</span>(token.<span class="hljs-title function_ invoke__">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">1</span>], <span class="hljs-string">&#x27;base64&#x27;</span>).<span class="hljs-title function_ invoke__">toString</span>()).secretid;<br><br>        console.<span class="hljs-title function_ invoke__">log</span>(sid)<br><br>        <span class="hljs-keyword">if</span>(sid === undefined || sid === <span class="hljs-literal">null</span> || !(sid &lt; <span class="hljs-keyword">global</span>.secrets.length &amp;&amp; sid &gt;= <span class="hljs-number">0</span>)) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">APIError</span>(<span class="hljs-string">&#x27;login error&#x27;</span>, <span class="hljs-string">&#x27;no such secret id&#x27;</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">secret</span> = <span class="hljs-keyword">global</span>.secrets[sid];<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">user</span> = jwt.<span class="hljs-title function_ invoke__">verify</span>(token, secret, &#123;<span class="hljs-attr">algorithm</span>: <span class="hljs-string">&#x27;HS256&#x27;</span>&#125;);<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">status</span> = username === user.username &amp;&amp; password === user.password;<br><br>        <span class="hljs-keyword">if</span>(status) &#123;<br>            ctx.session.username = username;<br>        &#125;<br><br>        ctx.<span class="hljs-title function_ invoke__">rest</span>(&#123;<br>            status<br>        &#125;);<br><br>        await <span class="hljs-title function_ invoke__">next</span>();<br>    &#125;,<br><br>    <span class="hljs-string">&#x27;GET /api/flag&#x27;</span>: <span class="hljs-title function_ invoke__">async</span> (ctx, next) =&gt; &#123;<br>        <span class="hljs-keyword">if</span>(ctx.session.username !== <span class="hljs-string">&#x27;admin&#x27;</span>)&#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">APIError</span>(<span class="hljs-string">&#x27;permission error&#x27;</span>, <span class="hljs-string">&#x27;permission denied&#x27;</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">flag</span> = fs.<span class="hljs-title function_ invoke__">readFileSync</span>(<span class="hljs-string">&#x27;/flag&#x27;</span>).<span class="hljs-title function_ invoke__">toString</span>();<br>        ctx.<span class="hljs-title function_ invoke__">rest</span>(&#123;<br>            flag<br>        &#125;);<br><br>        await <span class="hljs-title function_ invoke__">next</span>();<br>    &#125;,<br><br>    <span class="hljs-string">&#x27;GET /api/logout&#x27;</span>: <span class="hljs-title function_ invoke__">async</span> (ctx, next) =&gt; &#123;<br>        ctx.session.username = <span class="hljs-literal">null</span>;<br>        ctx.<span class="hljs-title function_ invoke__">rest</span>(&#123;<br>            <span class="hljs-attr">status</span>: <span class="hljs-literal">true</span><br>        &#125;)<br>        await <span class="hljs-title function_ invoke__">next</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
@@ -4059,15 +4044,15 @@
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs arcade">利用nodejs的jwt缺陷，当jwt的secret为空，jwt会采用algorithm为<span class="hljs-built_in">none</span>进行解密。 <br>js是弱语言类型，可以将secretid设置为一个小数或空数组（空数组与数字比较时为<span class="hljs-number">0</span>）来绕过secretid的一个验证（不能为<span class="hljs-literal">null</span>&amp;<span class="hljs-literal">undefined</span>）<br><br>绕过代码<br><span class="hljs-keyword">if</span>(sid === <span class="hljs-literal">undefined</span> || sid === <span class="hljs-literal">null</span> || !(sid &lt; global.secrets.<span class="hljs-built_in">length</span> &amp;&amp; sid &gt;= <span class="hljs-number">0</span>)) &#123;<br>     throw <span class="hljs-keyword">new</span> APIError(<span class="hljs-string">&#x27;login error&#x27;</span>, <span class="hljs-string">&#x27;no such secret id&#x27;</span>);<br> &#125;<br></code></pre></td></tr></table></figure>
 
 <p>先在base64编码工具处修改alg</p>
-<p><img src="/../image/HFCTF2020-EasyLogin-5.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-5.png"></p>
 <p>然后将其替换掉原来的第一部分（注意需要去掉&#x3D;号），然后修改admin，secretid</p>
-<p><img src="/../image/HFCTF2020-EasyLogin-6.png"></p>
-<p><img src="/../image/HFCTF2020-EasyLogin-7.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-6.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-7.png"></p>
 <p>由于不需要加密。jwt的第三部分就要删去，但是末尾的.需要保留，于是payload：</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">ewogICJhbGciOiAib<span class="hljs-name">m9</span>uZSIsCiAgI<span class="hljs-symbol">nR5</span>cCI<span class="hljs-number">6</span>ICJKV<span class="hljs-number">1</span>QiC<span class="hljs-symbol">n0</span>.eyJzZW<span class="hljs-symbol">NyZXRpZCI6</span>W<span class="hljs-number">10</span>sI<span class="hljs-symbol">nVzZXJuYW1</span>lIjoiYWRtaW<span class="hljs-number">4</span>iLCJwYX<span class="hljs-symbol">Nzd29</span>yZCI<span class="hljs-number">6</span>IjEyMyIsImlhdCI<span class="hljs-number">6</span>MTc<span class="hljs-number">0</span>MzkxOTk<span class="hljs-number">2</span><span class="hljs-name">M30.</span><br></code></pre></td></tr></table></figure>
 
 <p>bp改包</p>
-<p><img src="/../image/HFCTF2020-EasyLogin-8.png"></p>
+<p><img loading="lazy" src="/../image/HFCTF2020-EasyLogin-8.png"></p>
 <p>然后登录进去之后访问api&#x2F;flag即可看到flag。</p>
 <p>或者先将get flag的请求抓包把response中的set-cookie放入api&#x2F;flag</p>
 

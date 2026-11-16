@@ -6,34 +6,17 @@
   <meta name="keywords" content=" flask伪造session , unzip()存在软链接攻击 , 软链接的压缩包的制作 , /cwd当前进程运行目录 ">
   <meta name="description" content="SWPU2019-Web3 | MIXBP">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/09/14/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="docker学习初识docker安装docker12345678910# yum包更新yum update# 安装所需要的软件包yum install -y yum-utils device-mapper-persistent-date lvm2# 设置yum源yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;cento">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="article:published_time" content="2026-09-14T04:28:32.000Z">
-<meta property="article:modified_time" content="2026-09-18T11:22:32.136Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:08:41.064Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/docker%E5%AD%A6%E4%B9%A0-1.png">
 
 
 <link rel="icon" href="/img/favicon.png">
@@ -58,7 +41,8 @@
 
 <script src="/js/iconfont.js?v=1.1.0" ></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
+</head>
 <div style="display: none">
   <input class="theme_disqus_on" value="false">
   <input class="theme_preload_comment" value="">
@@ -2215,7 +2199,7 @@
         
         <a  class="全部文章 java安全学习 "
            href="/2026/05/07/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/"
-           data-tag="java反序列化,JNDI,RMI"
+           data-tag="JNDI,RMI,java反序列化"
            data-author="" >
             <span class="post-title" title="java反序列化进阶">java反序列化进阶</span>
             <span class="post-date" title="2026-05-07 01:23:24">2026/05/07</span>
@@ -2737,7 +2721,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/05/22/%E2%80%9C%E8%BD%A9%E8%BE%95%E6%9D%AF%E2%80%9D%E4%BA%91%E7%9B%BE%E7%A0%BA%E5%89%91CTF%E6%8C%91%E6%88%98%E8%B5%9B%E5%A4%8D%E7%8E%B0/"
-           data-tag="ssti,RCE,ssrf,sql"
+           data-tag="ssti,ssrf,RCE,sql"
            data-author="" >
             <span class="post-title" title="“轩辕杯”云盾砺剑CTF挑战赛复现">“轩辕杯”云盾砺剑CTF挑战赛复现</span>
             <span class="post-date" title="2025-05-22 23:37:59">2025/05/22</span>
@@ -2800,7 +2784,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/20/watevrCTF-2019-PickleStore/"
-           data-tag="反弹shell,python反序列化,外带数据,pickle反序列化"
+           data-tag="python反序列化,反弹shell,外带数据,pickle反序列化"
            data-author="" >
             <span class="post-title" title="watevrCTF-2019-PickleStore">watevrCTF-2019-PickleStore</span>
             <span class="post-date" title="2025-05-20 16:38:08">2025/05/20</span>
@@ -2872,7 +2856,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/05/11/SWPU2019-Web4/"
-           data-tag="代码审计,堆叠注入,时间盲注,16进制加SQL预处理绕过,PDO"
+           data-tag="代码审计,堆叠注入,16进制加SQL预处理绕过,时间盲注,PDO"
            data-author="" >
             <span class="post-title" title="SWPU2019-Web4">SWPU2019-Web4</span>
             <span class="post-date" title="2025-05-11 21:25:26">2025/05/11</span>
@@ -3169,7 +3153,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/04/15/BJDCTF2020-EzPHP/"
-           data-tag="代码审计,php特性,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
+           data-tag="php特性,代码审计,sha1绕过,extract,$_SERVER[&#39;QUERY_STRING&#39;],preg_match,create_function(),取反绕过单双引号过滤"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EzPHP">BJDCTF2020-EzPHP</span>
             <span class="post-date" title="2025-04-15 22:02:22">2025/04/15</span>
@@ -3187,7 +3171,7 @@
         
         <a  class="全部文章 比赛复现 "
            href="/2025/04/15/TGCTF-2025%E5%A4%8D%E7%8E%B0/"
-           data-tag="sql注入,RCE,upload,明文攻击,CVE,目录穿越,内存马,时间盲注,压缩文件修复,时间帧隐写,docker"
+           data-tag="sql注入,upload,RCE,明文攻击,时间盲注,CVE,目录穿越,内存马,压缩文件修复,时间帧隐写,docker"
            data-author="" >
             <span class="post-title" title="TGCTF-2025复现">TGCTF-2025复现</span>
             <span class="post-date" title="2025-04-15 14:10:07">2025/04/15</span>
@@ -3376,7 +3360,7 @@
         
         <a  class="全部文章 刷题笔记 "
            href="/2025/03/30/BJDCTF2020-EasySearch1/"
-           data-tag="swp泄露,md5碰撞,代码审计,Apache SSI 远程命令执行漏洞"
+           data-tag="代码审计,swp泄露,md5碰撞,Apache SSI 远程命令执行漏洞"
            data-author="" >
             <span class="post-title" title="BJDCTF2020-EasySearch1">BJDCTF2020-EasySearch1</span>
             <span class="post-date" title="2025-03-30 14:24:01">2025/03/30</span>
@@ -3997,6 +3981,7 @@
     <div class="article-meta">
         
         <span>字数:1k</span>
+        <span>预计阅读 4 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4043,9 +4028,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="SWPU2019-Web3"><a href="#SWPU2019-Web3" class="headerlink" title="SWPU2019-Web3"></a>SWPU2019-Web3</h1><p>首先打开网页</p>
-<p><img src="/../image/SWPU2019-Web3-1.png"></p>
+<p><img loading="lazy" src="/../image/SWPU2019-Web3-1.png"></p>
 <p>首先是一个登录页面，发现不需要注册可以随便登录。然后登录之后的页面。</p>
-<p><img src="/../image/SWPU2019-Web3-2.png"></p>
+<p><img loading="lazy" src="/../image/SWPU2019-Web3-2.png"></p>
 <p>有一个文件上传的功能，但是点开发现提示<code>Permission denied!</code>权限不足。考虑应该是由<code>session</code>来判断权限。获取到session的值。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-class">.eJyrVspMUbKqVlJIUrJS8g1xLFeq1VHKLI7PyU_PzFOyKikqTdVRKkgsLi7PLwIqVEpMyQWK6yiVFqcW5SXmpsKFagFxjxhY</span><span class="hljs-selector-class">.aDgeIA</span>.aNtJbmpVK-tzJ6smVh5kAMMo5Rs<br></code></pre></td></tr></table></figure>
 
@@ -4054,9 +4039,9 @@
 
 <p>其中username属性和password属性均为admin，<strong>可能后端是验证id属性的值</strong>，尝试伪造session，但需要SECRET_KEY的值，SECRET_KEY是Flask中的通用密钥，主要在加密算法中作为一个参数，这个值的复杂度影响到数据传输和存储时的复杂度，密钥最好存储在系统变量中</p>
 <p>通常访问不存在的目录时，会出现在请求头中，尝试访问：<code>http://xxx/test</code>目录：</p>
-<p><img src="/../image/SWPU2019-Web3-3.png"></p>
+<p><img loading="lazy" src="/../image/SWPU2019-Web3-3.png"></p>
 <p>然后在<strong>F12</strong>的<strong>Network</strong>中查看：</p>
-<p><img src="/../image/SWPU2019-Web3-4.png"></p>
+<p><img loading="lazy" src="/../image/SWPU2019-Web3-4.png"></p>
 <p>其中<code>Swpuctf_csrf_token: U0VDUkVUX0tFWTprZXlxcXF3d3dlZWUhQCMkJV4mKg==</code>，将其解码，得到：</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">SECRET_KEY:</span>keyqqqwwweee!@<span class="hljs-meta">#$%^&amp;*</span><br></code></pre></td></tr></table></figure>
 
@@ -4070,7 +4055,7 @@
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">.eJyr<span class="hljs-attr">VspMUbKqVlJIUrJS8</span><span class="hljs-name">g20</span>tVWq<span class="hljs-number">1</span>VHKLI<span class="hljs-number">7</span>PyU_PzFOyKikqTdVRKkgsLi<span class="hljs-number">7</span>PLwIqVEpMyQWK<span class="hljs-number">6</span>yiVFqcW<span class="hljs-number">5</span>SXmpsKFagFiyxgX.aDgfjw<span class="hljs-number">.67</span>UrB<span class="hljs-number">3</span>brQK<span class="hljs-number">6</span>rjW<span class="hljs-number">9</span>GfmQUCSFA<span class="hljs-symbol">N2</span>Y<br></code></pre></td></tr></table></figure>
 
 <p>然后替换session再次点击upload，进入到文件上传页面。</p>
-<p><img src="/../image/SWPU2019-Web3-5.png"></p>
+<p><img loading="lazy" src="/../image/SWPU2019-Web3-5.png"></p>
 <p>在查看网页源码时，找到了注释中的源码：</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@app</span>.<span class="hljs-built_in">route</span>(<span class="hljs-string">&#x27;/upload&#x27;</span>,methods=[<span class="hljs-string">&#x27;GET&#x27;</span>,<span class="hljs-string">&#x27;POST&#x27;</span>])<br>def <span class="hljs-built_in">upload</span>():<br>    if session[<span class="hljs-string">&#x27;id&#x27;</span>] != b<span class="hljs-string">&#x27;1&#x27;</span>:<br>        return <span class="hljs-built_in">render_template_string</span>(temp)<br>    if request.method==<span class="hljs-string">&#x27;POST&#x27;</span>:<br>        m = hashlib.<span class="hljs-built_in">md5</span>()<br>        name = session[<span class="hljs-string">&#x27;password&#x27;</span>]<br>        name = name+<span class="hljs-string">&#x27;qweqweqwe&#x27;</span><br>        name = name.<span class="hljs-built_in">encode</span>(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        m.<span class="hljs-built_in">update</span>(name)<br>        md5_one= m.<span class="hljs-built_in">hexdigest</span>()<br>        n = hashlib.<span class="hljs-built_in">md5</span>()<br>        ip = request.remote_addr<br>        ip = ip.<span class="hljs-built_in">encode</span>(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        n.<span class="hljs-built_in">update</span>(ip)<br>        md5_ip = n.<span class="hljs-built_in">hexdigest</span>()<br>        f=request.files[<span class="hljs-string">&#x27;file&#x27;</span>]<br>        basepath=os.path.<span class="hljs-built_in">dirname</span>(os.path.<span class="hljs-built_in">realpath</span>(__file__))<br>        path = basepath+<span class="hljs-string">&#x27;/upload/&#x27;</span>+md5_ip+<span class="hljs-string">&#x27;/&#x27;</span>+md5_one+<span class="hljs-string">&#x27;/&#x27;</span>+session[<span class="hljs-string">&#x27;username&#x27;</span>]+<span class="hljs-string">&quot;/&quot;</span><br>        path_base = basepath+<span class="hljs-string">&#x27;/upload/&#x27;</span>+md5_ip+<span class="hljs-string">&#x27;/&#x27;</span><br>        filename = f.filename<br>        pathname = path+filename<br>        if <span class="hljs-string">&quot;zip&quot;</span> != filename.<span class="hljs-built_in">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>)[-<span class="hljs-number">1</span>]:<br>            return <span class="hljs-string">&#x27;zip only allowed&#x27;</span><br>        if <span class="hljs-keyword">not</span> os.path.<span class="hljs-built_in">exists</span>(path_base):<br>            <span class="hljs-attribute">try</span>:<br>                os.<span class="hljs-built_in">makedirs</span>(path_base)<br>            except Exception as <span class="hljs-attribute">e</span>:<br>                return <span class="hljs-string">&#x27;error&#x27;</span><br>        if <span class="hljs-keyword">not</span> os.path.<span class="hljs-built_in">exists</span>(path):<br>            <span class="hljs-attribute">try</span>:<br>                os.<span class="hljs-built_in">makedirs</span>(path)<br>            except Exception as <span class="hljs-attribute">e</span>:<br>                return <span class="hljs-string">&#x27;error&#x27;</span><br>        if <span class="hljs-keyword">not</span> os.path.<span class="hljs-built_in">exists</span>(pathname):<br>            <span class="hljs-attribute">try</span>:<br>                f.<span class="hljs-built_in">save</span>(pathname)<br>            except Exception as <span class="hljs-attribute">e</span>:<br>                return <span class="hljs-string">&#x27;error&#x27;</span><br>        <span class="hljs-attribute">try</span>:<br>            cmd = <span class="hljs-string">&quot;unzip -n -d &quot;</span>+path+<span class="hljs-string">&quot; &quot;</span>+ pathname<br>            if cmd.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;|&#x27;</span>) != -<span class="hljs-number">1</span> or cmd.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;;&#x27;</span>) != <span class="hljs-attribute">-1</span>:<br>				<span class="hljs-built_in">waf</span>()<br>                return <span class="hljs-string">&#x27;error&#x27;</span><br>            os.<span class="hljs-built_in">system</span>(cmd)<br>        except Exception as <span class="hljs-attribute">e</span>:<br>            return <span class="hljs-string">&#x27;error&#x27;</span><br>        unzip_file = zipfile.<span class="hljs-built_in">ZipFile</span>(pathname,<span class="hljs-string">&#x27;r&#x27;</span>)<br>        unzip_filename = unzip_file.<span class="hljs-built_in">namelist</span>()[<span class="hljs-number">0</span>]<br>        if session[<span class="hljs-string">&#x27;is_login&#x27;</span>] != <span class="hljs-attribute">True</span>:<br>            return <span class="hljs-string">&#x27;not login&#x27;</span><br>        <span class="hljs-attribute">try</span>:<br>            if unzip_filename.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;/&#x27;</span>) != <span class="hljs-attribute">-1</span>:<br>                shutil.<span class="hljs-built_in">rmtree</span>(path_base)<br>                os.<span class="hljs-built_in">mkdir</span>(path_base)<br>                return <span class="hljs-string">&#x27;error&#x27;</span><br>            image = <span class="hljs-built_in">open</span>(path+unzip_filename, <span class="hljs-string">&quot;rb&quot;</span>).<span class="hljs-built_in">read</span>()<br>            resp = <span class="hljs-built_in">make_response</span>(image)<br>            resp.headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;image/png&#x27;</span><br>            return resp<br>        except Exception as <span class="hljs-attribute">e</span>:<br>            shutil.<span class="hljs-built_in">rmtree</span>(path_base)<br>            os.<span class="hljs-built_in">mkdir</span>(path_base)<br>            return <span class="hljs-string">&#x27;error&#x27;</span><br>    return <span class="hljs-built_in">render_template</span>(<span class="hljs-string">&#x27;upload.html&#x27;</span>)<br><br><br><span class="hljs-variable">@app</span>.<span class="hljs-built_in">route</span>(<span class="hljs-string">&#x27;/showflag&#x27;</span>)<br>def <span class="hljs-built_in">showflag</span>():<br>    if True == <span class="hljs-attribute">False</span>:<br>        image = <span class="hljs-built_in">open</span>(os.path.<span class="hljs-built_in">join</span>(<span class="hljs-string">&#x27;./flag/flag.jpg&#x27;</span>), <span class="hljs-string">&quot;rb&quot;</span>).<span class="hljs-built_in">read</span>()<br>        resp = <span class="hljs-built_in">make_response</span>(image)<br>        resp.headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;image/png&#x27;</span><br>        return resp<br>    <span class="hljs-attribute">else</span>:<br>        return <span class="hljs-string">&quot;can&#x27;t give you&quot;</span><br><br></code></pre></td></tr></table></figure>
 
@@ -4085,7 +4070,7 @@
 
 <p>得到<code>tmp1.zip</code>文件，上传文件时，使用<strong>BurpSuite</strong>抓取数据包：</p>
 <p>使用<strong>Repeater</strong>发送数据包，在<strong>Response</strong>中得到flag</p>
-<p><img src="/../image/SWPU2019-Web3-6.png"></p>
+<p><img loading="lazy" src="/../image/SWPU2019-Web3-6.png"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
