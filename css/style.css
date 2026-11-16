@@ -1757,6 +1757,53 @@ img.pswp__img {
 .mobile-menus .dynamic-menu:nth-child(1) {
   margin-top: 0;
 }
+/* 相关文章推荐 */
+.related-posts {
+  margin: 20px 0 0;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-radius: 5px;
+}
+.related-posts .related-title {
+  font-size: 16px;
+  color: #383636;
+  margin: 0 0 10px;
+}
+.related-posts .related-title .iconfont {
+  color: #309e85;
+  margin-right: 4px;
+}
+.related-posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-posts ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e5e5e5;
+}
+.related-posts ul li:last-child {
+  border-bottom: none;
+}
+.related-posts ul li a {
+  color: #555;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+.related-posts ul li a:hover {
+  color: #309e85;
+}
+.related-posts ul li .related-date {
+  color: #999;
+  font-size: 12px;
+  flex-shrink: 0;
+}
 @media screen and (max-width: 1468px) {
   html,
   body {

@@ -1,0 +1,243 @@
+/* 暗色模式: 所有规则作用于 html.dark, 由切换按钮/系统偏好控制 */
+html.dark body {
+  background: #1b1c1f;
+}
+html.dark #post {
+  background: #1b1c1f !important;
+  color: #c9cdd1;
+}
+html.dark #post ::selection {
+  color: #fff;
+  background: #309e85;
+}
+html.dark #post .index {
+  background: #1b1c1f !important;
+}
+html.dark .pjax article {
+  background: #242629 !important;
+/* 文末声明/版权 */
+}
+html.dark .pjax article .article-title {
+  color: #e6e8ea;
+}
+html.dark .pjax article .article-meta {
+  color: #8b9096;
+  border-left-color: #4a4f57;
+}
+html.dark .pjax article .article-meta a {
+  color: #9aa0a6;
+}
+html.dark .pjax article .article-meta a:hover {
+  color: #309e85;
+}
+html.dark .pjax article .article-entry {
+  color: #c9cdd1;
+/* 行内代码 */
+/* 引用块 */
+/* 表格 */
+/* 有序列表序号 */
+}
+html.dark .pjax article .article-entry h1,
+html.dark .pjax article .article-entry h2,
+html.dark .pjax article .article-entry h3,
+html.dark .pjax article .article-entry h4,
+html.dark .pjax article .article-entry h5,
+html.dark .pjax article .article-entry h6 {
+  color: #e6e8ea;
+}
+html.dark .pjax article .article-entry a {
+  color: #4db393;
+}
+html.dark .pjax article .article-entry strong {
+  color: #e6e8ea;
+}
+html.dark .pjax article .article-entry hr {
+  background: #3a3e44;
+}
+html.dark .pjax article .article-entry img {
+  background: transparent;
+}
+html.dark .pjax article .article-entry p code,
+html.dark .pjax article .article-entry li code,
+html.dark .pjax article .article-entry td code,
+html.dark .pjax article .article-entry :not(pre) > code {
+  background: #2a2d33 !important;
+  color: #e06c75 !important;
+  border-color: #3a3e44 !important;
+}
+html.dark .pjax article .article-entry blockquote {
+  background: #2a2d33 !important;
+  color: #a8adb3;
+  border-left-color: #309e85;
+}
+html.dark .pjax article .article-entry blockquote p {
+  color: #a8adb3;
+}
+html.dark .pjax article .article-entry table th,
+html.dark .pjax article .article-entry table td {
+  background: #242629 !important;
+  color: #c9cdd1 !important;
+  border-color: #3a3e44 !important;
+}
+html.dark .pjax article .article-entry table thead th {
+  background: #2a2d33 !important;
+  color: #e6e8ea !important;
+}
+html.dark .pjax article .article-entry table tr:nth-child(2n) td {
+  background: #282b30 !important;
+}
+html.dark .pjax article .article-entry .pre-numbering {
+  background: #2a2d33 !important;
+  color: #6b7076 !important;
+  border-right-color: #3a3e44 !important;
+}
+html.dark .pjax article .article_copyright,
+html.dark .pjax article .copyright {
+  color: #8b9096;
+}
+html.dark .hljs {
+  background: #282c34 !important;
+  color: #abb2bf !important;
+}
+html.dark .hljs-comment,
+html.dark .hljs-quote {
+  color: #5c6370 !important;
+}
+html.dark .hljs-keyword,
+html.dark .hljs-selector-tag,
+html.dark .hljs-deletion,
+html.dark .hljs-subst {
+  color: #c678dd !important;
+}
+html.dark .hljs-string,
+html.dark .hljs-regexp,
+html.dark .hljs-addition,
+html.dark .hljs-attribute {
+  color: #98c379 !important;
+}
+html.dark .hljs-number,
+html.dark .hljs-literal,
+html.dark .hljs-variable,
+html.dark .hljs-template-variable,
+html.dark .hljs-attr {
+  color: #d19a66 !important;
+}
+html.dark .hljs-title,
+html.dark .hljs-section,
+html.dark .hljs-name,
+html.dark .hljs-selector-id,
+html.dark .hljs-selector-class {
+  color: #61aeee !important;
+}
+html.dark .hljs-built_in,
+html.dark .hljs-builtin-name,
+html.dark .hljs-type,
+html.dark .hljs-class .hljs-title {
+  color: #e6c07b !important;
+}
+html.dark .hljs-tag {
+  color: #e06c75 !important;
+}
+html.dark .hljs-meta,
+html.dark .hljs-meta-string,
+html.dark .hljs-doctag {
+  color: #61aeee !important;
+}
+html.dark .hljs-strong,
+html.dark .hljs-emphasis {
+  color: #abb2bf !important;
+}
+html.dark .nav-right {
+  background: #222327 !important;
+}
+html.dark .nav-right:before {
+  opacity: 0.08 !important;
+}
+html.dark .nav-right .right-top {
+  background: none !important;
+}
+html.dark .nav-right #default-panel .right-title,
+html.dark .nav-right #outline-panel .right-title,
+html.dark .nav-right #search-panel {
+  color: #c9cdd1;
+}
+html.dark .nav-right nav a .post-title {
+  color: #c9cdd1 !important;
+}
+html.dark .nav-right nav a .post-date {
+  color: #7d8288 !important;
+}
+html.dark .nav-right nav a.hover {
+  background-color: #2d3035 !important;
+}
+html.dark .nav-right nav a.hover .post-title {
+  color: #e6e8ea !important;
+}
+html.dark .nav-right #local-search-input {
+  background: transparent;
+  color: #c9cdd1;
+  border-bottom-color: #3a3e44;
+}
+html.dark .nav-right .tags-list,
+html.dark .nav-right #outline-list,
+html.dark .nav-right #local-search-result {
+  background: #222327;
+  color: #c9cdd1;
+}
+html.dark .nav-right #no-item-tips {
+  color: #8b9096;
+}
+html.dark .related-posts {
+  background: #2a2d33 !important;
+}
+html.dark .related-posts .related-title {
+  color: #e6e8ea !important;
+}
+html.dark .related-posts ul li {
+  border-bottom-color: #3a3e44 !important;
+}
+html.dark .related-posts ul li a {
+  color: #a8adb3 !important;
+}
+html.dark .related-posts ul li a:hover {
+  color: #4db393 !important;
+}
+html.dark .related-posts ul li .related-date {
+  color: #7d8288 !important;
+}
+html.dark .full-toc .full {
+  background: #2d3035 !important;
+  color: #c9cdd1;
+}
+html.dark .copyright {
+  color: #7d8288;
+}
+html.dark .copyright a {
+  color: #8b9096;
+}
+html.dark #dark-toggle {
+  color: #e6e8ea;
+  background: rgba(45,48,53,0.85);
+}
+/* 切换按钮(亮色态样式) */
+#dark-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 92px;
+  z-index: 999;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  font-size: 20px;
+  user-select: none;
+  transition: background 0.2s;
+}
+#dark-toggle:hover {
+  background: rgba(48,158,133,0.9);
+  color: #fff;
+}
