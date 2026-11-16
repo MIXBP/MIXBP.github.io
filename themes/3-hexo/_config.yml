@@ -154,7 +154,7 @@ index_bg_img: /img/background.jpg
 other_bg_img: /img/background2.jpg
 
 # 点击图片放大样式
-img_resize: default
+img_resize: photoSwipe
 # 可选值：
 # default: 默认(自己写的简单的放大)
 # photoSwipe: 使用photoSwipe插件
@@ -298,8 +298,8 @@ CDN:
   animate: /cdn/animate.min.css
   nprogres_js: /cdn/nprogress.min.js
   mathjax: //cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML
-  photoswipe_js: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js
-  photoswipe_ui_js: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js
-  photoswipe_css: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css
-  photoswipe_skin_css: //cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css
+  photoswipe_js: /cdn/photoswipe/photoswipe.min.js
+  photoswipe_ui_js: /cdn/photoswipe/photoswipe-ui-default.min.js
+  photoswipe_css: /cdn/photoswipe/photoswipe.min.css
+  photoswipe_skin_css: /cdn/photoswipe/default-skin/default-skin.min.css
 ##############################
