@@ -15,6 +15,7 @@ titles:
   jump_to_comment_area: "Jump to comment area"
   original: "original"
   toggle_full_screen: "Toggle full screen"
+  related: "Related posts"
 post:
   title: "Title"
   author: "Author"

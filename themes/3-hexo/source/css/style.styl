@@ -134,4 +134,44 @@ img.pswp__img
       margin-top 0
 
 
+/* 相关文章推荐 */
+.related-posts
+  margin 20px 0 0
+  padding 15px 20px
+  background #f8f9fa
+  border-radius 5px
+  .related-title
+    font-size 16px
+    color #383636
+    margin 0 0 10px
+    .iconfont
+      color #309E85
+      margin-right 4px
+  ul
+    list-style none
+    margin 0
+    padding 0
+    li
+      display flex
+      justify-content space-between
+      align-items center
+      padding 6px 0
+      border-bottom 1px dashed #e5e5e5
+      &:last-child
+        border-bottom none
+      a
+        color #555
+        flex 1
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        margin-right 10px
+        &:hover
+          color #309E85
+      .related-date
+        color #999
+        font-size 12px
+        flex-shrink 0
+
+
 @import "mobile.styl"

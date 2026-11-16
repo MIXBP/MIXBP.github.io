@@ -98,6 +98,34 @@
 </p>
 <%}%>
 <%- partial('_partial/article_copyright')%>
+<% if (!index) { %>
+<%
+/* 相关文章: 按共享标签数评分,同分按日期降序 */
+var postTagNames = (post.tags && post.tags.data) ? post.tags.data.map(function(t){ return t.name; }) : [];
+var related = site.posts.data.filter(function(p) {
+    if (p.path === post.path || !postTagNames.length) return false;
+    return !!(p.tags && p.tags.data && p.tags.data.length && p.tags.data.some(function(t){ return postTagNames.indexOf(t.name) !== -1; }));
+}).map(function(p) {
+    var score = p.tags.data.filter(function(t){ return postTagNames.indexOf(t.name) !== -1; }).length;
+    return { p: p, score: score };
+}).sort(function(a, b) {
+    return (b.score - a.score) || (b.p.date - a.p.date);
+}).slice(0, 5);
+%>
+<% if (related.length) { %>
+<div class="related-posts">
+    <div class="related-title"><i class="iconfont icon-tag"></i> <%= __('titles.related') %></div>
+    <ul>
+        <% related.forEach(function(r){ %>
+        <li>
+            <a href="<%- url_for(r.p.path) %>"><%= r.p.title %></a>
+            <span class="related-date"><%= date(r.p.date, 'YYYY-MM-DD') %></span>
+        </li>
+        <% }) %>
+    </ul>
+</div>
+<% } %>
+<% } %>
 <%- partial('_partial/comment', {post: post, index: index})%>
 
 <% if (theme.mathjax.on){ %>

@@ -15,6 +15,7 @@ titles:
   jump_to_comment_area: "跳转至评论区"
   original: "原文"
   toggle_full_screen: "切换全屏"
+  related: "相关文章"
 post:
   title: "文章标题"
   author: "本文作者"
