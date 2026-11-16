@@ -589,3 +589,12 @@
     <%}}%>
 </div>
 <%}%>
+<div id="dark-toggle" data-title="切换暗色模式">🌙</div>
+<script>
+(function () {
+    $('#dark-toggle').on('click', function () {
+        var dark = document.documentElement.classList.toggle('dark');
+        try { localStorage.setItem('3h_dark', dark ? '1' : '0'); } catch (e) { }
+    });
+})();
+</script>

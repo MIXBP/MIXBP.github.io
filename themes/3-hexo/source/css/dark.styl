@@ -1,0 +1,164 @@
+/* 暗色模式: 所有规则作用于 html.dark, 由切换按钮/系统偏好控制 */
+html.dark
+  body
+    background #1b1c1f
+  /* 主内容区 */
+  #post
+    background #1b1c1f !important
+    color #c9cdd1
+    & ::selection
+      color white
+      background #309E85
+  #post .index
+    background #1b1c1f !important
+  .pjax article
+    background #242629 !important
+    .article-title
+      color #e6e8ea
+    .article-meta
+      color #8b9096
+      border-left-color #4a4f57
+      a
+        color #9aa0a6
+        &:hover
+          color #309E85
+    .article-entry
+      color #c9cdd1
+      h1, h2, h3, h4, h5, h6
+        color #e6e8ea
+      a
+        color #4db393
+      strong
+        color #e6e8ea
+      hr
+        background #3a3e44
+      img
+        background transparent
+      /* 行内代码 */
+      p code, li code, td code,:not(pre) > code
+        background #2a2d33 !important
+        color #e06c75 !important
+        border-color #3a3e44 !important
+      /* 引用块 */
+      blockquote
+        background #2a2d33 !important
+        color #a8adb3
+        border-left-color #309E85
+        p
+          color #a8adb3
+      /* 表格 */
+      table
+        th, td
+          background #242629 !important
+          color #c9cdd1 !important
+          border-color #3a3e44 !important
+        thead th
+          background #2a2d33 !important
+          color #e6e8ea !important
+        tr:nth-child(2n) td
+          background #282b30 !important
+      /* 有序列表序号 */
+      .pre-numbering
+        background #2a2d33 !important
+        color #6b7076 !important
+        border-right-color #3a3e44 !important
+    /* 文末声明/版权 */
+    .article_copyright, .copyright
+      color #8b9096
+  /* 代码高亮(one-dark 配色) */
+  .hljs
+    background #282c34 !important
+    color #abb2bf !important
+  .hljs-comment, .hljs-quote
+    color #5c6370 !important
+  .hljs-keyword, .hljs-selector-tag, .hljs-deletion, .hljs-subst
+    color #c678dd !important
+  .hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute
+    color #98c379 !important
+  .hljs-number, .hljs-literal, .hljs-variable, .hljs-template-variable, .hljs-attr
+    color #d19a66 !important
+  .hljs-title, .hljs-section, .hljs-name, .hljs-selector-id, .hljs-selector-class
+    color #61aeee !important
+  .hljs-built_in, .hljs-builtin-name, .hljs-type, .hljs-class .hljs-title
+    color #e6c07b !important
+  .hljs-tag
+    color #e06c75 !important
+  .hljs-meta, .hljs-meta-string, .hljs-doctag
+    color #61aeee !important
+  .hljs-strong, .hljs-emphasis
+    color #abb2bf !important
+  /* 文章列表右侧面板 */
+  .nav-right
+    background #222327 !important
+    &:before
+      opacity 0.08 !important
+    .right-top
+      background none !important
+    #default-panel .right-title, #outline-panel .right-title, #search-panel
+      color #c9cdd1
+    nav a
+      .post-title
+        color #c9cdd1 !important
+      .post-date
+        color #7d8288 !important
+      &.hover
+        background-color #2d3035 !important
+        .post-title
+          color #e6e8ea !important
+    #local-search-input
+      background transparent
+      color #c9cdd1
+      border-bottom-color #3a3e44
+    .tags-list, #outline-list, #local-search-result
+      background #222327
+      color #c9cdd1
+    #no-item-tips
+      color #8b9096
+  /* 相关文章 */
+  .related-posts
+    background #2a2d33 !important
+    .related-title
+      color #e6e8ea !important
+    ul li
+      border-bottom-color #3a3e44 !important
+      a
+        color #a8adb3 !important
+        &:hover
+          color #4db393 !important
+      .related-date
+        color #7d8288 !important
+  /* 目录/全屏按钮 */
+  .full-toc
+    .full
+      background #2d3035 !important
+      color #c9cdd1
+  /* 底部版权 */
+  .copyright
+    color #7d8288
+    a
+      color #8b9096
+  /* 暗色切换按钮 */
+  #dark-toggle
+    color #e6e8ea
+    background rgba(45, 48, 53, .85)
+
+/* 切换按钮(亮色态样式) */
+#dark-toggle
+  position fixed
+  right 18px
+  bottom 92px
+  z-index 999
+  width 42px
+  height 42px
+  line-height 42px
+  text-align center
+  border-radius 50%
+  cursor pointer
+  background rgba(255, 255, 255, .85)
+  box-shadow 0 2px 8px rgba(0, 0, 0, .25)
+  font-size 20px
+  user-select none
+  transition background .2s
+  &:hover
+    background rgba(48, 158, 133, .9)
+    color #fff

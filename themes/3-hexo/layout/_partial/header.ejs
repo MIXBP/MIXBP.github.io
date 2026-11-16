@@ -1,5 +1,15 @@
 <head>
   <meta charset="utf-8">
+  <script>
+  /* 暗色模式预置: localStorage 优先, 其次跟随系统, 尽早执行避免闪烁 */
+  (function () {
+    try {
+      var v = localStorage.getItem('3h_dark');
+      var dark = v === null ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) : v === '1';
+      if (dark) document.documentElement.classList.add('dark');
+    } catch (e) { }
+  })();
+  </script>
   <title><% if (page.title){ %><%= page.title %> | <% } %><%= config.title %></title>
   <meta name="keywords" content="<% if (page.tags && page.tags.length){ page.tags.forEach(function(tag, i){%> <%=tag.name%> <% if (i+1<page.tags.length){%>,<%} })}%>">
   <meta name="description" content="<%= page.description || config.description || (page.title ? page.title + ' | ' + config.title : config.title) %>">
