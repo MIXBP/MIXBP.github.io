@@ -1,4 +1,4 @@
-/* 天气小组件: ipapi 定位 + open-meteo 天气(均免 key), 缓存 1h, 失败静默 */
+/* 天气小组件: 搜狐IP定位(国内友好) -> open-meteo 天气(均免 key), 缓存 1h, 失败静默 */
 (function () {
   var KEY = '3h_weather';
   var chip = document.createElement('div');
@@ -15,30 +15,73 @@
   } catch (e) { }
 
   var done = false;
-  setTimeout(function () { if (!done) chip.style.display = 'none'; }, 8000);
+  setTimeout(function () { if (!done) chip.style.display = 'none'; }, 10000);
 
-  fetch('https://ipapi.co/json/', { timeout: 5000 })
-    .then(function (r) { return r.json(); })
-    .then(function (g) {
-      if (!g || !g.latitude) throw 0;
-      return fetch('https://api.open-meteo.com/v1/forecast?latitude=' + g.latitude
-        + '&longitude=' + g.longitude + '&current_weather=true&timezone=auto')
-        .then(function (r) { return r.json(); })
+  locate()
+    .then(function (loc) {
+      if (!loc) throw 0;
+      return (loc.lat ? Promise.resolve(loc) : geocode(loc.city))
+        .then(function (loc2) { return forecast(loc2); })
         .then(function (w) {
-          var cw = w.current_weather;
-          var data = {
-            ts: Date.now(),
-            city: (g.city || g.region || '').slice(0, 8),
-            temp: Math.round(cw.temperature),
-            code: cw.weathercode,
-            wind: Math.round(cw.windspeed)
-          };
+          var data = { ts: Date.now(), city: loc.city, temp: w.temp, code: w.code, wind: w.wind };
           try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { }
           done = true;
           render(data);
         });
     })
     .catch(function () { chip.style.display = 'none'; });
+
+  /* 1) 搜狐 IP 接口: script 标签方式无 CORS 问题, 返回 returnCitySN.cname 如 "北京市" */
+  function locate() {
+    return new Promise(function (resolve) {
+      var s = document.createElement('script');
+      var timer = setTimeout(function () { resolve(null); }, 4000);
+      s.onload = function () {
+        clearTimeout(timer);
+        try {
+          var sn = window.returnCitySN;
+          var name = ((sn && sn.cname) || '').trim().replace(/^中国/, '').replace(/^.*?省/, '').replace(/市$/, '').trim();
+          resolve(name && name !== '未知' ? { city: name.slice(0, 6) } : null);
+        } catch (e) { resolve(null); }
+        s.remove();
+      };
+      s.onerror = function () { clearTimeout(timer); resolve(null); };
+      s.src = 'https://pv.sohu.com/cityjson?ie=utf-8&t=' + Date.now();
+      document.head.appendChild(s);
+    }).then(function (loc) {
+      if (loc) return loc;
+      /* 2) 回退: ipapi.co (国外) */
+      return fetch('https://ipapi.co/json/').then(function (r) { return r.json(); }).then(function (g) {
+        if (!g || !g.latitude) throw 0;
+        return { city: (g.city || '').slice(0, 6), lat: g.latitude, lon: g.longitude };
+      });
+    });
+  }
+
+  /* 城市名 -> 经纬度 (open-meteo geocoding) */
+  function geocode(city) {
+    return fetch('https://geocoding-api.open-meteo.com/v1/search?name=' + encodeURIComponent(city)
+      + '&count=1&language=zh&format=json')
+      .then(function (r) { return r.json(); })
+      .then(function (g) {
+        if (!g.results || !g.results.length) throw 0;
+        return { city: city, lat: g.results[0].latitude, lon: g.results[0].longitude };
+      });
+  }
+
+  /* 经纬度 -> 当前天气 */
+  function forecast(loc) {
+    return fetch('https://api.open-meteo.com/v1/forecast?latitude=' + loc.lat
+      + '&longitude=' + loc.lon + '&current_weather=true&timezone=auto')
+      .then(function (r) { return r.json(); })
+      .then(function (w) {
+        return {
+          temp: Math.round(w.current_weather.temperature),
+          code: w.current_weather.weathercode,
+          wind: Math.round(w.current_weather.windspeed)
+        };
+      });
+  }
 
   function render(d) {
     var map = {
