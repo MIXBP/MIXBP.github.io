@@ -3,7 +3,7 @@ html.dark body {
   background: #1b1c1f;
 }
 html.dark #post {
-  background: #1b1c1f !important;
+  background: #10131c url("/img/background-dark.jpg") center/cover no-repeat !important;
   color: #c9cdd1;
 }
 html.dark #post ::selection {
@@ -11,10 +11,12 @@ html.dark #post ::selection {
   background: #309e85;
 }
 html.dark #post .index {
-  background: #1b1c1f !important;
+  background: #10131c url("/img/background-dark.jpg") center/cover no-repeat !important;
 }
 html.dark .pjax article {
-  background: #242629 !important;
+  background-color: #242629 !important;
+  background-image: radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px) !important;
+  background-size: 22px 22px;
 /* 文末声明/版权 */
 }
 html.dark .pjax article .article-title {
