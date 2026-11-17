@@ -1193,7 +1193,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
   color: #2f2f2f;
   margin-left: 1px;
 }
@@ -1606,6 +1606,83 @@
 #post .article_copyright a:hover {
   text-decoration: underline;
 }
+#post .article-title {
+  font-size: 1.85em;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+#post .pjax article .article-entry h1,
+#post .pjax article .article-entry h2,
+#post .pjax article .article-entry h3,
+#post .pjax article .article-entry h4,
+#post .pjax article .article-entry h5,
+#post .pjax article .article-entry h6 {
+  line-height: 1.5;
+}
+#post .pjax article .article-entry h2 {
+  margin: 1.9em 0 0.9em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid #e8eaed;
+  font-size: 1.42em;
+}
+#post .pjax article .article-entry h3 {
+  margin: 1.55em 0 0.75em;
+  font-size: 1.2em;
+}
+#post .pjax article .article-entry h4 {
+  margin: 1.4em 0 0.7em;
+  font-size: 1.06em;
+}
+#post .pjax article .article-entry p {
+  margin: 1.05em 0;
+  letter-spacing: 0.2px;
+}
+#post .pjax article .article-entry a {
+  color: #2f9e78;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47,158,120,0.35);
+  transition: color 0.15s, border-color 0.15s;
+}
+#post .pjax article .article-entry a:hover {
+  color: #1f7d5c;
+  border-bottom-color: #1f7d5c;
+}
+#post .pjax article .article-entry :not(pre) > code {
+  border-radius: 4px;
+  padding: 0.12em 0.45em;
+  margin: 0 2px;
+  font-size: 86%;
+  color: #d0436b;
+  background: #f8eef1;
+  border: 1px solid #f0dce2;
+}
+#post .pjax article .article-entry pre {
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(30,40,60,0.08);
+}
+#post .pjax article .article-entry pre > code {
+  border-radius: 8px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  font-family: "JetBrains Mono", "Cascadia Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+#post .pjax article .article-entry img {
+  border-radius: 6px;
+  box-shadow: 0 2px 14px rgba(20,30,50,0.1);
+}
+#post .pjax article .article-entry hr {
+  border: none;
+  border-top: 1px solid #e8eaed;
+  margin: 2em 0;
+}
+#post .pjax article .article-entry blockquote {
+  border-left: 3px solid #309e85;
+  border-radius: 0 6px 6px 0;
+}
+#post .pjax article .article-entry table {
+  border-radius: 6px;
+  overflow: hidden;
+}
 html,
 body {
   width: 100%;
@@ -1756,6 +1833,25 @@ img.pswp__img {
 }
 .mobile-menus .dynamic-menu:nth-child(1) {
   margin-top: 0;
+}
+/* 文章卡片背景纹理 + 顶部装饰线 */
+.pjax article {
+  position: relative;
+  background-image: radial-gradient(rgba(48,60,58,0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.pjax article::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #309e85, #03a6ff, #8e6fd8, #309e85);
+  background-size: 300% 100%;
+  animation: gradientSlide 8s linear infinite;
+  opacity: 0.85;
+  z-index: 1;
 }
 /* 相关文章推荐 */
 .related-posts {
@@ -2111,5 +2207,37 @@ font-size
   }
   .shang_box .shang_payselect {
     font-size: 16px;
+  }
+}
+@-moz-keyframes gradientSlide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 300% 0;
+  }
+}
+@-webkit-keyframes gradientSlide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 300% 0;
+  }
+}
+@-o-keyframes gradientSlide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 300% 0;
+  }
+}
+@keyframes gradientSlide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 300% 0;
   }
 }
