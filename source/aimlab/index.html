@@ -6,23 +6,27 @@
   <title>Aim Master | MIXBP</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #10131c; color: #e6e8ea; font-family: "Microsoft YaHei", Consolas, sans-serif;
+    body { background: #8d97a6; color: #e6e8ea; font-family: "Microsoft YaHei", Consolas, sans-serif;
            height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
     header { display: flex; align-items: center; justify-content: space-between;
-             padding: 12px 24px; border-bottom: 1px solid #2a2d33; flex-shrink: 0; z-index: 10; }
+             padding: 12px 24px; border-bottom: 1px solid rgba(255,255,255,.08); flex-shrink: 0; z-index: 10;
+             background: rgba(20, 26, 40, .9); }
     header .logo { font-weight: bold; color: #309E85; letter-spacing: 2px; }
     header a { color: #8b9096; text-decoration: none; font-size: 13px; }
     header a:hover { color: #309E85; }
-    #hud { display: flex; gap: 26px; justify-content: center; padding: 10px;
-           font-family: Consolas, monospace; font-size: 13px; color: #8b9096; flex-shrink: 0; z-index: 10; }
-    #hud b { color: #e6e8ea; font-size: 17px; margin-left: 5px; }
-    #hud .best b { color: #e6c07b; }
-    #wrap { position: relative; flex: 1; margin: 0 20px 20px; }
+    #hud { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 6;
+           display: flex; gap: 10px; }
+    #hud span { font-family: Consolas, monospace; font-size: 13px; color: #dfe6f2;
+             background: rgba(24, 32, 58, .85); border: 1px solid rgba(120, 150, 255, .25);
+             padding: 5px 14px; border-radius: 15px; }
+    #hud b { color: #fff; font-size: 15px; margin-left: 5px; }
+    #hud .best b { color: #ffd76b; }
+    #wrap { position: relative; flex: 1; }
     #c3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    #cross { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px;
+    #cross { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px;
              transform: translate(-50%, -50%); pointer-events: none; z-index: 3; display: none; }
-    #cross::before, #cross::after { content: ''; position: absolute; background: #35c4ff;
-             box-shadow: 0 0 4px rgba(53, 196, 255, .9); }
+    #cross::before, #cross::after { content: ''; position: absolute; background: rgba(53, 196, 255, .95);
+             box-shadow: 0 0 4px rgba(53, 196, 255, .8); }
     #cross::before { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%);
              clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%, 0 62%, 100% 62%, 100% 100%, 0 100%); }
     #cross::after { top: 50%; left: 0; height: 2px; width: 100%; transform: translateY(-50%);
@@ -46,24 +50,24 @@
                        100% { opacity: 0; transform: translateX(-50%) translateY(-30px); } }
     #overlay { position: absolute; inset: 0; display: flex; flex-direction: column;
                align-items: center; justify-content: center; gap: 12px; z-index: 5;
-               background: rgba(16, 19, 28, .92); text-align: center; }
-    #overlay h1 { font-size: 34px; letter-spacing: 5px; color: #309E85; }
-    #overlay p { color: #8b9096; font-size: 14px; line-height: 1.9; }
+               background: rgba(24, 30, 44, .88); text-align: center; }
+    #overlay h1 { font-size: 34px; letter-spacing: 5px; color: #35c4ff; }
+    #overlay p { color: #9aa4b8; font-size: 14px; line-height: 1.9; }
     #overlay .keys { font-family: Consolas, monospace; color: #6a737d; font-size: 12px; }
     #overlay .stat { font-family: Consolas, monospace; font-size: 16px; color: #c9cdd1; }
-    #overlay .stat b { color: #e6c07b; font-size: 26px; }
-    .newbest { color: #e6c07b !important; }
+    #overlay .stat b { color: #ffd76b; font-size: 26px; }
+    .newbest { color: #ffd76b !important; }
     #startBtn { padding: 12px 46px; font-size: 16px; letter-spacing: 2px; margin-top: 4px;
-             background: transparent; color: #309E85; border: 1px solid #309E85;
+             background: transparent; color: #35c4ff; border: 1px solid #35c4ff;
              border-radius: 4px; cursor: pointer; transition: all .2s; }
-    #startBtn:hover { background: #309E85; color: #04140c; box-shadow: 0 0 18px rgba(48, 158, 133, .5); }
-    .sens-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #8b9096;
+    #startBtn:hover { background: #35c4ff; color: #0c1524; box-shadow: 0 0 18px rgba(53, 196, 255, .5); }
+    .sens-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #9aa4b8;
                 font-family: Consolas, monospace; }
-    .sens-row input[type=range] { width: 170px; accent-color: #309E85; cursor: pointer; }
-    .sens-row .sval { color: #e6c07b; font-size: 15px; min-width: 34px; display: inline-block; }
+    .sens-row input[type=range] { width: 170px; accent-color: #35c4ff; cursor: pointer; }
+    .sens-row .sval { color: #ffd76b; font-size: 15px; min-width: 34px; display: inline-block; }
     .sens-row button { width: 26px; height: 26px; background: #242b38; color: #c9cdd1;
                 border: 1px solid #2e3a4e; border-radius: 4px; cursor: pointer; font-size: 14px; }
-    .sens-row button:hover { border-color: #309E85; color: #309E85; }
+    .sens-row button:hover { border-color: #35c4ff; color: #35c4ff; }
   </style>
 </head>
 <body>
@@ -71,7 +75,7 @@
     <span class="logo">AIM MASTER</span>
     <a href="/">← 返回博客</a>
   </header>
-  <div id="hud">
+  <div id="hud" style="display:none">
     <span>时间<b id="time">30.0</b>s</span>
     <span>得分<b id="score">0</b></span>
     <span>连击<b id="combo">0</b></span>
@@ -85,7 +89,7 @@
     <div id="pop"></div>
     <div id="overlay">
       <h1>AIM MASTER</h1>
-      <p>FPS 视角打靶 · 鼠标控制视角, 屏幕中心准星射击<br>能量球被击中即得分, 空点掉命中率 · 连击越高单发越值钱</p>
+      <p>FPS 视角打靶 · 鼠标控制视角, 屏幕中心射击<br>能量球被击中即得分, 空点掉命中率 · 连击越高单发越值钱</p>
       <p class="keys">[ 鼠标 ] 转视角 &nbsp; [ 左键 ] 射击 &nbsp; [ ESC ] 暂停</p>
       <div class="sens-row">
         灵敏度
@@ -106,11 +110,12 @@
       var cross = document.getElementById('cross');
       var hitmark = document.getElementById('hitmark');
       var popEl = document.getElementById('pop');
+      var hud = document.getElementById('hud');
       var DURATION = 30, bestKey = 'aimlab_best';
       var running = false, paused = false, score = 0, hits = 0, misses = 0, combo = 0, maxCombo = 0, best = 0;
-      var endAt = 0, remainMs = 0, timerId = null, targets = [];
+      var endAt = 0, remainMs = 0, timerId = null, targets = [], particles = [];
       var yaw = 0, pitch = 0, locked = false;
-      var SENS = 2.1; /* 灵敏度(滑条值), 实际 rad/px = SENS/1000 */
+      var SENS = 2.1;
 
       try { best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0; } catch (e) { }
       document.getElementById('best').textContent = best;
@@ -131,52 +136,64 @@
       document.getElementById('sensPlus').addEventListener('click', function () { setSens(SENS + 0.3); });
       showSens();
 
-      /* ===== 场景: Unity 风 PBR 训练室 ===== */
+      /* ===== 场景: 亮灰训练室 (AimLab 风) ===== */
       var scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x2a3242);
-      scene.fog = new THREE.Fog(0x2a3242, 26, 70);
+      scene.background = new THREE.Color(0x8d97a6);
+      scene.fog = new THREE.Fog(0x8d97a6, 30, 90);
 
-      var camera = new THREE.PerspectiveCamera(70, 2, 0.1, 140);
+      var camera = new THREE.PerspectiveCamera(70, 2, 0.1, 200);
       var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      /* 灯光: 环境 + 主方向光(软阴影) + 蓝色点光补光 */
-      scene.add(new THREE.AmbientLight(0x8b9ac0, 0.95));
-      var key = new THREE.DirectionalLight(0xddeaff, 1.25);
-      key.position.set(7, 18, 5);
+      /* 灯光: 明亮环境光 + 柔和主光 */
+      scene.add(new THREE.AmbientLight(0x9aa4b8, 0.72));
+      var key = new THREE.DirectionalLight(0xffffff, 0.85);
+      key.position.set(6, 20, 8);
       key.castShadow = true;
       key.shadow.mapSize.set(2048, 2048);
       key.shadow.camera.left = -26; key.shadow.camera.right = 26;
       key.shadow.camera.top = 26; key.shadow.camera.bottom = -26;
-      key.shadow.camera.far = 70;
+      key.shadow.camera.far = 80;
       key.shadow.bias = -0.0004;
       scene.add(key);
-      var fill = new THREE.PointLight(0x35c4ff, 0.3, 50);
-      fill.position.set(0, 4, -14);
-      scene.add(fill);
 
-      /* 房间内壁 (光滑, 无贴图线条) */
+      /* 房间: 亮灰内壁 */
       var room = new THREE.Mesh(
         new THREE.BoxGeometry(80, 20, 80),
-        new THREE.MeshStandardMaterial({ color: 0x39455a, roughness: 0.88, metalness: 0.05, side: THREE.BackSide })
+        new THREE.MeshStandardMaterial({ color: 0x69737f, roughness: 0.92, metalness: 0.02, side: THREE.BackSide })
       );
       room.position.y = 1.5;
       scene.add(room);
 
-      /* 地板: 光滑微反光 */
+      /* 地板: 浅灰 + 细网格 */
+      var floorTex = (function () {
+        var c = document.createElement('canvas');
+        c.width = c.height = 256;
+        var g = c.getContext('2d');
+        g.fillStyle = '#7e8794'; g.fillRect(0, 0, 256, 256);
+        g.strokeStyle = 'rgba(70, 82, 100, .35)'; g.lineWidth = 2;
+        g.strokeRect(0, 0, 256, 256);
+        g.strokeStyle = 'rgba(70, 82, 100, .18)';
+        g.beginPath(); g.moveTo(128, 0); g.lineTo(128, 256); g.stroke();
+        g.beginPath(); g.moveTo(0, 128); g.lineTo(256, 128); g.stroke();
+        var t = new THREE.CanvasTexture(c);
+        t.wrapS = t.wrapT = THREE.RepeatWrapping;
+        t.repeat.set(10, 10);
+        return t;
+      })();
       var floor = new THREE.Mesh(
         new THREE.PlaneGeometry(80, 80),
-        new THREE.MeshStandardMaterial({ color: 0x27303f, roughness: 0.4, metalness: 0.45 })
+        new THREE.MeshStandardMaterial({ map: floorTex, roughness: 0.55, metalness: 0.1 })
       );
       floor.rotation.x = -Math.PI / 2;
       floor.position.y = -8;
       floor.receiveShadow = true;
       scene.add(floor);
 
-      /* 踢脚暗梁 + 墙面光带 (Unity 风的干净饰条) */
-      var trimMat = new THREE.MeshStandardMaterial({ color: 0x1a2230, roughness: 0.6, metalness: 0.2 });
+      /* 踢脚暗梁 */
+      var trimMat = new THREE.MeshStandardMaterial({ color: 0x5a6474, roughness: 0.7, metalness: 0.2 });
       function trim(w, d, x, z) {
         var b = new THREE.Mesh(new THREE.BoxGeometry(w, 0.3, d), trimMat);
         b.position.set(x, -7.85, z);
@@ -185,28 +202,29 @@
       trim(80, 0.5, 0, -39.8); trim(80, 0.5, 0, 39.8);
       trim(0.5, 80, -39.8, 0); trim(0.5, 80, 39.8, 0);
 
+      /* 墙面光带 */
       var stripGlowTex = (function () {
         var c = document.createElement('canvas');
         c.width = 32; c.height = 128;
         var g = c.getContext('2d');
         var gr = g.createLinearGradient(0, 0, 32, 0);
-        gr.addColorStop(0, 'rgba(140, 220, 255, 0)');
-        gr.addColorStop(0.5, 'rgba(190, 235, 255, .8)');
-        gr.addColorStop(1, 'rgba(140, 220, 255, 0)');
+        gr.addColorStop(0, 'rgba(255, 255, 255, 0)');
+        gr.addColorStop(0.5, 'rgba(255, 255, 255, .75)');
+        gr.addColorStop(1, 'rgba(255, 255, 255, 0)');
         g.fillStyle = gr;
         g.fillRect(0, 0, 32, 128);
         return new THREE.CanvasTexture(c);
       })();
       function lightStrip(x, z, rotY) {
-        var bar = new THREE.Mesh(new THREE.BoxGeometry(0.12, 8, 0.3),
-          new THREE.MeshBasicMaterial({ color: 0xcfeeff }));
-        bar.position.set(x, 1.2, z);
+        var bar = new THREE.Mesh(new THREE.BoxGeometry(0.12, 7, 0.3),
+          new THREE.MeshBasicMaterial({ color: 0xf4faff }));
+        bar.position.set(x, 0.8, z);
         bar.rotation.y = rotY;
         scene.add(bar);
-        var halo = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 9),
-          new THREE.MeshBasicMaterial({ map: stripGlowTex, transparent: true, opacity: 0.5,
+        var halo = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 8),
+          new THREE.MeshBasicMaterial({ map: stripGlowTex, transparent: true, opacity: 0.4,
             blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }));
-        halo.position.set(x, 1.2, z);
+        halo.position.set(x, 0.8, z);
         halo.rotation.y = rotY;
         halo.translateZ(0.25);
         scene.add(halo);
@@ -215,36 +233,37 @@
       lightStrip(39.6, -12, -Math.PI / 2); lightStrip(39.6, 6, -Math.PI / 2);
       lightStrip(-14, -39.6, 0); lightStrip(14, -39.6, 0);
 
-      /* 能量球: 自发光核心 + 高光外壳 + 光晕 */
-      var glowTex = (function () {
+      /* ===== 能量球 ===== */
+      function glowTexInit() {
         var c = document.createElement('canvas');
-        c.width = c.height = 128;
+        c.width = c.height = 64;
         var g = c.getContext('2d');
-        var gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+        var gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
         gr.addColorStop(0, 'rgba(200, 245, 255, .95)');
         gr.addColorStop(0.35, 'rgba(53, 196, 255, .38)');
         gr.addColorStop(1, 'rgba(53, 196, 255, 0)');
         g.fillStyle = gr;
-        g.fillRect(0, 0, 128, 128);
+        g.fillRect(0, 0, 64, 64);
         return new THREE.CanvasTexture(c);
-      })();
+      }
+      var glowTex = glowTexInit();
       var coreGeo = new THREE.SphereGeometry(0.24, 26, 20);
       var shellGeo = new THREE.SphereGeometry(0.5, 28, 20);
 
       function spawnTarget() {
         var grp = new THREE.Group();
         var core = new THREE.Mesh(coreGeo, new THREE.MeshStandardMaterial({
-          color: 0x0a1c28, emissive: 0x54d8ff, emissiveIntensity: 2.1, roughness: 0.25, metalness: 0.1
+          color: 0x0a2a38, emissive: 0x35c4ff, emissiveIntensity: 2.4, roughness: 0.3, metalness: 0
         }));
         core.castShadow = true;
         var shell = new THREE.Mesh(shellGeo, new THREE.MeshPhongMaterial({
-          color: 0x2fb9f2, transparent: true, opacity: 0.22, shininess: 120, specular: 0xbbf0ff,
+          color: 0x35c4ff, transparent: true, opacity: 0.25, shininess: 130, specular: 0xccf2ff,
           blending: THREE.AdditiveBlending, depthWrite: false
         }));
         var glow = new THREE.Sprite(new THREE.SpriteMaterial({
-          map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.8
+          map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.9
         }));
-        glow.scale.setScalar(2.3);
+        glow.scale.setScalar(2.4);
         grp.add(core); grp.add(shell); grp.add(glow);
         grp.position.set((Math.random() - 0.5) * 9, Math.random() * 3.5 - 0.8, -(9 + Math.random() * 6));
         grp.userData.born = performance.now();
@@ -253,12 +272,25 @@
         targets.push(grp);
       }
 
+      /* 命中粒子爆裂 */
+      function burst(pos) {
+        for (var i = 0; i < 12; i++) {
+          var p = new THREE.Mesh(new THREE.SphereGeometry(0.045, 8, 6),
+            new THREE.MeshBasicMaterial({ color: 0x6fe0ff, transparent: true, opacity: 1 }));
+          p.position.copy(pos);
+          var sp = new THREE.Vector3((Math.random() - 0.5) * 6, Math.random() * 5, (Math.random() - 0.5) * 6);
+          particles.push({ m: p, v: sp, born: performance.now() });
+          scene.add(p);
+        }
+      }
+
       var raycaster = new THREE.Raycaster();
       var clock = new THREE.Clock();
 
       function popTarget(grp) {
         var i = targets.indexOf(grp);
         if (i >= 0) targets.splice(i, 1);
+        burst(grp.position);
         var t0 = performance.now();
         (function anim() {
           var k = (performance.now() - t0) / 260;
@@ -272,28 +304,35 @@
         })();
       }
 
-      /* 音效 (WebAudio 合成) */
-      var AC = null;
+      /* 音效 */
+      var AC = null, noiseBuf = null;
       function audio() {
-        if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { } }
+        if (!AC) {
+          try {
+            AC = new (window.AudioContext || window.webkitAudioContext)();
+            noiseBuf = AC.createBuffer(1, AC.sampleRate * 0.1, AC.sampleRate);
+            var d = noiseBuf.getChannelData(0);
+            for (var i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+          } catch (e) { }
+        }
         if (AC && AC.state === 'suspended') AC.resume();
         return AC;
       }
-      function beepHit() {
-        var ac = audio(); if (!ac) return;
-        var o = ac.createOscillator(), g = ac.createGain();
-        o.type = 'sine'; o.frequency.setValueAtTime(1300, ac.currentTime);
-        o.frequency.exponentialRampToValueAtTime(1900, ac.currentTime + 0.07);
-        g.gain.setValueAtTime(0.16, ac.currentTime);
-        g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.1);
-        o.connect(g); g.connect(ac.destination);
-        o.start(); o.stop(ac.currentTime + 0.11);
+      function shotSound() {
+        var ac = audio(); if (!ac || !noiseBuf) return;
+        var src = ac.createBufferSource(); src.buffer = noiseBuf;
+        var f = ac.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 2400;
+        var g = ac.createGain();
+        g.gain.setValueAtTime(0.22, ac.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.09);
+        src.connect(f); f.connect(g); g.connect(ac.destination);
+        src.start();
       }
       function beepMiss() {
         var ac = audio(); if (!ac) return;
         var o = ac.createOscillator(), g = ac.createGain();
         o.type = 'triangle'; o.frequency.setValueAtTime(170, ac.currentTime);
-        g.gain.setValueAtTime(0.07, ac.currentTime);
+        g.gain.setValueAtTime(0.06, ac.currentTime);
         g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.09);
         o.connect(g); g.connect(ac.destination);
         o.start(); o.stop(ac.currentTime + 0.1);
@@ -313,6 +352,11 @@
       });
       document.addEventListener('mousedown', function (e) {
         if (!running || !locked || e.button !== 0) return;
+        shoot();
+      });
+
+      function shoot() {
+        shotSound();
         raycaster.setFromCamera({ x: 0, y: 0 }, camera);
         var hit = raycaster.intersectObjects(targets, true)[0];
         if (hit) {
@@ -323,7 +367,6 @@
             score += 10 + Math.min(combo, 20) + Math.round(Math.max(0, 14 - dist));
             hits++;
             popTarget(grp);
-            beepHit();
             hitmark.classList.remove('show'); void hitmark.offsetWidth; hitmark.classList.add('show');
             popEl.textContent = '+' + (10 + Math.min(combo, 20));
             popEl.classList.remove('show'); void popEl.offsetWidth; popEl.classList.add('show');
@@ -334,17 +377,30 @@
           beepMiss();
         }
         upd();
-      });
+      }
 
       /* ===== 主循环 ===== */
       function animate() {
         requestAnimationFrame(animate);
         camera.rotation.set(pitch, yaw, 0, 'YXZ');
+        /* 粒子 */
+        var now = performance.now();
+        for (var p = particles.length - 1; p >= 0; p--) {
+          var pt = particles[p];
+          var dt = 0.016;
+          pt.v.y -= 9.8 * dt;
+          pt.m.position.addScaledVector(pt.v, dt);
+          var k = (now - pt.born) / 550;
+          pt.m.material.opacity = Math.max(0, 1 - k);
+          pt.m.scale.setScalar(Math.max(0.05, 1 - k));
+          if (k >= 1) { scene.remove(pt.m); particles.splice(p, 1); }
+        }
+        /* 靶子浮动 + 超时换位 */
         var t = clock.getElapsedTime();
         for (var i = 0; i < targets.length; i++) {
           var m = targets[i];
           m.position.y += Math.sin(t * 1.4 + m.userData.phase) * 0.0016;
-          var age = performance.now() - m.userData.born;
+          var age = now - m.userData.born;
           if (age > 3400 && running) {
             scene.remove(m); targets.splice(i, 1); i--;
             spawnTarget();
@@ -381,6 +437,7 @@
         clearTargets();
         for (var j = 0; j < 3; j++) spawnTarget();
         overlay.style.display = 'none';
+        hud.style.display = 'flex';
         cross.style.display = 'block';
         upd();
         endAt = Date.now() + DURATION * 1000;
@@ -400,6 +457,7 @@
           + '<div class="sens-row">灵敏度 <button id="sensMinus2">−</button> <input id="sensSlider2" type="range" min="0.5" max="8" step="0.1"> <button id="sensPlus2">+</button> <span class="sval" id="sensVal2">' + SENS.toFixed(1) + '</span></div>'
           + '<button id="resumeBtn">点击继续 (重新锁定鼠标)</button>';
         overlay.style.display = 'flex';
+        hud.style.display = 'none';
         cross.style.display = 'none';
         var s2 = document.getElementById('sensSlider2');
         s2.value = SENS;
@@ -413,7 +471,7 @@
         paused = false;
         endAt = Date.now() + remainMs;
         overlay.style.display = 'none';
-        cross.style.display = 'block';
+        hud.style.display = 'flex';
         timerId = setInterval(function () {
           var left = Math.max(0, (endAt - Date.now()) / 1000);
           document.getElementById('time').textContent = left.toFixed(1);
@@ -427,7 +485,7 @@
         clearInterval(timerId);
         clearTargets();
         if (document.pointerLockElement) document.exitPointerLock();
-        cross.style.display = 'none';
+        hud.style.display = 'none';
         var total = hits + misses;
         var acc = total ? Math.round(hits * 100 / total) : 0;
         var isBest = score > best;
@@ -448,7 +506,8 @@
       document.getElementById('startBtn').addEventListener('click', start);
 
       window.__aim = { scene: scene, camera: camera, THREE: THREE,
-        setAim: function (dy, dp) { yaw += dy; pitch = Math.max(-1.2, Math.min(1.2, pitch + dp)); } };
+        setAim: function (dy, dp) { yaw += dy; pitch = Math.max(-1.2, Math.min(1.2, pitch + dp)); },
+        shoot: shoot };
     })();
   </script>
 </body>
