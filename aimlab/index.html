@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aim Master | MIXBP</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #1b1c1f; color: #e6e8ea;
+           font-family: "Microsoft YaHei", Consolas, sans-serif; display: flex; flex-direction: column; }
+    header { display: flex; align-items: center; justify-content: space-between;
+             padding: 14px 24px; border-bottom: 1px solid #2a2d33; }
+    header .logo { font-weight: bold; color: #309E85; letter-spacing: 1px; }
+    header a { color: #8b9096; text-decoration: none; font-size: 13px; }
+    header a:hover { color: #309E85; }
+    #hud { display: flex; gap: 28px; justify-content: center; padding: 12px;
+           font-family: Consolas, monospace; font-size: 14px; color: #8b9096; }
+    #hud b { color: #e6e8ea; font-size: 18px; margin-left: 6px; }
+    #hud .best b { color: #e6c07b; }
+    #arena { position: relative; flex: 1; margin: 0 24px 24px; background: #141518;
+             border: 1px solid #2a2d33; border-radius: 8px; overflow: hidden; cursor: crosshair; }
+    .target { position: absolute; border-radius: 50%; cursor: crosshair;
+              background: radial-gradient(circle at 50% 50%, #309E85 0 26%, #1f6f57 27% 44%, #309E85 45% 100%);
+              box-shadow: 0 0 14px rgba(48, 158, 133, .55), inset 0 0 8px rgba(0, 0, 0, .4);
+              animation: pop .12s ease-out; }
+    @keyframes pop { from { transform: scale(.3); opacity: .4; } to { transform: scale(1); opacity: 1; } }
+    .hitfx { position: absolute; border-radius: 50%; border: 2px solid #309E85;
+             pointer-events: none; animation: fx .35s ease-out forwards; }
+    @keyframes fx { from { transform: scale(.4); opacity: .9; } to { transform: scale(1.8); opacity: 0; } }
+    #overlay { position: absolute; inset: 0; display: flex; flex-direction: column;
+               align-items: center; justify-content: center; gap: 14px;
+               background: rgba(20, 21, 24, .9); z-index: 5; text-align: center; }
+    #overlay h1 { margin: 0; font-size: 34px; letter-spacing: 4px; color: #309E85; }
+    #overlay p { margin: 0; color: #8b9096; font-size: 14px; line-height: 1.9; }
+    #overlay .stat { font-family: Consolas, monospace; font-size: 16px; color: #c9cdd1; }
+    #overlay .stat b { color: #e6c07b; font-size: 26px; }
+    #startBtn, #againBtn { padding: 12px 46px; font-size: 16px; letter-spacing: 2px;
+             background: transparent; color: #309E85; border: 1px solid #309E85;
+             border-radius: 4px; cursor: pointer; transition: all .2s; }
+    #startBtn:hover, #againBtn:hover { background: #309E85; color: #04140c; box-shadow: 0 0 18px rgba(48, 158, 133, .5); }
+    .newbest { color: #e6c07b !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">AIM MASTER</span>
+    <a href="/">← 返回博客</a>
+  </header>
+  <div id="hud">
+    <span>时间<b id="time">30.0</b>s</span>
+    <span>得分<b id="score">0</b></span>
+    <span>连击<b id="combo">0</b></span>
+    <span>命中率<b id="acc">--</b></span>
+    <span class="best">最高<b id="best">0</b></span>
+  </div>
+  <div id="arena">
+    <div id="overlay">
+      <h1>AIM MASTER</h1>
+      <p>30 秒极限打靶 · 点中靶心得分 · 空点会掉命中率<br>目标会越来越小, 连击越高单发越值钱</p>
+      <div class="stat">个人纪录 <b id="bestShow">0</b></div>
+      <button id="startBtn">开始训练</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var arena = document.getElementById('arena');
+      var overlay = document.getElementById('overlay');
+      var DURATION = 30;
+      var running = false, score, hits, misses, combo, timer, spawnTimer, endAt, best;
+      var bestKey = 'aimlab_best';
+
+      try { best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0; } catch (e) { best = 0; }
+      document.getElementById('best').textContent = best;
+      document.getElementById('bestShow').textContent = best;
+
+      document.getElementById('startBtn').addEventListener('click', start);
+      document.getElementById('againBtn') && document.getElementById('againBtn').addEventListener('click', start);
+      arena.addEventListener('mousedown', function (e) {
+        if (!running) return;
+        if (e.target === arena) { misses++; combo = 0; upd(); }
+      });
+
+      function start() {
+        score = 0; hits = 0; misses = 0; combo = 0; running = true;
+        overlay.style.display = 'none';
+        clearTargets();
+        upd();
+        endAt = Date.now() + DURATION * 1000;
+        spawnTimer = setInterval(spawn, 620);
+        spawn();
+        timer = setInterval(tick, 100);
+      }
+
+      function tick() {
+        var left = Math.max(0, (endAt - Date.now()) / 1000);
+        document.getElementById('time').textContent = left.toFixed(1);
+        if (left <= 0) stop();
+      }
+
+      function stop() {
+        running = false;
+        clearInterval(timer); clearInterval(spawnTimer);
+        clearTargets();
+        var total = hits + misses;
+        var acc = total ? Math.round(hits * 100 / total) : 0;
+        var isBest = score > best;
+        if (isBest) {
+          best = score;
+          try { localStorage.setItem(bestKey, String(best)); } catch (e) { }
+          document.getElementById('best').textContent = best;
+        }
+        overlay.innerHTML = '<h1>训练结束</h1>'
+          + '<div class="stat">得分 <b class="' + (isBest ? 'newbest' : '') + '">' + score + '</b>' + (isBest ? ' 🏆 新纪录' : '') + '</div>'
+          + '<p>命中 ' + hits + ' · 空点 ' + misses + ' · 命中率 ' + acc + '% · 最高连击 ' + maxCombo + '</p>'
+          + '<p>历史纪录 ' + best + '</p>'
+          + '<button id="againBtn">再来一局</button>';
+        overlay.style.display = 'flex';
+        document.getElementById('againBtn').addEventListener('click', start);
+      }
+
+      var maxCombo = 0;
+      function spawn() {
+        if (!running) return;
+        var rect = arena.getBoundingClientRect();
+        var base = Math.max(34, 64 - score * 0.8);
+        var size = base * (0.85 + Math.random() * 0.4);
+        var x = 20 + Math.random() * (rect.width - size - 40);
+        var y = 20 + Math.random() * (rect.height - size - 40);
+        var t = document.createElement('div');
+        t.className = 'target';
+        t.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
+        t.addEventListener('mousedown', function (e) {
+          e.stopPropagation();
+          if (!running) return;
+          hits++; combo++; maxCombo = Math.max(maxCombo, combo);
+          score += 10 + Math.min(combo, 20) + Math.round((70 - size) / 6);
+          fx(this, size);
+          this.remove();
+          spawn();
+          upd();
+        });
+        arena.appendChild(t);
+      }
+
+      function fx(t, size) {
+        var fx = document.createElement('div');
+        fx.className = 'hitfx';
+        fx.style.cssText = 'left:' + t.style.left + ';top:' + t.style.top + ';width:' + size + 'px;height:' + size + 'px;';
+        arena.appendChild(fx);
+        setTimeout(function () { fx.remove(); }, 400);
+      }
+
+      function clearTargets() {
+        var ts = arena.querySelectorAll('.target');
+        for (var i = 0; i < ts.length; i++) ts[i].remove();
+      }
+
+      function upd() {
+        document.getElementById('score').textContent = score;
+        document.getElementById('combo').textContent = combo;
+        var total = hits + misses;
+        document.getElementById('acc').textContent = total ? Math.round(hits * 100 / total) + '%' : '--';
+      }
+    })();
+  </script>
+</body>
+</html>
