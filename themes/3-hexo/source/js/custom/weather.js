@@ -2,7 +2,7 @@
 (function () {
   var KEY = '3h_weather';
   var chip = document.createElement('div');
-  chip.style.cssText = 'position:fixed;right:14px;bottom:292px;z-index:998;'
+  chip.style.cssText = 'position:fixed;right:14px;bottom:346px;z-index:998;'
     + 'padding:6px 12px;border-radius:16px;font-size:12px;cursor:default;'
     + 'background:rgba(45,48,53,.85);color:#e6e8ea;box-shadow:0 2px 8px rgba(0,0,0,.25);'
     + 'backdrop-filter:blur(4px);user-select:none;white-space:nowrap;display:none;';
