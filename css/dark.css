@@ -35,6 +35,7 @@ html.dark .pjax article .article-meta a:hover {
 html.dark .pjax article .article-entry {
   color: #c9cdd1;
 /* 行内代码 */
+/* 代码框 */
 /* 引用块 */
 /* 表格 */
 /* 有序列表序号 */
@@ -47,25 +48,41 @@ html.dark .pjax article .article-entry h5,
 html.dark .pjax article .article-entry h6 {
   color: #e6e8ea;
 }
+html.dark .pjax article .article-entry h2 {
+  border-bottom-color: #363c46 !important;
+}
 html.dark .pjax article .article-entry a {
   color: #4db393;
+  border-bottom-color: rgba(77,179,147,0.4) !important;
+}
+html.dark .pjax article .article-entry a:hover {
+  color: #6fd3ae !important;
+  border-bottom-color: #6fd3ae !important;
 }
 html.dark .pjax article .article-entry strong {
   color: #e6e8ea;
 }
 html.dark .pjax article .article-entry hr {
-  background: #3a3e44;
+  border: none;
+  border-top: 1px solid #363c46;
+  background: transparent;
 }
 html.dark .pjax article .article-entry img {
   background: transparent;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.45) !important;
 }
 html.dark .pjax article .article-entry p code,
 html.dark .pjax article .article-entry li code,
 html.dark .pjax article .article-entry td code,
 html.dark .pjax article .article-entry :not(pre) > code {
   background: #2a2d33 !important;
-  color: #e06c75 !important;
-  border-color: #3a3e44 !important;
+  color: #e0859b !important;
+  border: 1px solid #3a3e44 !important;
+}
+html.dark .pjax article .article-entry pre {
+  box-shadow: none !important;
+  border: 1px solid #2e3540;
+  border-radius: 8px;
 }
 html.dark .pjax article .article-entry blockquote {
   background: #2a2d33 !important;
