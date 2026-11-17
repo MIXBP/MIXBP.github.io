@@ -2,17 +2,19 @@
 html.dark
   body
     background #1b1c1f
-  /* 主内容区 */
+  /* 主内容区: 暗色专属星空背景 */
   #post
-    background #1b1c1f !important
+    background #10131c url('/img/background-dark.jpg') center / cover no-repeat !important
     color #c9cdd1
     & ::selection
       color white
       background #309E85
   #post .index
-    background #1b1c1f !important
+    background #10131c url('/img/background-dark.jpg') center / cover no-repeat !important
   .pjax article
-    background #242629 !important
+    background-color #242629 !important
+    background-image radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px) !important
+    background-size 22px 22px
     .article-title
       color #e6e8ea
     .article-meta

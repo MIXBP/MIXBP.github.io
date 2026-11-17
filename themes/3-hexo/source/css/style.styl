@@ -134,6 +134,31 @@ img.pswp__img
       margin-top 0
 
 
+/* 文章卡片背景纹理 + 顶部装饰线 */
+.pjax article
+  position relative
+  background-image radial-gradient(rgba(48, 60, 58, 0.05) 1px, transparent 1px)
+  background-size 22px 22px
+  &::before
+    content ''
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 3px
+    background linear-gradient(90deg, #309E85, #03A6FF, #8e6fd8, #309E85)
+    background-size 300% 100%
+    animation gradientSlide 8s linear infinite
+    opacity .85
+    z-index 1
+
+@keyframes gradientSlide
+  from
+    background-position 0 0
+  to
+    background-position 300% 0
+
+
 /* 相关文章推荐 */
 .related-posts
   margin 20px 0 0
