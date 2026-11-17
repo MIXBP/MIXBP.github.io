@@ -222,7 +222,7 @@
         bar.rotation.y = rotY;
         scene.add(bar);
         var halo = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 8),
-          new THREE.MeshBasicMaterial({ map: stripGlowTex, transparent: true, opacity: 0.4,
+          new THREE.MeshBasicMaterial({ map: stripGlowTex, transparent: true, opacity: 0.22,
             blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }));
         halo.position.set(x, 0.8, z);
         halo.rotation.y = rotY;
@@ -265,7 +265,17 @@
         }));
         glow.scale.setScalar(2.4);
         grp.add(core); grp.add(shell); grp.add(glow);
-        grp.position.set((Math.random() - 0.5) * 9, Math.random() * 3.5 - 0.8, -(9 + Math.random() * 6));
+        /* 生成位置防重叠: 与现有靶子保持最小间距 */
+        var pos, ok = false, tries = 0;
+        while (!ok && tries < 12) {
+          pos = new THREE.Vector3((Math.random() - 0.5) * 9, Math.random() * 3.5 - 0.8, -(9 + Math.random() * 6));
+          ok = true;
+          for (var i = 0; i < targets.length; i++) {
+            if (targets[i].position.distanceTo(pos) < 2.2) { ok = false; break; }
+          }
+          tries++;
+        }
+        grp.position.copy(pos);
         grp.userData.born = performance.now();
         grp.userData.phase = Math.random() * Math.PI * 2;
         scene.add(grp);
