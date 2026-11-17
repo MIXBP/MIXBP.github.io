@@ -28,19 +28,33 @@ html.dark
       color #c9cdd1
       h1, h2, h3, h4, h5, h6
         color #e6e8ea
+      h2
+        border-bottom-color #363c46 !important
       a
         color #4db393
+        border-bottom-color rgba(77, 179, 147, .4) !important
+        &:hover
+          color #6fd3ae !important
+          border-bottom-color #6fd3ae !important
       strong
         color #e6e8ea
       hr
-        background #3a3e44
+        border none
+        border-top 1px solid #363c46
+        background transparent
       img
         background transparent
+        box-shadow 0 2px 14px rgba(0, 0, 0, .45) !important
       /* 行内代码 */
       p code, li code, td code,:not(pre) > code
         background #2a2d33 !important
-        color #e06c75 !important
-        border-color #3a3e44 !important
+        color #e0859b !important
+        border 1px solid #3a3e44 !important
+      /* 代码框 */
+      pre
+        box-shadow none !important
+        border 1px solid #2e3540
+        border-radius 8px
       /* 引用块 */
       blockquote
         background #2a2d33 !important
