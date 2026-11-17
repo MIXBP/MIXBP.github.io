@@ -3,47 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aim Master | MIXBP</title>
+  <title>Aim Master 3D | MIXBP</title>
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: #1b1c1f; color: #e6e8ea;
-           font-family: "Microsoft YaHei", Consolas, sans-serif; display: flex; flex-direction: column; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #10131c; color: #e6e8ea; font-family: "Microsoft YaHei", Consolas, sans-serif;
+           height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
     header { display: flex; align-items: center; justify-content: space-between;
-             padding: 14px 24px; border-bottom: 1px solid #2a2d33; }
-    header .logo { font-weight: bold; color: #309E85; letter-spacing: 1px; }
+             padding: 12px 24px; border-bottom: 1px solid #2a2d33; flex-shrink: 0; }
+    header .logo { font-weight: bold; color: #309E85; letter-spacing: 2px; }
+    header .logo small { color: #e6c07b; font-size: 11px; letter-spacing: 0; margin-left: 6px; }
     header a { color: #8b9096; text-decoration: none; font-size: 13px; }
     header a:hover { color: #309E85; }
-    #hud { display: flex; gap: 28px; justify-content: center; padding: 12px;
-           font-family: Consolas, monospace; font-size: 14px; color: #8b9096; }
-    #hud b { color: #e6e8ea; font-size: 18px; margin-left: 6px; }
+    #hud { display: flex; gap: 26px; justify-content: center; padding: 10px;
+           font-family: Consolas, monospace; font-size: 13px; color: #8b9096; flex-shrink: 0; }
+    #hud b { color: #e6e8ea; font-size: 17px; margin-left: 5px; }
     #hud .best b { color: #e6c07b; }
-    #arena { position: relative; flex: 1; margin: 0 24px 24px; background: #141518;
-             border: 1px solid #2a2d33; border-radius: 8px; overflow: hidden; cursor: crosshair; }
-    .target { position: absolute; border-radius: 50%; cursor: crosshair;
-              background: radial-gradient(circle at 50% 50%, #309E85 0 26%, #1f6f57 27% 44%, #309E85 45% 100%);
-              box-shadow: 0 0 14px rgba(48, 158, 133, .55), inset 0 0 8px rgba(0, 0, 0, .4);
-              animation: pop .12s ease-out; }
-    @keyframes pop { from { transform: scale(.3); opacity: .4; } to { transform: scale(1); opacity: 1; } }
-    .hitfx { position: absolute; border-radius: 50%; border: 2px solid #309E85;
-             pointer-events: none; animation: fx .35s ease-out forwards; }
-    @keyframes fx { from { transform: scale(.4); opacity: .9; } to { transform: scale(1.8); opacity: 0; } }
+    #wrap { position: relative; flex: 1; margin: 0 20px 20px; }
+    #c3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+           border: 1px solid #2a2d33; border-radius: 8px; cursor: crosshair; }
     #overlay { position: absolute; inset: 0; display: flex; flex-direction: column;
-               align-items: center; justify-content: center; gap: 14px;
-               background: rgba(20, 21, 24, .9); z-index: 5; text-align: center; }
-    #overlay h1 { margin: 0; font-size: 34px; letter-spacing: 4px; color: #309E85; }
-    #overlay p { margin: 0; color: #8b9096; font-size: 14px; line-height: 1.9; }
+               align-items: center; justify-content: center; gap: 12px; z-index: 5;
+               background: rgba(16, 19, 28, .88); border-radius: 8px; text-align: center; }
+    #overlay h1 { font-size: 34px; letter-spacing: 5px; color: #309E85; }
+    #overlay h1 small { font-size: 14px; color: #e6c07b; vertical-align: super; }
+    #overlay p { color: #8b9096; font-size: 14px; line-height: 1.9; }
     #overlay .stat { font-family: Consolas, monospace; font-size: 16px; color: #c9cdd1; }
     #overlay .stat b { color: #e6c07b; font-size: 26px; }
-    #startBtn, #againBtn { padding: 12px 46px; font-size: 16px; letter-spacing: 2px;
+    .newbest { color: #e6c07b !important; }
+    #startBtn { padding: 12px 46px; font-size: 16px; letter-spacing: 2px; margin-top: 4px;
              background: transparent; color: #309E85; border: 1px solid #309E85;
              border-radius: 4px; cursor: pointer; transition: all .2s; }
-    #startBtn:hover, #againBtn:hover { background: #309E85; color: #04140c; box-shadow: 0 0 18px rgba(48, 158, 133, .5); }
-    .newbest { color: #e6c07b !important; }
+    #startBtn:hover { background: #309E85; color: #04140c; box-shadow: 0 0 18px rgba(48, 158, 133, .5); }
   </style>
 </head>
 <body>
   <header>
-    <span class="logo">AIM MASTER</span>
+    <span class="logo">AIM MASTER<small>3D</small></span>
     <a href="/">← 返回博客</a>
   </header>
   <div id="hud">
@@ -53,54 +48,194 @@
     <span>命中率<b id="acc">--</b></span>
     <span class="best">最高<b id="best">0</b></span>
   </div>
-  <div id="arena">
+  <div id="wrap">
+    <canvas id="c3d"></canvas>
     <div id="overlay">
-      <h1>AIM MASTER</h1>
-      <p>30 秒极限打靶 · 点中靶心得分 · 空点会掉命中率<br>目标会越来越小, 连击越高单发越值钱</p>
+      <h1>AIM MASTER<small>3D</small></h1>
+      <p>靶子悬浮在 3D 空间深处 · 越远的靶越小越值钱<br>鼠标移动有视角视差 · 空点掉命中率 · 连击越高单发越值钱</p>
       <div class="stat">个人纪录 <b id="bestShow">0</b></div>
       <button id="startBtn">开始训练</button>
     </div>
   </div>
+  <script src="/cdn/three/three.min.js"></script>
   <script>
     (function () {
-      var arena = document.getElementById('arena');
+      var wrap = document.getElementById('wrap');
+      var canvas = document.getElementById('c3d');
       var overlay = document.getElementById('overlay');
-      var DURATION = 30;
-      var running = false, score, hits, misses, combo, timer, spawnTimer, endAt, best;
-      var bestKey = 'aimlab_best';
+      var DURATION = 30, bestKey = 'aimlab_best';
+      var running = false, score = 0, hits = 0, misses = 0, combo = 0, maxCombo = 0, best = 0;
+      var endAt = 0, timerId = null, targets = [];
+      var mouseNDC = { x: 0, y: 0 };
 
-      try { best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0; } catch (e) { best = 0; }
+      try { best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0; } catch (e) { }
       document.getElementById('best').textContent = best;
       document.getElementById('bestShow').textContent = best;
 
-      document.getElementById('startBtn').addEventListener('click', start);
-      document.getElementById('againBtn') && document.getElementById('againBtn').addEventListener('click', start);
-      arena.addEventListener('mousedown', function (e) {
-        if (!running) return;
-        if (e.target === arena) { misses++; combo = 0; upd(); }
-      });
+      /* ===== three.js 场景 ===== */
+      var scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x10131c);
+      scene.fog = new THREE.Fog(0x10131c, 14, 42);
 
-      function start() {
-        score = 0; hits = 0; misses = 0; combo = 0; running = true;
-        overlay.style.display = 'none';
-        clearTargets();
-        upd();
-        endAt = Date.now() + DURATION * 1000;
-        spawnTimer = setInterval(spawn, 620);
-        spawn();
-        timer = setInterval(tick, 100);
+      var camera = new THREE.PerspectiveCamera(62, 2, 0.1, 100);
+      camera.position.set(0, 0.4, 0);
+
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      /* 星海 (Points) */
+      (function () {
+        var n = 700, pos = new Float32Array(n * 3);
+        for (var i = 0; i < n; i++) {
+          pos[i * 3] = (Math.random() - 0.5) * 80;
+          pos[i * 3 + 1] = (Math.random() - 0.5) * 40;
+          pos[i * 3 + 2] = -Math.random() * 55 - 6;
+        }
+        var geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        scene.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x9fc6e8, size: 0.08, transparent: true, opacity: 0.7 })));
+      })();
+
+      /* 地面网格 + 顶灯带 */
+      var grid = new THREE.GridHelper(60, 40, 0x1f6f57, 0x1c3038);
+      grid.position.y = -3.2;
+      scene.add(grid);
+      var grid2 = new THREE.GridHelper(60, 40, 0x1f6f57, 0x1c3038);
+      grid2.position.y = 3.6;
+      scene.add(grid2);
+
+      /* 靶面贴图(同心圆, canvas 生成) */
+      function ringTexture() {
+        var c = document.createElement('canvas');
+        c.width = c.height = 128;
+        var g = c.getContext('2d');
+        var rings = [[64, '#0f2a20'], [50, '#309E85'], [36, '#0f2a20'], [26, '#4dd8ab'], [13, '#eafff5']];
+        for (var i = 0; i < rings.length; i++) {
+          g.beginPath();
+          g.arc(64, 64, rings[i][0], 0, Math.PI * 2);
+          g.fillStyle = rings[i][1];
+          g.fill();
+        }
+        var tex = new THREE.CanvasTexture(c);
+        tex.anisotropy = 4;
+        return tex;
+      }
+      var targetGeo = new THREE.CircleGeometry(0.55, 40);
+      var targetMat = new THREE.MeshBasicMaterial({ map: ringTexture(), side: THREE.DoubleSide, transparent: true });
+      var raycaster = new THREE.Raycaster();
+      var clock = new THREE.Clock();
+
+      /* 调试/测试钩子 */
+      window.__aim = { scene: scene, camera: camera, THREE: THREE };
+
+      function spawnTarget() {
+        var mesh = new THREE.Mesh(targetGeo, targetMat.clone());
+        mesh.position.set((Math.random() - 0.5) * 7, (Math.random() - 0.5) * 4 + 0.3, -(5 + Math.random() * 9));
+        mesh.lookAt(camera.position);
+        mesh.userData.baseY = mesh.position.y;
+        mesh.userData.phase = Math.random() * Math.PI * 2;
+        mesh.userData.spawnAt = performance.now();
+        scene.add(mesh);
+        targets.push(mesh);
       }
 
-      function tick() {
-        var left = Math.max(0, (endAt - Date.now()) / 1000);
-        document.getElementById('time').textContent = left.toFixed(1);
-        if (left <= 0) stop();
+      function popTarget(mesh, earned) {
+        var i = targets.indexOf(mesh);
+        if (i >= 0) targets.splice(i, 1);
+        var fx = mesh.clone();
+        scene.add(fx);
+        var t0 = performance.now();
+        (function anim() {
+          var k = (performance.now() - t0) / 300;
+          if (k >= 1) { scene.remove(fx); return; }
+          fx.scale.setScalar(1 + k * 0.9);
+          fx.material.opacity = 1 - k;
+          requestAnimationFrame(anim);
+        })();
+        scene.remove(mesh);
+      }
+
+      function resize() {
+        var w = wrap.clientWidth, h = wrap.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h, false);
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      canvas.addEventListener('mousemove', function (e) {
+        var r = canvas.getBoundingClientRect();
+        mouseNDC.x = (e.clientX - r.left) / r.width * 2 - 1;
+        mouseNDC.y = -((e.clientY - r.top) / r.height * 2 - 1);
+      });
+
+      canvas.addEventListener('mousedown', function (e) {
+        if (!running) return;
+        var r = canvas.getBoundingClientRect();
+        mouseNDC.x = (e.clientX - r.left) / r.width * 2 - 1;
+        mouseNDC.y = -((e.clientY - r.top) / r.height * 2 - 1);
+        raycaster.setFromCamera(mouseNDC, camera);
+        var hit = raycaster.intersectObjects(targets)[0];
+        if (hit) {
+          var mesh = hit.object;
+          var dist = -mesh.position.z;
+          combo++; maxCombo = Math.max(maxCombo, combo);
+          score += 10 + Math.min(combo, 20) + Math.round(Math.max(0, 12 - dist));
+          hits++;
+          popTarget(mesh);
+          spawnTarget();
+        } else {
+          misses++; combo = 0;
+        }
+        upd();
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        var t = clock.getElapsedTime();
+        /* 视角视差 */
+        camera.position.x += (mouseNDC.x * 0.5 - camera.position.x) * 0.04;
+        camera.position.y += (0.4 + mouseNDC.y * 0.35 - camera.position.y) * 0.04;
+        camera.lookAt(0, 0, -10);
+        /* 靶子浮动 */
+        for (var i = 0; i < targets.length; i++) {
+          var m = targets[i];
+          m.position.y = m.userData.baseY + Math.sin(t * 1.2 + m.userData.phase) * 0.12;
+          m.lookAt(camera.position);
+        }
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      /* ===== 游戏流程 ===== */
+      function upd() {
+        document.getElementById('score').textContent = score;
+        document.getElementById('combo').textContent = combo;
+        var total = hits + misses;
+        document.getElementById('acc').textContent = total ? Math.round(hits * 100 / total) + '%' : '--';
+      }
+
+      function start() {
+        score = 0; hits = 0; misses = 0; combo = 0; maxCombo = 0; running = true;
+        for (var i = 0; i < targets.length; i++) scene.remove(targets[i]);
+        targets = [];
+        overlay.style.display = 'none';
+        upd();
+        endAt = Date.now() + DURATION * 1000;
+        for (var j = 0; j < 3; j++) spawnTarget();
+        timerId = setInterval(function () {
+          var left = Math.max(0, (endAt - Date.now()) / 1000);
+          document.getElementById('time').textContent = left.toFixed(1);
+          if (left <= 0) stop();
+        }, 100);
       }
 
       function stop() {
         running = false;
-        clearInterval(timer); clearInterval(spawnTimer);
-        clearTargets();
+        clearInterval(timerId);
+        for (var i = 0; i < targets.length; i++) scene.remove(targets[i]);
+        targets = [];
         var total = hits + misses;
         var acc = total ? Math.round(hits * 100 / total) : 0;
         var isBest = score > best;
@@ -113,54 +248,12 @@
           + '<div class="stat">得分 <b class="' + (isBest ? 'newbest' : '') + '">' + score + '</b>' + (isBest ? ' 🏆 新纪录' : '') + '</div>'
           + '<p>命中 ' + hits + ' · 空点 ' + misses + ' · 命中率 ' + acc + '% · 最高连击 ' + maxCombo + '</p>'
           + '<p>历史纪录 ' + best + '</p>'
-          + '<button id="againBtn">再来一局</button>';
+          + '<button id="startBtn">再来一局</button>';
         overlay.style.display = 'flex';
-        document.getElementById('againBtn').addEventListener('click', start);
+        document.getElementById('startBtn').addEventListener('click', start);
       }
 
-      var maxCombo = 0;
-      function spawn() {
-        if (!running) return;
-        var rect = arena.getBoundingClientRect();
-        var base = Math.max(34, 64 - score * 0.8);
-        var size = base * (0.85 + Math.random() * 0.4);
-        var x = 20 + Math.random() * (rect.width - size - 40);
-        var y = 20 + Math.random() * (rect.height - size - 40);
-        var t = document.createElement('div');
-        t.className = 'target';
-        t.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
-        t.addEventListener('mousedown', function (e) {
-          e.stopPropagation();
-          if (!running) return;
-          hits++; combo++; maxCombo = Math.max(maxCombo, combo);
-          score += 10 + Math.min(combo, 20) + Math.round((70 - size) / 6);
-          fx(this, size);
-          this.remove();
-          spawn();
-          upd();
-        });
-        arena.appendChild(t);
-      }
-
-      function fx(t, size) {
-        var fx = document.createElement('div');
-        fx.className = 'hitfx';
-        fx.style.cssText = 'left:' + t.style.left + ';top:' + t.style.top + ';width:' + size + 'px;height:' + size + 'px;';
-        arena.appendChild(fx);
-        setTimeout(function () { fx.remove(); }, 400);
-      }
-
-      function clearTargets() {
-        var ts = arena.querySelectorAll('.target');
-        for (var i = 0; i < ts.length; i++) ts[i].remove();
-      }
-
-      function upd() {
-        document.getElementById('score').textContent = score;
-        document.getElementById('combo').textContent = combo;
-        var total = hits + misses;
-        document.getElementById('acc').textContent = total ? Math.round(hits * 100 / total) + '%' : '--';
-      }
+      document.getElementById('startBtn').addEventListener('click', start);
     })();
   </script>
 </body>
