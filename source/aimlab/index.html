@@ -46,7 +46,7 @@
                        100% { opacity: 0; transform: translateX(-50%) translateY(-30px); } }
     #overlay { position: absolute; inset: 0; display: flex; flex-direction: column;
                align-items: center; justify-content: center; gap: 12px; z-index: 5;
-               background: rgba(16, 19, 28, .9); text-align: center; }
+               background: rgba(16, 19, 28, .92); text-align: center; }
     #overlay h1 { font-size: 34px; letter-spacing: 5px; color: #309E85; }
     #overlay p { color: #8b9096; font-size: 14px; line-height: 1.9; }
     #overlay .keys { font-family: Consolas, monospace; color: #6a737d; font-size: 12px; }
@@ -57,6 +57,13 @@
              background: transparent; color: #309E85; border: 1px solid #309E85;
              border-radius: 4px; cursor: pointer; transition: all .2s; }
     #startBtn:hover { background: #309E85; color: #04140c; box-shadow: 0 0 18px rgba(48, 158, 133, .5); }
+    .sens-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #8b9096;
+                font-family: Consolas, monospace; }
+    .sens-row input[type=range] { width: 170px; accent-color: #309E85; cursor: pointer; }
+    .sens-row .sval { color: #e6c07b; font-size: 15px; min-width: 34px; display: inline-block; }
+    .sens-row button { width: 26px; height: 26px; background: #242b38; color: #c9cdd1;
+                border: 1px solid #2e3a4e; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .sens-row button:hover { border-color: #309E85; color: #309E85; }
   </style>
 </head>
 <body>
@@ -80,6 +87,13 @@
       <h1>AIM MASTER</h1>
       <p>FPS 视角打靶 · 鼠标控制视角, 屏幕中心准星射击<br>能量球被击中即得分, 空点掉命中率 · 连击越高单发越值钱</p>
       <p class="keys">[ 鼠标 ] 转视角 &nbsp; [ 左键 ] 射击 &nbsp; [ ESC ] 暂停</p>
+      <div class="sens-row">
+        灵敏度
+        <button id="sensMinus">−</button>
+        <input id="sensSlider" type="range" min="0.5" max="8" step="0.1">
+        <button id="sensPlus">+</button>
+        <span class="sval" id="sensVal">2.1</span>
+      </div>
       <div class="stat">个人纪录 <b id="bestShow">0</b></div>
       <button id="startBtn">开始训练</button>
     </div>
@@ -92,133 +106,145 @@
       var cross = document.getElementById('cross');
       var hitmark = document.getElementById('hitmark');
       var popEl = document.getElementById('pop');
-      var DURATION = 30, bestKey = 'aimlab_best', SENS = 0.0021;
+      var DURATION = 30, bestKey = 'aimlab_best';
       var running = false, paused = false, score = 0, hits = 0, misses = 0, combo = 0, maxCombo = 0, best = 0;
       var endAt = 0, remainMs = 0, timerId = null, targets = [];
       var yaw = 0, pitch = 0, locked = false;
+      var SENS = 2.1; /* 灵敏度(滑条值), 实际 rad/px = SENS/1000 */
 
       try { best = parseInt(localStorage.getItem(bestKey) || '0', 10) || 0; } catch (e) { }
       document.getElementById('best').textContent = best;
       document.getElementById('bestShow').textContent = best;
 
-      /* ===== 场景: AimLab 风训练室 ===== */
+      /* ===== 灵敏度 ===== */
+      var slider = document.getElementById('sensSlider');
+      var sval = document.getElementById('sensVal');
+      try { SENS = parseFloat(localStorage.getItem('aimlab_sens') || '2.1') || 2.1; } catch (e) { }
+      function showSens() { slider.value = SENS; sval.textContent = SENS.toFixed(1); }
+      function setSens(v) {
+        SENS = Math.max(0.5, Math.min(8, Math.round(v * 10) / 10));
+        try { localStorage.setItem('aimlab_sens', String(SENS)); } catch (e) { }
+        showSens();
+      }
+      slider.addEventListener('input', function () { setSens(parseFloat(slider.value)); });
+      document.getElementById('sensMinus').addEventListener('click', function () { setSens(SENS - 0.3); });
+      document.getElementById('sensPlus').addEventListener('click', function () { setSens(SENS + 0.3); });
+      showSens();
+
+      /* ===== 场景: Unity 风 PBR 训练室 ===== */
       var scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x171c26);
-      scene.fog = new THREE.Fog(0x171c26, 18, 55);
+      scene.background = new THREE.Color(0x2a3242);
+      scene.fog = new THREE.Fog(0x2a3242, 26, 70);
 
       var camera = new THREE.PerspectiveCamera(70, 2, 0.1, 140);
       var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      function canvasTex(w, h, draw, rx, ry) {
-        var c = document.createElement('canvas');
-        c.width = w; c.height = h;
-        draw(c.getContext('2d'), w, h);
-        var t = new THREE.CanvasTexture(c);
-        t.wrapS = t.wrapT = THREE.RepeatWrapping;
-        t.repeat.set(rx || 1, ry || 1);
-        return t;
-      }
+      /* 灯光: 环境 + 主方向光(软阴影) + 蓝色点光补光 */
+      scene.add(new THREE.AmbientLight(0x8b9ac0, 0.95));
+      var key = new THREE.DirectionalLight(0xddeaff, 1.25);
+      key.position.set(7, 18, 5);
+      key.castShadow = true;
+      key.shadow.mapSize.set(2048, 2048);
+      key.shadow.camera.left = -26; key.shadow.camera.right = 26;
+      key.shadow.camera.top = 26; key.shadow.camera.bottom = -26;
+      key.shadow.camera.far = 70;
+      key.shadow.bias = -0.0004;
+      scene.add(key);
+      var fill = new THREE.PointLight(0x35c4ff, 0.3, 50);
+      fill.position.set(0, 4, -14);
+      scene.add(fill);
 
-      /* 地板: 深蓝灰 + 网格线 */
-      var floorMat = new THREE.MeshBasicMaterial({
-        map: canvasTex(512, 512, function (g, w, h) {
-          g.fillStyle = '#1e242e'; g.fillRect(0, 0, w, h);
-          g.strokeStyle = '#273040'; g.lineWidth = 2;
-          for (var i = 0; i <= 8; i++) {
-            g.beginPath(); g.moveTo(i * 64, 0); g.lineTo(i * 64, h); g.stroke();
-            g.beginPath(); g.moveTo(0, i * 64); g.lineTo(w, i * 64); g.stroke();
-          }
-          g.strokeStyle = '#31405a'; g.lineWidth = 4;
-          g.strokeRect(0, 0, w, h);
-        }, 10, 10)
-      });
-      var floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), floorMat);
+      /* 房间内壁 (光滑, 无贴图线条) */
+      var room = new THREE.Mesh(
+        new THREE.BoxGeometry(80, 20, 80),
+        new THREE.MeshStandardMaterial({ color: 0x39455a, roughness: 0.88, metalness: 0.05, side: THREE.BackSide })
+      );
+      room.position.y = 1.5;
+      scene.add(room);
+
+      /* 地板: 光滑微反光 */
+      var floor = new THREE.Mesh(
+        new THREE.PlaneGeometry(80, 80),
+        new THREE.MeshStandardMaterial({ color: 0x27303f, roughness: 0.4, metalness: 0.45 })
+      );
       floor.rotation.x = -Math.PI / 2;
       floor.position.y = -8;
+      floor.receiveShadow = true;
       scene.add(floor);
 
-      /* 天花板 */
-      var ceilMat = new THREE.MeshBasicMaterial({
-        map: canvasTex(256, 256, function (g, w, h) {
-          g.fillStyle = '#161b24'; g.fillRect(0, 0, w, h);
-          g.strokeStyle = '#20293a'; g.lineWidth = 2;
-          for (var i = 0; i <= 4; i++) {
-            g.beginPath(); g.moveTo(i * 64, 0); g.lineTo(i * 64, h); g.stroke();
-            g.beginPath(); g.moveTo(0, i * 64); g.lineTo(w, i * 64); g.stroke();
-          }
-        }, 12, 12)
-      });
-      var ceil = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), ceilMat);
-      ceil.rotation.x = Math.PI / 2;
-      ceil.position.y = 10;
-      scene.add(ceil);
-
-      /* 墙面: 面板 + 竖缝 */
-      function wallTex(rx, ry) {
-        return canvasTex(512, 256, function (g, w, h) {
-          g.fillStyle = '#232b38'; g.fillRect(0, 0, w, h);
-          g.strokeStyle = '#2b3546'; g.lineWidth = 3;
-          for (var i = 0; i <= 4; i++) { g.beginPath(); g.moveTo(i * 128, 0); g.lineTo(i * 128, h); g.stroke(); }
-          g.strokeStyle = '#2028362';
-          g.fillStyle = '#1c2330'; g.fillRect(0, 0, w, 26); g.fillRect(0, h - 26, w, 26);
-          g.strokeStyle = '#2e3a4e'; g.lineWidth = 2;
-          g.beginPath(); g.moveTo(0, 28); g.lineTo(w, 28); g.stroke();
-          g.beginPath(); g.moveTo(0, h - 28); g.lineTo(w, h - 28); g.stroke();
-        }, rx, ry);
+      /* 踢脚暗梁 + 墙面光带 (Unity 风的干净饰条) */
+      var trimMat = new THREE.MeshStandardMaterial({ color: 0x1a2230, roughness: 0.6, metalness: 0.2 });
+      function trim(w, d, x, z) {
+        var b = new THREE.Mesh(new THREE.BoxGeometry(w, 0.3, d), trimMat);
+        b.position.set(x, -7.85, z);
+        scene.add(b);
       }
-      var wallGeo = new THREE.PlaneGeometry(80, 18);
-      var back = new THREE.Mesh(wallGeo, new THREE.MeshBasicMaterial({ map: wallTex(8, 1) }));
-      back.position.set(0, 1, -40);
-      scene.add(back);
-      var leftW = new THREE.Mesh(wallGeo, new THREE.MeshBasicMaterial({ map: wallTex(8, 1) }));
-      leftW.position.set(-40, 1, 0); leftW.rotation.y = Math.PI / 2;
-      scene.add(leftW);
-      var rightW = new THREE.Mesh(wallGeo, new THREE.MeshBasicMaterial({ map: wallTex(8, 1) }));
-      rightW.position.set(40, 1, 0); rightW.rotation.y = -Math.PI / 2;
-      scene.add(rightW);
-      var front = new THREE.Mesh(wallGeo, new THREE.MeshBasicMaterial({ map: wallTex(8, 1) }));
-      front.position.set(0, 1, 12); front.rotation.y = Math.PI;
-      scene.add(front);
+      trim(80, 0.5, 0, -39.8); trim(80, 0.5, 0, 39.8);
+      trim(0.5, 80, -39.8, 0); trim(0.5, 80, 39.8, 0);
 
-      /* 墙上光带 (青色发光条) */
-      function lightStrip(x, z, rotY, w, hgt) {
-        var s = new THREE.Mesh(new THREE.PlaneGeometry(w || 0.18, hgt || 9),
-          new THREE.MeshBasicMaterial({ color: 0x63d8ff, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false }));
-        s.position.set(x, 1.5, z);
-        s.rotation.y = rotY;
-        scene.add(s);
+      var stripGlowTex = (function () {
+        var c = document.createElement('canvas');
+        c.width = 32; c.height = 128;
+        var g = c.getContext('2d');
+        var gr = g.createLinearGradient(0, 0, 32, 0);
+        gr.addColorStop(0, 'rgba(140, 220, 255, 0)');
+        gr.addColorStop(0.5, 'rgba(190, 235, 255, .8)');
+        gr.addColorStop(1, 'rgba(140, 220, 255, 0)');
+        g.fillStyle = gr;
+        g.fillRect(0, 0, 32, 128);
+        return new THREE.CanvasTexture(c);
+      })();
+      function lightStrip(x, z, rotY) {
+        var bar = new THREE.Mesh(new THREE.BoxGeometry(0.12, 8, 0.3),
+          new THREE.MeshBasicMaterial({ color: 0xcfeeff }));
+        bar.position.set(x, 1.2, z);
+        bar.rotation.y = rotY;
+        scene.add(bar);
+        var halo = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 9),
+          new THREE.MeshBasicMaterial({ map: stripGlowTex, transparent: true, opacity: 0.5,
+            blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }));
+        halo.position.set(x, 1.2, z);
+        halo.rotation.y = rotY;
+        halo.translateZ(0.25);
+        scene.add(halo);
       }
-      lightStrip(-39.8, -10, Math.PI / 2); lightStrip(-39.8, 6, Math.PI / 2);
-      lightStrip(39.8, -10, -Math.PI / 2); lightStrip(39.8, 6, -Math.PI / 2);
-      lightStrip(-12, -39.8, 0, 0.18, 9); lightStrip(12, -39.8, 0, 0.18, 9);
+      lightStrip(-39.6, -12, Math.PI / 2); lightStrip(-39.6, 6, Math.PI / 2);
+      lightStrip(39.6, -12, -Math.PI / 2); lightStrip(39.6, 6, -Math.PI / 2);
+      lightStrip(-14, -39.6, 0); lightStrip(14, -39.6, 0);
 
-      /* 能量球: 白热核心 + 半透明蓝壳 + 光晕 */
+      /* 能量球: 自发光核心 + 高光外壳 + 光晕 */
       var glowTex = (function () {
         var c = document.createElement('canvas');
         c.width = c.height = 128;
         var g = c.getContext('2d');
         var gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
-        gr.addColorStop(0, 'rgba(190, 240, 255, .95)');
-        gr.addColorStop(0.35, 'rgba(53, 196, 255, .4)');
+        gr.addColorStop(0, 'rgba(200, 245, 255, .95)');
+        gr.addColorStop(0.35, 'rgba(53, 196, 255, .38)');
         gr.addColorStop(1, 'rgba(53, 196, 255, 0)');
         g.fillStyle = gr;
         g.fillRect(0, 0, 128, 128);
         return new THREE.CanvasTexture(c);
       })();
-      var coreGeo = new THREE.SphereGeometry(0.24, 18, 14);
-      var shellGeo = new THREE.SphereGeometry(0.5, 24, 18);
+      var coreGeo = new THREE.SphereGeometry(0.24, 26, 20);
+      var shellGeo = new THREE.SphereGeometry(0.5, 28, 20);
 
       function spawnTarget() {
         var grp = new THREE.Group();
-        var core = new THREE.Mesh(coreGeo, new THREE.MeshBasicMaterial({ color: 0xeaffff }));
-        var shell = new THREE.Mesh(shellGeo, new THREE.MeshBasicMaterial({
-          color: 0x35c4ff, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending, depthWrite: false
+        var core = new THREE.Mesh(coreGeo, new THREE.MeshStandardMaterial({
+          color: 0x0a1c28, emissive: 0x54d8ff, emissiveIntensity: 2.1, roughness: 0.25, metalness: 0.1
+        }));
+        core.castShadow = true;
+        var shell = new THREE.Mesh(shellGeo, new THREE.MeshPhongMaterial({
+          color: 0x2fb9f2, transparent: true, opacity: 0.22, shininess: 120, specular: 0xbbf0ff,
+          blending: THREE.AdditiveBlending, depthWrite: false
         }));
         var glow = new THREE.Sprite(new THREE.SpriteMaterial({
-          map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.85
+          map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.8
         }));
-        glow.scale.setScalar(2.4);
+        glow.scale.setScalar(2.3);
         grp.add(core); grp.add(shell); grp.add(glow);
         grp.position.set((Math.random() - 0.5) * 9, Math.random() * 3.5 - 0.8, -(9 + Math.random() * 6));
         grp.userData.born = performance.now();
@@ -239,7 +265,8 @@
           if (k >= 1) { scene.remove(grp); return; }
           grp.scale.setScalar(1 + k * 1.0);
           grp.traverse(function (o) {
-            if (o.material && o.material.opacity !== undefined) o.material.opacity = (o.material._baseOpacity === undefined ? (o.material._baseOpacity = o.material.opacity) : o.material._baseOpacity) * (1 - k);
+            if (o.material && o.material.opacity !== undefined)
+              o.material.opacity = (o.material._baseOpacity === undefined ? (o.material._baseOpacity = o.material.opacity) : o.material._baseOpacity) * (1 - k);
           });
           requestAnimationFrame(anim);
         })();
@@ -280,8 +307,8 @@
       });
       document.addEventListener('mousemove', function (e) {
         if (!locked) return;
-        yaw -= e.movementX * SENS;
-        pitch -= e.movementY * SENS;
+        yaw -= e.movementX * SENS / 1000;
+        pitch -= e.movementY * SENS / 1000;
         pitch = Math.max(-1.2, Math.min(1.2, pitch));
       });
       document.addEventListener('mousedown', function (e) {
@@ -370,9 +397,15 @@
         remainMs = Math.max(0, endAt - Date.now());
         clearInterval(timerId);
         overlay.innerHTML = '<h1>已暂停</h1><p>鼠标已解锁 · 剩余 ' + (remainMs / 1000).toFixed(1) + 's</p>'
+          + '<div class="sens-row">灵敏度 <button id="sensMinus2">−</button> <input id="sensSlider2" type="range" min="0.5" max="8" step="0.1"> <button id="sensPlus2">+</button> <span class="sval" id="sensVal2">' + SENS.toFixed(1) + '</span></div>'
           + '<button id="resumeBtn">点击继续 (重新锁定鼠标)</button>';
         overlay.style.display = 'flex';
         cross.style.display = 'none';
+        var s2 = document.getElementById('sensSlider2');
+        s2.value = SENS;
+        s2.addEventListener('input', function () { setSens(parseFloat(s2.value)); document.getElementById('sensVal2').textContent = SENS.toFixed(1); });
+        document.getElementById('sensMinus2').addEventListener('click', function () { setSens(SENS - 0.3); s2.value = SENS; document.getElementById('sensVal2').textContent = SENS.toFixed(1); });
+        document.getElementById('sensPlus2').addEventListener('click', function () { setSens(SENS + 0.3); s2.value = SENS; document.getElementById('sensVal2').textContent = SENS.toFixed(1); });
         document.getElementById('resumeBtn').addEventListener('click', resume);
       }
 
