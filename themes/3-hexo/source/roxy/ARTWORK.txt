@@ -1,0 +1,3 @@
+MIT covers the code and documentation. The character artwork in layers/ and
+preview.webp is excluded. Roxy Migurdia is a character from Mushoku Tensei.
+Character rights belong to their respective owners.

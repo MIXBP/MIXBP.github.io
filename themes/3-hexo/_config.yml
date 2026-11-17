@@ -57,12 +57,16 @@ menu:
   friend: # '友链' 按钮
     on: true # 是否展示
   menus: # 添加的其他菜单写在 menus 下，如下三个菜单：动态菜单1、动态菜单2、动态菜单3
+    小游戏:
+      on: true
+      url: /aimlab/
+      type: 2  # 跳转类型 2：当前页面跳转(独立页面,整页加载)
     相册:
       on: false
       url: /photo
       type: 1  # 跳转类型 1：站内异步跳转
     MIXBP:
-      on: true
+      on: false
       url: https://mixbp.github.io/
       type: 2  # 跳转类型 2：当前页面跳转
     github:

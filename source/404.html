@@ -6,20 +6,63 @@
   <title>404 | MIXBP</title>
   <style>
     body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-           font-family: "Microsoft YaHei", sans-serif; background: #2A2935; color: #fff; }
-    .box { text-align: center; }
-    .code { font-size: 96px; font-weight: 700; letter-spacing: 8px; margin: 0; color: #309E85; }
-    .tip { font-size: 18px; color: #bbb; margin: 12px 0 32px; }
+           font-family: "Microsoft YaHei", sans-serif; background: #0a0d0a; color: #fff; overflow: hidden; }
+    #rain { position: fixed; inset: 0; z-index: 0; opacity: .55; }
+    .box { position: relative; z-index: 1; text-align: center;
+           padding: 48px 64px; background: rgba(10, 13, 10, .82);
+           border: 1px solid rgba(48, 158, 133, .45); border-radius: 8px;
+           box-shadow: 0 0 32px rgba(48, 158, 133, .25); }
+    .code { font-size: 96px; font-weight: 700; letter-spacing: 8px; margin: 0;
+            color: #309E85; text-shadow: 0 0 18px rgba(48, 158, 133, .6);
+            font-family: Consolas, monospace; }
+    .tip { font-size: 18px; color: #9ab89b; margin: 12px 0 6px; }
+    .sub { font-size: 13px; color: #5f7a61; margin: 0 0 30px; font-family: Consolas, monospace; }
     .back { display: inline-block; padding: 10px 28px; border: 1px solid #309E85; border-radius: 4px;
-            color: #309E85; text-decoration: none; transition: all .2s; }
-    .back:hover { background: #309E85; color: #fff; }
+            color: #309E85; text-decoration: none; transition: all .2s; font-family: Consolas, monospace; }
+    .back:hover { background: #309E85; color: #04140c; box-shadow: 0 0 16px rgba(48, 158, 133, .5); }
   </style>
 </head>
 <body>
+  <canvas id="rain"></canvas>
   <div class="box">
     <p class="code">404</p>
-    <p class="tip">页面不存在或已被移动</p>
-    <a class="back" href="/">返回首页</a>
+    <p class="tip">目标页面已丢失在异世界</p>
+    <p class="sub">ERR_TARGET_NOT_FOUND :: trace expired</p>
+    <a class="back" href="/">[ 返回主世界 ]</a>
   </div>
+  <script>
+    (function () {
+      var cv = document.getElementById('rain');
+      var ctx = cv.getContext('2d');
+      var glyphs = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF<>{}[]/*-+$#@';
+      var fontSize = 16, cols, drops;
+      function resize() {
+        cv.width = innerWidth; cv.height = innerHeight;
+        cols = Math.floor(cv.width / fontSize);
+        drops = [];
+        for (var i = 0; i < cols; i++) drops[i] = Math.random() * -100;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      var last = 0;
+      function draw(ts) {
+        requestAnimationFrame(draw);
+        if (ts - last < 50) return;
+        last = ts;
+        ctx.fillStyle = 'rgba(10, 13, 10, 0.12)';
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        ctx.font = fontSize + 'px monospace';
+        for (var i = 0; i < cols; i++) {
+          var ch = glyphs[Math.floor(Math.random() * glyphs.length)];
+          var x = i * fontSize, y = drops[i] * fontSize;
+          ctx.fillStyle = Math.random() > 0.975 ? '#d8ffe8' : '#309E85';
+          ctx.fillText(ch, x, y);
+          if (y > cv.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        }
+      }
+      requestAnimationFrame(draw);
+    })();
+  </script>
 </body>
 </html>
