@@ -40,7 +40,7 @@
     .wave-zone { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
         width: 560px; height: 130px; }
     #pl-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-    .rb { fill: none; stroke-width: 12.5; stroke-linecap: butt; }
+    .rb { fill: none; stroke-width: 12.5; stroke-linecap: butt; stroke-linejoin: round; }
     #pl-nyan { position: absolute; width: 110px; z-index: 3; left: -60px; top: 0;
         image-rendering: pixelated; pointer-events: none;
         filter: drop-shadow(2px 0 0 rgba(10, 25, 60, .9)) drop-shadow(-2px 0 0 rgba(10, 25, 60, .9))
@@ -63,7 +63,8 @@
         }
         try { sessionStorage.setItem('nyanLoadShown', '1'); } catch (e) { }
 
-        var W = 560, BAND = 12.5, AMP = 6.5, WAVELEN = 170, BASE = 30;
+        var W = 560, BAND = 12.5, AMP = 10, WAVELEN = 190, BASE = 24;
+        var STEP = 12, QUANT = 7;   /* 像素台阶: 台阶宽/高 */
         var COLORS = ['#fe0000', '#ff8f00', '#ffff00', '#00d000', '#0099fe', '#6633fe'];
         var paths = [];
         for (var b = 0; b < 6; b++) {
@@ -81,11 +82,22 @@
         function waveY(x, band) {
             return BASE + band * BAND + BAND / 2 + AMP * Math.sin((x + phase) / WAVELEN * Math.PI * 2);
         }
+        function stairY(x, band) {
+            var y = BASE + band * BAND + BAND / 2 + AMP * Math.sin((x + phase) / WAVELEN * Math.PI * 2);
+            return Math.round(y / QUANT) * QUANT;
+        }
+        /* 像素台阶波浪: 从屏幕外(-72)流入, 横->竖台阶拼接, 原版 GIF 的砌块感 */
         function drawWave() {
             for (var b = 0; b < 6; b++) {
-                var d = '';
-                for (var x = 0; x <= W + 8; x += 7) {
-                    d += (x === 0 ? 'M' : 'L') + x + ' ' + waveY(x, b).toFixed(1) + ' ';
+                var d = '', prevY = null;
+                for (var x = -72; x <= W + STEP; x += STEP) {
+                    var y = stairY(x, b);
+                    if (prevY === null) {
+                        d += 'M' + x + ' ' + y + ' ';
+                    } else {
+                        d += 'L' + x + ' ' + prevY + ' L' + x + ' ' + y + ' ';
+                    }
+                    prevY = y;
                 }
                 paths[b].setAttribute('d', d);
             }
@@ -116,28 +128,43 @@
         }
         frame();
 
-        /* 进度: 爬到 78% -> DOMContentLoaded 88% -> load 100% */
+        /* 真实加载: 进度绑定实际里程碑, 动画期间顺手预取前两篇文章 */
         var tick = setInterval(function () {
-            if (pct < target) setP(pct + 2 + Math.random() * 4);
-        }, 130);
-        document.addEventListener('DOMContentLoaded', function () {
+            if (pct < target) setP(pct + 1.5 + Math.random() * 3);
+        }, 120);
+        var domFired = false;
+        function onDom() {
+            if (domFired) return;
+            domFired = true;
             target = 88;
-            if (pct < 82) setP(82);
-        });
+            if (pct < 80) setP(80);
+            /* 动画期间预取首页最新两篇文章, 点进去近乎秒开 */
+            try {
+                var links = document.querySelectorAll('#title-list-nav a');
+                for (var i = 0; i < 2 && i < links.length; i++) {
+                    var l = document.createElement('link');
+                    l.rel = 'prefetch';
+                    l.href = links[i].href;
+                    l.as = 'document';
+                    document.head.appendChild(l);
+                }
+            } catch (e) { }
+            /* 页面已可用: 1.6s 后强制放行(图片在后台继续懒加载) */
+            setTimeout(function () {
+                if (target < 100) {
+                    target = 100;
+                    if (pct < 94) setP(94);
+                }
+            }, 1600);
+        }
+        if (document.readyState !== 'loading') onDom();
+        else document.addEventListener('DOMContentLoaded', onDom);
         window.addEventListener('load', function () {
             target = 100;
             if (pct < 96) setP(96);
         });
         setTimeout(function () { target = 100; if (pct < 96) setP(96); }, 6000);
         setTimeout(function () { finished = true; fade(); }, 7200);
-        function schedule() {
-            var el = Date.now() - t0;
-            setTimeout(function () {
-                if (!finished && pct < 60) setP(60);
-            }, Math.max(0, 1500 - el));
-        }
-        if (document.readyState !== 'loading') schedule();
-        else document.addEventListener('DOMContentLoaded', schedule);
 
         /* 窄屏缩放 */
         function fit() {
