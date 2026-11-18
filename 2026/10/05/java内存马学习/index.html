@@ -19,18 +19,100 @@
 <link rel="preconnect" href="https://giscus.app">
 <link rel="dns-prefetch" href="https://at.alicdn.com">
 <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://mixbp.github.io/about/index.html">
+<meta name="description" content="Java内存马学习JSP 基础什么是JSPJSP（Java Server Pages），是Java的一种动态网页技术。在早期Java的开发技术中，Java程序员如果想要向浏览器输出一些数据，就必须得手动println一行行的HTML代码。为了解决这一繁琐的问题，Java开发了JSP技术。 JSP可以看作一个Java Servlet，主要用于实现Java web应用程序的用户界面部分。网页开发者们通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java内存马学习">
+<meta property="og:url" content="https://mixbp.github.io/2026/10/05/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:description" content="Java内存马学习JSP 基础什么是JSPJSP（Java Server Pages），是Java的一种动态网页技术。在早期Java的开发技术中，Java程序员如果想要向浏览器输出一些数据，就必须得手动println一行行的HTML代码。为了解决这一繁琐的问题，Java开发了JSP技术。 JSP可以看作一个Java Servlet，主要用于实现Java web应用程序的用户界面部分。网页开发者们通">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T09:30:00.000Z">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-1.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-2.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-3.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-4.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-5.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-6.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-7.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-8.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-9.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-10.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-11.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-12.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-13.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-14.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-15.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-16.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-17.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-18.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-19.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-20.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-21.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-22.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-23.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-24.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-25.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-26.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-27.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-28.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-29.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-30.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-31.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-32.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-33.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-34.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-35.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-36.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-37.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-38.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-39.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-40.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-41.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-42.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-43.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-44.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-45.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-46.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-47.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-48.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-49.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-50.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-51.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-52.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-53.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-54.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-55.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-56.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-57.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-58.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-59.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-60.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-61.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-62.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-63.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-64.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-65.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-66.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-67.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-68.png">
+<meta property="og:image" content="c:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20261117105950404.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-69.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-70.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-71.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-72.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-73.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-74.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-75.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-76.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-77.png">
+<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-78.png">
+<meta property="article:published_time" content="2026-10-04T18:28:34.000Z">
+<meta property="article:modified_time" content="2026-10-04T18:28:34.000Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="CTF,Web安全,渗透测试,writeup,复现">
+<meta property="article:tag" content="java内存马">
+<meta property="article:tag" content="jsp">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-1.png">
 
 <link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
 
@@ -75,20 +157,29 @@
 
 <body>
 <div id="page-loading">
-    <div class="pl-ring"></div>
-    <div class="pl-txt">MIXBP</div>
+    <div class="loader-multi"><div></div><div></div></div>
+    <div class="pl-txt">MIXBP<span class="pl-cursor">▌</span></div>
 </div>
 <style>
+    /* 动画基于开源 loaders.css (MIT, ConnorAtherton) 的 ball-clip-rotate-multiple 改配色 */
     #page-loading { position: fixed; inset: 0; z-index: 99999; background: #10131c;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         transition: opacity .35s ease; }
     #page-loading.done { opacity: 0; pointer-events: none; }
-    #page-loading .pl-ring { width: 42px; height: 42px; border-radius: 50%;
-        border: 3px solid rgba(48, 158, 133, .22); border-top-color: #309E85;
-        animation: pl-spin .8s linear infinite; }
-    #page-loading .pl-txt { margin-top: 14px; font-family: Consolas, monospace;
-        font-size: 13px; color: #5c6b78; letter-spacing: 3px; }
-    @keyframes pl-spin { to { transform: rotate(360deg); } }
+    .loader-multi { position: relative; width: 44px; height: 44px; }
+    .loader-multi > div { position: absolute; left: 50%; top: 50%; margin: -22px 0 0 -22px;
+        width: 44px; height: 44px; border-radius: 100%;
+        border: 2px solid #35c4ff; border-bottom-color: transparent;
+        animation: pl-rotate 1s 0s ease-in infinite; }
+    .loader-multi > div:last-child { width: 26px; height: 26px; margin: -13px 0 0 -13px;
+        border: 2px solid #309E85; border-top-color: transparent; border-bottom-color: transparent;
+        animation: pl-rotate-rev 1s 0.5s ease-in infinite; }
+    @keyframes pl-rotate { 0% { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(360deg) scale(1); } }
+    @keyframes pl-rotate-rev { 0% { transform: rotate(360deg) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(0) scale(1); } }
+    .pl-txt { margin-top: 18px; font-family: Consolas, monospace; font-size: 13px;
+        color: #5c6b78; letter-spacing: 3px; }
+    .pl-cursor { color: #309E85; animation: pl-blink 1s steps(2) infinite; margin-left: 2px; }
+    @keyframes pl-blink { 50% { opacity: 0; } }
 </style>
 <script>
     (function () {
@@ -277,7 +368,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="205">
-<input type="hidden" id="yelog_site_word_count" value="527.1k">
+<input type="hidden" id="yelog_site_word_count" value="527.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4026,8 +4117,8 @@
     </div>
     <div class="article-meta">
         
-        <span>字数:10.5k</span>
-        <span>预计阅读 47 分钟</span>
+        <span>字数:10.7k</span>
+        <span>预计阅读 48 分钟</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -4682,17 +4773,36 @@
 <p>而创建一个Agentmain类型的Agent时，需要在MANIFEST中指定 Agent-Class 属性。JVM才能在运行时加载指定代理类。</p>
 <p>Can-Redefine-Classes: true表示允许 Java Agent 重新定义已经加载的类。</p>
 <p>Can-Retransform-Classes: true表示允许 Java Agent 重新转换已经加载的类。</p>
-<p>然后现在创建Premain Class，注意：类的名字和在<code>MANIFEST.MF</code>中指定的<code>Premain-Class</code>属性值要一致</p>
+<p><strong>然后现在创建Premain Class，注意：类的名字和在<code>MANIFEST.MF</code>中指定的<code>Premain-Class</code>属性值要一致</strong></p>
 <p><code>PremainTest.java</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.instrument.Instrumentation;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PremainTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">premain</span><span class="hljs-params">(String agentArgs, Instrumentation inst)</span>&#123;<br>        inst.addTransformer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyTransformer</span>());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><code>public static void premain(String agentArgs, Instrumentation inst</code>是一个特殊的静态方法，被称为代理主方法（agent main method）。它由JVM调用，允许代理（agent）在目标应用程序启动之前执行初始化操作。</p>
-<p><strong>String agentArgs：</strong>传递给代理的参数是字符串。</p>
-<p><strong>Instrumentation inst：</strong>提供了一组API来检查、修改甚至替换应用程序中的类。</p>
-<p><strong>MyTransformer</strong>是一个实现<strong>ClassFileTransformer</strong>的类，在类中负责具体的类转换工作。</p>
-<p><strong>MyTransformer方法</strong></p>
+<p>String agentArgs：传递给代理的参数是字符串。</p>
+<p>Instrumentation inst：提供了一组API来检查、修改甚至替换应用程序中的类。</p>
+<p>MyTransformer是一个实现ClassFileTransformer的类，在类中负责具体的类转换工作。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gradle">关于此接口方法的参数：<br>ClassLoader loader: 加载类的类加载器。<br>String className: 类的全限定名（例如，com<span class="hljs-regexp">/example/My</span><span class="hljs-keyword">Class</span>）。 <br><span class="hljs-keyword">Class</span>&lt;?&gt; classBeingRedefined: 如果是在重新定义类，则为该类的对象；否则为<span class="hljs-keyword">null</span>。<br>ProtectionDomain protectionDomain: 类的保护域。 <br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>构造MyTransformer方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.lang.instrument.ClassFileTransformer;<br><span class="hljs-keyword">import</span> java.lang.instrument.IllegalClassFormatException;<br><span class="hljs-keyword">import</span> java.security.ProtectionDomain;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyTransformer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ClassFileTransformer</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">byte</span>[] transform(ClassLoader loader, String className, Class&lt;?&gt; classBeingRedefined,<br>                            ProtectionDomain protectionDomain, <span class="hljs-type">byte</span>[] classfileBuffer) <span class="hljs-keyword">throws</span> IllegalClassFormatException &#123;<br><br>        <span class="hljs-comment">// 如果正在加载的是这个类，那就对他做替换</span><br>        <span class="hljs-keyword">if</span> (className.equals(<span class="hljs-string">&quot;org.mixbp.Fox&quot;</span>)) &#123;<br>            <span class="hljs-comment">// 去读另一个Fox，也就是用来替换的Fox类，输入编译之后的.class文件的绝对地址</span><br>            <span class="hljs-keyword">return</span> read(<span class="hljs-string">&quot;E:\\java\\agent\\target\\classes\\org\\mixbp\\Fox.class&quot;</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">byte</span>[] read(String path)<br>    &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span><span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(path);<br>            <span class="hljs-comment">//当文件没有结束时，每次读取一个字节显示</span><br>            <span class="hljs-type">byte</span>[] data=<span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[in.available()];<br>            in.read(data);<br>            in.close();<br>            <span class="hljs-keyword">return</span> data;<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
+<p>然后将它打成jar包，在终端里使用命令打包</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">mvn clean <span class="hljs-keyword">package</span><br></code></pre></td></tr></table></figure>
+
+<p><img loading="lazy" src="/../image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-77.png"></p>
+<p><img loading="lazy" src="/../image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-78.png"></p>
+<p>可以看到在target目录出现了两个jar包，第二个就是包含了原信息的Jar包，包含了所有依赖。</p>
+<p>复制这个jar包的绝对路径</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">E</span>:\java\agent\target\agent-<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-SNAPSHOT-jar-with-dependencies.jar<br></code></pre></td></tr></table></figure>
+
+<p>先在agent-demo中，尝试用终端的方式启动Main</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> target/classes<br>java org.mixbp.Main<br></code></pre></td></tr></table></figure>
+
+<p>可以看到成功启动，输出了ding ding ding</p>
+<p>然后我们在运行之前添加一个javaagent参数，然后冒号后面接我们打的jar包的全路径</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">java</span> -javaagent:E:\java\agent\target\agent-<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-SNAPSHOT-jar-with-dependencies.jar  org.mixbp.Main<br></code></pre></td></tr></table></figure>
 
 
 
@@ -4701,11 +4811,23 @@
 
 
 
-<p>关于此接口方法的参数：</p>
-<p>ClassLoader loader: 加载类的类加载器。</p>
-<p>String className: 类的全限定名（例如，com&#x2F;example&#x2F;MyClass）。 </p>
-<p>Class&lt;?&gt; classBeingRedefined: 如果是在重新定义类，则为该类的对象；否则为null。</p>
-<p>ProtectionDomain protectionDomain: 类的保护域。 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h3 id="Agentmain"><a href="#Agentmain" class="headerlink" title="Agentmain"></a>Agentmain</h3><h3 id="javassist"><a href="#javassist" class="headerlink" title="javassist"></a>javassist</h3><h1 id="内存马注入"><a href="#内存马注入" class="headerlink" title="内存马注入"></a>内存马注入</h1><h2 id="JNDI注入内存马"><a href="#JNDI注入内存马" class="headerlink" title="JNDI注入内存马"></a>JNDI注入内存马</h2><h2 id="Fastjson注入内存马"><a href="#Fastjson注入内存马" class="headerlink" title="Fastjson注入内存马"></a>Fastjson注入内存马</h2><h2 id="反序列化注入内存马"><a href="#反序列化注入内存马" class="headerlink" title="反序列化注入内存马"></a>反序列化注入内存马</h2><h2 id="shiro注入内存马"><a href="#shiro注入内存马" class="headerlink" title="shiro注入内存马"></a>shiro注入内存马</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
@@ -5270,7 +5392,7 @@
     });
 })();
 </script>
-<!-- 洛琪希看板娘 (roxy-web-mascot, MIT): 页面加载完再初始化, 不与正文抢带宽 -->
+<!-- 洛琪希看板娘 (roxy-web-mascot, MIT): 页面加载完再初始化, 不与正文抢带宽; 失败自动重试一次 -->
 <script>
 (function () {
     function boot() {
@@ -5280,6 +5402,11 @@
             s.src = '/roxy/mascot.js';
             s.setAttribute('data-roxy-position', 'right');
             s.setAttribute('data-roxy-dialogue', '/roxy/dialogue.json');
+            s.onerror = function () {
+                setTimeout(function () {
+                    document.body.appendChild(s.cloneNode());
+                }, 1500);
+            };
             document.body.appendChild(s);
         }, 600);
     }

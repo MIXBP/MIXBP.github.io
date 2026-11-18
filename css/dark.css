@@ -35,7 +35,7 @@ html.dark .pjax article .article-meta a:hover {
 html.dark .pjax article .article-entry {
   color: #c9cdd1;
 /* 行内代码 */
-/* 代码框 */
+/* 代码框: figure 整体描边, 内部 pre 不再各自成盒 */
 /* 引用块 */
 /* 表格 */
 /* 有序列表序号 */
@@ -79,10 +79,16 @@ html.dark .pjax article .article-entry :not(pre) > code {
   color: #e0859b !important;
   border: 1px solid #3a3e44 !important;
 }
-html.dark .pjax article .article-entry pre {
-  box-shadow: none !important;
+html.dark .pjax article .article-entry figure.highlight {
   border: 1px solid #2e3540;
   border-radius: 8px;
+  box-shadow: none;
+  overflow: hidden;
+}
+html.dark .pjax article .article-entry figure.highlight pre {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 html.dark .pjax article .article-entry blockquote {
   background: #2a2d33 !important;
