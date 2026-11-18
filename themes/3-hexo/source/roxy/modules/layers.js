@@ -24,10 +24,24 @@ export async function loadMascotLayers(baseUrl        ) {
       canvas.height = name ? 1536 : 1;
       if (name) {
         const image = new Image();
-        image.src = baseUrl + name + '.webp';
-        await image.decode();
-        if (image.naturalWidth !== 1024 || image.naturalHeight !== 1536)
-          throw Error('Invalid registered mascot layer: ' + name);
+        /* 网络不稳时自动重试 3 次(带退避与缓存穿透), 避免偶发失败导致挂件不出现 */
+        let ok = false, lastErr = null;
+        for (let attempt = 0; attempt < 3 && !ok; attempt++) {
+          try {
+            if (attempt) {
+              await new Promise((r) => setTimeout(r, 900 * attempt));
+              image.src = '';
+            }
+            image.src = baseUrl + name + '.webp' + (attempt ? '?retry=' + attempt : '');
+            await image.decode();
+            if (image.naturalWidth !== 1024 || image.naturalHeight !== 1536)
+              throw Error('Invalid registered mascot layer: ' + name);
+            ok = true;
+          } catch (e) {
+            lastErr = e;
+          }
+        }
+        if (!ok) throw (lastErr || Error('layer load failed: ' + name));
         canvas.getContext('2d') .drawImage(image, 0, 0);
       }
       return canvas;

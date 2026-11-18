@@ -598,8 +598,23 @@
     });
 })();
 </script>
-<!-- 洛琪希看板娘 (roxy-web-mascot, MIT) -->
-<script type="module" src="/roxy/mascot.js" data-roxy-position="right" data-roxy-dialogue="/roxy/dialogue.json"></script>
+<!-- 洛琪希看板娘 (roxy-web-mascot, MIT): 页面加载完再初始化, 不与正文抢带宽 -->
+<script>
+(function () {
+    function boot() {
+        setTimeout(function () {
+            var s = document.createElement('script');
+            s.type = 'module';
+            s.src = '/roxy/mascot.js';
+            s.setAttribute('data-roxy-position', 'right');
+            s.setAttribute('data-roxy-dialogue', '/roxy/dialogue.json');
+            document.body.appendChild(s);
+        }, 600);
+    }
+    if (document.readyState === 'complete') boot();
+    else window.addEventListener('load', boot);
+})();
+</script>
 <!-- 自定义特效/彩蛋/天气 -->
 <script src="/js/custom/effects.js?v=1.2" defer></script>
 <script src="/js/custom/egg.js?v=1.2" defer></script>

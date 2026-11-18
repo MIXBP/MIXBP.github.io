@@ -1,0 +1,29 @@
+<div id="page-loading">
+    <div class="pl-ring"></div>
+    <div class="pl-txt">MIXBP</div>
+</div>
+<style>
+    #page-loading { position: fixed; inset: 0; z-index: 99999; background: #10131c;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        transition: opacity .35s ease; }
+    #page-loading.done { opacity: 0; pointer-events: none; }
+    #page-loading .pl-ring { width: 42px; height: 42px; border-radius: 50%;
+        border: 3px solid rgba(48, 158, 133, .22); border-top-color: #309E85;
+        animation: pl-spin .8s linear infinite; }
+    #page-loading .pl-txt { margin-top: 14px; font-family: Consolas, monospace;
+        font-size: 13px; color: #5c6b78; letter-spacing: 3px; }
+    @keyframes pl-spin { to { transform: rotate(360deg); } }
+</style>
+<script>
+    (function () {
+        function hide() {
+            var l = document.getElementById('page-loading');
+            if (!l || l.classList.contains('done')) return;
+            l.classList.add('done');
+            setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 420);
+        }
+        window.addEventListener('load', hide);
+        /* 兜底: 资源慢也最多 4 秒放行 */
+        setTimeout(hide, 4000);
+    })();
+</script>

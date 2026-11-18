@@ -1,24 +1,40 @@
 <div id="comments">
     <script>
         {
+            /* 懒加载: 滚动到评论区附近才拉取 giscus */
             const comments = document.getElementById("comments");
-            const script = document.createElement("script");
-            script.src = "https://giscus.app/client.js";
-            script.setAttribute('data-repo', "<%=theme.giscus.repo%>");
-            script.setAttribute('data-repo-id', "<%=theme.giscus.repoId%>");
-            script.setAttribute('data-category', "<%=theme.giscus.category%>");
-            script.setAttribute('data-category-id', "<%=theme.giscus.categoryId%>");
-            script.setAttribute('data-mapping', "<%=theme.giscus.mapping%>");
-            script.setAttribute('data-strict', "<%=theme.giscus.strict%>");
-            script.setAttribute('data-reactions-enabled', "<%=theme.giscus.reactionsEnabled%>");
-            script.setAttribute('data-emit-metadata', "<%=theme.giscus.emitMetadata%>");
-            script.setAttribute('data-input-position', "<%=theme.giscus.inputPosition%>");
-            script.setAttribute('data-theme', "<%=theme.giscus.theme%>");
-            script.setAttribute('data-lang', "<%=theme.giscus.lang%>");
-            script.setAttribute('data-loading', "<%=theme.giscus.loading%>");
-            script.setAttribute('crossorigin', "anonymous");
-            script.setAttribute('async', "");
-            comments.appendChild(script);
+            function loadGiscus() {
+                if (comments.dataset.giscusLoaded) return;
+                comments.dataset.giscusLoaded = "1";
+                const script = document.createElement("script");
+                script.src = "https://giscus.app/client.js";
+                script.setAttribute('data-repo', "<%=theme.giscus.repo%>");
+                script.setAttribute('data-repo-id', "<%=theme.giscus.repoId%>");
+                script.setAttribute('data-category', "<%=theme.giscus.category%>");
+                script.setAttribute('data-category-id', "<%=theme.giscus.categoryId%>");
+                script.setAttribute('data-mapping', "<%=theme.giscus.mapping%>");
+                script.setAttribute('data-strict', "<%=theme.giscus.strict%>");
+                script.setAttribute('data-reactions-enabled', "<%=theme.giscus.reactionsEnabled%>");
+                script.setAttribute('data-emit-metadata', "<%=theme.giscus.emitMetadata%>");
+                script.setAttribute('data-input-position', "<%=theme.giscus.inputPosition%>");
+                script.setAttribute('data-theme', "<%=theme.giscus.theme%>");
+                script.setAttribute('data-lang', "<%=theme.giscus.lang%>");
+                script.setAttribute('data-loading', "<%=theme.giscus.loading%>");
+                script.setAttribute('crossorigin', "anonymous");
+                script.setAttribute('async', "");
+                comments.appendChild(script);
+            }
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(function (entries) {
+                    if (entries.some(function (en) { return en.isIntersecting; })) {
+                        loadGiscus();
+                        io.disconnect();
+                    }
+                }, { rootMargin: '500px' });
+                io.observe(comments);
+            } else {
+                loadGiscus();
+            }
         }
     </script>
 </div>
