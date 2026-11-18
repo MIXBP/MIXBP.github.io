@@ -2141,17 +2141,41 @@ public class Main {
 
 ```
 
-![image-20261118110130265](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20261118110130265.png)
+然后运行MaIn
+
+![](../image/java内存马学习-81.png)
+
+修改成功
 
 
 
-
-
-
-
-
+---
 
 ### javassist
+
+提前写好class再替换还是不太灵活
+
+Javassist (Java Programming Assistant) 是一个用于操作Java字节码的类库。它允许你在运行时定义新的类，或者修改现有的类。Javassist提供了一种简单的方式来处理Java字节码，使得开发者可以在不重新编译源代码的情况下，动态地改变程序的行为。
+
+如何使用
+
+先添加依赖
+
+```
+<dependency>
+    <groupId>org.javassist</groupId>
+    <artifactId>javassist</artifactId>
+    <version>3.30.2-GA</version>
+</dependency>
+```
+
+
+
+
+
+
+
+
 
 
 
