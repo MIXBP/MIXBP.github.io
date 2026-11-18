@@ -19,100 +19,18 @@
 <link rel="preconnect" href="https://giscus.app">
 <link rel="dns-prefetch" href="https://at.alicdn.com">
 <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-<meta name="description" content="Java内存马学习JSP 基础什么是JSPJSP（Java Server Pages），是Java的一种动态网页技术。在早期Java的开发技术中，Java程序员如果想要向浏览器输出一些数据，就必须得手动println一行行的HTML代码。为了解决这一繁琐的问题，Java开发了JSP技术。 JSP可以看作一个Java Servlet，主要用于实现Java web应用程序的用户界面部分。网页开发者们通">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java内存马学习">
-<meta property="og:url" content="https://mixbp.github.io/2026/10/05/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://mixbp.github.io/about/index.html">
 <meta property="og:site_name" content="MIXBP">
-<meta property="og:description" content="Java内存马学习JSP 基础什么是JSPJSP（Java Server Pages），是Java的一种动态网页技术。在早期Java的开发技术中，Java程序员如果想要向浏览器输出一些数据，就必须得手动println一行行的HTML代码。为了解决这一繁琐的问题，Java开发了JSP技术。 JSP可以看作一个Java Servlet，主要用于实现Java web应用程序的用户界面部分。网页开发者们通">
+<meta property="og:description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-1.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-2.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-3.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-4.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-5.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-6.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-7.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-8.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-9.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-10.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-11.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-12.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-13.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-14.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-15.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-16.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-17.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-18.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-19.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-20.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-21.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-22.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-23.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-24.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-25.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-26.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-27.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-28.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-29.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-30.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-31.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-32.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-33.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-34.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-35.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-36.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-37.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-38.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-39.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-40.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-41.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-42.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-43.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-44.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-45.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-46.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-47.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-48.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-49.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-50.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-51.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-52.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-53.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-54.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-55.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-56.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-57.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-58.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-59.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-60.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-61.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-62.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-63.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-64.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-65.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-66.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-67.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-68.png">
-<meta property="og:image" content="c:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20261117105950404.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-69.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-70.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-71.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-72.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-73.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-74.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-75.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-76.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-77.png">
-<meta property="og:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-78.png">
-<meta property="article:published_time" content="2026-10-04T18:28:34.000Z">
-<meta property="article:modified_time" content="2026-10-04T18:28:34.000Z">
+<meta property="article:published_time" content="2026-11-16T09:30:00.000Z">
+<meta property="article:modified_time" content="2026-11-16T09:30:00.000Z">
 <meta property="article:author" content="MIXBP">
-<meta property="article:tag" content="java内存马">
-<meta property="article:tag" content="jsp">
+<meta property="article:tag" content="CTF,Web安全,渗透测试,writeup,复现">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mixbp.github.io/image/java%E5%86%85%E5%AD%98%E9%A9%AC%E5%AD%A6%E4%B9%A0-1.png">
 
 <link rel="alternate" href="/atom.xml" title="MIXBP" type="application/atom+xml">
 
@@ -157,28 +75,34 @@
 
 <body>
 <div id="page-loading">
-    <div class="loader-multi"><div></div><div></div></div>
+    <img class="nyan" src="/img/nyan.gif" alt="">
+    <span class="star s1"></span><span class="star s2"></span><span class="star s3"></span>
+    <span class="star s4"></span><span class="star s5"></span><span class="star s6"></span>
     <div class="pl-txt">MIXBP<span class="pl-cursor">▌</span></div>
 </div>
 <style>
-    /* 动画基于开源 loaders.css (MIT, ConnorAtherton) 的 ball-clip-rotate-multiple 改配色 */
-    #page-loading { position: fixed; inset: 0; z-index: 99999; background: #10131c;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        transition: opacity .35s ease; }
+    /* 彩虹猫 loading (Nyan Cat meme) */
+    #page-loading { position: fixed; inset: 0; z-index: 99999; background: #003265;
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity .35s ease; overflow: hidden; }
     #page-loading.done { opacity: 0; pointer-events: none; }
-    .loader-multi { position: relative; width: 44px; height: 44px; }
-    .loader-multi > div { position: absolute; left: 50%; top: 50%; margin: -22px 0 0 -22px;
-        width: 44px; height: 44px; border-radius: 100%;
-        border: 2px solid #35c4ff; border-bottom-color: transparent;
-        animation: pl-rotate 1s 0s ease-in infinite; }
-    .loader-multi > div:last-child { width: 26px; height: 26px; margin: -13px 0 0 -13px;
-        border: 2px solid #309E85; border-top-color: transparent; border-bottom-color: transparent;
-        animation: pl-rotate-rev 1s 0.5s ease-in infinite; }
-    @keyframes pl-rotate { 0% { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(360deg) scale(1); } }
-    @keyframes pl-rotate-rev { 0% { transform: rotate(360deg) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(0) scale(1); } }
-    .pl-txt { margin-top: 18px; font-family: Consolas, monospace; font-size: 13px;
-        color: #5c6b78; letter-spacing: 3px; }
-    .pl-cursor { color: #309E85; animation: pl-blink 1s steps(2) infinite; margin-left: 2px; }
+    #page-loading .nyan { width: 300px; max-width: 60vw; image-rendering: pixelated;
+        margin-right: auto; margin-left: 0;
+        animation: nyan-bob .55s ease-in-out infinite alternate; }
+    @keyframes nyan-bob { from { transform: translateY(-7px); } to { transform: translateY(7px); } }
+    #page-loading .star { position: absolute; width: 4px; height: 4px; background: #fff;
+        border-radius: 50%; opacity: .8; animation: twinkle 1.6s ease-in-out infinite; }
+    #page-loading .star.s1 { left: 55%; top: 22%; }
+    #page-loading .star.s2 { left: 72%; top: 55%; width: 6px; height: 6px; background: #ffe27a; animation-delay: .4s; }
+    #page-loading .star.s3 { left: 85%; top: 30%; animation-delay: .8s; }
+    #page-loading .star.s4 { left: 62%; top: 74%; width: 3px; height: 3px; animation-delay: 1.1s; }
+    #page-loading .star.s5 { left: 90%; top: 62%; animation-delay: .2s; }
+    #page-loading .star.s6 { left: 48%; top: 12%; width: 3px; height: 3px; animation-delay: .6s; }
+    @keyframes twinkle { 0%, 100% { opacity: .85; transform: scale(1); } 50% { opacity: .15; transform: scale(.5); } }
+    #page-loading .pl-txt { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        margin-left: 90px; font-family: Consolas, monospace; font-size: 18px; font-weight: bold;
+        color: #fff; letter-spacing: 4px; text-shadow: 2px 2px 0 rgba(0, 0, 0, .35); }
+    #page-loading .pl-cursor { color: #ffe27a; animation: pl-blink 1s steps(2) infinite; }
     @keyframes pl-blink { 50% { opacity: 0; } }
 </style>
 <script>
@@ -189,9 +113,10 @@
             l.classList.add('done');
             setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 420);
         }
-        window.addEventListener('load', hide);
-        /* 兜底: 资源慢也最多 4 秒放行 */
-        setTimeout(hide, 4000);
+        /* HTML 解析完(正文可见)即放行, 不等图片; 6 秒兜底 */
+        if (document.readyState !== 'loading') hide();
+        else document.addEventListener('DOMContentLoaded', hide);
+        setTimeout(hide, 6000);
     })();
 </script>
 
@@ -368,7 +293,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="205">
-<input type="hidden" id="yelog_site_word_count" value="527.2k">
+<input type="hidden" id="yelog_site_word_count" value="527.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4753,8 +4678,9 @@
             document.body.appendChild(s);
         }, 600);
     }
-    if (document.readyState === 'complete') boot();
-    else window.addEventListener('load', boot);
+    /* HTML 解析完即启动(不等图片), 图多的文章页 load 事件会拖几十秒导致看板娘迟迟不出现 */
+    if (document.readyState !== 'loading') boot();
+    else document.addEventListener('DOMContentLoaded', function () { boot(); });
 })();
 </script>
 <!-- 自定义特效/彩蛋/天气 -->
