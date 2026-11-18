@@ -2042,17 +2042,51 @@ java -javaagent:E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dependencies.ja
 
 Premain代理的加载方式是附加到正在运行的Java进程上。前面说到，创建一个Agentmain类型的Agent时，需要在MANIFEST中指定 `Agent-Class` 属性，则我们创建一个跟Agent-Class属性值同名的Java文件。
 
+```
+<manifestEntries>
+	<Agent-Class>AgentMainTest</Agent-Class>
+	<Premain-Class>PremainTest</Premain-Class>
+	<Can-Redefine-Classes>true</Can-Redefine-Classes>
+	<Can-Retransform-Classes>true</Can-Retransform-Classes>
+</manifestEntries>
+```
 
+这里我们指定的属性名是AgentMainTest
 
+所以创建`AgentMainTest.java`
 
+```
+import java.lang.instrument.Instrumentation;
 
+public class AgentMainTest {
+    public static void agentmain(String agentArgs, Instrumentation inst) {
+        inst.addTransformer(new MyTransformer(), true);
+    }
+}
+```
 
+可以发现个premain差不多，只是方法名变成了agentmain，然后多了个true的参数，这个参数是指定允许重新加载，这样才能对已经加载的类做修改
 
+```
+import java.lang.instrument.Instrumentation;
+import java.lang.instrument.UnmodifiableClassException;
 
+public class AgentMainTest {
+    public static void agentmain(String agentArgs, Instrumentation inst) throws UnmodifiableClassException {
+        inst.addTransformer(new MyTransformer(), true);
+        //找到指定的要重新加载的类
+        for(Class clazz:inst.getAllLoadedClasses()){
+            if(clazz.getName().equals("org.mixbp.Fox")){
+                inst.retransformClasses(clazz);
+            }
+        }
+    }
+}
+```
 
+然后增加一个查找所有已加载的类的功能
 
-
-
+这里就是通过循环找到指定要重新加载的类，然后用Instrumentation让虚拟机再加载一次
 
 
 
