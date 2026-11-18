@@ -2169,9 +2169,57 @@ Javassist (Java Programming Assistant) 是一个用于操作Java字节码的类�
 </dependency>
 ```
 
+然后就是修改MyTransfomer
 
+```
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import javassist.LoaderClassPath;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.IllegalClassFormatException;
+import java.security.ProtectionDomain;
 
+public class MyTransformer implements ClassFileTransformer {
+
+    @Override
+    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
+                            ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+
+        // 1. 匹配目标类，只对指定的类进行字节码修改
+        if (className.equals("org/mixbp/Fox")) {
+            
+            // 2. 获取默认的类池，并加入当前类加载器的搜索路径，以便解析依赖
+            ClassPool pool = ClassPool.getDefault();
+            pool.appendClassPath(new LoaderClassPath(loader));
+            
+            try {
+                // 3. 将传入的原始字节码数组转换为 Javassist 可操作的 CtClass 对象
+                CtClass cc = pool.makeClass(new ByteArrayInputStream(classfileBuffer));
+                
+                // 4. 获取目标方法
+                CtMethod say = cc.getDeclaredMethod("say");
+                
+                // 5. 在目标方法执行前，动态插入自定义的代码逻辑
+                say.insertBefore("{ System.out.println(\"Hello World\"); }");
+
+                // 6. 将修改后的 CtClass 转换回字节码数组并返回，JVM 会使用该数组重新定义类
+                return cc.toBytecode();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        
+        // 如果不是目标类，返回 null 表示不进行任何修改，维持原样
+        return null;
+    }
+}
+```
+
+去掉了读取字节码的方法，然后修改了transform方法
 
 
 

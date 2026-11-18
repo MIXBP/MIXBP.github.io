@@ -38,11 +38,13 @@
         width: 560px; height: 130px; }
     #pl-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
     .rb { fill: none; stroke-width: 12.5; stroke-linecap: butt; }
-    #pl-nyan { position: absolute; width: 130px; z-index: 3; left: -60px; top: 0;
+    #pl-nyan { position: absolute; width: 150px; z-index: 3; left: -60px; top: 0;
         image-rendering: pixelated; pointer-events: none;
+        filter: drop-shadow(2px 0 0 rgba(10, 25, 60, .9)) drop-shadow(-2px 0 0 rgba(10, 25, 60, .9))
+                drop-shadow(0 2px 0 rgba(10, 25, 60, .9)) drop-shadow(0 -2px 0 rgba(10, 25, 60, .9));
         animation: nyan-bob .55s ease-in-out infinite alternate; }
     @keyframes nyan-bob { from { margin-top: -6px; } to { margin-top: 5px; } }
-    .pl-pct { position: absolute; left: 50%; top: 118px; transform: translateX(-50%);
+    .pl-pct { position: absolute; left: 50%; top: calc(50% + 72px); transform: translate(-50%, -50%);
         font-family: Consolas, monospace; font-size: 24px; font-weight: bold;
         color: #fff; letter-spacing: 3px; text-shadow: 2px 2px 0 rgba(0, 0, 0, .45); }
 </style>
