@@ -2122,9 +2122,26 @@ jcmd 23308 JVMTI.agent_load E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dep
 
 首先先创建一个Main.java
 
+```
+import com.sun.tools.attach.AgentInitializationException;
+import com.sun.tools.attach.AgentLoadException;
+import com.sun.tools.attach.AttachNotSupportedException;
+import com.sun.tools.attach.VirtualMachine;
 
+import java.io.IOException;
 
+public class Main {
+    public static void main(String[] args) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException {
+        // 这里的id就是进程号，注意每次重新运行进程号都会变
+        VirtualMachine attach = VirtualMachine.attach("20444");
+        // 这里填入jar包的绝对路径
+        attach.loadAgent("E:\\java\\agent\\target\\agent-1.0-SNAPSHOT-jar-with-dependencies.jar");
+    }
+}
 
+```
+
+![image-20261118110130265](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20261118110130265.png)
 
 
 
