@@ -1,26 +1,32 @@
 <div id="page-loading">
-    <div class="loader-multi"><div></div><div></div></div>
+    <img class="nyan" src="/img/nyan.gif" alt="">
+    <span class="star s1"></span><span class="star s2"></span><span class="star s3"></span>
+    <span class="star s4"></span><span class="star s5"></span><span class="star s6"></span>
     <div class="pl-txt">MIXBP<span class="pl-cursor">▌</span></div>
 </div>
 <style>
-    /* 动画基于开源 loaders.css (MIT, ConnorAtherton) 的 ball-clip-rotate-multiple 改配色 */
-    #page-loading { position: fixed; inset: 0; z-index: 99999; background: #10131c;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        transition: opacity .35s ease; }
+    /* 彩虹猫 loading (Nyan Cat meme) */
+    #page-loading { position: fixed; inset: 0; z-index: 99999; background: #003265;
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity .35s ease; overflow: hidden; }
     #page-loading.done { opacity: 0; pointer-events: none; }
-    .loader-multi { position: relative; width: 44px; height: 44px; }
-    .loader-multi > div { position: absolute; left: 50%; top: 50%; margin: -22px 0 0 -22px;
-        width: 44px; height: 44px; border-radius: 100%;
-        border: 2px solid #35c4ff; border-bottom-color: transparent;
-        animation: pl-rotate 1s 0s ease-in infinite; }
-    .loader-multi > div:last-child { width: 26px; height: 26px; margin: -13px 0 0 -13px;
-        border: 2px solid #309E85; border-top-color: transparent; border-bottom-color: transparent;
-        animation: pl-rotate-rev 1s 0.5s ease-in infinite; }
-    @keyframes pl-rotate { 0% { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(360deg) scale(1); } }
-    @keyframes pl-rotate-rev { 0% { transform: rotate(360deg) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(0) scale(1); } }
-    .pl-txt { margin-top: 18px; font-family: Consolas, monospace; font-size: 13px;
-        color: #5c6b78; letter-spacing: 3px; }
-    .pl-cursor { color: #309E85; animation: pl-blink 1s steps(2) infinite; margin-left: 2px; }
+    #page-loading .nyan { width: 300px; max-width: 60vw; image-rendering: pixelated;
+        margin-right: auto; margin-left: 0;
+        animation: nyan-bob .55s ease-in-out infinite alternate; }
+    @keyframes nyan-bob { from { transform: translateY(-7px); } to { transform: translateY(7px); } }
+    #page-loading .star { position: absolute; width: 4px; height: 4px; background: #fff;
+        border-radius: 50%; opacity: .8; animation: twinkle 1.6s ease-in-out infinite; }
+    #page-loading .star.s1 { left: 55%; top: 22%; }
+    #page-loading .star.s2 { left: 72%; top: 55%; width: 6px; height: 6px; background: #ffe27a; animation-delay: .4s; }
+    #page-loading .star.s3 { left: 85%; top: 30%; animation-delay: .8s; }
+    #page-loading .star.s4 { left: 62%; top: 74%; width: 3px; height: 3px; animation-delay: 1.1s; }
+    #page-loading .star.s5 { left: 90%; top: 62%; animation-delay: .2s; }
+    #page-loading .star.s6 { left: 48%; top: 12%; width: 3px; height: 3px; animation-delay: .6s; }
+    @keyframes twinkle { 0%, 100% { opacity: .85; transform: scale(1); } 50% { opacity: .15; transform: scale(.5); } }
+    #page-loading .pl-txt { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        margin-left: 90px; font-family: Consolas, monospace; font-size: 18px; font-weight: bold;
+        color: #fff; letter-spacing: 4px; text-shadow: 2px 2px 0 rgba(0, 0, 0, .35); }
+    #page-loading .pl-cursor { color: #ffe27a; animation: pl-blink 1s steps(2) infinite; }
     @keyframes pl-blink { 50% { opacity: 0; } }
 </style>
 <script>
@@ -31,8 +37,9 @@
             l.classList.add('done');
             setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 420);
         }
-        window.addEventListener('load', hide);
-        /* 兜底: 资源慢也最多 4 秒放行 */
-        setTimeout(hide, 4000);
+        /* HTML 解析完(正文可见)即放行, 不等图片; 6 秒兜底 */
+        if (document.readyState !== 'loading') hide();
+        else document.addEventListener('DOMContentLoaded', hide);
+        setTimeout(hide, 6000);
     })();
 </script>

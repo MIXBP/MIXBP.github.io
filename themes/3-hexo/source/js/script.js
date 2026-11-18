@@ -45,7 +45,7 @@ $(document).on({
 
     /*pjax开始请求页面时触发的事件*/
     'pjax:start': function () {
-        content.css({'opacity': 0});
+        content.css({'opacity': 0.45});
     },
 
     /*pjax请求回来页面后触发的事件*/

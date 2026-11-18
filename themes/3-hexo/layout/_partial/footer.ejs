@@ -616,8 +616,9 @@
             document.body.appendChild(s);
         }, 600);
     }
-    if (document.readyState === 'complete') boot();
-    else window.addEventListener('load', boot);
+    /* HTML 解析完即启动(不等图片), 图多的文章页 load 事件会拖几十秒导致看板娘迟迟不出现 */
+    if (document.readyState !== 'loading') boot();
+    else document.addEventListener('DOMContentLoaded', function () { boot(); });
 })();
 </script>
 <!-- 自定义特效/彩蛋/天气 -->

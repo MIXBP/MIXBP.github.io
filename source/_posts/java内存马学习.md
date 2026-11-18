@@ -1965,8 +1965,8 @@ public class MyTransformer implements ClassFileTransformer {
                             ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
 
         // 如果正在加载的是这个类，那就对他做替换
-        if (className.equals("org.mixbp.Fox")) {
-            // 去读另一个Fox，也就是用来替换的Fox类，输入编译之后的.class文件的绝对地址
+        if (className.equals("org/mixbp/Fox")) {
+            // 去读另一个Fox，也就是用来替换的Fox类
             return read("E:\\java\\agent\\target\\classes\\org\\mixbp\\Fox.class");
         }
 
@@ -2018,7 +2018,7 @@ cd target/classes
 java org.mixbp.Main
 ```
 
-可以看到成功启动，输出了ding ding ding
+可以看到成功启动，并且正常输出了ding ding ding
 
 然后我们在运行之前添加一个javaagent参数，然后冒号后面接我们打的jar包的全路径
 
@@ -2026,31 +2026,27 @@ java org.mixbp.Main
 java -javaagent:E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dependencies.jar  org.mixbp.Main
 ```
 
+![](../image/java内存马学习-79.png)
+
+可以看到，输出被变成了Hello World，说明我们在不动源代码的情况下，将Fox类替换了
+
+在idea中也可以在编辑配置->添加选项->添加虚拟机选项中，将`-javaagent:E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dependencies.jar`添加也可以达到相同效果
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Agentmain
+
+无法在启动时指定参数，可以用agentmain来附加到正在运行的程序上
+
+Premain代理的加载方式是附加到正在运行的Java进程上。前面说到，创建一个Agentmain类型的Agent时，需要在MANIFEST中指定 `Agent-Class` 属性，则我们创建一个跟Agent-Class属性值同名的Java文件。
+
+
+
+
+
+
 
 
 
