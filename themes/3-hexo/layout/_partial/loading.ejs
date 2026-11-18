@@ -44,7 +44,10 @@
     .pl-nyan { position: absolute; top: 50%; left: 0; width: 96px; margin-left: -34px;
         transform: translateY(-56%); image-rendering: pixelated; z-index: 2;
         animation: nyan-bob .5s ease-in-out infinite alternate;
-        filter: drop-shadow(0 4px 6px rgba(60, 100, 150, .4)); }
+        /* 四向描边: 灰色尾巴在亮天空上也有轮廓 */
+        filter: drop-shadow(1px 0 0 rgba(20, 50, 80, .8)) drop-shadow(-1px 0 0 rgba(20, 50, 80, .8))
+                drop-shadow(0 1px 0 rgba(20, 50, 80, .8)) drop-shadow(0 -1px 0 rgba(20, 50, 80, .8))
+                drop-shadow(0 5px 8px rgba(60, 100, 150, .45)); }
     @keyframes nyan-bob { from { margin-top: -6px; } to { margin-top: 2px; } }
     .pl-pct { margin-top: 22px; font-family: Consolas, monospace; font-size: 22px;
         font-weight: bold; color: #1c4e89; text-shadow: 1px 1px 0 rgba(255, 255, 255, .85);
@@ -61,11 +64,11 @@
         function setP(p) {
             pct = Math.max(0, Math.min(100, p));
             fill.style.width = pct + '%';
-            nyan.style.left = 'calc(' + pct + '% - 30px)';
+            nyan.style.left = 'calc(' + pct + '% - 26px)';
             pctEl.textContent = Math.round(pct) + '%';
             if (pct >= 100 && !finished) {
                 finished = true;
-                setTimeout(fade, 380);
+                setTimeout(fade, 650);
             }
         }
         function fade() {

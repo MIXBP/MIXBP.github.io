@@ -2107,10 +2107,16 @@ jps -l
 **3、然后用jcmd命令把我们的agent附加到一个正在运行的进程上**
 
 ```
-jcmd 
+jcmd 23308 JVMTI.agent_load E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
+记得重新打下jar包再来使用jcmd命令，因为前面我们修改了代码
 
+![](../image/java内存马学习-80.png)
+
+可以看到正在运行的程序已经被我们修改
+
+---
 
 
 
