@@ -35,17 +35,8 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;   /* 第三方(giscus/统计/天气)不缓存 */
 
-  /* HTML 导航: 网络优先, 断网回退缓存 */
+  /* HTML/数据: 永远走网络(页面内容必须最新), SW 只负责静态资源 */
   if (req.mode === 'navigate' || (req.headers.get('accept') || '').indexOf('text/html') !== -1) {
-    e.respondWith(
-      fetch(req)
-        .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, copy));
-          return res;
-        })
-        .catch(() => caches.match(req).then((hit) => hit || caches.match('/')))
-    );
     return;
   }
 
