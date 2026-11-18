@@ -598,7 +598,7 @@
     });
 })();
 </script>
-<!-- 洛琪希看板娘 (roxy-web-mascot, MIT): 页面加载完再初始化, 不与正文抢带宽 -->
+<!-- 洛琪希看板娘 (roxy-web-mascot, MIT): 页面加载完再初始化, 不与正文抢带宽; 失败自动重试一次 -->
 <script>
 (function () {
     function boot() {
@@ -608,6 +608,11 @@
             s.src = '/roxy/mascot.js';
             s.setAttribute('data-roxy-position', 'right');
             s.setAttribute('data-roxy-dialogue', '/roxy/dialogue.json');
+            s.onerror = function () {
+                setTimeout(function () {
+                    document.body.appendChild(s.cloneNode());
+                }, 1500);
+            };
             document.body.appendChild(s);
         }, 600);
     }

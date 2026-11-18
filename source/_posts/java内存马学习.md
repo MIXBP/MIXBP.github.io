@@ -1916,7 +1916,9 @@ Can-Redefine-Classes: true表示允许 Java Agent 重新定义已经加载的类
 
 Can-Retransform-Classes: true表示允许 Java Agent 重新转换已经加载的类。
 
-然后现在创建Premain Class，注意：类的名字和在`MANIFEST.MF`中指定的`Premain-Class`属性值要一致
+
+
+**然后现在创建Premain Class，注意：类的名字和在`MANIFEST.MF`中指定的`Premain-Class`属性值要一致**
 
 `PremainTest.java`
 
@@ -1932,13 +1934,23 @@ public class PremainTest {
 
 `public static void premain(String agentArgs, Instrumentation inst`是一个特殊的静态方法，被称为代理主方法（agent main method）。它由JVM调用，允许代理（agent）在目标应用程序启动之前执行初始化操作。
 
-**String agentArgs：**传递给代理的参数是字符串。
+String agentArgs：传递给代理的参数是字符串。
 
-**Instrumentation inst：**提供了一组API来检查、修改甚至替换应用程序中的类。
+Instrumentation inst：提供了一组API来检查、修改甚至替换应用程序中的类。
 
-**MyTransformer**是一个实现**ClassFileTransformer**的类，在类中负责具体的类转换工作。
+MyTransformer是一个实现ClassFileTransformer的类，在类中负责具体的类转换工作。
 
-**MyTransformer方法**
+```
+关于此接口方法的参数：
+ClassLoader loader: 加载类的类加载器。
+String className: 类的全限定名（例如，com/example/MyClass）。 
+Class<?> classBeingRedefined: 如果是在重新定义类，则为该类的对象；否则为null。
+ProtectionDomain protectionDomain: 类的保护域。 
+```
+
+
+
+**构造MyTransformer方法**
 
 ```
 import java.io.FileInputStream;
@@ -1981,17 +1993,50 @@ public class MyTransformer implements ClassFileTransformer {
 
 ```
 
+然后将它打成jar包，在终端里使用命令打包
+
+```
+mvn clean package
+```
+
+![](../image/java内存马学习-77.png)
+
+![](../image/java内存马学习-78.png)
+
+可以看到在target目录出现了两个jar包，第二个就是包含了原信息的Jar包，包含了所有依赖。
+
+复制这个jar包的绝对路径
+
+```
+E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+先在agent-demo中，尝试用终端的方式启动Main
+
+```
+cd target/classes
+java org.mixbp.Main
+```
+
+可以看到成功启动，输出了ding ding ding
+
+然后我们在运行之前添加一个javaagent参数，然后冒号后面接我们打的jar包的全路径
+
+```
+java -javaagent:E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dependencies.jar  org.mixbp.Main
+```
 
 
-关于此接口方法的参数：
 
-ClassLoader loader: 加载类的类加载器。
 
-String className: 类的全限定名（例如，com/example/MyClass）。 
 
-Class<?> classBeingRedefined: 如果是在重新定义类，则为该类的对象；否则为null。
 
-ProtectionDomain protectionDomain: 类的保护域。 
+
+
+
+
+
+
 
 
 

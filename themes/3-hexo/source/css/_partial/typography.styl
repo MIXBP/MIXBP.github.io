@@ -38,14 +38,20 @@
         color #d0436b
         background #f8eef1
         border 1px solid #f0dce2
-      pre
+      /* 代码框: 作用于 figure 整体(hexo 行号是 gutter/code 两个 td, 字号行高必须在 figure 层统一, 否则错位) */
+      figure.highlight
         border-radius 8px
         box-shadow 0 1px 5px rgba(30, 40, 60, .08)
-        & > code
-          border-radius 8px
-          font-size 13.5px
-          line-height 1.62
-          font-family "JetBrains Mono", "Cascadia Code", Menlo, Monaco, Consolas, "Courier New", monospace
+        overflow hidden
+        font-size 13.5px
+        line-height 1.62
+        pre
+          border-radius 0
+          box-shadow none
+          margin 0
+          & > code
+            border-radius 0
+            font-family "JetBrains Mono", "Cascadia Code", Menlo, Monaco, Consolas, "Courier New", monospace
       img
         border-radius 6px
         box-shadow 0 2px 14px rgba(20, 30, 50, .1)

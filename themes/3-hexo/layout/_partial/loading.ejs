@@ -1,18 +1,27 @@
 <div id="page-loading">
-    <div class="pl-ring"></div>
-    <div class="pl-txt">MIXBP</div>
+    <div class="loader-multi"><div></div><div></div></div>
+    <div class="pl-txt">MIXBP<span class="pl-cursor">▌</span></div>
 </div>
 <style>
+    /* 动画基于开源 loaders.css (MIT, ConnorAtherton) 的 ball-clip-rotate-multiple 改配色 */
     #page-loading { position: fixed; inset: 0; z-index: 99999; background: #10131c;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         transition: opacity .35s ease; }
     #page-loading.done { opacity: 0; pointer-events: none; }
-    #page-loading .pl-ring { width: 42px; height: 42px; border-radius: 50%;
-        border: 3px solid rgba(48, 158, 133, .22); border-top-color: #309E85;
-        animation: pl-spin .8s linear infinite; }
-    #page-loading .pl-txt { margin-top: 14px; font-family: Consolas, monospace;
-        font-size: 13px; color: #5c6b78; letter-spacing: 3px; }
-    @keyframes pl-spin { to { transform: rotate(360deg); } }
+    .loader-multi { position: relative; width: 44px; height: 44px; }
+    .loader-multi > div { position: absolute; left: 50%; top: 50%; margin: -22px 0 0 -22px;
+        width: 44px; height: 44px; border-radius: 100%;
+        border: 2px solid #35c4ff; border-bottom-color: transparent;
+        animation: pl-rotate 1s 0s ease-in infinite; }
+    .loader-multi > div:last-child { width: 26px; height: 26px; margin: -13px 0 0 -13px;
+        border: 2px solid #309E85; border-top-color: transparent; border-bottom-color: transparent;
+        animation: pl-rotate-rev 1s 0.5s ease-in infinite; }
+    @keyframes pl-rotate { 0% { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(360deg) scale(1); } }
+    @keyframes pl-rotate-rev { 0% { transform: rotate(360deg) scale(1); } 50% { transform: rotate(180deg) scale(.6); } 100% { transform: rotate(0) scale(1); } }
+    .pl-txt { margin-top: 18px; font-family: Consolas, monospace; font-size: 13px;
+        color: #5c6b78; letter-spacing: 3px; }
+    .pl-cursor { color: #309E85; animation: pl-blink 1s steps(2) infinite; margin-left: 2px; }
+    @keyframes pl-blink { 50% { opacity: 0; } }
 </style>
 <script>
     (function () {

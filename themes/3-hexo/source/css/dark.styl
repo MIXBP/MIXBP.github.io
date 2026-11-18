@@ -50,11 +50,16 @@ html.dark
         background #2a2d33 !important
         color #e0859b !important
         border 1px solid #3a3e44 !important
-      /* 代码框 */
-      pre
-        box-shadow none !important
+      /* 代码框: figure 整体描边, 内部 pre 不再各自成盒 */
+      figure.highlight
         border 1px solid #2e3540
         border-radius 8px
+        box-shadow none
+        overflow hidden
+        pre
+          border none !important
+          box-shadow none !important
+          border-radius 0 !important
       /* 引用块 */
       blockquote
         background #2a2d33 !important
