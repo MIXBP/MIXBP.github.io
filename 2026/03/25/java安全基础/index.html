@@ -16,6 +16,9 @@
   <meta name="keywords" content=" java反序列化 , java-IO流 , 反射 , java文件操作 , JDK动态代理 , 动态加载字节码 ">
   <meta name="description" content="CTF Web 安全 writeup、比赛复现与安全学习笔记">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="preconnect" href="https://giscus.app">
+<link rel="dns-prefetch" href="https://at.alicdn.com">
+<link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
 <meta name="description" content="关于我MIXBP，Web 安全学习者，主攻 CTF Web 方向。  🎯 常打 BUUCTF、ctfshow、各类线下&#x2F;线上赛 📚 学习方向：PHP&#x2F;Java&#x2F;Python 安全、渗透测试、代码审计 🔗 GitHub：MIXBP  关于博客记录 CTF 刷题 writeup、比赛复现与安全学习笔记，内容仅供学习交流。 转载请注明来源，欢迎对文章中的引用来源进行考">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -47,9 +50,9 @@
 <script src="/cdn/jquery.min.js"></script>
 <script src="/js/titleTip.js?v=1.1.0" ></script>
 
-<script src="/cdn/highlight.pack.min.js"></script>
+<script src="/cdn/highlight/highlight.min.js" defer></script>
 <script>
-    hljs.initHighlightingOnLoad();
+    document.addEventListener('DOMContentLoaded', function () { hljs.initHighlightingOnLoad(); });
 </script>
 
 <script src="/cdn/nprogress.min.js"></script>
@@ -71,6 +74,36 @@
 
 
 <body>
+<div id="page-loading">
+    <div class="pl-ring"></div>
+    <div class="pl-txt">MIXBP</div>
+</div>
+<style>
+    #page-loading { position: fixed; inset: 0; z-index: 99999; background: #10131c;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        transition: opacity .35s ease; }
+    #page-loading.done { opacity: 0; pointer-events: none; }
+    #page-loading .pl-ring { width: 42px; height: 42px; border-radius: 50%;
+        border: 3px solid rgba(48, 158, 133, .22); border-top-color: #309E85;
+        animation: pl-spin .8s linear infinite; }
+    #page-loading .pl-txt { margin-top: 14px; font-family: Consolas, monospace;
+        font-size: 13px; color: #5c6b78; letter-spacing: 3px; }
+    @keyframes pl-spin { to { transform: rotate(360deg); } }
+</style>
+<script>
+    (function () {
+        function hide() {
+            var l = document.getElementById('page-loading');
+            if (!l || l.classList.contains('done')) return;
+            l.classList.add('done');
+            setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 420);
+        }
+        window.addEventListener('load', hide);
+        /* 兜底: 资源慢也最多 4 秒放行 */
+        setTimeout(hide, 4000);
+    })();
+</script>
+
 <aside class="nav">
     <div class="nav-left">
         <a href="/"
@@ -4549,24 +4582,40 @@
     <div id="comments">
     <script>
         {
+            /* 懒加载: 滚动到评论区附近才拉取 giscus */
             const comments = document.getElementById("comments");
-            const script = document.createElement("script");
-            script.src = "https://giscus.app/client.js";
-            script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
-            script.setAttribute('data-repo-id', "R_kgDONYaZsg");
-            script.setAttribute('data-category', "Announcements");
-            script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
-            script.setAttribute('data-mapping', "pathname");
-            script.setAttribute('data-strict', "0");
-            script.setAttribute('data-reactions-enabled', "1");
-            script.setAttribute('data-emit-metadata', "0");
-            script.setAttribute('data-input-position', "top");
-            script.setAttribute('data-theme', "noborder_dark");
-            script.setAttribute('data-lang', "zh-CN");
-            script.setAttribute('data-loading', "lazy");
-            script.setAttribute('crossorigin', "anonymous");
-            script.setAttribute('async', "");
-            comments.appendChild(script);
+            function loadGiscus() {
+                if (comments.dataset.giscusLoaded) return;
+                comments.dataset.giscusLoaded = "1";
+                const script = document.createElement("script");
+                script.src = "https://giscus.app/client.js";
+                script.setAttribute('data-repo', "MIXBP/MIXBP.github.io");
+                script.setAttribute('data-repo-id', "R_kgDONYaZsg");
+                script.setAttribute('data-category', "Announcements");
+                script.setAttribute('data-category-id', "DIC_kwDONYaZss4ClAnT");
+                script.setAttribute('data-mapping', "pathname");
+                script.setAttribute('data-strict', "0");
+                script.setAttribute('data-reactions-enabled', "1");
+                script.setAttribute('data-emit-metadata', "0");
+                script.setAttribute('data-input-position', "top");
+                script.setAttribute('data-theme', "noborder_dark");
+                script.setAttribute('data-lang', "zh-CN");
+                script.setAttribute('data-loading', "lazy");
+                script.setAttribute('crossorigin', "anonymous");
+                script.setAttribute('async', "");
+                comments.appendChild(script);
+            }
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(function (entries) {
+                    if (entries.some(function (en) { return en.isIntersecting; })) {
+                        loadGiscus();
+                        io.disconnect();
+                    }
+                }, { rootMargin: '500px' });
+                io.observe(comments);
+            } else {
+                loadGiscus();
+            }
         }
     </script>
 </div>
@@ -5080,8 +5129,23 @@
     });
 })();
 </script>
-<!-- 洛琪希看板娘 (roxy-web-mascot, MIT) -->
-<script type="module" src="/roxy/mascot.js" data-roxy-position="right" data-roxy-dialogue="/roxy/dialogue.json"></script>
+<!-- 洛琪希看板娘 (roxy-web-mascot, MIT): 页面加载完再初始化, 不与正文抢带宽 -->
+<script>
+(function () {
+    function boot() {
+        setTimeout(function () {
+            var s = document.createElement('script');
+            s.type = 'module';
+            s.src = '/roxy/mascot.js';
+            s.setAttribute('data-roxy-position', 'right');
+            s.setAttribute('data-roxy-dialogue', '/roxy/dialogue.json');
+            document.body.appendChild(s);
+        }, 600);
+    }
+    if (document.readyState === 'complete') boot();
+    else window.addEventListener('load', boot);
+})();
+</script>
 <!-- 自定义特效/彩蛋/天气 -->
 <script src="/js/custom/effects.js?v=1.2" defer></script>
 <script src="/js/custom/egg.js?v=1.2" defer></script>
