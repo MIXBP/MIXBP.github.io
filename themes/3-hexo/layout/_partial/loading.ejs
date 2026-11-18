@@ -50,6 +50,16 @@
 </style>
 <script>
     (function () {
+        /* 仅首次访问首页展示; 本会话已展示过则直接移除, 跳过动画 */
+        var shown = false;
+        try { shown = sessionStorage.getItem('nyanLoadShown') === '1'; } catch (e) { }
+        if (shown) {
+            var old = document.getElementById('page-loading');
+            if (old && old.parentNode) old.parentNode.removeChild(old);
+            return;
+        }
+        try { sessionStorage.setItem('nyanLoadShown', '1'); } catch (e) { }
+
         var W = 560, BAND = 12.5, AMP = 6.5, WAVELEN = 170, BASE = 30;
         var COLORS = ['#fe0000', '#ff8f00', '#ffff00', '#00d000', '#0099fe', '#6633fe'];
         var paths = [];
