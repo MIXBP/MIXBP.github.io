@@ -113,6 +113,20 @@ sitemap:
   path: sitemap.xml
   rel: false
 
+# 全站压缩 (hexo-neat): HTML/CSS/JS 混淆关闭, 保守配置
+neat_enable: true
+neat_html:
+  enable: true
+neat_css:
+  enable: true
+  exclude:
+    - '**/*.min.css'
+neat_js:
+  enable: true
+  mangle: false
+  exclude:
+    - '**/*.min.js'
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:

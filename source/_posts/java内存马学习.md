@@ -2086,7 +2086,39 @@ public class AgentMainTest {
 
 然后增加一个查找所有已加载的类的功能
 
-这里就是通过循环找到指定要重新加载的类，然后用Instrumentation让虚拟机再加载一次
+这里就是通过循环找到指定要重新加载的类，然后用Instrumentation让虚拟机再加载一次，这样就能触发MyTransformer中的替换方法
+
+MyTransformer里的逻辑不需要变
+
+---
+
+然后就是附加的过程
+
+**1、先把程序agent-demo的Main.java运行起来**
+
+**2、然后用jps命令找到正在运行的程序对应的进程号**
+
+```
+jps -l
+
+# 23308 org.mixbp.Main
+```
+
+**3、然后用jcmd命令把我们的agent附加到一个正在运行的进程上**
+
+```
+jcmd 
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

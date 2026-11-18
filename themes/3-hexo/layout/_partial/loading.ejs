@@ -1,64 +1,101 @@
 <div id="page-loading">
     <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-    <div class="cloud c4"></div><div class="cloud c5"></div>
-    <div class="nyan-fly"><img src="/img/nyan-tr.webp" alt=""></div>
-    <div class="pl-txt">MIXBP<span class="pl-cursor">▌</span></div>
+    <div class="bar-zone">
+        <div class="bar-track">
+            <div class="bar-fill" id="pl-fill"><div class="bar-stripes"></div></div>
+            <img class="pl-nyan" id="pl-nyan" src="/img/nyan-cat.webp" alt="">
+        </div>
+        <div class="pl-pct" id="pl-pct">0%</div>
+    </div>
 </div>
 <style>
-    /* 彩虹猫进度条 loading (Nyan Cat meme, 透明 webp) */
+    /* 彩虹猫加载条: 小猫拖着 nyan 彩虹从 0% 跑到 100% */
     #page-loading { position: fixed; inset: 0; z-index: 99999; overflow: hidden;
         background: linear-gradient(#7ec3f0, #b5defa 62%, #ddf0fc);
         transition: opacity .4s ease; }
     #page-loading.fade { opacity: 0; pointer-events: none; }
-    /* 云朵 */
     #page-loading .cloud { position: absolute; background: #fff; border-radius: 50px;
-        opacity: .85; box-shadow: 0 6px 14px rgba(110, 150, 190, .25); }
+        opacity: .8; box-shadow: 0 6px 14px rgba(110, 150, 190, .22); }
     #page-loading .cloud::before, #page-loading .cloud::after { content: ''; position: absolute;
         background: #fff; border-radius: 50%; }
-    #page-loading .c1 { width: 130px; height: 40px; left: 6%; top: 16%; animation: cloud-drift 26s linear infinite alternate; }
+    #page-loading .c1 { width: 130px; height: 40px; left: 5%; top: 14%; animation: cloud-drift 26s linear infinite alternate; }
     #page-loading .c1::before { width: 55px; height: 55px; left: 22px; top: -26px; }
     #page-loading .c1::after { width: 40px; height: 40px; left: 66px; top: -16px; }
-    #page-loading .c2 { width: 170px; height: 48px; right: 8%; top: 62%; opacity: .7; animation: cloud-drift 34s linear infinite alternate-reverse; }
-    #page-loading .c2::before { width: 70px; height: 70px; left: 30px; top: -32px; }
-    #page-loading .c2::after { width: 50px; height: 50px; left: 88px; top: -20px; }
-    #page-loading .c3 { width: 110px; height: 36px; right: 24%; top: 12%; opacity: .65; animation: cloud-drift 30s linear infinite alternate; }
-    #page-loading .c3::before { width: 46px; height: 46px; left: 20px; top: -22px; }
-    #page-loading .c4 { width: 90px; height: 30px; left: 18%; top: 72%; opacity: .6; animation: cloud-drift 24s linear infinite alternate-reverse; }
-    #page-loading .c5 { width: 140px; height: 42px; left: 46%; top: 80%; opacity: .75; animation: cloud-drift 28s linear infinite alternate; }
-    #page-loading .c5::before { width: 58px; height: 58px; left: 26px; top: -28px; }
-    /* 猫 = 进度条 */
-    #page-loading .nyan-fly { position: absolute; top: 38%; left: -5%; width: 210px;
-        animation: nyan-fly 5.5s cubic-bezier(.25, .6, .4, 1) forwards; }
-    #page-loading .nyan-fly img { width: 100%; display: block;
-        image-rendering: pixelated; animation: nyan-bob .5s ease-in-out infinite alternate; }
-    @keyframes nyan-fly { 0% { left: -6%; } 100% { left: 84%; } }
-    @keyframes nyan-bob { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
-    #page-loading.done .nyan-fly { left: 88%; transition: left .45s ease-in; animation-play-state: paused; }
-    #page-loading .pl-txt { position: absolute; left: 50%; bottom: 12%; transform: translateX(-50%);
-        font-family: Consolas, monospace; font-size: 18px; font-weight: bold;
-        color: #1c4e89; letter-spacing: 4px; text-shadow: 1px 1px 0 rgba(255, 255, 255, .8); }
-    #page-loading .pl-cursor { color: #e6a23c; animation: pl-blink 1s steps(2) infinite; }
-    @keyframes pl-blink { 50% { opacity: 0; } }
-    @keyframes cloud-drift { from { transform: translateX(0); } to { transform: translateX(46px); } }
+    #page-loading .c2 { width: 150px; height: 44px; right: 6%; top: 18%; opacity: .7; animation: cloud-drift 32s linear infinite alternate-reverse; }
+    #page-loading .c2::before { width: 62px; height: 62px; left: 28px; top: -30px; }
+    #page-loading .c3 { width: 100px; height: 32px; right: 20%; bottom: 18%; opacity: .6; animation: cloud-drift 24s linear infinite alternate-reverse; }
+    #page-loading .c4 { width: 120px; height: 36px; left: 8%; bottom: 12%; opacity: .7; animation: cloud-drift 28s linear infinite alternate; }
+    #page-loading .c4::before { width: 50px; height: 50px; left: 24px; top: -24px; }
+    @keyframes cloud-drift { from { transform: translateX(0); } to { transform: translateX(40px); } }
+    .bar-zone { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        width: min(520px, 86vw); text-align: center; }
+    .bar-track { position: relative; height: 24px; border-radius: 12px;
+        background: rgba(255, 255, 255, .6);
+        border: 1px solid rgba(255, 255, 255, .95);
+        box-shadow: 0 4px 14px rgba(90, 130, 175, .35); }
+    .bar-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0%;
+        border-radius: 12px 0 0 12px; overflow: hidden;
+        box-shadow: 0 0 12px rgba(255, 255, 255, .65); }
+    /* nyan 彩虹六色条 (水平色带堆叠) */
+    .bar-stripes { width: 520px; height: 100%;
+        background: linear-gradient(180deg,
+            #ff4d4d 0 16.7%, #ff9950 16.7% 33.4%, #ffe14d 33.4% 50%,
+            #5ade5a 50% 66.7%, #4da6ff 66.7% 83.4%, #b066ff 83.4% 100%); }
+    .pl-nyan { position: absolute; top: 50%; left: 0; width: 96px; margin-left: -34px;
+        transform: translateY(-56%); image-rendering: pixelated; z-index: 2;
+        animation: nyan-bob .5s ease-in-out infinite alternate;
+        filter: drop-shadow(0 4px 6px rgba(60, 100, 150, .4)); }
+    @keyframes nyan-bob { from { margin-top: -6px; } to { margin-top: 2px; } }
+    .pl-pct { margin-top: 22px; font-family: Consolas, monospace; font-size: 22px;
+        font-weight: bold; color: #1c4e89; text-shadow: 1px 1px 0 rgba(255, 255, 255, .85);
+        letter-spacing: 2px; }
 </style>
 <script>
     (function () {
         var t0 = Date.now();
-        function done() {
-            var l = document.getElementById('page-loading');
-            if (!l || l.classList.contains('done')) return;
-            l.classList.add('done');
-            /* 猫冲线 -> 整层淡出 */
-            setTimeout(function () { l.classList.add('fade'); }, 480);
-            setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 1000);
+        var fill = document.getElementById('pl-fill');
+        var nyan = document.getElementById('pl-nyan');
+        var pctEl = document.getElementById('pl-pct');
+        var pct = 0, target = 78, finished = false;
+
+        function setP(p) {
+            pct = Math.max(0, Math.min(100, p));
+            fill.style.width = pct + '%';
+            nyan.style.left = 'calc(' + pct + '% - 30px)';
+            pctEl.textContent = Math.round(pct) + '%';
+            if (pct >= 100 && !finished) {
+                finished = true;
+                setTimeout(fade, 380);
+            }
         }
-        /* 正文解析完即冲刺收尾; 最少展示 1.2s 防闪烁, 7 秒兜底 */
+        function fade() {
+            var l = document.getElementById('page-loading');
+            if (!l || l.classList.contains('fade')) return;
+            l.classList.add('fade');
+            setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 460);
+        }
+        /* 模拟进度: 平稳爬到 78%, DOMContentLoaded 提到 88%, load 冲 100% */
+        var tick = setInterval(function () {
+            if (pct < target) setP(pct + 2 + Math.random() * 4);
+        }, 130);
+        document.addEventListener('DOMContentLoaded', function () {
+            target = 88;
+            if (pct < 82) setP(82);
+        });
+        window.addEventListener('load', function () {
+            target = 100;
+            if (pct < 96) setP(96);
+        });
+        /* 最少展示 1.6s 防闪烁, 7 秒兜底强制完成 */
+        setTimeout(function () { target = 100; if (pct < 96) setP(96); }, 6000);
+        setTimeout(function () { finished = true; fade(); }, 7200);
         function schedule() {
             var el = Date.now() - t0;
-            setTimeout(done, Math.max(0, 1200 - el));
+            setTimeout(function () {
+                if (!finished && pct < 60) setP(60);
+            }, Math.max(0, 1500 - el));
         }
         if (document.readyState !== 'loading') schedule();
         else document.addEventListener('DOMContentLoaded', schedule);
-        setTimeout(done, 7000);
     })();
 </script>
