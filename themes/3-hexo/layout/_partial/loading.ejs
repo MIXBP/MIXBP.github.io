@@ -1,15 +1,19 @@
 <div id="page-loading">
     <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-    <div class="bar-zone">
-        <div class="bar-track">
-            <div class="bar-fill" id="pl-fill"><div class="bar-stripes"></div></div>
-            <img class="pl-nyan" id="pl-nyan" src="/img/nyan-cat.webp" alt="">
-        </div>
+    <div class="wave-zone">
+        <svg id="pl-svg" viewBox="0 0 560 100" xmlns="http://www.w3.org/2000/svg">
+            <defs><clipPath id="plclip"><rect id="pl-cliprect" x="-4" y="-10" width="0" height="120"/></clipPath></defs>
+            <g clip-path="url(#plclip)">
+                <path id="rb0" class="rb"/><path id="rb1" class="rb"/><path id="rb2" class="rb"/>
+                <path id="rb3" class="rb"/><path id="rb4" class="rb"/><path id="rb5" class="rb"/>
+            </g>
+        </svg>
+        <img id="pl-nyan" src="/img/nyan-cat.webp" alt="">
         <div class="pl-pct" id="pl-pct">0%</div>
     </div>
 </div>
 <style>
-    /* 彩虹猫加载条: 小猫拖着 nyan 彩虹从 0% 跑到 100% */
+    /* 波浪状流动彩虹: SVG 六色正弦波, 猫在波前, 裁剪生长 0->100% */
     #page-loading { position: fixed; inset: 0; z-index: 99999; overflow: hidden;
         background: linear-gradient(#7ec3f0, #b5defa 62%, #ddf0fc);
         transition: opacity .4s ease; }
@@ -23,52 +27,59 @@
     #page-loading .c1::after { width: 40px; height: 40px; left: 66px; top: -16px; }
     #page-loading .c2 { width: 150px; height: 44px; right: 6%; top: 18%; opacity: .7; animation: cloud-drift 32s linear infinite alternate-reverse; }
     #page-loading .c2::before { width: 62px; height: 62px; left: 28px; top: -30px; }
-    #page-loading .c3 { width: 100px; height: 32px; right: 20%; bottom: 18%; opacity: .6; animation: cloud-drift 24s linear infinite alternate-reverse; }
-    #page-loading .c4 { width: 120px; height: 36px; left: 8%; bottom: 12%; opacity: .7; animation: cloud-drift 28s linear infinite alternate; }
-    #page-loading .c4::before { width: 50px; height: 50px; left: 24px; top: -24px; }
+    #page-loading .c3 { width: 110px; height: 36px; left: 8%; bottom: 14%; opacity: .7; animation: cloud-drift 28s linear infinite alternate; }
+    #page-loading .c3::before { width: 50px; height: 50px; left: 24px; top: -24px; }
     @keyframes cloud-drift { from { transform: translateX(0); } to { transform: translateX(40px); } }
-    .bar-zone { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-        width: min(520px, 86vw); text-align: center; }
-    .bar-track { position: relative; height: 24px; border-radius: 12px;
-        background: rgba(255, 255, 255, .6);
-        border: 1px solid rgba(255, 255, 255, .95);
-        box-shadow: 0 4px 14px rgba(90, 130, 175, .35); }
-    .bar-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0%;
-        border-radius: 12px 0 0 12px; overflow: hidden;
-        box-shadow: 0 0 12px rgba(255, 255, 255, .65); }
-    /* nyan 彩虹六色条 (水平色带堆叠) */
-    .bar-stripes { width: 520px; height: 100%;
-        background: linear-gradient(180deg,
-            #ff4d4d 0 16.7%, #ff9950 16.7% 33.4%, #ffe14d 33.4% 50%,
-            #5ade5a 50% 66.7%, #4da6ff 66.7% 83.4%, #b066ff 83.4% 100%); }
-    .pl-nyan { position: absolute; top: 50%; left: 0; width: 96px; margin-left: -34px;
-        transform: translateY(-56%); image-rendering: pixelated; z-index: 2;
-        animation: nyan-bob .5s ease-in-out infinite alternate;
-        /* 四向描边: 灰色尾巴在亮天空上也有轮廓 */
+    .wave-zone { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        width: 560px; height: 130px; }
+    #pl-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .rb { fill: none; stroke-width: 8.2; stroke-linecap: butt; }
+    #pl-nyan { position: absolute; width: 108px; z-index: 3; left: -50px; top: 0;
+        image-rendering: pixelated; pointer-events: none;
         filter: drop-shadow(1px 0 0 rgba(20, 50, 80, .8)) drop-shadow(-1px 0 0 rgba(20, 50, 80, .8))
                 drop-shadow(0 1px 0 rgba(20, 50, 80, .8)) drop-shadow(0 -1px 0 rgba(20, 50, 80, .8))
-                drop-shadow(0 5px 8px rgba(60, 100, 150, .45)); }
-    @keyframes nyan-bob { from { margin-top: -6px; } to { margin-top: 2px; } }
-    .pl-pct { margin-top: 22px; font-family: Consolas, monospace; font-size: 22px;
-        font-weight: bold; color: #1c4e89; text-shadow: 1px 1px 0 rgba(255, 255, 255, .85);
-        letter-spacing: 2px; }
+                drop-shadow(0 6px 9px rgba(60, 100, 150, .5));
+        animation: nyan-bob .5s ease-in-out infinite alternate; }
+    @keyframes nyan-bob { from { margin-top: -5px; } to { margin-top: 4px; } }
+    .pl-pct { position: absolute; left: 50%; top: 108px; transform: translateX(-50%);
+        font-family: Consolas, monospace; font-size: 22px; font-weight: bold;
+        color: #1c4e89; text-shadow: 1px 1px 0 rgba(255, 255, 255, .85); letter-spacing: 2px; }
 </style>
 <script>
     (function () {
-        var t0 = Date.now();
-        var fill = document.getElementById('pl-fill');
+        var W = 560, BAND = 8.2, AMP = 6, WAVELEN = 150, BASE = 26;
+        var COLORS = ['#ff4d4d', '#ff9950', '#ffe14d', '#5ade5a', '#4da6ff', '#b066ff'];
+        var paths = [];
+        for (var b = 0; b < 6; b++) paths.push(document.getElementById('rb' + b));
+        for (var c = 0; c < 6; c++) {
+            paths[c].setAttribute('stroke', COLORS[c]);
+            paths[c].setAttribute('stroke-width', BAND + 1.1);
+        }
         var nyan = document.getElementById('pl-nyan');
+        var cliprect = document.getElementById('pl-cliprect');
         var pctEl = document.getElementById('pl-pct');
-        var pct = 0, target = 78, finished = false;
+        var phase = 0, pct = 0, target = 78, finished = false;
+        var t0 = Date.now();
 
+        function waveY(x, band) {
+            return BASE + band * BAND + BAND / 2 + AMP * Math.sin((x + phase) / WAVELEN * Math.PI * 2);
+        }
+        function drawWave() {
+            for (var b = 0; b < 6; b++) {
+                var d = '';
+                for (var x = 0; x <= W + 8; x += 7) {
+                    d += (x === 0 ? 'M' : 'L') + x + ' ' + waveY(x, b).toFixed(1) + ' ';
+                }
+                paths[b].setAttribute('d', d);
+            }
+        }
         function setP(p) {
             pct = Math.max(0, Math.min(100, p));
-            fill.style.width = pct + '%';
-            nyan.style.left = 'calc(' + pct + '% - 26px)';
+            cliprect.setAttribute('width', (W * pct / 100 + 4).toFixed(1));
             pctEl.textContent = Math.round(pct) + '%';
             if (pct >= 100 && !finished) {
                 finished = true;
-                setTimeout(fade, 650);
+                setTimeout(fade, 550);
             }
         }
         function fade() {
@@ -77,7 +88,19 @@
             l.classList.add('fade');
             setTimeout(function () { if (l.parentNode) l.parentNode.removeChild(l); }, 460);
         }
-        /* 模拟进度: 平稳爬到 78%, DOMContentLoaded 提到 88%, load 冲 100% */
+        /* 主循环: 波浪流动 + 猫贴在裁剪边缘 */
+        var reveal = 0;
+        function frame() {
+            requestAnimationFrame(frame);
+            phase += 1.15;
+            drawWave();
+            var edgeX = W * pct / 100;
+            nyan.style.left = (edgeX - 44) + 'px';
+            nyan.style.top = (waveY(Math.min(edgeX, W), 2) - 46) + 'px';
+        }
+        frame();
+
+        /* 进度: 爬到 78% -> DOMContentLoaded 88% -> load 100% */
         var tick = setInterval(function () {
             if (pct < target) setP(pct + 2 + Math.random() * 4);
         }, 130);
@@ -89,7 +112,6 @@
             target = 100;
             if (pct < 96) setP(96);
         });
-        /* 最少展示 1.6s 防闪烁, 7 秒兜底强制完成 */
         setTimeout(function () { target = 100; if (pct < 96) setP(96); }, 6000);
         setTimeout(function () { finished = true; fade(); }, 7200);
         function schedule() {
@@ -100,5 +122,14 @@
         }
         if (document.readyState !== 'loading') schedule();
         else document.addEventListener('DOMContentLoaded', schedule);
+
+        /* 窄屏缩放 */
+        function fit() {
+            var s = Math.min(1, window.innerWidth / 640);
+            document.querySelector('.wave-zone').style.transform =
+                'translate(-50%, -50%) scale(' + s + ')';
+        }
+        window.addEventListener('resize', fit);
+        fit();
     })();
 </script>

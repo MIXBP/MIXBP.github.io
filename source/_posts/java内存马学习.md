@@ -2118,9 +2118,9 @@ jcmd 23308 JVMTI.agent_load E:\java\agent\target\agent-1.0-SNAPSHOT-jar-with-dep
 
 ---
 
+如果不能执行命令，怎么将jar包附加到正在运行的程序中
 
-
-
+首先先创建一个Main.java
 
 
 
