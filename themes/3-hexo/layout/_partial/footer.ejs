@@ -625,3 +625,13 @@
 <script src="/js/custom/effects.js?v=1.2" defer></script>
 <script src="/js/custom/egg.js?v=1.2" defer></script>
 <script src="/js/custom/weather.js?v=1.2" defer></script>
+<!-- Service Worker: 回访静态资源秒开 -->
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            navigator.serviceWorker.register('/sw.js').catch(function () { });
+        }, 2500);
+    });
+}
+</script>
