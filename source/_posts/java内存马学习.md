@@ -2219,7 +2219,59 @@ public class MyTransformer implements ClassFileTransformer {
 }
 ```
 
-去掉了读取字节码的方法，然后修改了transform方法
+这里去掉了读取字节码的方法，然后修改了transform方法，使用javassist去修改类
+
+去测试看看能不能修改成功
+
+1、依旧先重新编译
+
+```
+mvn clean package
+```
+
+2、用jps命令查进程号
+
+```
+jps -l
+
+# 3004 org.mixbp.Main
+```
+
+3、把编译后的jar包附加到3004进程号上
+
+```
+import com.sun.tools.attach.AgentInitializationException;
+import com.sun.tools.attach.AgentLoadException;
+import com.sun.tools.attach.AttachNotSupportedException;
+import com.sun.tools.attach.VirtualMachine;
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException {
+        // 这里的id就是进程号，注意每次重新运行进程号都会变
+        VirtualMachine attach = VirtualMachine.attach("3004");
+        // 这里填入jar包的绝对路径
+        attach.loadAgent("E:\\java\\agent\\target\\agent-1.0-SNAPSHOT-jar-with-dependencies.jar");
+    }
+}
+```
+
+![](../image/java内存马学习-82.png)
+
+可以看到在目标方法执行前，每次都会执行我们自定义的代码逻辑
+
+---
+
+## agent内存马
+
+
+
+
+
+
+
+
 
 
 
